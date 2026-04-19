@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>毎日トレンド情報まとめ</title>
+  <style>
+    :root {
+      --bg: #0d1117; --card: #161b22; --border: #30363d;
+      --accent: #1f6feb; --text: #e6edf3; --muted: #8b949e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif; }
+
+    header {
+      background: linear-gradient(135deg, #0d1b2a, #1a2744);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+    }
+    header h1 { font-size: 22px; font-weight: 700; }
+    header p { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+    .tabs {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      padding: 16px 24px; border-bottom: 1px solid var(--border);
+      background: #0d1117; position: sticky; top: 0; z-index: 10;
+    }
+    .tab {
+      padding: 6px 14px; border-radius: 20px; font-size: 13px; cursor: pointer;
+      border: 1px solid var(--border); background: var(--card); color: var(--muted);
+      transition: all 0.2s;
+    }
+    .tab:hover { border-color: var(--accent); color: var(--text); }
+    .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    .content { padding: 20px 24px; max-width: 900px; margin: 0 auto; }
+
+    .genre-section { display: none; }
+    .genre-section.active { display: block; }
+
+    .report-list { display: flex; flex-direction: column; gap: 10px; }
+    .report-item {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px 18px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 10px;
+    }
+    .report-item:hover { border-color: #58a6ff; }
+    .report-date { font-weight: 600; font-size: 15px; }
+    .report-link {
+      display: inline-block; padding: 6px 16px; border-radius: 6px;
+      background: var(--accent); color: #fff; font-size: 13px;
+      text-decoration: none; font-weight: 600;
+    }
+    .report-link:hover { background: #388bfd; }
+
+    .empty { color: var(--muted); font-size: 14px; padding: 40px 0; text-align: center; }
+
+    footer {
+      text-align: center; padding: 24px; color: var(--muted);
+      font-size: 12px; border-top: 1px solid var(--border); margin-top: 40px;
+    }
+    @media (max-width: 600px) {
+      .tabs { padding: 12px 16px; }
+      .content { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📊 毎日トレンド情報まとめ</h1>
+  <p id="last-updated">読み込み中...</p>
+</header>
+
+<div class="tabs" id="tabs"></div>
+
+<div class="content" id="content"></div>
+
+<footer>毎日自動更新 | Powered by Claude Code</footer>
+
+<script>
+const MANIFEST_URL = 'data/manifest.json';
+
+const GENRES = [
+  { key: 'x',           label: 'Xツイート分析' },
+  { key: 'trend',       label: '時事トレンド' },
+  { key: 'food',        label: '飲食店情報' },
+  { key: 'convenience', label: 'コンビニ情報' },
+  { key: 'collabocafe', label: 'コラボカフェ情報' },
+  { key: 'movie',       label: '映画・エンタメ情報' },
+  { key: 'magazine',    label: '雑誌・漫画情報' },
+  { key: 'pointsite',   label: 'ポイントサイト情報' },
+  { key: 'mobile',      label: 'MNP・モバイル情報' },
+];
+
+let manifest = {};
+let activeGenre = GENRES[0].key;
+
+async function loadManifest() {
+  try {
+    const r = await fetch(MANIFEST_URL + '?t=' + Date.now());
+    manifest = await r.json();
+    const dates = Object.values(manifest).flatMap(v => v.map(e => e.date)).sort().reverse();
+    if (dates.length) {
+      document.getElementById('last-updated').textContent = `最終更新: ${dates[0]}`;
+    }
+    render();
+  } catch(e) {
+    document.getElementById('last-updated').textContent = '更新情報を読み込めませんでした';
+  }
+}
+
+function render() {
+  const tabsEl = document.getElementById('tabs');
+  const contentEl = document.getElementById('content');
+  tabsEl.innerHTML = '';
+  contentEl.innerHTML = '';
+
+  GENRES.forEach(g => {
+    const tab = document.createElement('div');
+    tab.className = 'tab' + (g.key === activeGenre ? ' active' : '');
+    tab.textContent = g.label;
+    tab.onclick = () => { activeGenre = g.key; render(); };
+    tabsEl.appendChild(tab);
+
+    const section = document.createElement('div');
+    section.className = 'genre-section' + (g.key === activeGenre ? ' active' : '');
+    const reports = (manifest[g.key] || []).slice().reverse();
+    if (reports.length === 0) {
+      section.innerHTML = '<div class="empty">まだレポートがありません</div>';
+    } else {
+      section.innerHTML = '<div class="report-list">' +
+        reports.map(r => `
+          <div class="report-item">
+            <span class="report-date">📅 ${r.date}</span>
+            <a class="report-link" href="${r.url}" target="_blank">レポートを見る →</a>
+          </div>`).join('') +
+        '</div>';
+    }
+    contentEl.appendChild(section);
+  });
+}
+
+loadManifest();
+</script>
+</body>
+</html>

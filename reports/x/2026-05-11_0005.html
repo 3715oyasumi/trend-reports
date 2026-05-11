@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xツイートデータ分析レポート</title>
+  <style>
+:root {
+  --bg: #0d1117; --card: #161b22; --border: #30363d;
+  --accent: #1f6feb; --text: #e6edf3; --muted: #8b949e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
+  line-height: 1.6; padding: 16px; max-width: 860px; margin: 0 auto;
+}
+.report-header {
+  background: linear-gradient(135deg, #0d1b2a 0%, #1a2744 100%);
+  border: 1px solid #1f3a6e; border-radius: 12px;
+  padding: 24px; margin-bottom: 24px;
+}
+.report-label {
+  font-family: 'Courier New', monospace; font-size: 11px;
+  color: #79c0ff; letter-spacing: 3px; margin-bottom: 8px;
+}
+.report-title { font-size: 26px; font-weight: 700; margin-bottom: 14px; }
+.report-meta { display: flex; flex-wrap: wrap; gap: 16px; }
+.meta-item { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); }
+.meta-item span { color: var(--text); font-weight: 600; }
+.report-section { margin-bottom: 20px; }
+.section-title {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 17px; font-weight: 600;
+  padding: 10px 0 8px; border-bottom: 1px solid var(--border); margin-bottom: 10px;
+}
+.section-num { font-family: monospace; font-size: 13px; color: var(--muted); }
+.item-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 13px; margin-bottom: 8px;
+}
+.item-card:hover { border-color: #58a6ff; }
+.item-header { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
+.item-title { font-weight: 600; font-size: 14px; flex: 1; }
+.item-desc { font-size: 13px; color: var(--muted); margin-bottom: 7px; line-height: 1.5; }
+.item-desc strong { color: var(--text); }
+.item-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag { font-size: 11px; padding: 2px 8px; border-radius: 12px; font-family: monospace; }
+.tag-user  { background: #1c2d3e; color: #79c0ff; border: 1px solid #1f3a6e; }
+.tag-stat  { background: #1e2a1e; color: #7ee787; border: 1px solid #2a4a2a; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
+.badge-danger  { background: #3d0c0c; color: #f85149; border: 1px solid #5a1010; }
+.badge-warning { background: #3d2c00; color: #e3a008; border: 1px solid #5a4100; }
+.badge-info    { background: #1a3a5c; color: #79c0ff; border: 1px solid #1f4a7a; }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.summary-table th {
+  background: #1c2128; padding: 10px 14px; text-align: left;
+  color: var(--muted); border-bottom: 2px solid var(--border);
+}
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+.summary-table tr:hover td { background: #1c2128; }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+@media (max-width: 600px) {
+  .report-title { font-size: 20px; }
+  .section-title { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+  <div class="report-header">
+    <div class="report-label">X TWEET DATA ANALYSIS REPORT</div>
+    <h1 class="report-title">Xツイートデータ分析レポート</h1>
+    <div class="report-meta">
+      <div class="meta-item">📅 収集日時：<span>2026-05-11 00:05</span></div>
+      <div class="meta-item">📊 対象件数：<span>1件</span></div>
+    </div>
+  </div>
+  <section class="report-section">
+  <h2 class="section-title"> 🔥 1. 人気商品・トレンド</h2>
+  <div class="section-content"></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> ⭐ 🔥 Nintendo Switch 2（圧倒的最注目）</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@ka99_ta27 (表示66)「急いで探したが、どこも在庫切れ。転売ヤーの餌食になることわかってるなら必要な人が買えるようにしてから値上げして」</span></div>
+  <div class="item-desc">(表示66)「急いで探したが、どこも在庫切れ。転売ヤーの餌食になることわかってるなら必要な人が買えるようにしてから値上げして」</div><div class="item-tags"><span class="tag tag-user">@ka99_ta27</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@yomogi03Ice (表示49)「Switch2発表初日に買って正解。今日どこも売り切れ」</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">(表示49)「Switch2発表初日に買って正解。今日どこも売り切れ」</div><div class="item-tags"><span class="tag tag-user">@yomogi03Ice</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@oto_mako (表示27)「Switch2は本当に欲しい人に行き渡ったタイミングで値上げ宣言。素晴らしい企業努力」</span></div>
+  <div class="item-desc">(表示27)「Switch2は本当に欲しい人に行き渡ったタイミングで値上げ宣言。素晴らしい企業努力」</div><div class="item-tags"><span class="tag tag-user">@oto_mako</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📈 ハリーポッターカードゲームがプレ値時代へ</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@pokemon_jo_hou (いいね11, RT2, 表示12,240)「ついにハリーポッターカードゲームすらプレ値の時代へ」</span></div>
+  <div class="item-desc">(いいね11, RT2, <strong>表示12,240</strong>)「ついにハリーポッターカードゲームすらプレ値の時代へ」</div><div class="item-tags"><span class="tag tag-user">@pokemon_jo_hou</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📋 ガチャ新発売情報（5月第3週）</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@patrol_yo (いいね2, RT1, 表示464)「ちいかわ めじるしアクセサリー3 / 転スラ リムルフィギュア6 / 鬼滅の刃 まちぼうけ / クレしんマスコット など」</span></div>
+  <div class="item-desc">(いいね2, RT1, 表示464)「ちいかわ めじるしアクセサリー3 / 転スラ リムルフィギュア6 / 鬼滅の刃 まちぼうけ / クレしんマスコット など」</div><div class="item-tags"><span class="tag tag-user">@patrol_yo</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📋 宴Tシャツ売り切れ次第終了</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@UtaGe_STAFF_ (いいね21, RT6, 表示1,599)「5/10『祝宴』限定宴Tシャツ＆4周年記念Tシャツをオンライン販売。各色売り切れ次第終了」</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">(いいね21, RT6, 表示1,599)「5/10『祝宴』限定宴Tシャツ＆4周年記念Tシャツをオンライン販売。各色売り切れ次第終了」</div><div class="item-tags"><span class="tag tag-user">@UtaGe_STAFF_</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 💰 2. お得情報・セール</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@lecter_HL (表示5)「楽天ウェブ検索 — 抽選で100人に100ポイント当たる。1日10回の検索でエントリー」</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">(表示5)「楽天ウェブ検索 — 抽選で100人に100ポイント当たる。1日10回の検索でエントリー」</div><div class="item-tags"><span class="tag tag-user">@lecter_HL</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@PAO_online (表示79)「ホロカ hBP04『キュリアスユニバース』在庫整理セール 5月25日まで。購入制限なし」</span></div>
+  <div class="item-desc">(表示79)「ホロカ hBP04『キュリアスユニバース』<strong>在庫整理セール 5月25日まで</strong>。購入制限なし」</div><div class="item-tags"><span class="tag tag-user">@PAO_online</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@pan1oa (表示81)「シナモンロールシール、定価だといつも売り切れ。商品ページに再入荷通知設定ができる（楽天PR）」</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">(表示81)「シナモンロールシール、定価だといつも売り切れ。商品ページに<strong>再入荷通知設定</strong>ができる（楽天PR）」</div><div class="item-tags"><span class="tag tag-user">@pan1oa</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@mof0u0 (表示17)「楽天ポイントバックが多い。ジェラピケ部屋着、楽天は完売だが公式通販に在庫あり（ポイ活的には本末転倒）」</span></div>
+  <div class="item-desc">(表示17)「楽天ポイントバックが多い。ジェラピケ部屋着、楽天は完売だが公式通販に在庫あり（ポイ活的には本末転倒）」</div><div class="item-tags"><span class="tag tag-user">@mof0u0</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📦 3. 転売情報</h2>
+  <div class="section-content"></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📦 💰 ポケカ投資・転売</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@Pokecalabo_s (いいね13, 表示5,284)「BOXが永遠プレ値になることはない。今はゴールドラッシュ並のボーナスタイム。BOX買える方法を知るとWin-Win」</span></div>
+  <div class="item-desc">(いいね13, <strong>表示5,284</strong>)「BOXが永遠プレ値になることはない。今はゴールドラッシュ並の<strong>ボーナスタイム</strong>。BOX買える方法を知るとWin-Win」</div><div class="item-tags"><span class="tag tag-user">@Pokecalabo_s</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@xxSAKURAxxG (表示132)「今後再販なしと予測する3パック：蒼空のストリーム 1,500円 / 151 2,000円 / フュージョンアーツ 500円 → 10年後帯以上になる予測」</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">(表示132)「今後再販なしと予測する3パック：蒼空のストリーム <strong>1,500円</strong> / 151 <strong>2,000円</strong> / フュージョンアーツ <strong>500円</strong> → 10年後帯以上になる予測」</div><div class="item-tags"><span class="tag tag-user">@xxSAKURAxxG</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📦 Switch2転売動向</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@batabata35 (表示142)「Switch2値上げタイミングがおかしすぎる。転売ヤーが買い漁り品薄に。楽天出店ショップが9万超の便乗値上げ」</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">(表示142)「Switch2値上げタイミングがおかしすぎる。転売ヤーが買い漁り品薄に。楽天出店ショップが<strong>9万超の便乗値上げ</strong>」</div><div class="item-tags"><span class="tag tag-user">@batabata35</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@rs1typ (表示238)「Switch2転売ヤーがバカみたいに買ってくから在庫ないと言いつつ販売中止にしてる店あり」</span></div>
+  <div class="item-desc">(表示238)「Switch2転売ヤーがバカみたいに買ってくから在庫ないと言いつつ販売中止にしてる店あり」</div><div class="item-tags"><span class="tag tag-user">@rs1typ</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📦 実録・転売ビジネス論</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@gottooon_reborn (いいね1, 表示21)「2022年転売覚醒。格言：マスタライズは5k以下。2024年：未来への決闘で利益10万超」</span></div>
+  <div class="item-desc">(いいね1, 表示21)「2022年転売覚醒。格言：マスタライズは5k以下。2024年：未来への決闘で<strong>利益10万超</strong>」</div><div class="item-tags"><span class="tag tag-user">@gottooon_reborn</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@kuri_matsu1 (いいね5, 表示68)「転売は法律では禁止されていないが倫理的タブー。裏では大金が動いている。感情抜きに需要がある場所を狙う」</span></div>
+  <div class="item-desc">(いいね5, 表示68)「転売は法律では禁止されていないが倫理的タブー。裏では<strong>大金が動いている</strong>。感情抜きに需要がある場所を狙う」</div><div class="item-tags"><span class="tag tag-user">@kuri_matsu1</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@yamitenbai_b (いいね1, 表示74)「転売で稼ぐ注意点：買い占めすぎ・店員迷惑はNG。毎日1時間の地道な作業積みが最速最大の結果を出す」</span></div>
+  <div class="item-desc">(いいね1, 表示74)「転売で稼ぐ注意点：買い占めすぎ・店員迷惑はNG。<strong>毎日1時間の地道な作業積み</strong>が最速最大の結果を出す」</div><div class="item-tags"><span class="tag tag-user">@yamitenbai_b</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 🎰 4. 抽選・限定販売</h2>
+  <div class="section-content"></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 🎰 Nintendo Switch2 抽選情報（店舗別）</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@kinebiotoriyose「ドンキホーテ第4回：抽選受付7/4〜7/6 / 発表7/17・7/25」</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">「<strong>ドンキホーテ第4回</strong>：抽選受付7/4〜7/6 / 発表7/17・7/25」</div><div class="item-tags"><span class="tag tag-user">@kinebiotoriyose</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@kinebiotoriyose「アキバソフマップ第6回：応募7/4 16:00〜7/7 10:00 / 当落メール7/10 10:00 / 購入期限7/12 10:00」</span></div>
+  <div class="item-desc">「<strong>アキバソフマップ第6回</strong>：応募7/4 16:00〜7/7 10:00 / 当落メール7/10 10:00 / 購入期限7/12 10:00」</div><div class="item-tags"><span class="tag tag-user">@kinebiotoriyose</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@kinebiotoriyose「TSUTAYA GIGA大宮・春日井：連日先着・抽選実施中」</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">「<strong>TSUTAYA GIGA大宮・春日井</strong>：連日先着・抽選実施中」</div><div class="item-tags"><span class="tag tag-user">@kinebiotoriyose</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@kinebiotoriyose「あべのキューズモール マリオカートワールドセット抽選：7/2〜7/3」</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">「<strong>あべのキューズモール</strong> マリオカートワールドセット抽選：7/2〜7/3」</div><div class="item-tags"><span class="tag tag-user">@kinebiotoriyose</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 🎰 トレカ抽選</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@TCmeieki (いいね1, 表示43)「ワンピースカード『決戦の刻』DM抽選：5/11〜5/17受付、会員番号・本名・商品名をDMで送付」</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">(いいね1, 表示43)「ワンピースカード<strong>『決戦の刻』DM抽選</strong>：5/11〜5/17受付、会員番号・本名・商品名をDMで送付」</div><div class="item-tags"><span class="tag tag-user">@TCmeieki</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📋 高エンゲージメントキャンペーン</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@ONEPIECE_trecru (いいね34, RT20, 表示537)「フォロー＆#イム君臨 ポストで5名にイムデザインオリジナルTシャツ～5/16 23:59」</span></div>
+  <div class="item-desc">(いいね34, RT20, <strong>表示537</strong>)「フォロー＆#イム君臨 ポストで5名にイムデザインオリジナルTシャツ～5/16 23:59」</div><div class="item-tags"><span class="tag tag-user">@ONEPIECE_trecru</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@CoA_Official_JP (いいね13, RT109, 表示304)「その場で合計880名に最大10,000円分Amazonギフトカード。毎日参加可能」</span></div>
+  <div class="item-desc">(いいね13, RT109, <strong>表示304</strong>)「その場で合計<strong>880名に最大10,000円分Amazonギフトカード</strong>。毎日参加可能」</div><div class="item-tags"><span class="tag tag-user">@CoA_Official_JP</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@s_i_project (いいね4, RT28, 表示193)「ステラP GW応援合戦：抽選50名にDMMポイント最大1万円分。5/11 23:59まで」</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">(いいね4, RT28, 表示193)「ステラP GW応援合戦：抽選50名に<strong>DMMポイント最大1万円分</strong>。5/11 23:59まで」</div><div class="item-tags"><span class="tag tag-user">@s_i_project</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@sasakisan_info (いいね15, RT4, 表示43)「奏音69ライブ KEY HOLDER最速先行：抽選結果5/16 13:00発表、支払期限5/18 21:00」</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">(いいね15, RT4, 表示43)「奏音69ライブ KEY HOLDER最速先行：抽選結果<strong>5/16 13:00</strong>発表、支払期限5/18 21:00」</div><div class="item-tags"><span class="tag tag-user">@sasakisan_info</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> ✅ 5. サクセス報告</h2>
+  <div class="section-content"></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📦 転売・投資成功</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@gottooon_reborn (いいね1, 表示21)「2024年: くじ人気相まって未来への決闘で利益10万超を叩き出す。フィギュアに金はかけない主義でも勝負どころで稼ぐ」</span></div>
+  <div class="item-desc">(いいね1, 表示21)「2024年: くじ人気相まって未来への決闘で<strong>利益10万超を叩き出す</strong>。フィギュアに金はかけない主義でも勝負どころで稼ぐ」</div><div class="item-tags"><span class="tag tag-user">@gottooon_reborn</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@kasahara_y (いいね1, 表示51)「ヤクトの価格が凄いことに。プレ値で買ったがそれも超えた」</span></div>
+  <div class="item-desc">(いいね1, 表示51)「ヤクトの価格が凄いことに。<strong>プレ値で買ったがそれも超えた</strong>」</div><div class="item-tags"><span class="tag tag-user">@kasahara_y</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@gabo_LAA (いいね7, 表示199)「LIVEマッチLAA初代殿堂入りと1位実績でプレ値＋10万くらいつけてもいいですか？」</span></div>
+  <div class="item-desc">(いいね7, <strong>表示199</strong>)「LIVEマッチLAA初代殿堂入りと1位実績で<strong>プレ値＋10万くらいつけてもいいですか？</strong>」</div><div class="item-tags"><span class="tag tag-user">@gabo_LAA</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📋 Switch2早期購入成功</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@yomogi03Ice (表示49)「Switch2を発表初日に購入。今日どこも売り切れで発表初日購入が大正解だった」</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">(表示49)「Switch2を発表初日に購入。今日どこも売り切れで<strong>発表初日購入が大正解だった</strong>」</div><div class="item-tags"><span class="tag tag-user">@yomogi03Ice</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@ABU_yrsk (表示8)「値上げ前に買えた！本当によかった」</span></div>
+  <div class="item-desc">(表示8)「値上げ前に買えた！本当によかった」</div><div class="item-tags"><span class="tag tag-user">@ABU_yrsk</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@kyomu_boukyaku (表示80)「娘には不自由させたくないからSwitch2を黒い力で値上げ前に購入。転売ヤーは死ねばいい」</span></div>
+  <div class="item-desc">(表示80)「娘には不自由させたくないからSwitch2を黒い力で<strong>値上げ前</strong>に購入。転売ヤーは死ねばいい」</div><div class="item-tags"><span class="tag tag-user">@kyomu_boukyaku</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📋 創作・同人販売成功</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@yurikatsupa (いいね19, 表示200)「最近有難いことにイベントが完売続き。本当に嬉しくて眠れなさそう」</span></div>
+  <div class="item-desc">(いいね19, <strong>表示200</strong>)「最近有難いことにイベントが<strong>完売続き</strong>。本当に嬉しくて眠れなさそう」</div><div class="item-tags"><span class="tag tag-user">@yurikatsupa</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@mama_ai_start (いいね2, 表示25)「育休ママAI副業：5部完売。次の5部から価格を値上げします」</span></div>
+  <div class="item-desc">(いいね2, 表示25)「育休ママAI副業：<strong>5部完売</strong>。次の5部から価格を値上げします」</div><div class="item-tags"><span class="tag tag-user">@mama_ai_start</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📈 6. プレ値情報</h2>
+  <div class="section-content"></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📈 🏆 最高表示プレ値情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@pokemon_jo_hou (いいね11, RT2, 表示12,240)「ハリーポッターカードゲームすらプレ値の時代へ」</span></div>
+  <div class="item-desc">(いいね11, RT2, <strong>表示12,240</strong>)「<strong>ハリーポッターカードゲームすらプレ値</strong>の時代へ」</div><div class="item-tags"><span class="tag tag-user">@pokemon_jo_hou</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@Pokecalabo_s (いいね13, 表示5,284)「BOXが永遠プレ値にはならない。今がボーナスタイム」</span></div>
+  <div class="item-desc">(いいね13, <strong>表示5,284</strong>)「BOXが永遠プレ値にはならない。今がボーナスタイム」</div><div class="item-tags"><span class="tag tag-user">@Pokecalabo_s</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📈 Switch2プレ値</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@Bigmama4kizs (表示386)「Switch2: 49,800円以外はプレ値だから注意（PR・2回投稿）」</span></div>
+  <div class="item-desc">(表示386)「Switch2: <strong>49,800円以外はプレ値</strong>だから注意（PR・2回投稿）」</div><div class="item-tags"><span class="tag tag-user">@Bigmama4kizs</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@batabata35 (表示142)「楽天出店ショップが9万超の便乗値上げ」</span></div>
+  <div class="item-desc">(表示142)「楽天出店ショップが<strong>9万超</strong>の便乗値上げ」</div><div class="item-tags"><span class="tag tag-user">@batabata35</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📈 ガンプラプレ値</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@orange_2178 (表示622)「HGスターゲイザー定価2,090円。発送元Amazon以外はプレ値注意（PR）」</span></div>
+  <div class="item-desc">(表示622)「HGスターゲイザー定価<strong>2,090円</strong>。発送元Amazon以外はプレ値注意（PR）」</div><div class="item-tags"><span class="tag tag-user">@orange_2178</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@orange_2178 (表示550)「MGプロヴィデンスガンダム: プレバン限定品全然入荷なし。プレ値ばかりで定価で買えない」</span><span class="badge badge-info">限定</span></div>
+  <div class="item-desc">(表示550)「MGプロヴィデンスガンダム: プレバン限定品全然入荷なし。<strong>プレ値ばかりで定価で買えない</strong>」</div><div class="item-tags"><span class="tag tag-user">@orange_2178</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@KazuCeltic (いいね2, 表示45)「MGSD規格ガンプラ: メルカリで全部高い。中華なら安い。初めてのMGなら中華で失敗練習も」</span></div>
+  <div class="item-desc">(いいね2, 表示45)「MGSD規格ガンプラ: メルカリで全部高い。<strong>中華なら安い</strong>。初めてのMGなら中華で失敗練習も」</div><div class="item-tags"><span class="tag tag-user">@KazuCeltic</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📈 ポケカプレ値予測</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@xxSAKURAxxG (表示132)「蒼空のストリーム1,500円・151 2,000円・フュージョンアーツ500円 → 10年後帯以上予測」</span></div>
+  <div class="item-desc">(表示132)「蒼空のストリーム1,500円・151 2,000円・フュージョンアーツ500円 → <strong>10年後帯以上</strong>予測」</div><div class="item-tags"><span class="tag tag-user">@xxSAKURAxxG</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@t7V6ii1bXd85366 (いいね1, 表示118)「ダークライは人気＋効果が強すぎでプレ値付きそう。ゲッコウガも人気でプレ値可能性」</span></div>
+  <div class="item-desc">(いいね1, 表示118)「ダークライは人気＋効果が強すぎでプレ値付きそう。ゲッコウガも人気でプレ値可能性」</div><div class="item-tags"><span class="tag tag-user">@t7V6ii1bXd85366</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@saishinDMP (いいね1, 表示130)「デュエマ逆札篇第1弾BOX: ほぼ定価の6,001円でAmazon販売中（再販分あり発送日注意）」</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">(いいね1, 表示130)「デュエマ逆札篇第1弾BOX: ほぼ定価の<strong>6,001円</strong>でAmazon販売中（再販分あり発送日注意）」</div><div class="item-tags"><span class="tag tag-user">@saishinDMP</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📈 アルコール・カードゲームプレ値</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@jijitoiltusilyo (いいね10, 表示134)「山崎・白州・響: プレ値で購入。原価では入手困難。じっくり楽しむ」</span></div>
+  <div class="item-desc">(いいね10, 表示134)「山崎・白州・響: <strong>プレ値で購入</strong>。原価では入手困難。じっくり楽しむ」</div><div class="item-tags"><span class="tag tag-user">@jijitoiltusilyo</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@sumasabun (いいね5, 表示127)「酒屋でスプリングバンク10年・キルカラン18年等珍しいお酒多数。ほぼ全部プレ値で販売」</span></div>
+  <div class="item-desc">(いいね5, 表示127)「酒屋でスプリングバンク10年・キルカラン18年等珍しいお酒多数。<strong>ほぼ全部プレ値</strong>で販売」</div><div class="item-tags"><span class="tag tag-user">@sumasabun</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@jfneiwusbrk (いいね3, 表示384)「AP×スウォッチ: 製造数不明だが全色か白黒ピンクあたりはプレ値つく予想」</span></div>
+  <div class="item-desc">(いいね3, 表示384)「AP×スウォッチ: 製造数不明だが<strong>全色か白黒ピンクあたりはプレ値つく予想</strong>」</div><div class="item-tags"><span class="tag tag-user">@jfneiwusbrk</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📋 値下がり情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@mk6969696969 (いいね7, 表示426)「ボンボンドロップシール: 増産で値下がり中。お店のプレ値よりフリマの方が安い」</span></div>
+  <div class="item-desc">(いいね7, 表示426)「ボンボンドロップシール: 増産で<strong>値下がり中</strong>。お店のプレ値より<strong>フリマの方が安い</strong>」</div><div class="item-tags"><span class="tag tag-user">@mk6969696969</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 🔄 7. 入荷・再販情報</h2>
+  <div class="section-content"></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📋 🔥 Switch2 Amazon在庫復活情報（0:00前後に連続投稿）</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">本体単体、マリオカートワールドセット、あつ森Edition、スプラトゥーン レイダーズ、ヨッシーとフカシギの図鑑、ぽこ あ ポケモン、スーパーマリオブラザーズ ワンダーセット</span></div>
+  <div class="item-desc">本体単体、マリオカートワールドセット、あつ森Edition、スプラトゥーン レイダーズ、ヨッシーとフカシギの図鑑、ぽこ あ ポケモン、スーパーマリオブラザーズ ワンダーセット</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@gakeppu2aut (表示214)「Switch2 Amazon 0:00:59 販売再開」</span></div>
+  <div class="item-desc">(表示214)「Switch2 Amazon <strong>0:00:59 販売再開</strong>」</div><div class="item-tags"><span class="tag tag-user">@gakeppu2aut</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@switch2_goods (表示70)「Switch2 Amazon 販売再開中（投稿時点）」</span></div>
+  <div class="item-desc">(表示70)「Switch2 Amazon <strong>販売再開中</strong>（投稿時点）」</div><div class="item-tags"><span class="tag tag-user">@switch2_goods</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📋 ガンプラ再販</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@aanc20 (表示440)「【Amazon在庫復活】HGグリムゲルデ 1,540円 / ライトニングバスターガンダム 2,860円（2026年5月再販分）」</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">(表示440)「【Amazon在庫復活】HGグリムゲルデ <strong>1,540円</strong> / ライトニングバスターガンダム <strong>2,860円</strong>（2026年5月再販分）」</div><div class="item-tags"><span class="tag tag-user">@aanc20</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@gunpla_saihan: RGエピオン / グリムゲルデ / ライトニングバスター等 販売再開情報</span></div>
+  <div class="item-desc">: RGエピオン / グリムゲルデ / ライトニングバスター等 販売再開情報</div><div class="item-tags"><span class="tag tag-user">@gunpla_saihan</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📋 グッズ・シール再販</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@bang_dream_gbp (いいね42, RT9, 表示2,019)「バンドリ 松原花音誕生日3Dライブ衣装 スターショップにて0:00より販売開始」</span></div>
+  <div class="item-desc">(いいね42, RT9, <strong>表示2,019</strong>)「バンドリ 松原花音誕生日3Dライブ衣装 スターショップにて<strong>0:00より販売</strong>開始」</div><div class="item-tags"><span class="tag tag-user">@bang_dream_gbp</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@madostaff (いいね7, RT3, 表示508)「まどそふと セレオブグッズ リニューアル受注販売第2弾 5/11開始。くくる・トウリ」</span></div>
+  <div class="item-desc">(いいね7, RT3, <strong>表示508</strong>)「まどそふと セレオブグッズ リニューアル<strong>受注販売第2弾 5/11開始</strong>。くくる・トウリ」</div><div class="item-tags"><span class="tag tag-user">@madostaff</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@SM_seal_room (表示549)「ボンボンドロップシール夏新作4柄本日20時発売。コンパスプラスさん再販の噂も（PR）」</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">(表示549)「ボンボンドロップシール夏新作4柄<strong>本日20時発売</strong>。コンパスプラスさん再販の噂も（PR）」</div><div class="item-tags"><span class="tag tag-user">@SM_seal_room</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@kanami_gangan「たまごっちチョコチップクッキー缶 再販。DMM 10%OFF（PR）」</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">「たまごっちチョコチップクッキー缶 <strong>再販</strong>。DMM 10%OFF（PR）」</div><div class="item-tags"><span class="tag tag-user">@kanami_gangan</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@hobbywatch_jp (表示222)「ハセガワ『日本駆逐艦 霞』再販分を本日出荷開始」</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">(表示222)「ハセガワ『日本駆逐艦 霞』<strong>再販分を本日出荷開始</strong>」</div><div class="item-tags"><span class="tag tag-user">@hobbywatch_jp</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 🔄 MTGシングルカード入荷</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@hareruya_kawask (いいね1, 表示275)「《世慣れた見張り、デルニー》[MKM] 4,500円 / 《氷耕しの探検家》[EOE] 2,200円 品薄カードが入荷」</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">(いいね1, <strong>表示275</strong>)「《世慣れた見張り、デルニー》[MKM] <strong>4,500円</strong> / 《氷耕しの探検家》[EOE] <strong>2,200円</strong> 品薄カードが入荷」</div><div class="item-tags"><span class="tag tag-user">@hareruya_kawask</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 🔄 ポケカ関連入荷</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@kotatsudemikanm「Amazonでポケカ MEGAドリームex アビスアイBOX 招待販売開始（PR）」</span></div>
+  <div class="item-desc">「Amazonで<strong>ポケカ MEGAドリームex アビスアイBOX 招待販売</strong>開始（PR）」</div><div class="item-tags"><span class="tag tag-user">@kotatsudemikanm</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> ⚠️ 8. 注意・警告</h2>
+  <div class="section-content"></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📋 ⚠️ 最重要警告（**最高インプレッション**）</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@superAmazonnotice (いいね3, RT2, 表示14,526!!!)「【注意喚起】私が5,000円で配布しているファイルを15,000円で転載している悪徳業者が存在。『Ｓ倉庫1/2/3』として販売。リンク切れも多く購入価値なし」</span></div>
+  <div class="item-desc">(いいね3, RT2, <strong>表示14,526!!!</strong>)「【注意喚起】私が<strong>5,000円で配布しているファイル</strong>を<strong>15,000円で転載</strong>している悪徳業者が存在。『Ｓ倉庫1/2/3』として販売。リンク切れも多く購入価値なし」</div><div class="item-tags"><span class="tag tag-user">@superAmazonnotice</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📋 偽物・詐欺・アカウント乗っ取り</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@kaponkaho (表示18)「乗っ取られたアカウントがチケット転売に飽き足らず闇バイト募集まで開始。通報を促す（30秒で可能）」</span></div>
+  <div class="item-desc">(表示18)「乗っ取られたアカウントがチケット転売に飽き足らず<strong>闇バイト募集</strong>まで開始。通報を促す（30秒で可能）」</div><div class="item-tags"><span class="tag tag-user">@kaponkaho</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@Daiwanl19 (表示56)「嵐のぬい転売から偽物詐欺。転売で買わないように」</span><span class="badge badge-danger">詐欺</span></div>
+  <div class="item-desc">(表示56)「嵐のぬい転売から<strong>偽物詐欺</strong>。転売で買わないように」</div><div class="item-tags"><span class="tag tag-user">@Daiwanl19</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@kazuyanoco (いいね2, 表示18)「スニダン（スニーカーフリマ）：真贋能力ゼロ。過去に大量の破損品・偽物を通過させた実績あり。正規トレカ屋との違いを認識して」</span></div>
+  <div class="item-desc">(いいね2, 表示18)「スニダン（スニーカーフリマ）：<strong>真贋能力ゼロ</strong>。過去に大量の破損品・偽物を通過させた実績あり。正規トレカ屋との違いを認識して」</div><div class="item-tags"><span class="tag tag-user">@kazuyanoco</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📋 価格変動・値崩れ警告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@mk6969696969 (いいね7, 表示426)「ボンボンドロップシール: 増産で値下がり済み。プレ値で買うのは損」</span></div>
+  <div class="item-desc">(いいね7, 表示426)「ボンボンドロップシール: 増産で<strong>値下がり済み</strong>。プレ値で買うのは損」</div><div class="item-tags"><span class="tag tag-user">@mk6969696969</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@Pokecalabo_s (いいね13, 表示5,284)「BOXが永遠プレ値になることはない。ボーナスタイムに終わりが来ると理解すべき」</span></div>
+  <div class="item-desc">(いいね13, 表示5,284)「BOXが永遠プレ値になることはない。<strong>ボーナスタイムに終わりが来る</strong>と理解すべき」</div><div class="item-tags"><span class="tag tag-user">@Pokecalabo_s</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@batabata35 (表示142)「Switch2：楽天出店ショップが9万超の便乗値上げ。任天堂の値上げタイミングが転売を助長している可能性」</span></div>
+  <div class="item-desc">(表示142)「Switch2：楽天出店ショップが<strong>9万超の便乗値上げ</strong>。任天堂の値上げタイミングが転売を助長している可能性」</div><div class="item-tags"><span class="tag tag-user">@batabata35</span></div>
+</div></div>
+</section>
+
+</body>
+</html>

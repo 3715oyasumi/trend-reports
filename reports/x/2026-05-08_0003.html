@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xツイートデータ分析レポート</title>
+  <style>
+:root {
+  --bg: #0d1117; --card: #161b22; --border: #30363d;
+  --accent: #1f6feb; --text: #e6edf3; --muted: #8b949e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
+  line-height: 1.6; padding: 16px; max-width: 860px; margin: 0 auto;
+}
+.report-header {
+  background: linear-gradient(135deg, #0d1b2a 0%, #1a2744 100%);
+  border: 1px solid #1f3a6e; border-radius: 12px;
+  padding: 24px; margin-bottom: 24px;
+}
+.report-label {
+  font-family: 'Courier New', monospace; font-size: 11px;
+  color: #79c0ff; letter-spacing: 3px; margin-bottom: 8px;
+}
+.report-title { font-size: 26px; font-weight: 700; margin-bottom: 14px; }
+.report-meta { display: flex; flex-wrap: wrap; gap: 16px; }
+.meta-item { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); }
+.meta-item span { color: var(--text); font-weight: 600; }
+.report-section { margin-bottom: 20px; }
+.section-title {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 17px; font-weight: 600;
+  padding: 10px 0 8px; border-bottom: 1px solid var(--border); margin-bottom: 10px;
+}
+.section-num { font-family: monospace; font-size: 13px; color: var(--muted); }
+.item-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 13px; margin-bottom: 8px;
+}
+.item-card:hover { border-color: #58a6ff; }
+.item-header { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
+.item-title { font-weight: 600; font-size: 14px; flex: 1; }
+.item-desc { font-size: 13px; color: var(--muted); margin-bottom: 7px; line-height: 1.5; }
+.item-desc strong { color: var(--text); }
+.item-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag { font-size: 11px; padding: 2px 8px; border-radius: 12px; font-family: monospace; }
+.tag-user  { background: #1c2d3e; color: #79c0ff; border: 1px solid #1f3a6e; }
+.tag-stat  { background: #1e2a1e; color: #7ee787; border: 1px solid #2a4a2a; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
+.badge-danger  { background: #3d0c0c; color: #f85149; border: 1px solid #5a1010; }
+.badge-warning { background: #3d2c00; color: #e3a008; border: 1px solid #5a4100; }
+.badge-info    { background: #1a3a5c; color: #79c0ff; border: 1px solid #1f4a7a; }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.summary-table th {
+  background: #1c2128; padding: 10px 14px; text-align: left;
+  color: var(--muted); border-bottom: 2px solid var(--border);
+}
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+.summary-table tr:hover td { background: #1c2128; }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+@media (max-width: 600px) {
+  .report-title { font-size: 20px; }
+  .section-title { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+  <div class="report-header">
+    <div class="report-label">X TWEET DATA ANALYSIS REPORT</div>
+    <h1 class="report-title">Xツイートデータ分析レポート</h1>
+    <div class="report-meta">
+      <div class="meta-item">📅 収集日時：<span>2026-05-08 00:03</span></div>
+      <div class="meta-item">📊 対象件数：<span>1件</span></div>
+    </div>
+  </div>
+  <section class="report-section">
+  <h2 class="section-title"> 🔥 1. 人気商品・トレンド</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ニカ コミパラ PSA10が1,000,000円到達</span></div>
+  <div class="item-desc">ニカ コミパラ PSA10が<strong>1,000,000円到達</strong></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">MEGAドリームexはバラパックでもプレ値で活発取引中</span></div>
+  <div class="item-desc">MEGAドリームexはバラパックでもプレ値で活発取引中</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">5月5日から全国グラニフにて販売開始</span></div>
+  <div class="item-desc">5月5日から全国グラニフにて販売開始</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ステンレスボトル：定価4,500円 / Tシャツ：定価4,900円 / キャップ：定価3,900円</span></div>
+  <div class="item-desc">ステンレスボトル：定価4,500円 / Tシャツ：定価4,900円 / キャップ：定価3,900円</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">いずれもメルカリでプレ値取引中（詳細は6項参照）</span></div>
+  <div class="item-desc">いずれもメルカリでプレ値取引中（詳細は6項参照）</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">店舗でも品薄継続中</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">店舗でも品薄継続中</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">宇宙柄だけ異常人気（雪柄は残ってもギャラクシー柄は即消え）</span></div>
+  <div class="item-desc">宇宙柄だけ異常人気（雪柄は残ってもギャラクシー柄は即消え）</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">コラボメニューが色々売り切れ状態</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">コラボメニューが色々売り切れ状態</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">第1弾おすすめはアイスケーキ</span></div>
+  <div class="item-desc">第1弾おすすめはアイスケーキ</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">どこの店舗も売り切れ状態</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">どこの店舗も売り切れ状態</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">西門店はグッズ展示あり</span></div>
+  <div class="item-desc">西門店はグッズ展示あり</div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 💰 2. お得情報・セール</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">DMMポイント500円分を抽選で60名様にその場でプレゼント</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">DMMポイント500円分を抽選で60名様にその場でプレゼント</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">期間：5月8日23:59まで</span></div>
+  <div class="item-desc">期間：5月8日23:59まで</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">楽天ランキング42位</span></div>
+  <div class="item-desc">楽天ランキング42位</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">5/21までの値上げ前価格</span></div>
+  <div class="item-desc">で購入可能（PR）</div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📦 3. 転売情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ハンドオーバー前フリップ（28戸）：利益+19.0% / IRR 11.0% / 保有1.7年</span></div>
+  <div class="item-desc">ハンドオーバー前フリップ（28戸）：利益+19.0% / IRR 11.0% / 保有1.7年</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ハンドオーバー後転売（25戸）：利益+44.9% / IRR 12.8% / 保有3.0年</span></div>
+  <div class="item-desc">ハンドオーバー後転売（25戸）：<strong>利益+44.9% / IRR 12.8% / 保有3.0年</strong></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">平均ローンチ価格 1,184,452 AED → 平均売却価格 1,717,000 AED</span></div>
+  <div class="item-desc">平均ローンチ価格 1,184,452 AED → 平均売却価格 1,717,000 AED</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">平均実現利益: +532,548 AED（+44.9%）</span></div>
+  <div class="item-desc">平均実現利益: +532,548 AED（+44.9%）</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">仕入れ原価220円 → 売価899円</span></div>
+  <div class="item-desc">仕入れ原価220円 → 売価899円</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">利益424円（粗利47.1%）</span></div>
+  
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">品薄継続中で高値維持</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">品薄継続中で高値維持</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">定価2,640円の本がAmazonで12,999円（プレ値）</span></div>
+  <div class="item-desc">定価2,640円の本がAmazonで12,999円（プレ値）</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">メルカリでは6,500円前後で売れる</span></div>
+  <div class="item-desc">メルカリでは6,500円前後で売れる</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Amazon販路があれば一撃1万円近い利益</span></div>
+  <div class="item-desc">Amazon販路があれば一撃1万円近い利益</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「販売中止で新品供給停止 → 需要と供給が逆転してプレ値化」のパターン</span></div>
+  <div class="item-desc">「販売中止で新品供給停止 → 需要と供給が逆転してプレ値化」のパターン</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">販売当日からメルカリ出品中（魔人ベジータほか）</span></div>
+  <div class="item-desc">販売当日からメルカリ出品中（魔人ベジータほか）</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">クリアポスターも出品継続中</span></div>
+  <div class="item-desc">クリアポスターも出品継続中</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ENKA VINYL「ゴジラ1989」5/7まで抽選販売</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">ENKA VINYL「ゴジラ1989」5/7まで抽選販売</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">プレ値予想あり（詳細は販売情報サイト参照）</span></div>
+  <div class="item-desc">プレ値予想あり（詳細は販売情報サイト参照）</div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 🎰 4. 抽選・限定販売</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">約2年ぶり開催</span></div>
+  <div class="item-desc">約2年ぶり開催</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">抽選で60名様にDREAMオリパ1口プレゼント（先行当選含む計70名）</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">抽選で60名様にDREAMオリパ1口プレゼント（先行当選含む計70名）</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">〆切：5/8(金)20:00まで</span></div>
+  
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">参加条件：投稿をリポスト＋フォロー</span></div>
+  <div class="item-desc">参加条件：投稿をリポスト＋フォロー</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">合計880名様に最大10,000円分のAmazonギフトカード</span></div>
+  
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">毎日参加可能</span></div>
+  <div class="item-desc">毎日参加可能</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">商品：DUAL EVOLUTION ドラゴンボール BOX</span></div>
+  <div class="item-desc">商品：DUAL EVOLUTION ドラゴンボール BOX</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">価格5,280円 / 相場約11,000円（利益約5,720円）</span></div>
+  
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">応募〆：5/8(金)23:59まで</span></div>
+  <div class="item-desc">応募〆：5/8(金)23:59まで</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">購入期間：5/16(土)、5/17(日)</span></div>
+  <div class="item-desc">購入期間：5/16(土)、5/17(日)</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">受付期間：5/10(日)23:59まで</span></div>
+  <div class="item-desc">受付期間：5/10(日)23:59まで</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">当選発表：5/18(月)</span></div>
+  <div class="item-desc">当選発表：5/18(月)</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">購入期間：5/19(火)〜5/25(月)</span></div>
+  <div class="item-desc">購入期間：5/19(火)〜5/25(月)</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">シルバースマイル会員以上対象</span></div>
+  <div class="item-desc">シルバースマイル会員以上対象</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">インフェルノX・スタートデッキ100：〆5/11(月)23:59、当選5/15、購入5/16〜5/18（いいね1）</span></div>
+  <div class="item-desc">インフェルノX・スタートデッキ100：〆5/11(月)23:59、当選5/15、購入5/16〜5/18（いいね1）</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">アビスアイ：〆5/17(日)23:59、当選5/20、購入5/22〜5/24（いいね6）</span></div>
+  <div class="item-desc">アビスアイ：〆5/17(日)23:59、当選5/20、購入5/22〜5/24（いいね6）</div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> ✅ 5. サクセス報告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">日本唯一のゲオでメガドリーム5pを発見・購入</span></div>
+  <div class="item-desc">日本唯一のゲオでメガドリーム5pを発見・購入</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「プレ値換算だったら、、、勝ち🙄」と報告</span></div>
+  <div class="item-desc">「プレ値換算だったら、、、勝ち🙄」と報告</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">2,640円の本をネットでポチッと確保</span></div>
+  <div class="item-desc">2,640円の本をネットでポチッと確保</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「一撃1万円近い利益も普通に狙えるのうますぎる😍」と報告</span></div>
+  <div class="item-desc">「一撃1万円近い利益も普通に狙えるのうますぎる😍」と報告</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Amazon vs メルカリの価格差を活用</span></div>
+  <div class="item-desc">Amazon vs メルカリの価格差を活用</div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📈 6. プレ値情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">1,000,000円到達</span></div>
+  <div class="item-desc">（最注目）</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「微妙にプレ値だけど、2026からは同じ値段」</span></div>
+  <div class="item-desc">「微妙にプレ値だけど、2026からは同じ値段」</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">買いどきの判断が必要</span></div>
+  <div class="item-desc">買いどきの判断が必要</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">メルカリで唯・春菜・モモの3点セットで18万円</span></div>
+  <div class="item-desc">メルカリで唯・春菜・モモの3点セットで<strong>18万円</strong></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">開封品の春菜単体で80,000円</span></div>
+  <div class="item-desc">開封品の春菜単体で<strong>80,000円</strong></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ステンレスボトル：定価4,500円→メルカリ7,500円前後（+3,000円）</span></div>
+  <div class="item-desc">ステンレスボトル：定価4,500円→メルカリ7,500円前後（+3,000円）</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Tシャツ：定価4,900円→メルカリ6,500円前後（+1,600円）</span></div>
+  <div class="item-desc">Tシャツ：定価4,900円→メルカリ6,500円前後（+1,600円）</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">キャップ：定価3,900円→メルカリ5,500円前後（+1,600円）</span></div>
+  <div class="item-desc">キャップ：定価3,900円→メルカリ5,500円前後（+1,600円）</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">MG RX-78GP01(ゼフィランサス)：定価3,190円 / MG GP02A：定価4,840円</span></div>
+  <div class="item-desc">MG RX-78GP01(ゼフィランサス)：定価3,190円 / MG GP02A：定価4,840円</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">HG デスティニーガンダムSpecⅡ&ゼウス：定価7,920円</span></div>
+  <div class="item-desc">HG デスティニーガンダムSpecⅡ&ゼウス：定価7,920円</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">いずれも発送元Amazon以外はプレ値</span></div>
+  <div class="item-desc">いずれも発送元Amazon以外はプレ値</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「プレ値つくとエグい値段になるのを忘れてたわ」と報告</span></div>
+  <div class="item-desc">「プレ値つくとエグい値段になるのを忘れてたわ」と報告</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">定価2,640円 → Amazon12,999円 / メルカリ6,500円前後</span></div>
+  <div class="item-desc">定価2,640円 → Amazon12,999円 / メルカリ6,500円前後</div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 🔄 7. 入荷・再販情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">Amazon 5/8 0時より予約開始</span></div>
+  <div class="item-desc">Amazon 5/8 0時より予約開始</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">定価6,380円（2026年11月発売予定）</span></div>
+  <div class="item-desc">定価6,380円（2026年11月発売予定）</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">あみあみ 5/8 0時より15%OFFで予約開始</span></div>
+  <div class="item-desc">あみあみ 5/8 0時より15%OFFで予約開始</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">2026年10月発売予定</span></div>
+  <div class="item-desc">2026年10月発売予定</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">るかっぷ ポートガス・D・エース / ペローナ 再販</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">るかっぷ ポートガス・D・エース / ペローナ 再販</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">あみあみ 5/8 0時より15%OFF</span></div>
+  <div class="item-desc">あみあみ 5/8 0時より15%OFF</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">再販分が5/7に出荷開始</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">再販分が5/7に出荷開始</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ゼノアルマ ブレイズ オーピス：定価4,070円（2026年12月）</span></div>
+  <div class="item-desc">ゼノアルマ ブレイズ オーピス：定価4,070円（2026年12月）</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ゼノアルマ フレイム シュトラール：定価3,850円（2026年12月）</span></div>
+  <div class="item-desc">ゼノアルマ フレイム シュトラール：定価3,850円（2026年12月）</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Amazon 5/8 0時より予約開始</span></div>
+  <div class="item-desc">Amazon 5/8 0時より予約開始</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Joshinアプリで抽選受付中（5/10 23:59まで）</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">Joshinアプリで抽選受付中（5/10 23:59まで）</div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> ⚠️ 8. 注意・警告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">東京地裁が「チケット転売出品が興行主への権利侵害」と判決</span></div>
+  <div class="item-desc">東京地裁が「チケット転売出品が興行主への権利侵害」と判決</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">被告はチケット流通センター運営の株式会社ウェイブダッシュ</span></div>
+  <div class="item-desc">被告はチケット流通センター運営の株式会社ウェイブダッシュ</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">転売リスクが法的に高まっている</span></div>
+  <div class="item-desc">転売リスクが法的に高まっている</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">メルカリで大量出品中</span></div>
+  <div class="item-desc">メルカリで大量出品中</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「おそらく無在庫の可能性大」</span><span class="badge badge-danger">詐欺</span></div>
+  <div class="item-desc">→ 詐欺リスクあり</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">転売ヤーから購入しないよう警告</span></div>
+  <div class="item-desc">転売ヤーから購入しないよう警告</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">レヴィドラスデッキが盗品転売の疑いあり（@aosuzu_ne 表示324）</span></div>
+  <div class="item-desc">レヴィドラスデッキが盗品転売の疑いあり（ 表示324）</div><div class="item-tags"><span class="tag tag-user">@aosuzu_ne</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「発送元Amazon以外はプレ値注意」と繰り返し警告</span></div>
+  <div class="item-desc">「発送元Amazon以外はプレ値注意」と繰り返し警告</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">転売価格で買うと定価の数倍になるケースあり</span></div>
+  <div class="item-desc">転売価格で買うと定価の数倍になるケースあり</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">詐欺が多発・高額転売も横行中</span><span class="badge badge-danger">詐欺</span></div>
+  <div class="item-desc">詐欺が多発・高額転売も横行中</div>
+</div></div>
+</section>
+
+</body>
+</html>

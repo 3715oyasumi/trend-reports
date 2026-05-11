@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xツイートデータ分析レポート</title>
+  <style>
+:root {
+  --bg: #0d1117; --card: #161b22; --border: #30363d;
+  --accent: #1f6feb; --text: #e6edf3; --muted: #8b949e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
+  line-height: 1.6; padding: 16px; max-width: 860px; margin: 0 auto;
+}
+.report-header {
+  background: linear-gradient(135deg, #0d1b2a 0%, #1a2744 100%);
+  border: 1px solid #1f3a6e; border-radius: 12px;
+  padding: 24px; margin-bottom: 24px;
+}
+.report-label {
+  font-family: 'Courier New', monospace; font-size: 11px;
+  color: #79c0ff; letter-spacing: 3px; margin-bottom: 8px;
+}
+.report-title { font-size: 26px; font-weight: 700; margin-bottom: 14px; }
+.report-meta { display: flex; flex-wrap: wrap; gap: 16px; }
+.meta-item { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); }
+.meta-item span { color: var(--text); font-weight: 600; }
+.report-section { margin-bottom: 20px; }
+.section-title {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 17px; font-weight: 600;
+  padding: 10px 0 8px; border-bottom: 1px solid var(--border); margin-bottom: 10px;
+}
+.section-num { font-family: monospace; font-size: 13px; color: var(--muted); }
+.item-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 13px; margin-bottom: 8px;
+}
+.item-card:hover { border-color: #58a6ff; }
+.item-header { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
+.item-title { font-weight: 600; font-size: 14px; flex: 1; }
+.item-desc { font-size: 13px; color: var(--muted); margin-bottom: 7px; line-height: 1.5; }
+.item-desc strong { color: var(--text); }
+.item-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag { font-size: 11px; padding: 2px 8px; border-radius: 12px; font-family: monospace; }
+.tag-user  { background: #1c2d3e; color: #79c0ff; border: 1px solid #1f3a6e; }
+.tag-stat  { background: #1e2a1e; color: #7ee787; border: 1px solid #2a4a2a; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
+.badge-danger  { background: #3d0c0c; color: #f85149; border: 1px solid #5a1010; }
+.badge-warning { background: #3d2c00; color: #e3a008; border: 1px solid #5a4100; }
+.badge-info    { background: #1a3a5c; color: #79c0ff; border: 1px solid #1f4a7a; }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.summary-table th {
+  background: #1c2128; padding: 10px 14px; text-align: left;
+  color: var(--muted); border-bottom: 2px solid var(--border);
+}
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+.summary-table tr:hover td { background: #1c2128; }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+@media (max-width: 600px) {
+  .report-title { font-size: 20px; }
+  .section-title { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+  <div class="report-header">
+    <div class="report-label">X TWEET DATA ANALYSIS REPORT</div>
+    <h1 class="report-title">Xツイートデータ分析レポート</h1>
+    <div class="report-meta">
+      <div class="meta-item">📅 収集日時：<span>2026-05-12 00:03</span></div>
+      <div class="meta-item">📊 対象件数：<span>1件</span></div>
+    </div>
+  </div>
+  <section class="report-section">
+  <h2 class="section-title"> 🔥 1. 人気商品・トレンド</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">5/25から¥49,800→¥59,980（+¥10,000）値上げ発表で買い急ぎ殺到、電気屋ハシゴしても売り切れと報告多数</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">5/25から¥49,800→¥59,980（+¥10,000）値上げ発表で買い急ぎ殺到、電気屋ハシゴしても売り切れと報告多数</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@wepuyh（表示136）「学校終わりに電気屋はしごしたけどswitch2どこも売り切れだった」</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">（表示136）「学校終わりに電気屋はしごしたけどswitch2どこも売り切れだった」</div><div class="item-tags"><span class="tag tag-user">@wepuyh</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@ryu2521114（いいね1, 表示166）「多言語対応版は変更なし（¥49,800）、日本語専用版のみ値上げ」→多言語版が実質お得</span></div>
+  <div class="item-desc">（いいね1, 表示166）「多言語対応版は変更なし（¥49,800）、日本語専用版のみ値上げ」→多言語版が実質お得</div><div class="item-tags"><span class="tag tag-user">@ryu2521114</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ナフサ不足による印刷インク不足で5/25出荷分から一部商品パッケージが白黒化</span></div>
+  <div class="item-desc">ナフサ不足による印刷インク不足で5/25出荷分から一部商品パッケージが白黒化</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">話題性から将来のプレ値化・買い占め予測が多数浮上</span></div>
+  <div class="item-desc">話題性から将来のプレ値化・買い占め予測が多数浮上</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@7Gyrk8034958（表示19,788）「何十年後とかにプレ値つかんかな？」</span></div>
+  <div class="item-desc">（表示19,788）「何十年後とかにプレ値つかんかな？」</div><div class="item-tags"><span class="tag tag-user">@7Gyrk8034958</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@lactobios（表示5,366）「コレクターズアイテムとして保存用まで買うかな。5年くらいは食べれそう」</span></div>
+  <div class="item-desc">（表示5,366）「コレクターズアイテムとして保存用まで買うかな。5年くらいは食べれそう」</div><div class="item-tags"><span class="tag tag-user">@lactobios</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ドンキ・家電量販店で売り切れ続出</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">ドンキ・家電量販店で売り切れ続出</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@GowLa7：各店を巡り最終的にイオン（岐阜・加納）で発見、バラ15個購入成功。穴場：オタク少ない地方イオン</span></div>
+  <div class="item-desc">：各店を巡り最終的にイオン（岐阜・加納）で発見、バラ15個購入成功。<strong>穴場：オタク少ない地方イオン</strong></div><div class="item-tags"><span class="tag tag-user">@GowLa7</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@syarethie（いいね3, 表示310）「プレ値でカートン勝負！20万くらいしそう」と購入検討者多数</span></div>
+  <div class="item-desc">（いいね3, 表示310）「プレ値でカートン勝負！20万くらいしそう」と購入検討者多数</div><div class="item-tags"><span class="tag tag-user">@syarethie</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 💰 2. お得情報・セール</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">定価¥49,800は5/25以降¥59,980に</span></div>
+  <div class="item-desc">定価¥49,800は5/25以降¥59,980に</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">多言語版は価格据え置き（¥49,800のまま）→ニンテンドーストア限定だが実質的にお得</span><span class="badge badge-info">限定</span></div>
+  <div class="item-desc">多言語版は価格据え置き（¥49,800のまま）→ニンテンドーストア限定だが実質的にお得</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@__3SUN2m：Ktown4uにて30%OFF価格で販売中、入荷予定2026年6月1日、売り切れ次第終了</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">：Ktown4uにて<strong>30%OFF</strong>価格で販売中、入荷予定2026年6月1日、売り切れ次第終了</div><div class="item-tags"><span class="tag tag-user">@__3SUN2m</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@LIBERAL_CORP_（いいね4, 表示183）：5/30〜31にRAYS値上げ前の最終イベント開催</span></div>
+  <div class="item-desc">（いいね4, 表示183）：<strong>5/30〜31</strong>にRAYS値上げ前の最終イベント開催</div><div class="item-tags"><span class="tag tag-user">@LIBERAL_CORP_</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@jank_y：楽天モバイル使い放題（年換算¥36,000相当）+ povo併用で実質50%還元、転売リスクなし</span></div>
+  <div class="item-desc">：楽天モバイル使い放題（年換算¥36,000相当）+ povo併用で実質50%還元、転売リスクなし</div><div class="item-tags"><span class="tag tag-user">@jank_y</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📦 3. 転売情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@Lucy31420755（いいね1, 表示272）「カラー版がプレ値になると見込んで仕入れる人いる？」</span></div>
+  <div class="item-desc">（いいね1, 表示272）「カラー版がプレ値になると見込んで仕入れる人いる？」</div><div class="item-tags"><span class="tag tag-user">@Lucy31420755</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@TonyTogo1：「転売ヤーが活動を始めた」</span></div>
+  <div class="item-desc">：「転売ヤーが活動を始めた」</div><div class="item-tags"><span class="tag tag-user">@TonyTogo1</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@mugiwara_pop（いいね1, 表示360）「売り上げ増→メルカリ出品横行の流れになりそう」</span></div>
+  <div class="item-desc">（いいね1, 表示360）「売り上げ増→メルカリ出品横行の流れになりそう」</div><div class="item-tags"><span class="tag tag-user">@mugiwara_pop</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@banbankusukusu：「時代はベイブレードX転売か。海外需要があるこの機会を逃すな」</span></div>
+  <div class="item-desc">：「時代はベイブレードX転売か。海外需要があるこの機会を逃すな」</div><div class="item-tags"><span class="tag tag-user">@banbankusukusu</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@abcyass0729：「闇パチスロ屋への転売、1台200万超えで取引されるマシンも存在する」</span></div>
+  <div class="item-desc">：「闇パチスロ屋への転売、1台200万超えで取引されるマシンも存在する」</div><div class="item-tags"><span class="tag tag-user">@abcyass0729</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@CRZ_sk8er_natu：無料配布品（転売禁止）が1冊1万円以上でフリマ・オークションに出品、相次いで確認</span></div>
+  <div class="item-desc">：無料配布品（転売禁止）が<strong>1冊1万円以上</strong>でフリマ・オークションに出品、相次いで確認</div><div class="item-tags"><span class="tag tag-user">@CRZ_sk8er_natu</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">値上げ発表後に転売価格が上昇。@Bigmama4kizs：「¥49,800以外はプレ値だから注意」</span></div>
+  <div class="item-desc">値上げ発表後に転売価格が上昇。：「¥49,800以外はプレ値だから注意」</div><div class="item-tags"><span class="tag tag-user">@Bigmama4kizs</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 🎰 4. 抽選・限定販売</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@Mitsu_Aizawa（いいね3, 表示945）：SNKRS抽選 5/12（本日）9:00 既にプレ値あり→当選確率低いと予測</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">（いいね3, 表示945）：<strong>SNKRS抽選 5/12（本日）9:00</strong> 既にプレ値あり→当選確率低いと予測</div><div class="item-tags"><span class="tag tag-user">@Mitsu_Aizawa</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@kotatsukmn：Amazon招待販売開始「ヨドバシのポケカ戦争キツい、嬉しい！」</span></div>
+  <div class="item-desc">：Amazon招待販売開始「ヨドバシのポケカ戦争キツい、嬉しい！」</div><div class="item-tags"><span class="tag tag-user">@kotatsukmn</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@LIBERAL_CORP_（いいね4, 表示183）：5/30〜31に値上げ前最終イベント開催</span></div>
+  <div class="item-desc">（いいね4, 表示183）：5/30〜31に値上げ前最終イベント開催</div><div class="item-tags"><span class="tag tag-user">@LIBERAL_CORP_</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">超特急 東京ドーム追加公演2days：当落待ち多数、転売禁止を公式から要請</span></div>
+  <div class="item-desc">超特急 東京ドーム追加公演2days：当落待ち多数、転売禁止を公式から要請</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">SATANIC CARNIVAL 2026 通し券：売り切れ中、定価でのチケット譲渡募集あり（@kpr_setagaya）</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">SATANIC CARNIVAL 2026 通し券：売り切れ中、定価でのチケット譲渡募集あり（）</div><div class="item-tags"><span class="tag tag-user">@kpr_setagaya</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Kis-My-Ft2 LIVE TOUR 2026：@bpczle（いいね1, 表示252）大阪・千葉公演各2枚を定価で譲渡募集</span></div>
+  <div class="item-desc">Kis-My-Ft2 LIVE TOUR 2026：（いいね1, 表示252）大阪・千葉公演各2枚を定価で譲渡募集</div><div class="item-tags"><span class="tag tag-user">@bpczle</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> ✅ 5. サクセス報告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@bdgrl_twt（いいね11, 表示68）：「今回のツアー持って行ったCD全て完売、お金に変わった分、家族へのリッチなお土産が買えた」</span></div>
+  <div class="item-desc">（いいね11, 表示68）：「今回のツアー持って行ったCD全て完売、お金に変わった分、家族へのリッチなお土産が買えた」</div><div class="item-tags"><span class="tag tag-user">@bdgrl_twt</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@mi_takuye0yasin（いいね7, 表示33）：フライトタグキーホルダーを「メルカリの転売ヤーを我慢したオレGJ」として全色コンプ達成を報告</span></div>
+  <div class="item-desc">（いいね7, 表示33）：フライトタグキーホルダーを「メルカリの転売ヤーを我慢したオレGJ」として全色コンプ達成を報告</div><div class="item-tags"><span class="tag tag-user">@mi_takuye0yasin</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@piyomaru_sedori（引用あり）：「値上げや品薄みたいな需要パターンを毎回利益に変えてる経験値あってめちゃくちゃ強い」と称賛される</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">（引用あり）：「値上げや品薄みたいな需要パターンを毎回利益に変えてる経験値あってめちゃくちゃ強い」と称賛される</div><div class="item-tags"><span class="tag tag-user">@piyomaru_sedori</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📈 6. プレ値情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@nowchara_watch（いいね13, 表示6,640）：「オイパペ新作プレ値やばい😅、今後どこが下限値になるか注目」</span></div>
+  <div class="item-desc">（いいね13, 表示6,640）：「オイパペ新作プレ値やばい😅、今後どこが下限値になるか注目」</div><div class="item-tags"><span class="tag tag-user">@nowchara_watch</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@Mitsu_Aizawa（いいね3, 表示945）：「最近ではめずらしくSB Dunkでプレ値がついてる」→スニダン参照で確認済み</span></div>
+  <div class="item-desc">（いいね3, 表示945）：「最近ではめずらしくSB Dunkでプレ値がついてる」→スニダン参照で確認済み</div><div class="item-tags"><span class="tag tag-user">@Mitsu_Aizawa</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@sneaker_gap_jp：買わない予想約89%も実際は定価超え推移、プレ値維持型と分析</span></div>
+  <div class="item-desc">：買わない予想約89%も実際は定価超え推移、<strong>プレ値維持型</strong>と分析</div><div class="item-tags"><span class="tag tag-user">@sneaker_gap_jp</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@MayuFEET（いいね46, 表示1,006）：「プレ値で買ったから5年はがんばってください」</span></div>
+  <div class="item-desc">（いいね46, 表示1,006）：「プレ値で買ったから5年はがんばってください」</div><div class="item-tags"><span class="tag tag-user">@MayuFEET</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@7Gyrk8034958（表示19,788）「何十年後とかにプレ値」</span></div>
+  <div class="item-desc">（表示19,788）「何十年後とかにプレ値」</div><div class="item-tags"><span class="tag tag-user">@7Gyrk8034958</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@epsilon530（表示103）「一瞬だけ白黒なら数十年後にプレ値で取引されそう」</span></div>
+  <div class="item-desc">（表示103）「一瞬だけ白黒なら数十年後にプレ値で取引されそう」</div><div class="item-tags"><span class="tag tag-user">@epsilon530</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@orange_2178（表示203〜434）：クシャトリヤ定価¥7,700、ガーベラ・テトラ定価¥2,200、グフイグナイテッド定価¥2,860、MG FAZZ Ver.Ka（プレバン限定）→いずれも「発送元Amazon以外はプレ値注意」</span><span class="badge badge-info">限定</span></div>
+  <div class="item-desc">（表示203〜434）：クシャトリヤ定価¥7,700、ガーベラ・テトラ定価¥2,200、グフイグナイテッド定価¥2,860、MG FAZZ Ver.Ka（プレバン限定）→いずれも「発送元Amazon以外はプレ値注意」</div><div class="item-tags"><span class="tag tag-user">@orange_2178</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@syarethie（いいね3）：「プレ値でカートン勝負！20万くらいしそう」</span></div>
+  <div class="item-desc">（いいね3）：「プレ値でカートン勝負！20万くらいしそう」</div><div class="item-tags"><span class="tag tag-user">@syarethie</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 🔄 7. 入荷・再販情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">Amazon直販・各量販店で散発的に在庫復活、¥49,800での購入は5/25が実質期限</span></div>
+  <div class="item-desc">Amazon直販・各量販店で散発的に在庫復活、¥49,800での購入は5/25が実質期限</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">楽天ブックスでも一時予約可能→即売り切れ（@yoyakukaesi）</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">楽天ブックスでも一時予約可能→即売り切れ（）</div><div class="item-tags"><span class="tag tag-user">@yoyakukaesi</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">HG ガンダムキャリバーン → 駿河屋在庫復活（@Gpnotice）</span></div>
+  <div class="item-desc">HG ガンダムキャリバーン → 駿河屋在庫復活（）</div><div class="item-tags"><span class="tag tag-user">@Gpnotice</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">HG ガンダムエアリアル(改修型) → 駿河屋在庫復活（@Gpnotice）</span></div>
+  <div class="item-desc">HG ガンダムエアリアル(改修型) → 駿河屋在庫復活（）</div><div class="item-tags"><span class="tag tag-user">@Gpnotice</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">HG ライトニングバスターガンダム → 楽天ブックス 定価¥2,860（@aanc20, 表示638）</span></div>
+  <div class="item-desc">HG ライトニングバスターガンダム → 楽天ブックス 定価¥2,860（, 表示638）</div><div class="item-tags"><span class="tag tag-user">@aanc20</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">HG ガンダム00 キュリオス → Amazon 定価（@MIMIO37135018）</span></div>
+  <div class="item-desc">HG ガンダム00 キュリオス → Amazon 定価（）</div><div class="item-tags"><span class="tag tag-user">@MIMIO37135018</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ハセガワ F/A-18E スーパーホーネット → 本日出荷開始（@hobbywatch_jp）</span></div>
+  <div class="item-desc">ハセガワ F/A-18E スーパーホーネット → 本日出荷開始（）</div><div class="item-tags"><span class="tag tag-user">@hobbywatch_jp</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">PG UNLEASHED νガンダム用LEDユニット → Amazon直販 在庫あり（@nurse_encounter）</span></div>
+  <div class="item-desc">PG UNLEASHED νガンダム用LEDユニット → Amazon直販 在庫あり（）</div><div class="item-tags"><span class="tag tag-user">@nurse_encounter</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@Toreabi：MEGAドリームex BOX シュリンクあり ¥17,200 / なし¥12,000 / ペリなし¥11,000</span></div>
+  <div class="item-desc">：MEGAドリームex BOX シュリンクあり <strong>¥17,200</strong> / なし¥12,000 / ペリなし¥11,000</div><div class="item-tags"><span class="tag tag-user">@Toreabi</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@Toreabi：ニンジャスピナーBOX シュリンクあり ¥12,300 / なし¥9,000</span></div>
+  <div class="item-desc">：ニンジャスピナーBOX シュリンクあり <strong>¥12,300</strong> / なし¥9,000</div><div class="item-tags"><span class="tag tag-user">@Toreabi</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@nobita89siyoRFS（表示101）：「前回即完売」品が再入荷、国内二次流通は2倍前後での流通見込み</span></div>
+  <div class="item-desc">（表示101）：「前回即完売」品が再入荷、国内二次流通は<strong>2倍前後</strong>での流通見込み</div><div class="item-tags"><span class="tag tag-user">@nobita89siyoRFS</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> ⚠️ 8. 注意・警告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@cielofficial_jp（いいね1, 表示37）：「メルカリで転売されています、買わないでください！」→5/21〜新色を定価販売予定</span></div>
+  <div class="item-desc">（いいね1, 表示37）：「メルカリで転売されています、買わないでください！」→5/21〜新色を定価販売予定</div><div class="item-tags"><span class="tag tag-user">@cielofficial_jp</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@ghost_of_dokuga（表示97）：ソフトウェアは中古でアクティベーション通らないリスク→「使えないリスクで言ったら転売Switch2より高い」</span></div>
+  <div class="item-desc">（表示97）：ソフトウェアは中古でアクティベーション通らないリスク→「使えないリスクで言ったら転売Switch2より高い」</div><div class="item-tags"><span class="tag tag-user">@ghost_of_dokuga</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@shiawaserekishi（表示121）：便乗値上げの可能性を指摘「なぜまだナフサ不足はデマを信じるのか」</span></div>
+  <div class="item-desc">（表示121）：便乗値上げの可能性を指摘「なぜまだナフサ不足はデマを信じるのか」</div><div class="item-tags"><span class="tag tag-user">@shiawaserekishi</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@orange_2178（複数ツイート）：「発送元Amazon以外はプレ値注意」 → 定価との乖離が大きい商品多数</span></div>
+  <div class="item-desc">（複数ツイート）：<strong>「発送元Amazon以外はプレ値注意」</strong> → 定価との乖離が大きい商品多数</div><div class="item-tags"><span class="tag tag-user">@orange_2178</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@buppanjiro：「先月リサーチした商品が現在1〜2割値下がり、想定回転で売れていない」→データリサーチの重要性を再認識</span></div>
+  <div class="item-desc">：「先月リサーチした商品が現在1〜2割値下がり、想定回転で売れていない」→データリサーチの重要性を再認識</div><div class="item-tags"><span class="tag tag-user">@buppanjiro</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@CRZ_sk8er_natu：無料配布品が¥1万超でオークション・フリマに出品→法的問題あり（購入は控えること）</span></div>
+  <div class="item-desc">：無料配布品が<strong>¥1万超</strong>でオークション・フリマに出品→法的問題あり（購入は控えること）</div><div class="item-tags"><span class="tag tag-user">@CRZ_sk8er_natu</span></div>
+</div></div>
+</section>
+
+</body>
+</html>

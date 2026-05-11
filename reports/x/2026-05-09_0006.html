@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xツイートデータ分析レポート</title>
+  <style>
+:root {
+  --bg: #0d1117; --card: #161b22; --border: #30363d;
+  --accent: #1f6feb; --text: #e6edf3; --muted: #8b949e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
+  line-height: 1.6; padding: 16px; max-width: 860px; margin: 0 auto;
+}
+.report-header {
+  background: linear-gradient(135deg, #0d1b2a 0%, #1a2744 100%);
+  border: 1px solid #1f3a6e; border-radius: 12px;
+  padding: 24px; margin-bottom: 24px;
+}
+.report-label {
+  font-family: 'Courier New', monospace; font-size: 11px;
+  color: #79c0ff; letter-spacing: 3px; margin-bottom: 8px;
+}
+.report-title { font-size: 26px; font-weight: 700; margin-bottom: 14px; }
+.report-meta { display: flex; flex-wrap: wrap; gap: 16px; }
+.meta-item { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); }
+.meta-item span { color: var(--text); font-weight: 600; }
+.report-section { margin-bottom: 20px; }
+.section-title {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 17px; font-weight: 600;
+  padding: 10px 0 8px; border-bottom: 1px solid var(--border); margin-bottom: 10px;
+}
+.section-num { font-family: monospace; font-size: 13px; color: var(--muted); }
+.item-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 13px; margin-bottom: 8px;
+}
+.item-card:hover { border-color: #58a6ff; }
+.item-header { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
+.item-title { font-weight: 600; font-size: 14px; flex: 1; }
+.item-desc { font-size: 13px; color: var(--muted); margin-bottom: 7px; line-height: 1.5; }
+.item-desc strong { color: var(--text); }
+.item-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag { font-size: 11px; padding: 2px 8px; border-radius: 12px; font-family: monospace; }
+.tag-user  { background: #1c2d3e; color: #79c0ff; border: 1px solid #1f3a6e; }
+.tag-stat  { background: #1e2a1e; color: #7ee787; border: 1px solid #2a4a2a; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
+.badge-danger  { background: #3d0c0c; color: #f85149; border: 1px solid #5a1010; }
+.badge-warning { background: #3d2c00; color: #e3a008; border: 1px solid #5a4100; }
+.badge-info    { background: #1a3a5c; color: #79c0ff; border: 1px solid #1f4a7a; }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.summary-table th {
+  background: #1c2128; padding: 10px 14px; text-align: left;
+  color: var(--muted); border-bottom: 2px solid var(--border);
+}
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+.summary-table tr:hover td { background: #1c2128; }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+@media (max-width: 600px) {
+  .report-title { font-size: 20px; }
+  .section-title { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+  <div class="report-header">
+    <div class="report-label">X TWEET DATA ANALYSIS REPORT</div>
+    <h1 class="report-title">Xツイートデータ分析レポート</h1>
+    <div class="report-meta">
+      <div class="meta-item">📅 収集日時：<span>2026-05-09 00:06:29</span></div>
+      <div class="meta-item">📊 対象件数：<span>1,147件</span></div>
+    </div>
+  </div>
+  <section class="report-section">
+  <h2 class="section-title"> 🔥 1. 人気商品・トレンド</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">5/25から49,980円→59,980円へ1万円値上げ発表。発表直後からAmazon・量販店で在庫が消滅し品薄状態に。駆け込み購入が殺到。(@laetus10, 595表示/@yu_kaizyu, 405表示/@pipipi2617, 491表示)</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">5/25から49,980円→<strong>59,980円</strong>へ1万円値上げ発表。発表直後からAmazon・量販店で在庫が消滅し品薄状態に。駆け込み購入が殺到。(, 595表示/, 405表示/, 491表示)</div><div class="item-tags"><span class="tag tag-user">@laetus10</span><span class="tag tag-user">@yu_kaizyu</span><span class="tag tag-user">@pipipi2617</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ジョーシン抽選・Amazon招待制販売が同時多発的に開始。業者・転売目的の動きも活発。(@pokecayoyaku, 3556表示/@pokecachan, 998表示/@PokeGetInfoMain, 179表示)</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">ジョーシン抽選・Amazon招待制販売が同時多発的に開始。業者・転売目的の動きも活発。(, 3556表示/, 998表示/, 179表示)</div><div class="item-tags"><span class="tag tag-user">@pokecayoyaku</span><span class="tag tag-user">@pokecachan</span><span class="tag tag-user">@PokeGetInfoMain</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">全国コンビニ・量販店で売り切れ続出。B賞ブルマ・D賞悟空が特に人気で争奪戦。40店舗以上巡回して入手した報告あり。(@hanashi_game, 327表示/@6W3Y5C9WpDI0Yqi, 111表示)</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">全国コンビニ・量販店で売り切れ続出。B賞ブルマ・D賞悟空が特に人気で争奪戦。40店舗以上巡回して入手した報告あり。(, 327表示/, 111表示)</div><div class="item-tags"><span class="tag tag-user">@hanashi_game</span><span class="tag tag-user">@6W3Y5C9WpDI0Yqi</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">5/15発売予定。主要フリマサイト（メルカリ・ラクマ・ヤフオク・paypayフリマ）が転売目的の出品禁止対応。(@kasegerumatome, 213表示/@disney_fandayo, 116表示)</span></div>
+  <div class="item-desc">5/15発売予定。主要フリマサイト（メルカリ・ラクマ・ヤフオク・paypayフリマ）が転売目的の出品禁止対応。(, 213表示/, 116表示)</div><div class="item-tags"><span class="tag tag-user">@kasegerumatome</span><span class="tag tag-user">@disney_fandayo</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">転売による品薄・価格高騰が深刻化。電気店から売り場スペース自体が消滅する事態も。(@linejoe84, 154表示)</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">転売による品薄・価格高騰が深刻化。電気店から売り場スペース自体が消滅する事態も。(, 154表示)</div><div class="item-tags"><span class="tag tag-user">@linejoe84</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 💰 2. お得情報・セール</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">7/1から個人プラン12ヶ月が2,400円→3,000円に値上げ。オンラインコードのため売り切れなし。現在2,376円で購入可能。</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">7/1から個人プラン12ヶ月が<strong>2,400円→3,000円</strong>に値上げ。オンラインコードのため売り切れなし。現在2,376円で購入可能。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">GEO・ニンテンドーストア等で断続的に定価在庫あり。Amazon直販でも在庫が復活・消滅を繰り返し中。</span></div>
+  <div class="item-desc">GEO・ニンテンドーストア等で断続的に定価在庫あり。Amazon直販でも在庫が復活・消滅を繰り返し中。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Apple Watch Ultra 2（通常7.9万円）など特別価格2.4万円〜で販売中。一部モデルは完売。</span></div>
+  <div class="item-desc">Apple Watch Ultra 2（通常7.9万円）など特別価格<strong>2.4万円〜</strong>で販売中。一部モデルは完売。</div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📦 3. 転売情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">今49,980円で購入→5/25以降に「新定価」59,980円で売る手法が拡散。ただし「20%値上げ設定はメルカリ手数料込みで利益がほぼ出ない絶妙な設定」という分析も。</span></div>
+  <div class="item-desc">今49,980円で購入→5/25以降に「新定価」59,980円で売る手法が拡散。ただし「20%値上げ設定はメルカリ手数料込みで利益がほぼ出ない絶妙な設定」という分析も。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「販売情報とプレ値予想はこちら」とリンク付きで情報発信。定価BOXの入手が最重要との声。</span></div>
+  <div class="item-desc">「販売情報とプレ値予想はこちら」とリンク付きで情報発信。定価BOXの入手が最重要との声。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「月1万を作る100均×ポケカ転売」の参考情報として「にゃふ〜さん」のnote記事を紹介。利益商品の考え方・リサーチ手法が解説されているとのこと。</span></div>
+  <div class="item-desc">「月1万を作る100均×ポケカ転売」の参考情報として「にゃふ〜さん」のnote記事を紹介。利益商品の考え方・リサーチ手法が解説されているとのこと。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">5/11スペースにて「初心者でも利益が出しやすい構造」「在庫抱えなし・撮影楽・キャッシュフロー良し」として解説予定。</span></div>
+  <div class="item-desc">5/11スペースにて「初心者でも利益が出しやすい構造」「在庫抱えなし・撮影楽・キャッシュフロー良し」として解説予定。</div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 🎰 4. 抽選・限定販売</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">受付：5/9(土) 0:00〜5/12(火) 23:59</span></div>
+  <div class="item-desc">受付：5/9(土) 0:00〜5/12(火) 23:59</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">当選発表：5/19(火) 15:00頃</span></div>
+  <div class="item-desc">当選発表：5/19(火) 15:00頃</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">購入期間：5/22〜5/28</span></div>
+  <div class="item-desc">購入期間：5/22〜5/28</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">条件：Joshinアプリ、シルバースマイル会員以上</span></div>
+  <div class="item-desc">条件：Joshinアプリ、シルバースマイル会員以上</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">同時並行で招待制リクエスト予約も開始。抽選と合わせて複数ルートで応募が推奨される。</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">同時並行で招待制リクエスト予約も開始。抽選と合わせて複数ルートで応募が推奨される。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">5/9(土) 朝10時よりEVP4Uにて販売開始。UADAとの2公演セットVIPを購入すると特別クーポン配布予定。</span></div>
+  <div class="item-desc">5/9(土) 朝10時よりEVP4Uにて販売開始。UADAとの2公演セットVIPを購入すると特別クーポン配布予定。</div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> ✅ 5. サクセス報告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">値上げ発表後、家族で慌ててGEOへ駆け込んだらラスイチ定価販売。「ありがとうGEO！愛してるぜGEO」と感謝投稿が話題に。</span></div>
+  <div class="item-desc">値上げ発表後、家族で慌ててGEOへ駆け込んだらラスイチ定価販売。「ありがとうGEO！愛してるぜGEO」と感謝投稿が話題に。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">40店舗以上を巡回し、残り64枚の店でB賞ブルマ・D賞悟空をゲット。「諦めなくて良かった」。</span></div>
+  <div class="item-desc">40店舗以上を巡回し、残り64枚の店でB賞ブルマ・D賞悟空をゲット。「諦めなくて良かった」。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">終了シール確認→残り枚数問い合わせ→「全部ください」で即購入しラストワンを確保。</span></div>
+  <div class="item-desc">終了シール確認→残り枚数問い合わせ→「全部ください」で即購入しラストワンを確保。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">プレ値が高騰していたが、プレバンランクがオーシャンに変わり定価入手成功。</span><span class="badge badge-warning">高騰</span></div>
+  <div class="item-desc">プレ値が高騰していたが、プレバンランクがオーシャンに変わり定価入手成功。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">鏡音リンをオークションで激しく競合→落札成功。競合相手が後に倍額でメルカリ転売しているのを発見。「全財産ブッパして買って良かった」。</span></div>
+  <div class="item-desc">鏡音リンをオークションで激しく競合→落札成功。競合相手が後に倍額でメルカリ転売しているのを発見。「全財産ブッパして買って良かった」。</div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📈 6. プレ値情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">値上げ発表後、Amazon・フリマサイトで即プレ値化。定価比+数千円〜+2万円超の出品が散見される。</span></div>
+  <div class="item-desc">値上げ発表後、Amazon・フリマサイトで即プレ値化。定価比+数千円〜+2万円超の出品が散見される。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">シリアル「30/30」最終番号。40万円での販売希望。完品・未使用。</span></div>
+  <div class="item-desc">シリアル「30/30」最終番号。<strong>40万円</strong>での販売希望。完品・未使用。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">新弾公式発表前後で先行カット出た瞬間にプレ値化→固定する傾向が読みやすくなってきた。</span></div>
+  <div class="item-desc">新弾公式発表前後で先行カット出た瞬間にプレ値化→固定する傾向が読みやすくなってきた。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ワンピース連載30周年に向け既に数万円のプレ値で高騰中。</span><span class="badge badge-warning">高騰</span></div>
+  <div class="item-desc">ワンピース連載30周年に向け既に<strong>数万円</strong>のプレ値で高騰中。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">MG Ex-Sガンダム（定価14,080円）→Amazon以外はプレ値注意 (@orange_2178, 448表示)</span></div>
+  <div class="item-desc">MG Ex-Sガンダム（定価14,080円）→Amazon以外はプレ値注意 (, 448表示)</div><div class="item-tags"><span class="tag tag-user">@orange_2178</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">RGウイングガンダムゼロ・RGエピオン → プレ値後に再販入荷 (@CCReika1, 170/135表示)</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">RGウイングガンダムゼロ・RGエピオン → プレ値後に再販入荷 (, 170/135表示)</div><div class="item-tags"><span class="tag tag-user">@CCReika1</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">My No.1 Stage → ブックオフにて14,900円プレ値 (@Hakatakun_Pz, 106表示)</span></div>
+  <div class="item-desc">My No.1 Stage → ブックオフにて<strong>14,900円</strong>プレ値 (, 106表示)</div><div class="item-tags"><span class="tag tag-user">@Hakatakun_Pz</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">全通販がプレ値。安く買える場所を募集中。</span></div>
+  <div class="item-desc">全通販がプレ値。安く買える場所を募集中。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">成城石井にて税抜2.2万円で販売中。「まだプレ値」との声。</span></div>
+  <div class="item-desc">成城石井にて税抜<strong>2.2万円</strong>で販売中。「まだプレ値」との声。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">メルカリにて5万円の転売価格で出品されていると話題。</span></div>
+  <div class="item-desc">メルカリにて<strong>5万円</strong>の転売価格で出品されていると話題。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">メルカリで2万円以上の高額転売が既に確認。18時10分には球場でほぼ完売。</span></div>
+  <div class="item-desc">メルカリで<strong>2万円以上</strong>の高額転売が既に確認。18時10分には球場でほぼ完売。</div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 🔄 7. 入荷・再販情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">値上げ発表後も定価49,980円での在庫が断続的に復活。品切れ・復活を繰り返し中。タイミングが合えば定価購入可能。</span></div>
+  <div class="item-desc">値上げ発表後も定価49,980円での在庫が断続的に復活。品切れ・復活を繰り返し中。タイミングが合えば定価購入可能。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">通常の抽選と並行してAmazonでも招待制販売が開始。</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">通常の抽選と並行してAmazonでも招待制販売が開始。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">複数モデルが深夜0時台に断続的に購入可能に（速報アカウントが通知）。</span></div>
+  <div class="item-desc">複数モデルが深夜0時台に断続的に購入可能に（速報アカウントが通知）。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">買取相場：46,500〜49,500円。秋葉原手渡し・郵送対応。</span></div>
+  <div class="item-desc">買取相場：46,500〜49,500円。秋葉原手渡し・郵送対応。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">HG GQuuuuuuX（エンディミオン・ユニット） DMM入荷 (@Gbot0897067, 59表示)</span></div>
+  <div class="item-desc">HG GQuuuuuuX（エンディミオン・ユニット） DMM入荷 (, 59表示)</div><div class="item-tags"><span class="tag tag-user">@Gbot0897067</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">30MS マリカル[カラーC] 駿河屋入荷 (@okichan1984, 276表示)</span></div>
+  <div class="item-desc">30MS マリカル[カラーC] 駿河屋入荷 (, 276表示)</div><div class="item-tags"><span class="tag tag-user">@okichan1984</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">My Melody & Kuromi Tamagotchi Kuromi ver. Amazon在庫復活 (@kntocr, 25表示)</span></div>
+  <div class="item-desc">My Melody & Kuromi Tamagotchi Kuromi ver. Amazon在庫復活 (, 25表示)</div><div class="item-tags"><span class="tag tag-user">@kntocr</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">サンリオ・ちいかわ系シール。コンビニ・しまむら・イオンでも在庫チェック推奨。</span></div>
+  <div class="item-desc">サンリオ・ちいかわ系シール。コンビニ・しまむら・イオンでも在庫チェック推奨。</div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> ⚠️ 8. 注意・警告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">メルカリ・ラクマ・ヤフオク・paypayフリマが出品禁止対応済み。ただし「6/14以降は出品OKになる」との情報もあり、買い占めの完全解消は難しいとの指摘。</span></div>
+  <div class="item-desc">メルカリ・ラクマ・ヤフオク・paypayフリマが出品禁止対応済み。ただし「6/14以降は出品OKになる」との情報もあり、買い占めの完全解消は難しいとの指摘。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">値上げ発表後にAmazon上で「+2万円超」の転売出品が増加。購入時は「発送元・販売元がAmazon」か確認必須。</span></div>
+  <div class="item-desc">値上げ発表後にAmazon上で「+2万円超」の転売出品が増加。購入時は「発送元・販売元がAmazon」か確認必須。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">5万→6万の20%値上げは「メルカリ手数料を引くと利益がほぼ出ない絶妙な価格設定」とされている。転売目的での購入は費用対効果が低い可能性あり。</span></div>
+  <div class="item-desc">5万→6万の20%値上げは「メルカリ手数料を引くと利益がほぼ出ない絶妙な価格設定」とされている。転売目的での購入は費用対効果が低い可能性あり。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">転売チケットを通報しても対応が不一致。運営が手数料収入を得ている構造が問題視されている。</span></div>
+  <div class="item-desc">転売チケットを通報しても対応が不一致。運営が手数料収入を得ている構造が問題視されている。</div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">スリランカ国籍の男2人が180キロの銅板を転売目的で盗んだ疑いで逮捕。余罪も捜査中。</span></div>
+  <div class="item-desc">スリランカ国籍の男2人が180キロの銅板を転売目的で盗んだ疑いで逮捕。余罪も捜査中。</div>
+</div></div>
+</section>
+
+</body>
+</html>

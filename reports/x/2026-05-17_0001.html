@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xツイートデータ分析レポート</title>
+  <style>
+:root {
+  --bg: #0d1117; --card: #161b22; --border: #30363d;
+  --accent: #1f6feb; --text: #e6edf3; --muted: #8b949e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
+  line-height: 1.6; padding: 16px; max-width: 860px; margin: 0 auto;
+}
+.report-header {
+  background: linear-gradient(135deg, #0d1b2a 0%, #1a2744 100%);
+  border: 1px solid #1f3a6e; border-radius: 12px;
+  padding: 24px; margin-bottom: 24px;
+}
+.report-label {
+  font-family: 'Courier New', monospace; font-size: 11px;
+  color: #79c0ff; letter-spacing: 3px; margin-bottom: 8px;
+}
+.report-title { font-size: 26px; font-weight: 700; margin-bottom: 14px; }
+.report-meta { display: flex; flex-wrap: wrap; gap: 16px; }
+.meta-item { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); }
+.meta-item span { color: var(--text); font-weight: 600; }
+.report-section { margin-bottom: 20px; }
+.section-title {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 17px; font-weight: 600;
+  padding: 10px 0 8px; border-bottom: 1px solid var(--border); margin-bottom: 10px;
+}
+.section-num { font-family: monospace; font-size: 13px; color: var(--muted); }
+.item-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 13px; margin-bottom: 8px;
+}
+.item-card:hover { border-color: #58a6ff; }
+.item-header { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
+.item-title { font-weight: 600; font-size: 14px; flex: 1; }
+.item-desc { font-size: 13px; color: var(--muted); margin-bottom: 7px; line-height: 1.5; }
+.item-desc strong { color: var(--text); }
+.item-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag { font-size: 11px; padding: 2px 8px; border-radius: 12px; font-family: monospace; }
+.tag-user  { background: #1c2d3e; color: #79c0ff; border: 1px solid #1f3a6e; }
+.tag-stat  { background: #1e2a1e; color: #7ee787; border: 1px solid #2a4a2a; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
+.badge-danger  { background: #3d0c0c; color: #f85149; border: 1px solid #5a1010; }
+.badge-warning { background: #3d2c00; color: #e3a008; border: 1px solid #5a4100; }
+.badge-info    { background: #1a3a5c; color: #79c0ff; border: 1px solid #1f4a7a; }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.summary-table th {
+  background: #1c2128; padding: 10px 14px; text-align: left;
+  color: var(--muted); border-bottom: 2px solid var(--border);
+}
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+.summary-table tr:hover td { background: #1c2128; }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+@media (max-width: 600px) {
+  .report-title { font-size: 20px; }
+  .section-title { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+  <div class="report-header">
+    <div class="report-label">X TWEET DATA ANALYSIS REPORT</div>
+    <h1 class="report-title">Xツイートデータ分析レポート</h1>
+    <div class="report-meta">
+      <div class="meta-item">📅 収集日時：<span>2026-05-17 00:01:15</span></div>
+      <div class="meta-item">📊 対象件数：<span>376件</span></div>
+    </div>
+  </div>
+  <section class="report-section">
+  <h2 class="section-title"> 🔥 1. 人気商品・トレンド</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@ememm0ses：海外で数万円転売されていた赤いバッグ型ポップコーンバケットが日本上陸。5/19（火）朝イチから劇場先着。</span></div>
+  <div class="item-desc">：海外で数万円転売されていた赤いバッグ型ポップコーンバケットが日本上陸。5/19（火）朝イチから劇場先着。</div><div class="item-tags"><span class="tag tag-user">@ememm0ses</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@katukatu1996：発売当日からメルカリに大量出品済み。6,800円→13,000〜17,000円で成約中（利益約6,200〜10,200円）。</span></div>
+  <div class="item-desc">：発売当日からメルカリに大量出品済み。6,800円→13,000〜17,000円で成約中（利益約6,200〜10,200円）。</div><div class="item-tags"><span class="tag tag-user">@katukatu1996</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@yuuiti_jin / @kouhaku1014 / @kumakuma7star：朝7時から全店舗軒並み完売。転売ヤーの動きが異常に速い。</span></div>
+  <div class="item-desc">/  / ：朝7時から全店舗軒並み完売。転売ヤーの動きが異常に速い。</div><div class="item-tags"><span class="tag tag-user">@yuuiti_jin</span><span class="tag tag-user">@kouhaku1014</span><span class="tag tag-user">@kumakuma7star</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@G4XSGBrJVu36206：朝6時から自転車で10店舗巡回も全部完売。</span></div>
+  <div class="item-desc">：朝6時から自転車で10店舗巡回も全部完売。</div><div class="item-tags"><span class="tag tag-user">@G4XSGBrJVu36206</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@Tora3_Skywalker：原宿・渋谷・銀座で警察出動沙汰。先着販売が混乱を招いている。</span></div>
+  <div class="item-desc">：原宿・渋谷・銀座で警察出動沙汰。先着販売が混乱を招いている。</div><div class="item-tags"><span class="tag tag-user">@Tora3_Skywalker</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@Roger_9009：今後も入荷するとのことだが転売ヤーが群がっている。</span></div>
+  <div class="item-desc">：今後も入荷するとのことだが転売ヤーが群がっている。</div><div class="item-tags"><span class="tag tag-user">@Roger_9009</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@tana_tsu22：プレ値おおよそ定価の3倍で出回っている。</span></div>
+  <div class="item-desc">：プレ値おおよそ定価の3倍で出回っている。</div><div class="item-tags"><span class="tag tag-user">@tana_tsu22</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@mogu_moguco / @yuzudon_wanwan / @143yuuzudon_wanwan：発売初日からメルカリで高額転売。街中でほぼ入手不可状態。</span></div>
+  <div class="item-desc">/  / ：発売初日からメルカリで高額転売。街中でほぼ入手不可状態。</div><div class="item-tags"><span class="tag tag-user">@mogu_moguco</span><span class="tag tag-user">@yuzudon_wanwan</span><span class="tag tag-user">@143yuuzudon_wanwan</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@7bim3：転売ヤーが早起きして仕事感覚で買い占め。</span></div>
+  <div class="item-desc">：転売ヤーが早起きして仕事感覚で買い占め。</div><div class="item-tags"><span class="tag tag-user">@7bim3</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@nix_in_desertis：パッケージ型エロゲとして異例の「売り切れ店舗続出」。追加生産決定。</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">：パッケージ型エロゲとして異例の「売り切れ店舗続出」。追加生産決定。</div><div class="item-tags"><span class="tag tag-user">@nix_in_desertis</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@wind9463liara：発売直後にプレミア化。</span></div>
+  <div class="item-desc">：発売直後にプレミア化。</div><div class="item-tags"><span class="tag tag-user">@wind9463liara</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@vol__vol2 / @nm19075 / @Jinbei_LHR：初日から転売ヤーが群がり大行列。初日に大量買い占めされた模様。</span></div>
+  <div class="item-desc">/  / ：初日から転売ヤーが群がり大行列。初日に大量買い占めされた模様。</div><div class="item-tags"><span class="tag tag-user">@vol__vol2</span><span class="tag tag-user">@nm19075</span><span class="tag tag-user">@Jinbei_LHR</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 💰 2. お得情報・セール</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@Sp_Mobile_Blog：MNPで最大2.2万円割引、2年後機種返却で実質2.2万円〜。39歳以下はUQサンキュー応援割で35GBプランが1年間割引。iPhone↔Android間eSIM転送も対応。今月からau Starlink Directも無料。</span></div>
+  <div class="item-desc">：MNPで最大2.2万円割引、2年後機種返却で実質2.2万円〜。39歳以下はUQサンキュー応援割で35GBプランが1年間割引。iPhone↔Android間eSIM転送も対応。今月からau Starlink Directも無料。</div><div class="item-tags"><span class="tag tag-user">@Sp_Mobile_Blog</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@akane73737373 / @marginalman0311：転売対策・メルカリ禁止措置の効果で前回より大幅に入手しやすい。欲しい人が普通に買えている状況。</span></div>
+  <div class="item-desc">/ ：転売対策・メルカリ禁止措置の効果で前回より大幅に入手しやすい。欲しい人が普通に買えている状況。</div><div class="item-tags"><span class="tag tag-user">@akane73737373</span><span class="tag tag-user">@marginalman0311</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@kanimiso_666：マクドナルドとメルカリ両社が協力して転売対策を実施、スムーズに購入できたと報告。</span></div>
+  <div class="item-desc">：マクドナルドとメルカリ両社が協力して転売対策を実施、スムーズに購入できたと報告。</div><div class="item-tags"><span class="tag tag-user">@kanimiso_666</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📦 3. 転売情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@katukatu1996（いいね8）：仕入れ値6,800円→売値13,000〜17,000円。利益約6,200〜10,200円/個。メルカリ上で既に大量出品中。本人は「争奪戦になるのが見えているので敢えて狙わない」とのこと。初心者は朝早く並ぶのを推奨。</span></div>
+  <div class="item-desc">（いいね8）：仕入れ値6,800円→売値13,000〜17,000円。利益約6,200〜10,200円/個。メルカリ上で既に大量出品中。本人は「争奪戦になるのが見えているので敢えて狙わない」とのこと。初心者は朝早く並ぶのを推奨。</div><div class="item-tags"><span class="tag tag-user">@katukatu1996</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@kaf_jqr（いいね3）：1,500円→6,400円（約4.3倍）。「ガチャ系は初動命」と明言。池袋先行入荷済み、全国は5/19(火)順次入荷予定。空売り（先に売り出し）も推奨されている。</span></div>
+  <div class="item-desc">（いいね3）：1,500円→6,400円（約4.3倍）。「ガチャ系は初動命」と明言。池袋先行入荷済み、全国は5/19(火)順次入荷予定。空売り（先に売り出し）も推奨されている。</div><div class="item-tags"><span class="tag tag-user">@kaf_jqr</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@hide_Q_（いいね74 RT36）：他人のクレジットカードで家電等を購入し転売。被害額3億7,200万円。福岡・千葉など広域で展開、夫婦ら逮捕。自分のカード履歴確認を呼びかけ。</span></div>
+  <div class="item-desc">（いいね74 RT36）：他人のクレジットカードで家電等を購入し転売。被害額3億7,200万円。福岡・千葉など広域で展開、夫婦ら逮捕。自分のカード履歴確認を呼びかけ。</div><div class="item-tags"><span class="tag tag-user">@hide_Q_</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@kmt0912 / @keikot65 / @sskozy：同ニュースを拡散。</span></div>
+  <div class="item-desc">/  / ：同ニュースを拡散。</div><div class="item-tags"><span class="tag tag-user">@kmt0912</span><span class="tag tag-user">@keikot65</span><span class="tag tag-user">@sskozy</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@masayan_d00m（表示593）：中国マフィアが高額ポケカを大量偽造→転売ヤーがババ抜き状態に。偽物が市場に大量流通中。</span></div>
+  <div class="item-desc">（表示593）：中国マフィアが高額ポケカを大量偽造→転売ヤーがババ抜き状態に。偽物が市場に大量流通中。</div><div class="item-tags"><span class="tag tag-user">@masayan_d00m</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@yo_TLE：万人から疎まれ、法規制リスクあるのにやめる人が出ない実態に言及。月収は新人サラリーマン並みと推察。</span></div>
+  <div class="item-desc">：万人から疎まれ、法規制リスクあるのにやめる人が出ない実態に言及。月収は新人サラリーマン並みと推察。</div><div class="item-tags"><span class="tag tag-user">@yo_TLE</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 🎰 4. 抽選・限定販売</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@ememm0ses：5/19（火）朝イチから劇場直行が正解。数量限定。6,800円（ポップコーン付き）。</span><span class="badge badge-info">限定</span></div>
+  <div class="item-desc">：5/19（火）朝イチから劇場直行が正解。数量限定。6,800円（ポップコーン付き）。</div><div class="item-tags"><span class="tag tag-user">@ememm0ses</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@Pandelica29195（いいね39 RT21）：5/18（月）10時より200個限定販売。和歌山市土入291-98、火・木・土曜9:00〜16:00（売り切れ次第終了）。</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">（いいね39 RT21）：5/18（月）10時より200個限定販売。和歌山市土入291-98、火・木・土曜9:00〜16:00（売り切れ次第終了）。</div><div class="item-tags"><span class="tag tag-user">@Pandelica29195</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@MAH26589613：通常販売品、来週再販予定。外国人転売ヤーが買い占めるも無駄になるとのこと。</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：通常販売品、来週再販予定。外国人転売ヤーが買い占めるも無駄になるとのこと。</div><div class="item-tags"><span class="tag tag-user">@MAH26589613</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@necorobi_time：限定ポメラの抽選に申し込み済み。去年見送り後悔しているため今年は参加。</span><span class="badge badge-info">限定</span></div>
+  <div class="item-desc">：限定ポメラの抽選に申し込み済み。去年見送り後悔しているため今年は参加。</div><div class="item-tags"><span class="tag tag-user">@necorobi_time</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@_yowa_iwashi_（表示130）：ゲーマーズで現在予約可能（店舗特典有無不明）。Amazon・アニメイトは既に売り切れ。</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">（表示130）：ゲーマーズで現在予約可能（店舗特典有無不明）。Amazon・アニメイトは既に売り切れ。</div><div class="item-tags"><span class="tag tag-user">@_yowa_iwashi_</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@uypnmn（いいね368 RT71 表示3074）：予想を大幅に超える申込みで一旦売り切れ。6/1に追加抽選枠を出す予定と発表。</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">（いいね368 RT71 表示3074）：予想を大幅に超える申込みで一旦売り切れ。6/1に追加抽選枠を出す予定と発表。</div><div class="item-tags"><span class="tag tag-user">@uypnmn</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> ✅ 5. サクセス報告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@katukatu1996（いいね8 表示827）：6,800円仕入れ→13,000〜17,000円で売れている実績を確認。自分はツールを使い競合少ない商品で利益を出していると報告。</span></div>
+  <div class="item-desc">（いいね8 表示827）：6,800円仕入れ→13,000〜17,000円で売れている実績を確認。自分はツールを使い競合少ない商品で利益を出していると報告。</div><div class="item-tags"><span class="tag tag-user">@katukatu1996</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@marginalman0311：マック転売対策が効きまくりで4種ゲット成功と報告。</span></div>
+  <div class="item-desc">：マック転売対策が効きまくりで4種ゲット成功と報告。</div><div class="item-tags"><span class="tag tag-user">@marginalman0311</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@kanimiso_666：転売対策のおかげでスムーズに購入できたと報告。</span></div>
+  <div class="item-desc">：転売対策のおかげでスムーズに購入できたと報告。</div><div class="item-tags"><span class="tag tag-user">@kanimiso_666</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@melonoa269（いいね0）：残り1個でなんとかお迎え成功。まだ買えていない人は早めに探すことを推奨。</span></div>
+  <div class="item-desc">（いいね0）：残り1個でなんとかお迎え成功。まだ買えていない人は早めに探すことを推奨。</div><div class="item-tags"><span class="tag tag-user">@melonoa269</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📈 6. プレ値情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@rockstarNATSUKI（いいね6 RT4）：6/22・7/1のCrimson Shiva期間限定復活ワンマン、高額転売チケットは無効化対応予定。</span><span class="badge badge-info">限定</span></div>
+  <div class="item-desc">（いいね6 RT4）：6/22・7/1のCrimson Shiva期間限定復活ワンマン、高額転売チケットは無効化対応予定。</div><div class="item-tags"><span class="tag tag-user">@rockstarNATSUKI</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 🔄 7. 入荷・再販情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@kaf_jqr：全国的には5/19(火)順次入荷。池袋では5/16(土)に先行入荷済み。初動で動くことが重要。</span></div>
+  <div class="item-desc">：全国的には5/19(火)順次入荷。池袋では5/16(土)に先行入荷済み。初動で動くことが重要。</div><div class="item-tags"><span class="tag tag-user">@kaf_jqr</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@MAH26589613：通常販売品のため来週再販あり。転売ヤーの大量仕入れが無駄になる可能性があり、定価以下での流通もあり得る。</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：通常販売品のため来週再販あり。転売ヤーの大量仕入れが無駄になる可能性があり、定価以下での流通もあり得る。</div><div class="item-tags"><span class="tag tag-user">@MAH26589613</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@nix_in_desertis：売り切れ続出を受けて追加生産が決定。</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">：売り切れ続出を受けて追加生産が決定。</div><div class="item-tags"><span class="tag tag-user">@nix_in_desertis</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@yui6876：楽天市場で見つけた。再入荷してもすぐ売り切れるため、在庫確認次第即購入推奨。</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">：楽天市場で見つけた。再入荷してもすぐ売り切れるため、在庫確認次第即購入推奨。</div><div class="item-tags"><span class="tag tag-user">@yui6876</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@siho00000919：スタートデッキ Zeon's Rush [ST03] 売り切れ前に確保推奨。</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">：スタートデッキ Zeon's Rush [ST03] 売り切れ前に確保推奨。</div><div class="item-tags"><span class="tag tag-user">@siho00000919</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@gyogyoshake（いいね2）：バンタン表紙スペシャル号。すぐ売り切れる傾向あり、早めの予約を推奨。</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">（いいね2）：バンタン表紙スペシャル号。すぐ売り切れる傾向あり、早めの予約を推奨。</div><div class="item-tags"><span class="tag tag-user">@gyogyoshake</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> ⚠️ 8. 注意・警告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">@hide_Q_（いいね74 RT36 表示1,487）：中国籍グループが他人のクレジットカードで家電・時計等を購入し転売。被害総額3億7,200万円。カード明細の定期確認を強く推奨。不審な引き落としはすぐカード会社へ連絡。</span></div>
+  <div class="item-desc">（いいね74 RT36 表示1,487）：中国籍グループが他人のクレジットカードで家電・時計等を購入し転売。被害総額3億7,200万円。カード明細の定期確認を強く推奨。不審な引き落としはすぐカード会社へ連絡。</div><div class="item-tags"><span class="tag tag-user">@hide_Q_</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@ren2496m：カード会社への連絡方法を共有。電話オペレーターにつながるまで大変だが諦めずに連絡することを推奨。</span></div>
+  <div class="item-desc">：カード会社への連絡方法を共有。電話オペレーターにつながるまで大変だが諦めずに連絡することを推奨。</div><div class="item-tags"><span class="tag tag-user">@ren2496m</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@masayan_d00m（表示593）：中国マフィアが高額ポケカを大量偽造。現在転売ヤー間でババ抜き状態が発生中。購入時は正規店舗を利用すること。</span></div>
+  <div class="item-desc">（表示593）：中国マフィアが高額ポケカを大量偽造。現在転売ヤー間でババ抜き状態が発生中。購入時は正規店舗を利用すること。</div><div class="item-tags"><span class="tag tag-user">@masayan_d00m</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@rockstarNATSUKI（いいね6 RT4）：高額転売チケットを無効化する対応を取ると公式から告知。転売チケットの購入は無駄になる可能性あり。</span></div>
+  <div class="item-desc">（いいね6 RT4）：高額転売チケットを無効化する対応を取ると公式から告知。転売チケットの購入は無駄になる可能性あり。</div><div class="item-tags"><span class="tag tag-user">@rockstarNATSUKI</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@tanakenjapan：Switch2転売ヤーが相次いで失敗。価格改定後の定価を超えられず損切りが続いているとのこと。Switch2の転売は現状厳しい。</span></div>
+  <div class="item-desc">：Switch2転売ヤーが相次いで失敗。価格改定後の定価を超えられず損切りが続いているとのこと。Switch2の転売は現状厳しい。</div><div class="item-tags"><span class="tag tag-user">@tanakenjapan</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@mogu_moguco（表示537）：メルカリで高額転売が横行し普通のファンが街中で全く見つけられない状況。</span></div>
+  <div class="item-desc">（表示537）：メルカリで高額転売が横行し普通のファンが街中で全く見つけられない状況。</div><div class="item-tags"><span class="tag tag-user">@mogu_moguco</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">@KEN_WRKS（いいね6 RT1 表示1,848）：副業転売で年間利益20万円超は確定申告義務あり。本業なら1円でも控除超過で申告必要。税務署が転売ヤーを把握し始めている可能性を示唆。</span></div>
+  <div class="item-desc">（いいね6 RT1 表示1,848）：副業転売で年間利益20万円超は確定申告義務あり。本業なら1円でも控除超過で申告必要。税務署が転売ヤーを把握し始めている可能性を示唆。</div><div class="item-tags"><span class="tag tag-user">@KEN_WRKS</span></div>
+</div></div>
+</section>
+
+</body>
+</html>

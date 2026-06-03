@@ -144,7 +144,8 @@ const GENRES = [
 ];
 
 let manifest = {};
-let activeGenre = GENRES[0].key;
+const hashKey = location.hash.replace('#', '');
+let activeGenre = GENRES.find(g => g.key === hashKey) ? hashKey : GENRES[0].key;
 let visibleCounts = {};
 
 function formatDate(dateStr) {
@@ -211,7 +212,7 @@ function render() {
     const tab = document.createElement('div');
     tab.className = 'tab' + (g.key === activeGenre ? ' active' : '');
     tab.textContent = g.label;
-    tab.onclick = () => { activeGenre = g.key; render(); };
+    tab.onclick = () => { activeGenre = g.key; location.hash = g.key; render(); };
     tabsEl.appendChild(tab);
 
     const section = document.createElement('div');

@@ -69,6 +69,14 @@
 
     .empty { color: var(--muted); font-size: 14px; padding: 48px 0; text-align: center; }
 
+    .show-more {
+      display: block; width: 100%; margin-top: 8px; padding: 12px;
+      background: none; border: 1px solid var(--border); border-radius: 4px;
+      color: var(--muted); font-size: 13px; cursor: pointer;
+      font-family: inherit; transition: border-color 0.2s, color 0.2s;
+    }
+    .show-more:hover { border-color: var(--accent); color: var(--text); }
+
     footer {
       text-align: center; padding: 24px; color: var(--muted);
       font-size: 12px; border-top: 1px solid var(--border); margin-top: 48px;
@@ -104,10 +112,11 @@
 
 <div class="content" id="content"></div>
 
-<footer>毎日トレンドまとめ | Powered by エンマち ｜ <a href="https://x.com/yukichina7" target="_blank" style="color:#58a6ff; text-decoration:none;">@yukichina7</a></footer>
+<footer>© エンマち ｜ <a href="https://x.com/yukichina7" target="_blank" style="color:#58a6ff; text-decoration:none;">@yukichina7</a></footer>
 
 <script>
 const MANIFEST_URL = 'data/manifest.json';
+const PAGE_SIZE = 10;
 
 const GENRES = [
   { key: 'x',           label: 'Xツイート分析' },
@@ -128,6 +137,24 @@ const GENRES = [
 
 let manifest = {};
 let activeGenre = GENRES[0].key;
+let visibleCounts = {};
+
+function formatDate(dateStr) {
+  const [datePart, timePart] = dateStr.split('_');
+  const [y, m, d] = datePart.split('-');
+  if (timePart) {
+    const h = timePart.slice(0, 2);
+    const min = timePart.slice(2, 4);
+    return `${y}.${m}.${d}  ${h}:${min}`;
+  }
+  return `${y}.${m}.${d}`;
+}
+
+function formatDateJa(dateStr) {
+  const datePart = dateStr.split('_')[0];
+  const [y, m, d] = datePart.split('-');
+  return `${y}年${parseInt(m)}月${parseInt(d)}日`;
+}
 
 async function loadManifest() {
   try {
@@ -135,12 +162,35 @@ async function loadManifest() {
     manifest = await r.json();
     const dates = Object.values(manifest).flatMap(v => v.map(e => e.date)).sort().reverse();
     if (dates.length) {
-      document.getElementById('last-updated').textContent = `最終更新: ${dates[0]}`;
+      document.getElementById('last-updated').textContent = `最終更新: ${formatDateJa(dates[0])}`;
     }
     render();
   } catch(e) {
     document.getElementById('last-updated').textContent = '更新情報を読み込めませんでした';
   }
+}
+
+function renderSection(g) {
+  const reports = (manifest[g.key] || []).slice().reverse();
+  const count = visibleCounts[g.key] || PAGE_SIZE;
+  const visible = reports.slice(0, count);
+  const hasMore = reports.length > count;
+
+  if (reports.length === 0) {
+    return '<div class="empty">まだレポートがありません</div>';
+  }
+
+  const items = visible.map(r => `
+    <div class="report-item">
+      <span class="report-date">${formatDate(r.date)}</span>
+      <a class="report-link" href="${r.url}" target="_blank">レポートを見る</a>
+    </div>`).join('');
+
+  const moreBtn = hasMore
+    ? `<button class="show-more" data-key="${g.key}">さらに読み込む（残り${reports.length - count}件）</button>`
+    : '';
+
+  return `<div class="report-list">${items}</div>${moreBtn}`;
 }
 
 function render() {
@@ -158,19 +208,16 @@ function render() {
 
     const section = document.createElement('div');
     section.className = 'genre-section' + (g.key === activeGenre ? ' active' : '');
-    const reports = (manifest[g.key] || []).slice().reverse();
-    if (reports.length === 0) {
-      section.innerHTML = '<div class="empty">まだレポートがありません</div>';
-    } else {
-      section.innerHTML = '<div class="report-list">' +
-        reports.map(r => `
-          <div class="report-item">
-            <span class="report-date">${r.date}</span>
-            <a class="report-link" href="${r.url}" target="_blank">レポートを見る</a>
-          </div>`).join('') +
-        '</div>';
-    }
+    section.innerHTML = renderSection(g);
     contentEl.appendChild(section);
+  });
+
+  contentEl.querySelectorAll('.show-more').forEach(btn => {
+    btn.onclick = () => {
+      const key = btn.dataset.key;
+      visibleCounts[key] = (visibleCounts[key] || PAGE_SIZE) + PAGE_SIZE;
+      render();
+    };
   });
 }
 

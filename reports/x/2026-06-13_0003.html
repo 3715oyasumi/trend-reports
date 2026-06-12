@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xツイートデータ分析レポート 2026-06-13</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --border: #30363d;
+      --accent: #1f6feb;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --link: #58a6ff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      padding: 24px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .report-date {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      padding-left: 12px;
+      border-left: 3px solid var(--accent);
+      margin: 32px 0 16px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 24px 0 8px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+
+    .card:hover { border-color: var(--link); }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .card-detail {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 15px;
+      color: var(--text);
+      margin-top: 8px;
+    }
+
+    .label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      min-width: 36px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .card-amount {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .total-count {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .section-count {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+      margin-left: 8px;
+    }
+
+    .card-source {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 32px 0;
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 16px; }
+      h1 { font-size: 20px; }
+      h2 { font-size: 16px; }
+      .card { padding: 16px; }
+      .card-detail {
+        flex-direction: column;
+        gap: 2px;
+      }
+      .label {
+        min-width: auto;
+        text-align: left;
+      }
+      .card-amount { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Xツイートデータ分析レポート</h1>
+  <p class="report-date">収集日時: 2026年6月13日 00:03</p>
+  <p class="total-count">分析ツイート: 1,143件</p>
+
+  <h2>1. 人気商品・トレンド <span class="section-count">（8件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ベイブレードX UX-00 サムライセイバー サッカー日本代表Ver.</div>
+    定価2,500円が相場約20,000円に高騰（約8倍）。現在もっとも注目度の高い品。
+    <div class="card-detail">
+      <span class="label">定価</span>2,500円
+    </div>
+    <div class="card-detail">
+      <span class="label">相場</span>約20,000円
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@sedokoX
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケカ MEGA新弾（30th CELEBRATION / アビスアイ / ストームエメラルダ）</div>
+    定価7,200円に対し予想プレ値6万円との声。オーガポン・ズルズキンMA等が注目カード。
+    <div class="card-detail">
+      <span class="label">定価</span>7,200円
+    </div>
+    <div class="card-detail">
+      <span class="label">予想相場</span>約60,000円
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@reijaku_ @odoru1212
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">キングスライム目薬（ロートZi・ドラクエ40周年）</div>
+    発売6/10以降ドラッグストア軒並み売り切れ、入荷即買い占めの状況。
+    <div class="card-detail">
+      <span class="label">発売日</span>6/10
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@MP__03__ @Ux0RklXTeq7go9i
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">もっちゅりん（ミスタードーナツ）</div>
+    各店連日完売・行列、ネット予約も繋がらない状態が続いている。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@w3i1n4dst4v2x7q @gorigorisan0417
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">はぴだんぶいくじ</div>
+    ローソンで1日完売、人気が再加熱。
+    <div class="card-detail">
+      <span class="label">取扱店</span>ローソン
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@nnyam0719
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">マンダロリアン&グローグー（映画グッズ / Happyくじ）</div>
+    グッズ・特典・Blu-ray完売続出、特にグローグー関連の需要が高い。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@pocha_mika @koteham
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケモン歴代ソフト型キーホルダー</div>
+    ポケセンオンライン 6/18(木) 10:00発売、各400円・全14種。品薄必至の見込み。
+    <div class="card-detail">
+      <span class="label">発売日</span>6/18(木) 10:00
+    </div>
+    <div class="card-detail">
+      <span class="label">価格</span>各400円（全14種）
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@oroshinohito
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ロルカナ「物語のはじまり」日本語初BOX</div>
+    発売即プレ値化。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@FactomZ
+    </div>
+  </div>
+
+  <h2>2. お得情報・セール <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ポケカ / ベイブレード 定価抽選販売情報</div>
+    プレ値回避で定価入手のチャンス。詳細は抽選・限定販売セクション参照。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@sedokoX @gamesearch1 @AfroTCG
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Qoo10メガ割アフターセール / オリーブヤング オリグロ</div>
+    25〜30%クーポン利用可、メガ割より新作入荷が早い。入荷通知設定が有効。
+    <div class="card-detail">
+      <span class="label">割引</span>25〜30%クーポン
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@takimakeup_ @TmyChanmi
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">楽天ふるさと納税</div>
+    台東区 楽天トラベルクーポン3万円分など、人気返礼品は売り切れ前が狙い目。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@Eg2T8K4FKM
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Amazon ガンプラ定価在庫復活</div>
+    ニャアン2,342円、各種HG/MG定価で散発復活。発送元Amazon確認推奨。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@sokuhousumire @ekiixxmx85
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">値上げ前駆け込み購入</div>
+    ラメール、ラブクロム、プロテイン等が値上げ予告。欲しいものは早めに確保が吉。
+    <div class="card-detail">
+      <span class="label">対象品</span>ラメール、ラブクロム、プロテイン等
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@momoironoyume @UTiRLDuKxtU4mti
+    </div>
+  </div>
+
+  <h2>3. 転売情報 <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ベイブレードX サッカー日本代表Ver.</div>
+    仕入値2,500円に対し相場20,000円。差益約17,500円。
+    <div class="card-detail">
+      <span class="label">定価</span>2,500円
+    </div>
+    <div class="card-detail">
+      <span class="label">相場</span>約20,000円
+    </div>
+    <div class="card-detail">
+      <span class="label">差益</span>約17,500円
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@sedokoX
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ワンピカード「神の島の冒険」BOX</div>
+    定価5,280円に対し相場約12,500円。差益約7,200円。
+    <div class="card-detail">
+      <span class="label">定価</span>5,280円
+    </div>
+    <div class="card-detail">
+      <span class="label">相場</span>約12,500円
+    </div>
+    <div class="card-detail">
+      <span class="label">差益</span>約7,200円
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@sedokoX
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">フェルメール展チケット</div>
+    定価の約10倍、3〜4万円で転売横行。
+    <div class="card-detail">
+      <span class="label">転売相場</span>3〜4万円（定価の約10倍）
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@echo18009211 @neko_0303
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ガンプラ再販品</div>
+    定価2,200円級が発送元Amazon以外でプレ値出品、転売の温床となっている。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@orange_2178
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">卸ルートの予約販売</div>
+    卸値は定価以下、プレ値前提なら高利益率・在庫リスクほぼ無し。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@hagiwarasan87
+    </div>
+  </div>
+
+  <h2>4. 抽選・限定販売 <span class="section-count">（7件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ベイブレードX サッカー日本代表Ver.（定価抽選）</div>
+    Joshinアプリ / キデイランド大阪梅田 締切6/14(日)23:59、B4ストア各店6/13〜応募受付。
+    <div class="card-detail">
+      <span class="label">締切</span>6/14(日) 23:59
+    </div>
+    <div class="card-detail">
+      <span class="label">取扱店</span>Joshinアプリ、キデイランド大阪梅田、B4ストア各店
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@sedokoX
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ワンピBOX「神の島の冒険」（定価抽選）</div>
+    カードラボNAMBA店（大阪）、応募締切6/13(土)23:59、購入6/27〜28。
+    <div class="card-detail">
+      <span class="label">締切</span>6/13(土) 23:59
+    </div>
+    <div class="card-detail">
+      <span class="label">購入日</span>6/27〜28
+    </div>
+    <div class="card-detail">
+      <span class="label">取扱店</span>カードラボNAMBA店（大阪）
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@sedokoX
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケカ「蒼空ストリーム」抽選</div>
+    エクストレカ、締切6/19(金)17:59、郵送対応。
+    <div class="card-detail">
+      <span class="label">締切</span>6/19(金) 17:59
+    </div>
+    <div class="card-detail">
+      <span class="label">取扱店</span>エクストレカ（郵送）
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@AfroTCG
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケカ「30th CELEBRATION」定価抽選</div>
+    トレカスタイル、申込受付中。
+    <div class="card-detail">
+      <span class="label">取扱店</span>トレカスタイル
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@gamesearch1
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケカ Amazon招待販売（30th / アビスアイ BOX）</div>
+    当落確認可、転売回避で定価入手のチャンス。
+    <div class="card-detail">
+      <span class="label">取扱店</span>Amazon（招待販売）
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@pipi_san2200 @kotatsudemikanm
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">SpaceX IPO 抽選</div>
+    SBI / 楽天証券で実施。楽天は少額からでも当落結果に納得感あり。
+    <div class="card-detail">
+      <span class="label">取扱</span>SBI証券、楽天証券
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@ulili___ @nicovideo_082
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">バヌーシー（一口馬主）抽選募集</div>
+    6/25より受付開始。
+    <div class="card-detail">
+      <span class="label">開始日</span>6/25
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@shigie20180512
+    </div>
+  </div>
+
+  <h2>5. サクセス報告 <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">SpaceX IPO 当選・初値益</div>
+    IPO価格135ドルに対し初値171ドル提示、当選者は含み益の状態。
+    <div class="card-detail">
+      <span class="label">IPO価格</span>135ドル
+    </div>
+    <div class="card-detail">
+      <span class="label">初値</span>171ドル提示
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@Calcio666 @nicovideo_082 @cb_terminal
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">デュエマ フラゲ「プレ値で勝ち」</div>
+    1口目から高額カードを自引き成功との報告。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@maekabuyuyuyu
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">キングスライム目薬ゲット</div>
+    連日売り切れの中、MEGAドン・キホーテ入荷分を確保。
+    <div class="card-detail">
+      <span class="label">入手店</span>MEGAドン・キホーテ
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@Ux0RklXTeq7go9i
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">フロムザバレル 3,000円台で確保</div>
+    プレ値地域で稀少な定価帯を発見・購入。
+    <div class="card-detail">
+      <span class="label">入手価格</span>3,000円台
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@dependddddd
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ガンプラ カバカーリー / イングラム 店舗巡回で確保</div>
+    7店舗目でようやく入手成功。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@saNmN3T8biAeWJ3
+    </div>
+  </div>
+
+  <h2>6. プレ値情報 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ポケカ新弾（30th CELEBRATION他）</div>
+    定価7,200円に対し予想プレ値6万円。オーガポン・ズルズキンMA等が高騰見込み。
+    <div class="card-detail">
+      <span class="label">定価</span>7,200円
+    </div>
+    <div class="card-detail">
+      <span class="label">予想相場</span>約60,000円
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@reijaku_ @yokozuna5592
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ガンプラ多数</div>
+    MGキュベレイ、GP02サイサリス、ガーベラ・テトラ等が定価超え常態化。
+    <div class="card-detail">
+      <span class="label">対象品</span>MGキュベレイ、GP02サイサリス、ガーベラ・テトラ等
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@orange_2178 @mix_1128
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ロルカナ 日本語初BOX</div>
+    プレ値化。シュリンク付きなら重量サーチ不可で購入推奨との声。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@FactomZ @EAZYMODEFX
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">デュエマ「守りの王道」</div>
+    プレ値化進行中。基本パーツ割り切りなら今のうちに購入推奨。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@VYl63KmaDX45084
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ベイバトルパス</div>
+    Amazonでプレ値、購入を迷う声が多数。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@yutydrumgt
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">カードゲーム未開封プレ値問題</div>
+    小売の値付け権の範囲ではあるが反感も根強い。店舗側の本音を解説した投稿が拡散。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@TomoharuSaito @1ca8ca
+    </div>
+  </div>
+
+  <h2>7. 入荷・再販情報 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ガンプラ再販ラッシュ</div>
+    カバカーリー（Amazon）、アルトアイゼン・リーゼ、GP02、プレバン ギラ・ドーガ（2次・2026年11月発送）など多数復活。
+    <div class="card-detail">
+      <span class="label">対象品</span>カバカーリー、アルトアイゼン・リーゼ、GP02、ギラ・ドーガ等
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@Gbot0897067 @GunplaOnlineX @ekiixxmx85
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケカ Amazon在庫復活 / 招待販売</div>
+    30th・アビスアイBOX、サボST-35等が復活。
+    <div class="card-detail">
+      <span class="label">対象品</span>30th CELEBRATION、アビスアイBOX、サボST-35等
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@rakunico2593 @kotatsudemikanm
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">キングスライム目薬 再入荷</div>
+    MEGAドンキ・地方薬局に入荷報告。今後の再入荷見込みあり。
+    <div class="card-detail">
+      <span class="label">入荷店</span>MEGAドン・キホーテ、地方薬局
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@wantan_cha @shinryu4646
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ちいかわ ボンボンドロップシール 再入荷</div>
+    送料無料715円、店頭も続々再入荷中。
+    <div class="card-detail">
+      <span class="label">価格</span>715円（送料無料）
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@amereeii @soku_alert
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">コレコレぬいぐるみ 再販</div>
+    6/15(日) 15:00より販売開始。
+    <div class="card-detail">
+      <span class="label">再販日</span>6/15(日) 15:00
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@risa_no_suke
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">御湖鶴（日本酒）再入荷</div>
+    純米吟醸 活性にごり等、入荷即完売の人気銘柄。
+    <div class="card-detail">
+      <span class="label">対象品</span>純米吟醸 活性にごり等
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@nakamurasaketen
+    </div>
+  </div>
+
+  <h2>8. 注意・警告 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">フェルメール展チケット転売</div>
+    定価の10倍（3〜4万円）で出品横行。購入は転売ヤーを利するだけ。
+    <div class="card-detail">
+      <span class="label">転売相場</span>3〜4万円（定価の約10倍）
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@echo18009211 @ukogi2003
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">キングスライム目薬の転売は捌けない</div>
+    メルカリ・ヤフオク出品不可、かつ普通に再入荷する商品。買い占め損リスクあり。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@MP__03__
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「どんまい」公式が在庫補充</div>
+    メルカリ3万円での転売はもう売れない。高値掴みに注意。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@2026babymom
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケカは重量サーチ可</div>
+    プレ値BOX購入は中身抜きリスクあり。未開封プレ値BOXへの過信は禁物。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@EAZYMODEFX
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ナフサ不足は過剰発注が主因（買い溜め注意）</div>
+    メーカー在庫は平常範囲内。塗料は受注4割増で品薄・40%値上げ。煽り報道に注意。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@hairetiah @fuckfeer @lanbou555
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">FIFA W杯 公式転売サイト</div>
+    手数料15%上限なしで高騰、決勝最安33万円・空席多発の状況。
+    <div class="card-detail">
+      <span class="label">価格帯</span>決勝最安33万円
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span>@sevjb23 @shibuyahatiko
+    </div>
+  </div>
+
+  <hr>
+
+  <p class="note">
+    注目度ランキング（即金性・具体性）: 1位 ベイブレードX定価抽選（締切6/14・差益1.7万円）、2位 ワンピBOX抽選（締切6/13 23:59）、3位 ポケカ蒼空ストリーム抽選（締切6/19）、4位 キングスライム目薬の再入荷巡回。締切が迫る抽選案件を最優先で。
+  </p>
+  <p class="note">
+    ※掲載情報は確認時点のものです。相場・在庫状況は随時変動します。最新情報は各ショップ・X公式アカウントにてご確認ください。
+  </p>
+</body>
+</html>

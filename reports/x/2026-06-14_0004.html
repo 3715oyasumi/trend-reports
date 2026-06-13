@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xツイートデータ分析レポート</title>
+  <style>
+:root {
+  --bg: #0d1117; --card: #161b22; --border: #30363d;
+  --accent: #1f6feb; --text: #e6edf3; --muted: #8b949e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
+  line-height: 1.6; padding: 16px; max-width: 860px; margin: 0 auto;
+}
+.report-header {
+  background: linear-gradient(135deg, #0d1b2a 0%, #1a2744 100%);
+  border: 1px solid #1f3a6e; border-radius: 12px;
+  padding: 24px; margin-bottom: 24px;
+}
+.report-label {
+  font-family: 'Courier New', monospace; font-size: 11px;
+  color: #79c0ff; letter-spacing: 3px; margin-bottom: 8px;
+}
+.report-title { font-size: 26px; font-weight: 700; margin-bottom: 14px; }
+.report-meta { display: flex; flex-wrap: wrap; gap: 16px; }
+.meta-item { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); }
+.meta-item span { color: var(--text); font-weight: 600; }
+.report-section { margin-bottom: 20px; }
+.section-title {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 17px; font-weight: 600;
+  padding: 10px 0 8px; border-bottom: 1px solid var(--border); margin-bottom: 10px;
+}
+.section-num { font-family: monospace; font-size: 13px; color: var(--muted); }
+.item-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 13px; margin-bottom: 8px;
+}
+.item-card:hover { border-color: #58a6ff; }
+.item-header { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
+.item-title { font-weight: 600; font-size: 14px; flex: 1; }
+.item-desc { font-size: 13px; color: var(--muted); margin-bottom: 7px; line-height: 1.5; }
+.item-desc strong { color: var(--text); }
+.item-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag { font-size: 11px; padding: 2px 8px; border-radius: 12px; font-family: monospace; }
+.tag-user  { background: #1c2d3e; color: #79c0ff; border: 1px solid #1f3a6e; }
+.tag-stat  { background: #1e2a1e; color: #7ee787; border: 1px solid #2a4a2a; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
+.badge-danger  { background: #3d0c0c; color: #f85149; border: 1px solid #5a1010; }
+.badge-warning { background: #3d2c00; color: #e3a008; border: 1px solid #5a4100; }
+.badge-info    { background: #1a3a5c; color: #79c0ff; border: 1px solid #1f4a7a; }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.summary-table th {
+  background: #1c2128; padding: 10px 14px; text-align: left;
+  color: var(--muted); border-bottom: 2px solid var(--border);
+}
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+.summary-table tr:hover td { background: #1c2128; }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+@media (max-width: 600px) {
+  .report-title { font-size: 20px; }
+  .section-title { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+  <div class="report-header">
+    <div class="report-label">X TWEET DATA ANALYSIS REPORT</div>
+    <h1 class="report-title">Xツイートデータ分析レポート</h1>
+    <div class="report-meta">
+      <div class="meta-item">📅 収集日時：<span>2026-06-14 00:04</span></div>
+      <div class="meta-item">📊 対象件数：<span>1,133件</span></div>
+    </div>
+  </div>
+  <section class="report-section">
+  <h2 class="section-title"> 🔥 1. 人気商品・トレンド</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ベイブレードX</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">（最重要トレンド）：全国で品薄・完売が爆発的に拡大。海外（中国・ベトナム）需要と転売で店頭から消失。「棚に何も置いてない地獄」状態   。日本代表Ver.「サムライセイバー」「ブラキオウィップ」が特に人気</div><div class="item-tags"><span class="tag tag-user">@haruonohobby</span><span class="tag tag-user">@samuches</span><span class="tag tag-user">@ba777ti</span><span class="tag tag-user">@kagemaruvnunf</span><span class="tag tag-user">@pikapokekid25</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ちいかわ ボンボンドロップシール（ボンドロ）</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">：どこも品薄、楽天で在庫復活が狙い目  。チョコミント等は野生在庫あり</div><div class="item-tags"><span class="tag tag-user">@santosdayom</span><span class="tag tag-user">@pikode1</span><span class="tag tag-user">@moira_chiikawa</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ MEGA拡張パック「アビスアイ」</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">：6/13新弾、初日からプレ値。各所で抽選販売</div><div class="item-tags"><span class="tag tag-user">@kotatsudemikanm</span><span class="tag tag-user">@hkhk_pk</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">サッカー日本代表アウェイユニフォーム</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">：W杯開幕で全国品薄、6店舗回って全滅報告  。「もう作らないかも」と店員談</div><div class="item-tags"><span class="tag tag-user">@masahir0_A</span><span class="tag tag-user">@MingZhangri</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ドラゴンボール フュージョンワールド新弾</span><span class="badge badge-warning">高騰</span></div>
+  <div class="item-desc">：相場・転売高騰、ゴジータGTスーパラが高額</div><div class="item-tags"><span class="tag tag-user">@CARDSHOPMIRO</span><span class="tag tag-user">@Rmjamibiki29</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">キングスライム目薬（ドラクエコラボ）</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">：薬事法絡みで品薄、ドラストで売り切れ続出</div><div class="item-tags"><span class="tag tag-user">@karinNow</span><span class="tag tag-user">@utautauP</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">グローグー（マンダロリアン）グッズ</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">：品薄で入手困難、楽天で再入荷</div><div class="item-tags"><span class="tag tag-user">@saku_saku_kuma</span><span class="tag tag-user">@rakualert</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 💰 2. お得情報・セール</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">Intel Core Ultra 9 285K</span></div>
+  <div class="item-desc">が ¥82,000（初値¥115,800から <strong>-29.2%／-33,800円</strong>）で底値圏。買い場到来</div><div class="item-tags"><span class="tag tag-user">@GadgetStreem</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">美的2026年8月号（6/22発売）</span></div>
+  <div class="item-desc">：メディヒール付録で「付録だけで元が取れる」</div><div class="item-tags"><span class="tag tag-user">@yufu1187</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">DMMブックス クーポン祭</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">：最大50%上乗せ還元、1,000ポイント抽選</div><div class="item-tags"><span class="tag tag-user">@DMM_DigitalBook</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">LINEマンガ メガトク</span></div>
+  <div class="item-desc">：対象作品 <strong>全巻60%OFF</strong>（16日間）</div><div class="item-tags"><span class="tag tag-user">@LINEmanga</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">アルペン</span></div>
+  <div class="item-desc">：ネット完売のランシューが実店舗で<strong>半額</strong></div><div class="item-tags"><span class="tag tag-user">@wowowo1112pao</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">エポスカード</span><span class="badge badge-info">限定</span></div>
+  <div class="item-desc">：土日限定で <strong>12,000P</strong>（最短4日付与）</div><div class="item-tags"><span class="tag tag-user">@aya1po</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">PG UNLEASHED νガンダム用LEDユニット</span></div>
+  <div class="item-desc">：Amazon直販で定価入荷、転売前に確保推奨</div><div class="item-tags"><span class="tag tag-user">@kokoperihell</span><span class="tag tag-user">@oki32458932</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📦 3. 転売情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">サッカー日本代表アウェイユニ</span></div>
+  <div class="item-desc">：大阪ルクア初日完売・再入荷なし。メルカリで半袖・長袖ともプレ値即完売</div><div class="item-tags"><span class="tag tag-user">@vM3RrBkBb114098</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ベイブレードX</span></div>
+  <div class="item-desc">：定価の<strong>10倍</strong>で軒並み転売 。Amazonで <strong>25,000→35,000円</strong></div><div class="item-tags"><span class="tag tag-user">@Ariga_tayA</span><span class="tag tag-user">@kamiokande4649</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">株主優待券の転売</span></div>
+  <div class="item-desc">が活発：大成建設5万割引券×3枚（最大15万割引）、平和・吉野家・安楽亭・ツルハ等が即売れ</div><div class="item-tags"><span class="tag tag-user">@kentayuruhack</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">たまごっちストラップ</span></div>
+  <div class="item-desc">が1つ <strong>1,600円の利益</strong>、付属品もリサーチ対象</div><div class="item-tags"><span class="tag tag-user">@takahagesedori</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ブランド中古せどりで月100万</span></div>
+  <div class="item-desc">：派手な一撃より中古コツコツ</div><div class="item-tags"><span class="tag tag-user">@ajiyan_66</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">マンジャロ（やせ薬）の違法転売</span><span class="badge badge-danger">違法</span></div>
+  <div class="item-desc">：副作用報告あり、注意喚起</div><div class="item-tags"><span class="tag tag-user">@goemonalertjp</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 🎰 4. 抽選・限定販売</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">アビスアイ BOX 抽選販売</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">：イトーヨーカドー大和鶴間店（当選600箱）、アリオ西新井（各770箱）</div><div class="item-tags"><span class="tag tag-user">@BEEEEF999</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ちいかわ ボンボンドロップシール抽選</span><span class="badge badge-info">限定</span></div>
+  <div class="item-desc">：パーティリコ川崎ルフロン店限定、4種セット<strong>2,200円</strong>、エントリー6/13〜6/15、本人確認あり</div><div class="item-tags"><span class="tag tag-user">@korokoro1222</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30th CELEBRATION 定価抽選販売</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">受付中</div><div class="item-tags"><span class="tag tag-user">@gamesearch1</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">アニプラカフェ（大阪）6/18抽選</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">：購入額に応じた投票制・転売防止強化</div><div class="item-tags"><span class="tag tag-user">@aniplaCafe</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">アビスアイ Amazon招待販売</span></div>
+  <div class="item-desc">開始：コンビニ回らず定価で狙える</div><div class="item-tags"><span class="tag tag-user">@kotatsudemikanm</span><span class="tag tag-user">@pipi_san2200</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> ✅ 5. サクセス報告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">コンビニ店員に「裏に隠してある」とポケカを定価で確保（転売ヤーには売らない店）@8118Tamugi</span></div>
+  <div class="item-desc">コンビニ店員に「裏に隠してある」と<strong>ポケカを定価で確保</strong>（転売ヤーには売らない店）</div><div class="item-tags"><span class="tag tag-user">@8118Tamugi</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">フュージョンワールドでレムSP自引き</span></div>
+  <div class="item-desc">、箱もプレ値でなく購入成功</div><div class="item-tags"><span class="tag tag-user">@glorynoizy</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">たまごっちストラップで 1,600円利益確保 @takahagesedori</span></div>
+  <div class="item-desc">たまごっちストラップで <strong>1,600円利益</strong>確保</div><div class="item-tags"><span class="tag tag-user">@takahagesedori</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ガンプラ MGインパルスブランシュを定価近くで緊急確保（普段はプレ値高すぎ）@Kyarakutu</span></div>
+  <div class="item-desc">ガンプラ <strong>MGインパルスブランシュを定価近くで緊急確保</strong>（普段はプレ値高すぎ）</div><div class="item-tags"><span class="tag tag-user">@Kyarakutu</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">コトブキヤ ゴジラカラー初号機の再販品を出先で確保 @ho_ro_horo</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">コトブキヤ ゴジラカラー初号機の<strong>再販品を出先で確保</strong></div><div class="item-tags"><span class="tag tag-user">@ho_ro_horo</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📈 6. プレ値情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ガンプラ全般</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：再販在庫が瞬殺、Amazon発送元以外はプレ値注意（クシャトリヤ定価7,700円、Hi-νVer.Ka 等）</div><div class="item-tags"><span class="tag tag-user">@orange_2178</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">フュージョンワールドDBC</span></div>
+  <div class="item-desc">：初日から凄いプレ値</div><div class="item-tags"><span class="tag tag-user">@hkhk_pk</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">デュエマ DM26-RP2</span></div>
+  <div class="item-desc">：8,000円を切るもゴリゴリのプレ値</div><div class="item-tags"><span class="tag tag-user">@saishinDMP</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">旧型スポーツカー（EK9シビックタイプR等）</span><span class="badge badge-warning">高騰</span></div>
+  <div class="item-desc">：タマ数減で高騰、プレ値</div><div class="item-tags"><span class="tag tag-user">@yamamoto3gou2</span><span class="tag tag-user">@J_vv200</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">レトロゲーム</span></div>
+  <div class="item-desc">：エースコンバット3、コンカー（中古2万）などプレ値・希少化</div><div class="item-tags"><span class="tag tag-user">@T4Pizza</span><span class="tag tag-user">@kujira202517685</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 🔄 7. 入荷・再販情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ガンプラ大量再販</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">（あみあみ・Amazon・DMM）：HGバルバトスルプス、HGUCシャアズゴック、HGシェンロン、MGアレックスVer.2.0等</div><div class="item-tags"><span class="tag tag-user">@takerudetube</span><span class="tag tag-user">@Gbot0897067</span><span class="tag tag-user">@GunplaOnlineX</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ボンドロ再販</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：Amazon公式定価（お文具1,100円／サンリオ4個2,200円）</div><div class="item-tags"><span class="tag tag-user">@bondoro_alert</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ワンピースカード OP-16「決戦の刻」数量限定再販</span><span class="badge badge-info">再販</span></div>
+  <div class="item-tags"><span class="tag tag-user">@gamesearch1</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ちいかわ×サンリオ エコバッグ再販</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">（6月）</div><div class="item-tags"><span class="tag tag-user">@c1_c34</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ウマ娘 シュヴァルグラン1/7フィギュア再販</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">（12月発売・予約3%OFF）</div><div class="item-tags"><span class="tag tag-user">@umamusu_goods</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">太田ドンキでイナイレ系再入荷</span></div>
+  <div class="item-desc">情報</div><div class="item-tags"><span class="tag tag-user">@afraidmyself</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> ⚠️ 8. 注意・警告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ナフサ不足（中東情勢）が深刻化</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">：医療用シリンジ・ポリ袋・包装資材・固形燃料・オイル類・ビニール傘などプラ製品が全国的に品薄＆高騰。製造業4割が半年以内に事業限界</div><div class="item-tags"><span class="tag tag-user">@jqrny592</span><span class="tag tag-user">@kamiwaki</span><span class="tag tag-user">@gyoumurennraku1</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">6月の食品値上げ1078品目</span></div>
+  <div class="item-desc">：即席麺・調味料・缶詰・冷凍うどん等が対象。買い溜め時は旧価格在庫との混在に注意  ほか多数</div><div class="item-tags"><span class="tag tag-user">@yuzuyuhustle</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Switch2が値上げ済み</span></div>
+  <div class="item-desc">、買うタイミングに注意</div><div class="item-tags"><span class="tag tag-user">@ringo77ringo77</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">プラチナ万年筆 値上げ間近</span></div>
+  <div class="item-desc">、購入は早めに</div><div class="item-tags"><span class="tag tag-user">@stil_former_1st</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">プレ値詐欺</span><span class="badge badge-danger">詐欺</span></div>
+  <div class="item-desc">：ナルト初回盤を装い別物を売る出品者、評価で結局バレる</div><div class="item-tags"><span class="tag tag-user">@ajiyan_66</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Amazonの一方的キャンセル</span></div>
+  <div class="item-desc">：発売3ヶ月後・プレ値化してから商品未用意でキャンセルされる被害</div><div class="item-tags"><span class="tag tag-user">@kuron79178701</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title"> 📋 総括（即アクション優先度）</h2>
+  <div class="section-content"></div>
+</section>
+
+</body>
+</html>

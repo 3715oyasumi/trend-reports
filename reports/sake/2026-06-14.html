@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お酒 新着・抽選・相場情報レポート</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --border: #30363d;
+      --accent: #1f6feb;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --link: #58a6ff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      padding: 24px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .report-date {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      padding-left: 12px;
+      border-left: 3px solid var(--accent);
+      margin: 32px 0 16px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 24px 0 8px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+
+    .card:hover { border-color: var(--link); }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .card-detail {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 15px;
+      color: var(--text);
+      margin-top: 8px;
+    }
+
+    .label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      min-width: 36px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .card-amount {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .total-count {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .section-count {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+      margin-left: 8px;
+    }
+
+    .card-source {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 32px 0;
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 16px; }
+      h1 { font-size: 20px; }
+      h2 { font-size: 16px; }
+      .card { padding: 16px; }
+      .card-detail {
+        flex-direction: column;
+        gap: 2px;
+      }
+      .label {
+        min-width: auto;
+        text-align: left;
+      }
+      .card-amount { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>お酒 新着・抽選・相場情報</h1>
+  <p class="report-date">2026年6月14日</p>
+  <p class="total-count">本日のお得案件: 21件</p>
+
+  <h2>ウイスキー <span class="section-count">（14件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">[新発売] 山崎・白州・響 Story of the Distillery 2026 EDITION</div>
+    <div class="card-detail">
+      <span class="label">発売日</span> 2026/05/26（数量限定）
+    </div>
+    <div class="card-detail">
+      <span class="label">定価</span>
+      <span class="card-amount">山崎SoD2026 17,600円 / 白州SoD2026 17,600円 / 響 BLOSSOM HARMONY 2026 14,300円（各税込）</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">入手方法</span> サントリー公式抽選（第1回 3/16〜3/31、第2回 4/1〜4/16）は受付終了・当選通知済み。現在は百貨店・量販店の抽選／先着販売が中心
+    </div>
+    <div class="card-source">
+      <a href="https://gourmet.watch.impress.co.jp/docs/news/2092504.html">出典を確認する</a> / <a href="https://gourmet.watch.impress.co.jp/docs/news/2096305.html">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[抽選] 日本橋三越本店（エムアイカード会員限定） - 山崎・白州・響 SoD2026 3本セット</div>
+    <div class="card-detail">
+      <span class="label">抽選期間</span> 2026/06/10 10:00 〜 2026/06/16 19:30
+    </div>
+    <div class="card-detail">
+      <span class="label">当選発表</span> 2026/06/29 正午頃（購入期間 7/4〜7/10）
+    </div>
+    <div class="card-detail">
+      <span class="label">定価</span>
+      <span class="card-amount">49,500円（税込・3本セット）</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">条件</span> エムアイカード会員限定、アプリ経由で応募
+    </div>
+    <div class="card-source">
+      <a href="https://peaty.club/blog/738">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[抽選] イトーヨーカドーネット通販 - 山崎18年・響21年・白州18年</div>
+    <div class="card-detail">
+      <span class="label">抽選期間</span> 2026/06/10 12:00 〜 2026/06/14 11:59
+    </div>
+    <div class="card-detail">
+      <span class="label">当選発表</span> 2026/06/19 中（メール通知）
+    </div>
+    <div class="card-detail">
+      <span class="label">条件</span> 2025/6/1〜2026/5/31に500円以上の注文実績がある会員が対象のWEB抽選
+    </div>
+    <div class="card-source">
+      <a href="https://nyuka-now.com/archives/834">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[抽選] アピタ・ピアゴ オンラインショップ - 白州SoD2024・碧Ao・ボウモア12年 他セット</div>
+    <div class="card-detail">
+      <span class="label">抽選期間</span> 2026/06/12 10:00 〜 2026/06/30 23:59
+    </div>
+    <div class="card-detail">
+      <span class="label">当選発表</span> 2026/07/07〜07/10（発送7月下旬予定）
+    </div>
+    <div class="card-detail">
+      <span class="label">定価</span>
+      <span class="card-amount">12,628円〜30,000円（税込・別途送料）</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">条件</span> WEB抽選
+    </div>
+    <div class="card-source">
+      <a href="https://peaty.club/blog/738">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[抽選] Amazon - 響21年・響JH・山崎12年・白州12年 他（招待制販売）</div>
+    <div class="card-detail">
+      <span class="label">方式</span> 招待リクエスト方式（通年・登録後12か月有効）
+    </div>
+    <div class="card-detail">
+      <span class="label">購入期限</span> 招待到着後72時間以内に購入必須
+    </div>
+    <div class="card-detail">
+      <span class="label">定価</span>
+      <span class="card-amount">13,200円〜35,200円（税込）</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">条件</span> Amazonアカウントで招待リクエスト送信
+    </div>
+    <div class="card-source">
+      <a href="https://nyuka-now.com/archives/834">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[プレ値] 響 ジャパニーズハーモニー</div>
+    <div class="card-detail">
+      <span class="label">定価</span> 8,000円（税抜・2026/4/1出荷分より値上げ、旧7,500円）
+    </div>
+    <div class="card-detail">
+      <span class="label">市場相場</span>
+      <span class="card-amount">12,000〜15,000円前後</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">買取相場</span> 定価上昇に買取が追いつかず、NVクラスは横ばい傾向
+    </div>
+    <div class="card-source">
+      <a href="https://www.licasta.com/2025/11/06/suntory-priceup2026/">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[プレ値] 響（30年・21年など長期熟成）</div>
+    <div class="card-detail">
+      <span class="label">定価</span> 響30年 税抜55,000円
+    </div>
+    <div class="card-detail">
+      <span class="label">市場相場</span>
+      <span class="card-amount">平均10万円前後（定価を大幅に超過）</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">買取相場</span> 18年・25年・30年クラスは定価超えの高値買取が継続見込み
+    </div>
+    <div class="card-source">
+      <a href="https://liquorjoy.com/column/【2026年サントリー値上げ】山崎・響・白州の買取/">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[プレ値] 山崎・白州（NV〜12年）</div>
+    <div class="card-detail">
+      <span class="label">定価</span> 2026/4/1出荷分より6〜15％値上げ
+    </div>
+    <div class="card-detail">
+      <span class="label">市場相場</span>
+      <span class="card-amount">定価を上回るプレ値が継続。山崎18年は実勢67,100円前後（Amazon）</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">買取相場</span> 18年以上の長期熟成は定価超え、NV・12年は値上げ分に買取が未追従
+    </div>
+    <div class="card-source">
+      <a href="https://whisky-daigaku.com/ninkiwhiskyteika/7123/">出典を確認する</a> / <a href="https://nyuka-now.com/archives/834">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[プレ値] シングルモルト余市</div>
+    <div class="card-detail">
+      <span class="label">定価</span> 2024/4改定後ベース（700ml）
+    </div>
+    <div class="card-detail">
+      <span class="label">市場相場</span>
+      <span class="card-amount">7,000〜8,500円（実勢、定価超過が継続）</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">買取相場</span> 価格改定以降プレ値傾向で安定
+    </div>
+    <div class="card-source">
+      <a href="https://norifune.com/liqueur/whisky/japanese/nikka-price-increase">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[プレ値] 宮城峡 NV</div>
+    <div class="card-detail">
+      <span class="label">定価</span> 5,500円（税込・2024改定）
+    </div>
+    <div class="card-detail">
+      <span class="label">市場相場</span>
+      <span class="card-amount">7,000〜12,000円帯（宮城峡10年は税込13,189円）</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">買取相場</span> 改定後プレ値帯で推移
+    </div>
+    <div class="card-source">
+      <a href="https://linxas.shop/pedia/miyagikyo/">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[転売] 竹鶴ピュアモルト（定価入手しやすい希少銘柄）</div>
+    <div class="card-detail">
+      <span class="label">定価</span> 7,689円（税込）／2026/4より値上げ
+    </div>
+    <div class="card-detail">
+      <span class="label">市場相場</span>
+      <span class="card-amount">比較的定価流通が残るが品薄、実勢7,600円前後（Amazon）</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">買取相場</span> 約4,300円（JOYLAB・2026/3時点）。定価入手し長期保有向き
+    </div>
+    <div class="card-source">
+      <a href="https://norifune.com/liqueur/whisky/japanese/taketsuru-yoichi-buy">出典を確認する</a> / <a href="https://gourmet.watch.impress.co.jp/docs/news/pickup/2083193.html">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[高騰] サントリー・ニッカ 2026年4月価格改定</div>
+    <div class="card-detail">
+      <span class="label">期間</span> 2026/4/1出荷分〜
+    </div>
+    <div class="card-detail">
+      <span class="label">内容</span> 山崎・白州・響が6〜15％、ニッカ（竹鶴・余市・フロムザバレル等）も値上げ。改定により長期熟成品は二次流通価格に「追いついた」形で、今後も高値安定の見込み
+    </div>
+    <div class="card-source">
+      <a href="https://norifune.com/liqueur/whisky/suntory-price-increase">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[キャンペーン] ウイスキーフェスティバル2026 in 大阪</div>
+    <div class="card-detail">
+      <span class="label">期間</span> 2026/06/26（金）プレミアムナイト 17:00〜19:30 / 06/27（土）第1部 10:00〜13:30・第2部 14:30〜18:00
+    </div>
+    <div class="card-detail">
+      <span class="label">場所</span> 大阪ベイエリア ATCホール
+    </div>
+    <div class="card-detail">
+      <span class="label">内容</span> ブレンダーによるテイスティングセミナー、スペシャルゲストのトークショー等の大規模試飲イベント
+    </div>
+    <div class="card-source">
+      <a href="https://whiskyfestival.jp/osaka2026/">出典を確認する</a> / <a href="https://prtimes.jp/main/html/rd/p/000000281.000119996.html">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[キャンペーン] ウイスキー＆スピリッツフェスティバル2026 in 横浜</div>
+    <div class="card-detail">
+      <span class="label">期間</span> 2026年（横浜開催・公式掲示板で日程公開）
+    </div>
+    <div class="card-detail">
+      <span class="label">場所</span> 横浜市内会場
+    </div>
+    <div class="card-detail">
+      <span class="label">内容</span> 国内外ウイスキー・スピリッツの大規模試飲イベント
+    </div>
+    <div class="card-source">
+      <a href="https://www.welcome.city.yokohama.jp/eventinfo/ev_detail.php?bid=yw10956">出典を確認する</a>
+    </div>
+  </div>
+
+  <h2>焼酎 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">[プレ値] 森伊蔵（プレミアム芋焼酎「3M」）</div>
+    <div class="card-detail">
+      <span class="label">定価</span> 720ml 約3,300円 / 1.8L 約4,400円
+    </div>
+    <div class="card-detail">
+      <span class="label">市場相場</span>
+      <span class="card-amount">720ml 約14,000円 / 1.8L 約18,000円（定価の約4倍）</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">買取相場</span> 二次流通価格との差が大きく、定価入手で高利幅
+    </div>
+    <div class="card-source">
+      <a href="https://norifune.com/liqueur/syochu/moriizo-buy">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[抽選] 森伊蔵酒造・高島屋 - 森伊蔵</div>
+    <div class="card-detail">
+      <span class="label">抽選</span> 森伊蔵酒造の電話抽選は毎月実施（受付日時は月により変動）
+    </div>
+    <div class="card-detail">
+      <span class="label">当選発表</span> 各回ごと
+    </div>
+    <div class="card-detail">
+      <span class="label">条件</span> 蔵元電話抽選、高島屋店頭抽選、タカシマヤクレジットカード会員抽選など
+    </div>
+    <div class="card-source">
+      <a href="https://zenpachi-saketen.jp/?mode=f2">出典を確認する</a> / <a href="https://linx-as.store/blogs/pedia/moriizo_lottery">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[抽選] 白玉醸造（関連会社） - 魔王</div>
+    <div class="card-detail">
+      <span class="label">抽選</span> 平日（月〜金、祝日除く）朝9:00〜、当日10:00頃に受付終了
+    </div>
+    <div class="card-detail">
+      <span class="label">当選発表</span> 各回ごと
+    </div>
+    <div class="card-detail">
+      <span class="label">条件</span> 電話抽選（醸造元関連会社）
+    </div>
+    <div class="card-source">
+      <a href="https://norifune.com/liqueur/syochu/maou-buy">出典を確認する</a>
+    </div>
+  </div>
+
+  <h2>日本酒 <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">[新発売] 新政酒造 陽乃鳥（貴醸酒・Private Labシリーズ）</div>
+    <div class="card-detail">
+      <span class="label">発売日</span> 2026年（実験酒シリーズとして流通）
+    </div>
+    <div class="card-detail">
+      <span class="label">定価</span> 蔵元・特約店価格に準ずる
+    </div>
+    <div class="card-detail">
+      <span class="label">入手方法</span> 新政特約店・専門酒販店。マンゴー様の濃密な甘みとパイナップル様の甘酸が特徴、希少流通でプレ値化しやすい
+    </div>
+    <div class="card-source">
+      <a href="https://www.saketime.jp/ranking/">出典を確認する</a>
+    </div>
+  </div>
+
+  <h2>クラフトビール <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">[新発売] 丹生川上神社下社コラボ ホワイトエール</div>
+    <div class="card-detail">
+      <span class="label">発売日</span> 2026/06/01（「水神さまの日」）
+    </div>
+    <div class="card-detail">
+      <span class="label">定価</span> 醸造元・取扱店価格に準ずる
+    </div>
+    <div class="card-detail">
+      <span class="label">入手方法</span> 寒九の湧き水を仕込み水に100％使用したホワイトエール。コラボ限定流通
+    </div>
+    <div class="card-source">
+      <a href="https://beergirl.net/beer-calendar_c/">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[新発売] アサヒ EGA BEER（エガビアー）</div>
+    <div class="card-detail">
+      <span class="label">発売日</span> 2026/06/02
+    </div>
+    <div class="card-detail">
+      <span class="label">定価</span> アサヒビール公表価格
+    </div>
+    <div class="card-detail">
+      <span class="label">入手方法</span> 一般流通
+    </div>
+    <div class="card-source">
+      <a href="https://www.sake-pre.net/calendar-for-newbeer2026/">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[新発売] 岩手県野田村産 山葡萄「紫雫」ラードラー</div>
+    <div class="card-detail">
+      <span class="label">発売日</span> 2026年6月（低アルコール・ラードラースタイル）
+    </div>
+    <div class="card-detail">
+      <span class="label">定価</span> 醸造元価格に準ずる
+    </div>
+    <div class="card-detail">
+      <span class="label">入手方法</span> 香料無添加、山葡萄由来の酸味と甘み。産地・コラボ限定流通
+    </div>
+    <div class="card-source">
+      <a href="https://beergirl.net/beer-calendar_c/">出典を確認する</a>
+    </div>
+  </div>
+
+  <p class="note">
+    ※掲載情報は確認時点のものです。最新の還元率・条件は各サイトにてご確認ください。
+  </p>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xツイートデータ分析レポート 2026-06-16</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --border: #30363d;
+      --accent: #1f6feb;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --link: #58a6ff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      padding: 24px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .report-date {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      padding-left: 12px;
+      border-left: 3px solid var(--accent);
+      margin: 32px 0 16px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 24px 0 8px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+
+    .card:hover { border-color: var(--link); }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .card-detail {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 15px;
+      color: var(--text);
+      margin-top: 8px;
+    }
+
+    .label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      min-width: 36px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .card-amount {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .total-count {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .section-count {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+      margin-left: 8px;
+    }
+
+    .card-source {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 32px 0;
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 16px; }
+      h1 { font-size: 20px; }
+      h2 { font-size: 16px; }
+      .card { padding: 16px; }
+      .card-detail {
+        flex-direction: column;
+        gap: 2px;
+      }
+      .label {
+        min-width: auto;
+        text-align: left;
+      }
+      .card-amount { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Xツイートデータ分析レポート</h1>
+  <p class="report-date">収集日時: 2026年6月16日 00:05</p>
+  <p class="total-count">分析ツイート: 1,157件</p>
+
+  <h2>1. 人気商品・トレンド <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ベイブレードX</div>
+    海外（ベトナム・中国）転売の新たな商材として過熱。売り場「すっからかん」で型落ちすら品薄。タカラトミーが増産声明を出すも入荷ほぼなしで「ガス抜き」との声。
+    <div class="card-detail"><span class="label">投稿者</span>@neko1332 / @suigin10 / @peridot_seki / @SagaOniGames / @egosticlisa</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">マンダロリアン&amp;グローグー（STAR WARS）</div>
+    映画大ヒットで関連商品が全方位バズ。フィギュア7,168円・絵本・ボトルキャップが軒並み品薄＆プレ値。「ネット系は枯れているので店舗で即買い推奨」との声。
+    <div class="card-detail"><span class="label">投稿者</span>@c_a_m_p__ / @god2000m / @rakualert / @gooma90364835</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">もっちゅりん（ミスド）</div>
+    ミセス効果で全国売り切れ続出。1人8個まででも午後には完売、入手困難。
+    <div class="card-detail"><span class="label">投稿者</span>@aromafullaihara / @sV6NPBaW4w7634 / @Maltese0123</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サッカー日本代表ユニフォーム</div>
+    W杯熱で品薄＆メルカリ・スニダンでプレ値化。渋谷・全店で完売報告多数。
+    <div class="card-detail"><span class="label">投稿者</span>@natsu_chaan / @osalepsy / @majimisfit / @ypttfp</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケカ MEGA系（アビスアイ／30th CELEBRATION）</div>
+    Amazon招待販売・各店抽選が殺到。せど子ら情報屋が「定価で取れ」と連投する注目度。
+    <div class="card-detail"><span class="label">投稿者</span>@sedokoX / @kotatsudemikanm / @pipipi</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ちいかわ映画グッズ／めじるしアクセサリー</div>
+    転売前提で品薄予想が支配的。駅ポスカ剥がし被害も発生。
+    <div class="card-detail"><span class="label">投稿者</span>@TSMKR1207zp / @123456789odio</div>
+  </div>
+
+  <h2>2. お得情報・セール <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">メンズノンノ7月号増刊（M!LK表紙）</div>
+    定価1,150円でAmazon在庫復活。特製ステッカー付き。プレ値前に定価確保推奨。
+    <div class="card-detail"><span class="label">投稿者</span>@DGOhavefun385 / @amanico2593 / @entameakira3</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ワンピカード スタートデッキ青クザン ST-33（2個）</div>
+    Amazon発送元で在庫復活。定価1,100円。
+    <div class="card-detail"><span class="label">投稿者</span>@hinoki652</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">エアウォレット</div>
+    招待コード利用で500円、15,000円チャージで2,000円、QR/VISA決済50%還元。
+    <div class="card-detail"><span class="label">投稿者</span>@nagaitousagi</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Coke ON／コカコーラ勝敗予想</div>
+    フォロー＆投稿で無料ドリンクチケット抽選。
+    <div class="card-detail"><span class="label">投稿者</span>@XgdhYYuiPxMnzhQ ほか多数</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">HEIWA株主優待 クールカート券／各種株主優待</div>
+    メルカリで優待券が即売れ（ゼビオ20%off、ルネサンス、テルマー湯等）。回転早く投資妙味あり。
+    <div class="card-detail"><span class="label">投稿者</span>@kentayuruhack（連投）</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">美的GRAND夏号増刊</div>
+    アヌアのたまごっちミスト現品付録で「価格崩壊」との声。在庫復活のこまめなチェック推奨。
+    <div class="card-detail"><span class="label">投稿者</span>@maaaaminnnn487</div>
+  </div>
+
+  <h2>3. 転売情報 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Luneth 転売価格分析</div>
+    通常案内3,930円。メルカリ4,950円＝本体3,930＋送料455＋箱代65＋手数料500の「手数料確保系」ライン。利益度の判定に有用。
+    <div class="card-detail"><span class="label">投稿者</span>@di_carta_s</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">マンジャロ（医療ダイエット）</div>
+    転売ヤー（医者）の利益率約3割。マンション借りて時給1万円で医師を雇いテレビ電話診断を行う実態が指摘されている。
+    <div class="card-detail"><span class="label">投稿者</span>@naplayer</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ワンピカード ルフィSR［ST13-015］（2nd ANNIVERSARY SET）</div>
+    ベトナム人転売ボスが「絶対に今から伸びる」と発言。先行情報として注目度高い。
+    <div class="card-detail"><span class="label">投稿者</span>@Ax4Hsb</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">カメラ プレ値高騰</div>
+    SX740HS／GR IV／G7 X MARK が全モデル品薄でプレ値。定価予約可能店の情報あり。
+    <div class="card-detail"><span class="label">投稿者</span>@ib7qve</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">6/10発売の利益商品共有</div>
+    せどり系アカウントが利益商品リストを発信。
+    <div class="card-detail"><span class="label">投稿者</span>@DaradaraHikaru</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケカ ショップの抱え込み</div>
+    問屋が買取BOX顔でプレ値販売。店頭に出さずオリパに投入する手口が指摘されている。
+    <div class="card-detail"><span class="label">投稿者</span>@Aki_Mew_ / @nanakamado14（バトロコ）</div>
+  </div>
+
+  <h2>4. 抽選・限定販売 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ユニオンアリーナ「無職転生」「マクロスVol.2」抽選販売</div>
+    とれじゃらす別館（大阪）。応募6/11〜6/17 20時、購入6/19〜21、店舗受取。
+    <div class="card-detail"><span class="label">投稿者</span>@AfroTCG</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケカ MEGA 30th CELEBRATION BOX</div>
+    Amazon招待リクエスト受付中、当落確認可。
+    <div class="card-detail"><span class="label">投稿者</span>@pipipi / @kotatsudemikanm</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">アビスアイ BOX</div>
+    スニダン名古屋パルコ店で抽選応募ページが稼働中。
+    <div class="card-detail"><span class="label">投稿者</span>@sedokoX</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">MEGAドリームex 1BOX プレゼント抽選</div>
+    フォロー＆いいねRPで応募。6/30まで。
+    <div class="card-detail"><span class="label">投稿者</span>@SD_oripa</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">進撃の巨人ブレオダ</div>
+    Amazonギフト券1,000円分を13名に抽選。6/24まで。
+    <div class="card-detail"><span class="label">投稿者</span>@shingeki_bo</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">資生堂 新ファンデ美容液 ／ フィールズ 金QUOカード</div>
+    資生堂: 現品を3名に抽選（拡散多数）。フィールズ: 金QUOカード7,500円分を5名に抽選。
+    <div class="card-detail"><span class="label">投稿者</span>@s_r_m3250 ほか多数 / @Fields_Fan</div>
+  </div>
+
+  <h2>5. サクセス報告 <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ポケカ投資 資産3,000万円構築ノウハウ</div>
+    月額2,500円（ハイパー）／3,500円（マスター）の有料サロン。総会員160人超、YouTube LIVEで実績公開。情報商材として要注意だが収益規模は大。
+    <div class="card-detail"><span class="label">投稿者</span>@hapimome_oripa</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">スロット高配当報告</div>
+    金プレ設定④GODで初当たり。革命機ヴァルヴレイヴ2 +7,020枚、戦国乙女5 +9,962枚、ミリオンゴッド +14,981枚など店舗データ。
+    <div class="card-detail"><span class="label">投稿者</span>@mochidama_ / @saitamawomatome</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セレボ完売報告</div>
+    ツムツムで24万円使用しセレクトボックスを完売。
+    <div class="card-detail"><span class="label">投稿者</span>@DoCLPSfdh8u8Zev</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">フェルメール展チケット確保</div>
+    32,000番台で12時間待機し9月枠の購入に成功。夏休み旅程を確保。
+    <div class="card-detail"><span class="label">投稿者</span>@uduki_tenko / @t_crew11 / @xk_fb</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">マルシェ・グッズ完売報告</div>
+    個人作家・地下アイドルの完売報告多数。販売実績のアピールとして拡散。
+    <div class="card-detail"><span class="label">投稿者</span>@can_dysun / @rincent_yuzu / @tama_natsume_</div>
+  </div>
+
+  <h2>6. プレ値情報 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ガンプラ全般</div>
+    需要過多で定価品がプレ値化。MG FAZZ Ver.Ka定価12,540円、MGプロヴィデンス5,940円、MGリバティアストレイ8,250円など。発送元Amazon以外は要注意。
+    <div class="card-detail"><span class="label">投稿者</span>@orange_2178（連投）/ @kokoperihell</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">マンダロリアン&amp;グローグー フィギュア</div>
+    安定供給まで買わない宣言が出るほどプレ値が続いている。
+    <div class="card-detail"><span class="label">投稿者</span>@gooma90364835 / @vo8aQnmahuwj4t0 / @akky_1981</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ベイブレードX ランダムブースター</div>
+    ワイバーン・ヴァルハス・フェニックスエナジーがプレ値。
+    <div class="card-detail"><span class="label">投稿者</span>@noalice_alt</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">初版本ブーム</div>
+    ワンピ初版50巻分など、初版本のプレ値ブーム到来の観測が広がっている。
+    <div class="card-detail"><span class="label">投稿者</span>@20tori_s / @c_a_m_p__</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ウイスキー</div>
+    響12年プレ値2万円超。泡波など希少銘柄が高騰。
+    <div class="card-detail"><span class="label">投稿者</span>@OBMAN777 / @tou_ra94005</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">遊戯王過去弾BOX</div>
+    鑑定品高騰に連動し、中身の強いBOXがプレ値化するとの予想。
+    <div class="card-detail"><span class="label">投稿者</span>@haru___akebono</div>
+  </div>
+
+  <h2>7. 入荷・再販情報 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ガンプラ大量再販（6/16 0時）</div>
+    HGプロヴィデンス1,980円、HGデスティニーSpecII、RGゴッドガンダム3,850円、HGBDダブルオーダイバーエース2,420円、MGゲルググVer.2.0など多数Amazon在庫復活。
+    <div class="card-detail"><span class="label">投稿者</span>@GunplaNotice / @tsumipla_kuzuse / @IhiZ8mk0vZciTY9 / @gpsokuho</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">MG 1/100 ガンダムリバティアストレイレッドフレーム</div>
+    予約開始。定価8,250円。定価再販のため即購入推奨。
+    <div class="card-detail"><span class="label">投稿者</span>@Land424259Land</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ワンピカード 決戦の刻【OP-16】</div>
+    数量限定で再販中。
+    <div class="card-detail"><span class="label">投稿者</span>@gamesearch1</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">マンダ&amp;グローグー ボトルキャップマスコット／ぬいぬいバッグ・ぬいコロン</div>
+    東宝オンラインストアでボトルキャップ再販（発送7月中旬）。ぬいぬいバッグ・ぬいコロンは受注生産で再登場。
+    <div class="card-detail"><span class="label">投稿者</span>@god2000m / @05Ocean</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">たまごっちパラダイス／メンズノンノ</div>
+    Amazonで在庫復活。争奪必至。
+    <div class="card-detail"><span class="label">投稿者</span>@cocoro_trend / @wotajun</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ゼルダ つながリンクマスコット</div>
+    エンスカイより7月再販決定。
+    <div class="card-detail"><span class="label">投稿者</span>@kaguraya13</div>
+  </div>
+
+  <h2>8. 注意・警告 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ナフサ不足の連鎖的品薄</div>
+    指定ゴミ袋・包装材・保冷剤・ラップ・薄型メガネレンズ・メラトベル遮蔽袋・コンサータが全国で品薄。買い占めも発生。
+    <div class="card-detail"><span class="label">投稿者</span>@horsehaircrab / @KimikoOpen / @adhdsavetheplan / @9ILk1OyuQF52945</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">チケット転売摘発</div>
+    BTS釜山コンでリストバンド付替え転売の現行犯10件11名が摘発され、NOL ID永久停止。AENショケ無料券の転売詐欺被害も報告されている。
+    <div class="card-detail"><span class="label">投稿者</span>@halekulani1306 / @JIi57Y</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">メルカリ箱転売の抜き取りリスク</div>
+    ポケカ初期ロット裁断問題に加え、転売ヤーからの箱買いは「ドギ逆抜かれ」確定との警告が出ている。
+    <div class="card-detail"><span class="label">投稿者</span>@Archer_HS1953 / @YeDaY2NFcZsd3K3</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">半導体・メモリ価格高騰</div>
+    中国の対日タングステン輸出停止で六フッ化タングステン生産停止。NAND/HBMへの影響が広がり、DRAM +125%・NAND +234%（2026年予想）でPC・メモリが高騰見込み。
+    <div class="card-detail"><span class="label">投稿者</span>@yasutaketin / @tuka_kabu_FIRE</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">食品値上げラッシュ</div>
+    6月は1,078〜1,159品目超が値上げ。即席麺・調味料・練り物・ラノベまで波及。
+    <div class="card-detail"><span class="label">投稿者</span>@takekane0to1 / @Rockazu / @SeitaroIseI</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">チェキ券・グッズ値上げ連鎖</div>
+    地下アイドル界でチェキ200〜300円値上げが続々。バニ系では半年で47%値上げの例も。
+    <div class="card-detail"><span class="label">投稿者</span>@phakchi_photo / @yuetchaan / @kuttiman</div>
+  </div>
+
+  <h2>即アクション度の高い順 トップ3 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">1位: ガンプラ 6/16 0時再販</div>
+    定価即完売リスクが高く、転売余地も大きい。今すぐ在庫を確認することを推奨。
+  </div>
+
+  <div class="card">
+    <div class="card-title">2位: ポケカ MEGA系 Amazon招待販売／各店抽選</div>
+    締切が迫っており、プレ値との差益が大きい。応募期限を要確認。
+  </div>
+
+  <div class="card">
+    <div class="card-title">3位: メンズノンノM!LK号・ワンピ青クザン 定価在庫復活</div>
+    プレ値化前の定価確保チャンス。在庫は早期に枯れる可能性が高い。
+  </div>
+
+  <p class="note">
+    ※元データは「転売・売り切れ・抽選・プレ値・値上げ・完売・品薄・在庫ない・再販・受注」での収集のため、@MLB_Connection（KUT技術文書連投）等のノイズ投稿は除外し、収益直結度・具体性・即時性で優先順位を付けています。掲載情報は収集時点のものです。最新情報は各サービス・販売元にてご確認ください。
+  </p>
+
+</body>
+</html>

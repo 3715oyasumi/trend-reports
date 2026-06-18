@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xツイートデータ分析レポート 2026-06-19</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+:root {
+  --bg: #0d1117;
+  --card: #161b22;
+  --border: #30363d;
+  --accent: #1f6feb;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --link: #58a6ff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  padding: 24px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 700;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+  margin: 32px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  transition: border-color 0.2s;
+}
+
+.card:hover { border-color: var(--link); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 36px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 32px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 600px) {
+  body { padding: 16px; }
+  h1 { font-size: 20px; }
+  h2 { font-size: 16px; }
+  .card { padding: 16px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 15px; }
+}
+  </style>
+</head>
+<body>
+
+<h1>Xツイートデータ分析レポート</h1>
+<p class="report-date">2026年6月19日 00:03</p>
+<p class="total-count">分析ツイート: 1113件</p>
+
+<h2>1. 人気商品・トレンド <span class="section-count">（6件）</span></h2>
+
+<div class="card">
+  <div class="card-title">NARUTO公式カードゲーム（ナルトカード）発表</div>
+  本日最大の話題。「最近のIPカード化で一番期待できる」と評価が高く、海外（仏・欧州・米）での人気から品薄必至との声が多数。第一弾からプレ値化の可能性大との見方がある一方、「第一弾プレ値つかんTCGはない」との反論も。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@gozo_madao / @zeki0818 / @ROLCANAdanchou / @ikamupoker
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ポケモン30周年グッズ（パッケージ&ゲームカード キーホルダー各種・パッケージピンズ額縁セット）</div>
+  6/18発売で即完売・大炎上。キーホルダー全8種／全6種は各¥400。パッケージピンズ額縁セットも同日発売。
+  <div class="card-detail">
+    <span class="label">発売日</span>2026年6月18日
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@oroshinohito
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">UNION ARENA「無職転生」(UA54BT)／「マクロス」Vol.2(EX14BT)</div>
+  6/18 11:00発売。プレミアムバンダイで即売り切れ。
+  <div class="card-detail">
+    <span class="label">発売日</span>2026年6月18日 11:00
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@oroshinohito
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ガンダムカードゲーム GD05「Freedom Ascension」</div>
+  収録発表。ストフリ最高レア化・ラクス収録・新レアリティ「リンクレア」で激アツ評価。7/25発売予定。
+  <div class="card-detail">
+    <span class="label">発売日</span>2026年7月25日（予定）
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@MhyuRu
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">One Piece ヒロインズエディション</div>
+  開封期待値が高く、再販・抽選に注目が集まっている。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@sedokoX / @InvesTCG1899
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">もっちゅりん（ドーナツ）</div>
+  各地で15時販売・20分前後で完売とバズが継続中。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@kikkaharuV ほか
+  </div>
+</div>
+
+<h2>2. お得情報・セール <span class="section-count">（6件）</span></h2>
+
+<div class="card">
+  <div class="card-title">Yahoo!ショッピング「爆買WEEK」</div>
+  6/19〜3日間開催。対象ストアで合計2万円以上購入でポイント7%、誰でも最大22%。値上げ前のスマホ購入に狙い目との声。
+  <div class="card-detail">
+    <span class="label">期間</span>2026年6月19日〜3日間
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@skyblue_1985jp
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">SHEIN バッグ&靴セール</div>
+  バッグ&靴が最大90%OFF。新規ユーザーはさらに50%OFFクーポンあり（コード: 2ZB6FM4）。
+  <div class="card-detail">
+    <span class="label">割引</span>最大90%OFF（新規ユーザー向け追加50%OFFクーポンあり）
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@c35toshi
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ソウルライフ最終日セール</div>
+  最終日につき持ち帰り負担を減らすため大幅割引品が多数出ている。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@ugoitashima
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ちいかわ ボンボンドロップシール（4柄）</div>
+  送料無料¥715で購入可能。店頭も続々再入荷中。
+  <div class="card-detail">
+    <span class="label">価格</span>¥715（送料無料）
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@amereeii
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">カードラッシュMTG「マーベル スーパー・ヒーローズ」販売開始</div>
+  豊富な在庫と求めやすい価格で注目。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@cardrush_mtg
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">デリOisix 品薄解消見込み</div>
+  来週分は品薄が解消される見込みとのこと。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@mikacchu1
+  </div>
+</div>
+
+<h2>3. 転売情報 <span class="section-count">（7件）</span></h2>
+
+<div class="card">
+  <div class="card-title">ポケモン30周年 パッケージピンズ額縁セット</div>
+  二次流通で高額取引が確認されている。
+  <div class="card-detail">
+    <span class="label">価格</span>¥54,460 / ¥54,621 / ¥55,726（取引例）
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@oroshinohito
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">UNION ARENA 無職転生 / マクロスVol.2</div>
+  発売直後から二次流通への出品が多数確認されている。
+  <div class="card-detail">
+    <span class="label">価格</span>無職転生 3BOX ¥33,333（送料込）/ マクロスVol.2 BOX ¥8,800＋送料¥800〜2,200
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@oroshinohito
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ドラゴンボール ビジュアルアドベンチャー プレミアムセットVol.2</div>
+  予約分が既に二次流通に出品されている状況。
+  <div class="card-detail">
+    <span class="label">価格</span>¥23,100（送料込、取引例）
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@oroshinohito
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">adidas 日本代表2ndユニフォーム</div>
+  発表直後は在庫潤沢だったが、人気で品薄・プレ値転売が横行中。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@BESHITTER / @sedokoX
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Supreme 2026SS WEEK17「Spitfire」コラボ</div>
+  6/20発売。販売情報・プレ値予想がすでに出回り中。
+  <div class="card-detail">
+    <span class="label">発売日</span>2026年6月20日
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@10Buy_NEXT
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">子供服 メルカリ転売被害</div>
+  定価＋1万円で購入させられたとの生報告が上がっている。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@rrrchan107
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">学マス一番くじ 転売ヤー先行確保</div>
+  発売前日（6/18）に転売ヤーが1ロット確保との目撃情報。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@zexy0623
+  </div>
+</div>
+
+<h2>4. 抽選・限定販売 <span class="section-count">（6件）</span></h2>
+
+<div class="card">
+  <div class="card-title">ストームエメラルダ／メガレックウザ 抽選販売</div>
+  6/19 14時にAmazonで招待受付開始の予想。毎回アクセス戦争になる人気商品。
+  <div class="card-detail">
+    <span class="label">日時</span>2026年6月19日 14:00（予想）
+  </div>
+  <div class="card-detail">
+    <span class="label">販売先</span>Amazon
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@EdwardHeesten
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ポケカ MEGA「アビスアイ」BOX 招待販売</div>
+  Amazonで招待販売開始。「メガドリームex」も抽選キャンペーン実施中（〜6/30）。
+  <div class="card-detail">
+    <span class="label">販売先</span>Amazon
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@kotatsudemikanm / @SD_oripa
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ドラゴンスター ヒロインズエディション 抽選</div>
+  落選者向けに通販再販も案内中。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@pokeca_cojp
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ゼロゼロニーゴウ プレイヤーズフェス（オリパ）</div>
+  6/19 19:00販売。1口¥3,000・全50口。ニャースex SARがオオアタリ枠。
+  <div class="card-detail">
+    <span class="label">日時</span>2026年6月19日 19:00
+  </div>
+  <div class="card-detail">
+    <span class="label">価格</span>1口 ¥3,000（全50口）
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@pokezero25
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ナルミヤ ボンボンドロップシール 抽選</div>
+  6/22〜23申込受付。7/1〜5に数量限定発売予定。
+  <div class="card-detail">
+    <span class="label">申込</span>2026年6月22〜23日
+  </div>
+  <div class="card-detail">
+    <span class="label">発売</span>2026年7月1〜5日（数量限定）
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@bondoro_ch
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">懸賞・キャンペーン各種</div>
+  ボートレース×ストリートファイターでAmazonギフト1万円分・60名当選キャンペーン実施中。東京喰種パチンコ金QUOカード等も。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@Lets_BOATRACE
+  </div>
+</div>
+
+<h2>5. サクセス報告 <span class="section-count">（5件）</span></h2>
+
+<div class="card">
+  <div class="card-title">メガドリームex — メガゲンガー獲得</div>
+  通算約62BOX開封でメガゲンガーを獲得。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@tinpirapokemon
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ひなTシャツ（映画hinata）再販でGET</div>
+  再販で購入成功。将来「昇天級プレ値」になりそうとの所感。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@b___um_pepe3
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ヒロインズ2 カートン確保</div>
+  プレ値でもカートン積みで確保成功、予想的中。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@Z87uMaUiXklwsIy
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ピカチュウぬい／メロアスいつぬい 定価購入</div>
+  受注対応でプレ値を出さず定価購入できた幸運報告。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@tsukaperi_
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">DDdy トワ（ボークス）廃盤前に確保</div>
+  日々の在庫チェックを続け、廃盤前にお迎え成功。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@route822188175
+  </div>
+</div>
+
+<h2>6. プレ値情報 <span class="section-count">（6件）</span></h2>
+
+<div class="card">
+  <div class="card-title">ガンダムカードゲーム GD05「Freedom Ascension」</div>
+  予約段階でプレ値・売り切れ状態。
+  <div class="card-detail">
+    <span class="label">プレ値</span>¥9,000
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@MhyuRu
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ポケカ スターターセットex「ダイゴのダンバル&メタグロスex」</div>
+  プレ値での購入が可能な状態で流通中。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@pokekakakuzaiko
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ガンプラ各種（MG GP03Sなど）</div>
+  再販即完売・定価超えプレ値が常態化している。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@orange_2178
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">N-1スターファイター／MAFEXマンダロリアン Ver.2.0</div>
+  Sold Out続出。見つけてもプレ値状態。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@edamame10495
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ドラゴンボール一番くじ COOGI E賞</div>
+  韓国未開封品が高額で流通中。
+  <div class="card-detail">
+    <span class="label">プレ値</span>¥40,000
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@shunsukehealthy
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">アナキン（ダース・ベイダー化）フィギュア</div>
+  高額プレ値で流通中。
+  <div class="card-detail">
+    <span class="label">プレ値</span>¥100,000
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@Y_Nagita
+  </div>
+</div>
+
+<h2>7. 入荷・再販情報 <span class="section-count">（7件）</span></h2>
+
+<div class="card">
+  <div class="card-title">ポケモン「おかえり！ピカチュウ 1/1」再販</div>
+  現在定価で購入可能。プレ値化しやすい人気商品のため早めの確認を推奨。
+  <div class="card-detail">
+    <span class="label">価格</span>定価（プレ値化の可能性あり）
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@sumineko1111
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">adidas Originals デジタル ツー リング 再販</div>
+  6/25再販。次回入荷は未定のため要注意。
+  <div class="card-detail">
+    <span class="label">再販日</span>2026年6月25日
+  </div>
+  <div class="card-detail">
+    <span class="label">価格</span>ゴールド ¥17,600 / シルバー ¥16,500
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@c_a_m_p__
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ガンプラ Amazon在庫復活多数</div>
+  MGグフVer.2.0 ¥4,620、MGリバティアストレイ レッドフレーム ¥8,250 等が復活。販売元がAmazon直営かどうかを必ず確認のこと（プレ値混在あり）。
+  <div class="card-detail">
+    <span class="label">注意</span>販売元がAmazon直営か要確認
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@GunplaOnlineX / @aanc20
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ボンボンドロップシール 在庫復活</div>
+  サンリオもじ4個¥2,200、ノンタン2個¥1,100で復活。
+  <div class="card-detail">
+    <span class="label">価格</span>サンリオもじ 4個 ¥2,200 / ノンタン 2個 ¥1,100
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@bondoro_alert / @soku_alert
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">デジモンカード通販 在庫補充・価格調整完了</div>
+  在庫補充・再入荷・価格調整が完了した旨のアナウンス。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@mercard_akiba
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ホットウィール（チェイサーJZX100／スープラ）予約開始</div>
+  予約開始。完売が早いため注意。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@snkrssmith12345
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">WIND BREAKER トレーディングミニ色紙 カンフー（再販）</div>
+  7月上旬発売予定。
+  <div class="card-detail">
+    <span class="label">発売</span>2026年7月上旬
+  </div>
+  <div class="card-detail">
+    <span class="label">価格</span>¥550
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@MFWB6
+  </div>
+</div>
+
+<h2>8. 注意・警告 <span class="section-count">（6件）</span></h2>
+
+<div class="card">
+  <div class="card-title">空予約転売詐欺（宿泊施設）</div>
+  Agoda / Booking.com / Expedia等で空予約転売トラブルが発生。東京INNも実名で注意喚起を行っている。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@CucumberYuki
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">闇バイト・マネーロンダリング勧誘</div>
+  「即金即日テレグラム高額案件」等の危険な勧誘ポストが確認されている。絶対に応じないこと。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@mich_ellech81
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">ガンプラ Amazon再入荷 プレ値混在注意</div>
+  Amazon在庫復活情報が出回っているが、販売元が非Amazonのプレ値商品が混在している。必ず販売元を確認すること。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@orange_2178
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">アイス値上げ — カルテル疑惑</div>
+  ロッテが価格改定発表を中止（公取委検査の影響か）。便乗値上げの可能性が多数指摘されている。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@oyanpon ほか多数
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">金属盗難転売</div>
+  銅価格上昇を背景に公営住宅の水道メーター45個が盗難される事案が発生。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@ggghhfd12
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">値上げラッシュ — 買い時警告</div>
+  サントリー131品目を11月値上げ、iPhone7月から値上げ観測（「18から4万値上げ」説も）、Mac・メモリ高騰。値上げ前の駆け込み購入の動きが多数見られる。
+  <div class="card-detail">
+    <span class="label">投稿者</span>@knoike / @abyss_holo21th
+  </div>
+</div>
+
+<h2>最注目アクション（即時性順） <span class="section-count">（4件）</span></h2>
+
+<div class="card">
+  <div class="card-title">6/19 14:00 — ストームエメラルダ／メガレックウザ Amazon抽選招待受付</div>
+  Amazonでの招待受付開始予想。毎回競争が激しく早めのアクセスが必要。
+  <div class="card-detail">
+    <span class="label">日時</span>2026年6月19日 14:00（予想）
+  </div>
+  <div class="card-detail">
+    <span class="label">販売先</span>Amazon
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@EdwardHeesten
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">6/19 19:00 — ゼロゼロニーゴウ オリパ販売</div>
+  1口¥3,000・全50口。ニャースex SARがオオアタリ枠。
+  <div class="card-detail">
+    <span class="label">日時</span>2026年6月19日 19:00
+  </div>
+  <div class="card-detail">
+    <span class="label">価格</span>1口 ¥3,000（全50口）
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@pokezero25
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">6/19〜 — Yahoo!爆買WEEK 最大22%で値上げ前スマホ・トレカ狙い</div>
+  3日間限定。対象ストアで合計2万円以上でポイント7%上乗せ、誰でも最大22%。
+  <div class="card-detail">
+    <span class="label">期間</span>2026年6月19日〜3日間
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@skyblue_1985jp
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">6/20 / 6/25 — Supreme WEEK17 Spitfire 発売 / adidas リングウォッチ再販</div>
+  Supreme 2026SS WEEK17「Spitfire」コラボは6/20発売。adidas Originals デジタル ツー リングは6/25再販（次回入荷未定）。
+  <div class="card-detail">
+    <span class="label">日時</span>Supreme: 2026年6月20日 / adidas: 2026年6月25日
+  </div>
+  <div class="card-detail">
+    <span class="label">投稿者</span>@10Buy_NEXT / @c_a_m_p__
+  </div>
+</div>
+
+<p class="note">
+  ※掲載情報は収集時点のツイート内容を元にしています。最新情報は各アカウント・販売元にてご確認ください。
+</p>
+
+</body>
+</html>

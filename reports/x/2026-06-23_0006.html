@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xツイートデータ分析レポート 2026-06-23</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+:root {
+  --bg: #0d1117;
+  --card: #161b22;
+  --border: #30363d;
+  --accent: #1f6feb;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --link: #58a6ff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  padding: 24px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 700;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+  margin: 32px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  transition: border-color 0.2s;
+}
+
+.card:hover { border-color: var(--link); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 36px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 32px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 600px) {
+  body { padding: 16px; }
+  h1 { font-size: 20px; }
+  h2 { font-size: 16px; }
+  .card { padding: 16px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 15px; }
+}
+  </style>
+</head>
+<body>
+
+  <h1>Xツイートデータ分析レポート</h1>
+  <p class="report-date">収集日時: 2026年6月23日 00:06</p>
+  <p class="total-count">分析ツイート: 1,152件</p>
+
+  <h2>1. 人気商品・トレンド <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ポケカ MEGA新弾全般（アビスアイ／ストームエメラルダ／メガブレイブ／30th CELEBRATION BOX）</div>
+    抽選・招待販売が乱立する最注目ジャンル。Amazon招待リクエスト稼働中。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @mirei_060_ama @kotatsudemikanm
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ミスド「もっちゅりん」</div>
+    ネットオーダー・店頭とも連日売り切れの社会現象級ヒット。DOMOTO東京ドームグッズと並ぶ即完売報道も。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @yamanenokurashi @topaz_yuki @tsukifuji_mirea
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ベイブレードX</div>
+    7/11発売商品が争奪戦化、タカラトミーモールが抽選販売へ移行。家電量販店も現物1個レベルの品薄。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @makifujisaki @neboose @Dionaea_mae_t
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ボンボンドロップシール（ボンドロ／サンリオもじ）</div>
+    Amazon定価2,200円で再販即・在庫変動を繰り返す売れ筋。専用速報botが多数稼働中。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @bondoro_alert @soku_alert
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">マンダロリアン＆グローグー（絵本・フィギュア）</div>
+    スターウォーズ新展開で店頭品薄。ZD toysフィギュア楽天定価10,800円。
+    <div class="card-detail">
+      <span class="label">価格</span> 10,800円（楽天定価）
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @zaramelorian @p9BdeZbMqkpuinU
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ちいかわ×スカイツリー</div>
+    チケット争奪が11時間に及ぶ激戦。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @c_itsu12 @skmkn7
+    </div>
+  </div>
+
+  <h2>2. お得情報・セール <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">エアウォレット 50%還元 6/23再開</div>
+    キャッシュレス還元の目玉。AEON Pay×ローソン抽選も同時進行。
+    <div class="card-detail">
+      <span class="label">開始</span> 6/23〜
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @haiji_doctor
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">宮本むなし キャンペーン（本日6/23最終日）</div>
+    デジタルお食事券500円分が70名当選の抽選。参加者全員にコロッケ1人前クーポン付き。
+    <div class="card-detail">
+      <span class="label">期限</span> 本日 6/23まで
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @munashi2022
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">楽天「勝ったら倍」発動中</div>
+    39キャンペーン2倍・買い回りと併用可。カメラ等の在庫復活も確認。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @tenbai_info0222
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">フロムザバレル（ニッカ）価格比較</div>
+    ドンキ等のプレ値よりAmazonが良心的価格。実店舗購入で割高になるケースあり。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @worldtrader14
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">9High／トーナメント 1,000円引きLINEクーポン</div>
+    ハズレなし配信中。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @9high_niigata
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">楽天ROOM クーポンで3WAYハンディファン 880円〜</div>
+    夏需要で注目の案件。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @mario_room0101
+    </div>
+  </div>
+
+  <h2>3. 転売情報 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ドラゴンボール ビジュアルアドベンチャー プレミアムセット vol.2</div>
+    6/23オンライン事前抽選開始。利益率は約2倍の見込み。
+    <div class="card-detail">
+      <span class="label">定価</span> 9,900円
+    </div>
+    <div class="card-detail">
+      <span class="label">予想相場</span> 20,000円
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @_88ai
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ガンバレジェンズ 極めようセット2026</div>
+    プレバン商品。転売相場との差が大きく利益が出やすい。
+    <div class="card-detail">
+      <span class="label">定価</span> 7,700円（プレバン）
+    </div>
+    <div class="card-detail">
+      <span class="label">転売相場</span> 13,500円（利益約5,800円）
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @oregonomi222
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">HH（仕入れ単価が低い商品群）</div>
+    仕入れ単価が安く利益が出やすいと現場分析。みしゃあぽそあは元値が高く強気設定が必要との見解。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @taihen_mm
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">豊海タワー（マンション）竣工前転売</div>
+    68㎡以上ですでに46件の竣工前転売を確認。抽選倍率への影響が懸念される。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @purechan6972
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">山崎12年 野良流通</div>
+    野良で33,000円のちょいプレ値。転売狙いの定番銘柄。
+    <div class="card-detail">
+      <span class="label">流通価格</span> 約33,000円
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @x3h8njX377gE8j9
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">コスモグラフ デイトナ 相場分析</div>
+    SSにプレ値500万払うならRG版が買いという相場比較の声。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @99president99
+    </div>
+  </div>
+
+  <h2>4. 抽選・限定販売 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ポケカ ストームエメラルダ 定価抽選販売（トレカスタイル）</div>
+    シュリンク付き。後でプレ値で買うなという注意喚起付き。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @gamesearch1
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケカ アビスアイ BOX 定価抽選（カードラボNAMBA店）</div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @sedokoX
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ドラゴンボール ビジュアルアドベンチャー vol.2 オンライン事前抽選</div>
+    購入履歴なし優先の可能性あり。必ず応募推奨。
+    <div class="card-detail">
+      <span class="label">受付開始</span> 6/23〜
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @GpXSNYse77
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">シルバニアファミリー×フェイラー 第2弾 公式オンライン限定抽選</div>
+    第1弾は争奪戦のプレ値確定コラボ。第2弾も激戦が予想される。
+    <div class="card-detail">
+      <span class="label">期間</span> 7/9 12:00〜7/14
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @c_a_m_p__
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">たまごっち（ジョーシンアプリ抽選）</div>
+    海外ニーズもある競争レベルの人気。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @tsuyotaku0210
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">MEGAドリームex 1BOX抽選（SDoripa）</div>
+    <div class="card-detail">
+      <span class="label">期限</span> 6/30まで
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @SD_oripa
+    </div>
+  </div>
+
+  <h2>5. サクセス報告 <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ポケカ フリマ産BOX開封 メガブレイブ確保</div>
+    クーポン併用で8,000円切りで確保し、開封検証を実施。
+    <div class="card-detail">
+      <span class="label">取得価格</span> 8,000円以下
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @tsuyotaku0210
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">オリパ即完売連発（トレカショップスカーレット）</div>
+    ピカチュウ&リザードンオリパが2分未満で完売。
+    <div class="card-detail">
+      <span class="label">完売時間</span> 2分未満
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @scarlet121105
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">七海アクスタ 定価+1,000円で確保</div>
+    フリマ相場約3万をらしんばんで定価+1,000円にて発見・確保。
+    <div class="card-detail">
+      <span class="label">フリマ相場</span> 約30,000円
+    </div>
+    <div class="card-detail">
+      <span class="label">取得価格</span> 定価+1,000円
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @nana3_1990
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ロト6 4等当選</div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @tc6501
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">スロット万枚達成（L東京リベンジャーズ 他）</div>
+    各店で+2,000〜5,000枚の報告が多数。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @como_0707 @saitamawomatome
+    </div>
+  </div>
+
+  <h2>6. プレ値情報 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">マーベルTCG 英語版</div>
+    日本語版は値引きされる一方、英語版だけプレ値が続いており「卑怯」と話題。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @anzu_hitoshi @Solsheria0920
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ロルカナ</div>
+    現在プレ値進行中。商品券購入で利益の余地ありとの指摘。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @pokekan777
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">中村悠一 DEAD LOCK BLCDシリーズ</div>
+    プレ値で少しずつ集める層が一定数いる。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @tokyo_usagi_
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ヒーマン（玩具）</div>
+    プレ値がなかなか下がらない状況が続いている。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @tdtjit11
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">メガドラ「空牙」／ファミコン攻略本</div>
+    レトロゲーム・攻略本にプレ値がついている。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @mochidukiMSXer1 @kksknico
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ホットウィール 特別カラー</div>
+    カーズ玩具の特別カラーはプレ値がつき、全集めが困難な状況。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @yamaneko555
+    </div>
+  </div>
+
+  <h2>7. 入荷・再販情報 <span class="section-count">（7件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ガンプラ大量再販（Amazon在庫復活ラッシュ）</div>
+    HG デスティニーガンダムSpecⅡ&ゼウスシルエット（定価7,920円）、暁美ほむら（ワルプルギス）、PG UNLEASHED νガンダム、30MP 草薙素子 など。速報bot多数稼働中。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @aanc20 @GunplaOnlineX @gundam_data_
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ボンボンドロップシール（サンリオもじ）Amazon再販中</div>
+    定価で入手できるチャンス。
+    <div class="card-detail">
+      <span class="label">価格</span> 2,200円（定価）
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @POPWOHEY @bondoro_alert
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケモン もちふわクッション（タマザラシ・ウリムー）12月再販予定</div>
+    公式告知済み。
+    <div class="card-detail">
+      <span class="label">再販時期</span> 12月予定
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @pikachu_pcn
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">インフェルノX ローソン再販情報</div>
+    九州中心に情報共有を募集する動き。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @ponpon39
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">たまごっちパラダイス Orange Tropics Amazon在庫復活</div>
+    再復活の可能性あり。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @cocoro_trend
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">S.H.Figuarts 孫悟飯〈Z戦士〉楽天ブックスで在庫あり</div>
+    他店は完売・品薄化が進んでいる。
+    <div class="card-detail">
+      <span class="label">入手先</span> 楽天ブックス
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @trend02oudou01
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">松屋シュクメルリ再販 / ディズニーシー25周年ランチケース再販</div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @jitanta_eclair @umekichi252525
+    </div>
+  </div>
+
+  <h2>8. 注意・警告 <span class="section-count">（7件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">日本ハム ウインナー・ハム約220品目 8月から値上げ</div>
+    最大46%幅の値上げとなる品も。
+    <div class="card-detail">
+      <span class="label">時期</span> 8月〜
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @nhk_news @ZARASOKU
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">au/UQ mobile 店頭事務手数料 4,950円に値上げ</div>
+    一部無料手続きも有料化。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @smhnpost @hmiyabi
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">値上げラッシュ警告</div>
+    シャウエッセン／ワイモバイル／Switch Online（来月）／Apple製品（見込み）が対象。8月集中・本格化は秋以降の見通し。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @kanmidokoro10
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ナフサ不足で塗料・シンナー・ゴミ袋が品薄・便乗値上げ</div>
+    アスクルがシンナー直販を6/23開始。在庫抱え業者は価格競争で不利になる見込み。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @crx7601 @Ishaqbaig___
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">香芝市Legendersコラボ特典の高額転売</div>
+    転売禁止品。通報を呼びかける声が多数。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @SoY_F0706
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">フリマ産ポケカの再封入リスク / アリエク仕入れ偽ブランド転売に注意</div>
+    購入時の真贋確認が必要。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @4y_26
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「投資家ヅラでプレ値買い」への警告</div>
+    売らなければ負けない論の裏に高値掴みリスクが潜んでいる。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @kumakuma0202k
+    </div>
+  </div>
+
+  <h2>本日の最優先アクション <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">6/23当日締切・開始</div>
+    宮本むなし当落チェック（本日23:59）、ドラゴンボールVA vol.2 抽選応募、エアウォレット50%還元スタート。
+    <div class="card-detail">
+      <span class="label">期限</span> 本日中
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">利益が見えている転売案件</div>
+    DB VA vol.2（+約10,000円）、ガンバレジェンズ極めようセット（+5,800円）。
+    <div class="card-detail">
+      <span class="label">利益目安</span> +5,800円〜+10,000円
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">定価で拾えるうちに</div>
+    ボンドロ（Amazon 2,200円）、ガンプラ再販各種、ポケカ各店定価抽選。
+  </div>
+
+  <p class="note">
+    ※掲載情報は収集時点（2026年6月23日 00:06）のツイート内容に基づきます。最新の価格・在庫・抽選情報は各販売サイト・アカウントにてご確認ください。
+  </p>
+
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xツイートデータ分析レポート 2026-07-02</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --border: #30363d;
+      --accent: #1f6feb;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --link: #58a6ff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      padding: 24px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .report-date {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      padding-left: 12px;
+      border-left: 3px solid var(--accent);
+      margin: 32px 0 16px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 24px 0 8px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+
+    .card:hover { border-color: var(--link); }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .card-detail {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 15px;
+      color: var(--text);
+      margin-top: 8px;
+    }
+
+    .label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      min-width: 36px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .card-amount {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .total-count {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .section-count {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+      margin-left: 8px;
+    }
+
+    .card-source {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 32px 0;
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 16px; }
+      h1 { font-size: 20px; }
+      h2 { font-size: 16px; }
+      .card { padding: 16px; }
+      .card-detail {
+        flex-direction: column;
+        gap: 2px;
+      }
+      .label {
+        min-width: auto;
+        text-align: left;
+      }
+      .card-amount { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Xツイートデータ分析レポート</h1>
+  <p class="report-date">2026年7月2日 00:03 収集</p>
+  <p class="total-count">分析ツイート: 1157件</p>
+
+  <h2>1. 人気商品・トレンド <span class="section-count">（7件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">【最重要】ナツコミ2026 ワンピース メタキラカード</div>
+    集英社コミックス1冊購入で貰える特典カードにワンピース柄が加わり、発売初日に全国の書店で争奪戦・棚破壊レベルの騒動。カード目当ての大量購入が横行し、メルカリ即完売多数。ジャンプ系（カグラバチ・ダンダダン等）も対象。
+    <div class="card-detail"><span class="label">投稿者</span>@Unit_1_sub / @tea_rose / @miorenillus / @yashinokibeach</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ドラクエ40周年コラボ</div>
+    エイトザタラソ（ツルハ限定シャンプー）は田舎でも開店5分で完売、目薬・シャンプーは炎上級の品薄・高額化。7/2からは吉野家コラボに殺到見込み。
+    <div class="card-detail"><span class="label">投稿者</span>@ry1h155 / @genshin_Belle / @kk80864787</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ホットウィール新作（Amazon 0時予約）</div>
+    ワイスピ・ブールバード系が人気車種で「朝には売り切れ・プレ値化」。PRアカウントが大量投稿しており注目度が高い。
+    <div class="card-detail"><span class="label">投稿者</span>@travelsukidayoo / @Keito88amiami 他多数</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サーティワン ドラクエ「ベル袋」</div>
+    仕事終わりに向かうも目の前で完売報告続出。1時間並びも売切あり。
+    <div class="card-detail"><span class="label">投稿者</span>@Mt_Dragon04 / @noidea23__ / @kuumaakuu34</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケモン サービスエリア／ポケスリ3周年グッズ</div>
+    アクキー・アクスタ出遅れ売り切れ、SAスタンプラリー人気。
+    <div class="card-detail"><span class="label">投稿者</span>@bibitan__38b / @7xTdK1OEaV14852</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ハートブレッドアンティーク×鬼滅コラボパン</div>
+    炭治郎パン完売、アクキー等グッズ争奪。
+    <div class="card-detail"><span class="label">投稿者</span>@junorimar / @keikei003546</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">カプセルトイ「めじるし／ボンボンドロップシール」</div>
+    いぬのめじるし・スンスン系が品薄で30分以内完売も。
+    <div class="card-detail"><span class="label">投稿者</span>@_PECOROOM2_ / @miena_1014</div>
+  </div>
+
+  <h2>2. お得情報・セール <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">NICEHCK BlueIsland（イヤホン）処分価格</div>
+    ストア割引コード <strong>BLUSL7</strong> / AE割引コード <strong>JPCD04</strong>。
+    <div class="card-detail"><span class="label">投稿者</span>@MoonHiFi</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Qoo10 LIVE（7/2 20時 BANOBAGI）</div>
+    ビタショットフルチャージ最大68%OFF＋購入者全員現品特典。
+    <div class="card-detail"><span class="label">投稿者</span>@Qoo10_Shopping</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">タカラトミー キラ★ガチャシール（ハローキティ）在庫復活</div>
+    定価1,741〜1,800円、発送元Amazonなら定価。転売品注意喚起付き。
+    <div class="card-detail"><span class="label">投稿者</span>@hinoki652 / @daigorotan</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Switch Online 値上げ前チャージが得</div>
+    6月中に1095日分をまとめ買いし、残日数×¥8精算が可能。差額が大きく節約効果あり。
+    <div class="card-detail"><span class="label">投稿者</span>@manahirocat / @_hara19</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">美容雑誌付録狙い</div>
+    美的2026年8月号（メディヒール）、CLASSY.増刊等、在庫復活を繰り返すので狙い目。
+    <div class="card-detail"><span class="label">投稿者</span>@yufu1187 / @maaaaminnnn487</div>
+  </div>
+
+  <h2>3. 転売情報 <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ナツコミ ワンピカードで「20万稼いだ」報告</div>
+    現在最も利益の出ている案件との声が出回る。ただしメルカリ相場は伸び悩みで赤字・爆死報告も混在しており、過熱ピークの兆候がある。
+    <div class="card-detail"><span class="label">投稿者</span>@w_osaru / @wwwsyake / @demaedaubero</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケカ投資：SARメガレックウザ</div>
+    初日購入後、海外エクスプレスPSA提出でPSA10なら25〜30万で売れるとの具体的な利益ライン提示。
+    <div class="card-detail"><span class="label">投稿者</span>@hkhk_pk</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ダイソー「USB式グラデーションライト付車載扇風機」</div>
+    昨年バズり今年も品薄、フリマで転売祭り。ダイソーオンラインで定価購入可。
+    <div class="card-detail"><span class="label">投稿者</span>@xxx_takoyakiman</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">メルカリ収支の実態</div>
+    ナツコミ特典は手数料・送料引くと手元に約千円しか残らないとの分析（薄利多売の実態）。
+    <div class="card-detail"><span class="label">投稿者</span>@ETRANZE1</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">せどり思考：品薄品を仕入れる</div>
+    「安く買える＝在庫余り＝資産増えない。仕入れるべきは"品薄"」という実践的視点。メルカリ売り切れを見てブランド選定する手法。
+    <div class="card-detail"><span class="label">投稿者</span>@renomochat52934 / @sedojii_buppan</div>
+  </div>
+
+  <h2>4. 抽選・限定販売 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ポケカ MEGAドリームex BOX プレゼント</div>
+    フォロー＋いいね＆RPで抽選1名1BOX、7/31まで。定価入手支援企画も併走（福福トレカ通販）。
+    <div class="card-detail"><span class="label">投稿者</span>@SD_oripa / @sedokoX</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">KFC 夏の和風バーガーズ</div>
+    抽選100名にデジタルKFCカード。
+    <div class="card-detail"><span class="label">投稿者</span>@KFC_jp</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">トイ・ストーリー サマーマーケット プレキャン</div>
+    ドンキ／アピタ・ピアゴ各Xで抽選100名その場当選、〜7/3。
+    <div class="card-detail"><span class="label">投稿者</span>@donki_donki / @apita_piago_uny</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">出前館×ケロロ軍曹</div>
+    ムビチケペア毎日5組＋クリアファイル200名。
+    <div class="card-detail"><span class="label">投稿者</span>@demaecan</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">東北未来芸術花火2026（桑田佳祐SP）2次抽選</div>
+    7/13 15:00〜、観覧8,000円〜。
+    <div class="card-detail"><span class="label">投稿者</span>@tohoku_hanabi</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ボートレース若松×MFゴースト</div>
+    フォロー＋RPでデジタルギフト即当選。
+    <div class="card-detail"><span class="label">投稿者</span>@Lets_BOATRACE</div>
+  </div>
+
+  <h2>5. サクセス報告 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">パチスロ万枚報告</div>
+    7月スタートダッシュ、投資4kで万枚（@NEK0theCAT）。アイムジャグラー設定6で収支+3,677枚（@masaru77ginko）。北斗転生の章2単体で+12,532枚台データ（@kanagawamatome）。
+    <div class="card-detail"><span class="label">投稿者</span>@NEK0theCAT / @masaru77ginko / @kanagawamatome</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">転売「20万稼いだ」報告（ナツコミ）</div>
+    ナツコミ特典の転売で20万稼いだとの報告。
+    <div class="card-detail"><span class="label">投稿者</span>@w_osaru</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケカ高額開封</div>
+    10BOX以上（プレ値含む）開封してでも欲しいカード確保報告。
+    <div class="card-detail"><span class="label">投稿者</span>@Kaitonhqw</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">せどり効率化の気づき</div>
+    「見なくていいものを判断できるようになり仕入れ時間が激減」。
+    <div class="card-detail"><span class="label">投稿者</span>@sedojii_buppan</div>
+  </div>
+
+  <h2>6. プレ値情報 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">MG Ex-S/Sガンダム（タスクフォースαVer.）</div>
+    予約瞬殺・発売前からAmazonでプレ値、二次予約待ち。Zガンダム系（ロボ魂Ζ、GGGフォウ）も人気でプレ値化。
+    <div class="card-detail"><span class="label">投稿者</span>@920san / @ASTRAY07203354</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サモ・ハン・キンポー フィギュア</div>
+    発売直後にプレ値。
+    <div class="card-detail"><span class="label">投稿者</span>@kishu002 / @takashin_DQW</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">PSソフト各種（PS版ディスク生産終了報道の影響）</div>
+    ときメモドラマシリーズ、SDスナッチャー超プレ値、絶体絶命都市、アマガミパケ版等が高騰。DL版・アーカイブは早めの購入推奨との声多数。
+    <div class="card-detail"><span class="label">投稿者</span>@scale00GS4 / @amuhati / @fastsnow2</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ナツコミ ワンピカード プレ値化</div>
+    プレ値化進行中だが「大暴落する」との警戒も強い。
+    <div class="card-detail"><span class="label">投稿者</span>@masa03yoroshiku / @penpen1pen2penl</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ミニ四駆 マルーンタイヤ／カプセムセット04・05</div>
+    再販かからずプレ値化。
+    <div class="card-detail"><span class="label">投稿者</span>@ZFYF1BrBlx72257 / @DM1000RX</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">リアルマッコイ、ねんどろ沖田さん・夜神月2.0等</div>
+    発売済み品がプレ値。
+    <div class="card-detail"><span class="label">投稿者</span>@asasyo_figure / @Luna__R</div>
+  </div>
+
+  <h2>7. 入荷・再販情報 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">【最重要】メガハウス 大量再販 7/2 0時予約開始（あみあみ等）</div>
+    Zガンダム フォウ・ムラサメ（ヤフオク高騰品）、BLEACH黒崎一護／朽木白哉、鬼滅てのひらしのぶ、呪術虎杖、ワンピ ロー、進撃ニャンコBOX 等。
+    <div class="card-detail"><span class="label">投稿者</span>@Anime_Voice / @JQo8kZjEX7qKkSx / @chantono2</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">PS5 デジタル・エディション＋ディスクドライブ Amazon再入荷 66,611円</div>
+    ディスク版生産終了報道で駆け込み需要見込み。
+    <div class="card-detail"><span class="label">投稿者</span>@yuzuyuzu73ouen</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ガンプラ再販 在庫復活</div>
+    HGシェンロン（1,870円）、ゴッドガンダム、アルトアイゼン・リーゼ、HG鉄血グレイズアイン等。
+    <div class="card-detail"><span class="label">投稿者</span>@Gbot0897067 / @aanc20 / @takerudetube</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ベイブレードX BX-50 ランダムブースターVol.11</div>
+    予約開始、こまめな在庫復活あり。
+    <div class="card-detail"><span class="label">投稿者</span>@reichanpt</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ボンボンドロップシール（サンリオ）楽天再入荷</div>
+    ハローキティ/シナモン/マイメロ/クロミ、定価。品薄継続中。
+    <div class="card-detail"><span class="label">投稿者</span>@lala_lalala333 / @mahiro_3566</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">G-SHOCK×ポケモン 30周年GA-110PKM</div>
+    プレ値人気、Amazon再入荷狙い。
+    <div class="card-detail"><span class="label">投稿者</span>@sakura010131</div>
+  </div>
+
+  <h2>8. 注意・警告 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">詐欺警告：駿河屋を騙る偽SNSアカウント</div>
+    「閉店セール」「在庫処分」で市場価格とかけ離れた価格販売を装う偽アカウントが確認されている。
+    <div class="card-detail"><span class="label">投稿者</span>@omiyakai</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">PS新作 ディスク版生産終了</div>
+    SIEが2028年1月以降の新作はDL版のみと発表。中古市場消滅・プレ値化・限定DLカードのプレミア化が予想され、DLC・プレ値ソフトは今のうちの購入を推奨する声が多い。
+    <div class="card-detail"><span class="label">投稿者</span>@taka1636 / @halhal360</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ナツコミ ワンピカード 暴落警告</div>
+    発行枚数多く「そのうち大暴落」「8月にも再配布あり、焦ってプレ値で買う意味なし」との情報が出回っている。
+    <div class="card-detail"><span class="label">投稿者</span>@xlSTyxkCwuRNt98 / @choco929292</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">7月値上げラッシュ</div>
+    飲食料品2,566品目値上げ（年間2万品目ペース）、Apple製品（6/25予告なし値上げ）、NECルーター最大65.5%値上げ、たばこ20円等。値上げ前購入の駆け込みを推奨する声が多い。
+    <div class="card-detail"><span class="label">投稿者</span>@ktai_watch / @ya1453 / @gekiyasu</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">転売品購入NG喚起</div>
+    転売品を買うと次の買い占めを誘発するとして、定価入手ルートの共有が多数見られる。
+    <div class="card-detail"><span class="label">投稿者</span>@UminChu1100s / @sedokoX</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">中東情勢で医薬品・薬容器が品薄</div>
+    ロキソニン等一部で料金徴収も発生。
+    <div class="card-detail"><span class="label">投稿者</span>@tetsumah / @kirinsana</div>
+  </div>
+
+  <hr>
+
+  <h2>総括：優先アクション <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">今夜〜明朝の即時案件</div>
+    メガハウス再販予約（7/2 0時）、ホットウィール0時予約、PS5＋ドライブ再入荷。いずれも転売妙味あり。
+  </div>
+
+  <div class="card">
+    <div class="card-title">過熱ピーク注意：ナツコミ ワンピカード</div>
+    利益報告と赤字・暴落警告が併存。高値掴みリスクが大きく、8月再配布情報もあるため慎重な判断が必要。
+  </div>
+
+  <div class="card">
+    <div class="card-title">中長期の仕込み</div>
+    PS版ディスク生産終了に伴うプレ値ソフト・DLC・限定DLカードの先回り購入が有効と見られる。
+  </div>
+
+  <p class="note">
+    ※この分析はXツイートデータ（1157件）を収集・分類したものです。掲載情報は収集時点のものであり、在庫状況・価格・抽選条件等は変動します。各情報は該当アカウントまたは公式サイトにてご確認ください。
+  </p>
+</body>
+</html>

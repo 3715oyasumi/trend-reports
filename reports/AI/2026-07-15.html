@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI業界最新動向レポート（2026年7月時点）</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+:root {
+  --bg: #0d1117; --card: #161b22; --border: #30363d;
+  --accent: #1f6feb; --text: #e6edf3; --muted: #8b949e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px; line-height: 1.7; padding: 24px; max-width: 860px; margin: 0 auto;
+}
+h1 {
+  font-size: 24px; font-weight: 700; margin-bottom: 8px;
+  padding-bottom: 12px; border-bottom: 2px solid var(--accent);
+}
+.report-date {
+  font-size: 13px; color: var(--muted); margin-bottom: 24px;
+}
+h2 {
+  font-size: 18px; font-weight: 700; margin: 32px 0 16px;
+  padding-left: 12px; border-left: 3px solid var(--accent);
+}
+h3 { font-size: 16px; font-weight: 700; margin: 24px 0 8px; color: var(--text); }
+ul { list-style: none; padding: 0; margin: 0; }
+ul li {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 4px; padding: 16px 24px; margin-bottom: 8px;
+  transition: border-color 0.2s;
+}
+ul li:hover { border-color: #58a6ff; }
+ul ul { margin-top: 8px; margin-left: 0; }
+ul ul li {
+  background: #0d1117; border-color: #21262d;
+  padding: 8px 16px; font-size: 14px; color: var(--muted);
+}
+ul ul li:hover { border-color: #30363d; }
+p { margin-bottom: 8px; font-size: 16px; }
+a { color: #58a6ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+strong { color: #fff; }
+hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; }
+th { background: #1c2128; padding: 10px 16px; text-align: left; color: var(--muted); border-bottom: 2px solid var(--border); }
+td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+tr:hover td { background: #1c2128; }
+blockquote { border-left: 3px solid var(--accent); padding-left: 16px; color: var(--muted); margin: 16px 0; }
+code { background: #1c2128; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+@media (max-width: 600px) { body { padding: 16px; } h1 { font-size: 20px; } h2 { font-size: 16px; } }
+</style>
+</head>
+<body>
+<h1>AI業界最新動向レポート（2026年7月時点）</h1>
+<hr />
+<h2>1. 新AIモデル・LLM</h2>
+<p><strong>OpenAI / ChatGPT</strong>
+トピック名: GPT-5.6シリーズ（Sol / Terra / Luna）を一般提供開始。3階層構成でSolが最上位、Terraがバランス型、Lunaが低コスト型。Terminal-Bench 2.1でSol 88.8%（並列Ultraモードで91.9%）、SWE-Bench Pro 64.6%。モデル生成JSを隔離実行する「Programmatic Tool Calling」に対応。
+公開日: 2026/07/09（プレビューは2026/06/26）
+料金: API（100万トークン 入力/出力）Sol=$5/$30、Terra=$2.50/$15、Luna=$1/$6。キャッシュ読取90%割引、Batch最大50%割引。ChatGPTは無料/有料で提供
+引用元: <a href="https://www.marktechpost.com/2026/07/09/openai-releases-gpt-5-6-a-three-tier-model-family-with-programmatic-tool-calling/" target="_blank" rel="noopener noreferrer">https://www.marktechpost.com/2026/07/09/openai-releases-gpt-5-6-a-three-tier-model-family-with-programmatic-tool-calling/</a></p>
+<p><strong>Anthropic / Claude</strong>
+トピック名: Claude Sonnet 5 公開。史上最もエージェント的なSonnetで、ブラウザ・ターミナル等の自律実行が可能。性能はOpus 4.8に近く、Free/Proの既定モデル。多言語（日本語）対応。
+公開日: 2026/06/30
+料金: 導入価格（〜8/31）$2/$10、以降$3/$15。Freeプランで無料利用可
+引用元: <a href="https://www.anthropic.com/news/claude-sonnet-5" target="_blank" rel="noopener noreferrer">https://www.anthropic.com/news/claude-sonnet-5</a></p>
+<p><strong>Anthropic / Claude</strong>
+トピック名: Claude Fable 5 / Mythos 5 公開。一般提供中で最強クラス。SWE-Bench Proで80.3%（GPT-5.5は58.6%）。ある物理研究タスクをGPT-5.5の1/3の推論トークンで完了した例も。
+公開日: 2026/06/09
+料金: $10/$50（100万トークン 入力/出力）
+引用元: <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5" target="_blank" rel="noopener noreferrer">https://www.anthropic.com/news/claude-fable-5-mythos-5</a></p>
+<p><strong>Google DeepMind / Gemini</strong>
+トピック名: Google I/O 2026でGemini 3.5 Flash・Gemini Omniを発表。3.5 Flashはフラッグシップ級知能をFlash速度で提供しAIモード検索の既定に。Omniは任意入力から動画等を生成するマルチモーダルモデル。上位のGemini 3.5 Pro（2Mトークン・Deep Think）は7月時点でVertexプレビュー段階。
+公開日: 2026/05/19
+料金: Omniは YouTube Shorts Remix等で無料試用可。Geminiアプリは無料/有料（AI Plus/Pro/Ultra）。日本語対応
+引用元: <a href="https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/" target="_blank" rel="noopener noreferrer">https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/</a></p>
+<p><strong>xAI（SpaceXAI）/ Grok</strong>
+トピック名: Grok 4.5 一般提供。1.5兆パラメータ基盤で、買収したCursorのコーディングデータを取り込みエージェント/コーディングに注力。Muskは「Opus級だが高速」と表現。文脈50万トークン。7月時点でEU未提供。
+公開日: 2026/07/09
+料金: $2/$6（100万トークン 入力/出力）
+引用元: <a href="https://techcrunch.com/2026/07/08/spacexai-releases-grok-4-5-which-elon-describes-as-an-opus-class-model/" target="_blank" rel="noopener noreferrer">https://techcrunch.com/2026/07/08/spacexai-releases-grok-4-5-which-elon-describes-as-an-opus-class-model/</a></p>
+<p><strong>Meta / Muse Spark</strong>
+トピック名: Superintelligence Labs（Alexandr Wang主導）初モデル。Llamaに代わりMeta AIのエンジンに。ネイティブ・マルチモーダルでツール利用・視覚的思考連鎖。Llama路線から転換しプロプライエタリ化（重み非公開）。
+公開日: 2026/04/08
+料金: Meta AI経由で無料利用可（重みは非公開）
+引用元: <a href="https://ai.meta.com/blog/introducing-muse-spark-msl/" target="_blank" rel="noopener noreferrer">https://ai.meta.com/blog/introducing-muse-spark-msl/</a></p>
+<p><strong>Microsoft / Copilot（MAIモデル群）</strong>
+トピック名: Build 2026で新MAIモデル7種を発表。MAI-Thinking-1（推論）、MAI-Code-1-Flash（Copilot/VS Code統合の低コスト）、MAI-Image-2.5、MAI-Transcribe-1.5（43言語）、MAI-Voice-2（15言語音声生成）など。
+公開日: 2026/06/02
+料金: Copilot経由で提供（無料版/有料版あり）
+引用元: <a href="https://microsoft.ai/news/building-a-hillclimbing-machine-launching-seven-new-mai-models/" target="_blank" rel="noopener noreferrer">https://microsoft.ai/news/building-a-hillclimbing-machine-launching-seven-new-mai-models/</a></p>
+<p><strong>DeepSeek / Mistral</strong>
+トピック名: DeepSeek V4（V4-Pro/V4-Flash）をオープンウェイトで公開（V4-Proは総1.6兆・アクティブ490億MoE、文脈100万トークン）。Mistralは新オープンウェイトモデルをパートナー向け早期アクセス開始、夏に広域公開予定。
+公開日: DeepSeek V4=2026/04/24、Mistral早期アクセス=2026/07
+料金: DeepSeek V4はHugging Faceで入手可（無料）、API有償
+引用元: <a href="https://api-docs.deepseek.com/news/news260424/" target="_blank" rel="noopener noreferrer">https://api-docs.deepseek.com/news/news260424/</a></p>
+<hr />
+<h2>2. 新AIツール・サービス</h2>
+<p><strong>Midjourney</strong>
+トピック名: V8.1が全ユーザーのデフォルトモデルに。従来比4〜5倍高速化、アップスケール不要で2K解像度のHD画像を直接生成。日本語UI非対応（プロンプトは英語推奨）。
+公開日: 2026/06/10
+料金: Basic $10 / Standard $30 / Pro $60 / Mega $120（無料枠なし）
+引用元: <a href="https://updates.midjourney.com/v8-1-is-now-the-default-model/" target="_blank" rel="noopener noreferrer">https://updates.midjourney.com/v8-1-is-now-the-default-model/</a></p>
+<p><strong>Runway / Gen-4</strong>
+トピック名: 新動画モデルGen-4公開。最大60秒・4Kの連続生成、詳細なカメラ制御、ネイティブ音声トラック生成、ショット間でキャラ・背景を保つ「World Consistency」を搭載。無料クレジットあり。
+公開日: 2026/05/03
+料金: 無料枠あり（クレジット消費）、有料は月額課金
+引用元: <a href="https://www.ud.hk/en/blogs/insight/article/2026-05-05-runway-gen4-guide" target="_blank" rel="noopener noreferrer">https://www.ud.hk/en/blogs/insight/article/2026-05-05-runway-gen4-guide</a></p>
+<p><strong>Kling AI（Kuaishou）</strong>
+トピック名: Kling 3.0 Turbo / Omni Oneを追加。4K編集・長尺・マルチショット物語生成・ネイティブ音声（リップシンク）強化。無料枠が主要動画AI最大級（毎日66クレジット、カード不要）で初心者向き。
+公開日: 2026/06/17
+料金: 無料（66クレジット/日）、Standard $6.99 / Pro 約$26〜/月
+引用元: <a href="https://www.atlascloud.ai/blog/guides/kling-3.0-review-features-pricing-ai-alternatives" target="_blank" rel="noopener noreferrer">https://www.atlascloud.ai/blog/guides/kling-3.0-review-features-pricing-ai-alternatives</a></p>
+<p><strong>OpenAI / Sora</strong>
+トピック名: 消費者向けSoraアプリ（Web/iOS）が提供終了。1日約100万ドルのコストと利用低迷が要因。開発者向けAPIは稼働継続だが2026/9/24に停止予定。動画生成の高コスト問題を象徴。
+公開日: 2026/04/26
+料金: 一般アプリ終了。API $0.10〜0.70/秒（9/24停止予定）
+引用元: <a href="https://techxplore.com/news/2026-04-sora-shutdown-reveals-limits-ai.html" target="_blank" rel="noopener noreferrer">https://techxplore.com/news/2026-04-sora-shutdown-reveals-limits-ai.html</a></p>
+<p><strong>GitHub Copilot</strong>
+トピック名: エージェント特化のデスクトップアプリ「GitHub Copilot app」を発表（プレビュー）。複数エージェント一元管理「My Work」、各セッションを独立git worktreeで隔離、PR自動化「Agent Merge」を搭載。
+公開日: 2026/06/02
+料金: Copilot Pro/Pro+/Business/Enterprise契約者向け
+引用元: <a href="https://github.blog/news-insights/product-news/github-copilot-app-the-agent-native-desktop-experience/" target="_blank" rel="noopener noreferrer">https://github.blog/news-insights/product-news/github-copilot-app-the-agent-native-desktop-experience/</a></p>
+<p><strong>Cursor</strong>
+トピック名: v3.11で並行作業の「Side Chats」、エージェント履歴検索を追加。6月には自動起動する「Automations」やiOSアプリ（ベータ）も投入。無料プランあり・初心者導入容易。
+公開日: 2026/07/10
+料金: 無料プランあり、Pro等は月額課金
+引用元: <a href="https://cursor.com/changelog" target="_blank" rel="noopener noreferrer">https://cursor.com/changelog</a></p>
+<p><strong>Windsurf / Cognition Devin</strong>
+トピック名: Windsurfを次世代版「Devin Desktop」に刷新。エージェントをKanban表示で一元管理する「Agent Command Center」、Rust製の新ローカルエージェント「Devin Local」（トークン効率最大30%向上）を搭載。
+公開日: 2026/06/02
+料金: 有料プラン中心
+引用元: <a href="https://devin.ai/blog/windsurf-is-now-devin-desktop" target="_blank" rel="noopener noreferrer">https://devin.ai/blog/windsurf-is-now-devin-desktop</a></p>
+<p><strong>Adobe Firefly</strong>
+トピック名: 自然言語で複数ステップ生成・編集を計画実行する「Firefly AI Assistant（ベータ）」、独自スタイル学習「Custom Models」を追加。日本語プロンプト対応、無料枠あり。
+公開日: 2026年（順次更新）
+料金: 無料〜（Standard $9.99 / Pro $19.99 / Premium $199.99）
+引用元: <a href="https://helpx.adobe.com/firefly/web/whats-new/new-features/whats-new.html" target="_blank" rel="noopener noreferrer">https://helpx.adobe.com/firefly/web/whats-new/new-features/whats-new.html</a></p>
+<p><strong>n8n / Zapier（自動化）</strong>
+トピック名: n8n 2.0が約70のAIノード、永続エージェントメモリ、真のエージェントループを実装（6月にMCP対応追加、セルフホスト無料）。Zapierは8,000超アプリ横断で自律実行する「Zapier Agents」とMCPサーバーを展開。
+公開日: 2026/06（n8n v2.0は2026/01）
+料金: n8nセルフホスト無料／Zapier無料プランあり
+引用元: <a href="https://nodesify.com/blog/n8n-workflow-automation-guide-2026" target="_blank" rel="noopener noreferrer">https://nodesify.com/blog/n8n-workflow-automation-guide-2026</a></p>
+<hr />
+<h2>3. プロンプト技術・活用Tips</h2>
+<p><strong>コンテキストエンジニアリング（Anthropic）</strong>
+トピック名: 2026年は「プロンプト」から「コンテキストエンジニアリング」へ移行。限られたコンテキストを最適化する4手法（write/select/compress/isolate）が主流に。IT責任者の82%が「プロンプト単体ではAIをスケールできない」と回答。
+公開日: 2026年（継続更新）
+引用元: <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener noreferrer">https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents</a></p>
+<p><strong>思考連鎖（CoT）の新パラメータ</strong>
+トピック名: temperature調整より「reasoning_effort（Low/Med/High）」制御が鍵に。effortを上げると隠れCoTトークンを多く消費するが複雑タスクの精度が向上。空間・グリッド系ではChain-of-Symbol（CoS）がCoTを上回る。エージェント用途はReActが必須。
+公開日: 2026年
+引用元: <a href="https://groundy.com/articles/prompt-engineering-patterns-2026-what-actually-works/" target="_blank" rel="noopener noreferrer">https://groundy.com/articles/prompt-engineering-patterns-2026-what-actually-works/</a></p>
+<p><strong>システム／ユーザープロンプト分離・メタプロンプト</strong>
+トピック名: 制約・出力形式・ペルソナはシステムに固定し、ユーザー側は質問とデータのみに純化する分離が基本に。AI自身に指示文を作らせる「メタプロンプト」が実用化。構造化プロンプト利用者は平均1.3回で目的達成（非構造化は4.2回）。
+公開日: 2026年
+引用元: <a href="https://www.optimax.co.jp/ai-information/prompt-engineering-guide/" target="_blank" rel="noopener noreferrer">https://www.optimax.co.jp/ai-information/prompt-engineering-guide/</a></p>
+<p><strong>日本企業の業務時短事例（定量成果）</strong>
+トピック名: パナソニックコネクト年間44.8万時間削減、住友商事 月約1万時間・年約12億円削減、イオンリテール 工数90%削減、トヨタ 技術検討40%短縮。NotebookLMで契約書レビューを数時間→30分、ZOZOはAI-OCRで月次締め7営業日→3.5営業日。
+公開日: 2026年（最新版）
+引用元: <a href="https://service.digital.panasonic.co.jp/column/generative_ai" target="_blank" rel="noopener noreferrer">https://service.digital.panasonic.co.jp/column/generative_ai</a></p>
+<hr />
+<h2>4. AI企業・業界ニュース</h2>
+<p><strong>Anthropic</strong>
+トピック名: シリーズHで650億ドル調達、調達後評価額9650億ドル（約143兆円）でOpenAI（約8520億ドル）を上回る。ARRは2025年の約50億ドルから2026年5月に約470億ドルへ急増。6月にはIPO向けS-1を秘密申請との報道。
+公開日: 2026/05/29（調達発表）
+金額: 調達額650億ドル／評価額9650億ドル
+引用元: <a href="https://www.itmedia.co.jp/news/articles/2605/29/news080.html" target="_blank" rel="noopener noreferrer">https://www.itmedia.co.jp/news/articles/2605/29/news080.html</a></p>
+<p><strong>OpenAI</strong>
+トピック名: 1220億ドル（$122B）を調達しポストマネー評価額8520億ドルでクローズ（Amazon・SoftBank・Nvidia主導、私企業史上最大の単独ラウンド）。ChatGPTは2026年6月にMAU10億人突破。
+公開日: 2026/03/31（クローズ）
+金額: 調達額1220億ドル／評価額8520億ドル
+引用元: <a href="https://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html" target="_blank" rel="noopener noreferrer">https://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html</a></p>
+<p><strong>米国政府（AI規制）</strong>
+トピック名: トランプ政権が州AI法への連邦優先を定める大統領令を推進。2026/06/02にフロンティアAIの安全展開に向けた新令に署名。コロラド州AI法は施行を6/30に延期。
+公開日: 2026/06/02（新令）
+引用元: <a href="https://www.seyfarth.com/news-insights/president-trump-signs-executive-order-preempting-state-ai-laws-and-centralizing-federal-oversight.html" target="_blank" rel="noopener noreferrer">https://www.seyfarth.com/news-insights/president-trump-signs-executive-order-preempting-state-ai-laws-and-centralizing-federal-oversight.html</a></p>
+<p><strong>EU（AI規制）</strong>
+トピック名: 汎用AI（GPAI）の透明性・著作権遵守方針・学習データ概要等の義務が2026/08/02から執行対象に。一方5/7にはEU理事会と欧州議会がルール簡素化（Digital Omnibus）で合意し負担軽減。
+公開日: 2026/05/07（簡素化合意）／08/02（GPAI執行）
+引用元: <a href="https://www.consilium.europa.eu/en/press/press-releases/2026/05/07/artificial-intelligence-council-and-parliament-agree-to-simplify-and-streamline-rules/" target="_blank" rel="noopener noreferrer">https://www.consilium.europa.eu/en/press/press-releases/2026/05/07/artificial-intelligence-council-and-parliament-agree-to-simplify-and-streamline-rules/</a></p>
+<p><strong>著作権訴訟（Anthropic）</strong>
+トピック名: 学習利用をめぐるBartz訴訟で約48.2万作品を対象に15億ドルで和解（米著作権史上最大級、1作品約3113ドル）。6/11に第3巡回区控訴裁がAI学習フェアユースの初の控訴審口頭弁論を実施。米国では70件超の訴訟が係争中。
+公開日: 2026/06/11
+金額: 和解額15億ドル
+引用元: <a href="https://www.nortonrosefulbright.com/en/knowledge/publications/ce8eaa5f/ai-in-litigation-series-an-update-on-ai-copyright-cases-in-2026" target="_blank" rel="noopener noreferrer">https://www.nortonrosefulbright.com/en/knowledge/publications/ce8eaa5f/ai-in-litigation-series-an-update-on-ai-copyright-cases-in-2026</a></p>
+<p><strong>著作権訴訟（NYT対OpenAI）</strong>
+トピック名: NYT等の新聞社連合が、OpenAIが証拠開示で不実表示を行ったとしてマンハッタン連邦地裁に制裁を求める申立て。訴訟はディスカバリー段階で公判期日未定。
+公開日: 2026/07/09
+引用元: <a href="https://www.washingtonpost.com/business/2026/07/09/openai-new-york-times-ai-copyright-lawsuit/" target="_blank" rel="noopener noreferrer">https://www.washingtonpost.com/business/2026/07/09/openai-new-york-times-ai-copyright-lawsuit/</a></p>
+<hr />
+<h2>5. AI×日本</h2>
+<p><strong>デジタル庁 / 政府AI「源内（GENAI）」</strong>
+トピック名: 全府省庁・約18万人利用を想定した政府生成AI環境で、国産3モデル（NTT「tsuzumi 2」、富士通「Takane 32B」、Preferred Networks「PLaMo 2.0 Prime」）を試験導入に選定。国内クラウド上で稼働、2027年3月までの運用開始を目指す。
+公開日: 2026/07/14
+引用元: <a href="https://www.itmedia.co.jp/business/articles/2607/14/news034.html" target="_blank" rel="noopener noreferrer">https://www.itmedia.co.jp/business/articles/2607/14/news034.html</a></p>
+<p><strong>中小企業庁 / デジタル化・AI導入補助金2026</strong>
+トピック名: 旧IT導入補助金を改称し、生成AI活用ITツールを補助対象に明確化。第1次締切（5/12）は6,440者中2,982者を採択。
+公開日: 2026/05/12（第1次締切）
+金額: 補助上限450万円、補助率1/2（小規模事業者は最大4/5）
+引用元: <a href="https://www.chusho.meti.go.jp/koukai/hojyokin/kobo/2026/260310001.html" target="_blank" rel="noopener noreferrer">https://www.chusho.meti.go.jp/koukai/hojyokin/kobo/2026/260310001.html</a></p>
+<p><strong>総務省・経済産業省 / AI事業者ガイドライン第1.2版</strong>
+トピック名: AIエージェントとフィジカルAIを正式に対象へ追加。外部影響を及ぼす操作の前に「人間の判断を必須とする仕組み（Human-in-the-Loop）」の組み込みを明記。日本は活用推進主目的のソフトロー中心。
+公開日: 2026/03/31
+引用元: <a href="https://www.meti.go.jp/shingikai/mono_info_service/ai_shakai_jisso/20260331_report.html" target="_blank" rel="noopener noreferrer">https://www.meti.go.jp/shingikai/mono_info_service/ai_shakai_jisso/20260331_report.html</a></p>
+<p><strong>Sakana AI</strong>
+トピック名: Googleと戦略提携し出資を受領。研究開発にGemini/Gemmaを活用、金融・政府など高セキュリティ領域向けソリューションを加速。直前のシリーズBで約200億円を調達。
+公開日: 2026/01/23
+金額: シリーズB 約200億円（Google出資額は非開示）
+引用元: <a href="https://sakana.ai/google/" target="_blank" rel="noopener noreferrer">https://sakana.ai/google/</a></p>
+<p><strong>NEC / 調達交渉AIエージェント</strong>
+トピック名: 「自動交渉AI」で製造業の納期・数量調整を自動化。実証では約1,300品目で自動合意達成率95%、交渉時間を数日から約80秒に短縮。5年で100社導入を目標。
+公開日: 2025/12/02
+金額: 年額3,600万円〜（別途初期費用）
+引用元: <a href="https://jpn.nec.com/press/202512/20251202_01.html" target="_blank" rel="noopener noreferrer">https://jpn.nec.com/press/202512/20251202_01.html</a></p>
+<p><strong>Preferred Networks / PLaMo 2.0 Prime</strong>
+トピック名: フルスクラッチ国産LLM。前世代の1/4以下に価格引き下げ、API・Amazon Bedrock・オンプレで提供。政府「源内」の試用3モデルに選定。
+公開日: 2025/05/22（提供開始）
+金額: API 入力60円・出力250円（100万トークンあたり）
+引用元: <a href="https://tech.preferred.jp/ja/blog/plamo-2-prime-release/" target="_blank" rel="noopener noreferrer">https://tech.preferred.jp/ja/blog/plamo-2-prime-release/</a></p>
+<p><strong>ELYZA / ELYZA-LLM-Diffusion</strong>
+トピック名: 自己回帰生成ではなく拡散モデルを採用した日本語特化LLMを商用利用可能な形で公開。高速生成と消費電力削減を狙う。
+公開日: 2026/01/16
+引用元: <a href="https://elyza.ai/news/2026/01/16/" target="_blank" rel="noopener noreferrer">https://elyza.ai/news/2026/01/16/</a></p>
+<hr />
+<h2>6. バズった話題・SNS事例</h2>
+<p><strong>Suno / AIアバター歌手「インガローズ」</strong>
+トピック名: 自動作曲AI「Suno」製のAIアバター歌手楽曲がiTunesシングルチャートに登場、Spotifyで300万人視聴。制作が「最短3分」で完結する衝撃がXで大反響。
+公開日: 2026/06/10
+引用元: <a href="https://www.nikkei.com/article/DGXZQOGN07AMT0X00C26A5000000/" target="_blank" rel="noopener noreferrer">https://www.nikkei.com/article/DGXZQOGN07AMT0X00C26A5000000/</a></p>
+<p><strong>Suno / W杯応援歌機能</strong>
+トピック名: 質問に答えるだけで「代表チーム応援歌」を約1分で自動生成する期間限定機能を公開。自作応援歌をX・TikTokに投稿する動きが話題。
+公開日: 2026/07/08
+引用元: <a href="https://ai.suno.jp/sunoai_news/" target="_blank" rel="noopener noreferrer">https://ai.suno.jp/sunoai_news/</a></p>
+<p><strong>イラストレーター・七瀬葵（AI利用公言）</strong>
+トピック名: 元人気イラストレーターが生成AIイラストを積極利用し「"AI堕ち"」と猛批判される炎上。反AI論争の象徴的存在として大きな議論に。
+公開日: 2026/05/17
+引用元: <a href="https://www.dailyshincho.jp/article/2026/05171101/?all=1" target="_blank" rel="noopener noreferrer">https://www.dailyshincho.jp/article/2026/05171101/?all=1</a></p>
+<p><strong>Nano Banana Pro / てんねん（@munou_ac）</strong>
+トピック名: 写真・イラストを本物のフィギュア風に変換する「フィギュア化」がXで大流行。プロンプト公開の「フィギュア化祭り」まとめnoteが拡散し、2026年も継続する定番トレンドに。
+公開日: 2025/11以降〜2026年継続
+引用元: <a href="https://note.com/munou_ac/n/nabe19ef84227" target="_blank" rel="noopener noreferrer">https://note.com/munou_ac/n/nabe19ef84227</a></p>
+<p><strong>Grok（xAI）/ 非合意性的画像（NCII）問題</strong>
+トピック名: Grokの画像編集で実在人物を無断加工する偽画像が拡散し世界的に炎上。日本では小野田紀美AI戦略担当相がXで迅速な報告・改善を要請。無料利用制限やフィルター強化など対策が相次いだ。
+公開日: 2026/01/16
+引用元: <a href="https://ledge.ai/articles/grok_image_editing_nonconsensual_sexualized_images" target="_blank" rel="noopener noreferrer">https://ledge.ai/articles/grok_image_editing_nonconsensual_sexualized_images</a></p>
+<p><strong>大正製薬「リポビタンD」/ 元日AI CM</strong>
+トピック名: 元日公開のAI活用CMが「炎上はしないが強い称賛も生みにくい"受容ラインぎりぎり"の事例」として議論に。他社のAI広告が叩かれる中、「AIっぽさを消す設計」の是非が注目。
+公開日: 2026/01/01
+引用元: <a href="https://coki.jp/article/column/66719/" target="_blank" rel="noopener noreferrer">https://coki.jp/article/column/66719/</a></p>
+<hr />
+<h2>7. AI収益化・副業事例</h2>
+<p><strong>kishi27 / AI LINEスタンプ検証</strong>
+トピック名: AIで画像生成・透過・リサイズまで自動化し9個のスタンプを作成、登録後は放置。売上の71%以上はLINE公式「特集まとめ」経由。“小さく出すと市場が反応する”検証データとして公開。
+期間: 2026/06/01（5月1ヶ月分の実績）
+売上: 月465円（実売）
+引用元: <a href="https://note.com/kishi27/n/ned40c2e29978" target="_blank" rel="noopener noreferrer">https://note.com/kishi27/n/ned40c2e29978</a></p>
+<p><strong>AI占い設計室 / ココナラ×ChatGPTで数秘術鑑定</strong>
+トピック名: 売れ筋占い師30件をリサーチしChatGPTで鑑定テンプレを設計。500円のフロント商品で回転率を稼ぎ、3,000〜5,000円の深掘り鑑定へアップセル。
+期間: 2026/04/22〜（半年後まで）
+売上: 出品3日目に初売上500円 → 半年後は月8万円で安定（月10万円が視野）
+引用元: <a href="https://note.com/ai_uranai_design/n/n3c59e76aaf7b" target="_blank" rel="noopener noreferrer">https://note.com/ai_uranai_design/n/n3c59e76aaf7b</a></p>
+<p><strong>ふかみ（20代AIエンジニア）/ AI×Kindle出版</strong>
+トピック名: AIを活用して3ヶ月で6冊を出版した実績を、過度な期待への現実的ブレーキとして公開。
+期間: 活動3ヶ月（2022/01〜03）
+売上: 1月約1,000円→2月約5,000円→3月約6,000円（3ヶ月計1万円超）
+引用元: <a href="https://note.com/fucami/n/n7cab275d83bf" target="_blank" rel="noopener noreferrer">https://note.com/fucami/n/n7cab275d83bf</a></p>
+<p><strong>note株式会社（公式データ）/ AI活用記事の販売動向</strong>
+トピック名: 約30万件の有料記事を分析。「テクノロジー・AI活用」ジャンルの売上が前年比+268.6%で最も急伸。実用ノウハウ系の平均価格は1,842円で、文字数と売上に相関はほぼなし。
+公開日: 2026/01/07発表
+売上: AI活用カテゴリ+268.6%成長／メンバーシップ売上+81.3%
+引用元: <a href="https://prtimes.jp/main/html/rd/p/000000360.000017890.html" target="_blank" rel="noopener noreferrer">https://prtimes.jp/main/html/rd/p/000000360.000017890.html</a></p>
+<p><strong>アドネスラボ（調査 N=27,272）/ AI副業の月収実態</strong>
+トピック名: 複数調査を統合し、AI活用者と非活用者の副業月収差を算出。個人談ではなく大規模母集団のエビデンス。
+公開日: 2026/03/20発表
+売上: AI活用者 平均月収46,010円 vs 非活用者25,066円（差 月20,944円）。AI案件単価は非AI比 約1.8倍
+引用元: <a href="https://addness.co.jp/media/aifukugyou-data/" target="_blank" rel="noopener noreferrer">https://addness.co.jp/media/aifukugyou-data/</a></p>
+<p><strong>クロススキル / GPTs（カスタムGPT）販売・制作代行</strong>
+トピック名: 自作GPTsをnoteで販売し累計410部超、GPTs販売ローンチで約50万円、企業向け制作代行は1件20万円超。GPT Store未整備でもnote/Brainで“ノウハウのツール化”を売るモデル。※自社実績提示のため参考値
+期間: 2026年（最新版）
+売上: note累計410部超／1ローンチ約50万円／制作代行1件20万円〜
+引用元: <a href="https://note.com/xross_skill/n/n9a8e3ac29486" target="_blank" rel="noopener noreferrer">https://note.com/xross_skill/n/n9a8e3ac29486</a></p>
+<p><strong>AIライター実案件 / 記事作成副業</strong>
+トピック名: AIで下書き→人間が専門知識・編集で仕上げるモデル。「AI使っただけの低品質記事」は1本500円以下に暴落する一方、専門性と掛け合わせられる人は単価上乗せの二極化が鮮明。
+期間: 2026/04〜05（実案件相場）
+売上: 文字単価1.0〜1.5円/字が中心。月3万円は「1.0円×3,000字×月10本」が現実解
+引用元: <a href="https://note.com/sora_pen/n/n08ea820a4597" target="_blank" rel="noopener noreferrer">https://note.com/sora_pen/n/n08ea820a4597</a></p>
+<p><strong>AIショート動画 / YouTube Shorts・TikTok量産副業</strong>
+トピック名: AIで素材生成しつつ独自企画・ナレーション・編集で差別化。2026年初にYouTubeが「AI自動生成＋自動音声のみ」の量産動画の収益化を停止したため、“人の創意”を加えるのが必須条件に。
+期間: 2026年（1月時点の単価報告）
+売上: ショートRPMが30円台に上昇、月10万円超のクリエイターも。単純量産は収益停止リスク大
+引用元: <a href="https://digital-front.jp/blog/1409/" target="_blank" rel="noopener noreferrer">https://digital-front.jp/blog/1409/</a></p>
+<hr />
+<p><strong>※信頼度メモ</strong>：収益化事例のうち、金額・手法・出典が明確で堅いのはkishi27（月465円）・AI占い設計室・ふかみ・note公式・アドネスラボ調査。GPTs販売の50万円/20万円は販売者自己申告のため参考値。検索中に散見された「月100万円」「AI写真集で月190万円」等は情報商材LPが出典で誇大の可能性が高く、本レポートからは除外しています。Google Gemini 3.5 ProとDeepSeek R2は7月時点で正式提供前のため、確定情報のみ掲載しました。</p>
+</body>
+</html>

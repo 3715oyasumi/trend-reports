@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>今日のトレンドまとめ byエンマち</title>
-  <meta name="description" content="毎日まとめたトレンド情報をレポートとしてアップしています。Xツイート分析・時事トレンド・飲食店・コンビニ・コラボカフェなど14ジャンル対応。">
+  <meta name="description" content="毎日まとめたトレンド情報をレポートとしてアップしています。Xトレンド分析・時事トレンド・MNPモバイル・ポイントサイト・コンビニなど15ジャンル対応。">
   <meta property="og:title" content="今日のトレンドまとめ byエンマち">
-  <meta property="og:description" content="毎日まとめたトレンド情報をレポートとしてアップしています。Xツイート分析・時事トレンド・飲食店・コンビニ・コラボカフェなど14ジャンル対応。">
+  <meta property="og:description" content="毎日まとめたトレンド情報をレポートとしてアップしています。Xトレンド分析・時事トレンド・MNPモバイル・ポイントサイト・コンビニなど15ジャンル対応。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://trendmatome.online">
   <meta property="og:image" content="https://trendmatome.online/ogp.png">
@@ -126,22 +126,26 @@
 const MANIFEST_URL = 'data/manifest.json';
 const PAGE_SIZE = 10;
 
+// タブの表示順 = この配列の順番（重要度順に並べている）
 const GENRES = [
-  { key: 'x',           label: 'Xツイート分析' },
+  // --- 重要ジャンル ---
+  { key: 'x',           label: 'Xトレンド分析' },
   { key: 'trend',       label: '時事トレンド' },
-  { key: 'food',        label: '飲食店情報' },
-  { key: 'convenience', label: 'コンビニ情報' },
-  { key: 'collabocafe', label: 'コラボカフェ情報' },
-  { key: 'movie',       label: '映画・エンタメ情報' },
-  { key: 'magazine',    label: '雑誌・漫画情報' },
-  { key: 'pointsite',   label: 'ポイントサイト情報' },
   { key: 'mobile',      label: 'MNP・モバイル情報' },
+  { key: 'pointsite',   label: 'ポイントサイト情報' },
+  { key: 'convenience', label: 'コンビニ情報' },
+  { key: 'food',        label: '飲食店情報' },
+  { key: 'magazine',    label: '雑誌・漫画情報' },
   { key: 'treca',       label: 'トレカ情報' },
+  { key: 'AI',          label: 'AI情報' },
+  // --- その他 ---
+  { key: 'movie',       label: '映画情報' },
   { key: 'sake',        label: 'お酒情報' },
   { key: 'tobacco',     label: 'タバコ情報' },
   { key: 'delivery',    label: 'デリバリー情報' },
-  { key: 'AI',          label: 'AI情報' },
   { key: 'gatyagatya',  label: 'ガチャガチャ情報' },
+  // 停止中のため最後に配置
+  { key: 'collabocafe', label: 'コラボカフェ情報' },
 ];
 
 let manifest = {};

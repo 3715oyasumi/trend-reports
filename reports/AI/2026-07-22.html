@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI業界最新動向レポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+:root {
+  --bg: #0d1117; --card: #161b22; --border: #30363d;
+  --accent: #1f6feb; --text: #e6edf3; --muted: #8b949e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px; line-height: 1.7; padding: 24px; max-width: 860px; margin: 0 auto;
+}
+h1 {
+  font-size: 24px; font-weight: 700; margin-bottom: 8px;
+  padding-bottom: 12px; border-bottom: 2px solid var(--accent);
+}
+.report-date {
+  font-size: 13px; color: var(--muted); margin-bottom: 24px;
+}
+h2 {
+  font-size: 18px; font-weight: 700; margin: 32px 0 16px;
+  padding-left: 12px; border-left: 3px solid var(--accent);
+}
+h3 { font-size: 16px; font-weight: 700; margin: 24px 0 8px; color: var(--text); }
+ul { list-style: none; padding: 0; margin: 0; }
+ul li {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 4px; padding: 16px 24px; margin-bottom: 8px;
+  transition: border-color 0.2s;
+}
+ul li:hover { border-color: #58a6ff; }
+ul ul { margin-top: 8px; margin-left: 0; }
+ul ul li {
+  background: #0d1117; border-color: #21262d;
+  padding: 8px 16px; font-size: 14px; color: var(--muted);
+}
+ul ul li:hover { border-color: #30363d; }
+p { margin-bottom: 8px; font-size: 16px; }
+a { color: #58a6ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+strong { color: #fff; }
+hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; }
+th { background: #1c2128; padding: 10px 16px; text-align: left; color: var(--muted); border-bottom: 2px solid var(--border); }
+td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+tr:hover td { background: #1c2128; }
+blockquote { border-left: 3px solid var(--accent); padding-left: 16px; color: var(--muted); margin: 16px 0; }
+code { background: #1c2128; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+@media (max-width: 600px) { body { padding: 16px; } h1 { font-size: 20px; } h2 { font-size: 16px; } }
+</style>
+</head>
+<body>
+<h1>AI業界最新動向レポート</h1>
+<p><strong>作成日: 2026/07/22</strong></p>
+<hr />
+<h2>1. 新AIモデル・LLM情報</h2>
+<h3>OpenAI / GPT-5.6ファミリー</h3>
+<p><strong>トピック名:</strong> GPT-5.6（Sol・Terra・Luna）と「ChatGPT Work」を一般公開。用途別3階層構成で、推論特化=Sol、バランス型=Terra、高速低コスト=Luna。Programmatic Tool Calling・マルチエージェント機能を搭載。「同じ成果をより少ないトークンで」という効率性を前面に出した設計
+<strong>公開日:</strong> 2026/07/09
+<strong>料金:</strong> Sol $5/$30、Terra $2.50/$15、Luna $1/$6（100万トークンあたり 入力/出力）
+<strong>引用元:</strong> <a href="https://openai.com/index/gpt-5-6/" target="_blank" rel="noopener noreferrer">https://openai.com/index/gpt-5-6/</a></p>
+<h3>AWS × OpenAI / Amazon Bedrock</h3>
+<p><strong>トピック名:</strong> GPT-5.6（Sol/Terra/Luna）がAmazon Bedrockで一般提供開始。プロンプトキャッシュ利用で最大90%割引
+<strong>公開日:</strong> 2026/07/13
+<strong>料金:</strong> Bedrock従量課金（キャッシュ適用で最大90%OFF）
+<strong>引用元:</strong> <a href="https://aws.amazon.com/jp/about-aws/whats-new/2026/07/openai-gpt-sol-terra/" target="_blank" rel="noopener noreferrer">https://aws.amazon.com/jp/about-aws/whats-new/2026/07/openai-gpt-sol-terra/</a></p>
+<h3>xAI / Grok 4.5</h3>
+<p><strong>トピック名:</strong> コーディング・エージェント特化モデル。Cursor と Grok Build で即日利用可能
+<strong>公開日:</strong> 2026/07/08
+<strong>料金:</strong> 入力 $2 / 出力 $6（100万トークン）※GPT-5.6 Solの1/2〜1/5の価格帯
+<strong>引用元:</strong> <a href="https://x.ai/news/grok-4-5" target="_blank" rel="noopener noreferrer">https://x.ai/news/grok-4-5</a></p>
+<h3>Moonshot AI（月之暗面）/ Kimi K3</h3>
+<p><strong>トピック名:</strong> 2.8兆パラメータ「世界最大のオープンウェイトAIシステム」。コンテキスト長 約100万トークン。オープンウェイトのため自前ホスティングも可能
+<strong>公開日:</strong> 2026/07/16
+<strong>料金:</strong> 「Claude 5の出力$50を大きく下回る」価格設定（オープンウェイト公開）
+<strong>引用元:</strong> Reuters「China's Moonshot unveils world's largest open AI model」<a href="https://www.reuters.com/" target="_blank" rel="noopener noreferrer">https://www.reuters.com/</a></p>
+<h3>Google / Gemini 3.5 Pro</h3>
+<p><strong>トピック名:</strong> 提供を延期。コーディング性能が社内目標に未達との報道。正式公開日は未提示 ※期待して待っていた人は当面 Gemini 3系継続利用となる
+<strong>公開日:</strong> 2026/07/14（報道）
+<strong>料金:</strong> 未定
+<strong>引用元:</strong> HelenTech / 財経新聞（<a href="https://cantabile.alhinc.jp/culture/12202/" target="_blank" rel="noopener noreferrer">https://cantabile.alhinc.jp/culture/12202/</a> にて報道まとめ）</p>
+<h3>Meta / Muse Spark 1.1 + Meta Model API</h3>
+<p><strong>トピック名:</strong> Meta初の有料API提供開始。100万トークンのコンテキストウィンドウ。あわせて開発中の次期フラッグシップ「Watermelon」がOpenAI最先端モデルに迫る性能とAlexandr Wang氏が説明
+<strong>公開日:</strong> 2026/07/09
+<strong>料金:</strong> 有料API（従量課金）
+<strong>引用元:</strong> <a href="https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/" target="_blank" rel="noopener noreferrer">https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/</a></p>
+<h3>主要モデル早見（2026年7月時点の選び方）</h3>
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>推奨</th>
+<th>コスト感</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>高難度の推論・分析</td>
+<td>GPT-5.6 Sol / Claude 5</td>
+<td>高</td>
+</tr>
+<tr>
+<td>日常業務・バランス</td>
+<td>GPT-5.6 Terra / Gemini 3</td>
+<td>中</td>
+</tr>
+<tr>
+<td>大量処理・自動化</td>
+<td>GPT-5.6 Luna / Grok 4.5</td>
+<td>低</td>
+</tr>
+<tr>
+<td>コーディング</td>
+<td>Grok 4.5 / Claude Code</td>
+<td>低〜中</td>
+</tr>
+<tr>
+<td>セルフホスト・機密</td>
+<td>Kimi K3 / 国産LLM</td>
+<td>実質無料〜</td>
+</tr>
+</tbody>
+</table>
+<p><strong>引用元:</strong> <a href="https://uravation.com/media/ai-model-overview-hub-2026-june/" target="_blank" rel="noopener noreferrer">https://uravation.com/media/ai-model-overview-hub-2026-june/</a></p>
+<hr />
+<h2>2. 新AIツール・サービス</h2>
+<h3>Anthropic / Claude Cowork</h3>
+<p><strong>トピック名:</strong> Maxプランのベータユーザー向けに claude.ai・iOS・Android へ展開。デスクトップ限定だったエージェント型作業環境がモバイルで使えるように。8月5日まで使用量2倍キャンペーン
+<strong>公開日:</strong> 2026/07/07（キャンペーンは 2026/07/07 ～ 2026/08/05）
+<strong>料金:</strong> Claude Max プラン（要契約）
+<strong>引用元:</strong> <a href="https://claude.com/blog/cowork-web-mobile" target="_blank" rel="noopener noreferrer">https://claude.com/blog/cowork-web-mobile</a></p>
+<h3>Anthropic / Claude Science</h3>
+<p><strong>トピック名:</strong> 科学者向け作業環境。断片化したツール・データセットを統合して図表を自動生成。2026年6月のCoefficient Bio買収（約4億ドル・全額株式）と、AlphaFoldチームを率いたJohn Jumper氏の獲得が基盤
+<strong>公開日:</strong> 2026年7月
+<strong>料金:</strong> 未公表
+<strong>引用元:</strong> <a href="https://www.anthropic.com/news/" target="_blank" rel="noopener noreferrer">https://www.anthropic.com/news/</a></p>
+<h3>Anthropic / Reflect（ベータ）</h3>
+<p><strong>トピック名:</strong> 過去1・3・6・12ヶ月の自分のClaude利用パターンを可視化する振り返り機能。<strong>Freeプランでも利用可</strong>
+<strong>公開日:</strong> 2026/07/09
+<strong>料金:</strong> 無料（Free・Pro・Max すべて対応）
+<strong>引用元:</strong> <a href="https://www.anthropic.com/news/reflect-with-claude" target="_blank" rel="noopener noreferrer">https://www.anthropic.com/news/reflect-with-claude</a></p>
+<h3>Meta / Muse Image・Muse Video</h3>
+<p><strong>トピック名:</strong> エージェント型画像生成「Muse Image」と動画AI「Muse Video」。不可視透かし「Content Seal」を標準内蔵（EU AI Act透明性義務への対応と見られる）
+<strong>公開日:</strong> 2026/07/07
+<strong>料金:</strong> 未公表
+<strong>引用元:</strong> <a href="https://ai.meta.com/blog/introducing-muse-image-muse-video-msl/" target="_blank" rel="noopener noreferrer">https://ai.meta.com/blog/introducing-muse-image-muse-video-msl/</a></p>
+<h3>ByteDance / Seedream 5.0 Pro</h3>
+<p><strong>トピック名:</strong> 生成画像を10以上のレイヤーに分離できる画像生成AI。<strong>10言語以上対応（日本語含む）</strong>。デザイン後工程の編集が劇的に楽になる点が注目
+<strong>公開日:</strong> 2026/07/08
+<strong>料金:</strong> 未公表（ByteDance系サービス経由）
+<strong>引用元:</strong> <a href="https://seed.bytedance.com/en/blog/beyond-generation-it-understands-design-introducing-seedream-5-0-pro" target="_blank" rel="noopener noreferrer">https://seed.bytedance.com/en/blog/beyond-generation-it-understands-design-introducing-seedream-5-0-pro</a></p>
+<h3>GitHub / Copilot デスクトップアプリ</h3>
+<p><strong>トピック名:</strong> Copilotアプリが macOS・Windows・Linux の<strong>全プラン（Free含む）に開放</strong>
+<strong>公開日:</strong> 2026/07/07
+<strong>料金:</strong> <strong>無料</strong>（Freeプランで利用可）
+<strong>引用元:</strong> <a href="https://github.blog/changelog/2026-07-07-github-copilot-app-available-to-all" target="_blank" rel="noopener noreferrer">https://github.blog/changelog/2026-07-07-github-copilot-app-available-to-all</a></p>
+<h3>Google DeepMind / AlphaEvolve</h3>
+<p><strong>トピック名:</strong> Gemini基盤のアルゴリズム最適化AIがGoogle Cloud全顧客に一般提供
+<strong>公開日:</strong> 2026/07/10
+<strong>料金:</strong> Google Cloud従量課金
+<strong>引用元:</strong> <a href="https://cloud.google.com/blog/products/ai-machine-learning/alphaevolve-is-available-for-everyone" target="_blank" rel="noopener noreferrer">https://cloud.google.com/blog/products/ai-machine-learning/alphaevolve-is-available-for-everyone</a></p>
+<h3>動画生成AIの現況（2026年7月）</h3>
+<p><strong>トピック名:</strong> <strong>Soraは2026年3月にサービス終了が発表済み</strong>。現在の主力は Google Veo 3.1（4K・60秒超対応）、Kling、Runway、Midjourney V1 Video Model（Image-to-Video、最大20秒前後）
+<strong>期間:</strong> 2026/03（Sora終了発表）～ 現在
+<strong>料金:</strong> Veo=Google AI Pro/Ultra、Runway=$12〜/月、Midjourney=$10〜/月
+<strong>引用元:</strong> <a href="https://www.noviai.ai/jp/models-prompts/sora-alternatives/" target="_blank" rel="noopener noreferrer">https://www.noviai.ai/jp/models-prompts/sora-alternatives/</a> / <a href="https://genai-ai.co.jp/ai-kanri/blog/cc-video-ai-pricing/" target="_blank" rel="noopener noreferrer">https://genai-ai.co.jp/ai-kanri/blog/cc-video-ai-pricing/</a></p>
+<h3>GitHub / CodeQL 2.26.0</h3>
+<p><strong>トピック名:</strong> <strong>AIプロンプトインジェクション攻撃の静的検出</strong>に対応。AIエージェントを組み込んだアプリのセキュリティ検査が可能に
+<strong>公開日:</strong> 2026/07/10
+<strong>料金:</strong> 無料（OSS/GitHub Advanced Security）
+<strong>引用元:</strong> <a href="https://github.blog/changelog/2026-07-10-codeql-2-26-0-adds-kotlin-2-4-0-support-and-ai-prompt-injection-detection" target="_blank" rel="noopener noreferrer">https://github.blog/changelog/2026-07-10-codeql-2-26-0-adds-kotlin-2-4-0-support-and-ai-prompt-injection-detection</a></p>
+<hr />
+<h2>3. プロンプト技術・活用Tips</h2>
+<h3>OpenAI / GPT-Red</h3>
+<p><strong>トピック名:</strong> 自己改善型レッドチーミング手法。AI自身が脆弱性を自動探索する。防御側にも攻撃側にも効く両刃の技術で、導入企業はログ・権限・監査の整備が前提に
+<strong>公開日:</strong> 2026/07/15
+<strong>料金:</strong> 研究公開
+<strong>引用元:</strong> OpenAI「GPT-Red: Unlocking Self-Improvement for Robustness」<a href="https://openai.com/index/" target="_blank" rel="noopener noreferrer">https://openai.com/index/</a></p>
+<h3>プロンプトジェネレーター（無料ツール群）</h3>
+<p><strong>トピック名:</strong> 2026年に入り急増。プロンプトエンジニアリングの知識がなくても、テンプレート＋AI支援で高品質な指示文を自動生成。生成AIの出力品質は「プロンプトで8割決まる」とされ、初心者の最短ルートとして定着
+<strong>公開日:</strong> 2026年7月時点
+<strong>料金:</strong> <strong>無料ツール多数</strong>
+<strong>引用元:</strong> <a href="https://genai-ai.co.jp/ai-kanri/blog/cc-prompt-generators/" target="_blank" rel="noopener noreferrer">https://genai-ai.co.jp/ai-kanri/blog/cc-prompt-generators/</a></p>
+<h3>X（旧Twitter）バズ投稿の逆算プロンプト術</h3>
+<p><strong>トピック名:</strong> バズった投稿を大量に生成AIに読み込ませて共通点を抽出→自分の投稿に適用する5ステップ手法。ChatGPT/Claude両対応
+<strong>公開日:</strong> 2026年最新版として更新中
+<strong>料金:</strong> 無料（ChatGPT/Claude無料枠で可）
+<strong>引用元:</strong> <a href="https://digirise.ai/chaen-ai-lab/x/" target="_blank" rel="noopener noreferrer">https://digirise.ai/chaen-ai-lab/x/</a></p>
+<h3>SNSバズ用 画像生成プロンプト120選</h3>
+<p><strong>トピック名:</strong> 効果実証済みのDALL-E 3対応プロンプト集。Instagram/TikTok/X向けにカテゴリ分類済み
+<strong>公開日:</strong> 2026年最新版
+<strong>料金:</strong> 無料公開
+<strong>引用元:</strong> <a href="https://pxz.ai/ja/blog/viral-chatgpt-image-prompts" target="_blank" rel="noopener noreferrer">https://pxz.ai/ja/blog/viral-chatgpt-image-prompts</a></p>
+<hr />
+<h2>4. AI企業・業界ニュース</h2>
+<h3>OpenAI・Anthropic / IPO準備</h3>
+<p><strong>トピック名:</strong> 両社ともIPO準備が報じられる。OpenAIは秘密裏に申請（confidential filing）、Anthropicは数百億ドル規模の調達を見込む
+<strong>公開日:</strong> 2026年7月
+<strong>料金/規模:</strong> 数百億ドル規模
+<strong>引用元:</strong> <a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-15-2026" target="_blank" rel="noopener noreferrer">https://www.buildfastwithai.com/blogs/ai-news-today-july-15-2026</a></p>
+<h3>Anthropic / 人材獲得ラッシュ</h3>
+<p><strong>トピック名:</strong> <strong>Andrej Karpathy氏とTom Blomfield氏が加入</strong>。2026年の積極採用の一環で、すでにノーベル賞受賞者 John Jumper氏（元Google DeepMind、AlphaFold）を獲得済み
+<strong>公開日:</strong> 2026年7月
+<strong>引用元:</strong> <a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-15-2026" target="_blank" rel="noopener noreferrer">https://www.buildfastwithai.com/blogs/ai-news-today-july-15-2026</a></p>
+<h3>Future of Life Institute / AI安全性指数2026</h3>
+<p><strong>トピック名:</strong> Anthropicが最高評価C+、OpenAI・Google DeepMindはC。「最も安全志向のフロンティアラボですら、自らの基準に照らして平凡」との厳しい総評
+<strong>公開日:</strong> 2026年7月
+<strong>料金:</strong> レポート無料公開
+<strong>引用元:</strong> <a href="https://futureoflife.org/" target="_blank" rel="noopener noreferrer">https://futureoflife.org/</a> / <a href="https://www.distillintelligence.com/briefings/ai-leaders-2026-07-03" target="_blank" rel="noopener noreferrer">https://www.distillintelligence.com/briefings/ai-leaders-2026-07-03</a></p>
+<h3>EU / Google へのDMA是正命令</h3>
+<p><strong>トピック名:</strong> デジタル市場法に基づき、AndroidのOS機能11種をChatGPT等の競合AIに開放するよう命令。検索データも2027年1月から共有義務。違反時は<strong>世界売上の最大10%</strong>の制裁金
+<strong>公開日:</strong> 2026/07/16発表（7/20報道）
+<strong>制裁規模:</strong> 世界売上の最大10%
+<strong>引用元:</strong> Reuters「Google required to open up to AI, search engine rivals under EU-mandated changes」</p>
+<h3>中国主導 / WAICO（世界人工知能協力機構）設立</h3>
+<p><strong>トピック名:</strong> 29カ国が設立協定に署名。本部は上海。米国主導のAIガバナンス枠組みへの対抗軸
+<strong>期間:</strong> 2026/07/16署名 ～ 2026/07/17-20会議開催
+<strong>引用元:</strong> Xinhua「29 countries sign agreement to establish WAICO」</p>
+<h3>ニューヨーク州 / データセンター新設1年凍結</h3>
+<p><strong>トピック名:</strong> ホークル知事が行政命令第62号に署名。消費電力50MW超の大規模データセンター新設を1年凍結。AIインフラ拡張に対する初の州レベル規制ブレーキ
+<strong>公開日:</strong> 2026/07/14
+<strong>引用元:</strong> New York State「Executive Order No. 62」</p>
+<h3>Meta / Hyperion データセンター拡張</h3>
+<p><strong>トピック名:</strong> ルイジアナ州のデータセンターを5ギガワットへ拡張。総投資額500億ドル超
+<strong>公開日:</strong> 2026/07/13
+<strong>投資額:</strong> $50,000,000,000超
+<strong>引用元:</strong> Data Center Dynamics「Meta expands data center campus」</p>
+<h3>CuspAI / 大型資金調達</h3>
+<p><strong>トピック名:</strong> 材料探索AIが4.5億ドル調達（Kleiner Perkins、NEA、Bezos Expeditions、英国政府）。評価額 約26億ドルで、2025年9月比 <strong>5倍</strong>
+<strong>公開日:</strong> 2026/07/20（報道）
+<strong>調達額:</strong> $450,000,000（評価額 約$2,600,000,000）
+<strong>引用元:</strong> Reuters「UK government, Bezos back CuspAI's $450 million round」</p>
+<h3>Apple vs OpenAI / DeepSeek評価額</h3>
+<p><strong>トピック名:</strong> AppleがOpenAI幹部を営業秘密窃取で提訴。DeepSeekは約740億ドルの評価額で資金調達進行中
+<strong>公開日:</strong> 2026/07/20（報道時点）
+<strong>規模:</strong> DeepSeek評価額 約$74,000,000,000
+<strong>引用元:</strong> <a href="https://note.com/hirokimiyano/n/naced2ac1be4c" target="_blank" rel="noopener noreferrer">https://note.com/hirokimiyano/n/naced2ac1be4c</a></p>
+<h3>EU AI Act / AI生成コンテンツ透明性コード</h3>
+<p><strong>トピック名:</strong> Article 50関連の透明性義務。<strong>2026年8月2日適用開始</strong>。AI生成物のラベリング・検出が義務化され、日本企業でもEU向けマーケ・広告は表示文言と管理フロー整備が必須に
+<strong>公開日:</strong> 適用日 2026/08/02
+<strong>引用元:</strong> European Commission「Code of Practice on Transparency of AI-Generated Content」</p>
+<h3>生成AI著作権訴訟の現在地</h3>
+<p><strong>トピック名:</strong> Anthropicの作家グループとの<strong>15億ドル和解案</strong>は2026/05/14のfairness hearing後、最終承認オーダーが保留中。NYT対OpenAI/Microsoftは証拠開示段階で判決は2027年以降の見込み。Thomson Reuters対Ross Intelligenceでは「LLM訓練目的でもフェアユース不成立」の先例が確定。日本では著作権法30条の4の解釈が争点で、<strong>2026年中の国内提訴の可能性</strong>が指摘されている
+<strong>期間:</strong> 2025/09（和解案公表）～ 2026/05/14（審問）～ 現在保留中
+<strong>和解額:</strong> $1,500,000,000
+<strong>引用元:</strong> <a href="https://ledge.ai/articles/anthropic_authors_settlement_ai_copyright" target="_blank" rel="noopener noreferrer">https://ledge.ai/articles/anthropic_authors_settlement_ai_copyright</a> / <a href="https://abe-legal.jp/ja/news/generative-ai-copyright-litigation-2026" target="_blank" rel="noopener noreferrer">https://abe-legal.jp/ja/news/generative-ai-copyright-litigation-2026</a></p>
+<hr />
+<h2>5. AI×日本</h2>
+<h3>日本政府 × NVIDIA × 国内企業 / 国家AIインフラ</h3>
+<p><strong>トピック名:</strong> ロボット・自動運転など「フィジカルAI」を支える国家AIインフラ構築を開始。「FRONTiaプロジェクト」始動、44社出資の Noetra が参画。<strong>政府は2026年度から5年間で総額1兆円規模の支援</strong>
+<strong>期間:</strong> 2026/07/16発表、2026年度から5年間
+<strong>支援規模:</strong> 総額 約1兆円
+<strong>引用元:</strong> NVIDIA公式 / 日本経済新聞 / CNET Japan</p>
+<h3>デジタル庁 / 政府AI基盤「源内（GENAI）」</h3>
+<p><strong>トピック名:</strong> 政府向けAI基盤で試用する国産LLMを選定。NTT「tsuzumi 2」（オンプレ対応・軽量）、ソフトバンク「Sarashina2 mini」、KDDI/ELYZA「Llama-3.1-ELYZA-JP-70B」、Preferred Networks「PLaMo 2.0 Prime」（フルスクラッチ商用）等7モデル
+<strong>期間:</strong> 2026/03/06選定 → 2026/05実証開始 → <strong>2026/08から国産LLM試用</strong> → 2027/01評価公表 → 2027/04から政府調達
+<strong>引用元:</strong> <a href="https://www.fidx.co.jp/" target="_blank" rel="noopener noreferrer">https://www.fidx.co.jp/</a> / <a href="https://ai-revolution.co.jp/media/japan-llm-7-comparison/" target="_blank" rel="noopener noreferrer">https://ai-revolution.co.jp/media/japan-llm-7-comparison/</a></p>
+<h3>中小企業庁 / デジタル化・AI導入補助金2026</h3>
+<p><strong>トピック名:</strong> 旧「IT導入補助金」がAI活用による省人化・省力化推進の制度へ再編。<strong>AI導入費用を最大4/5カット</strong>できる枠も
+<strong>期間:</strong> 令和8年度（2026年度）
+<strong>補助額:</strong> プロセス1〜3つ=5万円〜150万円未満（補助率1/2以内）、4つ以上=150万円〜450万円（補助率1/2以内）
+<strong>引用元:</strong> <a href="https://www.chusho.meti.go.jp/koukai/yosan/r8/digital_ai_summary.pdf" target="_blank" rel="noopener noreferrer">https://www.chusho.meti.go.jp/koukai/yosan/r8/digital_ai_summary.pdf</a> / <a href="https://hojyokin-portal.jp/columns/degital_ai_summary" target="_blank" rel="noopener noreferrer">https://hojyokin-portal.jp/columns/degital_ai_summary</a></p>
+<h3>MUFG・三菱UFJ信託銀行 / AIエージェント×金融取引</h3>
+<p><strong>トピック名:</strong> AIエージェントが金融取引を行う際の課題を28社で共同検討。分散型ID・デジタル証明書による信頼性担保が焦点
+<strong>期間:</strong> 2026/07 ～ 2027/03
+<strong>引用元:</strong> Impress Watch / PR TIMES（2026/07/14報道）</p>
+<h3>日本企業のAI導入成果（定量実績）</h3>
+<p><strong>トピック名:</strong> 主要企業の削減実績。パナソニックコネクト=<strong>年18.6万時間削減</strong>、イオンリテール=<strong>90%削減</strong>、テレビ朝日=<strong>100時間→30分</strong>、KDDI=<strong>1日→2〜3時間</strong>、セブン-イレブン=商品企画期間を<strong>最大1/10</strong>に短縮、都城市=<strong>年約1,800時間削減</strong>見込み
+<strong>公開日:</strong> 2026年最新まとめ
+<strong>引用元:</strong> <a href="https://ai-revolution.co.jp/media/generative-ai-business-cases/" target="_blank" rel="noopener noreferrer">https://ai-revolution.co.jp/media/generative-ai-business-cases/</a> / <a href="https://note.com/kinshi_keiun/n/nbc006a8c9c1b" target="_blank" rel="noopener noreferrer">https://note.com/kinshi_keiun/n/nbc006a8c9c1b</a></p>
+<h3>帝国データバンク / 生成AI効果実感調査</h3>
+<p><strong>トピック名:</strong> 生成AIを業務活用している企業の<strong>86.7%が効果を実感</strong>
+<strong>公開日:</strong> 2026/03調査
+<strong>引用元:</strong> 帝国データバンク調査（<a href="https://notepm.jp/blog/42243" target="_blank" rel="noopener noreferrer">https://notepm.jp/blog/42243</a> 経由）</p>
+<h3>PwC Japan / 生成AI実態調査2026春</h3>
+<p><strong>トピック名:</strong> 6カ国比較。競争軸が「導入」から<strong>「効果創出」「成果還元」へ移行</strong>。AI変革は選択肢から生存条件へ
+<strong>公開日:</strong> 2026年春
+<strong>料金:</strong> レポート無料
+<strong>引用元:</strong> <a href="https://www.pwc.com/jp/ja/knowledge/thoughtleadership/generative-ai-survey2026.html" target="_blank" rel="noopener noreferrer">https://www.pwc.com/jp/ja/knowledge/thoughtleadership/generative-ai-survey2026.html</a></p>
+<hr />
+<h2>6. バズった話題・SNS事例</h2>
+<h3>Andrej Karpathy / 「Vibe Coding」からAnthropic移籍まで</h3>
+<p><strong>トピック名:</strong> 2025年2月のXポストで「vibe coding」（AIに自然言語で意図を伝えて実装させる開発スタイル）を提唱した本人が、2026年7月にAnthropicへ加入。SNSで大きな話題に
+<strong>期間:</strong> 2025/02（用語提唱）～ 2026/07（Anthropic加入）
+<strong>引用元:</strong> <a href="https://ceotudent.com/en/vibe-coding-2026-cursor-claude-code-solo-founder-guide/" target="_blank" rel="noopener noreferrer">https://ceotudent.com/en/vibe-coding-2026-cursor-claude-code-solo-founder-guide/</a></p>
+<h3>Sora サービス終了ショック</h3>
+<p><strong>トピック名:</strong> 2026年3月のSora提供終了発表がクリエイター界隈で騒然。代替としてVeo 3.1・Kling・Runwayへの移行記事が量産され、比較検証コンテンツがバズ化
+<strong>公開日:</strong> 2026/03（発表）～ 現在
+<strong>引用元:</strong> <a href="https://www.noviai.ai/jp/models-prompts/sora-alternatives/" target="_blank" rel="noopener noreferrer">https://www.noviai.ai/jp/models-prompts/sora-alternatives/</a> / <a href="https://note.com/cloudatlas107/n/n61ba493bddaf" target="_blank" rel="noopener noreferrer">https://note.com/cloudatlas107/n/n61ba493bddaf</a></p>
+<h3>動画生成AI 6大モデルガチ比較</h3>
+<p><strong>トピック名:</strong> Sora・Kling・Veo・SeaDance等6モデルを同一プロンプトで比較検証したnote記事がクリエイター層に拡散
+<strong>公開日:</strong> 2026年（週刊AIフライデーレポート #17）
+<strong>料金:</strong> 無料記事
+<strong>引用元:</strong> <a href="https://note.com/cloudatlas107/n/n61ba493bddaf" target="_blank" rel="noopener noreferrer">https://note.com/cloudatlas107/n/n61ba493bddaf</a></p>
+<h3>「AIがまとめるAIニュース」シリーズ</h3>
+<p><strong>トピック名:</strong> AIが調査・執筆した日次AIニュースまとめをnoteで毎日公開する形式が定着。AIによるメディア運営そのものが事例化
+<strong>期間:</strong> 2026年継続中（例：2026/07/03、2026/07/10）
+<strong>料金:</strong> 無料
+<strong>引用元:</strong> <a href="https://note.com/hiro924164/n/nfbefad370691" target="_blank" rel="noopener noreferrer">https://note.com/hiro924164/n/nfbefad370691</a></p>
+<hr />
+<h2>7. AI収益化・副業事例</h2>
+<h3>Jack Friks / Post Bridge（SNS投稿予約ツール）</h3>
+<p><strong>トピック名:</strong> <strong>誰が</strong>=個人開発者Jack Friks、<strong>何を</strong>=SNS投稿スケジューリングSaaS「Post Bridge」、<strong>どうやって</strong>=2024年に vibe coding（AI主導開発）で構築、外部資金なしのブートストラップ・ソロ運営、<strong>いくら</strong>=2026年半ばに MRR $18,000 到達
+<strong>期間:</strong> 2024年開発開始 ～ 2026年半ば
+<strong>売上:</strong> <strong>月商 $18,000（MRR、約270万円/月）</strong>
+<strong>引用元:</strong> <a href="https://blink.new/blog/vibe-coding-for-solopreneurs" target="_blank" rel="noopener noreferrer">https://blink.new/blog/vibe-coding-for-solopreneurs</a></p>
+<h3>非エンジニア個人開発者 / 生成AI×Vibe Codingで年商1,000万円</h3>
+<p><strong>トピック名:</strong> <strong>誰が</strong>=プログラミング未経験のマーケター、<strong>何を</strong>=個人開発プロダクト、<strong>どうやって</strong>=生成AI＋Vibe Codingで0→1開発を高速化、<strong>いくら</strong>=売上1,000万円達成
+<strong>期間:</strong> 2026年
+<strong>売上:</strong> <strong>1,000万円</strong>
+<strong>引用元:</strong> <a href="https://note.com/sugishima/n/ne19b1217cb6e" target="_blank" rel="noopener noreferrer">https://note.com/sugishima/n/ne19b1217cb6e</a></p>
+<h3>個人開発者（Zenn） / 初リリースで月2,000円</h3>
+<p><strong>トピック名:</strong> <strong>誰が</strong>=個人開発初心者、<strong>何を</strong>=初アプリ、<strong>どうやって</strong>=Vibe Codingで開発〜リリース、<strong>いくら</strong>=月2,000円。「まず売れる」体験としてリアルな最初の一歩事例
+<strong>期間:</strong> 2026年
+<strong>売上:</strong> <strong>月2,000円</strong>
+<strong>引用元:</strong> <a href="https://zenn.dev/yamakiex/articles/502e9a3f19977a" target="_blank" rel="noopener noreferrer">https://zenn.dev/yamakiex/articles/502e9a3f19977a</a></p>
+<h3>マイクロSaaS市場ベンチマーク（2026年）</h3>
+<p><strong>トピック名:</strong> 成功したマイクロSaaSの中央値は<strong>90日でMRR $1,200</strong>（約18万円/月）。CS学位なしで MRR $10,000+ 到達する創業者がIndie Hackersで一般化。ツールコストは Cursor Pro $20/月、Lovable Starter $25/月、Replit Agent 程度で、アイデアから本番投入まで72時間未満も可能
+<strong>公開日:</strong> 2026年統計
+<strong>料金/売上:</strong> ツール費 月$20〜25 → 中央値 MRR $1,200（90日）
+<strong>引用元:</strong> <a href="https://www.13labs.au/guides/vibe-coding-statistics-2026" target="_blank" rel="noopener noreferrer">https://www.13labs.au/guides/vibe-coding-statistics-2026</a> / <a href="https://digiglitch.net/make-money-vibe-coding/" target="_blank" rel="noopener noreferrer">https://digiglitch.net/make-money-vibe-coding/</a></p>
+<h3>個人クリエイター / FANZA同人 × Stable Diffusion</h3>
+<p><strong>トピック名:</strong> <strong>誰が</strong>=個人クリエイター、<strong>何を</strong>=AI生成イラスト作品、<strong>どうやって</strong>=Stable Diffusionの習熟と画像クオリティ向上、<strong>いくら</strong>=2026年3月に月2万円超
+<strong>期間:</strong> 2026/03
+<strong>売上:</strong> <strong>月2万円超</strong>
+<strong>引用元:</strong> <a href="https://genai-ai.co.jp/ai-kanri/blog/cc-ai-auto-income-78/" target="_blank" rel="noopener noreferrer">https://genai-ai.co.jp/ai-kanri/blog/cc-ai-auto-income-78/</a></p>
+<h3>LINEスタンプ販売</h3>
+<p><strong>トピック名:</strong> <strong>誰が</strong>=個人クリエイター、<strong>何を</strong>=AI生成キャラのLINEスタンプ、<strong>どうやって</strong>=4作目でキャラの方向性を調整＋SNSでの宣伝活動、<strong>いくら</strong>=月3万円超。ただし市場は飽和気味で「スタンプ単体で生活は非現実的、キャラを名刺代わりに周辺案件へ展開」が現実的戦略
+<strong>公開日:</strong> 2026年版
+<strong>売上:</strong> <strong>月3万円超</strong>（4作目以降）
+<strong>引用元:</strong> <a href="https://atsoho.com/blog/character-line-stamp" target="_blank" rel="noopener noreferrer">https://atsoho.com/blog/character-line-stamp</a> / <a href="https://xtrend.nikkei.com/atcl/contents/18/01251/00003/" target="_blank" rel="noopener noreferrer">https://xtrend.nikkei.com/atcl/contents/18/01251/00003/</a></p>
+<h3>Kindle出版（KDP）× AI</h3>
+<p><strong>トピック名:</strong> <strong>何を</strong>=AI生成のイラスト集・写真集・AI漫画、<strong>どうやって</strong>=KDPで出版、<strong>いくら</strong>=印税は売上の35%または70%、月収ポテンシャルは数千円〜30万円。登録から2〜3日で初印税が発生した報告あり
+<strong>公開日:</strong> 2026年
+<strong>売上:</strong> <strong>数千円〜月30万円</strong>（印税率35% or 70%）
+<strong>引用元:</strong> <a href="https://note.com/kan11jp/n/n36e87540486e" target="_blank" rel="noopener noreferrer">https://note.com/kan11jp/n/n36e87540486e</a> / <a href="https://tips.jp/u/liri-gravure/a/WmFuhgjH" target="_blank" rel="noopener noreferrer">https://tips.jp/u/liri-gravure/a/WmFuhgjH</a></p>
+<h3>AIイラスト収益化サイト14選</h3>
+<p><strong>トピック名:</strong> 2026年1月時点で、AI生成作品を<strong>公式に受け入れている</strong>販売サイトが14サイト。規約でAI作品NGのプラットフォームも依然多いため、出品前の規約確認が必須
+<strong>公開日:</strong> 2026年1月時点（最新版）
+<strong>料金:</strong> 無料記事
+<strong>引用元:</strong> <a href="https://note.com/retro_iori/n/nd27075d2af7f" target="_blank" rel="noopener noreferrer">https://note.com/retro_iori/n/nd27075d2af7f</a></p>
+<h3>AI業務自動化ツールの受託・SaaS化</h3>
+<p><strong>トピック名:</strong> <strong>何を</strong>=営業部門向け自動化ツール、<strong>どうやって</strong>=月額サブスク提供、<strong>いくら</strong>=月額10万円以上の契約を複数獲得
+<strong>公開日:</strong> 2026年
+<strong>売上:</strong> <strong>月額10万円以上 × 複数社</strong>
+<strong>引用元:</strong> <a href="https://genai-ai.co.jp/ai-kanri/blog/cc-ai-auto-income-78/" target="_blank" rel="noopener noreferrer">https://genai-ai.co.jp/ai-kanri/blog/cc-ai-auto-income-78/</a></p>
+<h3>分野別 収入相場（2026年版・目安）</h3>
+<table>
+<thead>
+<tr>
+<th>分野</th>
+<th>単価相場</th>
+<th>想定月収</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AIライティング</td>
+<td>1記事 2,000〜5,000円</td>
+<td>月3〜8万円</td>
+</tr>
+<tr>
+<td>AIクリエイティブ</td>
+<td>画像10枚 3,000円 / 動画込み 5,000〜8,000円</td>
+<td>月5〜12万円</td>
+</tr>
+<tr>
+<td>AIアプリ・ツール開発</td>
+<td>サブスク or 買い切り</td>
+<td>月10万円〜</td>
+</tr>
+<tr>
+<td>note有料記事</td>
+<td>記事課金</td>
+<td>月5万円超は全体の約8〜10%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>公開日:</strong> 2026年版
+<strong>引用元:</strong> <a href="https://aiteku.jp/ai-fukugyou-hajimekata/" target="_blank" rel="noopener noreferrer">https://aiteku.jp/ai-fukugyou-hajimekata/</a> / <a href="https://www.sbbit.jp/article/cont1/178762" target="_blank" rel="noopener noreferrer">https://www.sbbit.jp/article/cont1/178762</a> / <a href="https://noctua22.hatenablog.com/entry/2026/06/24/070613" target="_blank" rel="noopener noreferrer">https://noctua22.hatenablog.com/entry/2026/06/24/070613</a></p>
+<h3>ShiftB / AI駆動開発の受講生データ</h3>
+<p><strong>トピック名:</strong> AI駆動開発を導入した受講生の<strong>プロダクトリリース率が77%</strong>に到達。「作れずに終わる」という個人開発最大の脱落要因がAIで解消されつつある
+<strong>公開日:</strong> 2026年最新
+<strong>引用元:</strong> <a href="https://shiftb.dev/articles/indie-dev-success-stories" target="_blank" rel="noopener noreferrer">https://shiftb.dev/articles/indie-dev-success-stories</a></p>
+<hr />
+<h2>今すぐ動くなら（実行優先度順）</h2>
+<ol>
+<li><strong>GitHub Copilotデスクトップアプリ</strong>（無料・全OS）と <strong>Claude Reflect</strong>（無料）を入れる — 追加コストゼロ</li>
+<li><strong>8月から「源内」で国産LLM試用開始</strong> — 官公庁・自治体案件を狙うなら今が仕込み時</li>
+<li><strong>デジタル化・AI導入補助金2026</strong> — 最大450万円、補助率1/2。事業者は令和8年度枠の要件確認を</li>
+<li><strong>EU AI Act 透明性義務が2026/08/02適用</strong> — EU向けにAI生成コンテンツを出すなら表示対応が7月中に必要</li>
+<li><strong>Grok 4.5（入力$2/出力$6）</strong> — コーディング用途ではGPT-5.6 Solの数分の一のコストで済む</li>
+</ol>
+<hr />
+<h3>出典一覧</h3>
+<ul>
+<li><a href="https://openai.com/index/gpt-5-6/">OpenAI GPT-5.6</a> / <a href="https://openai.com/index/a-scorecard-for-the-ai-age/">AI時代のスコアカード</a></li>
+<li><a href="https://x.ai/news/grok-4-5">xAI Grok 4.5</a></li>
+<li><a href="https://claude.com/blog/cowork-web-mobile">Anthropic Claude Cowork</a> / <a href="https://www.anthropic.com/news/reflect-with-claude">Reflect</a> / <a href="https://claude.com/blog/bringing-claude-code-and-claude-cowork-to-government">政府向けClaude</a></li>
+<li><a href="https://ai.meta.com/blog/introducing-muse-image-muse-video-msl/">Meta Muse Image/Video</a> / <a href="https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/">Meta Model API</a></li>
+<li><a href="https://seed.bytedance.com/en/blog/beyond-generation-it-understands-design-introducing-seedream-5-0-pro">ByteDance Seedream 5.0 Pro</a></li>
+<li><a href="https://github.blog/changelog/2026-07-07-github-copilot-app-available-to-all">GitHub Copilot app</a> / <a href="https://github.blog/changelog/2026-07-10-codeql-2-26-0-adds-kotlin-2-4-0-support-and-ai-prompt-injection-detection">CodeQL 2.26.0</a></li>
+<li><a href="https://cloud.google.com/blog/products/ai-machine-learning/alphaevolve-is-available-for-everyone">Google Cloud AlphaEvolve</a></li>
+<li><a href="https://aws.amazon.com/jp/about-aws/whats-new/2026/07/openai-gpt-sol-terra/">AWS Bedrock GPT-5.6</a></li>
+<li><a href="https://www.chusho.meti.go.jp/koukai/yosan/r8/digital_ai_summary.pdf">中小企業庁 デジタル化・AI導入補助金2026</a></li>
+<li><a href="https://www.pwc.com/jp/ja/knowledge/thoughtleadership/generative-ai-survey2026.html">PwC 生成AI実態調査2026春</a></li>
+<li><a href="https://tech-noisy.com/2026/07/13/ai-weekly-news-2026-07-06-2026-07-12/">TECH NOISY 週次AIニュース</a> / <a href="https://cantabile.alhinc.jp/culture/12202/">CANTABILE 週次まとめ</a> / <a href="https://note.com/hirokimiyano/n/naced2ac1be4c">宮野宏樹 7/21ニュース7選</a> / <a href="https://eguweb.jp/ai/81214/">eguweb 7/20世界AIニュース</a></li>
+<li><a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-15-2026">buildfastwithai 7/15</a> / <a href="https://www.distillintelligence.com/briefings/ai-leaders-2026-07-03">Distill Intelligence 7/3</a></li>
+<li><a href="https://ledge.ai/articles/anthropic_authors_settlement_ai_copyright">Ledge.ai Anthropic和解</a> / <a href="https://abe-legal.jp/ja/news/generative-ai-copyright-litigation-2026">生成AI著作権訴訟動向2026</a></li>
+<li><a href="https://ai-revolution.co.jp/media/japan-llm-7-comparison/">国産LLM7選（AI革命）</a> / <a href="https://www.fidx.co.jp/">フィデックス 源内選定モデル解説</a></li>
+<li><a href="https://www.13labs.au/guides/vibe-coding-statistics-2026">Vibe Coding統計2026</a> / <a href="https://blink.new/blog/vibe-coding-for-solopreneurs">Blink Post Bridge事例</a> / <a href="https://shiftb.dev/articles/indie-dev-success-stories">ShiftB 個人開発成功事例</a></li>
+<li><a href="https://note.com/sugishima/n/ne19b1217cb6e">note 生成AI×Vibe Coding</a> / <a href="https://zenn.dev/yamakiex/articles/502e9a3f19977a">Zenn 初リリース月2,000円</a> / <a href="https://note.com/retro_iori/n/nd27075d2af7f">AIイラスト収益化14選</a> / <a href="https://note.com/kan11jp/n/n36e87540486e">AI×Kindle出版</a></li>
+<li><a href="https://xtrend.nikkei.com/atcl/contents/18/01251/00003/">日経クロストレンド 生成AI×副業5選</a> / <a href="https://www.sbbit.jp/article/cont1/178762">SBBIT AI副業ランキング</a> / <a href="https://aiteku.jp/ai-fukugyou-hajimekata/">アイテク AI副業12選</a></li>
+<li><a href="https://genai-ai.co.jp/ai-kanri/blog/cc-video-ai-pricing/">動画生成AI料金比較</a> / <a href="https://www.noviai.ai/jp/models-prompts/sora-alternatives/">Sora代替3選</a> / <a href="https://note.com/cloudatlas107/n/n61ba493bddaf">6大モデル比較</a></li>
+<li><a href="https://genai-ai.co.jp/ai-kanri/blog/cc-prompt-generators/">プロンプトジェネレーター完全ガイド</a> / <a href="https://digirise.ai/chaen-ai-lab/x/">Xバズ自動生成5ステップ</a> / <a href="https://pxz.ai/ja/blog/viral-chatgpt-image-prompts">バズるプロンプト120選</a></li>
+<li><a href="https://ai-revolution.co.jp/media/generative-ai-business-cases/">企業活用事例50選</a> / <a href="https://note.com/kinshi_keiun/n/nbc006a8c9c1b">企業活用事例20選</a> / <a href="https://notepm.jp/blog/42243">NotePM 使用事例15選</a></li>
+</ul>
+<hr />
+<p><strong>補足（レポート品質について）:</strong> 第7章の収益事例は、公式発表ではなくメディア記事・個人ブログを出典とするものが多く、金額の第三者検証はできていません（Post Bridgeの$18K MRRのように公開ダッシュボードで確認できるものを除く）。特に情報商材系サイト（Tips等）を出典とする「初月10万円」系の数字は、再現性が担保された数値ではない点にご留意ください。</p>
+<p>なお、Google Calendar / Google Drive / Supabase / Vercel の各MCPコネクタは未認証のため今回は利用していません。必要であれば claude.ai のコネクタ設定、または対話セッションでの <code>/mcp</code> から認証してください。</p>
+</body>
+</html>

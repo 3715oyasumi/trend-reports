@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年8月21日（金）版</p>
+  <p class="total-count">本日のお得案件: 14件</p>
+
+  <h2>新商品情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ペローニ ナストロアズーロ 350mL缶（アサヒビール）</div>
+    <div class="card-detail"><span class="label">特徴</span>1963年ローマ生まれのイタリアンプレミアムビール。2025年9月の限定発売が好評だったため通年販売へ格上げ。国内製造で、グラスに柑橘の香りをまとわせる「プロフューモ」提供法を提案。プロフューモ付き6缶パックも用意</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年8月25日</div>
+    <div class="card-detail"><span class="label">価格</span>280円前後（コンビニ店頭想定販売価格）</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134350.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">雪見だいふく 秋限定お月見仕立て（ロッテ）</div>
+    <div class="card-detail"><span class="label">特徴</span>月をイメージした黄色いおもちでバニラアイスを包んだ秋限定品。パッケージは全4種で、商品名が「月見だいふく」表記になるレアデザインも混入。9月25日から27日に新宿住友ビル三角広場で体験イベントを開催</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月上旬から10月上旬</div>
+    <div class="card-detail"><span class="label">価格</span>226円前後</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134169.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">スシロー「本鮪中とろ」「あわび1貫」（あきんどスシロー）</div>
+    <div class="card-detail"><span class="label">特徴</span>高単価ネタを110円から投入する期間限定施策。本鮪中とろは販売予定総数492万食、あわび1貫は202万食。カタラーナ・グランデも同時展開し、販売予定数が完売次第終了</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年8月19日、販売期間は8月30日まで</div>
+    <div class="card-detail"><span class="label">価格</span>本鮪中とろ110円から、あわび1貫110円から、カタラーナ・グランデ270円から</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2132877.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">キリン一番搾り とれたてホップ生ビール（期間限定）</div>
+    <div class="card-detail"><span class="label">特徴</span>岩手県遠野市で今年収穫した生ホップを急速凍結して使用。アルコール度数5％。350mL缶・500mL缶・中びん・大びんのほか、東北地区限定で7L／15L大樽も展開</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年11月17日</div>
+    <div class="card-detail"><span class="label">価格</span>不明</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2133356.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">くら寿司「価格改定」（最低価格115円から110円）</div>
+    <div class="card-detail"><span class="label">還元</span>20品目を一律5円値下げし最低価格を110円に。相盛りを含む計37品目が110円対象</div>
+    <div class="card-detail"><span class="label">条件</span>全551店舗のうち313店が最低110円。その他店舗は115円から145円。サーモンなど33品目は115円から120円へ値上げ</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月4日から適用</div>
+    <div class="card-source"><a href="https://www.nikkei.com/article/DGXZQOUF2018Z0Q6A820C2000000/">出典を確認する</a>　<a href="https://news.livedoor.com/topics/detail/32115776/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">不二家「裏不二家の日」</div>
+    <div class="card-detail"><span class="label">還元</span>不二家洋菓子店で3,000円以上購入すると、非売品のペコちゃんキッチンタイマーを1個プレゼント</div>
+    <div class="card-detail"><span class="label">条件</span>数量限定。アニバーサリーケーキ予約特典との併用不可。不二家レストランの店内飲食・テイクアウトは対象外</div>
+    <div class="card-detail"><span class="label">期間</span>2026年8月22日、1日限り</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2133571.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">焼肉ライク「焼肉の日&amp;創業祭」</div>
+    <div class="card-detail"><span class="label">還元</span>8月29日は黒毛和牛赤身単品ハーフを特別価格500円、8月30日・31日は焼肉の日ごちそうセットを1,990円で提供</div>
+    <div class="card-detail"><span class="label">条件</span>8月29日は焼肉セット注文者限定、1回につき1皿まで。通常価格の記載がなく割引率は不明</div>
+    <div class="card-detail"><span class="label">期間</span>2026年8月29日から31日</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134172.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">湖池屋「ポテトチップスの日」プレゼントキャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span>公式Xで抽選10名に商品30袋詰め合わせ、ムッシュ・コイケヤ公式Xで20名にステッカー3枚とポテトチップス5種、湖池屋GOGO!ランドで100名に10袋セットを提供</div>
+    <div class="card-detail"><span class="label">条件</span>湖池屋GOGO!ランド会員は当選確率1.5倍</div>
+    <div class="card-detail"><span class="label">期間</span>公式X企画は8月20日から31日、GOGO!ランド企画は8月3日から31日</div>
+    <div class="card-source"><a href="https://www.nissin.com/jp/news/13887/">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">bot（自動購入プログラム）によるチケット・駐車場の買い占め</div>
+    <div class="card-detail"><span class="label">状況</span>羽田空港の駐車場4施設では、予約開始時に約30個の端末から1日平均約6万件の予約試行が発生。対策導入後はアクセス数が前年同月比97％減。TIGETは過去1年間でbot判定した約600アカウントを退会処分</div>
+    <div class="card-detail"><span class="label">注意点</span>予約代行サービスがネット上で宣伝される段階に入り、正規購入者は開始数秒での完売を前提に動く必要がある</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/74e78c944c6b530f171a0e27cf91312440786d25">出典を確認する</a>　<a href="https://news.yahoo.co.jp/articles/de83488c63c0a7a5c9f561efae8b34c67ac5fb31">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サントリーウイスキー「響21年」（700mL／43度）</div>
+    <div class="card-detail"><span class="label">状況</span>Amazon.co.jpが招待制の抽選販売を実施中。販売価格は67,100円で、メーカー希望小売価格の税込価格と一致する水準</div>
+    <div class="card-detail"><span class="label">注意点</span>当選者は招待メール受領から72時間以内に購入可能。販売終了時期は不明</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2133646.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ジャパニーズウイスキー「ウイスキーみくじ」第13弾</div>
+    <div class="card-detail"><span class="label">状況</span>Amazon.co.jp限定で1口4,880円、466口限定。超大吉は白州18年1本、大大吉は山崎12年2本などを用意</div>
+    <div class="card-detail"><span class="label">注意点</span>上位当選確率は466口中1本から5本と低く、期待値は下位銘柄で決まる。なくなり次第終了</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134344.html">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">医療用手袋・エプロン・注射筒（シリンジ）</div>
+    <div class="card-detail"><span class="label">理由</span>ホルムズ海峡閉鎖の影響によるナフサ供給不足。医療用手袋とエプロンが卸から入らなくなり、シリンジにも購入制限</div>
+    <div class="card-detail"><span class="label">影響度</span>★★★★☆</div>
+    <div class="card-detail"><span class="label">対応</span>秋のインフルエンザワクチン接種体制への支障が懸念される。代替調達ルートの確保とコスト増の織り込みが必要</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/216513274f11b6ad04146dfdd1c5a0e7878d25bf">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">札幌市 家庭用指定ごみ袋</div>
+    <div class="card-detail"><span class="label">理由</span>ナフサ供給不足による指定ごみ袋の品薄。一部店舗で在庫不足が発生し、臨時措置として透明・半透明袋での排出を認めていた</div>
+    <div class="card-detail"><span class="label">影響度</span>★★★☆☆</div>
+    <div class="card-detail"><span class="label">対応</span>指定外ごみ袋による収集は9月末で終了予定。10月以降は指定袋への切り替えが必要</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/f913e567f1accf6de67f04ad43136ac9e7cc2041">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ストリートブランド「メクリ（MEQRI）」</div>
+    <div class="card-detail"><span class="label">理由</span>運営元の株式会社Studio betaが8月19日にブランド休止を発表。休止理由は不明</div>
+    <div class="card-detail"><span class="label">影響度</span>★★☆☆☆</div>
+    <div class="card-detail"><span class="label">対応</span>公式オンラインショップでの販売は2026年9月4日20時まで。コラボ品は実質的な最終購入機会となる</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/fc9614a8493f8bfcb997fb1e65df0f357950c608">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>供給サイドは中東発のナフサ不足が主役で、医療用手袋の実勢価格が卸の約3倍、札幌市がごみ袋の臨時収集を9月末で打ち切るなど、石化原料から非食品の生活必需品への波及が固まってきた。一方の需要サイドでは、くら寿司が最低価格を115円から110円へ下げつつ33品目を値上げ、スシローも本鮪中とろを110円で投入と、外食大手が客数を取る価格と原価を回収する価格を1メニュー表内で分離する二層構造に移行している。転売領域は個人の買い占めからbotによる産業化へ変化しており、対策の有無が消費者の購入可否を直接決める段階に入った。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新の還元率・条件は各サイトにてご確認ください。</p>
+</body>
+</html>

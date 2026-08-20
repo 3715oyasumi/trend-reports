@@ -12,7 +12,9 @@
   <meta property="og:image" content="https://trendmatome.online/ogp.png">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@yukichina7">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="favicon.png">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZMJP999S1P"></script>
   <script>
@@ -22,77 +24,314 @@
     gtag('config', 'G-ZMJP999S1P');
   </script>
   <style>
+    /* ===== Claude デザインシステムのトークン（DESIGN.md 準拠） ===== */
     :root {
-      --bg: #0d1117; --card: #161b22; --border: #30363d;
-      --accent: #1f6feb; --text: #e6edf3; --muted: #8b949e;
+      /* 配色 */
+      --primary: #cc785c;
+      --primary-active: #a9583e;
+      --primary-on-dark: #e2a084;      /* 暗色面での可読性用にコーラルを明度調整 */
+      --ink: #141413;
+      --body: #3d3d3a;
+      --body-strong: #252523;
+      --muted: #6c6a64;
+      --muted-soft: #8e8b82;
+      --hairline: #e6dfd8;
+      --hairline-soft: #ebe6df;
+      --canvas: #faf9f5;
+      --surface-soft: #f5f0e8;
+      --surface-card: #efe9de;
+      --surface-cream-strong: #e8e0d2;
+      --surface-dark: #181715;
+      --on-primary: #ffffff;
+      --on-dark: #faf9f5;
+      --on-dark-soft: #a09d96;
+
+      /* タイポグラフィ */
+      --font-display: "Noto Serif JP", "Tiempos Headline", Garamond, "Times New Roman", serif;
+      --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+      /* 角丸 */
+      --r-xs: 4px;
+      --r-sm: 6px;
+      --r-md: 8px;
+      --r-lg: 12px;
+      --r-xl: 16px;
+      --r-pill: 9999px;
+
+      /* 余白 */
+      --s-xxs: 4px;
+      --s-xs: 8px;
+      --s-sm: 12px;
+      --s-md: 16px;
+      --s-lg: 24px;
+      --s-xl: 32px;
+      --s-xxl: 48px;
+      --s-section: 96px;
+
+      /* 影（このシステムでは極めて控えめ） */
+      --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg); color: var(--text); font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif; }
 
-    header {
-      background: #0d1b2a;
-      border-bottom: 1px solid var(--border);
-      padding: 24px;
-      display: flex; align-items: center; gap: 16px;
+    body {
+      background: var(--canvas);
+      color: var(--body);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
     }
-    header img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-    header .header-text h1 { font-size: 22px; font-weight: 700; }
-    header .header-text p { font-size: 13px; color: var(--muted); margin-top: 8px; }
 
+    a { color: var(--primary); }
+
+    :focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+      border-radius: var(--r-xs);
+    }
+
+    /* ===== ヘッダー（クリーム地のエディトリアル・バンド） ===== */
+    header {
+      background: var(--canvas);
+      border-bottom: 1px solid var(--hairline);
+      padding: var(--s-xxl) var(--s-lg);
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      gap: var(--s-lg);
+    }
+    header img {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid var(--hairline);
+      background: var(--surface-card);
+    }
+    .header-text { min-width: 0; }
+
+    /* 見出し上のカテゴリピル（badge-pill） */
+    .eyebrow {
+      display: inline-block;
+      background: var(--surface-card);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      line-height: 1.4;
+      padding: var(--s-xxs) var(--s-sm);
+      border-radius: var(--r-pill);
+      margin-bottom: var(--s-sm);
+    }
+
+    header .header-text h1 {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 500;          /* 和文セリフのため 400 相当の見え方に合わせて微増 */
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+    header .header-text h1 .byline {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    header .header-text p {
+      font-size: 15px;
+      color: var(--body);
+      margin-top: var(--s-sm);
+      max-width: 46em;
+    }
+
+    /* 最終更新（値が入るまで非表示） */
+    #last-updated {
+      display: inline-block;
+      margin-top: var(--s-md);
+      background: var(--surface-card);
+      color: var(--body-strong);
+      font-size: 13px;
+      font-weight: 500;
+      padding: var(--s-xxs) var(--s-sm);
+      border-radius: var(--r-pill);
+    }
+    #last-updated:empty { display: none; }
+
+    .x-link {
+      display: inline-block;
+      margin-top: var(--s-md);
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      text-underline-offset: 3px;
+    }
+    .x-link:hover { text-decoration: underline; }
+
+    /* ===== タブ（category-tab / category-tab-active） ===== */
+    .tabbar {
+      background: rgba(250, 249, 245, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--hairline);
+      position: sticky; top: 0; z-index: 10;
+    }
     .tabs {
-      display: flex; flex-wrap: wrap; gap: 8px;
-      padding: 16px 24px; border-bottom: 1px solid var(--border);
-      background: #0d1117; position: sticky; top: 0; z-index: 10;
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex; flex-wrap: wrap; gap: var(--s-xs);
+      padding: var(--s-sm) var(--s-lg);
     }
     .tab {
-      padding: 8px 16px; border-radius: 4px; font-size: 13px; cursor: pointer;
-      border: 1px solid var(--border); background: var(--card); color: var(--muted);
-      transition: border-color 0.2s, color 0.2s;
+      padding: var(--s-xs) 14px;
+      border-radius: var(--r-md);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.4;
+      cursor: pointer;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      white-space: nowrap;
+      transition: background-color 0.2s, color 0.2s, border-color 0.2s;
     }
-    .tab:hover { border-color: var(--accent); color: var(--text); }
-    .tab.active { background: rgba(31, 111, 235, 0.15); border-color: var(--accent); color: #58a6ff; }
+    .tab:hover { background: var(--surface-card); color: var(--ink); }
+    .tab.active {
+      background: var(--surface-cream-strong);
+      border-color: var(--hairline);
+      color: var(--ink);
+    }
 
-    .content { padding: 24px; max-width: 900px; margin: 0 auto; }
+    /* ===== コンテンツ（ソフトクリームの帯） ===== */
+    .content-band {
+      background: var(--surface-soft);
+      border-bottom: 1px solid var(--hairline-soft);
+      min-height: 60vh;
+    }
+    .content {
+      padding: var(--s-xxl) var(--s-lg);
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
     .genre-section { display: none; }
     .genre-section.active { display: block; }
 
-    .report-list { display: flex; flex-direction: column; gap: 8px; }
+    /* ===== レポート一覧 ===== */
+    .report-list { display: flex; flex-direction: column; gap: var(--s-sm); }
     .report-item {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 4px; padding: 16px 24px;
+      background: var(--canvas);
+      border: 1px solid var(--hairline);
+      border-radius: var(--r-lg);
+      padding: var(--s-lg) var(--s-xl);
       display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 8px;
+      flex-wrap: wrap; gap: var(--s-md);
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .report-item { transition: border-color 0.2s; }
-    .report-item:hover { border-color: #58a6ff; }
-    .report-date { font-weight: 600; font-size: 16px; }
+    .report-item:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-soft);
+    }
+    .report-date {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-sm);
+    }
+    /* Anthropic 風の放射マーク（コーラル）をコンテンツマーカーとして使用 */
+    .report-date::before {
+      content: "";
+      width: 12px; height: 12px;
+      flex-shrink: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1c.6 6.5 4.5 10.4 11 11-6.5.6-10.4 4.5-11 11-.6-6.5-4.5-10.4-11-11 6.5-.6 10.4-4.5 11-11z' fill='%23cc785c'/%3E%3C/svg%3E") center / contain no-repeat;
+    }
+
     .report-link {
-      display: inline-block; padding: 8px 16px; border-radius: 4px;
-      background: var(--accent); color: #fff; font-size: 13px;
-      text-decoration: none; font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: var(--s-sm) 20px;
+      border-radius: var(--r-md);
+      background: var(--primary);
+      color: var(--on-primary);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1;
+      text-decoration: none;
       transition: background-color 0.2s;
     }
-    .report-link:hover { background: #388bfd; }
+    .report-link:hover, .report-link:active { background: var(--primary-active); }
 
-    .empty { color: var(--muted); font-size: 14px; padding: 48px 0; text-align: center; }
-
-    .show-more {
-      display: block; width: 100%; margin-top: 8px; padding: 12px;
-      background: none; border: 1px solid var(--border); border-radius: 4px;
-      color: var(--muted); font-size: 13px; cursor: pointer;
-      font-family: inherit; transition: border-color 0.2s, color 0.2s;
+    .empty {
+      font-family: var(--font-display);
+      color: var(--muted);
+      font-size: 18px;
+      letter-spacing: -0.2px;
+      padding: var(--s-section) 0;
+      text-align: center;
     }
-    .show-more:hover { border-color: var(--accent); color: var(--text); }
 
+    /* さらに読み込む（button-secondary） */
+    .show-more {
+      display: block; width: 100%;
+      margin-top: var(--s-md);
+      padding: var(--s-sm) 20px;
+      min-height: 40px;
+      background: var(--canvas);
+      border: 1px solid var(--hairline);
+      border-radius: var(--r-md);
+      color: var(--ink);
+      font-size: 14px; font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+    .show-more:hover { background: var(--surface-card); border-color: var(--surface-cream-strong); }
+
+    /* ===== フッター（ダークで締める） ===== */
     footer {
-      text-align: center; padding: 24px; color: var(--muted);
-      font-size: 12px; border-top: 1px solid var(--border); margin-top: 48px;
+      background: var(--surface-dark);
+      color: var(--on-dark-soft);
+      text-align: center;
+      padding: var(--s-xxl) var(--s-lg);
+      font-size: 14px;
+    }
+    footer a {
+      color: var(--primary-on-dark);
+      text-decoration: none;
+      text-underline-offset: 3px;
+    }
+    footer a:hover { text-decoration: underline; }
+
+    /* ===== レスポンシブ ===== */
+    @media (max-width: 900px) {
+      header { padding: var(--s-xl) var(--s-md); }
+      header .header-text h1 { font-size: 30px; }
     }
     @media (max-width: 600px) {
+      /* モバイル: アバターをフロートさせ本文を全幅に回して左右余白を詰める */
+      header { padding: var(--s-lg) var(--s-md); }
+      .header-inner { display: block; }
+      header img { float: left; width: 46px; height: 46px; margin: 0 var(--s-sm) var(--s-xs) 0; }
+      header .header-text h1 { font-size: 26px; letter-spacing: -0.3px; }
+      header .header-text h1 .byline { display: block; margin-top: var(--s-xxs); }
+      header .header-text p { font-size: 14px; }
+      header .x-link { clear: left; }
+
       .tabs {
-        padding: 12px 16px;
-        position: static;
+        padding: var(--s-sm) var(--s-md);
         flex-wrap: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -100,27 +339,42 @@
       }
       .tabs::-webkit-scrollbar { display: none; }
       .tab { flex-shrink: 0; }
-      .content { padding: 16px; }
+
+      .content { padding: var(--s-xl) var(--s-md); }
+      .report-item { padding: var(--s-md) var(--s-lg); }
+      .report-date { font-size: 16px; }
+      .report-link { width: 100%; justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <img src="favicon.png" alt="エンマち">
-  <div class="header-text">
-    <h1>今日のトレンドまとめ <span style="font-size:14px; font-weight:400; color:var(--muted);">byエンマち</span></h1>
-    <p>毎日まとめたトレンド情報をレポートとしてアップしています。ジャンルはタブで切り替えて下さい。</p>
-    <p id="last-updated"></p>
-    <a href="https://x.com/yukichina7" target="_blank" style="color:#58a6ff; font-size:13px; text-decoration:none;">𝕏 @yukichina7</a>
+  <div class="header-inner">
+    <img src="favicon.png" alt="エンマち">
+    <div class="header-text">
+      <span class="eyebrow">DAILY TREND REPORT</span>
+      <h1>今日のトレンドまとめ <span class="byline">byエンマち</span></h1>
+      <p>毎日まとめたトレンド情報をレポートとしてアップしています。ジャンルはタブで切り替えて下さい。</p>
+      <p id="last-updated"></p>
+      <a class="x-link" href="https://x.com/yukichina7" target="_blank">𝕏 @yukichina7</a>
+    </div>
   </div>
 </header>
 
-<div class="tabs" id="tabs"></div>
+<nav class="tabbar">
+  <div class="tabs" id="tabs"></div>
+</nav>
 
-<div class="content" id="content"></div>
+<main class="content-band">
+  <div class="content" id="content"></div>
+</main>
 
-<footer>© エンマち ｜ <a href="https://x.com/yukichina7" target="_blank" style="color:#58a6ff; text-decoration:none;">@yukichina7</a></footer>
+<footer>© エンマち ｜ <a href="https://x.com/yukichina7" target="_blank">@yukichina7</a></footer>
 
 <script>
 const MANIFEST_URL = 'data/manifest.json';

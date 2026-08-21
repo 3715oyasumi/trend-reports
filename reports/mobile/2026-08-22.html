@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のモバイルお得情報レポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のモバイルお得情報レポート</h1>
+  <p class="report-date">2026年8月22日</p>
+  <p class="total-count">本日のお得案件: 15件</p>
+
+  <h2>NTTドコモ <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">5G WELCOME割にiPad 3機種を追加</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">30,000ポイント（30,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>新規契約でドコモ MAXまたはドコモ ポイ活 MAXを契約し、13インチ／11インチiPad Air（M4）またはiPad（A16）を購入。dポイント期間・用途限定で、開通月の翌々月進呈、有効期限24カ月。期間は2026年8月18日から終了日未定。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2133993.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">オンラインおトク割にiPad 3機種を追加</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">33,000ポイント（33,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>NTTドコモ オンラインショップ</div>
+    <div class="card-detail"><span class="label">条件</span>オンライン限定の端末値引き対象にiPad 3機種を追加。iPad（A16）は33,000円オフ。期間は2026年8月18日から終了日未定。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2133954.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ドコモの銀行 開業キャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">100,000ポイント（100,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>2,000万円以上の住宅ローン借入やドコモ回線契約などの条件達成でdポイントを還元。ドコモショップでの口座開設サポートも開始。期間は2026年8月21日から終了日未定。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2134498.html">出典を確認する</a>　<a href="https://k-tai.watch.impress.co.jp/docs/news/2134447.html">出典を確認する</a></div>
+  </div>
+
+  <h2>UQ mobile <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">MNP割引が38,500円に増額</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">38,500ポイント（38,500円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>UQ mobile</div>
+    <div class="card-detail"><span class="label">条件</span>他社からのMNPと、コミコミプランバリューまたはトクトクプラン2、増量オプションIIへの加入が必要。iPhone 17e 256GBとGoogle Pixel 10a 128GBが対象。スマホトクするプログラムで端末返却時の2年間総支払額は5,547円。povo・auからの乗り換えは対象外。期間は2026年8月21日から終了日未定。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2134461.html">出典を確認する</a></div>
+  </div>
+
+  <h2>ソフトバンク <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Google Pixel 11（256GB）がMNPで実質2年24円</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">167,016ポイント（167,016円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ソフトバンク</div>
+    <div class="card-detail"><span class="label">条件</span>MNP契約と新トクするサポートの48回払いを利用し、25カ月目に端末を返却。通常価格167,040円に対して2年間の負担は24円。返却時に22,000円の手数料が必要な場合あり。2026年8月20日時点の価格。</div>
+    <div class="card-source"><a href="https://www.itmedia.co.jp/mobile/articles/2608/20/news082.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">その他のMNP特典価格更新</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">40,000ポイント（40,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ソフトバンク</div>
+    <div class="card-detail"><span class="label">条件</span>Galaxy S26（512GB）は2年間6,912円、iPhone Air（256GB）は2年間9,000円、iPhone 17（512GB）は40,000円割引相当のキャンペーン価格。期間は2026年8月18日から8月21日時点の価格で、終了日未定。</div>
+    <div class="card-source"><a href="https://www.itmedia.co.jp/mobile/articles/2608/21/news091.html">出典を確認する</a>　<a href="https://www.itmedia.co.jp/mobile/articles/2608/19/news074.html">出典を確認する</a>　<a href="https://www.itmedia.co.jp/mobile/articles/2608/18/news079.html">出典を確認する</a></div>
+  </div>
+
+  <h2>Y!mobile <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">arrows Alpha2をMNPで74,200円</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">23,696ポイント（23,696円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>Y!mobile</div>
+    <div class="card-detail"><span class="label">条件</span>2026年8月27日発売。シンプル3 Mまたはシンプル3 Lを契約すると、94,896円から回線セット割引20,696円を適用し74,200円。購入者には3,000円相当のPayPayポイントコードを進呈。終了日未定。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2133524.html">出典を確認する</a></div>
+  </div>
+
+  <h2>povo <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">新幹線のSuicaタッチでデータ使い放題（3時間）を無料付与</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">0ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>えきねっとで新幹線eチケットを予約し、Suicaとpovo2.0を事前連携のうえ、JR東日本管内の新幹線停車駅55駅の改札をSuicaで通過すると自動適用。期間中の付与回数に上限なし。期間は2026年9月18日始発から12月17日終電。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2133587.html">出典を確認する</a></div>
+  </div>
+
+  <h2>楽天モバイル <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Nothing Phone (3)を最大30,000円値下げ</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">30,000ポイント（30,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>256GBは119,900円から95,990円、512GBは138,900円から108,900円。他社からのMNPと買い替え超トクプログラム利用で、256GBは21,360円、512GBは30,960円の負担。特価キャンペーン対象時は256GB 55,990円、512GB 68,900円。期間は2026年8月18日から終了日未定。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2133406.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Phone (3a) Liteを買い替え超トクプログラム対象に追加</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">18,000ポイント（18,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>他社からのMNPとプログラム利用で2年間の負担は24円。新規申し込みの場合は18,000円。期間は2026年8月18日から終了日未定。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2133406.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Apple Watchを最大43,450円値下げ</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">43,450ポイント（43,450円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>楽天市場 楽天モバイル公式店</div>
+    <div class="card-detail"><span class="label">条件</span>楽天市場の楽天モバイル公式店でApple Watchを大幅値下げ。期間は2026年8月17日から終了日未定。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2133064.html">出典を確認する</a></div>
+  </div>
+
+  <h2>IIJmio <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">arrows Alpha2 MNP期間限定特価64,980円</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">29,920ポイント（29,920円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>8GB／256GBは通常94,900円からMNP特価64,980円、24回払いは月額2,709円。12GB／512GBは通常118,800円から99,800円。期間は2026年8月18日から11月4日21時59分。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2133421.html">出典を確認する</a>　<a href="https://k-tai.watch.impress.co.jp/docs/news/2133834.html">出典を確認する</a></div>
+  </div>
+
+  <h2>BIC SIM（IIJ系） <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">スマホセットキャンペーンで最大5,000ビックポイント還元</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">5,000ポイント（5,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ビックカメラ.com</div>
+    <div class="card-detail"><span class="label">条件</span>SIMフリーiPhoneまたはAndroid端末を購入し、MNPでBIC SIMギガプラン5GBから55GBの音声SIMまたは音声eSIMを契約。基本特典3,000ポイントと期間限定増量特典2,000ポイントを加算。端末購入月の翌月末までに申し込み、申込月の翌月末までに開通・継続契約が必要。増量特典は2026年10月31日まで。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2133598.html">出典を確認する</a></div>
+  </div>
+
+  <h2>mineo <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">arrows Alpha2、moto g37j取り扱い開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">0ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>mineo</div>
+    <div class="card-detail"><span class="label">条件</span>2026年8月27日発売。arrows Alpha2は8GB／256GBが94,776円、12GB／512GBが118,800円。moto g37jの4GB／128GBは36,168円。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2133546.html">出典を確認する</a></div>
+  </div>
+
+  <h2>ゲオモバイル（中古端末×MNP） <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">UQ mobile乗り換え7周年HAPPYキャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">10,000ポイント（10,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ゲオモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>中古端末とUQ mobileへのMNPをセットで大幅値引き。iPhone 12 mini 64GB（状態A）は新規・MNPとも一括1円で、MNPは1万円分e-GIFT付き。Google Pixel 9a（状態B）はMNPで16,500円、iPhone 14（状態B）はMNPで15,400円。在庫限りで内容変更の可能性あり。期間は2026年8月24日23時59分まで。</div>
+    <div class="card-source"><a href="https://tamacoin.net/archives/4043">出典を確認する</a>　<a href="https://mvno.geo-mobile.jp/uqmobile/">出典を確認する</a></div>
+  </div>
+
+  <h2>補足（今回の期間で確認できなかった事業者） <span class="section-count">（0件）</span></h2>
+
+  <p>ahamo、irumo、LINEMO、NUROモバイル、日本通信SIM、b-mobile、BIGLOBEモバイル、LIBMO、エキサイトモバイル、J:COM MOBILE、QTモバイル、イオンモバイル、y.u mobile、HISモバイル、LinksMate、JALモバイル、ドコモ／au／ソフトバンク各社の認定中古品、イオシス、にこスマについては、2026年8月15日から8月22日の期間に該当する新規発表・改定は確認できませんでした。ahamoの40GB増量は8月1日、イオシス30周年記念祭は8月14日から8月16日で終了済み、QTモバイルの機種変更キャンペーンは8月14日発表のため対象期間外です。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新の還元率・条件は各サイトにてご確認ください。</p>
+</body>
+</html>

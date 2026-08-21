@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年8月22日（土）版</p>
+  <p class="total-count">本日のお得案件: 14件</p>
+
+  <h2>新商品情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">永谷園「カップ入り あさげのごはん」</div>
+    <div class="card-detail"><span class="label">特徴</span>お湯を注ぐだけの御味噌汁ごはん。米味噌2種と豆味噌のブレンドに鰹だしを合わせ、国産米を2製法で調理</div>
+    <div class="card-detail"><span class="label">発売日</span>コンビニは2026年8月24日、その他業態は2026年9月14日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">税抜240円</span></div>
+    <div class="card-source"><a href="https://www.ssnp.co.jp/seasoning/698239/">出典を確認する</a>　<a href="https://prtimes.jp/main/html/rd/p/000000523.000020257.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">キリンビバレッジ「午後の紅茶 FRUITS＆ICE TEA」2品</div>
+    <div class="card-detail"><span class="label">特徴</span>オレンジとグレープフルーツ、白ぶどうとレモンの2種。スリランカ産ウバ茶葉を使用し、1日分のビタミンCを摂取できる設計</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月15日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">200円前後（税別）</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134000.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブン‐イレブン「グミの日」限定グミ7品</div>
+    <div class="card-detail"><span class="label">特徴</span>9月3日のグミの日に向け、レッド系フレーバーで統一した7品を全国発売</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年8月21日から順次</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">税込172.28円から225.72円</span></div>
+    <div class="card-source"><a href="https://www.ssnp.co.jp/distribution/698542/">出典を確認する</a>　<a href="https://gourmet.watch.impress.co.jp/docs/news/2134288.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ロッテ「雪見だいふく 秋限定お月見仕立て」</div>
+    <div class="card-detail"><span class="label">特徴</span>月をイメージした黄色いおもちでバニラアイスを包んだ秋限定品。全4種のパッケージにレアデザインを含む</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月上旬から10月上旬</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">226円前後</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134169.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">不二家洋菓子店「マロンモンブラン・チョコ生ケーキ 半額キャンペーン」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">約50％OFF</span></div>
+    <div class="card-detail"><span class="label">条件</span>通常各537円の商品を各268円で販売。1会計合計4個まで、予約不可、数量限定</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月21日から23日</div>
+    <div class="card-source"><a href="https://www.ssnp.co.jp/snack/698554/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">安楽亭「肉の日祭り」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">食べ放題最大20％OFF、定番焼肉最大半額</span></div>
+    <div class="card-detail"><span class="label">条件</span>プレミアムゴージャスコースは16,500円を13,200円。サムギョプサルコースは対象外</div>
+    <div class="card-detail"><span class="label">期間</span>2026年8月21日から31日</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134262.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">壱角家「お客様感謝祭」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">家系ラーメン並 760円</span></div>
+    <div class="card-detail"><span class="label">条件</span>大盛は別途料金。学割・クーポン併用不可、デリバリー対象外、深夜から早朝は提供なし</div>
+    <div class="card-detail"><span class="label">期間</span>2026年8月24日から27日および31日</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134552.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">くら寿司 価格改定（最低価格の引き下げ）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最低価格 110円</span></div>
+    <div class="card-detail"><span class="label">条件</span>37品目を110円に引き下げ。一方でサーモン、生えびなど33品目は120円へ値上げ</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月4日から</div>
+    <div class="card-source"><a href="https://www.ssnp.co.jp/foodservice/698332/">出典を確認する</a>　<a href="https://www.oricon.co.jp/news/2474996/full/">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">能登・ポケモン空港（のと里山空港）限定グッズ</div>
+    <div class="card-detail"><span class="label">市場状況</span>定価330円のステッカーや990円のピンバッジがフリマサイトで1万円超で出品されるケースを確認</div>
+    <div class="card-detail"><span class="label">注意点</span>1商品1点までの購入制限と追加生産で供給改善が進行。正規販売の在庫回復を待つのが合理的</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/eafd48f387ae271936f6ba0a07cf55c21b437881">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サントリー「山崎 2026」</div>
+    <div class="card-detail"><span class="label">市場状況</span>Amazon招待制販売は公式同額の1万7600円。招待制以外の出品は2万2750円から</div>
+    <div class="card-detail"><span class="label">注意点</span>公式抽選とAmazon招待制を優先。サントリー公式第2回応募の締切は9月2日23時59分</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134768.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ランダムグッズ（キャラクターグッズ全般）</div>
+    <div class="card-detail"><span class="label">市場状況</span>3万5000件超の調査で回答者の9割がランダムグッズを嫌いと回答。転売品購入経験者は63.3％</div>
+    <div class="card-detail"><span class="label">注意点</span>交換会や正規トレード手段の有無を確認してから購入を判断する</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/96e80592d01f5a9923fd6f99a18a73c5d01bc543">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">医療用手袋・エプロン・注射筒（シリンジ）</div>
+    <div class="card-detail"><span class="label">理由</span>ナフサ不足による石油化学製品の供給制約。医療用手袋・エプロンの供給停止やシリンジの購入制限が発生</div>
+    <div class="card-detail"><span class="label">影響度</span>★★★★★</div>
+    <div class="card-detail"><span class="label">対応</span>代替調達ルートを確保し、過剰な買い込みによる流通在庫の偏りを避ける</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/216513274f11b6ad04146dfdd1c5a0e7878d25bf">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">緑茶（茶葉）</div>
+    <div class="card-detail"><span class="label">理由</span>海外での抹茶人気の高まりにより国内が品薄。2026年7月の緑茶価格は前年同月比29.2％上昇</div>
+    <div class="card-detail"><span class="label">影響度</span>★★★☆☆</div>
+    <div class="card-detail"><span class="label">対応</span>家庭用は価格改定前の在庫確保、業務用は仕入先の複線化を検討</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/db74608bbc5b1f5148bb59555c51e7cd0d668789">出典を確認する</a>　<a href="https://www.soumu.go.jp/menu_news/s-news/01toukei08_01000349.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">小麦（世界供給）</div>
+    <div class="card-detail"><span class="label">理由</span>IGCが世界小麦収穫量予測を8億1700万トンへ400万トン下方修正。欧州の熱波による不作が主因</div>
+    <div class="card-detail"><span class="label">影響度</span>★★★☆☆</div>
+    <div class="card-detail"><span class="label">対応</span>パン・麺・菓子の原料コストへの時間差の波及を見込み、調達計画を検討</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/6e7fedb140feff84176dc71ac759623a210e404a">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>今週の外食は、値下げと値上げが同一企業内で同時進行するフェーズに入った。くら寿司は最低価格を引き下げる一方、サーモンなど33品目を値上げしており、価格訴求品で客数を確保し、原価高品目で採算を取る二層構造が定着しつつある。消費者側の実利は不二家の半額や安楽亭の最大20％OFFといった短期集中型の販促に偏り、常時値引きから期間限定へのシフトが鮮明だ。</p>
+  <p>供給面では、ナフサ不足が医療用手袋・シリンジという生活インフラ領域にまで到達した点が最大の警戒シグナルである。緑茶価格の上昇とIGCによる小麦収穫量予測の下方修正を合わせ、原料側の逼迫は当面続くとみられる。</p>
+  <p>転売領域は、能登・ポケモン空港グッズが増産と購入制限で沈静化に向かう一方、ランダムグッズでは販売方式そのものが過熱を生む構造問題として顕在化している。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新の還元率・条件は各サイトにてご確認ください。</p>
+</body>
+</html>

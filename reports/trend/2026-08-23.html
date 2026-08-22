@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年8月23日（日）版</p>
+  <p class="total-count">本日のお得案件: 12件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">チロル きなこもちポップコーン（ジャパンフリトレー／チロルチョコ監修）</div>
+    <div class="card-detail"><span class="label">特徴</span>チロルチョコ「きなこもち」の味わいを再現した秋冬限定ポップコーン。銅鍋で煮込んだきなこ蜜を絡め、カリッとサクサクの食感に仕上げた</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月7日（セブン-イレブン先行）、9月21日（スーパー・ドラッグストア等）</div>
+    <div class="card-detail"><span class="label">価格</span>192円（税込）／内容量32g</div>
+    <div class="card-source"><a href="https://www.ssnp.co.jp/snack/698580/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">びっくりドンキー「お月見マロンデザート」4品</div>
+    <div class="card-detail"><span class="label">特徴</span>同チェーン初登場のお月見仕様マロンデザート。北海道産ソフトクリームとマロン風味を組み合わせ、月をイメージしたミルククッキーを添える。午前10時からの提供でテイクアウト・デリバリー非対応</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年8月26日</div>
+    <div class="card-detail"><span class="label">価格</span>月見モンブランパフェ920円、月見マロンサンデー580円、バニラアイスの月見マロンシフォンプレート単品820円（コーヒーセット920円）、ジョッキパフェ（月見マロン）1,770円（すべて税込）</div>
+    <div class="card-source"><a href="https://www.ssnp.co.jp/foodservice/698609/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">モロゾフ「プリンとチーズケーキ」「復刻カスタードプリン」「白くまプリン」</div>
+    <div class="card-detail"><span class="label">特徴</span>大丸梅田店・地1階西「お菓子なパレード」での期間限定販売。復刻カスタードプリンは発売当初のレシピを再現し上白糖を使用、白くまプリンは九州のかき氷「白くま」をイメージし練乳ソース・桜えび・みかん・小豆・パイナップルをトッピング</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年8月26日〜9月1日（期間限定）</div>
+    <div class="card-detail"><span class="label">価格</span>プリンとチーズケーキ486円、復刻カスタードプリン378円、白くまプリン486円（すべて税込）</div>
+    <div class="card-source"><a href="https://www.ssnp.co.jp/snack/698179/">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">楽天ペイ「生活応援キャンペーン」第1弾</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大10％ポイント（上限2,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>楽天ペイ</div>
+    <div class="card-detail"><span class="label">条件</span>全国26社のスーパー・ドラッグストアで、毎月最終日曜日は最大10％還元、5のつく日は最大3％還元。エントリー不要。最終日曜日分は2026年8月30日〜12月27日23時59分、5のつく日分は8月30日〜12月25日23時59分</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/b1dcd975e583c11eae57f3be3e4cc803ef6769d7">出典を確認する</a>　<a href="https://news.yahoo.co.jp/articles/b27ce6535a151294740fecc6291386d711fbca30">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Amazon「スマイルSALE」</div>
+    <div class="card-detail"><span class="label">還元</span>ポイントアップキャンペーンの還元率は未発表</div>
+    <div class="card-detail"><span class="label">サイト</span>Amazon</div>
+    <div class="card-detail"><span class="label">条件</span>2026年8月28日9時〜9月3日23時59分。Ringのドアホン・ネットワークカメラ、SanDisk製M.2 SSD、ワコム製品、CIO製品などが対象。ポイントアップキャンペーンのエントリー要否は未発表</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/5d780e16695dbf0cbe975deff0cb1e2a634ddaf1">出典を確認する</a>　<a href="https://news.yahoo.co.jp/articles/1d2e534e713db1cb43f888a8de31309593ddbfe8">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">楽天ペイ「毎日全額ポイント還元」スクラッチ</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大10,000ポイント（10,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>楽天ペイ</div>
+    <div class="card-detail"><span class="label">条件</span>毎月5と0のつく日に楽天ペイで支払うと、翌日のスクラッチで1等〜3等のいずれかが必ず当たる。1等は支払額全額還元、2等は5％還元、3等は1ポイント。終了日未定</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/f849b49a107e804b9c569539934917ab735c0d19">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">能登空港（のと里山空港）ポケモン限定グッズ</div>
+    <div class="card-detail"><span class="label">市場状況</span>定価330円のステッカー、990円のピンバッジが、フリマサイトで1万円を超える価格で出品されるケースが発生。ステッカーは定価の約30倍水準</div>
+    <div class="card-detail"><span class="label">注意点</span>空港のグッズショップは「1商品1点まで」の購入制限を導入。石川県航空企画課は追加生産で安定供給体制を整えるとしており、慌てて二次流通で買う必要性は低い</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/eafd48f387ae271936f6ba0a07cf55c21b437881">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">夏の甲子園 決勝戦チケット</div>
+    <div class="card-detail"><span class="label">市場状況</span>日本高野連が、8月22日の決勝戦は前売券で全席完売のため当日券の発売なしと告知。車いす席も完売し、SNSでは高額転売出品への怒りの声が拡散</div>
+    <div class="card-detail"><span class="label">注意点</span>主催者は入場券の再発売はなく、入場券を持たない人は入場できないと明示。転売品は入場保証がなく、購入リスクが高い</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/ecfc16712532a392f345649721ba0e7489a29a66">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">『葬送のフリーレン』×フェルメール《真珠の耳飾りの少女》展 限定グッズ</div>
+    <div class="card-detail"><span class="label">市場状況</span>大阪中之島美術館で8月21日に開幕した同展のコラボグッズ全8種が初日から争奪戦に。ポストカード＆クリアファイル2種セットは1,100円で、アクリルスタンド、トートバッグなども販売</div>
+    <div class="card-detail"><span class="label">注意点</span>ファンからは転売品を買いたくないとの反発が出ている。記事時点で二次流通の具体的な転売価格は不明</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/417764ebd6f57affd8a7f84f1156336397341c13">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">緑茶（抹茶を含む）</div>
+    <div class="card-detail"><span class="label">理由</span>海外で抹茶の人気が高まり国内が品薄。2026年7月の全国消費者物価指数で緑茶は前年同月比29.2％上昇し、突出した伸びとなった</div>
+    <div class="card-detail"><span class="label">影響度</span>高い</div>
+    <div class="card-detail"><span class="label">アクション</span>家庭用の茶葉・抹茶は特売時のまとめ買いや業務用パックへの切り替えを検討。飲食・菓子事業者は抹茶原料の調達計画前倒しが必要</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/db74608bbc5b1f5148bb59555c51e7cd0d668789">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">世界の小麦（2026年産）</div>
+    <div class="card-detail"><span class="label">理由</span>IGCが欧州の持続的な高温による不作を受け、世界の小麦収穫量見通しを8億1700万トンへ400万トン下方修正。ロシア・ウクライナ間の戦闘による海上輸送停滞も輸出量に影響</div>
+    <div class="card-detail"><span class="label">影響度</span>高い</div>
+    <div class="card-detail"><span class="label">アクション</span>小麦相場の上振れは製パン・製麺・菓子の秋冬価格改定に波及しやすい。仕入れ側は年内の契約条件を早期に確認したい</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/6e7fedb140feff84176dc71ac759623a210e404a">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Apple初の折りたたみiPhone（報道上の呼称「iPhone Ultra」）</div>
+    <div class="card-detail"><span class="label">理由</span>初回出荷分は1千万台とされる一方、製造を担う各社が生産を軌道に乗せるまでに3〜5カ月かかる見通し。生産速度は通常モデルより30〜40％遅いとされる</div>
+    <div class="card-detail"><span class="label">影響度</span>中程度</div>
+    <div class="card-detail"><span class="label">アクション</span>発売直後の入手は困難で、転売による価格上乗せが見込まれる。急がないなら生産安定後の購入が合理的</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/c286236bfb2ec5d4b513f08a2d65594b7f8b4be2">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>今週末の焦点は、供給制約が価格に転嫁され始めた点に集約されます。抹茶起点の緑茶価格上昇、欧州熱波によるIGCの小麦収穫量見通し下方修正、カフェ・ベローチェ等8ブランドの価格改定により、原料・人件費・物流の負担が末端価格に届く局面が続いています。一方で、楽天ペイの最大10％還元やAmazonスマイルSALEといった施策が8月末に集中しており、値上げと還元が同時進行する実質価格が読みにくい相場観です。転売領域では、能登空港ポケモングッズのように地域振興施策が過熱の標的になる事例が出ており、供給側の購入制限と増産アナウンスの速さが二次流通価格を鎮める大きな変数になっています。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新の還元率・条件は各サイトにてご確認ください。</p>
+</body>
+</html>

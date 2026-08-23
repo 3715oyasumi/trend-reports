@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のコンビニお得情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のコンビニお得情報</h1>
+  <p class="report-date">2026年8月24日</p>
+  <p class="total-count">本日のお得案件: 79件</p>
+
+  <h2>セブン‐イレブン <span class="section-count">（10件）</span></h2>
+
+  <div class="card"><div class="card-title">スプラトゥーン レイダースキャンペーン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">オリジナルステッカー1枚</span></div><div class="card-detail"><span class="label">サイト</span>セブン‐イレブン</div><div class="card-detail"><span class="label">条件</span>対象お菓子を一度に2個購入。レシート応募は税込800円購入ごとにシリアルを1つ発行。</div><div class="card-source"><a href="https://www.sej.co.jp/cmp/st2608.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">氷結×FRUITS ZIPPER 仲川瑠夏ステッカープレゼント</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">オリジナルステッカー1枚</span></div><div class="card-detail"><span class="label">サイト</span>セブン‐イレブン</div><div class="card-detail"><span class="label">条件</span>対象のキリン氷結を一度に2本購入。各店先着20枚、景品がなくなり次第終了。</div><div class="card-source"><a href="https://www.sej.co.jp/cmp/hykt2608.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">どっさりフルーツヨーグルト 80円引きクーポン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">80円引きクーポン（80円相当）</span></div><div class="card-detail"><span class="label">サイト</span>セブン‐イレブン</div><div class="card-detail"><span class="label">条件</span>対象商品を1個購入。クーポン利用購入後も再発券。</div><div class="card-source"><a href="https://www.sej.co.jp/cmp/dfyg2608.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">湖池屋 ピュアポテト 60円引きクーポン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">60円引きクーポン（60円相当）</span></div><div class="card-detail"><span class="label">サイト</span>セブン‐イレブン</div><div class="card-detail"><span class="label">条件</span>対象のピュアポテトを1個購入。クーポン利用後も再発券。</div><div class="card-source"><a href="https://www.sej.co.jp/cmp/kky2608.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ザバス BIOPRO・ミルクプロテイン 30円引きクーポン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">30円引きクーポン（30円相当）</span></div><div class="card-detail"><span class="label">サイト</span>セブン‐イレブン</div><div class="card-detail"><span class="label">条件</span>対象のザバス商品を1本購入。クーポン利用後も再発券。</div><div class="card-source"><a href="https://www.sej.co.jp/cmp/svs2608.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">セブンプレミアム／セブンプレミアムゴールド お惣菜まとめ買いセール</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">最大100円引き（100円相当）</span></div><div class="card-detail"><span class="label">サイト</span>セブン‐イレブン</div><div class="card-detail"><span class="label">条件</span>対象惣菜を2個で50円引き、3個で100円引き。組み合わせ自由。</div><div class="card-source"><a href="https://www.sej.co.jp/cmp/sp2608.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ドリンク 50円引きクーポン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">50円引きクーポン（50円相当）</span></div><div class="card-detail"><span class="label">サイト</span>セブン‐イレブン</div><div class="card-detail"><span class="label">条件</span>対象ドリンク購入で次回使えるレシートクーポンを発券。</div><div class="card-source"><a href="https://www.sej.co.jp/cmp/drink2607.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">セブン‐イレブンアプリ限定施策</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">無料クーポン・PayPayポイント還元</span></div><div class="card-detail"><span class="label">サイト</span>セブン‐イレブンアプリ</div><div class="card-detail"><span class="label">条件</span>セブンカフェ10杯購入、ランクアップチャレンジ、毎月7のつく日の還元くじなど。</div><div class="card-source"><a href="https://www.sej.co.jp/cmp/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">Apple Accountチャージキャンペーン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">Apple Accountチャージ還元</span></div><div class="card-detail"><span class="label">サイト</span>セブン‐イレブン</div><div class="card-detail"><span class="label">条件</span>レジでのApple Accountチャージが対象。QUOカード、スターバックスカード企画も併催。</div><div class="card-source"><a href="https://www.sej.co.jp/cmp/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">話題の新商品</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">新商品販売</span></div><div class="card-detail"><span class="label">サイト</span>セブン‐イレブン</div><div class="card-detail"><span class="label">条件</span>爽やかレモンもこ、かじるレモンチーズケーキ、マンゴー＆ヨーグルトわらびもち入りを販売中。</div><div class="card-source"><a href="https://report.iko-yo.net/articles/32830">出典を確認する</a></div></div>
+
+  <h2>ファミリーマート <span class="section-count">（26件）</span></h2>
+
+  <div class="card"><div class="card-title">ファミマで東京ばな奈「見ぃつけたっ」</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">コラボ商品全7種</span></div><div class="card-detail"><span class="label">サイト</span>ファミリーマート</div><div class="card-detail"><span class="label">条件</span>東京ばな奈とのコラボスイーツ・菓子パンなどを展開中。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_tbanana_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">サンリオキャラクターズ×メーカーマスコット大集合！</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">オリジナルグッズ1個</span></div><div class="card-detail"><span class="label">サイト</span>ファミリーマート</div><div class="card-detail"><span class="label">条件</span>対象商品を2個購入。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_characters-mascot_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">サンリオキャラクターズ×メーカーマスコット ファミペイスタンプ</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">スタンプ1個</span></div><div class="card-detail"><span class="label">サイト</span>ファミリーマート</div><div class="card-detail"><span class="label">条件</span>対象商品1個購入につきスタンプ1個。交換または特典応募が可能。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_famipay-stamp_sanrio-characters_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">エスターバニーキャンペーン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">オリジナル缶ミラー1個</span></div><div class="card-detail"><span class="label">サイト</span>ファミリーマート</div><div class="card-detail"><span class="label">条件</span>対象菓子を2個購入。全5種、数量限定。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_estherbunny_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ポケモンフレンダキャンペーン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">コラボ企画</span></div><div class="card-detail"><span class="label">サイト</span>ファミリーマート</div><div class="card-detail"><span class="label">条件</span>ポケモンのアーケードゲーム「ポケモンフレンダ」とのコラボ。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_pokemonfrienda_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ポケモン・スプラトゥーン 応募キャンペーン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">オリジナルL判ブロマイド</span></div><div class="card-detail"><span class="label">サイト</span>ファミリーマート</div><div class="card-detail"><span class="label">条件</span>対象の任天堂コラボ商品を購入して応募。</div><div class="card-source"><a href="https://vdpro.jp/fm.nintendo22/">出典を確認する</a>・<a href="https://vdpro.jp/fm.nintendo23/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">1個買うと、1個もらえる</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">無料引換券1枚</span></div><div class="card-detail"><span class="label">サイト</span>ファミリーマート</div><div class="card-detail"><span class="label">条件</span>対象商品を1個購入すると、対象商品の無料引換券をレシート発券。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2023_1buy1-receipt_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">熱闘！おむすび選手権</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">フェア対象商品</span></div><div class="card-detail"><span class="label">サイト</span>ファミリーマート</div><div class="card-detail"><span class="label">条件</span>夏のおむすび大決戦として人気おむすびを集中展開。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_omusubi-championship_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">大谷選手 ファミマおむすび割2026</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">50円引きクーポン（50円相当）</span></div><div class="card-detail"><span class="label">サイト</span>ファミペイ</div><div class="card-detail"><span class="label">条件</span>大谷翔平選手がホームランまたは勝利投手になった日に対象おむすびクーポンを配布。</div><div class="card-source"><a href="https://www.famima-ohtani-omusubi.com/hr-campaign/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">レシート読み取りクーポン（中華まん）</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">割引クーポン</span></div><div class="card-detail"><span class="label">サイト</span>ファミマアプリ</div><div class="card-detail"><span class="label">条件</span>レシートのギフトコードまたはQRコードをアプリで読み取る。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_famipay-receipt-coupon_chukaman_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ファミマポイント山分けキャンペーン（POSA）</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">総額1,000万円相当のポイント</span></div><div class="card-detail"><span class="label">サイト</span>ファミリーマート</div><div class="card-detail"><span class="label">条件</span>対象商品を5,000円以上購入。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_posa_yamawake_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">レジでApple Accountチャージ10％還元</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">最大5,000円分（5,000円相当）</span></div><div class="card-detail"><span class="label">サイト</span>ファミリーマート</div><div class="card-detail"><span class="label">条件</span>累計5,000円以上のApple Accountチャージ。</div><div class="card-source"><a href="https://vdpro.jp/fm.apple9ac">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ファミペイ 毎日挑戦ゲーム</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">最大10万円相当のポイント</span></div><div class="card-detail"><span class="label">サイト</span>ファミペイ</div><div class="card-detail"><span class="label">条件</span>1日1回ゲームに挑戦。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_famipay-game_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">当選確率90％！ファミペイ払いゲーム</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">最大1,500円相当のポイント</span></div><div class="card-detail"><span class="label">サイト</span>ファミペイ</div><div class="card-detail"><span class="label">条件</span>ファミペイ決済のたびに抽選。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_famipay-kessai-game_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ファミマのアプリ提示で無料引換クーポン抽選</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">無料引換クーポン</span></div><div class="card-detail"><span class="label">サイト</span>ファミマアプリ</div><div class="card-detail"><span class="label">条件</span>アプリ提示でアイス、ドリンク剤、日用品、酒類などの抽選に参加。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2022_famipay-yokoku.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ファミペイ チャージの日</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">クーポン1枚</span></div><div class="card-detail"><span class="label">サイト</span>ファミペイ</div><div class="card-detail"><span class="label">条件</span>8月28日に3,000円以上チャージ。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_famipay-chargeday_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">金曜日限定 POSAカード×ファミペイ10％還元</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">10％還元</span></div><div class="card-detail"><span class="label">サイト</span>ファミペイ</div><div class="card-detail"><span class="label">条件</span>毎週金曜に対象POSAカードをファミペイ決済。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2603_posa_famipay_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">毎週火曜／金曜の生活応援セール</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">最大50円引き（50円相当）</span></div><div class="card-detail"><span class="label">サイト</span>ファミリーマート</div><div class="card-detail"><span class="label">条件</span>火曜は対象食品20円引き、金曜は冷凍食品2個購入で50円引き。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/redirect/2603_seikatsu-ouen_cp_ka.html">出典を確認する</a>・<a href="https://www.family.co.jp/campaign/spot/redirect/2603_seikatsu-ouen_cp_kin.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">楽天ポイント SPU参加記念キャンペーン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">最大10,000ポイント（10,000円相当）</span></div><div class="card-detail"><span class="label">サイト</span>楽天ポイント</div><div class="card-detail"><span class="label">条件</span>ファミマで月3,000円以上購入。条件達成で抽選参加。</div><div class="card-source"><a href="https://pointcard.rakuten.co.jp/campaign/familymart/20260801/spu/">出典を確認する</a>・<a href="https://pointcard.rakuten.co.jp/campaign/spu/familymart/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">Vポイント 夏のクーポン祭り</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">クーポンセット</span></div><div class="card-detail"><span class="label">サイト</span>Vポイントアプリ</div><div class="card-detail"><span class="label">条件</span>アプリでクーポンセットを受け取る。</div><div class="card-source"><a href="https://web.tsite.jp/cpn/vpoint/coupon-matsuri2/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">dポイント大還元祭（総額1億円山分け）</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">総額1億円相当のポイント</span></div><div class="card-detail"><span class="label">サイト</span>dポイント</div><div class="card-detail"><span class="label">条件</span>対象店舗で1ポイント以上ためると抽選対象。</div><div class="card-source"><a href="https://dpoint.docomo.ne.jp/cp_7/list_260801_7601/index.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ポイント連携（dポイント・楽天ポイント・Vポイント）</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">ポイント上乗せ付与</span></div><div class="card-detail"><span class="label">サイト</span>ファミリーマート</div><div class="card-detail"><span class="label">条件</span>各ポイントカードを提示して対象商品を購入。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/pointplus.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">CURRY UP監修カレー 限定ステッカー</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">限定ステッカー</span></div><div class="card-detail"><span class="label">サイト</span>ファミリーマート</div><div class="card-detail"><span class="label">条件</span>CURRY UP監修商品の購入。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/redirect/260721_curryup.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ファミペイ関連 金融系施策</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">最大2,000円相当</span></div><div class="card-detail"><span class="label">サイト</span>ファミペイ</div><div class="card-detail"><span class="label">条件</span>翌月払い登録、カード初期設定、ステップボーナス、ローン契約、新規会員登録などが対象。</div><div class="card-source"><a href="https://famipay.famidigi.jp/cp/cp231/260701/">出典を確認する</a>・<a href="https://famipay.famidigi.jp/cp/cp117/230901/">出典を確認する</a>・<a href="https://famipay.famidigi.jp/cp/cp228/260701/">出典を確認する</a>・<a href="https://www.family.co.jp/campaign/spot/2503_famipay-welcome_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ファミペイ ボトルキープサービス</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">回数券による割引</span></div><div class="card-detail"><span class="label">サイト</span>ファミペイ</div><div class="card-detail"><span class="label">条件</span>天然水・お茶・紅茶・コーヒーの回数券をアプリで購入。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2503_famipay-bottlekeep_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">話題の新商品</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">新商品販売</span></div><div class="card-detail"><span class="label">サイト</span>ファミリーマート</div><div class="card-detail"><span class="label">条件</span>ピーチフラッペ、マンゴーフラッペ、中華まん全5種、東京ばな奈コラボを展開中。</div><div class="card-source"><a href="https://report.iko-yo.net/articles/32830">出典を確認する</a></div></div>
+
+  <h2>ローソン <span class="section-count">（13件）</span></h2>
+
+  <div class="card"><div class="card-title">『ウマ娘 プリティーダービー』キャンペーン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">オリジナルクリアファイル1枚</span></div><div class="card-detail"><span class="label">サイト</span>ローソン</div><div class="card-detail"><span class="label">条件</span>対象のお菓子を3点同時購入。全8種から選択、各店計24枚限定。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/umamusume/">出典を確認する</a>・<a href="https://convenicheck.com/cpsale/cpsale_lawson/130979/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">「ハイキュー!!」みんなでぐんぐんキャンペーン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">クリアファイルまたはコースター</span></div><div class="card-detail"><span class="label">サイト</span>ローソン</div><div class="card-detail"><span class="label">条件</span>対象のお菓子またはアイスを購入。先着・数量限定。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/haikyu/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">『ブルーアーカイブ』キャンペーン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">オリジナルクリアファイル</span></div><div class="card-detail"><span class="label">サイト</span>ローソン</div><div class="card-detail"><span class="label">条件</span>先着・数量限定配布のほか限定グッズ、予約商品、ローソンプリントを展開。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/bluearchive/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">『ペルソナ』シリーズ30周年キャンペーン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">オリジナルクリアファイル</span></div><div class="card-detail"><span class="label">サイト</span>ローソン</div><div class="card-detail"><span class="label">条件</span>先着・数量限定配布、店頭販売、予約販売、ローソンプリントを展開中。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/persona30th/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">「ドズル社」キャンペーン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">オリジナルグッズ</span></div><div class="card-detail"><span class="label">サイト</span>ローソン</div><div class="card-detail"><span class="label">条件</span>人気ゲーム実況グループとのコラボグッズを展開。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/dozle/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">櫻坂46・日向坂46 ローソンアプリ「たまスタ」</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">ライブ招待などの景品</span></div><div class="card-detail"><span class="label">サイト</span>ローソンアプリ</div><div class="card-detail"><span class="label">条件</span>100円（税込）以上の購入でチャレンジ可能。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/sakurahinata/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">L'Arc-en-Ciel 35th L'Anniversaire キャンペーン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">35周年記念コラボ</span></div><div class="card-detail"><span class="label">サイト</span>ローソン</div><div class="card-detail"><span class="label">条件</span>2026年9月22日開始予定。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/larc/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">買うほど回せる！アプリでLガチャ</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">抽選特典</span></div><div class="card-detail"><span class="label">サイト</span>ローソンアプリ</div><div class="card-detail"><span class="label">条件</span>Ponta会員またはdポイントカード会員がスタンプをためて挑戦。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/lgacha/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">au PAY連携 最大100万Pontaポイント山分け</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">最大100万Pontaポイント</span></div><div class="card-detail"><span class="label">サイト</span>ローソン</div><div class="card-detail"><span class="label">条件</span>ローソン限定、Ponta会員限定の山分けキャンペーン。</div><div class="card-source"><a href="https://lawson.go.link/VpZNw">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">飲料1本プレゼント系セール</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">飲料1本無料引換券</span></div><div class="card-detail"><span class="label">サイト</span>ローソン</div><div class="card-detail"><span class="label">条件</span>対象商品購入で無料引換券を発券。コカ・コーラ、キリン、アサヒ飲料が対象。</div><div class="card-source"><a href="https://www.lawson.co.jp/recommend/sale/index.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">食品まとめ買いセール</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">最大200円引き（200円相当）</span></div><div class="card-detail"><span class="label">サイト</span>ローソン</div><div class="card-detail"><span class="label">条件</span>カップ麺、即席食品、ゼリー、デザートなどの対象商品をまとめ買い。</div><div class="card-source"><a href="https://www.lawson.co.jp/recommend/sale/index.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">医薬品・日用品セール</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">最大400円引き（400円相当）</span></div><div class="card-detail"><span class="label">サイト</span>ローソン</div><div class="card-detail"><span class="label">条件</span>衛生用品とドリンク剤の同時購入、電池、オーラルケア、日焼け止めなどが対象。</div><div class="card-source"><a href="https://www.lawson.co.jp/recommend/sale/index.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">話題の新商品</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">新商品販売</span></div><div class="card-detail"><span class="label">サイト</span>ローソン</div><div class="card-detail"><span class="label">条件</span>Uchi Cafe カカオ香るショコラクレープ、もち食感ロールを販売中。</div><div class="card-source"><a href="https://tokubai.co.jp/news/articles/3895">出典を確認する</a></div></div>
+
+  <h2>ミニストップ <span class="section-count">（9件）</span></h2>
+
+  <div class="card"><div class="card-title">Xフライドポテト1.5倍増量</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">50％増量</span></div><div class="card-detail"><span class="label">サイト</span>ミニストップ</div><div class="card-detail"><span class="label">条件</span>価格据え置きでXフライドポテトを1.5倍に増量。</div><div class="card-source"><a href="https://www.ministop.co.jp/campaign/x15_20.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">増量フェア「愛も量も重めです」</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">対象商品増量</span></div><div class="card-detail"><span class="label">サイト</span>ミニストップ</div><div class="card-detail"><span class="label">条件</span>複数の対象商品を価格据え置きで増量販売。</div><div class="card-source"><a href="https://www.ministop.co.jp/campaign/260818zouryoufair/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">1GETキャンペーン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">無料引換券1枚</span></div><div class="card-detail"><span class="label">サイト</span>ミニストップ</div><div class="card-detail"><span class="label">条件</span>対象商品を1つ購入すると、もう1つ無料でもらえる引換券を発行。</div><div class="card-source"><a href="https://www.ministop.co.jp/campaign/1get.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">完熟白桃パフェ PayPayクーポン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">PayPayクーポン割引</span></div><div class="card-detail"><span class="label">サイト</span>PayPay</div><div class="card-detail"><span class="label">条件</span>アプリでクーポンを取得し、PayPay決済で対象パフェを購入。</div><div class="card-source"><a href="https://www.ministop.co.jp/campaign/paypay_9.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">Apple Accountチャージキャンペーン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">最大10％分のApple Gift Card</span></div><div class="card-detail"><span class="label">サイト</span>ミニストップ</div><div class="card-detail"><span class="label">条件</span>Apple Accountに5,000円以上チャージ。</div><div class="card-source"><a href="https://vdpro.jp/ministop.apple4istu.app/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">夜がずーっとおトクーポン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">レシートクーポン</span></div><div class="card-detail"><span class="label">サイト</span>ミニストップ</div><div class="card-detail"><span class="label">条件</span>16時から24時限定で利用可能。</div><div class="card-source"><a href="https://www.ministop.co.jp/campaign/260810-nightcoupon/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ヒプノシスマイク 店内放送</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">オリジナル店内放送</span></div><div class="card-detail"><span class="label">サイト</span>ミニストップ</div><div class="card-detail"><span class="label">条件</span>イオングループ連動企画として実施。</div><div class="card-source"><a href="https://chirashi.otoku.aeonsquare.net/pc/chirashi/aeon_hypnosismic/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">AEON Pay・WAONチャージキャンペーン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">WAON POINT抽選</span></div><div class="card-detail"><span class="label">サイト</span>ミニストップ</div><div class="card-detail"><span class="label">条件</span>AEON PayまたはWAONへチャージ。</div><div class="card-source"><a href="https://www.ministop.co.jp/campaign/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">AEON Payデー（毎月10日）／週末AEON Pay</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">基本の最大20倍ポイント</span></div><div class="card-detail"><span class="label">サイト</span>ミニストップ</div><div class="card-detail"><span class="label">条件</span>毎月10日、毎週金土日、モバイルオーダーのAEON Pay決済が対象。</div><div class="card-source"><a href="https://www.ministop.co.jp/campaign/">出典を確認する</a></div></div>
+
+  <h2>デイリーヤマザキ <span class="section-count">（6件）</span></h2>
+
+  <div class="card"><div class="card-title">対象の惣菜 各種20円引</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">20円引き（20円相当）</span></div><div class="card-detail"><span class="label">サイト</span>デイリーヤマザキ</div><div class="card-detail"><span class="label">条件</span>指定の惣菜商品を購入。</div><div class="card-source"><a href="https://www.daily-yamazaki.jp/information/125252/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">おいしい満足フェア</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">フェア対象商品</span></div><div class="card-detail"><span class="label">サイト</span>デイリーヤマザキ</div><div class="card-detail"><span class="label">条件</span>8月の月間フェアとして対象商品を集中展開。</div><div class="card-source"><a href="https://www.daily-yamazaki.jp/information/124617/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">1個買うと、1個もらえる！</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">無料引換券1枚</span></div><div class="card-detail"><span class="label">サイト</span>デイリーヤマザキ</div><div class="card-detail"><span class="label">条件</span>対象商品の購入で、もう1個の無料引換券を発行。</div><div class="card-source"><a href="https://www.daily-yamazaki.jp/information/124532/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">カロリーメイト 2個で30円引</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">30円引き（30円相当）</span></div><div class="card-detail"><span class="label">サイト</span>デイリーヤマザキ</div><div class="card-detail"><span class="label">条件</span>対象のカロリーメイトを2個一緒に購入。</div><div class="card-source"><a href="https://www.daily-yamazaki.jp/information/124508/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">キリン製品購入で飲料50円引きクーポン</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">50円引きクーポン（50円相当）</span></div><div class="card-detail"><span class="label">サイト</span>デイリーヤマザキ</div><div class="card-detail"><span class="label">条件</span>対象のキリン製品を1本購入。</div><div class="card-source"><a href="https://www.daily-yamazaki.jp/information/123948/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">日清の対象商品 2個で70円引</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">70円引き（70円相当）</span></div><div class="card-detail"><span class="label">サイト</span>デイリーヤマザキ</div><div class="card-detail"><span class="label">条件</span>対象の日清商品を2個一緒に購入。</div><div class="card-source"><a href="https://www.daily-yamazaki.jp/information/123930/">出典を確認する</a></div></div>
+
+  <h2>一番くじ（コンビニ取扱い） <span class="section-count">（15件）</span></h2>
+
+  <div class="card"><div class="card-title">一番くじ ヱヴァンゲリヲン新劇場版：序【セブン‐イレブン】</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">1回790円（790円相当）</span></div><div class="card-detail"><span class="label">サイト</span>セブン‐イレブン</div><div class="card-detail"><span class="label">条件</span>2026年8月29日発売。AからE賞にフィギュアを用意。</div><div class="card-source"><a href="https://news.mynavi.jp/article/20260807-ichibankuji/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ 爬虫類＆両生類 ～Tiny Friends～ vol.3【ローソン・ミニストップ】</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">1回680円（680円相当）</span></div><div class="card-detail"><span class="label">サイト</span>ローソン・ミニストップ</div><div class="card-detail"><span class="label">条件</span>2026年8月29日発売。ラストワン賞、ダブルチャンス対象。</div><div class="card-source"><a href="https://news.mynavi.jp/article/20260731-ichibankuji/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ ドラゴンボールGT【ローソン・ミニストップほか】</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">1回790円（790円相当）</span></div><div class="card-detail"><span class="label">サイト</span>ローソン・ミニストップほか</div><div class="card-detail"><span class="label">条件</span>店頭は8月22日発売、一番くじONLINEは8月24日17時から販売。</div><div class="card-source"><a href="https://1kuji.com/">出典を確認する</a>・<a href="https://news.mynavi.jp/article/20260731-ichibankuji/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ 銀魂 生誕20周年記念 銀魂展 ～はたちのつどい～ その弐【ローソン・ミニストップほか】</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">1回800円（800円相当）</span></div><div class="card-detail"><span class="label">サイト</span>ローソン・ミニストップほか</div><div class="card-detail"><span class="label">条件</span>2026年8月21日発売。ラストワン賞あり。</div><div class="card-source"><a href="https://news.mynavi.jp/article/20260731-ichibankuji/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじちょこっと Re:ゼロから始める異世界生活</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">1回550円（550円相当）</span></div><div class="card-detail"><span class="label">サイト</span>店頭販売</div><div class="card-detail"><span class="label">条件</span>2026年8月20日発売。オンライン取扱なし。</div><div class="card-source"><a href="https://charagoo.jp/genre-lottery/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ KINGDOM HEARTS -25th Anniversary-【セブン‐イレブン】</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">1回790円（790円相当）</span></div><div class="card-detail"><span class="label">サイト</span>セブン‐イレブン</div><div class="card-detail"><span class="label">条件</span>2026年8月15日発売。ソラ、リクのスタチューなどを用意。</div><div class="card-source"><a href="https://news.mynavi.jp/article/20260807-ichibankuji/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ ハイキュー!! -烏野の未来-【ローソン・ミニストップほか】</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">1回790円（790円相当）</span></div><div class="card-detail"><span class="label">サイト</span>ローソン・ミニストップほか</div><div class="card-detail"><span class="label">条件</span>2026年8月15日発売。ローソンのコラボキャンペーンと同時期展開。</div><div class="card-source"><a href="https://news.mynavi.jp/article/20260731-ichibankuji/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ 鬼滅の刃 ～上弦の弐～（再販売）</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">1回850円（850円相当）</span></div><div class="card-detail"><span class="label">サイト</span>一番くじONLINE</div><div class="card-detail"><span class="label">条件</span>2026年8月17日発売。オンライン限定販売。</div><div class="card-source"><a href="https://charagoo.jp/genre-lottery/2/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ 勝利の女神：NIKKE CHAPTER8【ローソン・ミニストップほか】</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">1回850円（850円相当）</span></div><div class="card-detail"><span class="label">サイト</span>ローソン・ミニストップほか</div><div class="card-detail"><span class="label">条件</span>2026年8月8日発売。「夏」テーマ、ラストワン賞・ダブルチャンス対象。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/entertainment/art/20260804_kujinikke.html">出典を確認する</a>・<a href="https://news.mynavi.jp/article/20260731-ichibankuji/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ ワンピース -エルバフ編- GIANT BASH!! Vol.2【セブン‐イレブン】</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">1回790円（790円相当）</span></div><div class="card-detail"><span class="label">サイト</span>セブン‐イレブン</div><div class="card-detail"><span class="label">条件</span>2026年8月8日発売。マスターライズフィギュアなどを用意。</div><div class="card-source"><a href="https://news.mynavi.jp/article/20260807-ichibankuji/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ クレヨンしんちゃん 夏のバケーション</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">くじ商品販売</span></div><div class="card-detail"><span class="label">サイト</span>店頭・一番くじONLINE</div><div class="card-detail"><span class="label">条件</span>2026年8月8日発売。店頭・オンライン両方で販売。</div><div class="card-source"><a href="https://1kuji.com/products">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ CUTIE STREET くじを手にする戦いなのです！【ローソン・ミニストップ】</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">1回700円（700円相当）</span></div><div class="card-detail"><span class="label">サイト</span>ローソン・ミニストップ</div><div class="card-detail"><span class="label">条件</span>2026年8月4日発売。書店、ホビーショップ、公式ショップ、オンラインでも取扱。</div><div class="card-source"><a href="https://news.mynavi.jp/article/20260731-ichibankuji/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ ミニオンズ＆モンスターズ【ローソン・ミニストップほか】</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">1回730円（730円相当）</span></div><div class="card-detail"><span class="label">サイト</span>ローソン・ミニストップほか</div><div class="card-detail"><span class="label">条件</span>2026年8月1日発売。店頭・オンライン両方で販売。</div><div class="card-source"><a href="https://news.mynavi.jp/article/20260731-ichibankuji/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ 進撃の巨人 ～選択と結果～</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">くじ商品販売</span></div><div class="card-detail"><span class="label">サイト</span>店頭・一番くじONLINE</div><div class="card-detail"><span class="label">条件</span>2026年8月5日発売。店頭・オンライン両方で販売。</div><div class="card-source"><a href="https://1kuji.com/products">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ 日曜劇場「VIVANT」／超かぐや姫！（ちょこっと）／ナルミヤキャラクターズ</div><div class="card-detail"><span class="label">還元</span><span class="card-amount">くじ商品販売</span></div><div class="card-detail"><span class="label">サイト</span>店頭・一番くじONLINE</div><div class="card-detail"><span class="label">条件</span>VIVANTは8月1日、超かぐや姫！は8月6日、ナルミヤキャラクターズは8月8日発売。</div><div class="card-source"><a href="https://1kuji.com/products">出典を確認する</a></div></div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新の還元率・条件は各サイトにてご確認ください。</p>
+</body>
+</html>

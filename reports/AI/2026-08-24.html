@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI情報レポート 2026/08/24</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>AI情報レポート 2026/08/24</h1>
+  <p class="report-date">2026年8月24日</p>
+  <p class="total-count">本日のお得案件: 35件</p>
+
+  <h2>1. 新AIモデル・LLM情報 <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">謎モデル「Ox Alpha」/ GLM-5.3 Flash 説</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">未公開ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>X</div>
+    <div class="card-detail"><span class="label">条件</span>DeepSWEで約63%を記録。GLM-5.3 Flashの可能性が話題だが、仕様は未確認。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091293109673926879">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">主要モデル格付け（Theo氏）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">無料ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>X</div>
+    <div class="card-detail"><span class="label">条件</span>主要モデルのティアリスト画像が拡散。いいね11,372件、表示184万回超。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091277536600969276">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Anthropic / Fable 5</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">11%ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>Ramp</div>
+    <div class="card-detail"><span class="label">条件</span>企業AI支出におけるFable 5のシェアは11%との報道紹介。高価格が背景とされる。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091463220359741709">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">OpenAI / GPT-5.6 Sol（値下げ予測）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">80%ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>Abacus.AI</div>
+    <div class="card-detail"><span class="label">条件</span>80%の値下げ予測。個人投稿による予想であり、OpenAIの公式発表ではない。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091419391028261287">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">来週の新モデル一斉リリース説（11モデル）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">未公開ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>X</div>
+    <div class="card-detail"><span class="label">条件</span>11モデルを列挙した未確認投稿。出典と公式情報の裏付けはない。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091474636449992870">出典を確認する</a></div>
+  </div>
+
+  <h2>2. 新AIツール・サービス <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">FreeToken（ローカルLLM高速化ソフト）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">無料ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ローカル環境</div>
+    <div class="card-detail"><span class="label">条件</span>GPU・CPU・RAMを連携し、8GB RTX 4060で35Bモデルを毎秒39トークンとする実測報告。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091202223090938177">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Uncensored Qwen3.8-27B（ローカルLLM）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">無料ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>Hugging Face</div>
+    <div class="card-detail"><span class="label">条件</span>16GB VRAMで動作する無検閲版Qwen。63.5万ダウンロード超として紹介。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091256189371949417">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ChatGPT / Apple Messages プラグイン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">契約者向けポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ChatGPT Work / Codex</div>
+    <div class="card-detail"><span class="label">条件</span>Macのメッセージ検索、返信下書き、送信に対応。プライバシー面の反発も拡大。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091194172917338520">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">PPT作成用 AI Skill ランキング（中国語圏）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">無料ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>GitHub</div>
+    <div class="card-detail"><span class="label">条件</span>編集可能なPPT出力やデザイン性を軸にした10選。ppt-masterが1位。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091474085502955610">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Claudish translator（英語とClaude語の翻訳ツール）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">無料ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>X</div>
+    <div class="card-detail"><span class="label">条件</span>Claude特有の言い回しを題材にしたジョーク寄りの翻訳ツール。いいね13,095件。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091201867737145472">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">StreamDiffusion × MIDIコントローラ（shi3z氏の自作）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">無料ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ローカル環境</div>
+    <div class="card-detail"><span class="label">条件</span>RTX 3060とMIDIつまみで、リアルタイム画像生成の潜在ベクトルを操作する試み。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091353448172368291">出典を確認する</a></div>
+  </div>
+
+  <h2>3. プロンプト技術・活用Tips <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Claude Code 開発者による28分の解説動画</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">無料ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>動画</div>
+    <div class="card-detail"><span class="label">条件</span>CLAUDE.md、永続メモリ、並列セッション、プロンプト技法を扱う解説として拡散。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091223870649094189">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">文系・非エンジニアが ChatGPT でアプリを量産した実践手順</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">無料ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ChatGPT</div>
+    <div class="card-detail"><span class="label">条件</span>設計相談、調査、ナレッジ化、実装の順に分ける実践フローを公開。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091339045062512968">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Claude Code / Codex での大規模開発タスク管理術</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">無料ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>資料</div>
+    <div class="card-detail"><span class="label">条件</span>指示粒度、進捗可視化、レビュー体制など、従来のPM技術が重要という内容。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091359797593395686">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サイバーエージェント「美しいUIの考え方」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">無料ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>サイバーエージェント</div>
+    <div class="card-detail"><span class="label">条件</span>整列、余白、フォントサイズなど、UIが綺麗に見えるルールを具体例付きで解説。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091300130821754987">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Stanford CS336（LLMをゼロから作る講義）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">無料ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>Stanford</div>
+    <div class="card-detail"><span class="label">条件</span>LLMの下層を数値処理から学ぶ講義。いいね15,490件、表示161万回超。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091231950774112412">出典を確認する</a></div>
+  </div>
+
+  <h2>4. AI企業・業界ニュース <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">NVIDIA / Poolside — 60億ドルのライセンス契約</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">60億ドルポイント（60億ドル相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>NVIDIA / Poolside</div>
+    <div class="card-detail"><span class="label">条件</span>技術ライセンス60億ドルと追加出資10億ドルの報道。Nemotron強化が狙いとされる。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091439473603035444">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Bitcoin Red Team / Kimi K3 — オープンソース監査</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">未公開ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>Bitcoin Red Team</div>
+    <div class="card-detail"><span class="label">条件</span>501プロジェクトをスキャンし、約8,000件の欠陥と1,280件の重大・高深刻度問題を検出と報告。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091261627903705538">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AIによる有権者シミュレーション（Polymarket報）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">該当なしポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>Polymarket</div>
+    <div class="card-detail"><span class="label">条件</span>中国が米国有権者のAIモデルで選挙反応をシミュレートしているとの報道紹介。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091349611755589706">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Samsung / Exynos 2700（AI性能）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">未公開ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>Samsung</div>
+    <div class="card-detail"><span class="label">条件</span>Snapdragon 8 Elite Gen 6を上回る性能を狙うとの韓国メディア報道紹介。未確認情報。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091343761569726710">出典を確認する</a></div>
+  </div>
+
+  <h2>5. AI×日本 <span class="section-count">（7件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">DGX Spark 2台購入の判断理由（suzukiAdIre氏）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">未公開ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>NVIDIA DGX Spark</div>
+    <div class="card-detail"><span class="label">条件</span>MoEモデルの実用化、提供元への依存低減、利用を促す投資構造を購入理由として解説。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091276437781377292">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">VRAM 8GB で動くローカルLLMリスト（日本語）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">無料ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>Hugging Face</div>
+    <div class="card-detail"><span class="label">条件</span>8GB GPUで動作する創作向けローカルLLMを5段階評価で紹介。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091317637762695245">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ニューヨーク大学 / コードを書かないハッカソン研究</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">該当なしポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ニューヨーク大学</div>
+    <div class="card-detail"><span class="label">条件</span>8か国229人の実験。初心者と経験者でAI活用の結果が二極化した。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091343485060477191">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">要件を投げるだけで会議システムが自動生成された事例（shi3z氏）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">該当なしポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>X</div>
+    <div class="card-detail"><span class="label">条件</span>ハッカソン用会議システムと、架空イベントの録画・投票・表彰まで自動生成されたとの報告。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091417451670155601">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">日本のスタートアップ界「思想の空白」論</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">該当なしポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>X</div>
+    <div class="card-detail"><span class="label">条件</span>未来構想を外部に委託し続けた結果、自前の価値判断基準が不足しているとの議論。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091314519742033962">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">今週の注目AI論文リスト（日本語まとめ）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">無料ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>X</div>
+    <div class="card-detail"><span class="label">条件</span>2026年8月16日から22日公開のAI論文を、8分野に分けてまとめたリスト。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091502759359238443">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ChatGPTデスクトップアプリ「Work」の日本語解説</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">無料ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>YouTube</div>
+    <div class="card-detail"><span class="label">条件</span>npaka氏によるChatGPT Workの基本から実践までの日本語解説。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091476199784726911">出典を確認する</a></div>
+  </div>
+
+  <h2>6. バズった話題・SNS事例 <span class="section-count">（7件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">日本の生成AI著作権論争（今日最大の炎上）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">該当なしポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>X</div>
+    <div class="card-detail"><span class="label">条件</span>生成AI作品の無断転載、二次創作、規制、制作物の品質確認を巡る議論。発端はいいね27,026件。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091325666172211430">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">海外版・生成AI忌避（創作物のなかのChatGPT）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">該当なしポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>X</div>
+    <div class="card-detail"><span class="label">条件</span>創作物の登場人物がChatGPTを使う描写への拒否感が英語圏と日本語圏で拡散。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091242408445161905">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「ChatGPTに好きな絵を描かせてみた」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">無料ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ChatGPT</div>
+    <div class="card-detail"><span class="label">条件</span>最小限の指示で画像生成を任せる投稿が、表示341万回で当日最大の表示数を記録。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091212203839926334">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ChatGPT × Apple Messages プラグインへのプライバシー反発</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">該当なしポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ChatGPT / Apple Messages</div>
+    <div class="card-detail"><span class="label">条件</span>メッセージ履歴の取得・保存、暗号化、法執行機関への提供可能性を巡り強い批判。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091194172917338520">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ローカルAIサーバー論</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">未公開ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ローカル環境</div>
+    <div class="card-detail"><span class="label">条件</span>将来は家庭にローカルAIサーバーが普及するという見通しが、FreeTokenの話題とともに拡散。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091218315494523054">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「AIが発達したのに、楽になった分はどこへ消えたのか」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">該当なしポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>X</div>
+    <div class="card-detail"><span class="label">条件</span>生成AIの生産性向上の恩恵と、働き方が変わらない現実を問う投稿が共感を集めた。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091434925459480846">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ChatGPTが小説家であることを覚えていてウザい件</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">該当なしポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ChatGPT</div>
+    <div class="card-detail"><span class="label">条件</span>メモリ機能が不要な職業文脈を持ち込む問題が話題に。メモリ削除や会話内指示が対処案。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091307107144618147">出典を確認する</a></div>
+  </div>
+
+  <h2>7. 定点観測: Artificial Analysis 知能ランキング（Intelligence Index） <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Artificial Analysis Intelligence Index</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">無料ポイント（0円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>Artificial Analysis</div>
+    <div class="card-detail"><span class="label">条件</span>上位はClaude Opus 5（max・xhigh）が63、Claude Fable 5が62、GPT-5.6 Sol（max）が61。上位5枠中4枠をClaude系が占めた。</div>
+    <div class="card-source"><a href="https://artificialanalysis.ai/models">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新の還元率・条件は各サイトにてご確認ください。</p>
+</body>
+</html>

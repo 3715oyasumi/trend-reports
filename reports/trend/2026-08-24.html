@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年8月24日（月）版</p>
+  <p class="total-count">本日のお得案件: 10件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">アサヒ飲料「三ツ矢ハチレモ」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">216円前後</span></div>
+    <div class="card-detail"><span class="label">サイト</span>アサヒ飲料</div>
+    <div class="card-detail"><span class="label">条件</span>レモン果汁1％とはちみつを合わせた炭酸飲料。500mLペットボトルで、2027年3月まで販売予定。発売日は2026年9月1日。</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134307.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サントリー「－196（イチキューロク）〈キウイ〉」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">350mL缶171円前後、500mL缶232円前後（税別）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>サントリー</div>
+    <div class="card-detail"><span class="label">条件</span>－196℃製法によるキウイフルーツ浸漬酒を使用した限定発売品。アルコール度数5％。発売日は2026年10月13日。</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134591.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ピザーラ「新潟産えだまめたっぷりのもちもち明太クリームピザ」「新潟産えだまめが主役の和風テリヤキピザ」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">価格不明</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ピザーラ</div>
+    <div class="card-detail"><span class="label">条件</span>新潟産えだまめを使った2種。明太クリームはマスカルポーネチーズと餅、和風テリヤキは焦がしオニオン醤油ソースとテリヤキチキンを使用。2026年8月26日から新潟県内イベント等で順次販売。</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134684.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">丸亀製麺「釜揚げうどんの日」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">50％割引</span></div>
+    <div class="card-detail"><span class="label">サイト</span>丸亀製麺</div>
+    <div class="card-detail"><span class="label">条件</span>釜揚げうどんが半額。並190円、大290円、得380円。2026年9月1日限定。テイクアウト不可で、一部対象外店舗あり。</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2133582.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ステーキのあさくま「肉の日 お客様感謝デー」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">50％増量</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ステーキのあさくま</div>
+    <div class="card-detail"><span class="label">条件</span>サーロイン、テンダーロイン、ランプの各ステーキを価格そのままで50％増量。2026年8月29日・30日のランチタイムからディナータイムまで。</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134773.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">フジパン「パンパパーン♪キャンペーン2026秋」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">合計1万名に賞品</span></div>
+    <div class="card-detail"><span class="label">サイト</span>フジパン</div>
+    <div class="card-detail"><span class="label">条件</span>応募券15点で三菱ブレッドオーブン、10点でBRUNOオーブントースター、5点でトートバッグに応募可能。期間は2026年9月1日から11月30日。</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134577.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">サントリーシングルモルトウイスキー白州 Story of the Distillery 2026 EDITION</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">定価1万7600円、二次流通は1万9800円から</span></div>
+    <div class="card-detail"><span class="label">サイト</span>Amazon、サントリー公式</div>
+    <div class="card-detail"><span class="label">条件</span>Amazonは招待制販売。公式第2回応募は2026年9月2日23時59分締切。招待メール受信後72時間以内に購入が必要。</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134829.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サントリーシングルモルトウイスキー山崎 Story of the Distillery 2026 EDITION</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">定価1万7600円、二次流通は2万2750円から</span></div>
+    <div class="card-detail"><span class="label">サイト</span>Amazon、サントリー公式</div>
+    <div class="card-detail"><span class="label">条件</span>Amazonは定価同額の招待制販売。公式抽選は2026年8月18日受付開始、9月2日23時59分締切。定価比約1.29倍のプレミアム。</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134768.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ニッカウヰスキー「シングルモルト余市」（700mL・45度）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">Amazon 6,632円、定価より1,068円安</span></div>
+    <div class="card-detail"><span class="label">サイト</span>Amazon、酒のケント</div>
+    <div class="card-detail"><span class="label">条件</span>希望小売価格は7,700円。酒のケントでは6,590円。ほかの出品者は配送料を含む実質価格で比較が必要。</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134825.html">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">該当なし</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">該当案件なし</span></div>
+    <div class="card-detail"><span class="label">サイト</span>一次情報およびニュース記事</div>
+    <div class="card-detail"><span class="label">条件</span>2026年8月22日から24日に公開・更新された出荷停止、製造終了、供給遅延に関する情報は確認されませんでした。</div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>本日の注目は、丸亀製麺の50％オフとあさくまの50％増量が同時期に始まる、外食チェーンの価格インパクトを軸にした集客施策です。二次流通では山崎2026がプレミアムを保つ一方、余市は定価割れで流通しており、ジャパニーズウイスキー市場は銘柄単位で二極化が進んでいます。新商品ではアサヒ・サントリーとも9月から10月発売を主戦場に置いており、8月下旬は発表先行・発売後倒しのパターンが定着しています。</p>
+
+  <p class="note">
+    ※掲載情報は確認時点のものです。最新の還元率・条件は各サイトにてご確認ください。
+  </p>
+</body>
+</html>

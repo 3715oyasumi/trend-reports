@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>外食チェーン 最新お得情報レポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>外食チェーン 最新お得情報レポート</h1>
+  <p class="report-date">2026年8月24日</p>
+  <p class="total-count">本日のお得案件: 32件</p>
+
+  <h2>マクドナルド <span class="section-count">（4件）</span></h2>
+  <div class="card">
+    <div class="card-title">期間限定メニュー: 炙り醤油風 たまごベーコンダブル肉厚ビーフ</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">限定特典（価格情報なし）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>マクドナルド</div>
+    <div class="card-detail"><span class="label">条件</span>サムライマック4億食突破記念の限定復活。肉厚ビーフ2枚、たまご、ベーコンのボリューム仕様。2026年8月19日から9月1日まで。</div>
+    <div class="card-source"><a href="https://www.mcdonalds.co.jp/company/news/2026/0814a/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">コラボ: ポケモン夏マック「ポケモン30周年バーガー」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">限定特典（価格情報なし）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>マクドナルド</div>
+    <div class="card-detail"><span class="label">条件</span>マクドナルド55周年とポケモン30周年の記念企画。全8種を展開。2026年7月22日から期間限定で終了日未告知。</div>
+    <div class="card-source"><a href="https://www.mcdonalds.co.jp/campaign/pokemon-30th-burger/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">コラボ: ハッピーセット「ポケモン」全12種</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">限定特典（価格情報なし）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>マクドナルド</div>
+    <div class="card-detail"><span class="label">条件</span>歴代の旅立ちの3匹など計30種類が登場。第1弾は8月7日から、第2弾は8月14日から。初動3日間は1グループ1会計6個まで。8月下旬終了予定。</div>
+    <div class="card-source"><a href="https://www.mcdonalds.co.jp/company/news/2026/0803a/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">お得情報: トクニナルド 炭酸ドリンクS・M 150円</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">140ポイント（140円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>マクドナルド</div>
+    <div class="card-detail"><span class="label">条件</span>最大140円お得な特別価格。2026年8月17日から8月28日まで。</div>
+    <div class="card-source"><a href="https://yomuno.jp/posts/66707">出典を確認する</a></div>
+  </div>
+
+  <h2>すき家 <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">キャンペーン: 4大ポイント最大15倍</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大15ポイント（15円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>すき家</div>
+    <div class="card-detail"><span class="label">条件</span>dポイント、Vポイント、楽天ポイント、Pontaポイントが来店回数に応じて最大15倍。2026年8月1日から8月31日まで。</div>
+    <div class="card-source"><a href="https://point.zensho.co.jp/campaign/20260401_suk_dvr/index.html">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">クーポン: 公式アプリ「8月得すきクーポン」第2弾</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">80ポイント（80円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>すき家公式アプリ</div>
+    <div class="card-detail"><span class="label">条件</span>期間限定商品「ポークロックカレー」が80円引き。2026年8月18日から8月31日23時59分まで。</div>
+    <div class="card-source"><a href="https://news.ameba.jp/entry/hl/20260818-6770573/">出典を確認する</a></div>
+  </div>
+
+  <h2>吉野家 <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">キャンペーン: 夏トク！牛丼弁当2丁800円（テイクアウト限定）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">336ポイント（336円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>吉野家</div>
+    <div class="card-detail"><span class="label">条件</span>牛丼並盛弁当のまとめ買い割引。4個購入時が最大336円引き。デリバリー対象外、一部店舗は非実施または価格差あり。2026年8月27日15時まで。</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2132258.html">出典を確認する</a></div>
+  </div>
+
+  <h2>松屋 <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">キャンペーン: 真夏のわくわく企画 無料サービス券配布</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">無料サービス券（価格情報なし）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>松屋</div>
+    <div class="card-detail"><span class="label">条件</span>店内飲食または弁当のメインメニュー購入で配布。3枚集めるとミニカルビ1皿と交換可能。2026年8月25日10時で終了。</div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000989.000047538.html">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">お得情報: 松弁ネット ポイント2倍</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">2ポイント（2円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>松弁ネット</div>
+    <div class="card-detail"><span class="label">条件</span>弁当のネット注文でポイント2倍。8月中はコード入力不要の施策が中心。</div>
+    <div class="card-source"><a href="https://www.pricey.jp/web/articles/3826">出典を確認する</a></div>
+  </div>
+
+  <h2>くら寿司 <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">コラボ: ちいかわ×くら寿司（第4弾）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">限定景品（価格情報なし）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>くら寿司</div>
+    <div class="card-detail"><span class="label">条件</span>会計3,000円ごとに先着プレゼント1点。ビッくらポン！限定景品、税込3,000円以上のレシート応募も実施。2026年8月21日から9月30日まで。</div>
+    <div class="card-source"><a href="https://www.famitsu.com/article/202608/84028">出典を確認する</a> <a href="https://collabo-cafe.com/events/collabo/chiikawa-kurasushi-collabo-2026/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">フェア: 地中海本まぐろフェア</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">フェア特典（価格情報なし）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>くら寿司</div>
+    <div class="card-detail"><span class="label">条件</span>2026年8月中。詳細日程は公式情報を確認。</div>
+    <div class="card-source"><a href="https://entabe.jp/61266/2026-08-aug-kaiten-sushi-sushiro-hamazushi-kappa-summer-news">出典を確認する</a></div>
+  </div>
+
+  <h2>スシロー <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">フェア: 本鮪中とろ＆あわびフェア</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">110ポイント（110円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>スシロー</div>
+    <div class="card-detail"><span class="label">条件</span>本鮪中とろを110円で提供。あわびも同時展開。2026年8月19日開始、終了日は公式告知に準拠。</div>
+    <div class="card-source"><a href="https://entabe.jp/61254/2026-aug-sushi-news-sushiro-kappa-tokubei-atom">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">コラボ: 食べログ「全国名店監修」シリーズ</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">限定メニュー（価格情報なし）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>スシロー</div>
+    <div class="card-detail"><span class="label">条件</span>岐阜・飛騨高山の人気店監修の一杯が登場。2026年8月19日開始。</div>
+    <div class="card-source"><a href="https://report.iko-yo.net/articles/32870">出典を確認する</a></div>
+  </div>
+
+  <h2>はま寿司 <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">フェア: 全国旬の食材フェア</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">フェア特典（価格情報なし）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>はま寿司</div>
+    <div class="card-detail"><span class="label">条件</span>秋鮭、富山県産白えびのかき揚げ握り、和牛バラ肉の握りなどを展開。2026年8月19日開始。</div>
+    <div class="card-source"><a href="https://entabe.jp/61266/2026-08-aug-kaiten-sushi-sushiro-hamazushi-kappa-summer-news">出典を確認する</a></div>
+  </div>
+
+  <h2>かっぱ寿司 <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">キャンペーン: 百十円祭り</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">110ポイント（110円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>かっぱ寿司</div>
+    <div class="card-detail"><span class="label">条件</span>主要ネタを110円均一で提供。妖怪ウォッチコラボも展開。2026年8月中。</div>
+    <div class="card-source"><a href="https://report.iko-yo.net/articles/32870">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">コラボ: 人気エナジードリンクブランドとのコラボドリンク</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">限定ドリンク（価格情報なし）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>かっぱ寿司</div>
+    <div class="card-detail"><span class="label">条件</span>2026年7月30日開始。</div>
+    <div class="card-source"><a href="https://entabe.jp/61122/2026-august-sushi-chain-summer-news">出典を確認する</a></div>
+  </div>
+
+  <h2>ケンタッキーフライドチキン <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">キャンペーン: ドリンク全サイズ100円</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">240ポイント（240円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ケンタッキーフライドチキン</div>
+    <div class="card-detail"><span class="label">条件</span>最大240円引き。2026年8月25日で終了。</div>
+    <div class="card-source"><a href="https://topics.smt.docomo.ne.jp/article/bgmania/trend/bgmania-702537">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">お得情報: とりの日パック（毎月28日）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">510ポイント（510円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ケンタッキーフライドチキン</div>
+    <div class="card-detail"><span class="label">条件</span>オリジナルチキン4ピースとナゲット5で通常1,800円から1,290円。毎月28日、次回は2026年8月28日。</div>
+    <div class="card-source"><a href="https://tasdesign.co.jp/kfc/">出典を確認する</a></div>
+  </div>
+
+  <h2>バーガーキング <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">お得情報: ワッパー無料クーポン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">690ポイント（690円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>バーガーキング</div>
+    <div class="card-detail"><span class="label">条件</span>誕生月または会員ステージ昇格時に利用可能。3か月で1,700円分の利用でシルバーステージ昇格時に付与。通年。</div>
+    <div class="card-source"><a href="https://www.pricey.jp/web/articles/3542">出典を確認する</a></div>
+  </div>
+
+  <h2>モスバーガー <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">クーポン: 公式アプリ／LINE配信クーポン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">クーポン特典（価格情報なし）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>モスバーガー公式アプリ・LINE</div>
+    <div class="card-detail"><span class="label">条件</span>ロースカツバーガー、炭酸ドリンクなどが対象。アンケート回答特典も併用可能。2026年8月中に随時更新。</div>
+    <div class="card-source"><a href="https://tasdesign.co.jp/mosburger/">出典を確認する</a></div>
+  </div>
+
+  <h2>ガスト（すかいらーくグループ） <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">コラボ: ミニオン コラボメニュー</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">限定メニュー（価格情報なし）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ガスト</div>
+    <div class="card-detail"><span class="label">条件</span>ミニオン・スター、ミニチーズINハンバーグなどを展開。2026年9月30日まで。</div>
+    <div class="card-source"><a href="https://kupomiru.jp/gusto-coupon/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">クーポン: すかいらーくグループ公式アプリ</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">200ポイント（200円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>すかいらーくグループ公式アプリ</div>
+    <div class="card-detail"><span class="label">条件</span>毎週木曜更新。対象メニューが50円から200円引き。2026年8月中。</div>
+    <div class="card-source"><a href="https://tasdesign.co.jp/gusto/">出典を確認する</a></div>
+  </div>
+
+  <h2>サイゼリヤ <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">お得情報: セットドリンクバー200円</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">200ポイント（200円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>サイゼリヤ</div>
+    <div class="card-detail"><span class="label">条件</span>低価格路線のためクーポン施策は原則なし。セット価格が実質的な割引枠。通年。</div>
+    <div class="card-source"><a href="https://tasdesign.co.jp/saizeriya/">出典を確認する</a></div>
+  </div>
+
+  <h2>丸亀製麺 <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">キャンペーン: 釜揚げうどんの日（毎月1日）半額</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">390ポイント（390円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>丸亀製麺</div>
+    <div class="card-detail"><span class="label">条件</span>釜揚げうどん、2026年8月・9月はぶっかけうどん冷も半額対象。店内飲食限定。次回は2026年9月1日。</div>
+    <div class="card-source"><a href="https://jp.marugame.com/en/news/7_aauvjie531/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">クーポン: LINEギフト サマーラストクーポン 10%OFF</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">10ポイント（10円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>LINEギフト</div>
+    <div class="card-detail"><span class="label">条件</span>丸亀製麺対象の10%OFFクーポン。本日2026年8月24日が最終日。</div>
+    <div class="card-source"><a href="https://tasdesign.co.jp/marugame-seimen/">出典を確認する</a></div>
+  </div>
+
+  <h2>スターバックスコーヒー <span class="section-count">（3件）</span></h2>
+  <div class="card">
+    <div class="card-title">キャンペーン: STARBUCKS JIMOTO PROGRAM（日本上陸30周年記念）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">地域限定特典（価格情報なし）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>スターバックスコーヒー</div>
+    <div class="card-detail"><span class="label">条件</span>青森、群馬、沖縄の3地域で地域限定フラペチーノ・ビバレッジを展開。2026年8月5日開始。</div>
+    <div class="card-source"><a href="https://media.yourmystar.jp/articles/ab4a8ca8-c7de-4b9a-a815-ac8cbb2bfcbd">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">期間限定メニュー: 巨峰のフローズン ティー／チラックス ソーダ</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">限定メニュー（価格情報なし）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>スターバックスコーヒー</div>
+    <div class="card-detail"><span class="label">条件</span>秋先取りの新作ビバレッジ。2026年8月中。</div>
+    <div class="card-source"><a href="https://rurubu.jp/andmore/article/16584">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">グッズ: スタバ初のカプセルトイ＋コーヒーカラーのコレクション</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">限定グッズ（価格情報なし）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>スターバックスコーヒー</div>
+    <div class="card-detail"><span class="label">条件</span>限定タンブラーなど。オンラインストアと実店舗で発売日が異なるため要確認。2026年8月中。</div>
+    <div class="card-source"><a href="https://media.yourmystar.jp/articles/c6cb1444-9ed8-4630-b8b9-e819c59ae66f">出典を確認する</a></div>
+  </div>
+
+  <h2>ドトールコーヒー / タリーズコーヒー <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">ドトール キャンペーン: 8月のお得企画</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">キャンペーン特典（価格情報なし）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ドトールコーヒー</div>
+    <div class="card-detail"><span class="label">条件</span>夏季限定のキャンペーンを実施中。2026年8月中。</div>
+    <div class="card-source"><a href="https://entabe.jp/61106/2026-august-cafe-tullys-shaqool-doutor-campaign-news">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">タリーズ 期間限定メニュー: シェイクール（新シリーズ）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">限定メニュー（価格情報なし）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>タリーズコーヒー</div>
+    <div class="card-detail"><span class="label">条件</span>夏の新作ドリンク。2026年8月中。</div>
+    <div class="card-source"><a href="https://entabe.jp/61106/2026-august-cafe-tullys-shaqool-doutor-campaign-news">出典を確認する</a></div>
+  </div>
+
+  <h2>QRコード決済・共通還元 <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">PayPay: 飲食チェーン向けクーポン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">クーポン特典（価格情報なし）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>PayPay</div>
+    <div class="card-detail"><span class="label">条件</span>吉野家、サンマルクカフェなどでチェーン別クーポンを配信。利用前にPayPayアプリのクーポンタブで事前取得が必要。2026年8月中。</div>
+    <div class="card-source"><a href="https://tasdesign.co.jp/paypay-coupon/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">自治体×4大決済 地域還元</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大20ポイント（20円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>PayPay・d払い・au PAY・楽天ペイ</div>
+    <div class="card-detail"><span class="label">条件</span>岩手県、神奈川県、岐阜市、秋田県湯沢市などで実施。飲食チェーンも対象となる場合あり。対象店舗・上限・期間は地域により異なる。</div>
+    <div class="card-source"><a href="https://www.itmedia.co.jp/mobile/spv/2608/03/news044.html">出典を確認する</a> <a href="https://kojinabi.com/blog-entry-11179.html">出典を確認する</a></div>
+  </div>
+
+  <h2>今週（8月24日から8月31日）の優先アクション <span class="section-count">（0件）</span></h2>
+  <p>8月24日は丸亀製麺のLINEギフト10%OFFクーポン最終日です。8月25日までにケンタッキーのドリンク全サイズ100円と松屋の無料サービス券配布を確認してください。8月27日までに吉野家の夏トク牛丼弁当、8月28日にケンタッキーのとりの日パックとマクドナルドの炭酸ドリンク150円、8月31日までにすき家のポイント最大15倍を優先してください。9月1日は丸亀製麺の釜揚げうどんの日です。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新の還元率・条件は各サイトにてご確認ください。</p>
+</body>
+</html>

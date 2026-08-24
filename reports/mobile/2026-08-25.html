@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のモバイルレポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のモバイルレポート</h1>
+  <p class="report-date">2026年8月25日</p>
+  <p class="total-count">本日のモバイル案件: 11件</p>
+
+  <h2>楽天モバイル <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Nothing「Phone (3)」最大3万円値下げ／「Phone (3a) Lite」MNP実質24円</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大4万円引き、Phone (3a) Lite 実質24円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>他社からの乗り換えと買い替え超トクプログラム利用。Phone (3) 256GBは実質2万1360円、512GBは実質3万960円</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/18 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2133406.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「arrows Alpha2」取り扱い開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大16,000ポイント還元</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>256GBは8万5900円、還元適用で実質6万9900円。512GBのWeb限定モデルは10万9990円、還元適用で実質9万3990円</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/18 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2133368.html">出典を確認する</a>　<a href="https://corp.mobile.rakuten.co.jp/news/press/2026/">出典を確認する</a></div>
+  </div>
+
+  <h2>UQ mobile <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">iPhone 17e／Pixel 10a のMNP割引を増額</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">割引額3万8500円、2年総額5,547円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>UQ mobileオンラインショップ</div>
+    <div class="card-detail"><span class="label">条件</span>他社からの乗り換え、コミコミプランバリューまたはトクトクプラン2の申込、増量オプションII加入。au・povoからの乗り換えは対象外</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/21 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2134461.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Amazon「UQ mobile ウェルカムパッケージ」Prime会員限定セール</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">15,000円相当のau PAY残高還元、契約事務手数料無料</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>Amazon、UQ mobile</div>
+    <div class="card-detail"><span class="label">条件</span>他社からコミコミプランバリューへ乗り換え、増量オプションII加入。新規契約とau・povo以外からの乗り換えが対象</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/21 ～ Prime会員限定セール終了まで。コード有効期限 2026/12/31</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/sale/2135156.html">出典を確認する</a></div>
+  </div>
+
+  <h2>povo（au） <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">「povo Data Oasis」対象駅を大幅拡大</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">1回0.1GB、月10回まで合計1GB無料</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>対象20事業者・954駅で特設サイトへアクセス。10月までに関東の私鉄など約1300駅へ拡大予定</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/25 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2134920.html">出典を確認する</a></div>
+  </div>
+
+  <h2>IIJmio <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">「arrows Alpha2」MNP期間限定特価</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大2万9920円引き</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>ギガプランの音声SIMまたはeSIMへ他社から乗り換え。8GB/256GBは6万4980円、12GB/512GBは9万9800円。契約者1人1台限り</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/27 ～ 2026/11/04 21:59</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2133421.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Amazonエントリーパッケージセール</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">契約事務手数料無料</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>Amazon、IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>IIJmioのエントリーパッケージを購入・利用</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/21 ～ セール終了まで</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/sale/2135146.html">出典を確認する</a></div>
+  </div>
+
+  <h2>mineo <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Amazonエントリーパッケージセール</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">契約事務手数料無料</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>Amazon、mineo</div>
+    <div class="card-detail"><span class="label">条件</span>mineoのエントリーパッケージを購入・利用</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/21 ～ セール終了まで</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/sale/2135146.html">出典を確認する</a></div>
+  </div>
+
+  <h2>ソフトバンク <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Galaxy S26（512GB）約4万円割引、MNP2年実質6,912円</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">約4万円引き、2年実質6,912円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ソフトバンク</div>
+    <div class="card-detail"><span class="label">条件</span>MNP契約時に新トクするサポート＋を併用し、2年後に端末を返却。本体価格14万7792円</div>
+    <div class="card-detail"><span class="label">期間</span>～ 2026/08/28 15:00</div>
+    <div class="card-source"><a href="https://www.itmedia.co.jp/mobile/spv/2608/21/news091.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「arrows Alpha2」取り扱い開始</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ソフトバンク、SoftBank Free Style</div>
+    <div class="card-detail"><span class="label">条件</span>一括9万4896円、48回払いは月1,977円。8月27日発売</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/27 ～</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2133524.html">出典を確認する</a></div>
+  </div>
+
+  <h2>ワイモバイル <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">「arrows Alpha2」MNP特価＋PayPayポイント還元</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">2万696円引き、3,000円相当のPayPayポイントコード</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ワイモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>他社からの乗り換えとシンプル3 MまたはLの契約。本体価格7万4200円</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/27 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2133524.html">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※還元・条件は確認時点のものです。</p>
+</body>
+</html>

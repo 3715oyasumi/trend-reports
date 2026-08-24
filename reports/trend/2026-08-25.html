@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年8月25日（火）版</p>
+  <p class="total-count">本日のトレンド: 7件</p>
+
+  <h2>新商品情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ファミリーマート「今週の新商品」5品</div>
+    <div class="card-detail"><span class="label">特徴</span>「目玉焼きのせ海苔弁当」689円、「ラーメン荘 歴史を刻め監修 冷し豚まぜそば」698円、「塩ちゃんこ鍋風スープ（うどん入り）」468円、「ガツンと香ばしいガーリックライス」321円、「赤城 たべる牧場パフェカフェモカ」480円。パフェアイスはファミリーマート限定・数量限定</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年8月25日〜8月31日（順次）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">321円〜698円</span></div>
+    <div class="card-source"><a href="https://news.mynavi.jp/article/20260824-4860151/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブン-イレブン「今週の新商品」5品</div>
+    <div class="card-detail"><span class="label">特徴</span>「ラーメンWalker監修 冷やし家系ラーメン」594円（全国）、「CAFE BOX ガパオライス」753円（1都3県）、「さっぱり梅しそチキンフランス」224円、「豚ロースカツ弁当」753円（東京都）、「アスパラとベーコンのバター醤油パスタ」594円</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年8月25日（パスタは8月26日以降順次）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">224円〜753円</span></div>
+    <div class="card-source"><a href="https://news.mynavi.jp/article/20260824-4837864/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ローソン「今週の新商品」5品</div>
+    <div class="card-detail"><span class="label">特徴</span>「キムチ牛カルビ丼」646円、「ROLLサンド バジルチキンとトマト」397円、「おかズドン! 黒胡椒にんにくだれ鶏唐揚弁当」646円、「チンジャオロースの湯葉巻き」210円、「肉まん」198円。中華まん系の投入で秋商戦が本格始動</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年8月25日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">198円〜646円</span></div>
+    <div class="card-source"><a href="https://news.mynavi.jp/article/20260824-4858245/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ファミリーマート「ファミマルKITCHEN ちょいデリ」高たんぱく惣菜（増量・新商品）</div>
+    <div class="card-detail"><span class="label">特徴</span>「特製ダレの味付けたまご」338円はゆでたまご1/2個増量でたんぱく質約16.8g、「チキン＆たまご＆ブロッコリーサラダ」338円が約14.2g、「冷たいまま食べるタルタルチキン南蛮」328円が約16.2g。新商品は「ごまだれサラダチキン」298円（約12.5g）、「ねぎ塩チキン」338円（約14.0g）。さらに「増量 豆腐と枝豆のひじき和え」268円など2品を内容量20％増量</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年8月25日〜9月7日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">268円〜338円</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2135058.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Amazon「スマイルSALE」（2026年夏）</div>
+    <div class="card-detail"><span class="label">特典内容</span>セール対象品の特価販売に加え、エントリー必須の特典キャンペーンを実施。期間中に合計10,000円以上の購入で最大5,000ポイント、さらにdポイントとAmazonアカウントの連携で最大1,000ポイントを追加付与。開催前から一部セール対象品と事前エントリーページが公開済み</div>
+    <div class="card-detail"><span class="label">期間</span>2026年8月28日（金）9:00〜9月3日（木）23:59（7日間）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://jetstream.blog/2026/08/23/amazon-smile-sale-august-2026/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">LINEMO 事務手数料無料＋PayPayポイント増額キャンペーン</div>
+    <div class="card-detail"><span class="label">特典内容</span>他社からの乗り換え（MNP）で通常3,850円の事務手数料が0円。付与ポイントは30GBプランで20,000ポイント、20GB・3GBプランで各14,000ポイント。ソフトバンク・ワイモバイル・LINEモバイルからの乗り換えは対象外、キャンペーンページを経由しない申込は特典対象外</div>
+    <div class="card-detail"><span class="label">期間</span>2026年8月24日〜9月6日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://shiromcom.exblog.jp/31020029">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（0件）</span></h2>
+  <p>該当する情報はありません。</p>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（0件）</span></h2>
+  <p>該当する情報はありません。</p>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">市場動向の分析</div>
+    <div class="card-detail"><span class="label">コメント</span>本日の情報流通は「新商品」に極端に偏っており、8月25日はコンビニ3社が一斉に週次新商品を投入する定例日として機能しています。ローソンの「肉まん」198円投入が示す通り、実需は残暑下でもすでに秋・冬商材へ切り替わり始めており、ファミリーマートは高たんぱく惣菜のゆでたまご1/2個増量・内容量20％増という「実質値下げ」型の訴求で価格改定局面の防衛線を張っています。一方で転売・品薄カテゴリーは直近3日間の一次情報が空白で、8月中旬に報じられたドラクエ関連の争奪戦やメモリ・ナフサ由来の供給制約が次にどう更新されるかが、9月の4,531品目という年内最多の値上げラッシュと合わせて来週以降の最大の注視点です。</div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

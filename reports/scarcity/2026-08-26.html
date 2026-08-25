@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>品薄予測レポート 2026-08-26</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>品薄予測レポート</h1>
+  <p class="report-date">2026年8月26日</p>
+  <p class="total-count">本日の品薄予測: 12件</p>
+
+  <h2>今買える×相場上昇の予兆 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">酔猫書コラボ「月見で一杯」T（同人コラボアパレル）</div>
+    <div class="card-detail"><span class="label">品薄度</span>会場分完売後、予約受付中。締切まで残り1日未満。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>イベント会場分が完売し、8月27日0時までの短期予約へ移行。いいね<span class="card-amount">7</span>、閲覧<span class="card-amount">778</span>。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>8月26日中に予約を確定。到着後は未開封・サイズ別に需要を確認して放出する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091844877428678878">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">元太めし 元太ソーダ味（UHA味覚糖・グミ）</div>
+    <div class="card-detail"><span class="label">品薄度</span>発売初日から複数店で売切れ。翌日入荷分も即完の懸念あり。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>正規流通の単品価格・二次流通相場は確認できず。</div>
+    <div class="card-detail"><span class="label">根拠</span>松田元太公認の新商品でファン需要が初動に集中。全国展開中だが地域により入荷日が異なる。追加供給で相場が崩れやすい点に注意。いいね<span class="card-amount">2</span>、閲覧<span class="card-amount">675</span>。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>開店時にコンビニ・スーパーを巡回し、定価での少量確保に限定。品薄が続く数日間のみ未開封セットの販売を判断する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091850538270990695">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セイコー創業145周年モデル ルキア（SEIKO・腕時計）</div>
+    <div class="card-detail"><span class="label">品薄度</span>国内400本限定。EC在庫は残り1本との情報。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>正規販売価格<span class="card-amount">130,900円</span>。二次流通相場は確認できず。</div>
+    <div class="card-detail"><span class="label">根拠</span>限定本数と実在庫の少なさが重なる。型番・発売時期は購入ページで限定本数、保証、返品条件を要確認。いいね<span class="card-amount">2</span>、閲覧<span class="card-amount">388</span>。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>EC在庫を確認し、正規店購入・付属品完備で確保。完売後に同型番の成約相場が出てから売却を判断する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2092221731457155377">出典を確認する</a>　<a href="https://store.seikowatches.com/products/hee004j">出典を確認する</a></div>
+  </div>
+
+  <h2>発売前×期待値高 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">D.O.「DOPAMINE」WAH CLICKER KEYCHAIN Ver.（Company Soosoo・K-POPアルバム）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月8日</div>
+    <div class="card-detail"><span class="label">品薄度</span>予約開始直後から売切れが続出。ミュージックプラントのみ購入可能との情報。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>正規販売<span class="card-amount">4,140円前後</span>。二次流通相場は確認できず。</div>
+    <div class="card-detail"><span class="label">根拠</span>他の販売先は枯れ始めている。追加流通や特典違いが出やすいため、キーチェーン版・特典内容・送料込み原価を確認する。いいね<span class="card-amount">69</span>、閲覧<span class="card-amount">13,220</span>。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>予約可能なうちに少数確保し、発売後も他店完売が維持される場合のみ未開封で放出する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2092147384033972526">出典を確認する</a>　<a href="https://www.qoo10.jp/item/WAH-CLICKER-KEYCHAIN-VER-D-O-%E3%83%9F%E3%83%8B4%E9%9B%86%E3%82%A2%E3%83%AB%E3%83%90%E3%83%A0-DOPAMINE-%E9%9F%93%E5%9B%BD%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88%E5%8F%8D%E6%98%A0/1216842363">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ドラゴンクエスト ふくびき所スペシャル 40年目の旅立ち（スクウェア・エニックス・オンラインくじ）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月1日 12:00</div>
+    <div class="card-detail"><span class="label">品薄度</span>発売前。前回の店頭くじは初日から売切れが続出。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>1回<span class="card-amount">790円</span>。二次流通相場は発売前のため未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>40周年記念のオンラインくじで歴代主人公フィギュアを含む。送料、重複、下位賞在庫を含めた原価管理が必要。いいね<span class="card-amount">4</span>、閲覧<span class="card-amount">635</span>。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>発売時に上位賞・フィギュア賞の排出内容を確認。初日完売や特定賞の成約価格が出てから追加を判断する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2092175367780139347">出典を確認する</a>　<a href="https://www.inside-games.jp/article/2026/08/25/186743.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">PRECURE STAR GALLERY 名探偵プリキュア PREMIUM SET（BANDAI・食玩）</div>
+    <div class="card-detail"><span class="label">発売日</span>2027年4月発送予定</div>
+    <div class="card-detail"><span class="label">品薄度</span>1次は約1分、2次受注も約2分で完売。3次受注待ち。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>正規販売<span class="card-amount">6,380円</span>。信頼できる二次流通相場は確認できず。</div>
+    <div class="card-detail"><span class="label">根拠</span>購入上限1個でも需要超過が継続。追加受注は供給増となり、発売時の相場下落リスクがある。いいね<span class="card-amount">5</span>、閲覧<span class="card-amount">1,592</span>。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>3次受注の開始日時を監視し、確保は上限内の自己資金範囲に限定。発送前後の受注総数と成約相場を見て放出を判断する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2092242562543448395">出典を確認する</a>　<a href="https://www.bandai.co.jp/candy/products/2027/1000255956.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">DJ SABRINA THE TEENAGE DJ「FANTASY」サイン入り6LPボックスセット（音楽レコード）</div>
+    <div class="card-detail"><span class="label">発売日</span>未公表</div>
+    <div class="card-detail"><span class="label">品薄度</span>上限予約制で、締切前でも上限到達で終了。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>海外直販<span class="card-amount">68ポンド</span>。国内予約価格・二次流通相場は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>過去の入荷タイトルはすべて完売。世界未流通、サイン、ポストカード、ブックレット付きの限定ボックス。高額・大型盤で送料と保管負担が大きく、国内需要は狭い。いいね<span class="card-amount">13</span>、閲覧<span class="card-amount">4,224</span>。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>国内予約原価を確認後、1点のみ確保候補とする。予約終了後かつ国内在庫が枯れた時点で販売を検討する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2091838965120909498">出典を確認する</a>　<a href="https://djsabrinatheteenagedj.bandcamp.com/merch">出典を確認する</a></div>
+  </div>
+
+  <h2>対象外（既に入手困難・参考のみ） <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">イケエリ続編記念オリジナルフレグランス</div>
+    <div class="card-detail"><span class="label">品薄度</span>受注受付終了済み。</div>
+    <div class="card-detail"><span class="label">根拠</span>既に入手困難のため参考情報。</div>
+    <div class="card-source"><a href="https://x.com/unaaaap">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ちいかわラーメン豚 どんぶりミニ（ちいかわ）</div>
+    <div class="card-detail"><span class="label">品薄度</span>欠品中で再入荷日は未定。</div>
+    <div class="card-detail"><span class="label">根拠</span>既に入手困難のため参考情報。</div>
+    <div class="card-source"><a href="https://x.com/chiikawaramenNP">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サラブレッドコレクション ゆらゆらマーカー（再販）</div>
+    <div class="card-detail"><span class="label">品薄度</span>複数店舗で完売、再入荷未定。</div>
+    <div class="card-detail"><span class="label">根拠</span>既に入手困難のため参考情報。</div>
+    <div class="card-source"><a href="https://x.com/gasha_laketown">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">永谷園 マグカップでふっくらケーキ！モコモコ</div>
+    <div class="card-detail"><span class="label">品薄度</span>一時休売、再販未定。</div>
+    <div class="card-detail"><span class="label">根拠</span>既に入手困難のため参考情報。</div>
+    <div class="card-source"><a href="https://x.com/rekishichosadan">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">zanka Miina生誕祭グッズ</div>
+    <div class="card-detail"><span class="label">品薄度</span>受注終了済み。</div>
+    <div class="card-detail"><span class="label">根拠</span>既に入手困難のため参考情報。</div>
+    <div class="card-source"><a href="https://x.com/zanka_info">出典を確認する</a></div>
+  </div>
+
+  <h2>総括 <span class="section-count">（0件）</span></h2>
+  <p>最優先は、締切が迫る酔猫書コラボTの予約確保。次点は、地方・未入荷店での元太めし少量確保。</p>
+  <p>中期では、次回受注日時が未公表のプリキュア スターギャラリーと、9月1日開始のドラクエ40周年くじを監視する。</p>
+
+  <p class="note">※予測は収集時点の情報に基づくものです。</p>
+</body>
+</html>

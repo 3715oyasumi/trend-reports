@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のポイントサイト情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のポイントサイト情報</h1>
+  <p class="report-date">2026年8月27日</p>
+  <p class="total-count">本日のお得案件: 16件</p>
+
+  <h2>急上昇・新着広告 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">THEO+（テオプラス）docomo（過去最高還元・ロボアド投資）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">16,000ポイント（16,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ハピタス（最高還元。ポイントインカム、ちょびリッチ、アメフリ、ECナビは12,000円）</div>
+    <div class="card-detail"><span class="label">条件</span>新規口座開設＋初回入金（金額条件はサイト内で要確認）</div>
+    <div class="card-detail"><span class="label">期限</span>2026年8月31日</div>
+    <div class="card-source"><a href="https://hapitas.jp/?guest=true">出典を確認する</a>　<a href="https://poikan.com/q/THEO">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ベルテックス 資料請求（先着ボーナス付き）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">4,000ポイント＋先着ボーナス5,000ポイント＝9,000円相当</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ポイントタウン（アメフリもチャレンジ込みで7,000円相当）</div>
+    <div class="card-detail"><span class="label">条件</span>不動産投資セミナー、資料請求の完了。先着枠あり（確認時点で残り78名）</div>
+    <div class="card-detail"><span class="label">期限</span>2026年8月31日 23:59</div>
+    <div class="card-source"><a href="https://www.pointtown.com/">出典を確認する</a></div>
+  </div>
+
+  <h2>クレジットカード <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">JCB CARD W / W plus L</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">14,000円相当</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ポイントインカム、ハピタス、モッピーが並んで最高還元（ポイ活倶楽部12,000円）</div>
+    <div class="card-detail"><span class="label">条件</span>新規カード発行（発行のみで可。年会費無料）</div>
+    <div class="card-detail"><span class="label">期限</span>8月31日までの還元アップ表記あり</div>
+    <div class="card-source"><a href="https://poikan.com/q/JCB%20CARD%20W">出典を確認する</a>　<a href="https://pc.moppy.jp/ad/category_ranking/list.php">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">三菱UFJカード（過去最高還元中）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">通常・ゴールド系13,000円相当、プラチナアメックス系15,000円相当</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ポイントインカム、ハピタス、モッピー、ちょびリッチ、ポイントタウン等が同額最高</div>
+    <div class="card-detail"><span class="label">条件</span>新規カード発行（券種によりショッピング利用条件あり・要確認）</div>
+    <div class="card-detail"><span class="label">期限</span>要確認</div>
+    <div class="card-source"><a href="https://poikan.com/q/三菱UFJカード">出典を確認する</a>　<a href="https://www.pointtown.com/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">エポスカード</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">12,000円相当</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ハピタス（最高還元。モッピー12,000円、ワラウ10,500円、ポイントタウンは最短4日付与）</div>
+    <div class="card-detail"><span class="label">条件</span>新規カード発行（年会費無料）</div>
+    <div class="card-detail"><span class="label">期限</span>要確認</div>
+    <div class="card-source"><a href="https://poikan.com/q/エポスカード">出典を確認する</a>　<a href="https://hapitas.jp/?guest=true">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">三井住友カード（NL／CL）還元アップ中</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">NL 9,000ポイント、CL 8,500ポイント</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ポイントタウン</div>
+    <div class="card-detail"><span class="label">条件</span>新規カード発行</div>
+    <div class="card-detail"><span class="label">期限</span>要確認。本日の目玉枠のため短期の可能性あり</div>
+    <div class="card-source"><a href="https://www.pointtown.com/">出典を確認する</a></div>
+  </div>
+
+  <h2>銀行口座開設 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">三菱UFJ銀行 資産運用プラスセット</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">17,000円相当</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ポイントインカム、ハピタス、モッピー、ちょびリッチ、アメフリ、ポイントタウン等が同額最高</div>
+    <div class="card-detail"><span class="label">条件</span>口座開設＋資産運用商品の申込。口座開設のみのプランは12,000円相当</div>
+    <div class="card-detail"><span class="label">期限</span>要確認</div>
+    <div class="card-source"><a href="https://poikan.com/q/三菱UFJ銀行">出典を確認する</a>　<a href="https://hapitas.jp/?guest=true">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">楽天銀行 口座開設</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">21,000円相当</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ハピタス（最高還元。ポイントインカム・ECナビ20,000円、モッピー19,000円）</div>
+    <div class="card-detail"><span class="label">条件</span>高額案件は取引・入金等の条件付き。単純な口座開設のみはモッピー1,500ポイント、ポイントタウンは先着ボーナスあり</div>
+    <div class="card-detail"><span class="label">期限</span>ポイントタウン先着枠は2026年8月30日 23:59</div>
+    <div class="card-source"><a href="https://poikan.com/q/楽天銀行">出典を確認する</a>　<a href="https://www.pointtown.com/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">三井住友銀行 法人ネット口座「Trunk」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">18,000ポイント（18,000円相当・最大20,000ポイント表記）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ハピタス</div>
+    <div class="card-detail"><span class="label">条件</span>法人向け。口座開設完了（法人格・事業実態が必要）</div>
+    <div class="card-detail"><span class="label">期限</span>要確認</div>
+    <div class="card-source"><a href="https://hapitas.jp/?guest=true">出典を確認する</a></div>
+  </div>
+
+  <h2>証券口座開設 <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">SBI証券 口座開設</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">19,000円相当</span></div>
+    <div class="card-detail"><span class="label">サイト</span>モッピー（最高還元。ハピタス18,000円）</div>
+    <div class="card-detail"><span class="label">条件</span>新規口座開設＋50,000円以上入金</div>
+    <div class="card-detail"><span class="label">期限</span>要確認</div>
+    <div class="card-source"><a href="https://poikan.com/q/SBI証券">出典を確認する</a></div>
+  </div>
+
+  <h2>光回線 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">auひかり</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">60,000円相当</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ハピタス・モッピーが同額で最高</div>
+    <div class="card-detail"><span class="label">条件</span>新規申込＋開通完了。代理店により条件差あり</div>
+    <div class="card-detail"><span class="label">期限</span>要確認</div>
+    <div class="card-source"><a href="https://poikan.com/q/auひかり">出典を確認する</a>　<a href="https://pc.moppy.jp/ad/category_ranking/list.php">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ドコモ光（@nifty with ドコモ光 10ギガ）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">45,000円相当</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ニフティポイントクラブ（最高還元）</div>
+    <div class="card-detail"><span class="label">条件</span>10ギガプランの新規申込＋開通。エリア制限あり</div>
+    <div class="card-detail"><span class="label">期限</span>要確認</div>
+    <div class="card-source"><a href="https://poikan.com/q/ドコモ光">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">NURO光</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">30,000円相当</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ポイントインカム・ちょびリッチが同額で最高</div>
+    <div class="card-detail"><span class="label">条件</span>新規申込＋開通完了。提供エリア要確認</div>
+    <div class="card-detail"><span class="label">期限</span>要確認</div>
+    <div class="card-source"><a href="https://poikan.com/q/NURO光">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">@nifty光（高額4万円キャッシュバック案件）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">260,000ポイント（26,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>アメフリ</div>
+    <div class="card-detail"><span class="label">条件</span>新規申込＋開通完了。公式キャッシュバックとの併用可否は要確認</div>
+    <div class="card-detail"><span class="label">期限</span>要確認。タイムセール枠のため短期の可能性あり</div>
+    <div class="card-source"><a href="https://www.amefri.net/">出典を確認する</a></div>
+  </div>
+
+  <h2>電気の乗り換え <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">おうちでんき（ソフトバンク系）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">14,000円相当、全体最高18,500円相当</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ポイントインカム（主要6サイト内では最高）</div>
+    <div class="card-detail"><span class="label">条件</span>新規申込＋供給開始。スマホ回線とのセット条件がある場合あり</div>
+    <div class="card-detail"><span class="label">期限</span>要確認</div>
+    <div class="card-source"><a href="https://poikan.com/q/電気">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">オクトパスエナジー</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">8,000円相当</span></div>
+    <div class="card-detail"><span class="label">サイト</span>ハピタス</div>
+    <div class="card-detail"><span class="label">条件</span>新規申込＋供給開始。公式の電気代割引特典と併用可否は要確認</div>
+    <div class="card-detail"><span class="label">期限</span>要確認</div>
+    <div class="card-source"><a href="https://poikan.com/q/電気">出典を確認する</a></div>
+  </div>
+
+  <h2>補足・注意 <span class="section-count">（0件）</span></h2>
+  <h3>参考掲載</h3>
+  <p>ヒロセ通商 LION FXは高額案件ですが、FX案件のため参考掲載にとどめます。</p>
+  <h3>情報確認について</h3>
+  <p>ちょびリッチ・ポイントインカムの各トップページは直接取得できなかったため、両サイトの案件は横断比較サイトの更新データで確認しています。ポイントサイト経由の手順・Cookie設定を確認してからご利用ください。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新の還元率・条件は各サイトにてご確認ください。</p>
+</body>
+</html>

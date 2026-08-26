@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年8月27日（木）版</p>
+  <p class="total-count">本日のトレンド: 10件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">出前一丁 秘伝のごま油調味料 ボトルセット（日清食品）</div>
+    <div class="card-detail"><span class="label">特徴</span>「出前一丁」の味の決め手である秘伝のごま油調味料を約150食分（200g）ボトルに詰めた限定品。かどや製油と共同開発。麺製品とレシピリーフレットが同梱され、1,000セット限定。日清食品グループ オンラインストア限定販売</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年8月26日（水）12:00（発表は8月25日）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">2,900円（税込）</span></div>
+    <div class="card-source"><a href="https://www.nissin.com/jp/news/13899/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">グラノーラキッチン from ごろグラ（日清シスコ）2品</div>
+    <div class="card-detail"><span class="label">特徴</span>「サクッと香ばしロースト マカダミア＆アーモンド」「深みココア アーモンド＆カシューナッツ」の2種。高温ローストのオーツ麦を使い、最初はザクッ、噛むとホロッと崩れる二段階食感。各300g、食物繊維・鉄・カルシウム・9種のビタミン入り</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月14日（発表は8月26日）</div>
+    <div class="card-detail"><span class="label">価格</span>ノンプリントプライス（希望小売価格の記載なし＝不明）</div>
+    <div class="card-source"><a href="https://www.nissin.com/jp/news/13900/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ローソン 8月25日発売の新商品5品</div>
+    <div class="card-detail"><span class="label">特徴</span>「白いティラミスクレープ」354円、「クリームたっぷり！ふわもち冷やしクリームパン ティラミス」192円、「ふわもちパンケーキ マロン」181円、「うずまきロールケーキ コーヒー＆バニラ」171円、「井村屋 ひとくちチョコミントアイス」203円。秋の味覚（マロン）とチョコミントを同時投入した構成</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年8月25日（火）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">171円〜354円（税込）</span></div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/expert/articles/75a5b48bbe64e78e53946a134468a11f443ea702">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">カップヌードル ポイントプログラム（日清食品）</div>
+    <div class="card-detail"><span class="label">特典内容</span>対象のカップヌードル レギュラーサイズ11種を1食購入ごとに1ポイント付与。フタの二次元コードを読み取って申請し、貯めたポイントで「リワード」に応募できる。ランク制で、上位ほど応募可能なリワードが増加。景品はスマホ壁紙、ステッカー、謎肉オットマン、麻雀牌、ユニバーサル・スタジオ・ジャパンの体験プランなど</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月28日（月）10:00開始／ポイント貯蓄は8月31日から可能（発表は8月25日）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-source"><a href="https://www.nissin.com/jp/news/13884/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">YOKOHAMAでひよこちゃん発見！ スマホdeスタンプラリー（日清食品）</div>
+    <div class="card-detail"><span class="label">特典内容</span>横浜・みなとみらいエリアの8施設9カ所のチェックポイントで二次元コードを読み取りデジタルスタンプを取得。6個以上集めるとオリジナルグッズ（キーホルダー、マグネット、ジッパーバッグ、ハンドタオル）から好きなものを選んで受け取れる。参加費に関する記載なし</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月2日（水）〜9月30日（水）（発表は8月26日）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★☆☆☆</span></div>
+    <div class="card-source"><a href="https://www.nissin.com/jp/news/13901/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ファミリーマート 採用キャンペーン（「ファミフェス2026」で発表）</div>
+    <div class="card-detail"><span class="label">特典内容</span>8月26日に両国国技館で開催された「ファミフェス2026」で、9月12日開始の採用キャンペーンを発表。応募者にファミペイ最大700円分（一律200円＋抽選で500円）を付与。あわせて9月1日から業界初のTシャツタイプ新ユニフォームを導入（半袖で約3割、長袖で約2割のコスト削減）、身だしなみ基準「ファミマコーデ」で髪色制限を撤廃しヒジャブ着用も許可。2026年度の応募数を前年度比1.5倍にする目標</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月12日開始（発表は8月26日）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★☆☆☆（一般消費者向けではなく求職者向けの特典）</span></div>
+    <div class="card-source"><a href="https://www.ryutsuu.biz/strategy/s082645.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ポケモンカードゲーム 拡張パック「30th CELEBRATION」未開封BOX</div>
+    <div class="card-detail"><span class="label">市場状況</span>発売前（2026年9月16日世界同時発売）にもかかわらず、1BOX定価7,200円（税込）に対し取引相場は40,000円で、定価の約5.5倍。新レアリティ「FUR（フューチャリスティックレア）」の登場と、30人のイラストレーターによるピカチュウが1パック1枚確定という仕様が過熱要因</div>
+    <div class="card-detail"><span class="label">注意点</span>BOXは抽選販売が中心で、追加抽選の応募受付は8月28日12:00〜8月31日16:59。相場は発売前の先物的な価格であり、開封結果次第で発売後に大きく変動するリスクがある。定価で入手する手段（公式抽選）が残っている段階での高値追いは避けたい</div>
+    <div class="card-source"><a href="https://price-base.com/useful/30thcelebration-market">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">転売規制をめぐる世論の動向（Yahoo!ニュース オリジナル THE PAGE）</div>
+    <div class="card-detail"><span class="label">市場状況</span>8月26日配信の記事で、都心マンションの短期転売による価格押し上げ、およびグッズ・プレゼント等の転売が同時に論点として取り上げられた。短期転売への規制強化を求める声と、グッズ側では「追加販売・受注生産」といった供給増による解決を支持する声が並存</div>
+    <div class="card-detail"><span class="label">注意点</span>記事はコメント情報をもとにAIが作成した要約で、具体的な商品名・価格・規制内容の数値は記載されていない（数値は不明）。フリマ側では既にYahoo!フリマ／Yahoo!オークションが2026年4月23日に「転売対策ポリシー」を策定済みで、定価を大きく超える出品は制限対象になり得る点に留意</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/c54fb4c049843a7104952844928173faccc3437a">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">医療用医薬品の供給不安（全体状況）</div>
+    <div class="card-detail"><span class="label">理由</span>ジェネリック医薬品メーカーの品質問題を発端とする供給不安が継続。2026年8月26日時点で限定出荷962銘柄・供給停止881銘柄。前日比では悪化6銘柄・改善16銘柄で、単一供給の規格は219件</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>常用薬がある場合は、次回受診時に処方元・薬局へ在庫と代替薬の有無を確認する。1社しか製造していない「単一供給」の薬剤は代替が効かないため特に早めの相談を推奨</div>
+    <div class="card-source"><a href="https://scueldata.me/ph/daily/2026-08-26/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">エルカトニン筋注10単位「TBP」</div>
+    <div class="card-detail"><span class="label">理由</span>原材料調達上の問題により、限定出荷から供給停止へ移行（薬価削除）。供給再開見込みは未定</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>骨粗鬆症の疼痛治療などで同剤を使用中の場合は、処方医に代替薬への切り替えを相談する。なお同日付でヒアルロン酸Na点眼液0.1%／0.3%「科研」、フッ化ナトリウム洗口液0.1%「ビーブランド」、ラベプラゾールNa塩錠5mg／10mg／20mg「明治」の6品目は限定出荷が解除され通常出荷に復帰</div>
+    <div class="card-source"><a href="https://closedi.jp/medicine_supply/25573/">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント</h2>
+  <p>本日の新商品は「限定・単価アップ」への傾斜が鮮明で、日清の出前一丁ごま油ボトル（2,900円・1,000セット限定）は、調味料単体をプレミアム商材化してD2Cチャネルへ誘導する典型的な設計です。キャンペーン面では、値引きではなく「ポイント×リワード×ランク制」（カップヌードル ポイントプログラム）へと軸足が移っており、値上げ環境下で価格を下げずにロイヤルティを買う手法が主流化しています。一方、供給側は医療用医薬品で限定出荷962・供給停止881銘柄と高止まりが続き、ポケカ30th CELEBRATIONは発売前で既に定価の約5.5倍、「必需品は品薄、嗜好品は過熱」という二極化が今週も継続しています。なお本日は3日以内に公開された一次情報の範囲で厳選したため、外食チェーンの新規キャンペーンや食品の販売終了案件は採用基準（公開日）を満たさず除外しています。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

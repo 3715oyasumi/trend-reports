@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>外食チェーン お得情報レポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>外食チェーン お得情報レポート</h1>
+  <p class="report-date">2026年8月28日</p>
+  <p class="total-count">本日の飲食情報: 29件</p>
+
+  <h2>マクドナルド <span class="section-count">（3件）</span></h2>
+  <div class="card">
+    <div class="card-title">ポケモン30周年バーガー（ポケモン夏マック 第3弾）</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年7月22日から2026年9月1日まで</div>
+    <div class="card-detail"><span class="label">販売店</span>マクドナルド</div>
+    <div class="card-detail"><span class="label">内容</span>御三家を描いたパッケージで3種のバーガーなど全8商品を提供。朝マック、夜マック限定商品も対象です。</div>
+    <div class="card-source"><a href="https://www.mcdonalds.co.jp/company/news/2026/0716a/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">月見ファミリー 2026（月見バーガー35周年）</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年9月2日から期間限定</div>
+    <div class="card-detail"><span class="label">販売店</span>マクドナルド</div>
+    <div class="card-detail"><span class="label">内容</span>月見バーガー、チーズ月見に加え、炙り牛すき焼き風月見など全8種を販売します。</div>
+    <div class="card-source"><a href="https://www.nikkei.com/article/DGXZQOUC266Z60W6A820C2000000/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">公式アプリクーポン</div>
+    <div class="card-detail"><span class="label">販売店</span>マクドナルド公式アプリ</div>
+    <div class="card-detail"><span class="label">内容</span>アプリ内クーポンのほか、KODOアンケート回答でポテト無料クーポンを入手可能です。ポケモン30周年バーガーシリーズの割引クーポンも配信中です。</div>
+    <div class="card-source"><a href="https://tasdesign.co.jp/mcdonalds/">出典を確認する</a></div>
+  </div>
+
+  <h2>ケンタッキーフライドチキン <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">とりの日パック</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月28日、毎月28日限定</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">1,290円（税込）</span></div>
+    <div class="card-detail"><span class="label">販売店</span>ケンタッキーフライドチキン</div>
+    <div class="card-detail"><span class="label">内容</span>オリジナルチキン4ピースとナゲット5ピースのセットです。</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134428.html">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">カーネル生誕祭パック</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月26日から2026年9月15日まで</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">990円（税込）</span></div>
+    <div class="card-detail"><span class="label">販売店</span>ケンタッキーフライドチキン</div>
+    <div class="card-detail"><span class="label">内容</span>オリジナルチキン3ピースとカーネルクリスピーのセット。対象パック購入時はサイドメニュー2個を390円で追加できます。</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2134428.html">出典を確認する</a></div>
+  </div>
+
+  <h2>すき家 <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">Vポイント最大15倍キャンペーン</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月1日から2026年8月31日まで</div>
+    <div class="card-detail"><span class="label">販売店</span>すき家、なか卯</div>
+    <div class="card-detail"><span class="label">内容</span>来店回数に応じて倍率が上がり、5回以上の利用で最大15倍となります。すき家となか卯の来店回数は共通です。</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/02e671b583855e159e3e3263c3993943dc1eeaee">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">新メニュー</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月4日から順次販売</div>
+    <div class="card-detail"><span class="label">販売店</span>すき家</div>
+    <div class="card-detail"><span class="label">内容</span>シビ辛麻婆茄子牛丼、マスカットシェイク Lサイズ、特製バーベキューソースを合わせたカレーを販売します。</div>
+    <div class="card-source"><a href="https://entabe.jp/61094/summary-2026-august-restaurant-chain-new-menu">出典を確認する</a></div>
+  </div>
+
+  <h2>松屋 <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">新作丼2品</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月11日から期間限定</div>
+    <div class="card-detail"><span class="label">販売店</span>松屋</div>
+    <div class="card-detail"><span class="label">内容</span>牛肉を鉄板で香ばしく仕上げた牛カルビホルモン丼と松屋の牛焼肉丼を販売します。</div>
+    <div class="card-source"><a href="https://entabe.jp/61188/2026-aug-donburi-yoshinoya-nakau-sukiya-matsuya-shincaku-news">出典を確認する</a></div>
+  </div>
+
+  <h2>なか卯 <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">絶品炭火焼き親子重／オイスターミート使用の親子重</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月19日から期間限定</div>
+    <div class="card-detail"><span class="label">販売店</span>なか卯</div>
+    <div class="card-detail"><span class="label">内容</span>希少部位オイスターミートを使用した親子重を販売します。Vポイント最大15倍キャンペーンも対象です。</div>
+    <div class="card-source"><a href="https://entabe.jp/61094/summary-2026-august-restaurant-chain-new-menu">出典を確認する</a></div>
+  </div>
+
+  <h2>吉野家 <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">夏のVポイントクーポン祭り</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月1日から2026年8月31日まで</div>
+    <div class="card-detail"><span class="label">販売店</span>吉野家</div>
+    <div class="card-detail"><span class="label">内容</span>公式アプリと公式サイトのクーポンページで、お得なクーポンを随時配信しています。</div>
+    <div class="card-source"><a href="https://www.yoshinoya.com/campaign/">出典を確認する</a></div>
+  </div>
+
+  <h2>スシロー <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">夏のお得キャンペーン</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月19日から2026年8月30日まで</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">110円（税込）から</span></div>
+    <div class="card-detail"><span class="label">販売店</span>スシロー</div>
+    <div class="card-detail"><span class="label">内容</span>本鮪中とろ、あわびなどの高単価ネタを特別価格で提供します。</div>
+    <div class="card-source"><a href="https://entabe.jp/61291/gaishoku-chain-campaign-20260821">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">飛騨高山の人気店監修ラーメン</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月19日から期間限定</div>
+    <div class="card-detail"><span class="label">販売店</span>全国のスシロー</div>
+    <div class="card-detail"><span class="label">内容</span>岐阜・飛騨高山の人気店が手がけたラーメンを販売します。</div>
+    <div class="card-source"><a href="https://entabe.jp/61266/2026-08-aug-kaiten-sushi-sushiro-hamazushi-kappa-summer-news">出典を確認する</a></div>
+  </div>
+
+  <h2>くら寿司 <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">ちいかわ コラボ 第4弾</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月21日から2026年9月30日まで</div>
+    <div class="card-detail"><span class="label">販売店</span>全国のくら寿司</div>
+    <div class="card-detail"><span class="label">内容</span>店内飲食限定メニュー、ビッくらポン！限定景品、会計税込3,000円ごとの先着プレゼントを展開します。</div>
+    <div class="card-source"><a href="https://www.famitsu.com/article/202608/84028">出典を確認する</a></div>
+  </div>
+
+  <h2>かっぱ寿司 <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">妖怪ウォッチ コラボ（創業祭特別企画 第3弾）</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月17日から、なくなり次第終了</div>
+    <div class="card-detail"><span class="label">販売店</span>全国のかっぱ寿司（一部店舗を除く）</div>
+    <div class="card-detail"><span class="label">内容</span>会計税込3,500円ごとに、アプリの引換券提示で妖怪ウォッチ ダイカットメモ帳を1冊プレゼントします。</div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000001180.000018731.html">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">かっぱのシャリドーナツ</div>
+    <div class="card-detail"><span class="label">販売店</span>かっぱ寿司</div>
+    <div class="card-detail"><span class="label">内容</span>寿司屋発の新感覚スイーツとして販売中です。</div>
+    <div class="card-source"><a href="https://entabe.jp/61300/2026-aug-sushi-kappasushi-kurasushi-ramenstation-collab-news">出典を確認する</a></div>
+  </div>
+
+  <h2>はま寿司 <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">全国各地の旬の食材フェア</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月19日から期間限定</div>
+    <div class="card-detail"><span class="label">販売店</span>全国のはま寿司</div>
+    <div class="card-detail"><span class="label">内容</span>全国各地の旬の食材を使ったメニューを提供します。</div>
+    <div class="card-source"><a href="https://entabe.jp/61266/2026-08-aug-kaiten-sushi-sushiro-hamazushi-kappa-summer-news">出典を確認する</a></div>
+  </div>
+
+  <h2>ガスト <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">夏の二刀流 ひんやり涼麺＋ガスト食堂</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年7月16日から期間限定</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">934円（税込）から</span></div>
+    <div class="card-detail"><span class="label">販売店</span>ガスト</div>
+    <div class="card-detail"><span class="label">内容</span>冷やし豆乳担々うどん、初代和風さらだうどんのほか、チキンカツ定食などを販売。ガスト食堂の定食はごはん大盛り無料です。</div>
+    <div class="card-source"><a href="https://entabe.jp/60970/family-restaurant-2026-summer-new-menu">出典を確認する</a></div>
+  </div>
+
+  <h2>サイゼリヤ <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">グランドメニュー改定＋夏季限定メニュー</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年6月10日から夏季限定</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">冷たいパンプキンスープ 180円（税込）</span></div>
+    <div class="card-detail"><span class="label">販売店</span>サイゼリヤ</div>
+    <div class="card-detail"><span class="label">内容</span>グランドメニュー改定に合わせ、夏季限定の冷たいパンプキンスープを販売します。</div>
+    <div class="card-source"><a href="https://lasisa.net/post/147658">出典を確認する</a></div>
+  </div>
+
+  <h2>和食さと <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">夏得キャンペーン 第3弾</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月17日から2026年8月31日まで</div>
+    <div class="card-detail"><span class="label">販売店</span>和食さと</div>
+    <div class="card-detail"><span class="label">内容</span>牛タン食べ放題コースを550円引き、御膳・かき氷・アルコール対象商品を222円引きで提供します。</div>
+    <div class="card-source"><a href="https://entabe.jp/61291/gaishoku-chain-campaign-20260821">出典を確認する</a></div>
+  </div>
+
+  <h2>しゃぶしゃぶ温野菜 <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">野菜の日キャンペーン</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月28日から2026年9月6日まで</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">831円オフ</span></div>
+    <div class="card-detail"><span class="label">販売店</span>しゃぶしゃぶ温野菜</div>
+    <div class="card-detail"><span class="label">内容</span>全食べ放題コースを対象にした割引クーポンを配信します。適用条件は店舗で確認が必要です。</div>
+    <div class="card-source"><a href="https://entabe.jp/61291/gaishoku-chain-campaign-20260821">出典を確認する</a></div>
+  </div>
+
+  <h2>スターバックスコーヒー <span class="section-count">（3件）</span></h2>
+  <div class="card">
+    <div class="card-title">STARBUCKS JIMOTO PROGRAM</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月5日から期間限定</div>
+    <div class="card-detail"><span class="label">販売店</span>青森・群馬・沖縄の対象店舗</div>
+    <div class="card-detail"><span class="label">内容</span>日本上陸30周年記念として、エリア限定フラペチーノ、ビバレッジ、地域限定グッズを展開します。</div>
+    <div class="card-source"><a href="https://rurubu.jp/andmore/article/16584">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">夏のスイーツドリンク</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月4日から2026年9月14日まで</div>
+    <div class="card-detail"><span class="label">販売店</span>スターバックスコーヒー</div>
+    <div class="card-detail"><span class="label">内容</span>スイカの甘さにココナッツのまろやかさとライムの爽やかさを合わせた期間限定ビバレッジです。</div>
+    <div class="card-source"><a href="https://rurubu.jp/andmore/article/16584">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">新作（巨峰／COFFEE OF THE DAY カフェモカ）</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月中から期間限定</div>
+    <div class="card-detail"><span class="label">販売店</span>スターバックスコーヒー</div>
+    <div class="card-detail"><span class="label">内容</span>巨峰の食感を楽しめるフローズン ティーやチラックス ソーダなど、秋先取りメニューを販売します。</div>
+    <div class="card-source"><a href="https://entabe.jp/61146/2026-august-cafe-news-starbucks-tullys-sarutahiko-wiredcafe-new-menu">出典を確認する</a></div>
+  </div>
+
+  <h2>ドトールコーヒーショップ／エクセルシオール カフェ <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">ドトールバリューカード 5%ポイント還元キャンペーン</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月実施中</div>
+    <div class="card-detail"><span class="label">販売店</span>ドトールコーヒーショップ、エクセルシオール カフェ</div>
+    <div class="card-detail"><span class="label">内容</span>バリューカードでの利用金額に対し、5%のポイントを付与します。</div>
+    <div class="card-source"><a href="https://entabe.jp/61106/2026-august-cafe-tullys-shaqool-doutor-campaign-news">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">創業29周年記念 限定ブレンド</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月5日発売</div>
+    <div class="card-detail"><span class="label">販売店</span>ドトールコーヒーショップ</div>
+    <div class="card-detail"><span class="label">内容</span>創業29周年を記念した限定ブレンドを販売します。</div>
+    <div class="card-source"><a href="https://entabe.jp/61106/2026-august-cafe-tullys-shaqool-doutor-campaign-news">出典を確認する</a></div>
+  </div>
+
+  <h2>タリーズコーヒー <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">シェイクール誕生</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月から期間限定</div>
+    <div class="card-detail"><span class="label">販売店</span>タリーズコーヒー</div>
+    <div class="card-detail"><span class="label">内容</span>夏の新作カフェドリンクとしてシェイクールを販売します。</div>
+    <div class="card-source"><a href="https://entabe.jp/61106/2026-august-cafe-tullys-shaqool-doutor-campaign-news">出典を確認する</a></div>
+  </div>
+
+  <h2>QRコード決済・共通ポイント <span class="section-count">（3件）</span></h2>
+  <div class="card">
+    <div class="card-title">楽天ペイ ようこそ＆おかえりキャンペーン</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年9月1日から2026年11月30日まで</div>
+    <div class="card-detail"><span class="label">販売店</span>楽天ペイ対象店舗</div>
+    <div class="card-detail"><span class="label">内容</span>対象ユーザー向けのキャンペーンです。詳細な対象条件は公式ページで確認してください。</div>
+    <div class="card-source"><a href="https://pay.rakuten.co.jp/campaign/welcome-invitation/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">PayPay 自治体連携キャンペーン</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>自治体ごとに異なる</div>
+    <div class="card-detail"><span class="label">販売店</span>各自治体の対象店舗</div>
+    <div class="card-detail"><span class="label">内容</span>自治体と連携し、飲食店を含む対象店舗でPayPayポイント付与またはPayPay商品券を提供します。予算上限により早期終了する場合があります。</div>
+    <div class="card-source"><a href="https://www.itmedia.co.jp/mobile/spv/2608/03/news044.html">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Vポイント関連キャンペーン</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026年8月31日まで</div>
+    <div class="card-detail"><span class="label">販売店</span>すき家、なか卯、吉野家</div>
+    <div class="card-detail"><span class="label">内容</span>すき家・なか卯の最大15倍キャンペーンと、吉野家の夏のVポイントクーポン祭りが同時開催中です。</div>
+    <div class="card-source"><a href="https://www.yoshinoya.com/campaign/">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※価格・期間は確認時点のものです。最新情報は各店舗・公式サイトにてご確認ください。</p>
+</body>
+</html>

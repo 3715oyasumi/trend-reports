@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のモバイルレポート</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+    :root {
+      --canvas: #faf9f5;
+      --card: #fffdf8;
+      --surface-soft: #f5f0e8;
+      --hairline: #e6dfd8;
+      --hairline-soft: #ebe6df;
+      --primary: #cc785c;
+      --primary-active: #a9583e;
+      --ink: #141413;
+      --text: #3d3d3a;
+      --muted: #6c6a64;
+      --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+      --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--canvas);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.75;
+      padding: 40px 24px 64px;
+      max-width: 760px;
+      margin: 0 auto;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      text-wrap: balance;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .report-date {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .total-count {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+      text-wrap: balance;
+      padding-left: 14px;
+      border-left: 3px solid var(--primary);
+      margin: 40px 0 16px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 24px 0 8px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--hairline);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-soft);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .card-detail {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text);
+      margin-top: 8px;
+    }
+
+    .label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      min-width: 40px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .card-amount {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary-active);
+    }
+
+    .total-count { }
+
+    .section-count {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+      margin-left: 8px;
+      font-family: var(--font-body);
+    }
+
+    .card-source {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--hairline-soft);
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--hairline);
+      margin: 40px 0;
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 24px 16px 48px; }
+      h1 { font-size: 25px; }
+      h2 { font-size: 19px; }
+      .card { padding: 16px 18px; }
+      .card-detail {
+        flex-direction: column;
+        gap: 2px;
+      }
+      .label {
+        min-width: auto;
+        text-align: left;
+      }
+      .card-amount { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>本日のモバイルレポート</h1>
+  <p class="report-date">2026年8月28日</p>
+  <p class="total-count">本日のモバイル案件: 11件</p>
+
+  <h2>NTTドコモ（irumo） <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">irumo 0.5GBプランが5G対応に（料金・速度は据え置き）</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ（irumo）</div>
+    <div class="card-detail"><span class="label">条件</span>既存契約者は手続き不要で自動適用。月額<span class="card-amount">550円</span>、最大速度3Mbps、低速時128kbpsは変更なし</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/26から終了日なし</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2131168.html">出典を確認する</a></div>
+  </div>
+
+  <h2>ドコモ認定中古品（docomo Certified） <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">認定中古品の価格改定で最大約3万円の値上げ</div>
+    <div class="card-detail"><span class="label">還元</span>機種により<span class="card-amount">1,100円から29,700円の値上げ</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ドコモオンラインショップ</div>
+    <div class="card-detail"><span class="label">条件</span>iPhone 15/16世代など比較的新しい認定中古品が対象。MNP一括の実売比較ではソフトバンク、ワイモバイルが安価な状況</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/26から改定後価格継続中</div>
+    <div class="card-source"><a href="https://shiromcom.exblog.jp/31025608">出典を確認する</a></div>
+  </div>
+
+  <h2>povo（KDDI） <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">povo2.0で「5G SA」提供開始＋データ使い放題（24時間）プレゼント</div>
+    <div class="card-detail"><span class="label">還元</span>データ使い放題（24時間）のプレゼントコード</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo2.0</div>
+    <div class="card-detail"><span class="label">条件</span>5G SA対応SIMの申込み、5G SA対応スマートフォンと対応SIMが必要。新規登録ユーザーも対象</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/25から2026/10/31まで（申込期限）</div>
+    <div class="card-source"><a href="https://www.itmedia.co.jp/mobile/articles/2608/25/news091.html">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">「本気割」の還元率を50％相当に引き上げ</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大50％相当</span>。360GB（365日間）26,400円は13,200円還元で実質13,200円</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo2.0</div>
+    <div class="card-detail"><span class="label">条件</span>au・UQ mobile・povo1.0以外からのMNP、SIM有効化後7日以内の対象トッピング購入、au ID連携など。1回線1回限り</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/01から終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2135397.html">出典を確認する</a></div>
+  </div>
+
+  <h2>ワイモバイル <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">「オンラインストア誕生感謝祭」第2弾スタート（特典4種を追加）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">PayPayポイント15,000円相当</span>、基本料金550円割引を3カ月、対象アクセサリー最大13％オフ。iPhone 16eは99,800円</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ワイモバイルオンラインストア</div>
+    <div class="card-detail"><span class="label">条件</span>新規またはMNPでシンプル3 M/Lを契約。ポイント特典はデータ増量オプション加入が必要</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/25から2026/09/30まで。週替わりセールは2026/09/01 9:59まで</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2135892.html">出典を確認する</a></div>
+  </div>
+
+  <h2>LINEMO <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">週穫祭 第4弾（PayPayポイント増額＋契約事務手数料無料）</div>
+    <div class="card-detail"><span class="label">還元</span>ベストプランVは<span class="card-amount">最大20,000円相当</span>、ベストプランは最大14,000円相当のPayPayポイント。契約事務手数料3,850円も無料</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>LINEMO</div>
+    <div class="card-detail"><span class="label">条件</span>他社からの乗り換えまたは新規契約。ポイントは原則として開通月の7カ月後上旬に付与</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/24から2026/09/06まで</div>
+    <div class="card-source"><a href="https://www.linemo.jp/campaign/">出典を確認する</a></div>
+  </div>
+
+  <h2>ソフトバンク／ワイモバイル／LINEMO（共通） <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">Google Playギフトコードが10％オフ（最大25,000円引き）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">10％オフ、最大25,000円引き</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ソフトバンク／ワイモバイル／LINEMO</div>
+    <div class="card-detail"><span class="label">条件</span>対象回線のスマートフォンから、ソフトバンク・ワイモバイルまとめて支払いで購入。1回線につき期間中5回まで、1回あたり上限5万円</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/28から2026/09/14まで。先着順で早期終了の可能性あり</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2136241.html">出典を確認する</a></div>
+  </div>
+
+  <h2>楽天モバイル <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">iPhone特価キャンペーンに「iPhone 16 128GB」「iPhone 17 256GB」を追加</div>
+    <div class="card-detail"><span class="label">還元</span>iPhone 16は<span class="card-amount">月額500円</span>、iPhone 17は<span class="card-amount">月額999円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>他社からMNPでRakuten最強プランまたはRakuten最強U-NEXTを契約し、対象iPhoneを買い替え超トクプログラムの48回払いで購入</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/25 9:00から終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2135284.html">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">通信費見直し応援プロジェクト「好き費UP大作戦」開始</div>
+    <div class="card-detail"><span class="label">還元</span>イベント参加者へ削減額に応じたポップコーンを進呈。楽天ポイント当選ガチャも実施</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>オンラインの16タイプ好き費診断を提供。イベント体験には公式Xのフォローまたはシェアが必要</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/26から。イベントは2026/09/04から2026/09/06まで</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2135697.html">出典を確認する</a></div>
+  </div>
+
+  <h2>IIJmio <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">「arrows Alpha2」取り扱い開始（MNP価格を設定）</div>
+    <div class="card-detail"><span class="label">還元</span>MNP転入時<span class="card-amount">64,980円から</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>FCNT製スマートフォン「arrows Alpha2」のMNP転入</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/21から販売継続中</div>
+    <div class="card-source"><a href="https://news.mynavi.jp/article/20260821-4843303/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">X連動プレゼントキャンペーン開始</div>
+    <div class="card-detail"><span class="label">還元</span>eSIM対応スマートフォンやChromebookをプレゼント</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>X上で実施するキャンペーン。詳細は公式告知を確認</div>
+    <div class="card-detail"><span class="label">期間</span>2026/08/26から</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2135802.html">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※還元・条件は確認時点のものです。</p>
+</body>
+</html>

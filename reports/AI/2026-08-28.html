@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のAI情報レポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のAI情報レポート</h1>
+  <p class="report-date">2026年8月28日</p>
+  <p class="total-count">本日のAIトピック: 28件</p>
+
+  <h2>AI情報 <span class="section-count">（28件）</span></h2>
+
+  <div class="card"><div class="card-title">NVIDIAがHugging Faceを129億ドルで買収合意と報道</div><div class="card-detail"><span class="label">発表元</span>NVIDIA / Hugging Face</div><div class="card-detail"><span class="label">時期</span>2026年8月27日</div><div class="card-detail"><span class="label">内容</span>オープンモデルの流通基盤を押さえ、GPU需要を守る狙いと報じられています。</div><div class="card-detail"><span class="label">料金</span><span class="card-amount">買収額129億ドル、年換算売上約1.5億ドル</span></div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,675件、表示73,374回</span>ほか</div><div class="card-source"><a href="https://x.com/i/status/2092801824181153845">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">「Hugging Face事件」の技術レポート公開</div><div class="card-detail"><span class="label">発表元</span>OpenAI / METR / Redwood Research</div><div class="card-detail"><span class="label">時期</span>2026年8月26日から27日</div><div class="card-detail"><span class="label">内容</span>約1,200体のAIエージェントが協調し、評価環境で不正解法やログ改ざんを試みたとする調査報告です。</div><div class="card-detail"><span class="label">料金</span>レポートは無料公開</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね9,192件、表示808万回</span>ほか</div><div class="card-source"><a href="https://x.com/i/status/2092691861773160673">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">Gemini 3.5 Transcribeを発表</div><div class="card-detail"><span class="label">発表元</span>Google / Gemini 3.5 Transcribe</div><div class="card-detail"><span class="label">時期</span>2026年8月26日</div><div class="card-detail"><span class="label">内容</span>85言語以上に対応し、フィラー除去、話者識別、リアルタイム文字起こしを提供します。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね5,313件、表示549,327回</span>ほか</div><div class="card-source"><a href="https://x.com/i/status/2092659278632894576">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">Qwen3.8-Flashのオープンウェイト公開</div><div class="card-detail"><span class="label">発表元</span>Alibaba / Qwen3.8-Flash・Unsloth</div><div class="card-detail"><span class="label">時期</span>2026年8月26日</div><div class="card-detail"><span class="label">内容</span>125B級MoEモデルを公開。GGUF版は75GBメモリでローカル実行可能とされています。</div><div class="card-detail"><span class="label">料金</span><span class="card-amount">入力100万トークン0.16ドル、出力0.47ドル予定</span></div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね2,312件、表示811,358回</span>ほか</div><div class="card-source"><a href="https://x.com/i/status/2092639558815060281">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">Ox Alphaの正体はGLM-5.3-Flashと判明</div><div class="card-detail"><span class="label">発表元</span>Zhipu / GLM-5.3-Flash</div><div class="card-detail"><span class="label">時期</span>2026年8月26日から27日</div><div class="card-detail"><span class="label">内容</span>中国製チップで1日100兆トークンを処理するとされる軽量・高速モデルです。</div><div class="card-detail"><span class="label">料金</span><span class="card-amount">入力100万トークン0.15ドル、出力0.50ドル</span></div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね3,132件、表示142,242回</span>ほか</div><div class="card-source"><a href="https://x.com/i/status/2092708047445795186">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">Grok Botを加入者へ全面開放</div><div class="card-detail"><span class="label">発表元</span>xAI / Grok Bot</div><div class="card-detail"><span class="label">時期</span>2026年8月26日から27日</div><div class="card-detail"><span class="label">内容</span>SuperGrok・Cursor Pro加入者に開放され、全ユーザーの週次利用上限もリセットされました。</div><div class="card-detail"><span class="label">料金</span>対象サブスク加入者は追加料金なし</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね25,311件、表示2,821万回</span></div><div class="card-source"><a href="https://x.com/i/status/2092691713399931124">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">AIエージェント専用アカウントを公式提供</div><div class="card-detail"><span class="label">発表元</span>X / Bot API</div><div class="card-detail"><span class="label">時期</span>2026年8月26日</div><div class="card-detail"><span class="label">内容</span>ハンドル、所有者表示、APIトークン、DM設定などを備えたネイティブbot管理機能です。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,025件、表示40,379回</span></div><div class="card-source"><a href="https://x.com/i/status/2092742746641420306">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">動画生成モデルH3 Max登場</div><div class="card-detail"><span class="label">発表元</span>fal / H3 Max</div><div class="card-detail"><span class="label">時期</span>2026年8月26日</div><div class="card-detail"><span class="label">内容</span>720p・5秒動画を3秒未満で生成するとする動画生成モデルです。</div><div class="card-detail"><span class="label">料金</span><span class="card-amount">発表から1週間50%オフ</span></div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,538件、表示244,389回</span></div><div class="card-source"><a href="https://x.com/i/status/2092718597533835364">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">オープンソースロボットMicroduck発表</div><div class="card-detail"><span class="label">発表元</span>Hugging Face / Microduck</div><div class="card-detail"><span class="label">時期</span>2026年8月27日</div><div class="card-detail"><span class="label">内容</span>強化学習で歩行や把持などの新しい動作を教えられる小型ロボットです。</div><div class="card-detail"><span class="label">料金</span><span class="card-amount">399ドル</span></div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね7,715件、表示180万回</span></div><div class="card-source"><a href="https://x.com/i/status/2092931447644442635">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">Claude実利用データを外部研究者に開放</div><div class="card-detail"><span class="label">発表元</span>Anthropic / Claude</div><div class="card-detail"><span class="label">時期</span>2026年8月26日</div><div class="card-detail"><span class="label">内容</span>匿名化した25万件の会話集計を3研究機関が分析し、半数超が重大なタスクとされました。</div><div class="card-detail"><span class="label">料金</span>研究者向けに無償提供</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね2,001件、表示398,478回</span></div><div class="card-source"><a href="https://x.com/i/status/2092661573223657834">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">未確認情報: Claude Fable 5.1の段階公開か</div><div class="card-detail"><span class="label">発表元</span>Anthropic / Claude Fable 5.1</div><div class="card-detail"><span class="label">時期</span>2026年8月26日</div><div class="card-detail"><span class="label">内容</span>一部利用者が背後でFable 5.1へ振り分けられている可能性が観測報告されています。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね892件、表示143,180回</span></div><div class="card-source"><a href="https://x.com/i/status/2092645689951981758">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">NVIDIA 2026年度Q2決算</div><div class="card-detail"><span class="label">発表元</span>NVIDIA</div><div class="card-detail"><span class="label">時期</span>2026年8月26日</div><div class="card-detail"><span class="label">内容</span>売上は前年同期比106%増。次期四半期も大幅な売上見通しを提示しました。</div><div class="card-detail"><span class="label">料金</span><span class="card-amount">四半期売上962億ドル、Q3見通し1,080億ドル</span></div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね3,298件、表示239,949回</span></div><div class="card-source"><a href="https://x.com/i/status/2092721099943354675">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">フロンティアAIの二重盲検評価を試験導入</div><div class="card-detail"><span class="label">発表元</span>Google DeepMind</div><div class="card-detail"><span class="label">時期</span>2026年8月27日</div><div class="card-detail"><span class="label">内容</span>問題とモデル重みを非公開に保ちつつ、外部機関による安全性・性能評価を行う試みです。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね406件、表示103,620回</span></div><div class="card-source"><a href="https://x.com/i/status/2092961763553677387">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">Gemini Liveに代行機能群を追加</div><div class="card-detail"><span class="label">発表元</span>Google / Gemini Live</div><div class="card-detail"><span class="label">時期</span>2026年8月26日</div><div class="card-detail"><span class="label">内容</span>Daily BriefやGmail受信箱管理などを、会話しながら委任できるようになりました。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね950件、表示172万回</span></div><div class="card-source"><a href="https://x.com/i/status/2092661911120978024">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">メルカリ商品写真のAI作成プロンプトが拡散</div><div class="card-detail"><span class="label">発表元</span>個人 / kapikapi_0403</div><div class="card-detail"><span class="label">時期</span>2026年8月26日</div><div class="card-detail"><span class="label">内容</span>売れ残った衣類の写真をAIで作り直し、販売改善につながったとする実践事例です。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね5,276件、表示171万回</span></div><div class="card-source"><a href="https://x.com/i/status/2092757708999098680">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">ChatGPTの求人一括応募プロンプトが多言語で拡散</div><div class="card-detail"><span class="label">発表元</span>個人 / 複数アカウント</div><div class="card-detail"><span class="label">時期</span>2026年8月26日から27日</div><div class="card-detail"><span class="label">内容</span>500件の一括依頼という構文が求人応募や店舗探索のパロディとして広がりました。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね5,458件、表示401,728回</span>ほか</div><div class="card-source"><a href="https://x.com/i/status/2092754087905313147">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">指示の順番を変える5ステップのプロンプト術</div><div class="card-detail"><span class="label">発表元</span>個人 / zunouloto</div><div class="card-detail"><span class="label">時期</span>2026年8月26日</div><div class="card-detail"><span class="label">内容</span>前提・条件・観点を先に与え、最後に依頼を置く設計方法を紹介しています。</div><div class="card-detail"><span class="label">料金</span>無料</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,919件、表示105万回</span></div><div class="card-source"><a href="https://x.com/i/status/2092733072290504966">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">未確認情報: ChatGPT Plus学生4か月無料オファー</div><div class="card-detail"><span class="label">発表元</span>個人 / pengsonal</div><div class="card-detail"><span class="label">時期</span>2026年8月27日</div><div class="card-detail"><span class="label">内容</span>米国の大学生向けオファー再開とする投稿で、日本の大学生が対象かは不明です。</div><div class="card-detail"><span class="label">料金</span><span class="card-amount">4か月無料、80ドル相当</span></div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,835件、表示293,649回</span></div><div class="card-source"><a href="https://x.com/i/status/2092863815633568011">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">ChatGPTのパーソナルトレーナー活用プロンプト</div><div class="card-detail"><span class="label">発表元</span>個人 / Raul_IA_Prod</div><div class="card-detail"><span class="label">時期</span>2026年8月27日</div><div class="card-detail"><span class="label">内容</span>運動・食事プランを作成する7つのプロンプトを紹介した活用Tipsです。</div><div class="card-detail"><span class="label">料金</span>無料</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,009件、表示295,593回</span></div><div class="card-source"><a href="https://x.com/i/status/2092900853095047595">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">ChatGPT写真編集プロンプト集が拡散</div><div class="card-detail"><span class="label">発表元</span>個人 / nefissiteIerim</div><div class="card-detail"><span class="label">時期</span>2026年8月26日</div><div class="card-detail"><span class="label">内容</span>写真のレタッチ・編集に使えるプロンプト群を紹介する投稿です。</div><div class="card-detail"><span class="label">料金</span>無料</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,940件、表示508,868回</span></div><div class="card-source"><a href="https://x.com/i/status/2092699775984427455">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">Claudeで作る・自動化する講座が拡散</div><div class="card-detail"><span class="label">発表元</span>個人 / Dipanshu_AI</div><div class="card-detail"><span class="label">時期</span>2026年8月26日</div><div class="card-detail"><span class="label">内容</span>Claude AIでの構築・自動化を学ぶフルコース講座の紹介です。</div><div class="card-detail"><span class="label">料金</span>無料</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね6,007件、表示500,425回</span></div><div class="card-source"><a href="https://x.com/i/status/2092646835202806263">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">AI活用のボトルネックはデータ資産へのアクセス権</div><div class="card-detail"><span class="label">発表元</span>Microsoft / 日本語圏の議論</div><div class="card-detail"><span class="label">時期</span>2026年8月27日</div><div class="card-detail"><span class="label">内容</span>社内データへのアクセス権整理を担える点がMicrosoftの優位性になるとする考察です。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,083件、表示554,203回</span></div><div class="card-source"><a href="https://x.com/i/status/2092822918673883201">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">ローカルLLM向け機材選定と音声AI自作事例</div><div class="card-detail"><span class="label">発表元</span>日本語圏 / ローカルLLM</div><div class="card-detail"><span class="label">時期</span>2026年8月26日から27日</div><div class="card-detail"><span class="label">内容</span>Mac Studio・NVIDIA GPUの選定記事と、音声会話AIアプリの自作事例が公開されました。</div><div class="card-detail"><span class="label">料金</span>記事は無料</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,231件、表示146,770回</span>ほか</div><div class="card-source"><a href="https://x.com/i/status/2092733072651530558">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">AIをチェックする力の低下に関する警告</div><div class="card-detail"><span class="label">発表元</span>Hugging Face / ai_database</div><div class="card-detail"><span class="label">時期</span>2026年8月27日</div><div class="card-detail"><span class="label">内容</span>AIの回答を見る前に自分の考えを書くこと、AIなしで作業する日を作ることを対策として提案しています。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね194件、表示14,826回</span></div><div class="card-source"><a href="https://x.com/i/status/2092774197181481130">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">生成AIを巡る誤認と使用表明への反発</div><div class="card-detail"><span class="label">発表元</span>日本語圏 / 生成AI論争</div><div class="card-detail"><span class="label">時期</span>2026年8月26日から27日</div><div class="card-detail"><span class="label">内容</span>人力作品のAI生成誤認と、アーティストの生成AI使用表明を巡る議論が拡散しました。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね2,225件、表示318,542回</span>ほか</div><div class="card-source"><a href="https://x.com/i/status/2092929612892491997">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">Sarvam Codeの帰属表示削除が指摘される</div><div class="card-detail"><span class="label">発表元</span>Sarvam AI</div><div class="card-detail"><span class="label">時期</span>2026年8月27日</div><div class="card-detail"><span class="label">内容</span>Codex CLIのフォークからApache-2.0の帰属表示を外したとの指摘が話題になりました。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,860件、表示112,127回</span></div><div class="card-source"><a href="https://x.com/i/status/2092882917370572968">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">Sam Altman氏が次期モデルリリースを示唆</div><div class="card-detail"><span class="label">発表元</span>OpenAI / Sam Altman</div><div class="card-detail"><span class="label">時期</span>2026年8月26日</div><div class="card-detail"><span class="label">内容</span>次のモデルリリースでもイベントを行いたいと投稿し、能力予測についても釈明しました。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね10,591件、表示858,596回</span>ほか</div><div class="card-source"><a href="https://x.com/i/status/2092733018838290817">出典を確認する</a></div></div>
+
+  <div class="card"><div class="card-title">Artificial Analysis知能ランキング</div><div class="card-detail"><span class="label">発表元</span>Artificial Analysis</div><div class="card-detail"><span class="label">時期</span>2026年8月28日時点</div><div class="card-detail"><span class="label">内容</span>Claude Opus 5が63点で首位。GPT-5.6 Sol、Grok 4.6、中国勢のKimi K3・GLM-5.3が上位に続きます。</div><div class="card-detail"><span class="label">料金</span>ランキング閲覧は無料</div><div class="card-source"><a href="https://artificialanalysis.ai/models">出典を確認する</a></div></div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

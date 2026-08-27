@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年8月28日（金）版</p>
+  <p class="total-count">本日のトレンド: 10件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">モスバーガー「月見フォカッチャ～黄金チーズソース～」ほか秋の新商品</div>
+    <div class="card-detail"><span class="label">特徴</span>パルメザンチーズやチェダーに卵黄パウダーを加えた黄金チーズソースを使用。満月を思わせる見た目を打ち出した2026年の月見シリーズ。同時に「黄金チーズソースのフォカッチャ」「メンチカツチーズバーガー～デミグラスソース～」も展開。</div>
+    <div class="card-detail"><span class="label">発売日</span>バーガー類は9月9日、「まぜるシェイク 蜜いも」「熱々おさつボール～紫いも～」は8月28日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">月見フォカッチャ～黄金チーズソース～630円、黄金チーズソースのフォカッチャ560円、メンチカツチーズバーガー510円、まぜるシェイク蜜いもS410円・M470円、熱々おさつボール3個290円・5個470円</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2136132.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">森永製菓「ひとつぶブレイク」</div>
+    <div class="card-detail"><span class="label">特徴</span>「スキマ休憩専用」を掲げたキャラメル。北海道産生クリームを10%使用し、柔らかくとろける食感と上品なキャラメルの香りが特徴。20～30代の多忙層をターゲットに設定。</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月8日</div>
+    <div class="card-detail"><span class="label">価格</span>オープン価格（内容量60g）</div>
+    <div class="card-source"><a href="https://www.ryutsuu.biz/commodity/s082722.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">マクドナルド ハッピーセット「パペットスンスン」「パンどろぼう」</div>
+    <div class="card-detail"><span class="label">特徴</span>「パペットスンスン」は全4種類のうちいずれか1つのシールセット、「パンどろぼう」は全4種類のシールブック。パペットスンスンのハッピーセット登場は初。</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年8月28日から約2週間の予定</div>
+    <div class="card-detail"><span class="label">価格</span>不明（引用元に記載なし）</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2135454.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">イオン「トップバリュ」145品目 期間限定値下げ</div>
+    <div class="card-detail"><span class="label">特典内容</span>プライベートブランド「トップバリュ」145品目を2～40%値下げ。リサイクルトイレットペーパーは568円から488円へ値下げ。9月16日からは115品目を増量し、冷凍エビフライは4本増の12本に。</div>
+    <div class="card-detail"><span class="label">期間</span>9月2日から順次、値下げ期間は商品ごとに異なり最長29日間。対象は全国約1万店舗。</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/a889407a04afcb017e7df8c39f351599bd68bd5e">出典を確認する</a>　<a href="https://www.ryutsuu.biz/commodity/s082773.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブン-イレブン「スタッフが選んだ人気商品」10%引き</div>
+    <div class="card-detail"><span class="label">特典内容</span>弁当・麺類・パン・スイーツの対象商品が10%引き。熟成だれの牛カルビ弁当620円から558円、炭火焼き鳥丼648円から583円、中華蕎麦とみ田監修 デカ豚ラーメン アブラ増680円から612円など。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年8月27日～29日、東京都の一部店舗限定</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2136260.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">トヨタ「ランドクルーザーFJ」中古車</div>
+    <div class="card-detail"><span class="label">市場状況</span>新車本体価格450万100円に対し、中古車掲載は93台まで急増。相場は6月23日時点の710万円から、8月25日時点で<span class="card-amount">609万3000円</span>へと下落し、発売直後の最高値から約100万円下げた。</div>
+    <div class="card-detail"><span class="label">注意点</span>新車価格に対しなお約1.35倍のプレミアム水準。転売特需の縮小局面に入り、高値掴みのリスクが高まっている。</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/5d43def718e4368e0c7466ae43a83b4bd31c94c7">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「Suicaのペンギン」柄 現行Suicaカード</div>
+    <div class="card-detail"><span class="label">市場状況</span>JR東日本が8月26日、ペンギン柄の現行カードを在庫がなくなり次第発売終了すると発表。翌日20時時点でメルカリでは1枚あたり<span class="card-amount">約1200円～1400円</span>を中心に取引された。</div>
+    <div class="card-detail"><span class="label">注意点</span>1000円購入品が1200～1400円で流通しており、実質的な上乗せ幅は小さくない。SNSでは転売への批判の声も拡大している。</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/6671aea281eaea84b48ad1e1b5b902d2753dd506">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">法人向けPC（メモリ・SSD高騰による調達難）</div>
+    <div class="card-detail"><span class="label">理由</span>生成AI需要によるメモリ・SSD価格の高騰。新品PCの平均単価は2026年4月に13万9821円と2007年度以降で最も高い水準に達し、3月から1カ月で35%上昇した。</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>更新計画の前倒しや中古活用の検討が現実的な選択肢。リユースPC直販サイトでは2026年3～4月の売上が前年同月比で約2倍に伸びた。</div>
+    <div class="card-source"><a href="https://www.itmedia.co.jp/news/article/2608/27/2000000841/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">フェルメール展 コラボグッズ（フェイラー・葬送のフリーレン・ミッフィーほか）</div>
+    <div class="card-detail"><span class="label">理由</span>想定を超える来場需要。チケット販売時にはオンライン待機列が10万人を超え、フェイラーのコラボハンカチは開幕から数日で会場販売分が完売した。</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>フェイラーハンカチは10月頃にオンライン販売予定。会場での争奪や高額転売品の購入は急がず、公式販売を待つのが得策。</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/47f5690f00f53120b7f5822db53baa497c7ae64f">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">値下げと調達難の同時進行</div>
+    <div class="card-detail"><span class="label">コメント</span>本日の最大の論点は「値下げ」と「調達難」の同時進行です。イオンが145品目を2～40%値下げし、セブン-イレブンも10%引き施策を打つ一方、法人PCは1カ月で単価35%上昇と、生活必需品と耐久財で価格の向きが真逆に振れています。転売市場では、ランドクルーザーFJが最高値710万円から609万3000円へ約100万円下落した一方、ペンギン柄Suica終了発表からわずか1日で二次流通が拡大しました。公式の再販・オンライン販売を待てる案件かを見極めることが、最も確実な防衛策となります。</div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

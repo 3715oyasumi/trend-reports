@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年8月29日（土）版</p>
+  <p class="total-count">本日のトレンド: 12件</p>
+
+  <h2>新商品情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ローソン「月見フェア」全19品</div>
+    <div class="card-detail"><span class="label">特徴</span>昨年の3品から19品へと約6.3倍に拡大し、2週連続で展開。「月見デミハンバーグ弁当」「とろ～り月見つくね丼」「月見まん」「月見スイートポテトプリン」など、弁当・麺・パン・スイーツの全カテゴリに横展開</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年8月31日、9月1日、9月7日、9月8日の4波に分けて順次</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">168円〜754円</span>（すべて税込）</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2136610.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ハーゲンダッツ GREEN CRAFT ミニカップ「黒ごま&amp;きなこ」</div>
+    <div class="card-detail"><span class="label">特徴</span>植物性ミルクを使ったGREEN CRAFTシリーズの新作。乳製品を使わない和素材フレーバー</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月1日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">373円</span>（希望小売価格・税込）</div>
+    <div class="card-source"><a href="https://www.ssnp.co.jp/milk/699410/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">モスバーガー「月見フォカッチャ～黄金チーズソース～」ほか5品</div>
+    <div class="card-detail"><span class="label">特徴</span>今年の月見はフォカッチャ生地と黄金チーズソース。同時に「メンチカツチーズバーガー ～デミグラスソース～」510円、さつまいもスイーツ「まぜるシェイク 蜜いも」S410円・M470円も展開</div>
+    <div class="card-detail"><span class="label">発売日</span>バーガー3種は2026年9月9日、スイーツ・ドリンクは2026年8月28日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">月見フォカッチャ～黄金チーズソース～ 630円、黄金チーズソースのフォカッチャ 560円</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2136132.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">カルビー「絶品かっぱえびせん 九州柚子胡椒と焼きあごだし味」</div>
+    <div class="card-detail"><span class="label">特徴</span>「こだわりを楽しむ大人時間」を狙った上位グレード品。九州産柚子胡椒と焼きあごだしを掛け合わせた味付け</div>
+    <div class="card-detail"><span class="label">発売日</span>コンビニ先行で2026年8月31日、コンビニ以外は2026年9月7日</div>
+    <div class="card-detail"><span class="label">価格</span>オープン価格（想定小売価格 <span class="card-amount">税込160円前後</span>）／内容量50g</div>
+    <div class="card-source"><a href="https://www.ssnp.co.jp/snack/699585/">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">サンマルクカフェ「サンマルクカフェの日」ミニオンズコラボ特別版</div>
+    <div class="card-detail"><span class="label">特典内容</span>チョコクロ9個入りBOXが通常2,250円から<span class="card-amount">1,570円</span>。680円引き。映画コラボカップ全4種のうち1個が付属し、BOX自体もコラボデザイン</div>
+    <div class="card-detail"><span class="label">期間</span>2026年8月30日、9月30日の2日間</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">5段階中4</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2136418.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">吉野家「あすトククーポン」＋月見メニュー投入</div>
+    <div class="card-detail"><span class="label">特典内容</span>夜17時から23時に300円以上利用すると、翌日使える200円引きクーポンを発行。「月見牛とじ御膳」店内798円・テイクアウト784円、「月見牛とじ丼」店内699円・テイクアウト686円と併用可能</div>
+    <div class="card-detail"><span class="label">期間</span>クーポン発行は2026年8月27日17時から9月23日23時、利用は8月28日0時から9月24日23時59分</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">5段階中3</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2136147.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">じゃらん「スペシャルウィーク」</div>
+    <div class="card-detail"><span class="label">特典内容</span>国内6,000軒以上で5%オフのセールプランや一部半額プランを実施。宿泊予約向け最大1万円オフ、大型連休・3連休向け1万5,000円オフ、じゃらんパック向け8万円オフのクーポンを配布。複数併用で最大20%オフ、合計最大25%お得</div>
+    <div class="card-detail"><span class="label">期間</span>2026年8月31日開始</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">5段階中4</span></div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/cefa4e5fe44b12c1c65a9eb2f5a58dffd4d93b10">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Amazon スマイルSALE（酒類の実売例）</div>
+    <div class="card-detail"><span class="label">特典内容</span>ウイスキー「ニッカ フロンティア」がメーカー希望小売価格2,200円に対し、セール価格<span class="card-amount">1,980円</span>で販売中</div>
+    <div class="card-detail"><span class="label">期間</span>不明（記事にセール期間の記載なし）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">5段階中2</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/pickup/2136695.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Netflixアニメ映画『超かぐや姫！』制作スタッフ同人誌『超かぐや姫！おつかれさま本』</div>
+    <div class="card-detail"><span class="label">市場状況</span>コミックマーケット108で頒布された定価3,000円の同人誌が、一部販売サイトで1万円から2万円近く、定価の3から6倍で高額出品。公式は8月28日に声明を発表し、今後の公式商品の一部に同誌を収録する対応を検討中</div>
+    <div class="card-detail"><span class="label">注意点</span>公式収録が実現すれば現行の転売価格は急落する可能性が高く、高値追随購入はリスクが大きい。二次創作物である以上、真贋・状態の保証もない</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/bd765fc74d8ef62faf16737ff618d32299c27ff0">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">『映画ちいかわ』マスコット・ぬいぐるみ 全21種</div>
+    <div class="card-detail"><span class="label">市場状況</span>ちいかわマーケットが個数制限なしの完全受注生産へ切り替え。受付は2026年8月28日18時開始から9月14日正午まで、発送は11月下旬頃より順次、価格は定価販売。従来は限定グッズが即完売し、フリマアプリで高額転売されるケースが相次いでいた</div>
+    <div class="card-detail"><span class="label">注意点</span>受注生産では供給量が需要に追随するため、二次流通のプレミアムは剥落しやすい。受付期間中に定価で押さえるのが合理的</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/36f8ceeb556dd6bc2a22629eac2c3370ca9d786d">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">VAIO 個人向けPC 全製品</div>
+    <div class="card-detail"><span class="label">理由</span>生成AIの普及に伴いメモリ半導体需要が世界的に拡大し、関連部材価格が高い水準で推移。現行価格を維持したままの安定供給の継続は困難と判断</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">5段階中4</span></div>
+    <div class="card-detail"><span class="label">アクション</span>値上げ実施は2026年9月18日出荷分から。対象はVAIO公式オンラインストア、ソニーストアのVAIO PC全製品と、大型家電量販店向け「SX14-R」2026年5月販売モデル4機種。購入検討中なら9月17日までの現行価格での確保を推奨</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/c8e5dd17d8e520df92a0acb7929f783e68935d99">出典を確認する</a> / <a href="https://news.yahoo.co.jp/articles/561180bc977f45e5f6445cf7e1b158f81528d420">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">宅配便の配送遅延（沖縄・奄美・北陸・熊本・千葉）</div>
+    <div class="card-detail"><span class="label">理由</span>台風18号、地震、大雨の影響による集配・輸送の停止および遅延</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">5段階中3</span></div>
+    <div class="card-detail"><span class="label">アクション</span>沖縄県宛はヤマト運輸で航空便が発送より4日から1週間程度、船舶便が1週間から2週間程度の遅延。EC購入時は到着日を余裕を持って見積もり、生鮮・冷凍品の当該地域向け発送は当面回避が無難</div>
+    <div class="card-source"><a href="https://www.tsuhannews.jp/news/detail/68443">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+
+  <p>外食・中食は完全に「月見商戦」へ移行しており、ローソンが月見を3品から19品へ拡大した点は象徴的です。単品訴求ではなく弁当・麺・パン・スイーツを横断する季節フェアの棚占拠に戦術が変わっており、9月1日を軸とした一斉投入が今年の山場になります。一方で供給側は依然として厳しく、VAIOの9月18日値上げに見られるようにメモリ半導体の高騰は耐久財の価格をなお押し上げ続けています。</p>
+  <p style="margin-top: 16px;">転売領域では、『映画ちいかわ』の個数無制限・受注生産と『超かぐや姫！』の公式収録検討という、この2日間で相次いだ2件の供給量を増やす対応が注目に値します。規約や通報による事後規制ではなく供給量そのものを需要に合わせる手法が主流化しつつあり、消費者にとっては二次流通のプレミアムに手を出す前に公式の受注枠を確認する行動が、これまで以上に合理的になっています。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

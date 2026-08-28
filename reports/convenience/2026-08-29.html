@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のコンビニ情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のコンビニ情報</h1>
+  <p class="report-date">2026年8月29日</p>
+  <p class="total-count">本日のコンビニ情報: 71件</p>
+
+  <h2>セブン‐イレブン <span class="section-count">（9件）</span></h2>
+
+  <div class="card"><div class="card-title">スプラトゥーン レイダースキャンペーン</div><div class="card-detail"><span class="label">発売日</span>2026/08/20 10:00 ～ 2026/09/02</div><div class="card-detail"><span class="label">対象店舗</span>セブン‐イレブン</div><div class="card-detail"><span class="label">内容</span>対象のお菓子を一度に2個購入すると、オリジナルステッカーを1枚プレゼント。税込800円購入ごとにレシートのシリアルナンバーで景品に応募できます。</div><div class="card-source"><a href="https://www.sej.co.jp/cmp/st2608.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">パワーパフ ガールズ キャンペーン</div><div class="card-detail"><span class="label">発売日</span>2026/08/27 ～ 景品なくなり次第終了</div><div class="card-detail"><span class="label">対象店舗</span>セブン‐イレブン</div><div class="card-detail"><span class="label">内容</span>対象のガムを一度に3個購入すると、全4種のオリジナルステッカーを1枚プレゼント。</div><div class="card-source"><a href="https://collabo-cafe.com/events/tag/seven-eleven/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ブルーロック アプリスタンプラリー</div><div class="card-detail"><span class="label">発売日</span>2026/08/04 ～ 終了日は公式未掲出</div><div class="card-detail"><span class="label">対象店舗</span>セブン‐イレブン</div><div class="card-detail"><span class="label">内容</span>セブン‐イレブンアプリで対象商品を購入するスタンプラリー企画です。</div><div class="card-source"><a href="https://collabo-cafe.com/events/tag/seven-eleven/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">対象商品購入でオリジナルステッカーGET</div><div class="card-detail"><span class="label">発売日</span>2026/08 実施中</div><div class="card-detail"><span class="label">対象店舗</span>セブン‐イレブン</div><div class="card-detail"><span class="label">内容</span>対象商品を購入するとステッカーがもらえる先着企画です。</div><div class="card-source"><a href="https://www.sej.co.jp/cmp/pwpf2608.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">5日間限定 揚げ物30円引きセール</div><div class="card-detail"><span class="label">発売日</span>2026/08 の5日間限定</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">30円引き</span></div><div class="card-detail"><span class="label">対象店舗</span>セブン‐イレブン</div><div class="card-detail"><span class="label">内容</span>からあげ棒、アメリカンドッグなど対象の揚げ物が割引になります。</div><div class="card-source"><a href="https://www.sej.co.jp/cmp/kshs2608_2.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">セブンプレミアム惣菜まとめ買いキャンペーン</div><div class="card-detail"><span class="label">発売日</span>2026/08 実施中</div><div class="card-detail"><span class="label">対象店舗</span>セブン‐イレブン</div><div class="card-detail"><span class="label">内容</span>セブンプレミアムおよびセブンプレミアムゴールドの対象惣菜をまとめ買いで割引。</div><div class="card-source"><a href="https://www.sej.co.jp/cmp/sp2608.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">対象飲料購入で50円引きクーポン</div><div class="card-detail"><span class="label">発売日</span>2026/07 ～ 実施中</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">50円引き</span></div><div class="card-detail"><span class="label">対象店舗</span>セブン‐イレブン</div><div class="card-detail"><span class="label">内容</span>対象飲料の購入で、次回使える割引クーポンを配布。</div><div class="card-source"><a href="https://www.sej.co.jp/cmp/drink2607.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">セブンアプリ「買うたびにもらえる」キャンペーン</div><div class="card-detail"><span class="label">発売日</span>～ 2026/09/02</div><div class="card-detail"><span class="label">対象店舗</span>セブン‐イレブン</div><div class="card-detail"><span class="label">内容</span>アプリ限定で対象商品を買うたびに特典が貯まる複数企画。地域限定でおにぎり・寿司の割引セールも実施します。</div><div class="card-source"><a href="https://www.sej.co.jp/cmp/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">話題の新商品</div><div class="card-detail"><span class="label">発売日</span>2026/08 発売・販売中</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">216円～410円</span></div><div class="card-detail"><span class="label">対象店舗</span>セブン‐イレブン</div><div class="card-detail"><span class="label">内容</span>爽やかレモンもこ、セブンカフェ スムージー ピンクグレープフルーツ、ティラミス氷などを販売。レモン系スイーツとスムージーが話題です。</div><div class="card-source"><a href="https://news.mynavi.jp/article/20260824-4837864/">出典を確認する</a></div></div>
+
+  <h2>ファミリーマート <span class="section-count">（18件）</span></h2>
+
+  <div class="card"><div class="card-title">ファミマで東京ばな奈「見ぃつけたっ」</div><div class="card-detail"><span class="label">発売日</span>2026/08/18 ～ なくなり次第終了</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">168円～380円</span></div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート</div><div class="card-detail"><span class="label">内容</span>東京ばな奈とのコラボ商品全7種を展開。シュー、ロール、パンケーキ、飲料、アイスなどを販売します。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_tbanana_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ポケモンフレンダキャンペーン</div><div class="card-detail"><span class="label">発売日</span>2026/08/11 ～ 2026/09/07</div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート</div><div class="card-detail"><span class="label">内容</span>対象商品購入で限定フレンダピックをプレゼント。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_pokemonfrienda_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">サンリオキャラクターズ×メーカーマスコット大集合</div><div class="card-detail"><span class="label">発売日</span>2026/08/04 ～ 2026/08/31</div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート</div><div class="card-detail"><span class="label">内容</span>対象商品を2個買うごとにオリジナルグッズを1個プレゼント。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_characters-mascot_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">エスターバニーキャンペーン</div><div class="card-detail"><span class="label">発売日</span>2026/08/18 ～ 2026/08/31</div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート</div><div class="card-detail"><span class="label">内容</span>対象の菓子2個を同時購入するごとに、全5種のオリジナル缶ミラーを1個プレゼント。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_estherbunny_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">斉木楠雄のΨ難 グッズ販売</div><div class="card-detail"><span class="label">発売日</span>2026/08/20 ～ なくなり次第終了</div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート</div><div class="card-detail"><span class="label">内容</span>トレーディング缶バッジ ブラックスーツver.、アクリルスタンドを販売。</div><div class="card-source"><a href="https://collabo-cafe.com/events/tag/konbini/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">大谷選手 ファミマおむすび割2026</div><div class="card-detail"><span class="label">発売日</span>2026/08/18 ～ シーズン中実施</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">50円引き</span></div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート</div><div class="card-detail"><span class="label">内容</span>大谷翔平選手がホームランを打つ、または勝利投手になった翌日に、おむすびの割引クーポンを公式Xで配布。</div><div class="card-source"><a href="https://www.famima-ohtani-omusubi.com/hr-campaign/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">熱闘！おむすび選手権</div><div class="card-detail"><span class="label">発売日</span>2026/08/18 ～</div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート</div><div class="card-detail"><span class="label">内容</span>ボリューム系と具だくさん贅沢系のおむすびで競う夏の企画です。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_omusubi-championship_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">1個買うと、1個もらえる</div><div class="card-detail"><span class="label">発売日</span>2026/08/25 ～ 2026/08/31</div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート</div><div class="card-detail"><span class="label">内容</span>対象商品を1個買うと、対象商品の無料引換券がもらえます。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2023_1buy1-receipt_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">フラッペ全品100円引きセール</div><div class="card-detail"><span class="label">発売日</span>2026/08/25 ～ 2026/08/31</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">100円引き</span></div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート</div><div class="card-detail"><span class="label">内容</span>ファミマカフェのフラッペ全品が対象です。沖縄県は対象外。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/redirect/2608_frappe_sale.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ファミマで新感覚グミ大集合</div><div class="card-detail"><span class="label">発売日</span>2026/08/25 ～</div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート</div><div class="card-detail"><span class="label">内容</span>話題のグミ商品を集中展開します。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2609_gummy93day_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">「ちょいデリ」たんぱく質メニューキャンペーン</div><div class="card-detail"><span class="label">発売日</span>2026/08/25 ～ 2026/09/07</div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート</div><div class="card-detail"><span class="label">内容</span>たんぱく質が摂れる新メニューを展開。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_choideli_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ファミペイ 毎日挑戦ゲーム</div><div class="card-detail"><span class="label">発売日</span>2026/08/01 ～ 2026/08/31</div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート</div><div class="card-detail"><span class="label">内容</span>1日1回ゲームに挑戦でき、当選すると最大10万円相当の特典が受け取れます。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_famipay-game_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ファミペイ払いで抽選キャンペーン</div><div class="card-detail"><span class="label">発売日</span>2026/08/01 ～ 2026/08/31</div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート</div><div class="card-detail"><span class="label">内容</span>当選確率90％。ファミペイ払いのたびに抽選に参加できます。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_famipay-kessai-game_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">レシート読み取りクーポン（中華まん）</div><div class="card-detail"><span class="label">発売日</span>2026/08/18 ～ 2026/08/31</div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート</div><div class="card-detail"><span class="label">内容</span>レシートのギフトコードまたはQRコードをアプリで読み取るとクーポンを獲得。利用期間は2026/09/07までです。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2608_famipay-receipt-coupon_chukaman_cp.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">アプリ提示で無料引換クーポン</div><div class="card-detail"><span class="label">発売日</span>2026/08/01 ～ 2026/08/31</div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート</div><div class="card-detail"><span class="label">内容</span>アプリ提示で買い物すると、アイス、ドリンク剤、日用品、お酒の無料引換クーポンを後日配信。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/2022_famipay-yokoku.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ポイント3種いずれかにポイントプラス</div><div class="card-detail"><span class="label">発売日</span>通年・継続</div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート</div><div class="card-detail"><span class="label">内容</span>dポイントカード、楽天ポイントカード、Vポイントアプリ、連携済みファミペイの提示で対象商品に加算があります。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/pointplus.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">毎週火曜日限定セール</div><div class="card-detail"><span class="label">発売日</span>毎週火曜</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">20円引き</span></div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート</div><div class="card-detail"><span class="label">内容</span>生たまご、ハム、納豆などが対象。沖縄県は対象外です。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/redirect/2603_seikatsu-ouen_cp_ka.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">毎週金曜日限定セール</div><div class="card-detail"><span class="label">発売日</span>毎週金曜</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">50円引き</span></div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート</div><div class="card-detail"><span class="label">内容</span>冷凍食品を2個購入ごとに割引。</div><div class="card-source"><a href="https://www.family.co.jp/campaign/spot/redirect/2603_seikatsu-ouen_cp_kin.html">出典を確認する</a></div></div>
+
+  <h2>ローソン <span class="section-count">（18件）</span></h2>
+
+  <div class="card"><div class="card-title">『勝利の女神：NIKKE』コラボ</div><div class="card-detail"><span class="label">発売日</span>2026/09/01 ～ なくなり次第終了</div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>対象のお菓子3点購入で全6種のクリアファイルをプレゼント。店頭販売、予約販売、店内放送、装飾店舗も実施します。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/nikke/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">『ウマ娘 プリティーダービー』コラボ</div><div class="card-detail"><span class="label">発売日</span>2026/08/18 ～ なくなり次第終了</div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>オリジナルクリアファイルの配布、店頭販売グッズ、オリジナルギフトを展開。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/umamusume/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">「ハイキュー!!」みんなでぐんぐんコラボ</div><div class="card-detail"><span class="label">発売日</span>2026/08/11 朝7時 ～ なくなり次第終了</div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>対象のお菓子でクリアファイル、アイスでコースターをプレゼント。オリジナルフード、店頭販売、予約販売も実施します。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/haikyu/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">TVアニメ「忍たま乱太郎」コラボ</div><div class="card-detail"><span class="label">発売日</span>2026/08 実施中</div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>対象商品購入でオリジナルグッズがもらえます。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/nintama/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">『ブルーアーカイブ』コラボ</div><div class="card-detail"><span class="label">発売日</span>実施中</div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>対象商品購入でオリジナルグッズを配布。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/bluearchive/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">『ペルソナ』シリーズ30周年コラボ</div><div class="card-detail"><span class="label">発売日</span>2026/06/30 朝7時 ～ なくなり次第終了</div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>数量限定クリアファイル、店頭販売グッズ、Loppi限定商品、ローソンプリントを展開。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/persona30th/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">「ドズル社」コラボ</div><div class="card-detail"><span class="label">発売日</span>実施中</div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>対象商品購入でオリジナルグッズを配布。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/dozle/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">櫻坂46・日向坂46 ローソンアプリキャンペーン</div><div class="card-detail"><span class="label">発売日</span>2026/08/11 ～</div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>税込100円以上の購入でチャレンジ可能。ライブ招待などの景品が当たります。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/sakurahinata/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">んぽちゃむ コラボ（予告）</div><div class="card-detail"><span class="label">発売日</span>近日開催予定</div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>詳細は後日公開予定です。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/kawaisouni/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">L'Arc-en-Ciel 35th コラボ（予告）</div><div class="card-detail"><span class="label">発売日</span>近日開催予定</div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>オリジナルグッズ配布を予定。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/larc/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">Mrs. GREEN APPLE コラボ クリスマスケーキ</div><div class="card-detail"><span class="label">発売日</span>2026/09/15 予約開始</div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>コラボクリスマスケーキ4号の予約を受け付けます。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/mrsgreenapple/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">買うほど回せる！アプリでLガチャ</div><div class="card-detail"><span class="label">発売日</span>実施中</div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>Ponta会員またはdポイントカード会員限定。スタンプを貯めてガチャに挑戦できます。</div><div class="card-source"><a href="https://www.lawson.co.jp/lab/campaign/lgacha/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">au PAY連携キャンペーン</div><div class="card-detail"><span class="label">発売日</span>実施中</div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>au PAY連携で抽選キャンペーンを実施。</div><div class="card-source"><a href="https://www.lawson.co.jp/campaign/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">伊藤園 飲料1本もらえるキャンペーン</div><div class="card-detail"><span class="label">発売日</span>2026/08/25 ～ 2026/09/14</div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>対象商品購入で飲料1本の無料引換券を配布。</div><div class="card-source"><a href="https://www.lawson.co.jp/recommend/sale/detail/1531189_3677.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">グリコ お菓子1個もらえるキャンペーン</div><div class="card-detail"><span class="label">発売日</span>2026/08/25 ～ 2026/09/07</div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>対象商品購入でお菓子1個の無料引換券を配布。</div><div class="card-source"><a href="https://www.lawson.co.jp/recommend/sale/detail/1531190_3677.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">アサヒ ドリンク剤1本もらえるキャンペーン</div><div class="card-detail"><span class="label">発売日</span>2026/08/25 ～ 2026/09/07</div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>対象商品購入でドリンク剤1本の無料引換券を配布。</div><div class="card-source"><a href="https://www.lawson.co.jp/recommend/sale/detail/1531191_3677.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">日清 カップ麺バンドル割引</div><div class="card-detail"><span class="label">発売日</span>2026/08/25 ～ 2026/08/31</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">2個で100円引き、3個で200円引き</span></div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>対象のカップ麺をまとめて購入すると割引になります。</div><div class="card-source"><a href="https://www.lawson.co.jp/recommend/sale/detail/1531192_3677.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">カルビー お菓子バンドル割引</div><div class="card-detail"><span class="label">発売日</span>2026/08/25 ～ 2026/09/14</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">2個で40円引き、3個で80円引き</span></div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>対象のお菓子をまとめて購入すると割引になります。</div><div class="card-source"><a href="https://www.lawson.co.jp/recommend/sale/detail/1531193_3677.html">出典を確認する</a></div></div>
+
+  <h2>ミニストップ <span class="section-count">（8件）</span></h2>
+
+  <div class="card"><div class="card-title">1GETキャンペーン</div><div class="card-detail"><span class="label">発売日</span>実施中</div><div class="card-detail"><span class="label">対象店舗</span>ミニストップ</div><div class="card-detail"><span class="label">内容</span>対象商品を1つ買うと1つもらえる無料引換券企画です。</div><div class="card-source"><a href="https://www.ministop.co.jp/campaign/1get.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">Appleキャンペーン</div><div class="card-detail"><span class="label">発売日</span>2026/08/17 ～ 2026/08/30</div><div class="card-detail"><span class="label">対象店舗</span>ミニストップ</div><div class="card-detail"><span class="label">内容</span>Apple Accountへ5,000円以上チャージすると、Apple Gift Cardがもらえるキャンペーンです。</div><div class="card-source"><a href="https://vdpro.jp/ministop.apple4istu.app/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">増量フェア</div><div class="card-detail"><span class="label">発売日</span>2026/08/18 ～ 2026/08/31</div><div class="card-detail"><span class="label">対象店舗</span>ミニストップ</div><div class="card-detail"><span class="label">内容</span>「愛も量も重めです」をテーマにした対象商品の増量販売。</div><div class="card-source"><a href="https://www.ministop.co.jp/campaign/260818zouryoufair/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">完熟白桃パフェ PayPayクーポン</div><div class="card-detail"><span class="label">発売日</span>2026/08/17 ～ 2026/08/30</div><div class="card-detail"><span class="label">対象店舗</span>ミニストップ</div><div class="card-detail"><span class="label">内容</span>PayPayアプリでクーポンを取得し、PayPay決済で割引購入できます。</div><div class="card-source"><a href="https://www.ministop.co.jp/campaign/paypay_9.html">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">AEON Pay・WAONチャージキャンペーン</div><div class="card-detail"><span class="label">発売日</span>2026/08/14 ～ 2026/08/31</div><div class="card-detail"><span class="label">対象店舗</span>ミニストップ</div><div class="card-detail"><span class="label">内容</span>イオン銀行ATMチャージやレジWAONチャージで抽選キャンペーンを実施。</div><div class="card-source"><a href="https://www.waon.net/campaign/202608_chargecp/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ヒプノシスマイク 店内放送</div><div class="card-detail"><span class="label">発売日</span>2026/08/07 ～ 2026/08/30</div><div class="card-detail"><span class="label">対象店舗</span>ミニストップ</div><div class="card-detail"><span class="label">内容</span>キャストによるオリジナル店内放送を実施。</div><div class="card-source"><a href="https://chirashi.otoku.aeonsquare.net/pc/chirashi/aeon_hypnosismic/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">つながれ、アジア</div><div class="card-detail"><span class="label">発売日</span>2026/07/16 ～ 2026/10/24</div><div class="card-detail"><span class="label">対象店舗</span>ミニストップ</div><div class="card-detail"><span class="label">内容</span>アジア競技大会の選手応援キャンペーンです。</div><div class="card-source"><a href="https://www.aeon.info/asiangames/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">AEON Pay 毎週金・土・日キャンペーン</div><div class="card-detail"><span class="label">発売日</span>通年・継続</div><div class="card-detail"><span class="label">対象店舗</span>ミニストップ</div><div class="card-detail"><span class="label">内容</span>対象決済で実施するAEON Payの定例キャンペーンです。</div><div class="card-source"><a href="https://www.ministop.co.jp/campaign/2504aeonpay-cp.html">出典を確認する</a></div></div>
+
+  <h2>デイリーヤマザキ <span class="section-count">（6件）</span></h2>
+
+  <div class="card"><div class="card-title">1個買うと、1個もらえる！</div><div class="card-detail"><span class="label">発売日</span>2026/08 実施中</div><div class="card-detail"><span class="label">対象店舗</span>デイリーヤマザキ</div><div class="card-detail"><span class="label">内容</span>対象商品購入で同一商品の無料引換券をプレゼント。</div><div class="card-source"><a href="https://www.daily-yamazaki.jp/information/125571/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">グミ・ソフトキャンディ 2個30円引き</div><div class="card-detail"><span class="label">発売日</span>2026/08/25 ～ 2026/09/14</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">30円引き</span></div><div class="card-detail"><span class="label">対象店舗</span>デイリーヤマザキ</div><div class="card-detail"><span class="label">内容</span>対象のグミ・ソフトキャンディを2個一緒に購入すると割引。</div><div class="card-source"><a href="https://www.daily-yamazaki.jp/information/125162/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">レッドブル 2本50円引き</div><div class="card-detail"><span class="label">発売日</span>2026/08/25 ～ 2026/09/07</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">50円引き</span></div><div class="card-detail"><span class="label">対象店舗</span>デイリーヤマザキ</div><div class="card-detail"><span class="label">内容</span>対象のレッドブルを2本一緒に購入すると割引。</div><div class="card-source"><a href="https://www.daily-yamazaki.jp/information/124670/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ゼリー飲料 2個30円引き</div><div class="card-detail"><span class="label">発売日</span>2026/08/25 ～ 2026/09/07</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">30円引き</span></div><div class="card-detail"><span class="label">対象店舗</span>デイリーヤマザキ</div><div class="card-detail"><span class="label">内容</span>対象のゼリー飲料を2個一緒に購入すると割引。</div><div class="card-source"><a href="https://www.daily-yamazaki.jp/information/124652/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">デイリーホットキッチン コロッケ増量</div><div class="card-detail"><span class="label">発売日</span>2026/08/24 ～ 2026/08/30</div><div class="card-detail"><span class="label">対象店舗</span>デイリーヤマザキ</div><div class="card-detail"><span class="label">内容</span>鶏ももから揚げ弁当が、お値段そのままでコロッケ1個増量。</div><div class="card-source"><a href="https://www.daily-yamazaki.jp/information/125487/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">2026 ヤマザキの中華まん</div><div class="card-detail"><span class="label">発売日</span>2026/08/24 ～</div><div class="card-detail"><span class="label">対象店舗</span>デイリーヤマザキ</div><div class="card-detail"><span class="label">内容</span>中華まんシリーズの今シーズン販売開始。</div><div class="card-source"><a href="https://www.daily-yamazaki.jp/information/122934/">出典を確認する</a></div></div>
+
+  <h2>一番くじ（コンビニ取扱・まとめ） <span class="section-count">（12件）</span></h2>
+
+  <div class="card"><div class="card-title">一番くじ ワンピース -エルバフ編- GIANT BASH!! Vol.2</div><div class="card-detail"><span class="label">発売日</span>2026/08/08 ～ なくなり次第終了</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">1回790円（税込）</span></div><div class="card-detail"><span class="label">対象店舗</span>セブン‐イレブン、イトーヨーカドー、ゆめタウン等</div><div class="card-detail"><span class="label">内容</span>人気のワンピース一番くじ。8月発売分では品薄になりやすいタイトルです。</div><div class="card-source"><a href="https://charagoo.jp/genre-lottery/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ 夏目友人帳 雨の日も、晴れの日も。</div><div class="card-detail"><span class="label">発売日</span>2026/08/14 ～ なくなり次第終了</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">1回760円（税込）</span></div><div class="card-detail"><span class="label">対象店舗</span>ファミリーマート、デイリーヤマザキ、書店等</div><div class="card-detail"><span class="label">内容</span>夏目友人帳の一番くじを販売。</div><div class="card-source"><a href="https://charagoo.jp/genre-lottery/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ KINGDOM HEARTS -25th Anniversary-</div><div class="card-detail"><span class="label">発売日</span>2026/08/15 ～ なくなり次第終了</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">1回790円（税込）</span></div><div class="card-detail"><span class="label">対象店舗</span>セブン‐イレブン、イトーヨーカドー等</div><div class="card-detail"><span class="label">内容</span>KINGDOM HEARTS 25周年の一番くじです。</div><div class="card-source"><a href="https://charagoo.jp/genre-lottery/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ ハイキュー!! -烏野の未来-</div><div class="card-detail"><span class="label">発売日</span>2026/08/15 ～ なくなり次第終了</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">1回790円（税込）</span></div><div class="card-detail"><span class="label">対象店舗</span>店頭のみ</div><div class="card-detail"><span class="label">内容</span>ローソンの「みんなでぐんぐんコラボ」と同時期に展開。</div><div class="card-source"><a href="https://charagoo.jp/genre-lottery/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ 勝利の女神：NIKKE CHAPTER8</div><div class="card-detail"><span class="label">発売日</span>2026/08/08 ～ なくなり次第終了</div><div class="card-detail"><span class="label">対象店舗</span>ローソン</div><div class="card-detail"><span class="label">内容</span>ローソンで発売。9月1日開始のローソン店舗コラボと連動します。</div><div class="card-source"><a href="https://news.mynavi.jp/article/20260731-ichibankuji/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ 進撃の巨人 ～選択と結果～</div><div class="card-detail"><span class="label">発売日</span>2026/08上旬 ～ なくなり次第終了</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">1回700円（税込）</span></div><div class="card-detail"><span class="label">対象店舗</span>店頭、一番くじONLINE</div><div class="card-detail"><span class="label">内容</span>進撃の巨人の一番くじを販売。</div><div class="card-source"><a href="https://charagoo.jp/genre-lottery/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ ミニオンズ＆モンスターズ</div><div class="card-detail"><span class="label">発売日</span>2026/08/01 ～ なくなり次第終了</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">1回730円（税込）</span></div><div class="card-detail"><span class="label">対象店舗</span>店頭のみ</div><div class="card-detail"><span class="label">内容</span>ミニオンズ＆モンスターズの一番くじです。</div><div class="card-source"><a href="https://charagoo.jp/genre-lottery/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ クレヨンしんちゃん 夏のバケーション</div><div class="card-detail"><span class="label">発売日</span>2026/08/08 ～ なくなり次第終了</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">1回700円（税込）</span></div><div class="card-detail"><span class="label">対象店舗</span>店頭のみ</div><div class="card-detail"><span class="label">内容</span>クレヨンしんちゃんの一番くじです。</div><div class="card-source"><a href="https://charagoo.jp/genre-lottery/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ 鬼滅の刃 ～上弦の弐～（再販）</div><div class="card-detail"><span class="label">発売日</span>2026/08/17 ～ なくなり次第終了</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">1回850円（税込）</span></div><div class="card-detail"><span class="label">対象店舗</span>一番くじONLINE限定</div><div class="card-detail"><span class="label">内容</span>鬼滅の刃の再販一番くじです。</div><div class="card-source"><a href="https://charagoo.jp/genre-lottery/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじちょこっと サンエックスユニバース</div><div class="card-detail"><span class="label">発売日</span>2026/09/16 ～ 順次発売</div><div class="card-detail"><span class="label">価格</span><span class="card-amount">1回550円（税込）</span></div><div class="card-detail"><span class="label">対象店舗</span>一番くじ取扱店</div><div class="card-detail"><span class="label">内容</span>メッシュ刺繍ポーチ、キャラプリケチャーム、缶ケース、シールなどをラインナップ。</div><div class="card-source"><a href="https://collabo-cafe.com/events/collabo/san-x-ichiban-kuji-chocotto-2026/">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ 学園アイドルマスター Part6</div><div class="card-detail"><span class="label">発売日</span>2026/09/19 ～ 順次発売</div><div class="card-detail"><span class="label">対象店舗</span>一番くじ取扱店</div><div class="card-detail"><span class="label">内容</span>1/7スケールフィギュア、描きおろしイラストグッズ、マスコットをラインナップ。ラストワン賞も用意されています。</div><div class="card-source"><a href="https://idolmaster-official.jp/news/01_19668">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">一番くじ きみが死ぬまで恋をしたい</div><div class="card-detail"><span class="label">発売日</span>2026/09/24 ～ 順次発売</div><div class="card-detail"><span class="label">対象店舗</span>一番くじ取扱店</div><div class="card-detail"><span class="label">内容</span>描き下ろしビジュアライズフレーム、メインキャラクター4人のビッグサイズアクリルスタンドをラインナップ。</div><div class="card-source"><a href="https://hobby.dengeki.com/news/3133431/">出典を確認する</a></div></div>
+
+  <p class="note">※価格・期間は確認時点のものです。最新情報は各店舗・公式サイトにてご確認ください。</p>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI情報レポート 2026-08-31</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>AI情報レポート 2026-08-31</h1>
+  <p class="report-date">2026年8月31日</p>
+  <p class="total-count">本日のAIトピック: 19件</p>
+
+  <h2>本日のAIトピック <span class="section-count">（19件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">CodexとChatGPT Workの利用枠を全有料ユーザーでリセット、無駄消費バグを一斉修正</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月29日</div>
+    <div class="card-detail"><span class="label">内容</span>CodexとChatGPT Workの利用枠をリセットし、画像保持、メモリ、ゴール機能、サブエージェント、MCPに関する使用量の無駄を修正。同じ枠で従来より10〜50%長く使える場合があると発表しました。</div>
+    <div class="card-detail"><span class="label">料金</span>有料プラン契約者が対象、追加費用なし</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね18,089件、表示204万回</span>。比較投稿はいいね3,617件、表示28.8万回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2093801758665715784">出典を確認する</a>　<a href="https://x.com/i/status/2093804196319707623">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Claude Opus 5が63点で首位、Fable 5が62点で3位に</div>
+    <div class="card-detail"><span class="label">発表元</span>Artificial Analysis</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月31日時点</div>
+    <div class="card-detail"><span class="label">内容</span>Intelligence IndexではClaude Opus 5が63点で上位を占め、Claude Fable 5は62点で3位。上位5枠のうち4枠をAnthropicが占めました。</div>
+    <div class="card-detail"><span class="label">料金</span>モデルごとに異なる</div>
+    <div class="card-detail"><span class="label">反響</span>関連投稿は<span class="card-amount">いいね1,515件、表示7.7万回</span></div>
+    <div class="card-source"><a href="https://artificialanalysis.ai/models">出典を確認する</a>　<a href="https://x.com/i/status/2093944937637449762">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">総理へのAIレクチャー動画が「レベルが低い」vs「実は高度」で真っ二つに</div>
+    <div class="card-detail"><span class="label">発表元</span>日本政府、高市総理、安野貴博氏</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月30日</div>
+    <div class="card-detail"><span class="label">内容</span>高市総理へのChatGPT実演を巡り、国家戦略として水準が低いとの批判と、具体的な追加指示まで出す実用的な活用だとの擁護が拡散しました。</div>
+    <div class="card-detail"><span class="label">料金</span>無料、ChatGPTの標準機能内での実演</div>
+    <div class="card-detail"><span class="label">反響</span>批判側は<span class="card-amount">いいね9,019件、表示39.8万回</span>、擁護側はいいね2,496件、表示59.7万回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2093852489162608935">出典を確認する</a>　<a href="https://x.com/i/status/2093939818799714674">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AIで車を自力修理し、修理見積もり比で実質1万円以上を節約した実例</div>
+    <div class="card-detail"><span class="label">発表元</span>Grok</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月29日</div>
+    <div class="card-detail"><span class="label">内容</span>車の故障コードを無料スキャナーで取得し、Grokの助言に沿ってバルブを点検・交換した事例。作業時間は1時間未満でした。</div>
+    <div class="card-detail"><span class="label">料金</span>部品代<span class="card-amount">120ドル</span>。診断料169ドルと工賃を回避</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,021件、表示3.4万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2093820992091005386">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">全部オープンソースで固める「自分専用PC環境」構築事例</div>
+    <div class="card-detail"><span class="label">発表元</span>Qwen 3.8、Hermes、Omarchy</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月29日</div>
+    <div class="card-detail"><span class="label">内容</span>オープンソースLLM、ハーネス、OSを組み合わせ、通知変更、LoRA学習、アプリUIの自己改変まで実施したPC環境の事例です。</div>
+    <div class="card-detail"><span class="label">料金</span>構成要素は無料。ローカル実行用PCが必要</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,496件、表示10.2万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2093813561147703662">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Mac向けローカルLLM実行環境の速度ベンチマーク、生データをJSONで公開</div>
+    <div class="card-detail"><span class="label">発表元</span>rapid-mlx、Ollama、llama.cpp</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月29日</div>
+    <div class="card-detail"><span class="label">内容</span>Mac mini M2 Proでの8ストリーム比較では、rapid-mlxが82.9 tok/s、llama.cppが48.8 tok/s、Ollamaが27.2 tok/s。条件によって差が縮む点も生データ付きで公開しました。</div>
+    <div class="card-detail"><span class="label">料金</span>無料、オープンソースでローカル実行</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね234件、表示1.9万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2093743104205742212">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">VRAM 16GBのRTX 5060 Tiでも高品質動画生成、標準ローダーだけで完結</div>
+    <div class="card-detail"><span class="label">発表元</span>ComfyUI、MiniMax</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月30日</div>
+    <div class="card-detail"><span class="label">内容</span>ComfyUIの標準LoRAローダーでMiniMax用ファイルを読み込み、16GB VRAMのGPUでも動画生成できる実践例。ステップ数や起動フラグによる品質改善も紹介されています。</div>
+    <div class="card-detail"><span class="label">料金</span>無料、ローカル実行</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね64件、表示5,457回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2093897763314385063">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">台本1本から日本を舞台にした映画的動画を自動生成</div>
+    <div class="card-detail"><span class="label">発表元</span>Flova AI、Seedance 2.5</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月29日</div>
+    <div class="card-detail"><span class="label">内容</span>絵コンテ生成と台本からの動画化を組み合わせ、日本の四季や文化を描く映像を自動生成したショーケースです。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,230件、表示27.5万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2093751922985455746">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「Mono-color Skill」— デザイン言語ごとパッケージ化して繰り返し呼び出す</div>
+    <div class="card-detail"><span class="label">発表元</span>Claude Skills、個人デザイナー</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月30日</div>
+    <div class="card-detail"><span class="label">内容</span>単色または抑制的な2色、余白、強い文字組み、レトロ印刷質感を一つのSkillにまとめ、再現性のあるデザイン生成を目指す取り組みです。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね821件、表示2.7万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2093968800316293400">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">3Dモデル生成とテキストからのモーション生成を日本人開発者が実地検証</div>
+    <div class="card-detail"><span class="label">発表元</span>Meshy、kimodo.cpp、Blender MCP</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月30日</div>
+    <div class="card-detail"><span class="label">内容</span>Meshyのアニメ調3D生成と、M3 Mac上でのkimodo.cppによるモーション生成を検証。Blender MCP経由でCodexに動画作成をさせる実験も紹介されました。</div>
+    <div class="card-detail"><span class="label">反響</span>Meshyは<span class="card-amount">いいね116件、表示8,292回</span>、kimodo.cppはいいね32件、表示2,662回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2093999307032838461">出典を確認する</a>　<a href="https://x.com/i/status/2094037840070132124">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「AI精神病」を正式な病名にすべきか、精神科医らが本格検討</div>
+    <div class="card-detail"><span class="label">発表元</span>King's College Londonほか</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月30日</div>
+    <div class="card-detail"><span class="label">内容</span>チャットボットとのやり取りで妄想が悪化する現象について、追従性と人間らしい応答が一人だけの反響室を生む可能性を検討。病名化には証拠不足などから慎重な立場です。</div>
+    <div class="card-detail"><span class="label">料金</span>無料、学術論考</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね697件、表示12.3万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2093881743187276020">出典を確認する</a>　<a href="https://x.com/i/status/2093913443476918442">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Qwenの利用数がGoogleの5倍に、日本企業は中国AIとどう向き合うか</div>
+    <div class="card-detail"><span class="label">発表元</span>アリババ、Qwen、日本経済新聞</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月30日</div>
+    <div class="card-detail"><span class="label">内容</span>Qwenの利用数がGoogleの5倍に達したとの報道。モデルの入手性に対し、ローカルで動かせるPC環境の不足を指摘する反応も出ています。</div>
+    <div class="card-detail"><span class="label">料金</span>オープンソースで無料入手可能。実行環境は別途必要</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね310件、表示9.4万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2093890591167853019">出典を確認する</a>　<a href="https://x.com/i/status/2093877459758600212">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「AI活用力」より「資産の蓄積量」が差になる時代へ</div>
+    <div class="card-detail"><span class="label">発表元</span>Claude Code、Codex</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月29日</div>
+    <div class="card-detail"><span class="label">内容</span>AIを使いこなす技術より、過去に制作・開発したコードや成果物をどれだけ資産として蓄積しているかが、横展開の品質差につながるという指摘です。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね203件、表示1.9万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2093848882367344803">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">40ドルのUSBドングルとAIで、地域の警察無線を自動文字起こし・要約</div>
+    <div class="card-detail"><span class="label">発表元</span>RTL-SDR、AIエージェント</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月29日</div>
+    <div class="card-detail"><span class="label">内容</span>USB無線受信機で業務無線を録音し、AIエージェントに文字起こしと要約を任せる活用法。日本で扱う場合は電波法などの確認が必要です。</div>
+    <div class="card-detail"><span class="label">料金</span>RTL-SDR受信機約<span class="card-amount">40ドル</span></div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね2,359件、表示10.1万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2093732306749919505">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">車の当て逃げをAIが自動で証拠編集・相手特定・保険請求まで完了</div>
+    <div class="card-detail"><span class="label">発表元</span>Grok Bot、Tesla</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月29日</div>
+    <div class="card-detail"><span class="label">内容</span>投稿者はTeslaの駐車監視映像から接触場面を特定し、Grok Botが映像編集、相手特定、保険請求まで行ったと主張。公式発表の裏付けがない未確認情報です。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,643件、表示9.1万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2093737096343118119">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">OpenAIの自社推論チップ計画に、NVIDIAがオープンソース戦略で反撃という構図</div>
+    <div class="card-detail"><span class="label">発表元</span>NVIDIA、OpenAI</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月29日</div>
+    <div class="card-detail"><span class="label">内容</span>OpenAIの推論チップ計画と、NVIDIAのオープンソース戦略を対立構図として説明した投稿。企業公式の裏付けがない単発の未確認情報です。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,467件、表示11.9万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2093751140869673038">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「生成AI不使用」表明への称賛と、「AI生成だろ」と決めつける風潮への懸念が同時に伸びる</div>
+    <div class="card-detail"><span class="label">発表元</span>SNSでの生成AIをめぐる反応</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月29日〜2026年8月30日</div>
+    <div class="card-detail"><span class="label">内容</span>生成AIを使わない制作への称賛と、経験にない表現をAI生成と短絡する風潮への懸念が拡散。日本語圏では懐疑・批判側の話題が広い層に届いています。</div>
+    <div class="card-detail"><span class="label">反響</span>決めつけ懸念は<span class="card-amount">いいね4,977件、表示187万回</span>。AI不使用称賛はいいね985件、表示2.2万回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2093929600732873035">出典を確認する</a>　<a href="https://x.com/i/status/2093858455094534518">出典を確認する</a>　<a href="https://x.com/i/status/2093921830360788998">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Excel向けAIエージェント「Shortcut」共同創業者が退任、2026年に4倍成長と明かす</div>
+    <div class="card-detail"><span class="label">発表元</span>Shortcut、FRL</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月29日</div>
+    <div class="card-detail"><span class="label">内容</span>共同創業者が退任にあたり、初期製品の失敗、Shortcutの開発、世界の投資ファンドでの導入を振り返り、2026年に4倍成長したと公表しました。</div>
+    <div class="card-detail"><span class="label">料金</span>シリーズAで<span class="card-amount">3,000万ドル超</span>を調達。2026年に4倍成長は本人申告</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね974件、表示7.9万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2093729344871170219">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AIエージェントの「自動で稼ぐ」期待と、それを冷ますコミュニティの反応</div>
+    <div class="card-detail"><span class="label">発表元</span>AI収益化・副業まわりの投稿</div>
+    <div class="card-detail"><span class="label">時期</span>2026年8月29日〜2026年8月30日</div>
+    <div class="card-detail"><span class="label">内容</span>収益額・期間・手法が揃った具体的な成功事例は確認されず、単純な売買ボットへの高額なAI課金や「AIに稼げと言えばよいわけではない」との懐疑が話題になりました。</div>
+    <div class="card-detail"><span class="label">料金</span>Claude・GPTの各<span class="card-amount">200ドル</span>プラン契約の例。収益額の記載なし</div>
+    <div class="card-detail"><span class="label">反響</span>自動売買投稿は<span class="card-amount">いいね841件、表示14.4万回</span>。懐疑投稿はいいね299件、表示2.0万回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2093731369117495535">出典を確認する</a>　<a href="https://x.com/i/status/2093801449712931205">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

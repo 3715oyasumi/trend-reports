@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のモバイル情報レポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のモバイル情報レポート</h1>
+  <p class="report-date">2026年8月31日</p>
+  <p class="total-count">本日のモバイル案件: 9件</p>
+
+  <h2>HISモバイル <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">新料金プラン「自由自在 3.0プラン」を発表</div>
+    <div class="card-detail"><span class="label">還元</span>30GBで月額<span class="card-amount">1,999円</span>、20GBで<span class="card-amount">1,699円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>HISモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>30GB・20GBプランは6分かけ放題付帯。低容量帯から30GB帯まで月額2,000円未満</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月17日から未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2136416.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">スマホ＆ガラホ 得々SIMセット割キャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span>ガラホとAndroid端末が最大<span class="card-amount">50%オフ</span>、認定中古スマートフォンが<span class="card-amount">10%オフ</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>HISモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>新プラン等の申込、回線開通、対象中古端末の同時購入。在庫がなくなり次第終了</div>
+    <div class="card-detail"><span class="label">期間</span>2026年8月28日から2026年9月30日</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2136652.html">出典を確認する</a></div>
+  </div>
+
+  <h2>povo（au） <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">「本気割」の還元率を50%に増量</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">50%還元</span>。360GBは実質13,200円、1.32TBは実質19,620円</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo 2.0</div>
+    <div class="card-detail"><span class="label">条件</span>対象外事業者以外からのMNP転入後、SIM有効化から7日以内に対象トッピングを購入。au ID連携とau PAY利用開始が必要。1回線1回限り</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日から未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2135397.html">出典を確認する</a></div>
+  </div>
+
+  <h2>楽天モバイル <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">iPhone 17／iPhone 16の実質負担額を大幅値下げ</div>
+    <div class="card-detail"><span class="label">還元</span>iPhone 16は月額<span class="card-amount">500円</span>、24カ月総額12,000円。iPhone 17は月額<span class="card-amount">999円</span>、24カ月総額23,976円</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>他社からMNP転入し、対象プラン申込と買い替え超トクプログラムの48回払いで端末購入</div>
+    <div class="card-detail"><span class="label">期間</span>2026年8月25日から未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2135284.html">出典を確認する</a></div>
+  </div>
+
+  <h2>ワイモバイル（ソフトバンク） <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">オンラインストア誕生感謝祭 第2弾</div>
+    <div class="card-detail"><span class="label">還元</span>iPhone 16eが<span class="card-amount">99,800円</span>、OPPO Reno15 Aが<span class="card-amount">24,800円</span>。MNPでPayPayポイント15,000円相当進呈</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ワイモバイルオンラインストア</div>
+    <div class="card-detail"><span class="label">条件</span>端末割引は新規契約またはMNPでシンプル3 M/Lを契約。ソフトバンク・LINEMOからの乗り換えは対象外</div>
+    <div class="card-detail"><span class="label">期間</span>2026年8月25日から2026年9月30日。週替わりセールは9月1日9時59分まで</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2135892.html">出典を確認する</a></div>
+  </div>
+
+  <h2>ソフトバンク／ワイモバイル／LINEMO <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Google Playギフトコードが10%オフ</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">10%オフ</span>。最大25万円分の購入で25,000円割引</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ソフトバンク、ワイモバイル、LINEMO</div>
+    <div class="card-detail"><span class="label">条件</span>個人契約者が対象スマートフォン回線からまとめて支払いで購入。1回線につき期間中5回まで。先着制</div>
+    <div class="card-detail"><span class="label">期間</span>2026年8月28日から2026年9月14日</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2136241.html">出典を確認する</a></div>
+  </div>
+
+  <h2>IIJmio <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ハッピープライスキャンペーン＋のデータ増量特典など</div>
+    <div class="card-detail"><span class="label">還元</span>最大6カ月間、毎月<span class="card-amount">5GB増量</span>。eSIM契約者は合計最大960円割引または5GB増量</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>25ギガプランの音声SIMまたは音声eSIMを新規契約、もしくは旧プランから変更。eSIM特典は対象契約者向け</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日から2026年11月4日</div>
+    <div class="card-source"><a href="https://jetstream.blog/2026/08/25/iijmio-campaign-september-2026/">出典を確認する</a></div>
+  </div>
+
+  <h2>ドコモ（認定中古品 docomo Certified） <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">認定中古iPhoneの価格を改定し、最大3万円近い値上げ</div>
+    <div class="card-detail"><span class="label">還元</span>iPhone 15（128GB）は新規・MNP一括<span class="card-amount">57,200円から</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ドコモオンラインショップ、docomo Certified</div>
+    <div class="card-detail"><span class="label">条件</span>一部の認定中古モデルで価格改定。乗り換え前提ではソフトバンク・ワイモバイル認定中古品との価格差に注意</div>
+    <div class="card-detail"><span class="label">期間</span>2026年8月26日から継続</div>
+    <div class="card-source"><a href="https://www.docomo.ne.jp/binary/pdf/support/certified/">出典を確認する</a></div>
+  </div>
+
+  <h2>ゲオモバイル（中古端末） <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">衝撃割引セール開催</div>
+    <div class="card-detail"><span class="label">還元</span>Google Pixel 10がMNP一括<span class="card-amount">63,800円から</span>、iPad 第9世代は一括<span class="card-amount">1円から</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ゲオモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>UQ mobileコミコミプランバリュー契約、増量オプションII加入などが必要。新規契約時は価格が異なる場合あり</div>
+    <div class="card-detail"><span class="label">期間</span>2026年8月26日10時から2026年8月31日23時59分</div>
+    <div class="card-source"><a href="https://mvno.geo-mobile.jp/campaign/used_sale/">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※還元・条件は確認時点のものです。</p>
+</body>
+</html>

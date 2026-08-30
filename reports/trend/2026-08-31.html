@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年8月31日（月）版</p>
+  <p class="total-count">本日のトレンド: 9件</p>
+
+  <h2>新商品情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ミンティア「まるでとろっとマンゴー」「まるでとろっとラ・フランス」</div>
+    <div class="card-detail"><span class="label">特徴</span>シリーズ初となる「とろみ食感」を採用。果汁パウダーを使用し、口の中でゆっくり広がるなめらかな食感で果実の濃厚さ・ジューシーさを表現。全国発売</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月7日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">130円前後</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/interview/kodawari/2136564.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">カルビー「さつまりこ 焼きいも」</div>
+    <div class="card-detail"><span class="label">特徴</span>発売27年目のロングセラー「さつまりこ」の季節商品。焼きいもパウダーで甘くねっとりとした味わいと香ばしさを再現。内容量56g</div>
+    <div class="card-detail"><span class="label">発売日</span>コンビニエンスストア先行2026年9月7日／コンビニ以外の店舗2026年9月21日</div>
+    <div class="card-detail"><span class="label">価格</span>不明（引用元に記載なし）</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2136366.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">銀座コージーコーナー「JOYJOYハロウィン 黒ねこボックス（9個入）」「JOYJOYハロウィン ギフトバッグ（6個入）」</div>
+    <div class="card-detail"><span class="label">特徴</span>黒ねこ・かぼちゃをモチーフにしたハロウィン焼菓子ギフト2種。クッキーとマドレーヌの詰め合わせ</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月1日〜10月31日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">黒ねこボックス（9個入）756円／ギフトバッグ（6個入）519円</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2136552.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">吉野家公式通販「敬老の日ギフト」全4種</div>
+    <div class="card-detail"><span class="label">特徴</span>有田焼の「御祝丼」「湯呑み」等と冷凍牛丼の具を組み合わせたギフトセット</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年8月26日〜9月24日10時（販売期間）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">牛丼の具6袋＋御祝丼セット6,600円／同＋御祝丼・箸セット8,580円／同＋湯呑みセット4,644円／牛丼の具6袋と紅生姜＋お茶碗・箸セット6,380円</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2136451.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">丸亀製麺「釜揚げうどんの日」半額キャンペーン</div>
+    <div class="card-detail"><span class="label">特典内容</span>「釜揚げうどん」「ぶっかけ（冷）」が全サイズ<span class="card-amount">50%OFF</span>。釜揚げうどん並190円（通常390円）、大290円（通常580円）、得380円（通常770円）／ぶっかけ（冷）小170円（通常340円）、並220円（通常440円）、大315円（通常630円）、得410円（通常820円）。東京ドームシティ店・駒澤大学店・東洋大学店・町田パリオ店・イオンモール姫路大津店は対象外、釜揚げうどんはテイクアウト不可</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日限定</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2136655.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Amazon スマイルSALE サントリー「ウイスキー角瓶」2.7L</div>
+    <div class="card-detail"><span class="label">特典内容</span><span class="card-amount">5,748円</span>で販売（メーカー希望小売価格7,293円から1,545円安、約21%OFF）。出荷元・販売元ともAmazon.co.jp、配送料無料</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月3日まで</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/pickup/2136765.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">サントリー シングルモルトウイスキー「山崎 Story of the Distillery 2026 EDITION」</div>
+    <div class="card-detail"><span class="label">市場状況</span>サントリー公式サイトでの抽選販売が最終回（第2回）を受付中。応募期間は2026年8月18日0時〜9月2日23時59分で、各回1人1回まで・先着順ではなく抽選。販売価格<span class="card-amount">1万7600円</span>、700mL、アルコール度数43度</div>
+    <div class="card-detail"><span class="label">注意点</span>公式が「購入権は本人のみ有効で、譲渡・変更・換金はできない」と明記しており、当選権の譲渡・転売は規約違反となる。第1回落選者も応募可能</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2136761.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サントリー シングルモルトウイスキー「白州 Story of the Distillery 2026 EDITION」</div>
+    <div class="card-detail"><span class="label">市場状況</span>単品はサントリー公式の抽選販売とAmazon.co.jpの招待制（抽選）販売のみで、いずれも<span class="card-amount">1万7600円</span>。当選しなければこの価格では買えない状況が続く。一方Amazonでは、白州2026を1本と「ザ・プレミアム・モルツ マスターズドリーム350mL」24本を組み合わせた抱き合わせセットが<span class="card-amount">2万4416円</span>で、抽選を経ずに直接販売されている</div>
+    <div class="card-detail"><span class="label">注意点</span>抽選外での入手経路がセット販売に事実上限定されており、単品定価との差額（6,816円）がビール24本分の実質負担となる。セット価格を単品定価と比較する際は内訳の確認が必要</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2136764.html">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（0件）</span></h2>
+  <p>本日を含む過去3日以内（2026年8月29日〜31日）に公開・更新された、出荷停止・製造終了・供給遅延に関する一次情報および主要メディア報道は確認できませんでした。関連するナフサ不足・包装資材高騰・玩具の品薄報道はいずれも公開日が3日以上前のため、本レポートの基準により除外しています。</p>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">本日の分析</div>
+    <div class="card-detail"><span class="label">コメント</span>本日の材料は「秋の季節商材の立ち上がり」と「プレミアムウイスキーの入手経路の歪み」の2点に集約されます。前者はミンティア・さつまりこ・ハロウィン焼菓子と、9月7日〜9月21日にかけて秋商材が一斉に棚を取りに来る典型的な陳列切り替え期で、9月1日開始の丸亀製麺50%OFFのような月初集客施策と重なり、消費者の来店動機が月初に集中しやすい局面です。後者は白州2026が抽選・招待制でしか定価入手できず、実質的な購入経路がビール24本との抱き合わせセット（2万4416円）に寄っている点が象徴的で、抽選販売の当選権に「譲渡・換金不可」を明記する山崎2026の運用と合わせ、メーカー側が転売抑止を販売設計そのものに織り込む流れが定着してきたと見ています。なお販売停止・品薄については直近3日以内の確報が取れず、当面はナフサ由来資材の動向を継続監視対象としています。</div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

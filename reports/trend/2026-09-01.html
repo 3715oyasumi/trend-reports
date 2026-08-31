@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月1日（火）版</p>
+  <p class="total-count">本日のトレンド: 9件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ファミリーマート 9月第1週の新商品5品</div>
+    <div class="card-detail"><span class="label">特徴</span>「てんこ盛！トマトパスタ&amp;ハンバーグ・唐揚弁当」753円、「旨辛チリソースのふわとろ鶏チリごはん」598円、「特製ソースで食べる メンチカツ&amp;コロッケ」398円、「極旨 黒豚まんカレー」250円、国産黒豚使用・スパイス40%増量の数量限定、「ふくちゃんラーメン監修 スープにこだわった豚骨ラーメン」320円</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月1日から9月7日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">250円から753円</span></div>
+    <div class="card-source"><a href="https://news.mynavi.jp/article/20260831-4892084/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブン‐イレブン お月見・秋スイーツ5品</div>
+    <div class="card-detail"><span class="label">特徴</span>満月に見立てた「お月見プリンクレープ」270円、「お月見ロールケーキ」270円、「7プレミアム おいものスフレ3号」464円、「まるっと一粒 シャインマスカット大福」237円、「7プレミアム チョコレートバー 抹茶」267円</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月1日から。大福・チョコレートバーは9月2日以降順次</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">237円から464円</span></div>
+    <div class="card-source"><a href="https://news.mynavi.jp/article/20260831-4895273/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ローソン 9月1日発売の「月見」シリーズ</div>
+    <div class="card-detail"><span class="label">特徴</span>「とろ〜り月見つくね丼」646円、「とろ〜り月見カレーパン」235円、「月見カスタードプリンタルト」254円、「月見ミニもち食感ロール（バニラ&amp;カスタード）」540円、「月見まん」198円など、月見関連だけで10品前後を同日投入</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月1日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">127円から646円</span>（同日発売の全27品）</div>
+    <div class="card-source"><a href="https://www.lawson.co.jp/recommend/new/list/1531469_5162.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">丸亀製麺「釜揚げうどんの日」（9月1日限定）</div>
+    <div class="card-detail"><span class="label">特典内容</span>釜揚げうどんは並190円（通常390円）、大290円（通常580円）、得380円（通常770円）の半額。ぶっかけ（冷）も半額で小170円（通常340円）、並220円（通常440円）、大315円（通常630円）、得410円（通常820円）</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日限定。釜揚げうどんは店内飲食限定・テイクアウト不可。ぶっかけ温・持ち帰り・お子さまセットは対象外。一部店舗は対象外</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2136655.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">PayPay「セブン‐イレブンで対象商品をPayPayポイントで支払うと最大30％戻ってくるキャンペーン」</div>
+    <div class="card-detail"><span class="label">特典内容</span>PayPayポイントを1ポイント以上使って対象商品を購入すると、購入額（税込）の最大30％をPayPayポイントで付与。付与上限なし、付与予定は2026年11月末ごろ</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日から9月20日。7NOW・スマホレジは対象外、ポイント利用設定を「支払いに使う」にする必要あり</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://paypay.ne.jp/notice/20260831/cp-7-eleven/">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">『HIROSHI TACHI 50th ANNIVERSARY PARTY 2026』チケット</div>
+    <div class="card-detail"><span class="label">市場状況</span>9月21日開催、東京・セルリアンタワー東急ホテルのパーティーチケットが転売仲介サイトに流出。舘プロは正規販売価格と比べ、チケット価格や各種手数料が高額に設定されている場合があると注意喚起。具体的な転売価格・倍率は不明</div>
+    <div class="card-detail"><span class="label">注意点</span>転売行為がさらに確認された場合、入場時の本人確認、転売チケットでの入場拒否などを行う方針。転売サイト経由での購入は入場できないリスクがある</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/ae34f73e4cb03c6ea06e72e9bdddaa6b7c7e0cb8">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">不正クレジットカード決済による転売目的の商品だまし取り事件</div>
+    <div class="card-detail"><span class="label">市場状況</span>中国在住の会社役員と東京都江東区の無職男性が私電磁的記録不正作出・同供用、窃盗の容疑で逮捕。2025年6月から2026年5月までに全国の約160店から約420件の商品を他人のカード情報で受け取っていたことが判明。立件対象は販売価格合計約2万4800円のオーブンレンジ</div>
+    <div class="card-detail"><span class="label">注意点</span>フリマ・EC上の相場より安い新品家電には、不正入手品が混在するリスクがある。転売価格や仕入れ値は不明</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/a33f8b2c585b86f68cf9c3399fa2f29b9b6a9004">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">高松市指定ごみ袋（可燃・破砕用）</div>
+    <div class="card-detail"><span class="label">理由</span>最も小さい「超特小」サイズの在庫がなくなり、次に小さい「特小」の使用が増えたことで供給が逼迫。品薄が見込まれる状況</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>高松市は9月17日から10月30日の期間限定で、市指定袋以外の無色透明または半透明で中身が見えるポリエチレン製の袋でも可燃ごみ・破砕ごみを収集する。11月からは市指定袋の供給が戻り通常収集に復帰予定。買い占めず、代替袋の運用期間を活用する</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/5f9942d0f6c70109408a66de2a4546a70257957c">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ナフサ由来の医療資材（医療用手袋・点滴用チューブ・注射針）</div>
+    <div class="card-detail"><span class="label">理由</span>ナフサ（原油から作る石油化学原料）の供給不安を受けた価格高騰。品薄自体は解消したものの、価格は高止まりしたままと現場医師が証言</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>医療用手袋300枚入りは1,400円から2,100円で約50%上昇、点滴用チューブ10本入りは1,000円台から3,000円超で約2から3倍、注射針50本入りは4,000円台から6,000円超で約50%上昇。ポリ袋・洗剤・プラスチック容器など日用品側も価格転嫁が続く前提で調達計画を組む</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/8db066c4ee47a610ed671483045427820c92a690">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>9月1日は「月見」商戦の一斉スタート日で、コンビニ3社が同日に秋季主力を投入しており、単価250円から650円帯の惣菜・スイーツで需要を取りに行く構図が鮮明です。一方、販促面では丸亀製麺の半額（最大400円引き）とPayPayの最大30%付与が同日に重なり、9月上旬は外食・コンビニともに実質価格が大きく下がる週になります。供給側は依然としてナフサ起点のコストプッシュが医療資材で50%から3倍という水準で残存しており、日用品・包材への波及リスクを織り込んだ在庫計画が必要です。</p>
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

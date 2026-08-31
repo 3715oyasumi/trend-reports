@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ガチャガチャ情報まとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>ガチャガチャ情報まとめ</h1>
+  <p class="report-date">2026年8月31日</p>
+  <p class="total-count">本日のガチャガチャ情報: 33件</p>
+
+  <h2>新商品・発売情報 <span class="section-count">（30件）</span></h2>
+
+  <div class="card"><div class="card-title">アイスクリーミィケースチャーム サンリオキャラクターズ</div><div class="card-detail"><span class="label">発売時期</span>本日発売</div><div class="card-detail"><span class="label">入手先・相場</span>食玩</div><div class="card-detail"><span class="label">内容</span>サンリオキャラクターズの食玩として紹介されています。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094262991940366794">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">Disney Characters キャンディチャームズ グミ</div><div class="card-detail"><span class="label">発売時期</span>本日発売</div><div class="card-detail"><span class="label">入手先・相場</span>食玩</div><div class="card-detail"><span class="label">内容</span>Disney Charactersの食玩として紹介されています。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094263214712525162">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ZOOきん2 おめかしずきん</div><div class="card-detail"><span class="label">発売時期</span>12月発売</div><div class="card-detail"><span class="label">入手先・相場</span>ガチャガチャ</div><div class="card-detail"><span class="label">内容</span>おめかしずきんをテーマにしたシリーズです。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094272356365778981">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">カラフルにくきゅう クリアめじるし</div><div class="card-detail"><span class="label">発売時期</span>12月発売</div><div class="card-detail"><span class="label">入手先・相場</span>ガチャガチャ</div><div class="card-detail"><span class="label">内容</span>カラフルなにくきゅうをモチーフにしたクリアめじるしです。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094274769730617366">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">からだのカラビナ</div><div class="card-detail"><span class="label">発売時期</span>12月発売</div><div class="card-detail"><span class="label">入手先・相場</span>ガチャガチャ</div><div class="card-detail"><span class="label">内容</span>からだをテーマにしたカラビナのシリーズです。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094278446243594296">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">豆ピヨちゃんめじるしコレクション</div><div class="card-detail"><span class="label">発売時期</span>12月発売</div><div class="card-detail"><span class="label">入手先・相場</span>ガチャガチャ</div><div class="card-detail"><span class="label">内容</span>豆ピヨちゃんのめじるしコレクションです。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094279692195090688">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">SKZOO ぷくっとバースデークリアリング PuppyM＆Wolf Chan＆Leebit</div><div class="card-detail"><span class="label">発売時期</span>10月発売</div><div class="card-detail"><span class="label">入手先・相場</span>ガチャガチャ</div><div class="card-detail"><span class="label">内容</span>SKZOOのバースデークリアリングシリーズです。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094297285903741371">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">SKZOO ぷくっとバースデークリアリング DWAEEKI＆HAN QUOKKA＆BbokAri</div><div class="card-detail"><span class="label">発売時期</span>9月発売</div><div class="card-detail"><span class="label">入手先・相場</span>ガチャガチャ</div><div class="card-detail"><span class="label">内容</span>SKZOOのバースデークリアリングシリーズです。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094300101032472664">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ジュエリースイングチャーム ちいかわ</div><div class="card-detail"><span class="label">発売時期</span>来週発売</div><div class="card-detail"><span class="label">入手先・相場</span>食玩</div><div class="card-detail"><span class="label">内容</span>ちいかわのジュエリースイングチャーム食玩です。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094302194229235888">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">あつまれ どうぶつの森 ともだちどーる SELECTION</div><div class="card-detail"><span class="label">発売時期</span>来週発売</div><div class="card-detail"><span class="label">入手先・相場</span>食玩</div><div class="card-detail"><span class="label">内容</span>あつまれ どうぶつの森の食玩シリーズです。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094304943809470657">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">JAPAN NATIONAL VOLLEYBALL TEAM 男子日本代表ver. ツインウエハース 2026</div><div class="card-detail"><span class="label">発売時期</span>来週発売</div><div class="card-detail"><span class="label">入手先・相場</span>食玩</div><div class="card-detail"><span class="label">内容</span>男子日本代表をテーマにしたツインウエハースです。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094311572420342247">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">にふぉるめーしょん プリキュアオールスターズ シールウエハース4</div><div class="card-detail"><span class="label">発売時期</span>来週発売</div><div class="card-detail"><span class="label">入手先・相場</span>食玩</div><div class="card-detail"><span class="label">内容</span>プリキュアオールスターズのシールウエハースです。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094313595811332126">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">おジャ魔女どれみ パッケージチャーム＆チョコボーロ</div><div class="card-detail"><span class="label">発売時期</span>来週発売</div><div class="card-detail"><span class="label">入手先・相場</span>食玩</div><div class="card-detail"><span class="label">内容</span>おジャ魔女どれみのパッケージチャームとチョコボーロです。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094317053327102241">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">サンリオキャラクターズ チョコボックス ボックスフィギュアコレクション 2026</div><div class="card-detail"><span class="label">発売時期</span>来週発売</div><div class="card-detail"><span class="label">入手先・相場</span>食玩</div><div class="card-detail"><span class="label">内容</span>サンリオキャラクターズのボックスフィギュアコレクションです。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094318284049113187">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">mojojojo ミニプロフ帳キーホルダー</div><div class="card-detail"><span class="label">発売時期</span>8月下旬発売</div><div class="card-detail"><span class="label">内容</span>ミニプロフ帳をモチーフにしたキーホルダーです。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094319282461295009">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ミニチュア 歯の模型</div><div class="card-detail"><span class="label">発売時期</span>12月発売</div><div class="card-detail"><span class="label">入手先・相場</span>ガチャガチャ</div><div class="card-detail"><span class="label">内容</span>歯の模型をミニチュア化したシリーズです。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094347212314849386">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ノンタン あかんべゆらゆらつながるマスコット</div><div class="card-detail"><span class="label">発売時期</span>12月発売</div><div class="card-detail"><span class="label">入手先・相場</span>ガチャガチャ</div><div class="card-detail"><span class="label">内容</span>ノンタンのゆらゆらつながるマスコットです。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094349918651728127">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">業務スーパー 牛乳パックデザート めじるし</div><div class="card-detail"><span class="label">発売時期</span>12月発売</div><div class="card-detail"><span class="label">入手先・相場</span>ガチャガチャ</div><div class="card-detail"><span class="label">内容</span>業務スーパーの牛乳パックデザートをテーマにしためじるしです。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094371058984087888">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">メルちゃん めじるしマイチャーム</div><div class="card-detail"><span class="label">発売時期</span>12月発売</div><div class="card-detail"><span class="label">入手先・相場</span>ガチャガチャ</div><div class="card-detail"><span class="label">内容</span>メルちゃんのめじるしマイチャームです。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094372878892613730">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">サンリオキャラクターズ なかよしチャームオーロラMIX2 クリアver.</div><div class="card-detail"><span class="label">発売時期</span>12月発売</div><div class="card-detail"><span class="label">入手先・相場</span>ガチャガチャ</div><div class="card-detail"><span class="label">内容</span>サンリオキャラクターズのクリア仕様のチャームシリーズです。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094374937738060246">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ポケモン へんしんが苦手なメタモン！つやふるチャームマスコット</div><div class="card-detail"><span class="label">発売時期</span>9月発売</div><div class="card-detail"><span class="label">入手先・相場</span>ガチャガチャ</div><div class="card-detail"><span class="label">内容</span>へんしんが苦手なメタモンをテーマにしたチャームマスコットです。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094376763325620421">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">makkuro usagi お友達のnekoサン めじるしコレクション2</div><div class="card-detail"><span class="label">発売時期</span>9月発売予定</div><div class="card-detail"><span class="label">入手先・相場</span>ガチャガチャ</div><div class="card-detail"><span class="label">内容</span>お友達のnekoサンを含むめじるしコレクションです。</div><div class="card-source"><a href="https://x.com/gachaxpompom/status/2094190932463903037">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">パワーパフガールズ フェイスぬいぐるみ Ver.2</div><div class="card-detail"><span class="label">発売時期</span>発売</div><div class="card-detail"><span class="label">内容</span>パワーパフガールズのフェイスぬいぐるみ第2弾です。</div><div class="card-source"><a href="https://x.com/gachaxpompom/status/2094236228409339909">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">マンドレイクコレクション めじるしマスコット</div><div class="card-detail"><span class="label">発売時期</span>9月発売予定</div><div class="card-detail"><span class="label">入手先・相場</span>ガチャガチャ</div><div class="card-detail"><span class="label">内容</span>マンドレイクをテーマにしためじるしマスコットです。</div><div class="card-source"><a href="https://x.com/gachaxpompom/status/2094266429872681197">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">おぱんちゅうさぎ パッケージminiフィギュアマスコット</div><div class="card-detail"><span class="label">発売時期</span>発売</div><div class="card-detail"><span class="label">内容</span>立体フィギュアを取り出せる仕様のマスコットです。</div><div class="card-source"><a href="https://x.com/gachaxpompom/status/2094319282490310975">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">トムとジェリー チーズ型シリコンケース</div><div class="card-detail"><span class="label">発売時期</span>発売</div><div class="card-detail"><span class="label">内容</span>トムとジェリーのチーズ型シリコンケースです。</div><div class="card-source"><a href="https://x.com/gachaxpompom/status/2094345698351194230">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">うちゃ＆もっちりはむ ちゅるんとめじるしコレクション</div><div class="card-detail"><span class="label">発売時期</span>9月発売予定</div><div class="card-detail"><span class="label">入手先・相場</span>ガチャガチャ</div><div class="card-detail"><span class="label">内容</span>うちゃ＆もっちりはむのめじるしコレクションです。</div><div class="card-source"><a href="https://x.com/gachaxpompom/status/2094364577727402135">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">サンリオキャラクターズ ローラー付き消しゴム風キーホルダー2</div><div class="card-detail"><span class="label">発売時期</span>発売</div><div class="card-detail"><span class="label">内容</span>ローラー付き消しゴム風のキーホルダー第2弾です。</div><div class="card-source"><a href="https://x.com/gachaxpompom/status/2094379678509547791">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">パンダの穴 美術缶</div><div class="card-detail"><span class="label">発売時期</span>発売</div><div class="card-detail"><span class="label">内容</span>開缶すると世界の名画に出会えるコンセプトの商品です。</div><div class="card-source"><a href="https://x.com/gachaxpompom/status/2094394784546947074">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">ウサコレフレンズ ミニミニアルバム</div><div class="card-detail"><span class="label">発売時期</span>9月発売予定</div><div class="card-detail"><span class="label">内容</span>お気に入りの写真やイラストを入れて持ち歩ける仕様です。</div><div class="card-source"><a href="https://x.com/gachaxpompom/status/2094409881033826469">出典を確認する</a></div></div>
+
+  <h2>その他の話題 <span class="section-count">（3件）</span></h2>
+
+  <div class="card"><div class="card-title">ちいかわ映画の入場特典</div><div class="card-detail"><span class="label">内容</span>ちいかわ映画の入場特典に関する投稿が話題になっています。詳細は投稿内に記載されていません。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094295621054407085">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">昆布締めショルダーバッグ</div><div class="card-detail"><span class="label">内容</span>昆布締めショルダーバッグに関する話題投稿です。商品詳細は投稿内に記載されていません。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094367316045869091">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">入荷情報</div><div class="card-detail"><span class="label">内容</span>12種の入荷情報として、5件連続で投稿されています。具体的な商品名は記載されていません。</div><div class="card-source"><a href="https://x.com/japancapsuletoy/status/2094403911520301410">出典を確認する</a>　<a href="https://x.com/japancapsuletoy/status/2094404125085810852">出典を確認する</a>　<a href="https://x.com/japancapsuletoy/status/2094404246972367192">出典を確認する</a>　<a href="https://x.com/japancapsuletoy/status/2094404356137501151">出典を確認する</a>　<a href="https://x.com/japancapsuletoy/status/2094404489726091697">出典を確認する</a></div></div>
+
+  <p class="note">※価格・発売時期は確認時点のものです。</p>
+</body>
+</html>

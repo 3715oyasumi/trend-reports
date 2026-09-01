@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月2日（水）版</p>
+  <p class="total-count">本日のトレンド: 10件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">マクドナルド「月見ファミリー」2026（全8品）</div>
+    <div class="card-detail"><span class="label">特徴</span>月見バーガー35周年の年次商戦。新作は「炙り牛すき焼き風月見」、夜マック限定「チーズチーズ倍月見」、トッピング用「黄金のたまごタルタルソース」の3品。「月見マックシェイク 長野県産シャインマスカット」も登場</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月2日（本日）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">月見バーガー460円から、チーズ月見490円から、炙り牛すき焼き風月見570円から、チーズチーズ倍月見670円から、月見マフィン420円から、月見パイ200円から、月見マックシェイク200円から、黄金のたまごタルタルソース50円から</span></div>
+    <div class="card-source"><a href="https://www.lmaga.jp/news/2026/09/1095346/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ローソン「とろ～り月見」シリーズ 5品</div>
+    <div class="card-detail"><span class="label">特徴</span>中食（弁当・惣菜・パン）側から月見商戦に参戦。丼・バーガー・カレーパン・おにぎり・メンチカツと、価格帯を168円から646円に広く散らした構成</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月1日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">とろ～り月見つくね丼646円、とろ～り月見つくねバーガー497円、とろ～り月見カレーパン235円、とろ～り月見おにぎり297円、月見仕立てのメンチカツ168円</span></div>
+    <div class="card-source"><a href="https://news.mynavi.jp/article/20260901-4897486/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブン-イレブン 今週の新商品（9月1日から9月7日発売）</div>
+    <div class="card-detail"><span class="label">特徴</span>残暑対応の冷製メニューと秋の重い主食を同週に併売。「大和芋とろろの麦とろ丼」は温かい麦飯と冷たいとろろ、「中華蕎麦とみ田監修 冷し辛豚まぜ麺」は辛味・にんにくを訴求</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月1日から9月7日（ナスのトマトソースグラタンは9月2日以降順次）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">油淋鶏&amp;ホイコーロー弁当753円、大和芋とろろの麦とろ丼496円、中華蕎麦とみ田監修 冷し辛豚まぜ麺699円、スタミナニラ玉豚丼594円、ナスのトマトソースグラタン518円</span></div>
+    <div class="card-source"><a href="https://news.mynavi.jp/article/20260831-4895205/">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">PayPay「あなたのまちを応援プロジェクト」2026年9月開始分</div>
+    <div class="card-detail"><span class="label">特典内容</span>自治体連携型のポイント上乗せ。和歌山県紀美野町が最大25%で今回の最高還元率。秋田県由利本荘市は一般店最大20%、大型店最大5%、鹿児島県枕崎市が最大20%、埼玉県朝霞市が最大15%、愛知県あま市が最大10%</div>
+    <div class="card-detail"><span class="label">期間</span>紀美野町 9月1日から10月31日、由利本荘市 9月1日から12月31日、枕崎市・あま市 9月1日から9月30日、朝霞市 9月28日から10月27日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/f88eaf7290442e9d88cb39c565fcc152d7f657e7">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブン-イレブン「セブンマイル クーポンキャンペーン」5週連続開催</div>
+    <div class="card-detail"><span class="label">特典内容</span>貯めたセブンマイルを数量限定の無料引換クーポンに交換。第1弾は午後の紅茶95マイル、スニッカーズミニ60マイル、ザバスプロテインバー180マイル。以降も第3弾のガリガリ君60マイル、伊右衛門600ml 90マイルなど週替わりで設定</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日10:00から10月5日23:59。第1弾は9月1日から9月7日、第2弾は9月8日から9月14日、第3弾は9月15日から9月21日、第4弾は9月22日から9月28日、第5弾は9月29日から10月5日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000001150.000155396.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">d払い・dポイント 2026年9月キャンペーン群</div>
+    <div class="card-detail"><span class="label">特典内容</span>「dポイント大還元祭」は総額5,000万ポイントの山分け（1人あたり上限10ポイント）。抽選型は「Google Play神引き大抽選」が5万ポイント×10人・1万ポイント×100人・500ポイント×1万人、「ピザーラ×d払い」が1万ポイント×10人ほか、「ほっともっと」は毎日1名に1万ポイント</div>
+    <div class="card-detail"><span class="label">期間</span>dポイント大還元祭・ほっともっとは9月30日まで、Google Playは9月10日まで、和食さと等は9月23日まで、ピザーラは9月16日から10月18日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span>（山分け型は1人あたり上限10ポイントと小さく、実質は抽選型が主役）</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/1f3a0773bae3e2526518de40f78298fb30bbac21">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（0件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">該当なし</div>
+    <div class="card-detail"><span class="label">市場状況</span>本日を含む過去3日以内（2026年8月31日から9月2日）に公開された、具体的な転売価格・倍率を示す一次情報またはニュース記事は確認できませんでした。検索でヒットした嵐ライブグッズの高額転売報道とNintendo Switch 2の定価2倍超出品報道は期間外のため除外しています。ポケモンカード「30th CELEBRATION」関連の抽選は8月10日以降に順次実施済みですが、直近3日以内の相場報道は確認できませんでした。</div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">「甘口しらす干（生食用）」（旬・本羽田店）</div>
+    <div class="card-detail"><span class="label">理由</span>フグ混入の恐れによる自主回収</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★☆</span>（健康被害リスクを伴う回収のため、単店舗販売でも優先度は高い）</div>
+    <div class="card-detail"><span class="label">アクション</span>生食用しらす干しは調理前に目視で稚魚の混入を確認する。該当商品を購入している場合は喫食せず販売店に連絡する</div>
+    <div class="card-source"><a href="https://www.recall-plus.jp/info?page=1">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「モビコール配合内用剤」（EAファーマ）</div>
+    <div class="card-detail"><span class="label">理由</span>不均一な無機塩が一部混入したことによる回収</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★☆</span>（慢性便秘症薬で処方継続が必要なため、代替調達の負荷が生じる）</div>
+    <div class="card-detail"><span class="label">アクション</span>服用中の場合は自己判断で中止せず、処方元の医療機関・調剤薬局に該当ロットかを確認する</div>
+    <div class="card-source"><a href="https://www.recall-plus.jp/info?page=1">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「マーブルパウンドケーキ」（山崎製パン）</div>
+    <div class="card-detail"><span class="label">理由</span>賞味期限の表示欠落による自主回収</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★☆☆☆</span>（表示不備であり、品質・安全性そのものの問題は公表されていない）</div>
+    <div class="card-detail"><span class="label">アクション</span>手元にある場合は喫食せずメーカー窓口へ問い合わせる。同時期には成城石井「ふじりんごのアップルパイ」、サミット「鶏膝なんこつ旨塩焼」など、アレルゲン表示欠落の回収が8月31日掲載分に集中している</div>
+    <div class="card-source"><a href="https://www.recall-plus.jp/info?page=1">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">9月の消費行動と注目市場の見通し</div>
+    <div class="card-detail"><span class="label">コメント</span>本日の最大の構造要因は9月1日実施の値上げラッシュで、帝国データバンク集計では飲食料品4,923品目・平均値上げ率11%と単月で2026年最多、前年9月の約3倍にあたります。内訳は調味料1,959品目・加工食品1,848品目と生活必需度の高い領域に集中し、10月も3,033品目が控えるため、消費者の節約行動は単価の高い新商品を避け、無料クーポン・自治体還元で実質単価を下げる方向に振れやすい局面です。一方で新商品側はマクドナルド・ローソンが揃って「月見」に集中投下しており、値上げ環境下でも季節イベント商材は例年通りのフル展開を維持している点が対照的です。転売領域は直近3日以内の実勢データが取れておらず、9月16日のポケモンカード30周年パック発売と9月中旬とされるiPhone新モデル投入が次の過熱ポイントになるため、来週以降の相場動向を継続監視すべきと判断します。</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/84b5d9f014b50c9900bd55eeadc2b5b3f351702c">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

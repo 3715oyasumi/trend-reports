@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月3日（木）版</p>
+  <p class="total-count">本日のトレンド: 13件</p>
+
+  <h2>新商品情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">スターバックス リザーブ ロースタリー 東京「エスプレッソ ロッソ トニック」</div>
+    <div class="card-detail"><span class="label">特徴</span>第19代コーヒーアンバサダー山口明日海が考案。黒蜜シナモンシロップ、パッションティー、エスプレッソを重ね、クランベリーを思わせる果実味とシナモンのスパイス感を表現。同時に「バレルエイジド パンプキン スパイス ラテ」1,400円（店内限定）、「ハニード ペア ブリュー」2,500円（店内限定）も投入</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月4日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">1,200円</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2137561.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">すき家「月見すきやき牛丼」「月見辛旨すきやき牛丼」</div>
+    <div class="card-detail"><span class="label">特徴</span>すき焼きダレをしみ込ませた白菜・春菊・人参・しらたき・大ぶりの焼き豆腐を牛丼にトッピングし、月に見立てたたまごを添えた一品。辛旨版は唐辛子とコチュジャンを使用</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月8日9時</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">ミニ720円／並盛780円／中盛980円／大盛980円／特盛1,180円／メガ1,360円（両商品共通）</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2137185.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブン-イレブン「林檎を愉しむ とろ生カスタードのアップルパイ」ほか秋スイーツ</div>
+    <div class="card-detail"><span class="label">特徴</span>9月第1週はお月見・秋果実がテーマ。同時展開は「お月見ロールケーキ」270円、「お月見プリンクレープ」270円、「まるっと一粒 シャインマスカット大福」237円、「岡山県産シャインマスカット晴王の一粒入り大福」302円、「もっちりみたらし団子」237円、「ふんわり食感ストロベリーシフォン」429円</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月第1週（個別の発売日は記事に記載なし・不明）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">388円</span></div>
+    <div class="card-source"><a href="https://mognavi.jp/news/matome/gen-newProduct-26284/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ファミリーマート「極旨 黒豚まん」「エバラ監修 ファミチキ 焼肉のたれ味」</div>
+    <div class="card-detail"><span class="label">特徴</span>黒豚を使った中華まんと、エバラ食品監修のコラボファミチキ。同週はローソン「月見まん」、セブン-イレブン「若鶏のからあげ もも／むね 5個入り」253円（青森・岩手・宮城・秋田・山形の東北5県限定）、「でかい揚げ鶏」250円（京都・大阪・兵庫限定）など地域限定ホットスナックが集中</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月第1週（個別の発売日は記事に記載なし・不明）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">極旨 黒豚まん250円／エバラ監修 ファミチキ 焼肉のたれ味258円</span></div>
+    <div class="card-source"><a href="https://mognavi.jp/news/matome/gen-newProduct-26285/">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">スシロー「全品『赤しゃり』再来キャンペーン」</div>
+    <div class="card-detail"><span class="label">特典内容</span>店内・持ち帰りの全商品を熟成酒粕配合の「赤しゃり」で提供。期間中は天然まぐろのハラモ120円から、北海道産サンマとニシン盛り合わせ120円から、青森産ムラサキいか180円から、赤湯ラーメン龍上海監修の辛味噌ラーメン480円からなどを投入</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月2日から13日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2135896.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">コンビニ大手3社 おにぎり値下げ（米市場価格の低下に対応）</div>
+    <div class="card-detail"><span class="label">特典内容</span>ファミリーマートが「直巻 焼しゃけ」198円から187円、「直巻 和風ツナマヨネーズ」185円から174円、「直巻 とり五目」198円から187円、「直巻 明太子マヨネーズ」198円から187円と4品を各11円値下げ（9月22日実施）。セブン-イレブンは「手巻おにぎり 炭火焼銀しゃけ」「手巻おにぎり 具たっぷり辛子明太子」を各19円値下げし213円に（9月8日実施）。ローソンは手巻おにぎり全品を10円値下げ（9月29日実施）</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月8日／9月22日／9月29日から順次（終了時期の記載なし・不明）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-source"><a href="https://www.ryutsuu.biz/commodity/s090243.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">PayPay「あなたのまちを応援プロジェクト」2026年9月開始分</div>
+    <div class="card-detail"><span class="label">特典内容</span>自治体連携のキャンペーン。和歌山県紀美野町が最大25％（9月1日から10月31日）、秋田県由利本荘市が最大20％（9月1日から12月31日／一般店最大20％・大型店最大5％）、鹿児島県枕崎市が最大20％（9月1日から30日）、埼玉県朝霞市が最大15％（9月28日から10月27日）、愛知県あま市が最大10％（9月1日から30日）</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日から12月31日（自治体ごとに異なる）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/f88eaf7290442e9d88cb39c565fcc152d7f657e7">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">くら寿司「2027年正月のおせち」早期予約割引</div>
+    <div class="card-detail"><span class="label">特典内容</span>10月31日までの注文で「和洋二段重」2,000円引き・「和風三段重」3,000円引き・「豪華三段重」1,000円引き。11月30日までの注文なら「和洋二段重」1,000円引き・「和風三段重」2,000円引き。全商品に全国のくら寿司で持ち帰りにも使える食事券が付属</div>
+    <div class="card-detail"><span class="label">期間</span>予約受付は2026年9月1日から12月23日（割引は10月31日／11月30日で段階的に縮小）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2137462.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ONE PIECE カードゲーム 4th Anniversary Set</div>
+    <div class="card-detail"><span class="label">市場状況</span>プレミアムバンダイでの抽選販売（受付2026年8月3日から9月2日、当選発表は9月上旬予定、発送は2027年2月予定）。定価18,700円（税込）に対し、PRICE BASE独自調査による2026年9月時点の取引相場は<span class="card-amount">150,000円</span>で、定価の約8.0倍。内容はプロモカード9枚・スリーブ70枚・プレイマット1枚・カードケース1個</div>
+    <div class="card-detail"><span class="label">注意点</span>発送が2027年2月予定のため、当選権利や未発送品の取引はトラブルリスクが高い。相場は1媒体の独自調査値のみで、他ソースとの一致は未確認。抽選申込は9月2日で締め切り済み</div>
+    <div class="card-source"><a href="https://price-base.com/useful/onepiece4thanniversaryset-market">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">伊集院光「デブDJフィギュア」</div>
+    <div class="card-detail"><span class="label">市場状況</span>定価1,000円の商品がメルカリで<span class="card-amount">3,000円</span>（定価の3倍）で転売されていたことを受け、権利者側が1週間で350個を追加納入。供給増によりメルカリの出品が一斉に取り下げられた</div>
+    <div class="card-detail"><span class="label">注意点</span>「供給を増やして転売価格を潰す」という異例の直接対抗策の成功例だが、伊集院光本人が在庫リスクを負う形であることを率直に認めている。中小規模の商材でしか成立しにくい手法である点に留意</div>
+    <div class="card-source"><a href="https://news.livedoor.com/topics/detail/32210397/">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">医療用医薬品10品目（供給停止4品目・限定出荷6品目）</div>
+    <div class="card-detail"><span class="label">理由</span>2026年9月1日付で供給停止に移行したのは「アルチバ静注用2mg」「エポプロステノール静注用『ヤンセン』専用溶解用液（生理食塩液）」「クエストラン粉末44.4%」「ゲンタマイシン硫酸塩注射液10mg『F』」の4品目。限定出荷に移行したのは「エクラークリーム0.3%」「エクラーローション0.3%」「エクラー軟膏0.3%」「オクトレオチド皮下注100μg『あすか』」「オクトレオチド皮下注50μg『あすか』」「ロレルコ錠250mg」の6品目（個別の供給停止理由の記載なし・不明）</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>ステロイド外用剤のエクラーシリーズ3剤形が同時に限定出荷となっており、皮膚科領域で代替調剤が発生しやすい。常用者は次回受診時に在庫状況と代替品を薬局へ確認しておくこと</div>
+    <div class="card-source"><a href="https://closedi.jp/medicine_supply/25645/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">政府備蓄米（国のコメ在庫水準）</div>
+    <div class="card-detail"><span class="label">理由</span>2025年に放出した計59万トンのうち21万トンを買い戻す方針。現在の備蓄量は32万トンで、適正とされる100万トンを大きく下回る。保管中の20年産米15万トンは規定の5年を経過。買い戻しと販売を経た後の備蓄量見通しは60万トン弱にとどまる。手続きは9月2日の審議会部会了承を経て9月中に開始</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>直近の店頭欠品リスクを示すものではなく、下落傾向にあるコメ販売価格を支える狙いの需給調整。26年産の作柄は「やや上回る」が24道府県、「平均並み」が19都県で、新米シーズンの店頭価格は当面軟調に推移する可能性。米飯商材の値下げと表裏の動きとして追うべき</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/27ff1dba349658e147ceed0879e00e5a0168f7b6">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">市場の動向</div>
+    <div class="card-detail"><span class="label">コメント</span>今週の消費財市場は「コメ安・その他高」という二極化がはっきり出ている。政府が備蓄米21万トンの買い戻しに動く一方、コンビニ3社はおにぎりを11から19円下げる逆行値下げに踏み切っており、原料相場の下落が小売価格へ即座に転嫁された数少ない事例として注目に値する。転売市場では、ONE PIECEカード4th Anniversary Setが定価の約8倍という高倍率を維持する一方、伊集院光のフィギュア事例のように「増産による転売価格の破壊」が実際に機能したケースも出ており、供給コントロールが転売対策の実効手段として再評価されつつある。なお、サントリー「ギルティ炭酸 ＮＯＰＥ」が発売150日で出荷1億本を突破した点は、値上げ環境下でも新規性の高い飲料は数量を伸ばせることを示している。</div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000854.000027480.html">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

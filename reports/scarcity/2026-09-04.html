@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>品薄予測レポート 2026年9月4日</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>品薄予測レポート</h1>
+  <p class="report-date">2026年9月4日</p>
+  <p class="total-count">本日の品薄予測: 20件</p>
+
+  <h2>今買える 相場上昇の予兆 <span class="section-count">（7件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ダイソー「スムースコーム」（DAISO・日用品）</div>
+    <div class="card-detail"><span class="label">品薄度</span>SNSで話題化し、店頭で売り切れが続出。公式アプリでは一部店舗に在庫あり。</div>
+    <div class="card-detail"><span class="label">相場・価格</span><span class="card-amount">メルカリ相場1,500〜2,000円前後</span>。定価330円。</div>
+    <div class="card-detail"><span class="label">根拠</span>転売目的の買い占めが報告されている。高額な二次流通品の購入は注意。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>本日中にDAISOアプリで在庫店舗を確認し、定価で確保する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2095443568764785124">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">しまむら「Coco」お財布ショルダー等（PRコラボ雑貨）</div>
+    <div class="card-detail"><span class="label">品薄度</span>公式アカウントが全国的にかなり品薄と案内。今回が今年最後のコラボ企画。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>実勢価格は未確認。類似の財布ショルダーは<span class="card-amount">1,969〜2,420円</span>が目安。</div>
+    <div class="card-detail"><span class="label">根拠</span>公式による品薄案内のため、プロモーション意図が含まれる可能性に留意。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>オンラインストアの再入荷通知を追い、近隣店舗を開店直後に確認する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2094941784384397717">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケモンカード 30th CELEBRATION／ストームエメラルダ 抽選販売</div>
+    <div class="card-detail"><span class="label">品薄度</span>抽選窓口が拡大中。本日締切の店舗が複数確認されている。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>発売前で二次流通価格は未形成。関連商品の最安値は<span class="card-amount">6,200円前後</span>。</div>
+    <div class="card-detail"><span class="label">根拠</span>MINT新宿店の抽選3件は20:00締切、平和堂HOPアプリは23:59締切とされる。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>締切前に各店舗の抽選へ応募し、応募条件と重複応募の規約を確認する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2094993602791781">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケモンカード 30th CELEBRATION／プレミアムデッキセット エーフィ・ブラッキー</div>
+    <div class="card-detail"><span class="label">品薄度</span>周年記念の限定デッキで、全国的に抽選申込みが拡大中。</div>
+    <div class="card-detail"><span class="label">相場・価格</span><span class="card-amount">6,200円前後</span>。二次流通は9月16日の発売後に本格化する見込み。</div>
+    <div class="card-detail"><span class="label">根拠</span>平和堂HOPアプリの抽選は本日23:59締切、発表は9月15日。購入履歴などの条件がある。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>本日中に平和堂アプリで応募し、当選時は定価で確保する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2095292733602791781">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">BT21 アミボムケース（LINE FRIENDS／BIGHIT MUSIC）</div>
+    <div class="card-detail"><span class="label">品薄度</span>発売直後に完売した商品の再販が決定。現在は予約受付中。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>定価は未確認。類似ケースは<span class="card-amount">5,999〜8,500円</span>で取引例がある。</div>
+    <div class="card-detail"><span class="label">根拠</span>過去に販売開始直後の完売実績が報告されている。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>予約ページで商品仕様と定価を確認し、早めに確保する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2095499197328052687">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ドズル社 Stellaris商品（YouTuberコラボグッズ）</div>
+    <div class="card-detail"><span class="label">品薄度</span>完売していた一部商品が本日から再販開始。入荷数には限りがある。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>商品ラインナップおよび価格は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>公式告知で再販対象は画像内に示されている。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>対象商品を公式画像と店舗情報で確認し、在庫がある店舗で定価購入する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2095378469748342908">出典を確認する</a></div>
+  </div>
+
+  <h2>発売前 期待値高 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">LISA×MINISO GLOBAL POP-UP（BLACKPINK LISA・コラボポップアップ）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月11日から10月5日開催。9月11日から13日来場分の予約は本日12:00開始。</div>
+    <div class="card-detail"><span class="label">品薄度</span>3Dブラインドボックスフィギュアやタンブラーの早期完売が予想される。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>グッズの個別定価は未公開。</div>
+    <div class="card-detail"><span class="label">根拠</span>表参道で開催される世界的コラボ企画。来場にはMINISO会員登録と事前予約が必要。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>会員登録を済ませ、予約開始時刻に早い日程の来場枠を確保する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2095376245001261287">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ザ・カハラ・ホテル＆リゾート横浜 クリスマスケーキ2026</div>
+    <div class="card-detail"><span class="label">発売日</span>受渡は2026年12月20日から25日。予約は10月1日12:00開始。</div>
+    <div class="card-detail"><span class="label">品薄度</span>新作2種は各限定30台の数量限定。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>新作は<span class="card-amount">12,960円、15,120円</span>。定番商品は9,720〜12,960円。</div>
+    <div class="card-detail"><span class="label">根拠</span>限定30台の新作は予約開始後の早期完売が見込まれる。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>10月1日正午に公式サイトへアクセスし、新作2種を優先して予約する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2095375972619190536">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">アルマジき悪だくみ（ボードゲーム再販）</div>
+    <div class="card-detail"><span class="label">発売日</span>ゲームマーケット2026秋で頒布予定。予約は受付中。</div>
+    <div class="card-detail"><span class="label">品薄度</span>前回ゲームマーケットで300個完売した人気作の再販。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>前回完売後、品切れ状態が継続していたとされる。市場はニッチで需要は限定的な点に注意。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>予約ページで確保し、会場での追加販売情報も確認する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2095315257589981432">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ドラゴンクエスト40周年 キングスライム目薬（ロート製薬）</div>
+    <div class="card-detail"><span class="label">発売日</span>受注期間は2026年9月24日から10月1日。</div>
+    <div class="card-detail"><span class="label">品薄度</span>6月発売時に完売した人気コラボ商品の受注再販。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>受注販売の決定が改めて報道され、話題が再燃している。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>9月24日の受注開始にリマインダーを設定し、確実な入手を優先する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2095354662828519607">出典を確認する</a></div>
+  </div>
+
+  <h2>発売接近リマインド <span class="section-count">（7件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">遊戯王OCG デッキビルドパック「グロリアス・ヴィクターズ」</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月5日。あと1日。</div>
+    <div class="card-detail"><span class="label">品薄度</span>発売直前。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>店舗予約と入荷状況を今夜中に確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">KATE PINK COLLECTION／リップモンスター セミマットカラー</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月5日。あと1日。</div>
+    <div class="card-detail"><span class="label">品薄度</span>発売直前。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>発売直後の店頭・通販における初動在庫を確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケモンセンター「いっしょにねむる」キャンペーン限定グッズ</div>
+    <div class="card-detail"><span class="label">発売日</span>応募締切は2026年9月5日。あと1日。</div>
+    <div class="card-detail"><span class="label">品薄度</span>応募締切が接近。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>未応募の場合は本日から明日中に応募する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">カグラバチ12巻 書店特典</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月4日。本日。</div>
+    <div class="card-detail"><span class="label">品薄度</span>発売日当日。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>対応書店の在庫と特典配布状況を至急確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">遊戯王DM×クロックス</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月9日。あと5日。</div>
+    <div class="card-detail"><span class="label">品薄度</span>購入制限あり。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>開店時刻を確認し、発売日に購入できるよう準備する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">D.O.「DOPAMINE」WAH CLICKER KEYCHAIN Ver.</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月8日。あと4日。</div>
+    <div class="card-detail"><span class="label">品薄度</span>発売接近。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>他店在庫の枯渇状況を確認し、在庫のある店舗で確保する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Fitbit Air 限定モデル「Pokémon Sleep（Sleepy Blue）」</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月15日。あと11日。</div>
+    <div class="card-detail"><span class="label">品薄度</span>限定モデルの発売接近。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>母体モデルを含む品薄動向を継続して確認する。</div>
+  </div>
+
+  <h2>対象外（既に入手困難・参考のみ） <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">クッキー・アンのハロウィーン・スウィートサプライズ 肩のせぬいぐるみ・カチューシャ</div>
+    <div class="card-detail"><span class="label">品薄度</span>完売。再販時期は未定。</div>
+    <div class="card-detail"><span class="label">根拠</span>既に入手余地が乏しいため、仕入れ候補からは除外。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">映画「ちいかわ」4DX上映チケット</div>
+    <div class="card-detail"><span class="label">品薄度</span>会員先行予約のみで土曜全回が完売。</div>
+    <div class="card-detail"><span class="label">根拠</span>一般販売での入手余地がないため、参考情報として扱う。</div>
+  </div>
+
+  <h2>総括 <span class="section-count">（0件）</span></h2>
+  <div class="card">
+    <div class="card-title">本日の注目ポイント</div>
+    <div class="card-detail"><span class="label">最優先</span>本日締切のポケモンカード30th CELEBRATION抽選。周年記念商品は発売後に相場が動きやすい。</div>
+    <div class="card-detail"><span class="label">次点</span>ダイソー「スムースコーム」。定価購入が可能な店舗を見つけられれば小口での確保候補となる。</div>
+    <div class="card-detail"><span class="label">中期候補</span>LISA×MINISOポップアップとカハラ横浜クリスマスケーキ。予約開始時刻の確認が重要。</div>
+  </div>
+
+  <p class="note">※予測は収集時点の情報に基づくものです。</p>
+</body>
+</html>

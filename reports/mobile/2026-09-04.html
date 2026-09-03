@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のモバイル情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のモバイル情報</h1>
+  <p class="report-date">2026年9月4日</p>
+  <p class="total-count">本日のモバイル案件: 13件</p>
+
+  <h2>NTTドコモ <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">dカード（一般）のポイント還元率が1%から0.5%へ半減、年会費条件も新設</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ、dカード</div>
+    <div class="card-detail"><span class="label">条件</span>通常決済は200円ごとに1ポイントへ変更。新カード番号でスマホのタッチ決済を利用する場合は200円ごとに2ポイント。前年度にショッピング・ドコモ料金支払いの利用がない場合は年会費<span class="card-amount">1,650円</span>が発生。</div>
+    <div class="card-detail"><span class="label">期間</span>2027年1月1日から終了日未定。2027年1月利用分から順次適用。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137201.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">dカード PLATINUM の還元縮小</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ、dカード PLATINUM</div>
+    <div class="card-detail"><span class="label">条件</span>最大進呈率の適用期間を1年間から2カ月間へ短縮。ドコモ光、ドコモでんきGreenなどの還元率も低下。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月1日から終了日未定。年会費返金の申請期限は2026年12月31日。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137265.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポイ活プランで決済還元と利用料金還元の併用条件を変更</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ、ポイ活プラン</div>
+    <div class="card-detail"><span class="label">条件</span>割引額に加え、対象決済で得た特典ポイントも還元対象額から差し引き。ポイントで携帯料金を支払う場合も、充当ポイント額または決済特典ポイントの多い方が除外される。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年12月1日から終了日未定。2026年12月利用分から順次適用。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137271.html">出典を確認する</a></div>
+  </div>
+
+  <h2>IIJmio <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">初期費用（契約事務手数料）を3,300円から3,850円へ改定</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>ギガプランおよびeSIMサービス データプランゼロが対象。エントリーパッケージ利用時は初期費用を回避できるが、一部キャンペーンとの併用不可。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年12月1日から終了日未定。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137720.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">スマホ大特価セール（MNP限定・中古端末含む）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">iPhone 16 89,800円から</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>ギガプランへMNP転入と同時申し込み。過去1年以内に同種キャンペーンの適用を受けた場合は対象外。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日から2026年11月4日21時59分まで。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137335.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">SIM交換手数料0円キャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">SIM交換手数料 0円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>音声物理SIMから音声eSIMへの変更、または音声eSIMのタイプ変更が対象。1回線につき1回まで。SIMプロファイル発行手数料は別途必要。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月3日から2026年11月4日まで。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137941.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">25ギガプランへのプラン変更で5GBプレゼント</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">5GBプレゼント</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>2GB、5GB、10GB、15GB回線の契約者で、対象キャンペーンの利用歴がないユーザー。他の複数キャンペーンとは併用不可。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月3日から2026年10月30日まで。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137764.html">出典を確認する</a></div>
+  </div>
+
+  <h2>JALモバイル <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">新規ユーザー向けキャンペーン「超トクまつり」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">初期費用無料、最大1,500マイル</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>JALモバイル powered by IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>2GB・5GBプランは初期費用無料。10GB以上のプランは新規契約マイルを通常500マイルから1,500マイルへ増量。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日から2026年11月4日まで。開通は2026年11月30日まで。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137977.html">出典を確認する</a></div>
+  </div>
+
+  <h2>ワイモバイル <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">オンラインストア誕生感謝祭 第2弾</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">iPhone 16 26,400円割引</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ワイモバイルオンラインストア</div>
+    <div class="card-detail"><span class="label">条件</span>iPhone 16は他社からのMNP転入とシンプル3 MまたはL契約が条件。moto g66y 5Gも同条件で4,980円。</div>
+    <div class="card-detail"><span class="label">期間</span>開催中から2026年9月8日9時59分まで。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137599.html">出典を確認する</a></div>
+  </div>
+
+  <h2>楽天モバイル <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">moto g37j値下げ、MNPなら最安990円</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">MNPで22,000円値引き、990円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>他社からMNP転入でRakuten最強プランまたはRakuten最強U-NEXTを申し込み。新規契約などはRakuten Link利用で最大13,000ポイント還元。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日から終了日未定。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137211.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">楽天市場での対象スマホ購入と回線契約で最大10,000ポイント還元</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大10,000ポイント</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル、楽天市場</div>
+    <div class="card-detail"><span class="label">条件</span>対象スマホを購入し、他社からのMNPまたは新規契約で対象プランを申し込み。66,000円以上の製品は10,000ポイント、44,000円から65,999円は6,000ポイント。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月3日から終了日未定。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137927.html">出典を確認する</a></div>
+  </div>
+
+  <h2>ゲオモバイル（中古端末） <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">衝撃割引セール（UQ mobile MNP向け中古端末特価）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">MNP対象機種 1円から</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ゲオモバイル、UQ mobile</div>
+    <div class="card-detail"><span class="label">条件</span>UQ mobileへのMNPが対象。増量オプションIIへの加入が必須、1人1台まで。事務手数料3,850円込みの総額表示。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月2日10時から2026年9月9日23時59分まで。</div>
+    <div class="card-source"><a href="https://tamacoin.net/archives/4043">出典を確認する</a>　<a href="https://geo-mobile.jp/">出典を確認する</a></div>
+  </div>
+
+  <h2>ソフトバンク／LINEヤフー <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">オンライン完結の買取サービス「Yahoo!スマホ買取」開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">PayPayマネー受取なら最短即日入金</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ソフトバンク、LINEヤフー、Yahoo!スマホ買取</div>
+    <div class="card-detail"><span class="label">条件</span>専用アプリで端末を自己検査し査定額を確定。アプリ経由では発送後の減額なし。データ消去証明書は1,000円。故障・初期化不可などの端末は対象外。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月2日から終了日未定。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137555.html">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※還元・条件は確認時点のものです。</p>
+</body>
+</html>

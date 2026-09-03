@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月4日（金）版</p>
+  <p class="total-count">本日のトレンド: 14件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">サントリー「ゆず香るTHE PEEL〈レモン〉ALC.5％」</div>
+    <div class="card-detail"><span class="label">特徴</span>レモン果皮を使用した4種の蒸溜酒・浸漬酒からなる「レモン果皮100％レモンスピリッツ」にゆずスピリッツを加えた本格サワー。秋をイメージしたパッケージデザインを採用</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月27日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">350mL缶 179円前後（税別）／500mL缶 245円前後（税別）</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2137669.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">東京ばな奈「ぶにゃんこ チョコバナナ味、『見ぃつけたっ』」</div>
+    <div class="card-detail"><span class="label">特徴</span>チョコレート香る生地に、チョコバナナカスタード味のクリームを詰めた菓子。表面に6種類の「ぶにゃんこ」キャラをプリント。エコバッグ・キーホルダー・マスコット等のグッズも同時販売</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月10日（2027年3月31日頃までの期間販売）／JR東京駅「東京ばな奈s」、羽田空港第一・第二ターミナル各店、大丸東京店、東京ギフトパレット店ほか</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">4個入 756円／8個入（シール入）1,512円</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2137934.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">不二家「FUJIYA スイーツパーティー」（ショートケーキ／チョコレートケーキ／マロンケーキ）</div>
+    <div class="card-detail"><span class="label">特徴</span>冷凍ならアイスケーキ風、冷蔵なら通常のケーキとして楽しめるセミフレッドタイプの新感覚スイーツ。全長約145mm。同時に不二家洋菓子店アニバーサリーケーキの予約特典を、有田焼「ペコちゃんポコちゃんとゆかいな仲間たち オリジナルプレート」（全6種）にリニューアル</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月8日（火）より順次</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">各2,160円（税込）</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000476.000097396.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">楽天市場「楽天スーパーSALE」</div>
+    <div class="card-detail"><span class="label">特典内容</span>買いまわりで最大10倍、ポイントアップ商品併用で最大47.5倍。最大50%OFFクーポンを配布。事前エントリー必須。ラクマで合計1,000円以上購入の買いまわりラクマ特典でさらに1倍</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月4日（金）20:00〜9月11日（金）1:59（楽天モバイル利用者限定先行セールは9月3日20:00〜9月4日19:59）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">5段階中5</span></div>
+    <div class="card-source"><a href="https://event.rakuten.co.jp/campaign/supersale/">出典を確認する</a> / <a href="https://dengekionline.com/article/202608/85857">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">バーガーキング「ワッパー祭り」</div>
+    <div class="card-detail"><span class="label">特典内容</span>ワッパーセット5種が一律300円引き（最大28%OFF）。公式アプリのクーポン利用、1会計3セットまで、デリバリー対象外</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月7日〜11日（5日間限定）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">5段階中4</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2138120.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">吉野家「トッピング祭」</div>
+    <div class="card-detail"><span class="label">特典内容</span>明太高菜マヨ、ねぎ玉子、クワトロチーズ、ねぎラー油、キムチ、鬼おろしポン酢、肉味噌ねぎ、特製とろろの8品が50円引き。店内・テイクアウト両対応</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月3日11時〜9月24日15時</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">5段階中3</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2137652.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">もち吉「創業祭感謝セール」</div>
+    <div class="card-detail"><span class="label">特典内容</span>あられ・おせんべいの袋物商品が税込価格から2割引。詰替パック・缶物・箱物など一部対象外。数量限定の詰合せ缶「きもちかさね」（7種31枚）1,620円も販売</div>
+    <div class="card-detail"><span class="label">期間</span>北海道・関東・中京・中四国地区は2026年9月12日〜16日、関西・九州地区は9月19日〜23日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">5段階中3</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2137880.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">くら寿司×ちいかわ「ビッくらポン！」景品フィギュア</div>
+    <div class="card-detail"><span class="label">市場状況</span>ランダム景品にもかかわらずメルカリに5種コンプリートセットが複数出品され、店舗側での抜き取り・流出疑惑がSNSで拡散。くら寿司は調査と法的措置を含む厳格な対応方針を示した</div>
+    <div class="card-detail"><span class="label">注意点</span>ランダム景品のコンプリートセットが早期に大量流通している場合、正規ルート外の入手が疑われる。調査結果次第で出品削除・取引無効化のリスクがあるため購入は避けるのが妥当</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/expert/articles/c01023dcf3e4f432c86d5ec5fd90691056b93728">出典を確認する</a> / <a href="https://news.yahoo.co.jp/articles/c147ffbdb498480f9a5289815bad5b552c0168ec">出典を確認する</a> / <a href="https://news.yahoo.co.jp/articles/831925794f8b9854f10979a73c6696d24b21e020">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">『葬送のフリーレン』×フェルメール展 限定「ポストカード＆クリアファイル（2種）セット」</div>
+    <div class="card-detail"><span class="label">市場状況</span>発売直後に即完売したが、運営が2026年9月3日11時〜10月31日の期間で受注販売に切り替え。発送は12月中旬以降順次</div>
+    <div class="card-detail"><span class="label">注意点</span>受注期間が約2カ月確保されたため、二次流通でのプレミアム価格購入は合理性を失った。今後も期間の長い受注販売への切り替えは転売価格を崩す手法として定着する見込み</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/8c91364351c669136aefc02fe356ea0da5dd2bf9">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">韓国：チケット転売規制強化と購入代行業者の撤退（海外動向）</div>
+    <div class="card-detail"><span class="label">市場状況</span>韓国でチケット転売規制が大幅に強化され、購入代行業者が相次いで営業を終了。ソウル市の花火大会では観覧場所の高額転売が発生している</div>
+    <div class="card-detail"><span class="label">注意点</span>チケット本体の規制が進むと、規制対象外の観覧場所や代行サービスなど周縁領域へ過熱が移動する。日本でも同様の抜け道が生じる可能性がある</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/dd9112ce441c352e6e746c3bdb9f544959d63da2">出典を確認する</a> / <a href="https://news.yahoo.co.jp/articles/964268731f559a55187db10fab997dd538486257">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">転売目的の万引き：スキンケア商品14点の窃盗で大学生（25）逮捕</div>
+    <div class="card-detail"><span class="label">市場状況</span>転売目的でスキンケア商品14点を盗んだとして、25歳の大学生が逮捕された</div>
+    <div class="card-detail"><span class="label">注意点</span>高回転で換金しやすい化粧品・スキンケアカテゴリは、盗品混入リスクが構造的に高い。フリマでの新品化粧品の大量出品アカウントは仕入れ経路の確認が必要</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/d52611d7539dce701e6bdb781b7d48e6939e6dd3">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">台風24号接近に伴う奄美大島の発電機・モバイルバッテリー</div>
+    <div class="card-detail"><span class="label">理由</span>台風24号が奄美を強風域に巻き込む見込みで備蓄需要が急増。ビッグツー奄美店では発電機が全て完売し、モバイルバッテリーや生鮮品も品薄傾向</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">5段階中4</span></div>
+    <div class="card-detail"><span class="label">アクション</span>奄美・南西諸島エリアでは船便再開まで生鮮・電源系の欠品が続く前提で行動する。シーズン前の事前確保が有効</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/46040cedcf40a78c9af69e8ca97fe87eea2c4cb8">出典を確認する</a> / <a href="https://news.yahoo.co.jp/articles/1924609f9fe5c3906de9fd14df88468e39155d95">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">鶏卵（Mサイズ1パック）</div>
+    <div class="card-detail"><span class="label">理由</span>月見シーズンに向けた外食チェーンの大量仕入れによる需要増と、猛暑による鶏の産卵能力低下が重なる。店頭価格はM1パック290円で前週比3円値上がり</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">5段階中3</span></div>
+    <div class="card-detail"><span class="label">アクション</span>月見メニュー商戦が終わる9月下旬まで卵の需給ひっ迫は続く見込み。日常使いの卵は特売日に前倒しで確保する判断が有効</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/35c655f25b0007b848b759c400a48c96ea72fa60">出典を確認する</a> / <a href="https://dengekionline.com/article/202608/85957">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セリア「スパバッグ」</div>
+    <div class="card-detail"><span class="label">理由</span>子どものシューズ入れとしての用途で人気が集中し品薄状態。在庫状況の店舗別詳細・入荷予定は不明</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">5段階中2</span></div>
+    <div class="card-detail"><span class="label">アクション</span>100円ショップの用途転用ヒット商品は再入荷が不定期。見つけた時点での確保が定石</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/f59eaefee80065fc767aee3b33c0c35f394bf14c">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>本日は「値下げ圧力」と「需給ひっ迫」が同居する珍しい局面です。コメは5kg平均3,156円と前週比35円・前年比620円の下落で新米が古米より安い逆転現象が起きている一方、卵は月見商戦の外食大量仕入れと猛暑による産卵低下で前週比3円高。原料相場が一様に上がる局面は終わり、カテゴリごとに需給を個別判断する必要が出てきました。9月4日20時開始の楽天スーパーSALEは、9月の飲食料品値上げを控えた保存食・調味料のストック買いと組み合わせる価値が高い週末です。</p>
+  <p style="margin-top:16px;">転売領域では、フリーレン×フェルメール展の即完売から約2カ月の受注販売への運営対応が、プレミアム価格を最も確実に崩す手法として機能しました。逆にくら寿司×ちいかわのランダム景品では、コンプリートセットの大量出品から店舗内での抜き取り疑惑へ発展しており、一次流通の内部統制が二次流通価格を左右する新しいリスクが表面化しています。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

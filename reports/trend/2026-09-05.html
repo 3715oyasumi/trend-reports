@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月5日（金）版</p>
+  <p class="total-count">本日のトレンド: 12件</p>
+
+  <h2>新商品情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ゴンチャ「JUICY巨峰」シリーズ（全4種）</div>
+    <div class="card-detail"><span class="label">特徴</span>巨峰ゼリーの巨峰果汁を従来比約6倍に増量。ミルクティー、ティーエード、ジェラッティー、スパークリングティーの4種展開で、トッピング用「巨峰ゼリー」は<span class="card-amount">100円</span></div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月3日（国内ゴンチャ全店、期間限定・終了日は不明）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">ミルクティー690円、ティーエード690円、ジェラッティー720円、スパークリングティー780円</span>（すべて税込）</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/eb3c24c46baa1432f24eb23fd431a77c02fb0fb7">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">アサヒ飲料「プレデターエナジー」（日本初上陸）</div>
+    <div class="card-detail"><span class="label">特徴</span>500mlの大容量エナジードリンク。カフェインは1本あたり160mg。アサヒ飲料は「モンスターエナジー」「レインストーム」と合わせた3ブランド体制でエントリー層を狙う</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月8日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">希望小売価格 税別180円</span>（500ml）</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/535c10c673859de84844c0773db3bab45624d59a">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">やよい軒「秋の季節御膳」</div>
+    <div class="card-detail"><span class="label">特徴</span>国産かぼちゃ入りコロッケ、牛肉のすき焼き小鉢、ミニサバ小鉢、蒸し鶏と海藻のぽん酢和え、柿の形をしたつぶあん入りひとくち団子の構成。全国379店舗で展開</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月16日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">1,140円（税込）</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000001637.000054093.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ファミリーマート「47都道府県別ラインソックス」「47都道府県別ステッカー」</div>
+    <div class="card-detail"><span class="label">特徴</span>ソックスは各都道府県の代表花をデザイン、ステッカーはシンボルマーク「太陽と星」が各地の名物・祭りにちなんだコスプレ姿に。全国約16,500店で、該当地域のデザインのみを販売する地域限定方式</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月4日より順次</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">ソックス各600円、ステッカー各300円</span>（税込）</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/6b99fda4fbeafde43c5beb5f182b15295b5d7896">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">楽天スーパーSALE（EPEIOS 対象50アイテム以上）</div>
+    <div class="card-detail"><span class="label">特典内容</span>ガラスボウルエアフライヤー「AO248」が19,860円から15,880円、スマートコーヒーメーカー「Mocca」が29,700円から20,790円、電動歯ブラシ「OKare! Pulse ET002」5,980円、iPhone 15対応ケース「Armor Pro」が780円から390円</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月4日20時から9月11日1時59分</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/fa193d769d8ddd76e4ad81d98677c7c209f68b8a">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">くら寿司「北海フェア」</div>
+    <div class="card-detail"><span class="label">特典内容</span>「厳選かに軍艦（一貫）」を<span class="card-amount">特別価格110円</span>で提供。ほか北海道サーモン270円から、秋刀魚160円から、たこ柔らか煮180円から、生ずわいがに（一貫）350円から、超熟成金目鯛（一貫）110円から。季節限定「くら月見バーガー」450円からも同時展開</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月4日から期間限定（終了日は不明）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/aa99cd165b05923a8869a39bfb543a2d6b29a533">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">楽天ブックス「レイトサマーキャンペーン2026」</div>
+    <div class="card-detail"><span class="label">特典内容</span>対象のPS5・Nintendo Switch 2用ソフト購入で特典が最大10倍。抽選で10名に「Nintendo Switch 2 Proコントローラー」が当たる特典付き</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月4日20時から9月26日9時59分</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/bcece21ebefbaf77aee85809b8594af152759157">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">楽天ペイ・楽天ポイント 9月キャンペーン群</div>
+    <div class="card-detail"><span class="label">特典内容</span>毎月最終日曜日のコード決済で最大10%相当の特典、5のつく日で最大3%相当の特典、西友・リヴィンのポイント増量日は最大7倍、モバイルSuicaチャージ関連で購入額相当の特典、鹿児島県枕崎市の地域限定で最大20%相当の特典</div>
+    <div class="card-detail"><span class="label">期間</span>施策ごとに異なる（上記参照）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/d0ed44d1b46df4bdf208084369e97542f48489c5">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">くら寿司×『ちいかわ』コラボ第2弾 限定オリジナル湯呑み（全4種）</div>
+    <div class="card-detail"><span class="label">市場状況</span>税込3,000円の会計ごとに1個がもらえる先着100万名限定の景品。9月3日時点で、メルカリに全4種セットが1万円前後で複数出品され、すでに成約したものも確認された</div>
+    <div class="card-detail"><span class="label">注意点</span>くら寿司は無在庫出品としてフリマ運営側へ通報対応を行い、景品の管理状況について調査中と回答。配布前出品は入手可否が不確実なため購入は避けるのが妥当</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/8e692c543cd6cacff9883728eab8ee1c633143a2">出典を確認する</a> / <a href="https://www.bengo4.com/c_1015/c_1885/c_1886/n_20882/">出典を確認する</a> / <a href="https://gourmet.watch.impress.co.jp/docs/news/2137474.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">『葬送のフリーレン』×フェルメール展「ポストカード＆クリアファイル（2種）セット」</div>
+    <div class="card-detail"><span class="label">市場状況</span>初回販売分が即完売し入手困難化していたが、少年サンデープレミアムSHOPが受注販売を実施。受付は2026年9月3日11時から10月31日、発送は2026年12月中旬以降順次</div>
+    <div class="card-detail"><span class="label">注意点</span>受注生産のため定価で全員が入手できる見通しであり、フリマでのプレミア購入は不要</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/8c91364351c669136aefc02fe356ea0da5dd2bf9">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ロート製薬「ロートジーb キングスライム目薬」「ロートジーコンタクトb キングスライム目薬」（『ドラゴンクエスト』コラボ）</div>
+    <div class="card-detail"><span class="label">理由</span>2026年6月10日の発売直後に即完売し、入手困難な状態が続いていたため、ロート製薬オンライン限定で受注販売を実施</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>受注受付は2026年9月24日12時から10月1日20時。購入は1人3個までに制限され、転売と思われる注文はキャンセル対象。急ぎでなければ受注販売を待つのが最適</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/d1bda3b233134b6a5e1e9b4ee8bf6f1b73f851ca">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">その他の販売停止・品薄案件</div>
+    <div class="card-detail"><span class="label">理由</span>本日を含む過去3日以内に公開・更新された、食品・日用品メーカーの出荷停止、製造終了、供給遅延に関する新規発表は確認できなかった</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">該当なし</span></div>
+    <div class="card-source">該当なし</div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+
+  <p>9月4日は「価格の二極化」が一日で可視化された日だった。楽天スーパーSALEとくら寿司「北海フェア」の需要を刺激する施策がある一方、くら寿司は最低価格を115円から110円へ下げつつ、サーモンなど33品目を115円から120円へ引き上げている。9月は飲食料品の値上げが年内最多規模とされる一方、コメは5kg平均3,112円と3週連続で前週比44円安となっており、カテゴリごとに真逆の値動きが同時進行している。転売面では、くら寿司の「ちいかわ」湯呑みが配布開始前にメルカリで1万円前後の出品・成約が出た一方、フリーレン×フェルメール展とドラクエ×ロート製薬はいずれも受注生産・購入個数制限に舵を切った。プレミア価格で買う前に、公式の受注販売が出ないか3から4週間待つことが、今の消費者にとって期待値の高い行動になっている。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

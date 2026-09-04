@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xツイートデータ分析レポート</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+    :root {
+      --canvas: #faf9f5;
+      --card: #fffdf8;
+      --surface-soft: #f5f0e8;
+      --hairline: #e6dfd8;
+      --hairline-soft: #ebe6df;
+      --primary: #cc785c;
+      --primary-active: #a9583e;
+      --ink: #141413;
+      --text: #3d3d3a;
+      --muted: #6c6a64;
+      --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+      --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--canvas);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.75;
+      padding: 40px 24px 64px;
+      max-width: 760px;
+      margin: 0 auto;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      text-wrap: balance;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .report-date {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .total-count {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+      text-wrap: balance;
+      padding-left: 14px;
+      border-left: 3px solid var(--primary);
+      margin: 40px 0 16px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 24px 0 8px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--hairline);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-soft);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .card-detail {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text);
+      margin-top: 8px;
+    }
+
+    .label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      min-width: 40px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .card-amount {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary-active);
+    }
+
+    .section-count {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+      margin-left: 8px;
+      font-family: var(--font-body);
+    }
+
+    .card-source {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--hairline-soft);
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--hairline);
+      margin: 40px 0;
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 24px 16px 48px; }
+      h1 { font-size: 25px; }
+      h2 { font-size: 19px; }
+      .card { padding: 16px 18px; }
+      .card-detail {
+        flex-direction: column;
+        gap: 2px;
+      }
+      .label {
+        min-width: auto;
+        text-align: left;
+      }
+      .card-amount { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Xツイートデータ分析レポート</h1>
+  <p class="report-date">2026年9月5日</p>
+  <p class="total-count">分析ツイート: 1,154件</p>
+
+  <h2>人気商品・トレンド <span class="section-count">（7件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">くら寿司×ちいかわコラボ（ビッくらポン景品・湯呑み・フィギュア）</div>
+    今回のデータで最大の話題。初日から品薄・売り切れが続出しており、「みんなの湯呑み」は閉店前に完売、店舗によっては景品が枯渇して別景品混入の告知が出る事態になっている。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@mab_moon___ ／ @mi1nu1 ／ @F2852925369998 ／ @chikashi55576
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">映画『ちいかわ 人魚の島のひみつ』関連グッズ</div>
+    「たべものいっぱいマスコット」ガチャ、ジュエリースイングチャーム全6種が楽天で予約開始。ちいかわらんどでは島編グッズが全滅し、ぬいぐるみ全体が品薄状態。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@natuki4144 ／ @umariya41 ／ @pesshu_neki
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケモンカード 30th CELEBRATION／プレミアムデッキセット エーフィ・ブラッキー</div>
+    ポケセンオンライン抽選が実施され、BOX当選率は「92%」との情報も。ただしエーフィ・ブラッキーは当選しにくく、プレ値化の声が多数上がっている。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@fy3KAmZVFkqyiqA ／ @tsukiyakko ／ @TNbAbX2Vrk71801
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">映画『SEKIRO』グッズ・パンフレット</div>
+    上映館でグッズがほぼ売り切れ、通常版パンフレットも完売の報告が相次いでいる。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@sky_j_nic ／ @i20q17dpP0Ncnzp ／ @gaff_game
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ドラゴンクエスト メタリックモンスターズ／DIVE</div>
+    「転売ヤーからしか買えない位品薄」との声。ロフト販売分は3時間並んでも竜王が取れないほどの争奪戦になっている。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@kIkGP1o1YqFvbgP ／ @dorakueatumeru ／ @Heppoko_mao
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">たまごっち（Tamagotchi Paradise）／ボンボンドロップシール</div>
+    予約がどこも売り切れ状態。平成リバイバルの流れで人気が再燃している。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@mzk_takanashi ／ @taka_5050
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">フェルメール展ミッフィーグッズ</div>
+    早期完売に加えメルカリでの高額転売が発生し、主催者が謝罪の上で受注販売へ切り替えた。
+    <div class="card-detail">
+      <span class="label">投稿者</span>@lavieheureuse ／ @yukiumekirin
+    </div>
+  </div>
+
+  <h2>お得情報・セール <span class="section-count">（8件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ストレイン シャントリサシェ6日分 再販（0時開始）</div>
+    <div class="card-detail">
+      <span class="label">割引</span>
+      <span class="card-amount">90%オフ・99円</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">備考</span> 前日は3分で完売、日ごとに売り切れが早まっている「時報ポチ推奨」案件。今回のデータで最も即金性が高い情報
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @yuyuyu19931129
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">numbuzin バブルパック 1+1セット（9/5限定特価）</div>
+    <div class="card-detail">
+      <span class="label">価格</span>
+      <span class="card-amount">1個あたり1,245円</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">備考</span> 通常2個6,000円がWクーポン適用で大幅値下げ
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @numbuzin_jp
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">楽天スーパーセール開催中＋楽天カード4倍デー（9/5 0時〜）</div>
+    エントリーでさらに＋2倍。0時開始のタイムセールにダイソンV12、Meta Quest 3 512GB（エディオン楽天でポイント5倍）、MAXZENドラム式洗濯乾燥機などが登場。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @chantono2
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">楽天ポイ活まとめ</div>
+    5と0のつく日ポイント4倍、楽天24グループ2倍、抽選で10万円クーポンなど9本立て。dショッピングでは抽選500ポイントの案件も。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @lecter_HL
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Amazon値下げ・実質価格系まとめ</div>
+    アテックス フットマッサージャーがクーポン＋ポイントで実質-50円、モンスター バッドアップル24本が実質1,546円、Anker 511充電器が実質1,467円。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @SOKUTWO
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">MSI GeForce RTX 5060 8G 値下がり</div>
+    <div class="card-detail">
+      <span class="label">価格</span>
+      <span class="card-amount">72,000円→65,455円（9.09%下落）</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @Kininaru_Ch
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">2,200円均一のブーツ</div>
+    ほぼ完売しているが、サイズ次第では残りあり。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @tsumufuta_mama
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">TENTIAL BAKUNE×櫻井翔コラボ</div>
+    楽天リーベイツ経由で660ポイント相当＋初回500ポイントの還元。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @fukur001
+    </div>
+  </div>
+
+  <h2>転売情報 <span class="section-count">（8件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Supreme 2026FW WEEK3 "Larry Clark"（9/5発売）</div>
+    @10Buy_NEXTが【転売情報】として販売情報とプレ値予想を事前公開。発売日直撃の実用情報。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @10Buy_NEXT
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">くら寿司店員による景品抜き取り→メルカリ転売が本格調査へ</div>
+    店長が横領したグッズを家族が自白し、消費者庁通報案件に発展。複数の転売ヤーが暴露している。横領は刑事案件のため、当該商品の相場は今後急落するリスクがある。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @tyuruga ／ @hiiraya ／ @Ray0804yb ／ @giruthia
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">古着買い付けの現場ノウハウ</div>
+    空のハンガーラック＋段ボールから入荷を予測し、15分待って戻り1点を確保。帰宅後すぐ洗濯・TSUBAKI漬けするという再現性の高い実務情報。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @K68609172
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">PS5 Pro</div>
+    GTA6の話題で新品出品が急増。品薄で転売価格は20万円近いとの情報。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @fuga2416 ／ @gYMvXS1vkdBNzAj
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">SSD高騰</div>
+    <div class="card-detail">
+      <span class="label">価格</span>
+      <span class="card-amount">3年前4万円→現在16万円（4TB）</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @gYMvXS1vkdBNzAj
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">転売対策の成功事例（Shopify）</div>
+    顧客タグ＋Instagramプロフィール確認で販売を制御し、商品URLが横流しされても購入できない仕組みで転売ゼロを達成。販売側に有用な情報。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @kazahaya
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">超かぐや姫 POP UP グッズ</div>
+    Amazonで6,000〜8,000円の転売出品（定価不明）。渋谷TSUTAYAでは再入荷分もヤチヨのカセット型アクスタ・TシャツXLが売り切れ。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @0419ktkbt ／ @m_fuminosuke
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケカ未開封BOXの偽装出品</div>
+    サーチ後にシュリンクを後付けした偽装品が出回っているとの指摘。仕入れ時の注意点として共有されている。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @hakusake
+    </div>
+  </div>
+
+  <h2>抽選・限定販売 <span class="section-count">（9件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ポケセンオンライン 30th CELEBRATION 追加抽選予約</div>
+    「FUTURISTIC BOX」など未当選分に再挑戦できるとアナウンスされた。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @Maya_Mirror_ ／ @FWfg6ApuUNTXzFi
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">コジマアプリ ポケカ抽選</div>
+    <div class="card-detail">
+      <span class="label">期間</span> 応募9/4 21時〜9/13、当選発表9/16
+    </div>
+    <div class="card-detail">
+      <span class="label">条件</span> 2025/9/1〜2026/9/13に累計5,000円以上の購入履歴
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @premier777aa
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ユニオンアリーナ BLEACH 千年血戦篇 Vol.3 BOX抽選</div>
+    10カートン入荷見込み。当選者は4BOXまで（利用歴なしは1BOX）。応募締切9/9、いいねのみでRP不要。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @torekaopen2024
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">各店舗のポケカ関連抽選情報まとめ</div>
+    キデイランド福岡パルコ店の30th抽選、カードラボNAMBAのストームエメラルダ／蒼海の七傑／決戦の刻／神の島の冒険4種応募ページ、エディオンのCX-19ランダムブースター応募ページが公開されている。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @vM3RrBkBb114098 ／ @sedokoX
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">CITEN×ちいかわ スペシャルコレクション（ユナイテッドアローズ 7606）</div>
+    店舗販売は事前来店抽選のみ。締切9/9 23:59、当選発表9/11 18:00。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @kabu_DE_Chiika2
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">KURUTOGA DIVE 抽選販売</div>
+    9/5〜9/13店頭受付、1家族1本、抽選は9/14。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @IdealNerima
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ベビチッチ×jouetie キーチェーン抽選</div>
+    応募期間は9/11 12:00〜9/16 23:59。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @c_a_m_p__
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">人気G-SHOCK抽選販売</div>
+    落選した場合、実質定価の1.5倍以上になるとの予想が出ている。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @lzwsgZo6FsiVuZg
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">プレバンを抽選にすべきか論</div>
+    抽選化のデメリットが整理されている（複数垢有利、抽選という付加価値による相場上昇、当選時点決済、商品ごとの送料、キャンセル不可）。仕入れ判断の参考情報。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @askaasukaasuka
+    </div>
+  </div>
+
+  <h2>サクセス報告 <span class="section-count">（8件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">古着買い付け成功</div>
+    入荷タイミングを読んで1点を確保。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @K68609172
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">PS5を発売当初価格の抽選で入手</div>
+    未開封のまま自室に保管中。現在の相場から見て含み益の状態。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @siorst00
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">MGガンダムX3号機＋Xの再販分を定価で確保</div>
+    「プレ値で買わなくて良かった」との声。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @Sn36LmqByx685
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケカ抽選 複数当選報告</div>
+    BOX・エフィブラ・9種セットを各4つ確保した例、30周年2BOX＋エフィブラ1＋9種デッキ1を確保した例が報告されている。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @FWfg6ApuUNTXzFi ／ @moukonainaii
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">キングダムハーツ アートミュージアム 20パック入りBOX</div>
+    過去プレ値15,000円だった箱が定価以下で入手できた。KH4続報前で妙味ありとの見方。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @K7777767
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケカ1BOXをプレ値で購入し19箱確保</div>
+    <div class="card-detail">
+      <span class="label">価格</span>
+      <span class="card-amount">1BOX 49,800円</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">備考</span> 逆張り型の大量仕入れ事例
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @S_Sword_Saint
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">同人サークルの再販が完売</div>
+    魚類アクリルグッズ、おけけキーホルダー、主従缶バッジが完売、RHND展初日にはカキハチシリーズ全品完売との報告。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @shiro_42S2_De ／ @thrush238 ／ @suika_ktrd0339 ／ @4921RHND
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">中古バイク・車の値上がり</div>
+    中古で買ったGROMが購入時より高く売れた例、2020アフリカツインが中古なしでプレ値化した例。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @akimizu ／ @HONDA__2014MT09
+    </div>
+  </div>
+
+  <h2>プレ値情報 <span class="section-count">（13件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">新政酒造 限定頒布会の日本酒</div>
+    <div class="card-detail">
+      <span class="label">相場</span>
+      <span class="card-amount">約7万円</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @Hk05_12
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ウイスキー シングルカスク</div>
+    <div class="card-detail">
+      <span class="label">相場</span>
+      <span class="card-amount">10万円</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">備考</span> 余市50万円との比較で言及。限定販売の即完売品は定価の倍で流通との情報も
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @unirux ／ @soda4132
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ニルヴァーナTシャツ</div>
+    <div class="card-detail">
+      <span class="label">相場</span>
+      <span class="card-amount">1枚数百万円</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @hirokijjd169169
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">購入特典グッズ</div>
+    <div class="card-detail">
+      <span class="label">相場</span>
+      <span class="card-amount">5万〜8万円</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">備考</span> 遠征費との比較で買われている
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @taemuchi66
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">リゾート系Tシャツ（2021年物）</div>
+    過去に3万円で出品された実績がある。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @jR4etgDT5WdelA5
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ケミカル・雑貨系のプレ値</div>
+    終売品が8,000円〜で取引（リサイクルショップで5,000円なら奇跡との声）。ディープクレイ洗顔も供給不足でプレ値化している。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @tsuruoka717 ／ @punyanyas
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">G7X mark2</div>
+    修理費36,000円だが、プレ値では買い直せない水準になっている。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @tetopatan
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">MTG リアリティ・フラクチャー</div>
+    <div class="card-detail">
+      <span class="label">統率者</span>
+      <span class="card-amount">定価5,830円→7,700円</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">レア</span>
+      <span class="card-amount">シークレットレアバンドル 定価13,200円→18,740円</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @Other_casT01
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ドラゴンボール フュージョンワールド FS13／FB11</div>
+    楽天でプレ値状態。次弾予約に向けた動きも。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @penchanTCG
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">リトルアーモリー AKM</div>
+    全シリーズ中トップ3のプレ値水準。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @MIE_ga_mienai
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">KORG ELECTRIBE EMX-1／ESX-1</div>
+    当時6万円台だったが、再生産が望まれるレベルのプレ値になっている。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @bisk_jp
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">アルファード／ヴェルファイア中古価格が下落開始</div>
+    特にHEVは高値掴みのリスクがあると指摘されている。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @crownthe70 ／ @ls600hlma ／ @br0ken_art817
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ちいかわ ボンドロシール（映画配布分）</div>
+    価格が緩やかに下落中。「観れば貰える」ため余剰が発生している。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @miuca13
+    </div>
+  </div>
+
+  <h2>入荷・再販情報 <span class="section-count">（16件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">フェルメール展公式グッズがオンラインで復活</div>
+    ミニ複製画・公式図録は正規取扱店で入手可能。ミッフィーぬいぐるみは受注販売、他は売り場で再販予定。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @2sbnana24 ／ @lavieheureuse
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">TOHOシネマズ マンダロリアン＆グローグー ポップコーンボックス等 全5商品</div>
+    9/6（日）に新宿・なんばの2館限定で再販。1人1会計1点。新宿は朝7時から整理券配布。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @kaho_memo_
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ガンプラ再販ラッシュ</div>
+    HGハンマ・ハンマ、MG V2ガンダムVer.Ka（楽天ブックス5,390円）、MG百式+バリュートシステム、HGファラクト、オプションパーツセット08、ビルダーズパーツHD、RG Hi-νガンダムが在庫復活。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @Gundam_Alert ／ @gonzareiasu0945 ／ @Brainpapa7 ／ @k8f9s2lm
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">MG 量産型百式改／FA-78-2 ヘビー・ガンダム</div>
+    9/4 11時にプレバン予約が開始された。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @kajun2013
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">METAL STRUCTURE 解体匠機 RX-178 ガンダムMk-II</div>
+    Amazonで招待制受付が開始された。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @negimatokamome
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ワンピースカード「世界最強の戦士」OP-17</div>
+    数量限定で再販中。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @gamestylejp
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ロッテ スターウォーズビックリマンチョコ マンダロリアン＆グローグー 30個BOX</div>
+    <div class="card-detail">
+      <span class="label">価格</span>
+      <span class="card-amount">5,990円</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">備考</span> 楽天ブックスで9/10以降出荷の追加注文受付中
+    </div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @p9BdeZbMqkpuinU
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ボンドロ たまごっちたまもりシール／サンリオ新作ボンドロ／クラックスうるちゅるシール</div>
+    たまごっちたまもりシールの在庫が復活。クラックスのうるちゅるシールはほぼ定価で在庫あり。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @UKosumo72983 ／ @sasa441188
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ヴァイスシュヴァルツ 葬送のフリーレン Vol.2【特典付】</div>
+    アニメイトで販売が再開された。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @chantono2
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">各種予約開始まとめ</div>
+    なにわ男子「Moonlit」、米津玄師 かいじゅうずかんウエハース、SPRiNG 9月号（M!LK表紙／売り切れと在庫復活を反復）、レゴ スターウォーズ アドベントカレンダー2026、ONE PIECE magazine ヒロインズ021（カード付同梱）、ガンダムカードゲームGD06（10/31発売）、Marvel's Wolverine PS5カバー／コントローラーの予約が始まっている。
+  </div>
+
+  <div class="card">
+    <div class="card-title">ドラゴンクエスト ウェポンズコレクションVol.1</div>
+    他店で完売が相次ぐなか、楽天ブックスが19%オフで予約を再開。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @chantono2
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">仮面ライダー マイスドライバー 初回生産限定</div>
+    Amazonで在庫が復活している。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @emineko2025
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">フェルメール展×葬送のフリーレンコラボグッズが受注販売化</div>
+    <div class="card-detail">
+      <span class="label">投稿者</span> @6d06NKlJLhxVqDA ／ @yukiumekirin
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">卓球ラバーが全国的に品薄</div>
+    メーカーのバタフライが公式に謝罪。原材料調達難で安定供給が困難な状態が続いており、長期化すれば関連品の相場上昇要因になり得る。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @gawasho ／ @zyasuminntea
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">折りたたみiPhone「iPhone Ultra」量産難航</div>
+    8月後半で1日数百台にとどまる。年内800万〜1,000万台の目標には1日数万台が必要で、発売後も品薄が必至とみられている。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @gazlog_blog ／ @t0nAr1sm
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">iPhone値上げの噂が拡散中</div>
+    一部キャリアで17の予約が停止され、公式サイトのストレージ選択が不可になっている。「最低100ドル（約15,000円）の値上げ」との観測もあり、値上げ前の駆け込み仕入れの判断ポイントになっている。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @Tattu1102 ／ @CONPRI_ ／ @inuko143
+    </div>
+  </div>
+
+  <h2>注意・警告 <span class="section-count">（11件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">【最重要】くら寿司ちいかわ景品の転売品</div>
+    店員・店長による横領品が多数流通している。開示請求・消費者庁通報の動きがあり、購入者側もトラブルに巻き込まれるリスクがある。相場の急落も想定される。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @hiiraya ／ @tyuruga ／ @ume3394
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケカ未開封BOXの偽装</div>
+    サーチ済みの箱にシュリンク（透明フィルム）を後付けして「未開封」として販売する手口が存在する。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @hakusake
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Qoo10のMINISOちいかわぬいぐるみ広告が実物と異なる</div>
+    転売経由での購入は騙される可能性が大きいと注意喚起されている。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @oconakaya
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケカ30th プレ値の高値掴み警告</div>
+    当選率が20%から50%に上がり「全応募者の60%が当選」との試算も出ている。プレ値購入は待つべきとの主張と、SAR加工イーブイが暴落するはずないとの反論で議論が割れており、相場が読みにくい局面。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @cY4wItenbl95537 ／ @mmmaa667 ／ @tumorukundes
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">アルファード／ヴェルファイア中古価格の下落</div>
+    「高く売れるから」とプレ値で買ったユーザーに悲報。特にHEVは中古車業者にも高値掴みが多発。アルベルの暴騰から暴落への流れは投機・海外需要が絡んだ構造とみられている。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @crownthe70 ／ @akimizu
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Amazonに在庫切れ商品をふっかける出品者が常駐</div>
+    在庫切れの商品に「とりあえずプレ値でふっかける」出品者が常態化している。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @pupa_emergence
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">プレ値は担保されない</div>
+    「あってもデイトナとバーキンくらい」として、リセール前提の購入に警鐘が鳴らされている。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @EV_Matsu_
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">X（Twitter）でのチケット取引詐欺が増加</div>
+    海外の悪質アカウントによる取引詐欺が確認されている。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @retsujooooo
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">無在庫転売の疑い</div>
+    配布前に現物写真がなく公式画像のみの出品は、無在庫転売の可能性が大きいとの指摘。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @Xy9pL4tQ2zR8w7m
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">オリパ（オリジナルパック）への注意喚起</div>
+    転売ヤーとグレー業者による買い占め構造が指摘されている。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @hakusake
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">テーマパーク・施設の値上げと9月の値上げラッシュ</div>
+    東京ディズニーランド・シーが10月から最大12,400円に値上げ、名古屋城年パスも10月値上げ、大井川鐵道井川線は初乗り160円から3,500円に。9月は食品数千品目、ピジョン（ベビー用品）、無印良品、ゴミ袋、iCloud、Switch 2（海外）、遊戯王文庫版など広範囲で値上げが予定されており、駆け込み仕入れの余地がある。
+    <div class="card-detail">
+      <span class="label">投稿者</span> @maryuryu_jp ／ @poppo_zelvia ／ @hirom180224
+    </div>
+  </div>
+
+  <p class="note">
+    ※本レポートはX上の投稿を収集・要約したものであり、価格・在庫状況等は投稿時点の情報です。実際の購入前に必ず最新情報をご確認ください。
+  </p>
+</body>
+</html>

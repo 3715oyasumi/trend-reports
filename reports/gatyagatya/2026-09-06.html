@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ガチャガチャ情報まとめ（2026-09-05）</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+    :root {
+      --canvas: #faf9f5;
+      --card: #fffdf8;
+      --surface-soft: #f5f0e8;
+      --hairline: #e6dfd8;
+      --hairline-soft: #ebe6df;
+      --primary: #cc785c;
+      --primary-active: #a9583e;
+      --ink: #141413;
+      --text: #3d3d3a;
+      --muted: #6c6a64;
+      --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+      --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--canvas);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.75;
+      padding: 40px 24px 64px;
+      max-width: 760px;
+      margin: 0 auto;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      text-wrap: balance;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .report-date {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .total-count {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+      text-wrap: balance;
+      padding-left: 14px;
+      border-left: 3px solid var(--primary);
+      margin: 40px 0 16px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 24px 0 8px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--hairline);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-soft);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .card-detail {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text);
+      margin-top: 8px;
+    }
+
+    .label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      min-width: 40px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .card-amount {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary-active);
+    }
+
+    .total-count { }
+
+    .section-count {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+      margin-left: 8px;
+      font-family: var(--font-body);
+    }
+
+    .card-source {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--hairline-soft);
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--hairline);
+      margin: 40px 0;
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 24px 16px 48px; }
+      h1 { font-size: 25px; }
+      h2 { font-size: 19px; }
+      .card { padding: 16px 18px; }
+      .card-detail {
+        flex-direction: column;
+        gap: 2px;
+      }
+      .label {
+        min-width: auto;
+        text-align: left;
+      }
+      .card-amount { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>ガチャガチャ情報まとめ（2026-09-05）</h1>
+  <p class="report-date">2026年9月5日</p>
+  <p class="total-count">本日のガチャガチャ情報: 22件</p>
+
+  <h2>本日の注目トピック <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">だれでもアイドル活動アクリルチャーム ～アイカツスターズ！～</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月第3週より順次発売</div>
+    <div class="card-detail"><span class="label">内容</span>アイカツスターズ！を題材にしたアクリルチャーム。投稿では本日最大の反響を集めています。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2096125423491162472">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">妖怪ウォッチ サウンドロップ</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月第4週より順次発売</div>
+    <div class="card-detail"><span class="label">内容</span>妖怪ウォッチのサウンドロップ。投稿では大きな反響を集めています。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2096125646829441375">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ピクサーキャラクター ぷくちゃーむ</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月発売</div>
+    <div class="card-detail"><span class="label">内容</span>ピクサーキャラクターを題材にしたぷくちゃーむ。9月発売情報として注目を集めています。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2096180867320496321">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">HUNTER×HUNTER DesQ DESKTOP HUNTER 4</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売</div>
+    <div class="card-detail"><span class="label">内容</span>HUNTER×HUNTERを題材にしたデスクトップフィギュアシリーズ。11月発売予定として人気を集めています。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2096183572562575782">出典を確認する</a></div>
+  </div>
+
+  <h2>新商品・発売情報 <span class="section-count">（16件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">マーモットのもっとっと ここだよ ますこっと</div>
+    <div class="card-detail"><span class="label">発売時期</span>本日発売</div>
+    <div class="card-detail"><span class="label">内容</span>マーモットをモチーフにしたますこっとシリーズです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2096002870495588804">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">星の王子さま アートプレートチャーム</div>
+    <div class="card-detail"><span class="label">発売時期</span>本日発売</div>
+    <div class="card-detail"><span class="label">内容</span>星の王子さまを題材にしたアートプレートチャームです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2096048167896957294">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">モンキークラブ フィギュアコレクション 2nd color</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>モンキークラブのフィギュアコレクションにおける2nd colorです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2096078368349495378">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">だれでもアイドル活動アクリルチャーム ～アイカツスターズ！～</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月第3週より順次発売</div>
+    <div class="card-detail"><span class="label">内容</span>アイカツスターズ！を題材にしたアクリルチャームです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2096125423491162472">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">妖怪ウォッチ サウンドロップ</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月第4週より順次発売</div>
+    <div class="card-detail"><span class="label">内容</span>妖怪ウォッチを題材にしたサウンドロップです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2096125646829441375">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ふわふわ猫ちゃん チャームコレクション</div>
+    <div class="card-detail"><span class="label">発売時期</span>本日発売</div>
+    <div class="card-detail"><span class="label">内容</span>ふわふわ猫ちゃんをモチーフにしたチャームコレクションです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2096131217339134432">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">アートユニブテクニカラー 人間サイズのひまわりのたね シリコンポーチ</div>
+    <div class="card-detail"><span class="label">発売時期</span>本日発売</div>
+    <div class="card-detail"><span class="label">内容</span>人間サイズのひまわりのたねをモチーフにしたシリコンポーチです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2096176521824145559">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ジョジョの奇妙な冒険 スターダストクルセイダース STAND on DESK -決戦-</div>
+    <div class="card-detail"><span class="label">発売時期</span>12月発売</div>
+    <div class="card-detail"><span class="label">内容</span>スターダストクルセイダースを題材にしたデスクトップフィギュアです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2096177562057953661">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">今日はたのしいひなまつり 〜春霞のしつらえ〜</div>
+    <div class="card-detail"><span class="label">発売時期</span>1月発売</div>
+    <div class="card-detail"><span class="label">内容</span>春霞のしつらえをテーマにしたフィギュアです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2096179945160802492">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ピクサーキャラクター ぷくちゃーむ</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月発売</div>
+    <div class="card-detail"><span class="label">内容</span>ピクサーキャラクターを題材にしたガチャガチャです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2096180867320496321">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">なんでもそろう 町のちいさな文具店</div>
+    <div class="card-detail"><span class="label">発売時期</span>1月発売</div>
+    <div class="card-detail"><span class="label">内容</span>町の小さな文具店を題材にしたミニチュアです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2096181830164812272">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">HUNTER×HUNTER DesQ DESKTOP HUNTER 4</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売</div>
+    <div class="card-detail"><span class="label">内容</span>HUNTER×HUNTERを題材にしたデスクトップフィギュアです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2096183572562575782">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">HUNTER×HUNTER DesQ DESKTOP HUNTER 7</div>
+    <div class="card-detail"><span class="label">発売時期</span>1月発売</div>
+    <div class="card-detail"><span class="label">内容</span>HUNTER×HUNTERを題材にしたデスクトップフィギュアです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2096184485687742692">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ジョジョの奇妙な冒険 ダイヤモンドは砕けない STAND on DESK -覚醒-</div>
+    <div class="card-detail"><span class="label">発売時期</span>1月発売</div>
+    <div class="card-detail"><span class="label">内容</span>ダイヤモンドは砕けないを題材にしたデスクトップフィギュアです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2096185493063192752">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">おじゃる丸 フィンガーパペット</div>
+    <div class="card-detail"><span class="label">発売時期</span>本日発売</div>
+    <div class="card-detail"><span class="label">内容</span>おじゃる丸を題材にしたフィンガーパペットです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2096191622098858058">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Listen to art -音で聴く名画- フェルメールサウンドキーホルダー</div>
+    <div class="card-detail"><span class="label">発売時期</span>本日発売</div>
+    <div class="card-detail"><span class="label">内容</span>フェルメールの名画を音で楽しむサウンドキーホルダーです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2096206722209599604">出典を確認する</a></div>
+  </div>
+
+  <h2>その他の話題 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">The History Collection -PlayStation-</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月再販予定</div>
+    <div class="card-detail"><span class="label">内容</span>PlayStationを題材にしたミニチュアコレクション。投稿では再現度の高さが特徴とされています。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2096157637734007227">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">背負い羽 アクリルスタンド</div>
+    <div class="card-detail"><span class="label">発売時期</span>再販</div>
+    <div class="card-detail"><span class="label">内容</span>羽が生える新発想のアクリルスタンドです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2096221818243969112">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※価格・発売時期は確認時点のものです。</p>
+</body>
+</html>

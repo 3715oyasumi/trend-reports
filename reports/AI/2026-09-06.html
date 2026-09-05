@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI情報レポート 2026-09-06</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>AI情報レポート 2026-09-06</h1>
+  <p class="report-date">2026年9月6日</p>
+  <p class="total-count">本日のAIトピック: 37件</p>
+
+  <h2>新AIモデル・LLM情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">GPT-6 Astra が全有料プランに開放完了</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI / GPT-6 Astra</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月3日発表、9月4日に全プラン展開完了</div>
+    <div class="card-detail"><span class="label">内容</span>ChatGPT Work、Codex、API、Plusなどで提供開始。OpenAIはコンピュータ操作、専門業務、科学、コーディング分野で最高性能のモデルと説明しています。</div>
+    <div class="card-detail"><span class="label">料金</span>ChatGPT Plus、Pro、Business、Enterprise各プラン内およびAPIで利用可</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね32万2977件・表示1億1871万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2095595741528125780">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">告知なしで5時間あたりのメッセージ上限が約1.5倍に</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日</div>
+    <div class="card-detail"><span class="label">内容</span>ドキュメント更新により、Plus、Pro各プランの5時間あたり利用上限が約50%引き上げられたとユーザーが指摘しました。</div>
+    <div class="card-detail"><span class="label">料金</span>既存プラン内での上限引き上げ、追加課金なし</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね2535件・表示16万5584回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2095965295630266603">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Lyria 3.5 がGeminiアプリとAPIに到着</div>
+    <div class="card-detail"><span class="label">発表元</span>Google / Lyria 3.5</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日</div>
+    <div class="card-detail"><span class="label">内容</span>ボーカル表現と編曲を強化した音楽生成モデル。AI Studio、Gemini API、Geminiアプリで利用でき、テンプレート、尺、ジャンル、ボーカル有無を選択できます。</div>
+    <div class="card-detail"><span class="label">料金</span>Geminiアプリ内で利用可、プランによる。API経由でも提供</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね4439件・表示170万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2095905336393605624">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">GPT-Image-2比で生成速度2倍とする新画像生成モデル</div>
+    <div class="card-detail"><span class="label">発表元</span>Microsoft</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日</div>
+    <div class="card-detail"><span class="label">内容</span>Microsoft AI CEOの投稿で、新モデルはGPT-Image-2比で生成速度2倍、GPU効率72%改善と紹介されました。数値は同社の自己主張です。</div>
+    <div class="card-detail"><span class="label">料金</span>具体的な価格は未提示</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1136件・表示9万1247回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2095923346462384261">出典を確認する</a></div>
+  </div>
+
+  <h2>定点観測: AIモデル性能ランキング <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">GPT-6 Astra がIntelligence Indexで2位に新規参入</div>
+    <div class="card-detail"><span class="label">発表元</span>Artificial Analysis / Intelligence Index</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月6日確認</div>
+    <div class="card-detail"><span class="label">内容</span>GPT-6 Astra maxは55点で2位。首位はClaude Fable 5.1 max with fallbackの57点で、Astraは上位10モデル中4枠を占めています。</div>
+    <div class="card-detail"><span class="label">料金</span>Astra maxは100万トークンあたり<span class="card-amount">$2.57</span>、Fable 5.1は$6.12</div>
+    <div class="card-source"><a href="https://artificialanalysis.ai/models">出典を確認する</a></div>
+  </div>
+
+  <h2>新AIツール・サービス <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">TRELLIS.2とPixal3DがComfyUIでローカル動作</div>
+    <div class="card-detail"><span class="label">発表元</span>ComfyUI / TRELLIS.2・Pixal3D</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日</div>
+    <div class="card-detail"><span class="label">内容</span>画像1枚から3Dモデルを生成するオープンソースAIがComfyUIで動作。VRAM 6GBでローカル完結し、商用利用可能とされています。</div>
+    <div class="card-detail"><span class="label">料金</span>無料、オープンソース</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね949件・表示4万4471回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2095978173347647521">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">余ったPCを束ねるローカルAIルーター PAIR</div>
+    <div class="card-detail"><span class="label">発表元</span>NVIDIA / PAIR</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日</div>
+    <div class="card-detail"><span class="label">内容</span>同一ネットワーク内のPCやMacにAI推論ジョブを自動配分します。OllamaとOpenAI互換エンドポイントを提供し、Windows、Linux、macOSを混在できます。</div>
+    <div class="card-detail"><span class="label">料金</span>無料、GitHub公開</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね378件・表示3万1506回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2095953347157352620">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Codexのコンテキスト管理に関する実験機能</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI Codex</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月5日</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報です。要約圧縮の代わりにメモと検索可能な履歴を使い、過去のメッセージやツール結果を取得する実験機能が紹介されました。</div>
+    <div class="card-detail"><span class="label">料金</span>既存ChatGPTサブスクリプション内、追加費用なしとされています</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1999件・表示17万6651回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096131966647279660">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Seedance 2.5によるAI動画の実証とプロンプト公開</div>
+    <div class="card-detail"><span class="label">発表元</span>Seedance 2.5 / 日本人クリエイター</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月5日</div>
+    <div class="card-detail"><span class="label">内容</span>GPT-6 Astraと組み合わせた縦型動画を公開。参照画像、秒単位の演技、視線、物理挙動、禁止事項まで含む詳細な生成プロンプトが共有されました。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね100件・表示4万223回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096136682055864564">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AIエージェントを壁紙で監視するInfomarchy</div>
+    <div class="card-detail"><span class="label">発表元</span>Omarchy / Infomarchy</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月5日</div>
+    <div class="card-detail"><span class="label">内容</span>Linux上で動くClaude Code、Codex、Grokなどのセッションを自動検出し、稼働状況、git状態、利用上限、リソース状況を壁紙上に表示します。</div>
+    <div class="card-detail"><span class="label">料金</span>無料、オープンソース</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね111件・表示4381回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096094459649798381">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Google FlowをCLI操作する非公式ツール glow-cli</div>
+    <div class="card-detail"><span class="label">発表元</span>Google Flow / glow-cli</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日</div>
+    <div class="card-detail"><span class="label">内容</span>Google FlowをAIエージェントから操作する非公式CLIが紹介されました。自動化やボット判定回避を伴う運用は、各サービスの利用規約に抵触する可能性があります。</div>
+    <div class="card-detail"><span class="label">料金</span>Gemini AI Ultra契約とglow-cli無料利用という自己申告</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1166件・表示7万7555回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2095899660015796265">出典を確認する</a></div>
+  </div>
+
+  <h2>プロンプト技術・活用Tips <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Astra移行時にAGENTS.mdとSkillsを整理する提案</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI / Astra</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日</div>
+    <div class="card-detail"><span class="label">内容</span>OpenAIエンジニアが、新モデルへの移行に合わせて旧来の冗長な指示やSkillsを見直すことを推奨。モデルの指示追従性能向上により、古いルールが障害になる可能性を示しました。</div>
+    <div class="card-detail"><span class="label">料金</span>無料、設定見直しのノウハウ</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね813件・表示18万8670回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2095938418169860233">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">GPT-6 AstraとBlender MCPで45分のゲーム制作</div>
+    <div class="card-detail"><span class="label">発表元</span>GPT-6 Astra / Blender MCP</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月5日</div>
+    <div class="card-detail"><span class="label">内容</span>日本のクリエイターが、Blender MCP接続後にコンセプト画とゲーム画面を反復比較させ、45分でゲームを完成させた事例を公開しました。</div>
+    <div class="card-detail"><span class="label">料金</span>ChatGPTサブスクリプション内</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね236件・表示3万9047回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096094868770811970">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">自分に合う絵柄を探すAI生成イラスト用プロンプト</div>
+    <div class="card-detail"><span class="label">発表元</span>AI画像 / ChatGPT</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月5日</div>
+    <div class="card-detail"><span class="label">内容</span>「私に似合いそうな絵柄を10個」から理由とサンプルカードを作り、対話しながら好みの作風を探す方法が公開されました。</div>
+    <div class="card-detail"><span class="label">料金</span>無料、note記事と簡易プロンプト公開</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね151件・表示6504回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096105967213859308">出典を確認する</a></div>
+  </div>
+
+  <h2>AI企業・業界ニュース <span class="section-count">（8件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Claudeがフェルマーの最終定理の形式化証明を完成</div>
+    <div class="card-detail"><span class="label">発表元</span>Anthropic / Claude</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日発表、証明完成は8月</div>
+    <div class="card-detail"><span class="label">内容</span>ClaudeがLeanによるフェルマーの最終定理の形式化証明を完成したと発表。1300万行超で、Lean史上最大の証明とされています。</div>
+    <div class="card-detail"><span class="label">料金</span>GitHubとブログで無料公開</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1万560件・表示254万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2095947707605266436">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AIの意図逸脱インシデントに関する開示基準を策定へ</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月5日</div>
+    <div class="card-detail"><span class="label">内容</span>wiki事件やHugging Faceの事案を受け、AIの逸脱行動をいつどのように共有するかの枠組みを数週間以内に公開すると予告しました。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね2796件・表示42万3305回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096133504417616165">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Geminiで登山計画を立てた3人が遭難し救助</div>
+    <div class="card-detail"><span class="label">発表元</span>Google / Gemini</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日</div>
+    <div class="card-detail"><span class="label">内容</span>シャスタ山で遭難した登山者3人について、保安官事務所がAIの助言により必要量を大きく下回る食料と水を持っていたと説明しました。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね5万6399件・表示315万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2095891145578394007">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">米国企業でオープンソースAIへの移行報道</div>
+    <div class="card-detail"><span class="label">発表元</span>米国企業 / ニューヨーク・タイムズ報道</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日</div>
+    <div class="card-detail"><span class="label">内容</span>AT&amp;T、Airbnb、Deloitteなどが、クローズドモデルより安価な選択肢を求めてオープンソースAIへ移行していると報じられました。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1804件・表示14万7998回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2095914045073178813">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Computer Useチーム中核メンバーが退職・起業</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI / Maximilian Sieb氏</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日</div>
+    <div class="card-detail"><span class="label">内容</span>Computer Use Agentと強化学習に携わったSieb氏が、企業内でAIエージェントを実務に配属する会社を創業すると発表しました。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね150件・表示4万1139回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2095954732938674377">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">All-Inポッドキャストが扱った今週のAI論点</div>
+    <div class="card-detail"><span class="label">発表元</span>AI業界 / All-Inポッドキャスト</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報です。GPT-6 Astra、Hugging Face、AI規制、NVIDIA、教育現場など6つの論点が最新回の目次として紹介されました。</div>
+    <div class="card-detail"><span class="label">料金</span>無料、ポッドキャスト</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね802件・表示20万8312回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096023596334203344">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Claudeがナビエ・ストークス方程式を解いたという個人予測</div>
+    <div class="card-detail"><span class="label">発表元</span>Anthropic / AI業界ウォッチャー</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月5日</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報です。Claudeがミレニアム懸賞問題の一つを解き、専門家査読中という個人の予測が拡散しました。公式発表は確認されていません。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね5555件・表示150万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096062392442724805">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AI制御をめぐる論説</div>
+    <div class="card-detail"><span class="label">発表元</span>The Economist</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月5日</div>
+    <div class="card-detail"><span class="label">内容</span>AI企業が電源を切れる段階を超え、不可逆的に制御を逃れた場合のリスクを問う論説が公開されました。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね79件・表示4万5138回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096106083479695646">出典を確認する</a></div>
+  </div>
+
+  <h2>AI×日本 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">生成AIを検索手段として使う人が5割超</div>
+    <div class="card-detail"><span class="label">発表元</span>サイバーエージェント調査 / 日本経済新聞</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月5日</div>
+    <div class="card-detail"><span class="label">内容</span>生成AIを検索に利用する人が5割を超え、特に10代から20代で従来の検索エンジンからの移行が進んでいると報じられました。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね224件・表示6万4705回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096154330323726812">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">小型ローカルLLMでキャラクターAIを作る視点</div>
+    <div class="card-detail"><span class="label">発表元</span>ローカルLLM / Gemma 4 E4B</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月5日</div>
+    <div class="card-detail"><span class="label">内容</span>自然なキャラクターAIには巨大な最先端モデルではなく、会話や人間関係に特化した小型ローカルモデルでも十分ではないかという考察が投稿されました。</div>
+    <div class="card-detail"><span class="label">料金</span>無料、オープンモデルのローカル実行</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね272件・表示2万6851回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096136157231018388">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">就活のエントリーシートで生成AIプロンプト提出要求</div>
+    <div class="card-detail"><span class="label">発表元</span>日本の就活</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月5日</div>
+    <div class="card-detail"><span class="label">内容</span>2028年卒向けの設問で、生成AIに入力したプロンプトの提出を求める企業が登場。AI利用の可視化をAIで最適化する対抗案も拡散しました。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね5584件・表示165万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096136266303852837">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">GPT-6 Astraによる国内のアプリ・ゲーム制作ラッシュ</div>
+    <div class="card-detail"><span class="label">発表元</span>日本のクリエイター / GPT-6 Astra</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日から9月5日</div>
+    <div class="card-detail"><span class="label">内容</span>約30分の動画編集アプリ、3D格闘ゲーム、シューティング、操作可能なガチャゲームなどの制作報告が相次ぎました。</div>
+    <div class="card-detail"><span class="label">料金</span>ChatGPTサブスクリプション内</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね3152件・表示73万9134回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096094717989867681">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AI合成音声を見分けるチェックポイント</div>
+    <div class="card-detail"><span class="label">発表元</span>日本の創作コミュニティ</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日</div>
+    <div class="card-detail"><span class="label">内容</span>AI学習済み合成音声の歌声動画について、AIイラストのサムネイル、不自然な発音、本来の合成音声を超える発音の3点を見分け方として紹介しました。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1650件・表示14万5676回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2095910732399562851">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">LLMを認知のウイルスとして捉える論文紹介</div>
+    <div class="card-detail"><span class="label">発表元</span>日本のAI研究紹介 / Large-Language Models as a Cognitive Virus</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月5日</div>
+    <div class="card-detail"><span class="label">内容</span>LLM普及を感染症モデルで扱い、普及が一定水準を超えると社会がAI依存へ傾く可能性と、自分で考える習慣が免疫になるという論文を紹介しました。</div>
+    <div class="card-detail"><span class="label">料金</span>論文・記事とも無料公開</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね125件・表示1万569回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096081004649964021">出典を確認する</a></div>
+  </div>
+
+  <h2>バズった話題・SNS事例 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Claude Maxを解約したという宣言が拡散</div>
+    <div class="card-detail"><span class="label">発表元</span>AI業界全体 / GPT-6 Astra</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日</div>
+    <div class="card-detail"><span class="label">内容</span>月200ドルのClaude Maxを解約し、AstraをAGIの始まりと評価する個人投稿が拡散。性能ランキングではClaude Fable 5.1が依然首位です。</div>
+    <div class="card-detail"><span class="label">料金</span>Claude Maxは<span class="card-amount">月200ドル</span></div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね2089件・表示12万5408回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2095965771394404370">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Grok Imagine Odyssey Contestを告知</div>
+    <div class="card-detail"><span class="label">発表元</span>xAI / Grok Imagine</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日</div>
+    <div class="card-detail"><span class="label">内容</span>Grok Imagine Odyssey Contestが告知され、イーロン・マスク氏が拡散しました。投稿本文には賞金や応募条件の詳細はありません。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね3946件・表示222万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096015527088902365">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">数分後には作りたいゲームを遊べるという実用例</div>
+    <div class="card-detail"><span class="label">発表元</span>GPT-6 Astra / Sam Altman氏</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月5日</div>
+    <div class="card-detail"><span class="label">内容</span>Altman氏が、想像した小さなゲームをAstraが作り、数分後には遊べる点を印象的な利用例として紹介しました。</div>
+    <div class="card-detail"><span class="label">料金</span>ChatGPTサブスクリプション内</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね5827件・表示19万9106回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096241436509544744">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">GPT-6 Astraがエージェント型CADで新SOTAとする紹介</div>
+    <div class="card-detail"><span class="label">発表元</span>GPT-6 Astra / Adam</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月5日</div>
+    <div class="card-detail"><span class="label">内容</span>既存CADファイルを理解し、FusionやOnshapeで設計を変更するエージェント型CADの性能を紹介。BenchCADでは95.9%とされています。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね339件・表示5万3677回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096102446959370567">出典を確認する</a></div>
+  </div>
+
+  <h2>AI収益化・副業事例 <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">調達AIエージェントが1週間で10万ドル超を節約</div>
+    <div class="card-detail"><span class="label">発表元</span>企業向けAIエージェント / Haggle Bot</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日</div>
+    <div class="card-detail"><span class="label">内容</span>ベンダー交渉、未使用SaaSライセンスの発見、購買価格確認を行うボットを公開。導入1週間で大幅なコスト削減を達成したと自己申告しています。</div>
+    <div class="card-detail"><span class="label">料金</span>導入1週間で<span class="card-amount">10万ドル超</span>のコスト削減と自己申告</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね4860件・表示2957万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2095954887205138597">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AI動画量産によるFacebook収益化の自己申告</div>
+    <div class="card-detail"><span class="label">発表元</span>AI動画量産 / Facebook</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日投稿、収益化開始から2日時点</div>
+    <div class="card-detail"><span class="label">内容</span>Google Flowで生成した動画について、Facebookからの収益実績が報告されました。自動化に伴う運用は利用規約との関係に注意が必要です。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">1日約25から30ドル</span>、1000表示あたり0.21ドルと自己申告</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1166件・表示7万7555回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2095899660015796265">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Binance Agent OSミニハッカソンの賞金総額6万USDC</div>
+    <div class="card-detail"><span class="label">発表元</span>Binance / Agent OS</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月5日告知、締切まで残り4日</div>
+    <div class="card-detail"><span class="label">内容</span>Agent OSを使ったAIエージェント構築、またはMCP接続によるトレードを対象とする開発コンテストが告知されました。</div>
+    <div class="card-detail"><span class="label">料金</span>賞金総額<span class="card-amount">6万USDC</span></div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね438件・表示21万670回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096025526339010723">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">有料サービスの固定費を削るオープンソース10選</div>
+    <div class="card-detail"><span class="label">発表元</span>コスト削減ノウハウ / オープンソース</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月4日</div>
+    <div class="card-detail"><span class="label">内容</span>yt-dlp、Ollama、Fooocus、Whisper、n8n、Bitwardenなどを、有料サービスの代替として紹介するリストが拡散しました。</div>
+    <div class="card-detail"><span class="label">料金</span>すべて無料、オープンソース</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね748件・表示4万7725回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2095975700432105572">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">自宅サーバーとPWAでゲーム運営コストを抑える設計</div>
+    <div class="card-detail"><span class="label">発表元</span>個人開発</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月5日</div>
+    <div class="card-detail"><span class="label">内容</span>自宅サーバー、Cloudflare Tunnel、PWA、寄付、広告、OSS化を組み合わせ、固定費と信頼獲得を両立させる個人開発の設計論が紹介されました。</div>
+    <div class="card-detail"><span class="label">料金</span>帯域代、ストア登録料、AI利用料をゼロ化する構成</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね313件・表示4万1692回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2096162982548185529">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

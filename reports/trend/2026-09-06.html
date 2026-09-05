@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月6日（日）版</p>
+  <p class="total-count">本日のトレンド: 12件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ファミリーマート「47都道府県ご当地デザイン ラインソックス／ステッカー」</div>
+    <div class="card-detail"><span class="label">特徴</span>創立45周年を記念した47都道府県別の限定デザイン。全国約16,500店で地域別に展開し、北京市・上海市・台北市の3エリアでも限定デザインのソックスを販売</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月4日（金）より順次</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">ラインソックス546円（税込600円）、ステッカー273円（税込300円）</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000002494.000046210.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">資さんうどん 秋の新メニュー（資ぼた餅ソフト ほか）</div>
+    <div class="card-detail"><span class="label">特徴</span>名物ぼた餅を使った「資ぼた餅ソフト」、半熟たまごの天ぷら入り「とろ玉海老天丼」など。8店舗限定</div>
+    <div class="card-detail"><span class="label">発売日</span>不明（プレスリリースに提供開始日の明記なし）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">資ぼた餅ソフト317円（ミニ229円）／とろ玉海老天丼899円／野菜天ぷら盛り329円／倍盛りポテトフライ249円（いずれも税込）</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000394.000037031.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">八天堂「くりーむパン マロン」詰合せセット</div>
+    <div class="card-detail"><span class="label">特徴</span>秋限定のマロンクリーム入りくりーむパン。オンラインショップ限定で6個入り3種類の詰合せを展開</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月4日（金）／通常販売は9月15日（火）～10月31日（土）23:59予定</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">早割3,000円（税込）、通常3,200円（税込）</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000392.000061362.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">楽天スーパーSALE（2026年9月）</div>
+    <div class="card-detail"><span class="label">特典内容</span>ショップ買いまわり最大11倍、SPU等との併用で最大47.5倍。半額商品としてリードルショット700が6,380円から3,190円、SONY α VLOGCAMが109,800円から54,900円など</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月4日（金）20:00～9月11日（金）1:59</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://soredoko.jp/entry/2026/09/04/120000">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Suica／JRE POINT 9月のキャンペーン群</div>
+    <div class="card-detail"><span class="label">特典内容</span>新幹線eチケット交換ポイントが35%割引、駅ビル・エキナカでのポイントがステージ3で2倍・プレミアム会員で3倍、水曜「エキナカSuicaの日」はポイント2倍。楽天ペイからのモバイルSuicaチャージで100人に最大2万ポイント</div>
+    <div class="card-detail"><span class="label">期間</span>新幹線eチケット35%割引は9月25日～10月9日および2027年1月18日～31日／水曜ポイント2倍は9月30日までの毎週水曜／駅ビル施策は2027年3月9日まで</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/815c1b0a0b598e494806f1573638dc09a0805081">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">めちゃコミック「ポイント倍倍還元祭」</div>
+    <div class="card-detail"><span class="label">特典内容</span>利用ポイント数に応じて還元率が変動。1～3,000ポイント利用で50%還元、3,001～9,000ポイントで100%還元、9,001～10,000ポイントで200%還元</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月4日10時～9月29日10時</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/3da7177b2cf46c118c13e9e4ff4546008ba32047">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">スパイク・チュンソフト「エンドサマーセール 2026」（Steam）</div>
+    <div class="card-detail"><span class="label">特典内容</span>対象タイトルが最大90%OFF。「風来のシレン6 とぐろ島探検録」「超探偵事件簿 レインコード プラス」「終天教団」が50%OFF。ダンガンロンパシリーズの割引は9月9日開始</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月5日2:00～9月19日2:00</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://www.4gamer.net/games/858/G085870/20260904060/">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ポケモンカード「30th CELEBRATION」未開封BOX</div>
+    <div class="card-detail"><span class="label">市場状況</span>9月16日（水）の世界同時発売を前に、1BOX定価7,200円（税込）に対し取引相場は<span class="card-amount">42,000円</span>。定価の約5.8倍で推移</div>
+    <div class="card-detail"><span class="label">注意点</span>発売前の相場であり、発売後の供給量次第で相場が大きく変動するリスクがあるため、現時点での高値追いは避け、Amazon・楽天ブックス等の抽選・先着販売を優先したい</div>
+    <div class="card-source"><a href="https://price-base.com/useful/30thcelebration-market">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">雑貨店発の「シールブーム」商品</div>
+    <div class="card-detail"><span class="label">市場状況</span>かつて行列ができ、フリマサイトで定価の何倍もの価格で取引されていたシールが、現在は在庫過多で投げ売り状態に。定価500円のシールが<span class="card-amount">100円（80%OFF）</span>まで値下げされる例がある</div>
+    <div class="card-detail"><span class="label">注意点</span>ブーム終息局面の典型例で、定価で買った消費者や在庫を抱えた小売店が損失を被る構図。現在の高騰品も同じ経路をたどる可能性がある</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/afeb3c586eaea166618bc190228c152669c9eb46?page=2">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">医療用医薬品15品目（供給停止6品目・限定出荷9品目）</div>
+    <div class="card-detail"><span class="label">理由</span>MS冷シップ「タイホウ」は薬価削除、プロ・バンサイン錠15mgは品質トラブルによる。ほかに複数品目が供給停止または限定出荷へ移行</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>常用薬が該当する場合は次回受診時に主治医・薬剤師へ代替薬を相談。長期処方を受けている患者は在庫状況の確認を早めに行いたい</div>
+    <div class="card-source"><a href="https://closedi.jp/medicine_supply/25683/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">その他の販売停止・品薄案件</div>
+    <div class="card-detail"><span class="label">理由</span>過去3日以内に公開・更新された一次情報が確認できたのは上記1件のみ。ナフサ不足由来のごみ袋・エンジンオイル品薄、食品の値上げ、ガンプラ再販分の延期は公開日が9月3日以前のため今回は除外</div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">市場動向の総評</div>
+    <div class="card-detail"><span class="label">コメント</span>9月4日～6日の3日間は、9月1日の大型値上げ・新商品ラッシュが一巡した谷間にあたり、メーカーの一次発表は端境期に入っている。その中でファミリーマート45周年の47都道府県ソックスや八天堂の早割のように、単価の低い記念商材・オンライン先行販売で需要をつなぐ動きが目立った。転売サイドでは、ポケカ30周年パックが発売前から定価の約5.8倍に達する一方、シールブームが80%OFFの投げ売りで終息した事例も報じられ、加熱の入口と出口が同時に可視化された週末といえる。</div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

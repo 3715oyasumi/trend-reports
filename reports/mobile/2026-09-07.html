@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のモバイルレポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のモバイルレポート</h1>
+  <p class="report-date">2026年9月7日</p>
+  <p class="total-count">本日のモバイル案件: 18件</p>
+
+  <h2>NTTドコモ <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">「ポイ活プラン」のポイント還元ルール改定</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>対象決済で付与される特典ポイント分を差し引いた金額のみが還元対象。料金支払いへのポイント充当時は、充当ポイントと決済特典ポイントの多い方を差し引いた残額が対象。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年12月利用分から順次適用</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137271.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「dカード」還元率半減・年会費導入</div>
+    <div class="card-detail"><span class="label">還元</span>基本還元率 <span class="card-amount">1.0%から0.5%</span>へ変更</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>条件を満たさない場合は年会費<span class="card-amount">1,650円</span>。dカード PLATINUMの最大還元適用期間は1年から2カ月へ短縮、ドコモ光還元率は12%へ縮小。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日発表、改定は順次適用</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137201.html">出典を確認する</a>　<a href="https://k-tai.watch.impress.co.jp/docs/news/2137265.html">出典を確認する</a>　<a href="https://k-tai.watch.impress.co.jp/docs/news/2137395.html">出典を確認する</a></div>
+  </div>
+
+  <h2>楽天モバイル <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">楽天ID連携の必須化、未連携は自動解約</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>my 楽天モバイルでゲストとしてログイン中と表示される未連携ユーザーが対象。楽天会員へのアップグレードまたは契約者変更をしない場合、契約は自動解約。電話番号、オプション、端末保証、買い替え超トクプログラムも失効。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年11月30日が手続き期限</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137527.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「moto g37j」値下げ、MNPで990円</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">22,000円割引</span>、新規契約は最大13,000ポイント還元</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>Rakuten最強プランまたはRakuten最強U-NEXTへ他社から乗り換えと同時購入で<span class="card-amount">990円</span>。新規契約は実質9,990円。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日から終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137211.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">楽天市場での端末購入と回線契約で最大10,000ポイント還元</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大10,000ポイント</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル、楽天市場</div>
+    <div class="card-detail"><span class="label">条件</span>対象製品を楽天市場で購入し、MNPまたは新規でRakuten最強プランまたはRakuten最強U-NEXTを契約。66,000円以上は10,000ポイント、44,000円から65,999円は6,000ポイント。プラン変更は対象外。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月3日から終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137927.html">出典を確認する</a></div>
+  </div>
+
+  <h2>Y!mobile（ワイモバイル） <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">オンラインストア誕生感謝祭 第2弾</div>
+    <div class="card-detail"><span class="label">還元</span>iPhone 16は<span class="card-amount">26,400円割引</span>、moto g66y 5Gは21,660円割引、OPPO A5 5Gは2,088円割引</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>Y!mobileオンラインストア</div>
+    <div class="card-detail"><span class="label">条件</span>MNP転入とシンプル3 MまたはL契約でiPhone 16が106,800円、moto g66y 5Gが4,980円。機種変更とシンプル3契約ではOPPO A5 5Gが19,800円。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日から2026年9月8日9時59分まで</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137599.html">出典を確認する</a></div>
+  </div>
+
+  <h2>IIJmio <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">初期費用の値上げ</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>ギガプランおよびデータプランゼロの初期費用が<span class="card-amount">3,300円から3,850円</span>へ変更。エントリーパッケージ利用時は初期費用無料だが、期間限定キャンペーンとは併用不可。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年12月1日以降の申し込みから適用</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137720.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">スマホ大特価セールに中古端末を追加</div>
+    <div class="card-detail"><span class="label">還元</span>MNP限定価格 <span class="card-amount">9,980円から</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>MNP転入とギガプラン同時申込が条件、1ユーザー1台まで。Google Pixel 9aは45,800円から、iPhone 16は89,800円から。過去1年以内に同種の特別価格適用を受けた人は対象外。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日から2026年11月4日21時59分まで</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137335.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「OPPO Reno16 5G」「MIVE ケースマ」発売、のりかえ価格を設定</div>
+    <div class="card-detail"><span class="label">還元</span>OPPO Reno16 5Gは<span class="card-amount">15,000円割引</span>、MIVE ケースマは2,000円割引</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>MNPでOPPO Reno16 5Gは74,800円、MIVE ケースマは32,800円。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月2日発売</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137726.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「25ギガプラン」へのプラン変更で5GBプレゼント</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">5GB</span>進呈</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>2ギガ、5ギガ、10ギガ、15ギガプランから25ギガプランへ変更。進呈分は進呈月の翌月末まで有効。過去の対象キャンペーン利用者は対象外、他キャンペーンとの併用不可。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月3日から2026年10月30日まで</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137764.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">SIM交換手数料0円キャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span>SIM交換手数料 <span class="card-amount">2,200円が無料</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>ギガプランの音声SIMから音声eSIMへの変更、音声eSIMのキャリアタイプ変更が対象。1回線につき1回まで。SIMプロファイル発行手数料は別途必要。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日から2026年11月4日まで</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137941.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">eSIMラインアップ拡充</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>ドコモ網・au網の双方でSMS対応eSIMを追加。au網ではデータ専用eSIMも提供開始。物理SIMからの移行は新規契約扱い。eSIM初期費用半額キャンペーンを延長。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日から2026年11月4日まで</div>
+    <div class="card-source"><a href="https://jetstream.blog/2026/09/01/iijmio-campaign-september-2026-start/">出典を確認する</a></div>
+  </div>
+
+  <h2>BIC SIM <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">eSIMスタート応援キャンペーン／スマホ値引き増額キャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span>月額基本料金を最大3カ月間割引、端末同時購入で<span class="card-amount">最大11,000円割引</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>BIC SIM</div>
+    <div class="card-detail"><span class="label">条件</span>データ専用eSIMの2GB・25GBプラン新規申込が対象。MNPで5GBから55GBプランを申し込み、SIMフリー端末を同時購入すると5,500円追加値引き。Web申込、プリペイドパック、2GBプランは端末値引き対象外。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日から2026年11月4日まで。スマホ値引き増額は11月1日まで</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137348.html">出典を確認する</a></div>
+  </div>
+
+  <h2>JALモバイル <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">「超トクまつり」</div>
+    <div class="card-detail"><span class="label">還元</span>初期費用<span class="card-amount">3,300円が無料</span>、10GB以上は<span class="card-amount">1,500マイル</span>付与</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>JALモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>2GB・5GBプランは音声・SMS・データの全タイプが対象、1契約者3回線まで。10GB以上のプランは通常500マイルに代えて1,500マイルを付与。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日から2026年11月4日まで。開通期限は11月30日</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137977.html">出典を確認する</a></div>
+  </div>
+
+  <h2>povo（KDDI） <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">新トッピング「12GB（365日間）6,240円」提供開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">12GB（365日間）6,240円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>1年間有効の大容量データトッピング。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月3日から</div>
+    <div class="card-source"><a href="https://povo.jp/news/newsrelease/20260903_01/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">期間限定トッピング3種と初回ペイディ利用キャッシュバックを追加</div>
+    <div class="card-detail"><span class="label">還元</span>初回ペイディ利用で<span class="card-amount">1,000円キャッシュバック</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>毎週末だけ放題、通勤・通学定期2種、SAMANSA視聴コード付きトッピングを販売。povo2.0であと払いを初めて利用し、対象トッピングを購入した場合にキャッシュバック。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日から。通勤・通学定期は9月10日まで、毎週末だけ放題は9月7日まで販売</div>
+    <div class="card-source"><a href="https://povo.jp/news/">出典を確認する</a></div>
+  </div>
+
+  <h2>ゲオモバイル <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">衝撃割引セール</div>
+    <div class="card-detail"><span class="label">還元</span>中古端末 <span class="card-amount">1円から</span>、増量オプションII申込でさらに5,500円割引</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ゲオモバイル Web</div>
+    <div class="card-detail"><span class="label">条件</span>中古Xperia 5 IV、OPPO Reno11 A、iPad 第8世代がMNPまたは新規契約で対象。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月2日10時から2026年9月9日23時59分まで</div>
+    <div class="card-source"><a href="https://x.com/GEO_mobile_jp/status/2048371733405823427">出典を確認する</a>　<a href="https://tamacoin.net/archives/4043">出典を確認する</a></div>
+  </div>
+
+  <h2>ソフトバンク／LINEヤフー <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">「Yahoo!スマホ買取」開始</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>Yahoo!スマホ買取</div>
+    <div class="card-detail"><span class="label">条件</span>専用アプリで端末を査定。アプリ経由の申込は発送後の減額なし。支払いはPayPayマネーまたは口座振込。SIMなしの端末もWi-Fi接続で査定可能。データ消去証明書は1,000円。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月2日から</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137555.html">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※還元・条件は確認時点のものです。</p>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月7日（月）版</p>
+  <p class="total-count">本日のトレンド: 9件</p>
+
+  <h2>新商品情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">セブン-イレブン「カラマンシースムージー」</div>
+    <div class="card-detail"><span class="label">特徴</span>東南アジア原産の柑橘カラマンシーにパイナップル・オレンジ・はちみつをブレンド。1杯あたり約34mgのビタミンCを配合し、1日に必要とされるビタミンCの約1/3を補える</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月8日から順次</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">343円（税別）</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2138324.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">すき家「Sukiシェイク 焼き芋」</div>
+    <div class="card-detail"><span class="label">特徴</span>バニラシェイクに茨城県産紅はるかの焼き芋ソースを合わせ、塩味の芋けんぴクラッシュをトッピング</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月8日9時</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">S 210円／M 260円／L 350円</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2138365.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サントリー「－196無糖〈梨＆りんご＆ぶどう〉」</div>
+    <div class="card-detail"><span class="label">特徴</span>梨浸漬酒・白ぶどう浸漬酒にりんご果汁を使用した無糖チューハイ。アルコール度数7％</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月27日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">350mL缶 171円前後／500mL缶 232円前後（いずれも税別）</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2137654.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">バンダイ食玩 9月7日発売の新商品7種</div>
+    <div class="card-detail"><span class="label">特徴</span>「仮面ライダーチョコ」（全10種）、「ジュエリースイングチャーム ちいかわ」（全6種）、「ウルトラマンシールウエハース ～60th Anniversary～」（全32種）など7アイテムが同日発売</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月7日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">仮面ライダーチョコ 130円／ウルトラマンシールウエハース 149円／JAPAN NATIONAL VOLLEYBALL TEAM ツインウエハース 2026 220円／ジュエリースイングチャーム ちいかわ 396円／サンリオキャラクターズ チョコボックス 385円</span></div>
+    <div class="card-source"><a href="https://news.mynavi.jp/article/20260906-shokugan/">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">しゃぶ葉「秋のきのこと鴨しゃぶフェア」</div>
+    <div class="card-detail"><span class="label">特典内容</span>鴨肉ときのこ6種（しめじ・えのき・きくらげ・山なめこ・舞茸・白きくらげ）が食べ放題。「ポルチーニ香るきのこだし」「花藻塩のかぼすたれ」が新登場。鴨しゃぶ食べ放題コースは平日ランチ2,969円・平日ディナー3,629円、土日祝は220円加算（都心の一部店舗は330円加算）、60歳以上は大人価格より330円引き</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月10日～11月中旬</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">3/5</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2138262.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">オーケー「ウイスキー8銘柄 抽選販売」</div>
+    <div class="card-detail"><span class="label">特典内容</span>入手困難銘柄をメーカー希望小売価格ベースで購入できる会員限定抽選。山崎12年700mL 1万7600円／白州12年700mL 1万7600円／響 JAPANESE HARMONY 700mL 8800円／竹鶴ピュアモルト700mL 7700円／ニッカ フロムザバレル500mL 3520円／ザ・ニッカ700mL 9350円／ニッカ カフェグレーン・カフェモルト各700mL 6600円。オーケークラブ会員カードアプリ限定で、店舗またはネットスーパーでのオーケーカード購入実績（回数・金額）が応募条件</div>
+    <div class="card-detail"><span class="label">期間</span>申込2026年9月7日～20日、当選発表9月28日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">4/5</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2138575.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">くら寿司×「ちいかわ」コラボ景品（フィギュア・湯呑みほか）</div>
+    <div class="card-detail"><span class="label">市場状況</span>8月21日開始のコラボで、ビッくらポン！景品や配布開始前の限定湯呑みがフリマアプリに出品されSNSで問題視。くら寿司は従業員による不正行為が判明したとして、9月6日の営業開始時をもってコラボ施策を全面中止した。中止対象はビッくらポン！オリジナルグッズ（フィギュア・アクリルマグネット・缶バッジ）の配布、オリジナル湯呑み・寿司皿のプレゼント、レシート応募キャンペーン（ショートエプロン50名様）、コラボメニュー、店内装飾の計5領域</div>
+    <div class="card-detail"><span class="label">注意点</span>流通経路が不明な出品が含まれる可能性が高く、二次流通での購入は避けるのが賢明。今後同種のコラボでは景品の在庫管理・配布方法が厳格化される可能性がある</div>
+    <div class="card-source"><a href="https://www.itmedia.co.jp/news/article/2609/05/2000001201/">出典を確認する</a> ／ <a href="https://gourmet.watch.impress.co.jp/docs/news/2138556.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ジャパニーズウイスキー（白州12年・響 BLENDER'S CHOICE）</div>
+    <div class="card-detail"><span class="label">市場状況</span>Amazonが「サントリーシングルモルトウイスキー白州12年」（700mL／43度）を<span class="card-amount">1万7600円</span>で招待制の抽選販売。この価格はメーカー希望小売価格と一致しており、「定価で買えること」自体がニュースになる需給状況。9月5日時点では「響 BLENDER'S CHOICE」がAmazon出品者「お酒市場JOYLAB」「酒のケント」により<span class="card-amount">1万7200円</span>で販売されていた</div>
+    <div class="card-detail"><span class="label">注意点</span>白州12年の抽選は招待リクエスト方式で、当選メール受信後72時間以内に購入する必要がある。響については箱無し出品も存在するため、購入前に商品状態の確認が必須</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2138570.html">出典を確認する</a> ／ <a href="https://gourmet.watch.impress.co.jp/docs/news/2138553.html">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">カバヤ食品「ピュアラルグミ」</div>
+    <div class="card-detail"><span class="label">理由</span>カバヤ食品が9月5日に公式SNSで販売終了を発表。終了理由は現時点で不明</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">3/5</span></div>
+    <div class="card-detail"><span class="label">アクション</span>2004年9月発売で20年以上続いたロングセラー。発表直後からSNSで「買い占めよう」といった反響が広がっており、店頭在庫の消化が急速に進む可能性が高い。必要なら早めに確保を</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/df1b9a5df2969ead0e3e7b24d72a3e14541275b2">出典を確認する</a> ／ <a href="https://news.livedoor.com/topics/detail/32253341/">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>本日の最大の論点は「限定品の入口設計」です。くら寿司のコラボ全面中止は、景品を店舗オペレーションに預ける従来型の販促が、二次流通の圧力に耐えられなくなったことを示す象徴的な事例で、今後は配布方法の抽選化・記名化が一気に進むとみています。一方でウイスキーは、Amazonが白州12年を定価1万7600円で招待制抽選、オーケーが8銘柄を会員実績ベースの抽選にするなど、大手小売・ECが「定価×抽選×購買実績」という転売抑止の型を固めつつあります。新商品側は秋の焼き芋・きのこ・柑橘といった季節訴求が中心で価格も抑制的、消費者にとっては派手な値引きより「定価で正規に買える導線」を押さえることが今週の実利につながります。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

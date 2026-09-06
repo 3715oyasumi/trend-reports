@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>品薄予測レポート 2026-09-07</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>品薄予測レポート</h1>
+  <p class="report-date">2026年9月7日</p>
+  <p class="total-count">本日の品薄予測: 15件</p>
+
+  <h2>今買える 相場上昇の予兆 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">たまごっち カスタムキーリング2（BANDAI・食玩／たまごっち30周年）</div>
+    <div class="card-detail"><span class="label">品薄度</span>発売直後から売り切れが続出。本日からバースデイオンラインストアで取扱開始。</div>
+    <div class="card-detail"><span class="label">相場・価格</span><span class="card-amount">1個418円（税込）</span>、10個入りBOX 4,180円（税込）。シークレットの落札相場は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>通常絵柄9種は利幅が薄く、シークレットの初代たまごっち金デザインが狙い目。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>本日中にBOXを確保し、シークレットのみ即出品。通常絵柄は複数個をまとめて販売する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2096588524502069470">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケモンカード First Partner Illustration Collection Series1（ポケモン・TCG／海外限定プロモ）</div>
+    <div class="card-detail"><span class="label">品薄度</span>国内販売店が再販予定なし、在庫少なめと告知。一部店舗と通販で入荷中。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>国内実売価格と海外の明確な定価は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>海外限定商品のため国内適正価格の基準があいまいで、仕入れ前の価格確認が必要。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>告知店舗へ本日中に在庫確認し、在庫があれば確保。カードショップ買取と海外相場を見て放出時期を判断する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2096422130913014220">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">バタフライ 卓球ラバー品薄（Butterfly／タマス・卓球用品）</div>
+    <div class="card-detail"><span class="label">品薄度</span>原材料調達難を背景に長期化の見立て。特に裏ラバーの入荷が不安定。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>用具ランキング更新でも、バタフライラバーの品薄が今後も影響すると言及された。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>定価入荷を見つけ次第複数枚確保し、専門店・スポーツ量販店とSNSの入荷情報を継続確認する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2096063649907724748">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">プラモ用うすめ液・ツールクリーナー品薄（GSIクレオス等・模型用塗料）</div>
+    <div class="card-detail"><span class="label">品薄度</span>全メーカーで入荷が少なく、ツールクリーナーは完売、旧価格のうすめ液も在庫僅少。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>問屋への確認で全メーカーの品薄が裏付けられ、新価格品の入荷時期は未定。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>模型店とホームセンターを巡回して旧価格在庫を確保し、水性カラーも仕入れ候補に加える。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2095760841660641337">出典を確認する</a></div>
+  </div>
+
+  <h2>発売前 期待値高 <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Fitbit Air 限定モデル「Pokémon Sleep（Sleepy Blue）」（Google／Fitbit・ウェアラブル）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月15日。ヨドバシカメラなどで予約受付中。</div>
+    <div class="card-detail"><span class="label">品薄度</span>Googleストアで在庫切れが再発し、予約再開と在庫切れを繰り返している。</div>
+    <div class="card-detail"><span class="label">相場・価格</span><span class="card-amount">定価19,800円（税込）</span>。転売相場は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>母体モデルも品薄気味で、限定カラーへの先回り予約の動きが確認されている。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>予約可能なうちに定価確保し、放出は発売直後から1週間以内を目安に判断する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2096552047562879022">出典を確認する</a></div>
+  </div>
+
+  <h2>発売接近リマインド <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">D.O.『DOPAMINE』WAH CLICKER KEYCHAIN Ver.（Company Soosoo）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月8日（あと1日）</div>
+    <div class="card-detail"><span class="label">品薄度</span>海外予約価格が上振れ中。</div>
+    <div class="card-detail"><span class="label">相場・価格</span><span class="card-amount">海外予約27〜30米ドル台</span></div>
+    <div class="card-detail"><span class="label">推奨アクション</span>国内取扱店の在庫を本日中に確認し、在庫があれば確保する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">遊☆戯☆王DM×クロックス（クロックス）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月9日（あと2日）</div>
+    <div class="card-detail"><span class="label">品薄度</span>1人1足の購入制限あり。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>開店直後に巡回する複数店舗を事前に計画する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">阪神タイガース×仕事猫 コラボグッズ再販（阪神タイガース公式／くまみね）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月12日（あと5日）</div>
+    <div class="card-detail"><span class="label">品薄度</span>購入個数制限あり。</div>
+    <div class="card-detail"><span class="label">根拠</span>天候による販売延期のリスクがある。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>販売予定と天候状況を確認し、購入条件に合わせて準備する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケモンカード 30th CELEBRATION／ストームエメラルダ（ポケモン）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月16日（あと9日）</div>
+    <div class="card-detail"><span class="label">品薄度</span>主要抽選は終了済みで、残る機会は発売日の店頭販売が中心。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>店舗ごとの入荷数を事前に確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">プレミアムデッキセット エーフィ・ブラッキー（ポケモン）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月16日（あと9日）</div>
+    <div class="card-detail"><span class="label">品薄度</span>同日発売商品のため店舗ごとの入荷配分に注意が必要。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>取扱店舗の入荷配分を確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">DX妖怪ウォッチ（レバンテ／バンダイ）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月19日（あと12日）</div>
+    <div class="card-detail"><span class="label">品薄度</span>過去作には海外相場高騰の実績がある。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>予約枠を継続監視する。</div>
+  </div>
+
+  <h2>対象外 既に入手困難・参考のみ <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">君のことが大大大大大好きな100人の彼女×大黒湯 コラボグッズ各種</div>
+    <div class="card-detail"><span class="label">品薄度</span>全種完売、再入荷未定。</div>
+    <div class="card-detail"><span class="label">根拠</span>アクリルスタンド複数種と特典付き入浴券が対象。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">e結城友奈は勇者である ～極限7500～ 新グッズ</div>
+    <div class="card-detail"><span class="label">品薄度</span>販売終了、増産・再販とも未定。</div>
+    <div class="card-detail"><span class="label">根拠</span>パチンコ書き下ろしイラストの商品。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サンリオキャラクターズ ミニチュアパッケージコレクション</div>
+    <div class="card-detail"><span class="label">品薄度</span>ガシャポン金沢フォーラス店限定再販分が完売、再入荷未定。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">遊戯王OCG デッキビルドパック「グロリアス・ヴィクターズ」</div>
+    <div class="card-detail"><span class="label">品薄度</span>一般店頭分は完売済み。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>BOX相場は定価並みで妙味なし。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>台帳継続の参考情報とし、仕入れ対象外とする。</div>
+  </div>
+
+  <h2>総括 <span class="section-count">（0件）</span></h2>
+  <p>本日の最有力候補は、取扱開始日のたまごっちカスタムキーリング2です。次点は在庫僅少と価格上昇が告知されている海外限定のFirst Partner Illustration Collectionです。中期では、原材料不足の長期化が見込まれるバタフライ卓球ラバーとプラモ用うすめ液を、定価在庫を見つけ次第確保する候補とします。</p>
+
+  <p class="note">※予測は収集時点の情報に基づくものです。</p>
+</body>
+</html>

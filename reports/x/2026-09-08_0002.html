@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xツイートデータ分析レポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+:root {
+  --canvas: #faf9f5; --card: #fffdf8; --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8; --hairline-soft: #ebe6df;
+  --primary: #cc785c; --primary-active: #a9583e;
+  --ink: #141413; --text: #3d3d3a; --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20,20,19,0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--canvas); color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.75; padding: 40px 20px 64px; max-width: 760px; margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+.report-header {
+  background: var(--card); border: 1px solid var(--hairline); border-radius: 16px;
+  padding: 28px; margin-bottom: 32px; box-shadow: var(--shadow-soft);
+}
+.report-label {
+  font-family: var(--font-body); font-size: 11px;
+  color: var(--muted); letter-spacing: 2px; margin-bottom: 10px;
+}
+.report-title {
+  font-family: var(--font-display); font-size: 28px; font-weight: 700;
+  color: var(--ink); line-height: 1.3; letter-spacing: -0.01em; text-wrap: balance;
+  margin-bottom: 16px;
+}
+.report-meta { display: flex; flex-wrap: wrap; gap: 16px; }
+.meta-item { font-size: 14px; color: var(--muted); }
+.meta-item span { color: var(--text); font-weight: 600; }
+.report-section { margin-bottom: 24px; }
+.section-title {
+  font-family: var(--font-display); font-size: 20px; font-weight: 600;
+  color: var(--ink); line-height: 1.4; text-wrap: balance;
+  padding-left: 14px; border-left: 3px solid var(--primary); margin: 32px 0 14px;
+}
+.section-num { font-size: 13px; color: var(--muted); }
+.item-card {
+  background: var(--card); border: 1px solid var(--hairline);
+  border-radius: 12px; padding: 18px 20px; margin-bottom: 10px;
+  box-shadow: var(--shadow-soft); transition: border-color 0.2s, box-shadow 0.2s;
+}
+.item-card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20,20,19,0.08); }
+.item-header { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+.item-title { font-weight: 700; font-size: 15px; color: var(--ink); flex: 1; line-height: 1.5; }
+.item-desc { font-size: 14px; color: var(--text); margin-bottom: 8px; line-height: 1.7; }
+.item-desc strong { color: var(--ink); }
+.item-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-size: 12px; padding: 2px 10px; border-radius: 9999px; }
+.tag-user  { background: var(--surface-soft); color: var(--primary-active); border: 1px solid var(--hairline); }
+.tag-stat  { background: var(--surface-soft); color: var(--muted); border: 1px solid var(--hairline); }
+.badge { font-size: 11px; padding: 2px 10px; border-radius: 9999px; font-weight: 600; white-space: nowrap; border: 1px solid var(--hairline); }
+.badge-danger  { background: #fbeae5; color: #a9583e; border-color: #e6cabd; }
+.badge-warning { background: #f6efe2; color: #8a6d2f; border-color: #e6dcc4; }
+.badge-info    { background: #f5f0e8; color: #6c6a64; border-color: var(--hairline); }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--card); border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; }
+.summary-table th {
+  background: var(--surface-soft); padding: 10px 14px; text-align: left;
+  color: var(--muted); border-bottom: 1px solid var(--hairline);
+}
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid var(--hairline-soft); color: var(--text); }
+hr { border: none; border-top: 1px solid var(--hairline); margin: 32px 0; }
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  .report-title { font-size: 23px; }
+  .section-title { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+  <div class="report-header">
+    <div class="report-label">X TWEET DATA ANALYSIS REPORT</div>
+    <h1 class="report-title">Xツイートデータ分析レポート</h1>
+    <div class="report-meta">
+      <div class="meta-item">📅 収集日時：<span>2026-09-08 00:02</span></div>
+      <div class="meta-item">📊 対象件数：<span>1,158件</span></div>
+    </div>
+  </div>
+  <section class="report-section">
+  <h2 class="section-title">1. 人気商品・トレンド</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30周年「30th CELEBRATION BOX」</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">定価27,500円。FUR仕様ピカチュウex2種・金属製ダメカンサイコロ・特製デッキシールド・ラバープレイマット・ディスプレイフレーム同梱。9/16発売、発売前から抽選＆プレ値状態で最注目（ /  /  / ）</div><div class="item-tags"><span class="tag tag-user">@dai_chachacha</span><span class="tag tag-user">@pokecazenochi</span><span class="tag tag-user">@sedokoX</span><span class="tag tag-user">@gamestylejp</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ワンピカード OP-17「世界最強の戦士」</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">現在最も動いている弾。プレイ用カードも品薄で買取上昇中。カイドウ（描き下ろしパラレル）買取14,000円、ルフィリーパラ4,000円、ロキSEC 2,200円、プリン150円（ / ）</div><div class="item-tags"><span class="tag tag-user">@torecaru_akiba</span><span class="tag tag-user">@sickness519</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ちいかわ×くら寿司コラボグッズ</span></div>
+  <div class="item-desc">従業員による横領・転売事件でコラボ中止。湯呑み・のぼり・傘マーカーまで高値取引。ただし偽物混入リスクの指摘あり（ /  / ）</div><div class="item-tags"><span class="tag tag-user">@da_byou</span><span class="tag tag-user">@setagayakyotaro</span><span class="tag tag-user">@toutakaka1oku</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ちいかわ全般（スイングチャーム・ガチャ・食玩）</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">複数店舗ハシゴでも「うさぎ」「モモンガ」「カニ」が売切れ。コンビニ・イオン系で朝から枯れる。100均のちいかわ商品だけは余っている＝「不確定要素のある商品のみ品薄」との分析（ /  / ）</div><div class="item-tags"><span class="tag tag-user">@Tanjiro_fun</span><span class="tag tag-user">@maichn_krkr</span><span class="tag tag-user">@taroujirou99</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">パペットスンスン おしゃべりぬいぐるみ</span></div>
+  <div class="item-desc">楽天で2,310円、在庫復活と完売を繰り返す（ /  / ）</div><div class="item-tags"><span class="tag tag-user">@rakualert</span><span class="tag tag-user">@Mikunvsl</span><span class="tag tag-user">@44VSRNFhCT14901</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ BW「ブラックボルト／ホワイトフレア」AR</span></div>
+  <div class="item-desc">買取強化中。ガマゲロゲAR 7,500円、ミジュマル4,500円、ゾロア／ゾロアーク各2,500円、チラーミィ／チラチーノ各1,200円（）</div><div class="item-tags"><span class="tag tag-user">@torecaru_akiba</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">けもケット17 事前カタログ</span></div>
+  <div class="item-desc">販売開始2〜3時間で完売。10名以上が同時に驚きを投稿する異常な速度（ /  /  ほか）</div><div class="item-tags"><span class="tag tag-user">@valcood</span><span class="tag tag-user">@Ryu_san2317</span><span class="tag tag-user">@ROU_haku130</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">講談社「マンダロリアン＆グローグー」シールブック</span></div>
+  <div class="item-desc">予約完売報告続出。ただし紀伊國屋など一部書店ではまだ買え、Amazon・タワレコは未発売という指摘あり＝情報錯綜中で仕入れチャンス（ / ）</div><div class="item-tags"><span class="tag tag-user">@zenbide</span><span class="tag tag-user">@___mimmymimmy</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">米津玄師 かいじゅうずかん カードウエハース</span></div>
+  <div class="item-desc">楽天完売、Amazon在庫復活を繰り返す。メタリックカード全22種（）</div><div class="item-tags"><span class="tag tag-user">@moka44144</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">仮面ライダーマイス DXマイスドライバー</span></div>
+  <div class="item-desc">EC（ネット通販）はスペシャル版完売かプレ値。ビックカメラなど実店舗には在庫あり＝店舗が狙い目（ / ）</div><div class="item-tags"><span class="tag tag-user">@DJ_SUMOguri</span><span class="tag tag-user">@ZFNeC4Tm9Hy8wHr</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">2. お得情報・セール</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">楽天スーパーSALE開催中（〜9/9頃）</span><span class="badge badge-info">限定</span></div>
+  <div class="item-desc">ポイント20倍案件多数。ソニー4K液晶テレビが9/8 14:00〜半額、アディダスジュニアトラックスーツ50%OFF（24:00〜30分限定）（ / ）</div><div class="item-tags"><span class="tag tag-user">@car_ley_2</span><span class="tag tag-user">@ibanon0519</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ピジョン出産準備セット</span></div>
+  <div class="item-desc">11/2から36%値上げ確定。値上げ前の最終セール、ポイント20倍で約8,000ポイント還元。ポチット入り14点セット等（）</div><div class="item-tags"><span class="tag tag-user">@mama__mamoru</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Qoo10メガ割 9/9まで</span></div>
+  <div class="item-desc">INGA最大56%OFF（）</div><div class="item-tags"><span class="tag tag-user">@officialINGA_jp</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ふるさと納税 10月から実質値上げ（ポータル側の還元縮小）</span></div>
+  <div class="item-desc">9月中に駆け込むべきとの実務判断（）</div><div class="item-tags"><span class="tag tag-user">@ryoheifree</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ブルーエア空気清浄機</span></div>
+  <div class="item-desc">Amazonクーポン＋ポイントで実質793円（22畳 Blue Max 3250i）／実質2,560円（57畳 Blue Signature SP4i）。クーポン適用額が本体価格に迫る異常値（）</div><div class="item-tags"><span class="tag tag-user">@SOKUTWO</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">外付けHDD 6TBが2万円</span></div>
+  <div class="item-desc">秋葉原相場より安く、在庫消化後に値上げ噂あり（）</div><div class="item-tags"><span class="tag tag-user">@mo_ri_be</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">くら寿司10%OFF（お詫び施策）</span></div>
+  <div class="item-desc">ただし自己申告制の店舗あり、かつ商品自体が10円値上げされているとの現場報告（ / ）</div><div class="item-tags"><span class="tag tag-user">@toutakaka1oku</span><span class="tag tag-user">@HIRO_T_kyoto</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">イオン1000円ジーンズ</span></div>
+  <div class="item-desc">値上げラッシュ下の節約需要狙い（）</div><div class="item-tags"><span class="tag tag-user">@booth_hss</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">HISツアー 出発間際の在庫一掃</span></div>
+  <div class="item-desc">自己手配より安い。10月ダナン、9・10月グアムが現在安値（）</div><div class="item-tags"><span class="tag tag-user">@m_mln1</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">男梅サワー無料クーポン（対象者限定）引換期限9/8</span><span class="badge badge-info">限定</span></div>
+  <div class="item-desc">期限当日（）</div><div class="item-tags"><span class="tag tag-user">@manetora_ch</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ローソン限定 ブルックラディ クラシックラディ10年 200ml 2,640円</span><span class="badge badge-info">限定</span></div>
+  <div class="item-desc">先行販売（）</div><div class="item-tags"><span class="tag tag-user">@3594miniturbo</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">3. 転売情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">【最重要】伊勢丹新宿×サンリオキャラクターズ コラボ</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">2026年9月8日(火)10時〜、三越伊勢丹オンラインで販売。過去作プレ値、今回商品も既に高額買取募集が出ている。伊勢丹店頭は事前抽選当選者のみ、9/10(木)からフリー入場（）</div><div class="item-tags"><span class="tag tag-user">@thetenbaihancho</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「でびるでびるでJAPANツアー 全部セット」</span></div>
+  <div class="item-desc">定価15,510円 → メルカリ28,000円前後、<strong>利益約9,000円</strong>。9/6 20時から公式オンラインで販売済み（）</div><div class="item-tags"><span class="tag tag-user">@puutarou__</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30th／ワンピOP-17のプレ値相場実測</span></div>
+  <div class="item-desc">ポケカ30th：Yahoo!26,800円（最安）／楽天27,400円／Amazon38,500円。ワンピ世界最強の戦士：Yahoo!17,930円（最安）／楽天19,600円。いずれも定価超（）</div><div class="item-tags"><span class="tag tag-user">@komugichanex</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">メルカリが横領品の削除に着手</span></div>
+  <div class="item-desc">くら寿司と連携し出品削除・法的措置へ。窃盗罪（刑法235条）または業務上横領罪（同253条）の適用可能性が弁護士ドットコムで解説済み。<strong>盗品と知りながら購入した側も罪に問われる可能性</strong>の指摘あり。転売参入者はコラボ系グッズの取扱いリスクが急上昇（ /  / ）</div><div class="item-tags"><span class="tag tag-user">@investor_giglo</span><span class="tag tag-user">@taka_jade2</span><span class="tag tag-user">@lala12760856</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">無在庫転売の摘発リスク上昇</span></div>
+  <div class="item-desc">発売前グッズの出品、ポケセン当選箱そのまま転送、shop名義の無在庫予約販売などが名指しで批判・通報対象化（ / ）</div><div class="item-tags"><span class="tag tag-user">@tsuyotaku0210</span><span class="tag tag-user">@teiohhase</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ヤフオク大量まとめ売り（転売歓迎明記）</span></div>
+  <div class="item-desc">アクリルフィギュアスタンド108点、24万円相当。メロンブックス・FANZAオンラインくじ・C108品。単体売りの方が高い物が多数と出品者自ら明記＝分解転売の余地（）</div><div class="item-tags"><span class="tag tag-user">@bhiro_3g</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">海外代行業者がメルカリのレア物を秒で買い占め</span></div>
+  <div class="item-desc">国内一般ユーザーが出品に気づく前に流出。逆に言えば海外向け販路（buyee・zenmarket・FromJapan）の需要が強い（ / ）</div><div class="item-tags"><span class="tag tag-user">@milkchocoroll</span><span class="tag tag-user">@bhiro_3g</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">物販ツールで初心者が利益3,000円商品を発見</span></div>
+  <div class="item-desc">物販未経験者でもツール＋「プレ値になる商品の型」を教えるだけで拾えるとの実例報告（）</div><div class="item-tags"><span class="tag tag-user">@katukatu1996</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Amazonプレ値の塩漬けリスク</span></div>
+  <div class="item-desc">ポケカで「上がらず売れず塩漬け」の転売ヤーが発生中との現場観測。飛びつき仕入れの警告（）</div><div class="item-tags"><span class="tag tag-user">@KumamotoAiLabo</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">4. 抽選・限定販売</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">【高利益期待】Amazon「山崎12年」17,600円で抽選販売</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">サントリー山崎12年の定価付近。市場相場を大きく下回る水準（）</div><div class="item-tags"><span class="tag tag-user">@gourmetwatch</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ヤマダ電機 ワンピースカード抽選 9/7 23:00〜9/9 23:59、当選発表9/22</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">OP-17「世界最強の戦士」とEB-03「Heroines Edition」の<strong>どちらか1つのみ応募可</strong>。※東北地方は1店舗のみで実質除外との苦情あり（ / ）</div><div class="item-tags"><span class="tag tag-user">@sunrising162136</span><span class="tag tag-user">@5ta_tsu_ne5</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">カードラボ博多マルイ店 OP-17 抽選販売受付中</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">（）</div><div class="item-tags"><span class="tag tag-user">@moAr6Hb4oUtyKzX</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">カードショップMINT ガンダムカード「Freedom Ascension」【GD05】抽選、9/9(水)9時締切</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">（）</div><div class="item-tags"><span class="tag tag-user">@c_a_m_p__</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30th Celebration フルコンプ 一部店舗（全国）応募ページ公開中</span></div>
+  <div class="item-desc">（）</div><div class="item-tags"><span class="tag tag-user">@sedokoX</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">トレカインパクト ポケモン30th celebration BOX 定価販売抽選ガチャ 9/15(火)まで</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">、1ptでチャレンジ・最低保証1pt還元（）</div><div class="item-tags"><span class="tag tag-user">@toreca_impact</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">伊勢丹新宿×サンリオ 店頭は事前抽選当選者のみ、9/10(木)からフリー入場</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">（）</div><div class="item-tags"><span class="tag tag-user">@thetenbaihancho</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">うさぎカードサロン 9/8(火)買取抽選、0:00〜8:00受付・当選者は14:00までに来店必須</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">（）</div><div class="item-tags"><span class="tag tag-user">@usagicardsalon</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">懸賞系</span></div>
+  <div class="item-desc">：KFC 1,000円デジタルカード100名（）／Mリーグ 赤坂ドリブンズ サイン入りユニフォーム 9/18まで（）／骸骨騎士様LINE Amazonギフト1万円その場当選（）／シャナブレLINEスピードくじ Amazonギフト1万円（）／dショッピング500ポイント 9/8中（）</div><div class="item-tags"><span class="tag tag-user">@KFC_jp</span><span class="tag tag-user">@m_league_</span><span class="tag tag-user">@skeleton_japr</span><span class="tag tag-user">@shanaBE_ja</span><span class="tag tag-user">@lecter_HL</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">5. サクセス報告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">物販ツール使用で利益3,000円商品を初日発見</span></div>
+  <div class="item-desc">仕事を辞めた友人（物販経験ゼロ）にツールを渡し、プレ値になる商品の傾向だけ教えて放置した結果（）</div><div class="item-tags"><span class="tag tag-user">@katukatu1996</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">でびるでびる全部セットで約9,000円の利益</span><span class="badge badge-warning">高騰</span></div>
+  <div class="item-desc">会員制物販コミュニティで事前告知していた案件が実際に高騰（）</div><div class="item-tags"><span class="tag tag-user">@puutarou__</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">くら寿司ちいかわ湯呑みを先週1,500円で1つ確保</span></div>
+  <div class="item-desc">炎上前の適正価格入手（）</div><div class="item-tags"><span class="tag tag-user">@lizardglasess</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ホットケーキ系新商品を初回品薄・販売停止級の人気商品として確保</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">（）</div><div class="item-tags"><span class="tag tag-user">@MaoLeoNEO</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">スクエニe-store予約分「メタリックモンスターズギャラリー」着弾、ヘルバオムのねっこ付きがプレ値高騰中</span><span class="badge badge-warning">高騰</span></div>
+  <div class="item-desc">（）</div><div class="item-tags"><span class="tag tag-user">@DQW0928</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">忍たまハロウィングッズ再販でプレ値回避</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">プレ値で買わずに済んだ成功例が複数（ /  / ）</div><div class="item-tags"><span class="tag tag-user">@419_emiry_</span><span class="tag tag-user">@Tsurararan</span><span class="tag tag-user">@Ple2_Love_Uncle</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ソフバン社債が即完売</span></div>
+  <div class="item-desc">信用スプレッド2.2%。募集開始から短時間で消化（ / ）</div><div class="item-tags"><span class="tag tag-user">@minokuba</span><span class="tag tag-user">@H0METAR0U</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">セブンで「マンダロリアン」レアカードが初入荷分から出た</span></div>
+  <div class="item-desc">各所売切れの中、近所のセブンが穴場だった（ / ）</div><div class="item-tags"><span class="tag tag-user">@sparklecomet</span><span class="tag tag-user">@_fuchan416_</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">6. プレ値情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30th CELEBRATION BOX</span></div>
+  <div class="item-desc">定価27,500円 → 26,800〜38,500円（発売前から定価超）（）</div><div class="item-tags"><span class="tag tag-user">@komugichanex</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ワンピOP-17 世界最強の戦士 BOX</span></div>
+  <div class="item-desc">17,930〜19,600円で定価超（）</div><div class="item-tags"><span class="tag tag-user">@komugichanex</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">でびるでびる全部セット</span></div>
+  <div class="item-desc">15,510円 → 28,000円（）</div><div class="item-tags"><span class="tag tag-user">@puutarou__</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">メルカリ「22.5巻」</span></div>
+  <div class="item-desc">3万円（）</div><div class="item-tags"><span class="tag tag-user">@gyaaa_dokkoisyo</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">海外製スタチュー</span></div>
+  <div class="item-desc">30万円超のプレ値が常態（）</div><div class="item-tags"><span class="tag tag-user">@laLN2OeJF9Qc3g1</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ファーストカラー系フィギュア</span></div>
+  <div class="item-desc">10万円オーバー（ / ）</div><div class="item-tags"><span class="tag tag-user">@norinton9</span><span class="tag tag-user">@2dol_1</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">超合金魂グレンダイザー／D.C.版</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">「あり得ないプレ値」、再販要望多数（）</div><div class="item-tags"><span class="tag tag-user">@haruie1997V2</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">雑誌・書籍系のプレ値化が加速</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">「消えた作家・椎名桜子」実話誌が4,130円（）／青山真治『死の谷.95』講談社文庫が映画化決定でプレ値（）／杉菜水姫画集（濡鳥・花葬）／コロコロコミック／GRAVITY DAZEアートブック（再販で回避可）（ /  / ）</div><div class="item-tags"><span class="tag tag-user">@somichi</span><span class="tag tag-user">@hanataba_suisou</span><span class="tag tag-user">@ameya_30</span><span class="tag tag-user">@hayasaka_07lav</span><span class="tag tag-user">@Ple2_Love_Uncle</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ユニクロUT ToLOVEる</span></div>
+  <div class="item-desc">プレ値になりがちの定番銘柄（）</div><div class="item-tags"><span class="tag tag-user">@gokimann</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ヴァイスシュヴァルツ フリーレン Vol.1 BOX</span></div>
+  <div class="item-desc">プレ値が「えぐい」水準（）</div><div class="item-tags"><span class="tag tag-user">@Ssmo95J</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ハセガワ「チャム」</span></div>
+  <div class="item-desc">発売直後に売切れ、Amazonでプレ値化（）</div><div class="item-tags"><span class="tag tag-user">@gureggggru1</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">日向坂46 小坂菜緒着用 NIKE AIR MAX 95（18,700円）</span></div>
+  <div class="item-desc">公式SOLD OUT・プレ値。芸能人着用品の値動きは即反応（）</div><div class="item-tags"><span class="tag tag-user">@sakamichi_store</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">木村拓哉私物系（Apeレザーダウン等）</span></div>
+  <div class="item-desc">着用品は即完売・プレ値化する影響力（）</div><div class="item-tags"><span class="tag tag-user">@EYnkaY7zbU8esGL</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">古いレトロゲームが軒並みプレ値化中</span></div>
+  <div class="item-desc">（）</div><div class="item-tags"><span class="tag tag-user">@NT59603</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">プレ値注意銘柄</span></div>
+  <div class="item-desc">：MG RX-78-4 ガンダム4号機 定価3,520円、発送元Amazon以外はプレ値（）／ユニオンアリーナ BLEACH アドバンスデッキ（）</div><div class="item-tags"><span class="tag tag-user">@orange_2178</span><span class="tag tag-user">@w1TCG_JOHO</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">7. 入荷・再販情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ガンプラ大型再販（9/8 0:00前後にAmazon・楽天ブックスで一斉在庫復活）</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">MG リック・ディアス（クワトロ機）4,400円／HGUC バウンド・ドック 5,500円／HGUC ザクII改 1,540円／HGUC バーザム 1,980円／HGCE デスティニーガンダム（ハイネ専用機）2,640円／RG ウイングガンダム 3,520円／MGEX マイティーストライクフリーダム 26,400円／PG UNLEASHED νガンダム／HG ハンブラビ(GQ) 2,860円／FULL MECHANICS グレイズアイン 7,150円 ほか多数（ /  /  /  / ）</div><div class="item-tags"><span class="tag tag-user">@gunpla_saihan</span><span class="tag tag-user">@tsumipla_kuzuse</span><span class="tag tag-user">@gonzareiasu0945</span><span class="tag tag-user">@JQo8kZjEX7qKkSx</span><span class="tag tag-user">@aanc20</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">妖怪ウォッチ DXシリーズ・妖怪メダル再販決定</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">未所持勢の需要が顕在化（ / ）</div><div class="item-tags"><span class="tag tag-user">@kumagawa_yp</span><span class="tag tag-user">@m_ijzz</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ドラクエ クリスタルモンスターズ〜真の魔王とメタルスライムたち編〜</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">1回500円カプセルトイ、ガシャココで9月再販予定（）</div><div class="item-tags"><span class="tag tag-user">@guernicass4</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">忍たま ハロウィン絵柄グッズ再販</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">当時受注ではなくプレ値化していた雑渡・伝子・半子アクスタ等（ / ）</div><div class="item-tags"><span class="tag tag-user">@419_emiry_</span><span class="tag tag-user">@Tsurararan</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ちいかわ 映画グッズ・ミニソフビが断続的に再販中</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">（）</div><div class="item-tags"><span class="tag tag-user">@sxs1301</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケモン モンコレ「ぽこ あ ポケモン コレクション メタモン（ラプラスへんしん）」</span></div>
+  <div class="item-desc">Amazon予約再開（3回目）（）</div><div class="item-tags"><span class="tag tag-user">@amarareitem</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ベイブレードX BX-50 ランダムブースターVol.11</span></div>
+  <div class="item-desc">Amazon在庫復活 1,382円（）</div><div class="item-tags"><span class="tag tag-user">@stock_alert_lab</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">POP UP PARADE ホロライブ 宝鐘マリン</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">再販分Amazon販売開始（）</div><div class="item-tags"><span class="tag tag-user">@hakka_nn</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">アンパンマン ボアリュック在庫復活</span></div>
+  <div class="item-desc">（）／<strong>たまごっちたまもりシール ボンドロ在庫復活</strong>（）</div><div class="item-tags"><span class="tag tag-user">@koko_wolfY</span><span class="tag tag-user">@UKosumo72983</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">SPRiNG 9月号（表紙M!LK）</span></div>
+  <div class="item-desc">売切れ⇄在庫復活を繰り返し中（）</div><div class="item-tags"><span class="tag tag-user">@narimi85</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ELIXIR SPECIAL BOOK（トライアル12点）</span></div>
+  <div class="item-desc">Amazon予約開始（）</div><div class="item-tags"><span class="tag tag-user">@202302hiro1216</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">名探偵コナンTCG CT-P09／CT-P10</span></div>
+  <div class="item-desc">Amazon在庫復活（ / ）</div><div class="item-tags"><span class="tag tag-user">@elu2022</span><span class="tag tag-user">@f4_83</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">hitotsume系・アリエク系</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">：3連ローダーが品薄、ダイソーなら再入荷早いとの実務情報（ / ）</div><div class="item-tags"><span class="tag tag-user">@Nguyn31760998</span><span class="tag tag-user">@aya_rebuild</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">8. 注意・警告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">【最重要】盗品・横領品の購入者もリスクあり</span></div>
+  <div class="item-desc">くら寿司ちいかわグッズはメルカリと企業が連携して出品削除・法的措置へ進行中。買った側も罪に問われる場合があるとの指摘。<strong>現在流通中のくら寿司コラボ品には手を出さない</strong>（ /  / ）</div><div class="item-tags"><span class="tag tag-user">@lala12760856</span><span class="tag tag-user">@taka_jade2</span><span class="tag tag-user">@investor_giglo</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">くら寿司の湯呑みは偽物混入リスク</span></div>
+  <div class="item-desc">中途半端に出回ったためプレ値が付くが、真贋判定困難（）</div><div class="item-tags"><span class="tag tag-user">@da_byou</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ・トレカの塩漬け発生中</span></div>
+  <div class="item-desc">「Amazonプレ値だから買う転売ヤー → 全く上がらず売れず塩漬け」の実例。生産量が読めず、カードショップでキャンセル多発（）</div><div class="item-tags"><span class="tag tag-user">@KumamotoAiLabo</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「発売即メルカリで2〜3千円取引される物」は既に終了サイン</span></div>
+  <div class="item-desc">プレ値で買った物は消費されず万単位の未開封在庫として滞留するため、市場が死ぬ。目をつけられる前に消費される商品こそ本当に危険（＝価値が残る）という相場観（）</div><div class="item-tags"><span class="tag tag-user">@oruje</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">プレ値購入後の再販リスク</span><span class="badge badge-danger">暴落</span></div>
+  <div class="item-desc">忍たま・GRAVITY DAZE・妖怪メダル等、直後に公式再販が来て暴落する事例が同日だけで複数（ /  / ）</div><div class="item-tags"><span class="tag tag-user">@LYm2001997</span><span class="tag tag-user">@Ple2_Love_Uncle</span><span class="tag tag-user">@Tsurararan</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">メルカリの規約違反判定に巻き込まれる誤爆事例</span></div>
+  <div class="item-desc">無関係の一般出品者が窃盗・転売と決めつけられ規約違反扱いされた報告あり（）</div><div class="item-tags"><span class="tag tag-user">@as_u_na_0411</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">レシートの転売・譲渡は禁止</span></div>
+  <div class="item-desc">不自然な大量応募はブラックリスト入りの可能性（）</div><div class="item-tags"><span class="tag tag-user">@roua0</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">無在庫転売の手口が名指しで拡散中</span></div>
+  <div class="item-desc">「店頭でスマホを操作 → メルカリに出品だけ → 売れたら買って発送」が広く認知され、通報・晒し対象化。ガンプラ売場での監視意識が強い（）</div><div class="item-tags"><span class="tag tag-user">@teiohhase</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Amazonの出品者に注意</span></div>
+  <div class="item-desc">発送元がAmazon以外はプレ値の可能性（MG ガンダム4号機の例）（）</div><div class="item-tags"><span class="tag tag-user">@orange_2178</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">中古通販の状態表記リスク</span></div>
+  <div class="item-desc">ブックオフ・ネットオフ・駿河屋でプレ値の円盤を買うのはギャンブル、状態悪い個体が多い（）</div><div class="item-tags"><span class="tag tag-user">@swaptv</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">サイバー攻撃向けAI商材市場の拡大</span></div>
+  <div class="item-desc">Claudeの盗難セッションクッキーが0.5〜35ドルで買い取られ、「Claude-Mythos」「GPT-5.6」アクセス権の転売、公式API比65%安を謳うフィルターなし中継サービスまで確認。<strong>安価なAI API転売サービスには手を出さない</strong>（）</div><div class="item-tags"><span class="tag tag-user">@MalwareBibleJP</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">各種値上げ予告（仕入れ原価に直結）</span></div>
+  <div class="item-desc">SHOEI 10/1から10%値上げ／ミスタードーナツ 9/30から31品目値上げ（ポン・デ・リング170円）／ピジョン 11/2から36%値上げ／NURO光500円値上げ／iCloud・MLB配信（5倍）・Softbankタブレットプラン・嵯峨野観光鉄道（630→880円）ほか（ /  /  /  / ）</div><div class="item-tags"><span class="tag tag-user">@TZR1MC22</span><span class="tag tag-user">@bosphore_du</span><span class="tag tag-user">@mama__mamoru</span><span class="tag tag-user">@shota_sisisi</span><span class="tag tag-user">@nagaok_arimiya</span></div>
+</div></div>
+</section>
+
+</body>
+</html>

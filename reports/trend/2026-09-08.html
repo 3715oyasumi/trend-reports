@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月8日（火）版</p>
+  <p class="total-count">本日のトレンド: 10件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ちゅるもち明太クリームうどん（セブン-イレブン）</div>
+    <div class="card-detail"><span class="label">特徴</span>明太子を和えたうどんで、もちもち食感と色鮮やかな見た目が売り。販売地域は東北・関東・東海・山口県・九州</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月8日（新商品投入期間は9月8日から9月14日）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">626円</span></div>
+    <div class="card-source"><a href="https://news.mynavi.jp/article/20260907-4916901/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ガーリックオニオンのグリルチキン弁当（セブン-イレブン）</div>
+    <div class="card-detail"><span class="label">特徴</span>同週投入の弁当カテゴリ新商品。販売地域は埼玉・千葉・東京・神奈川・静岡・福岡・佐賀・大分の8都県</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月8日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">699円</span></div>
+    <div class="card-source"><a href="https://news.mynavi.jp/article/20260907-4916901/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">月見フィナンシェケーキ／とろける月見パンケーキ（ローソン）</div>
+    <div class="card-detail"><span class="label">特徴</span>お月見シーズンに合わせたデザート2品。同日にはmeijiコラボのチョコクロワッサン（192円）、特撰 豚まん 塩・醤油（各270円）も投入され、9月8日発売分は計24アイテム</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月8日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">月見フィナンシェケーキ257円／とろける月見パンケーキ292円（いずれも税込）</span></div>
+    <div class="card-source"><a href="https://www.lawson.co.jp/recommend/new/list/1531756_5162.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">バーガーキング「ワッパー祭り」</div>
+    <div class="card-detail"><span class="label">特典内容</span>公式アプリ限定クーポンで対象ワッパーセット5種が一律300円引き、割引率は最大28%OFF。ワッパー チーズ セット1,090円から790円、スモーキーBBQ／テリヤキ／スパイシーの各ワッパーセット1,070円から770円、ダブルワッパー チーズ セット1,540円から1,240円。1会計3セットまで、他割引との併用およびデリバリーは対象外。公式アプリ1,000万会員突破記念</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月7日から9月11日の5日間、クーポン利用は各日14時から</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://game.watch.impress.co.jp/docs/news/2138635.html">出典を確認する</a>／<a href="https://gourmet.watch.impress.co.jp/docs/news/2138120.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">にじさんじオフィシャルストア 6周年記念キャンペーン</div>
+    <div class="card-detail"><span class="label">特典内容</span>「にじストア6周年メモリアルグッズ」販売開始に合わせ、対象タグ商品を税込10,000円以上購入で配送料をストア側が負担</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月7日18時00分から9月14日23時59分</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-source"><a href="https://www.nijisanji.jp/news/r3j5j05yobce">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">くら寿司×ちいかわ 限定オリジナル湯呑み</div>
+    <div class="card-detail"><span class="label">市場状況</span>会計2,500円ごとに1個プレゼントされる非売品景品。配布開始は9月4日だったにもかかわらず前日の9月3日時点でメルカリに複数出品され、確認できた出品価格は約7,000円から11,000円台、一部はすでに売却済み。くら寿司は9月5日に従業員による不正行為を確認し、9月6日営業開始をもってコラボ企画を中止。メルカリは9月7日、くら寿司と連携して不正入手の疑いがある出品の削除対応を実施していると表明</div>
+    <div class="card-detail"><span class="label">注意点</span>本来は非売品の景品であり、定価という概念自体が存在しない。配布中止済みで真贋・入手経路の確認が困難なうえ、無在庫出品（現物を持たずに出品する行為）も混在しているため、フリマでの購入はトラブルリスクが高い</div>
+    <div class="card-source"><a href="https://news.livedoor.com/article/detail/32264581/">出典を確認する</a>／<a href="https://gourmet.watch.impress.co.jp/docs/news/2138556.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケモンカードゲーム「30th CELEBRATION」</div>
+    <div class="card-detail"><span class="label">市場状況</span>9月16日発売の30周年記念パック。メーカー希望小売価格は1パック（6枚入り）360円、1BOX（20パック入り）7,200円（いずれも税込）だが、未開封BOXの取引相場は2026年9月時点で<span class="card-amount">42,000円</span>と、定価の約5.8倍で推移。予約は各所で抽選対応となっている</div>
+    <div class="card-detail"><span class="label">注意点</span>周年記念パックは再販頻度が低く高騰しやすい一方、すでにピークを打って下落に転じたカードも出ている。発売前の高値掴みはリスクが大きい</div>
+    <div class="card-source"><a href="https://snkrdunk.com/articles/32425/">出典を確認する</a>／<a href="https://price-base.com/useful/30thcelebration-market">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">レクサス コンパクトSUV「UX」</div>
+    <div class="card-detail"><span class="label">理由</span>トヨタが「ブランド全体のモデルラインアップなどを総合的に勘案」した結果として生産終了を決定。生産終了は2027年2月、一部モデル・ボディーカラーはすでに販売終了済みで、9月4日までに公式サイト上で告知された。UXは2018年11月発売でレクサス初のコンパクトSUV、EV版「UX300e」は2025年11月に生産終了済み</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>現行UXの新車購入を検討している場合は、生産枠が埋まる前の早期商談が必要。より小型の「LBX」（2023年投入）が実質的な受け皿となる</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/f3621d423c6ebc0be870dbd35d3e33b16afa07fc">出典を確認する</a>／<a href="https://news.yahoo.co.jp/articles/7172df3c2f1d68ba50a0fd368ffca6055285c469">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">医療用医薬品の供給停止・限定出荷（2026年9月7日更新分）</div>
+    <div class="card-detail"><span class="label">理由</span>供給停止に移行したのは「ヒシファーゲン配合静注」（薬価削除が理由）と「マキサカルシトール軟膏25μg/g『イワキ』」（製造トラブル）の2品目。加えてニキビ治療薬「アダパレンゲル0.1%『東光』」ほか2品目が限定出荷に移行、一方で「ジクアホソルNa点眼液3%」など3品目は限定出荷が解除された</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★☆☆☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>処方薬が該当する場合は、次回受診時に代替薬の可否をかかりつけ医・薬局へ事前相談しておくと切り替えがスムーズ</div>
+    <div class="card-source"><a href="https://closedi.jp/medicine_supply/25722/">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">分析コメント</div>
+    <div class="card-detail"><span class="label">コメント</span>本日の最大の論点は、くら寿司×ちいかわ騒動が「転売」から「サプライチェーン内部の統制不備」へと質的に変わった点にある。配布前日に非売品が7,000円から11,000円で市場に出た事実は、店頭抜き取りという内部起点の漏洩を示唆しており、企業が中止という最も重いコスト（コラボ6施策全停止）を負わざるを得なかった。今後、景品配布型キャンペーンは配布量管理と従業員統制のコスト増を織り込む必要があり、企画そのものの縮小圧力になる。</div>
+    <div class="card-detail"><span class="label">コメント</span>一方、消費側の実需は堅調で、コンビニ2社が9月8日に月見・秋メニューを一斉投入し、バーガーキングが最大28%OFFの短期集中クーポンで来店を刈り取る構図は例年通り。値引き施策がアプリ会員限定・時間帯限定に寄っており、値引き原資を「囲い込み投資」として使う流れが一段と鮮明になっている。</div>
+    <div class="card-detail"><span class="label">コメント</span>ポケカ30周年パックは定価7,200円に対し発売前相場42,000円と約5.8倍。周年商材の希少性プレミアムは実需より投機で形成されており、発売直後の供給量次第で急落する典型パターンにあるため、コレクション目的以外での先行購入は推奨しない。</div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

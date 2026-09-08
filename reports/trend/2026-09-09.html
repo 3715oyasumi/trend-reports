@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月9日（水）版</p>
+  <p class="total-count">本日のトレンド: 11件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ローソン「とろける月見パンケーキ」ほか月見スイーツ</div>
+    <div class="card-detail"><span class="label">特徴</span>お月見シーズン向けの新作スイーツ。「とろける月見パンケーキ」292円、「月見フィナンシェケーキ」257円、「月見スイートポテトプリン」281円を展開。同時にコラボパン各192円も投入</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月8日（月見スイートポテトプリンは9月7日）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">257円〜292円（税込）</span></div>
+    <div class="card-source"><a href="https://news.mynavi.jp/article/20260908-4931982/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ファミリーマート「タルタル白身フライの海苔弁当（白身フライ個数1.5倍）」</div>
+    <div class="card-detail"><span class="label">特徴</span>定番海苔弁の増量版で、白身フライの個数を従来比1.5倍に。同日展開として「スパイス香る！ロースかつカレー（チーズのせ）」645円、「トリプルチーズ月見バーガー」438円も発売</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月8日〜9月21日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">598円（税込）</span></div>
+    <div class="card-source"><a href="https://news.mynavi.jp/article/20260908-4927129/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブン-イレブン「ガーリックオニオンのグリルチキン弁当」ほか新作弁当・麺</div>
+    <div class="card-detail"><span class="label">特徴</span>9月8日〜14日発売分としてグリルチキン弁当699円、明太クリームうどん626円を投入。9月13日以降はロースかつ丼699円、海老ピラフ496円、9月14日以降は牛丼645円が続く</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月8日〜（一部は9月13日・14日以降順次）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">496円〜699円（税込）</span></div>
+    <div class="card-source"><a href="https://news.mynavi.jp/article/20260907-4916901/">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ホットペッパーグルメ「秋のポイントUPフェア2026」</div>
+    <div class="card-detail"><span class="label">特典内容</span>エントリーのうえネット・アプリ予約で来店すると、ディナーは250ポイント×来店人数（最大4名）、ランチは250ポイント×来店人数（最大2名）を付与。1予約あたり最大1,000ポイント（ディナー）または500ポイント（ランチ）、期間中合計上限15,000ポイント。電話予約は対象外</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月7日（月）〜10月31日（土）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://www.hotpepper.jp/campaign/pointup_202609/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブン-イレブン「午後の紅茶」1個買うと1個もらえるキャンペーン</div>
+    <div class="card-detail"><span class="label">特典内容</span>対象商品1本の購入で、「午後の紅茶 おいしい無糖」等から選べる無料引換券を進呈。あわせて「デルモンテ ピュレフルーツ」50円引きクーポン、おにぎり・寿司まとめ買い50円引きも実施</div>
+    <div class="card-detail"><span class="label">期間</span>購入期間2026年9月8日〜14日／引換期間9月15日〜28日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://bg-mania.jp/2026/09/08703103.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">湖池屋「復活総選挙〜ポテトチップス編〜」</div>
+    <div class="card-detail"><span class="label">特典内容</span>終売した過去商品20品から投票でNo.1を決め、2027年2月に商品化。予選投票は9月8日〜14日、決選投票は9月24日〜10月8日、最終結果発表は10月16日。参加には無料会員登録が必要</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月8日（火）〜10月16日（金）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★☆☆☆</span></div>
+    <div class="card-source"><a href="https://www.nissin.com/jp/company/news/13917/">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">「配信者ハイパーゲーム大会 FINAL」東京ドーム公演チケット</div>
+    <div class="card-detail"><span class="label">市場状況</span>11月28日・29日開催イベントでチケット転売が発生。主催の加藤純一氏が定価での買い取りと手売りを表明し、9月8日11時までに310件超のリプライが集まっている。転売価格の具体額は不明</div>
+    <div class="card-detail"><span class="label">注意点</span>主催者が定価買い取り・定価手売りを明言しているため、二次流通での購入は経済的合理性が低い。チケット不正転売禁止法の対象となる取引に手を出さないこと</div>
+    <div class="card-source"><a href="https://www.j-cast.com/2026/09/08517750.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケモンカードゲーム「30th CELEBRATION」（30周年記念パック）</div>
+    <div class="card-detail"><span class="label">市場状況</span>9月16日発売の全世界同時発売商品。定価は1パック360円、1BOX 7,200円。需要集中により大半の販売店が抽選販売に切り替えており、抽選申込の締切は9月10日〜13日に集中。発売前二次流通の相場は不明</div>
+    <div class="card-detail"><span class="label">注意点</span>発売前の相場は未確定で、発売後の実売価格は大きく変動しうる。定価入手を狙うなら本日中の申込確認が実質的な期限</div>
+    <div class="card-source"><a href="https://snkrdunk.com/articles/32425/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ガンプラ「EXモデル 1/144 ヒルドルブ【再販】」</div>
+    <div class="card-detail"><span class="label">市場状況</span>プレミアムバンダイで9月8日11時から予約受付を開始。価格は8,580円で、前回販売時から約1,100円程度の上昇が指摘されている。発送予定は2027年3月。SNS反応はポジティブ75%、ネガティブ25%</div>
+    <div class="card-detail"><span class="label">注意点</span>受注生産型の予約商品であり、予約期間内に定価で確保できれば二次流通のプレミアム価格を回避できる。発送が約1年半先である点に留意</div>
+    <div class="card-source"><a href="https://search.yahoo.co.jp/realtime/search/matome/b3d970b9b248449ca1f9beba1895e6bb-1788824400">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">「ポムポムプリン30周年 ポムポムヒーローマスコット」</div>
+    <div class="card-detail"><span class="label">理由</span>天候不良による商品到着遅延</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★☆☆☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>一般販売は9月15日から全国の書店・ネット書店で開始。特別先行販売は紀伊國屋書店の一部店舗で9月9日から、一部サンリオショップで9月11日から順次実施。価格は4,400円（税込）で、確実に狙うなら先行販売枠の活用が有効</div>
+    <div class="card-source"><a href="https://animeanime.jp/article/2026/09/08/102756.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">台風24号・秋雨前線による宅配・通販の配送遅延</div>
+    <div class="card-detail"><span class="label">理由</span>台風24号と秋雨前線による大雨で、航空便の機材縮小、フェリー運航への影響、道路事情の悪化が発生</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>日本郵便は鹿児島県内一部地域向けの保冷扱いゆうパックを当面停止。ヤマト運輸は福島県内一部地域で荷受けを停止し、鹿児島県十島村・三島村および沖縄県全域で遅延の可能性。該当地域向けの通販注文・生鮮品の手配は着日指定を避け、各社の運行状況ページで最新情報を確認すること</div>
+    <div class="card-source"><a href="https://www.lnews.jp/2026/09/s0907101.html">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>本日の消費財市場は「お月見商戦の一斉投入」と「実質値引き型キャンペーンへの回帰」が同時進行している。コンビニ3社が9月8日を軸に月見スイーツ・月見バーガーを揃え、セブンは「1個買うと1個無料」の引換券型に注力している。二次流通側では、ポケモンカードゲーム30周年パックの抽選申込が9月10日〜13日に集中し、主催者主導の転売抑止も出てきている。物流面では台風24号による南西諸島・沖縄・一部本州での遅延が継続中で、9月中旬の予約商品や生鮮の着日指定は余裕を持たせるべき局面である。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

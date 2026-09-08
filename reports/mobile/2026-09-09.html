@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MNP・モバイル情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>MNP・モバイル情報</h1>
+  <p class="report-date">2026年9月9日</p>
+  <p class="total-count">本日のモバイル案件: 8件</p>
+
+  <h2>UQ mobile <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">Google Pixel 10a（128GB）オンラインショップおトク割増額</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">4万4000円割引</span>、機種代金4万5800円、プログラム併用時の実質負担47円</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>UQ mobile オンラインショップ</div>
+    <div class="card-detail"><span class="label">条件</span>他社からのMNP。au・povoからの乗り換えは対象外</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月7日から終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2138873.html">出典を確認する</a></div>
+  </div>
+
+  <h2>LINEMO <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">紹介キャンペーン経由の契約事務手数料無料</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">契約事務手数料3850円無料</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>LINEMO</div>
+    <div class="card-detail"><span class="label">条件</span>専用URL経由でLINEMOベストプランまたはLINEMOベストプランVに申し込み、申込月の翌月末までに利用開始</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月7日から2026年9月18日</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2138684.html">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">セキュリティパックプレミアム(L)最大3カ月無料</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">月額770円が最大3カ月間無料</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>LINEMO</div>
+    <div class="card-detail"><span class="label">条件</span>新規契約、またはミニプラン・スマホプランからLINEMOベストプラン・LINEMOベストプランVへの変更</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月7日から2026年9月13日（申込期間）</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2138724.html">出典を確認する</a></div>
+  </div>
+
+  <h2>povo <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">1年間トッピング購入でGoogle Store割引クーポン進呈</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">Google Storeで使える10％割引クーポン</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>データ追加60GBから1.32TBの1年間トッピング購入。Amazonプライム付きも対象。本気割との併用可能</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月7日から2026年12月31日、クーポン利用期限は2027年1月6日</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2138733.html">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">横浜DeNAベイスターズ連携キャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">1回0.5GB（24時間）、月最大5GB</span>。データ使い放題プロモコード、抽選特典あり</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>球場内でpovo Data Oasisを利用。ベイマガ購読者・観戦チケット購入者、または990円以上のトッピング購入者が対象</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月8日から2026年10月7日</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2138701.html">出典を確認する</a></div>
+  </div>
+
+  <h2>Y!mobile（ワイモバイル） <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">週替わりセールの認定中古iPhone 13など</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">iPhone 13（128GB）9800円</span>。一部機種で3000円から6000円相当のPayPayポイント付与</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ワイモバイルオンラインストア</div>
+    <div class="card-detail"><span class="label">条件</span>iPhone 13はMNPとシンプル3 MまたはL契約が必要。対象機種にmoto g66y 5G、POCO X8 Pro、REDMI Note 17 Pro Max 5G、arrows Alpha2など</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月15日9時59分まで</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2139009.html">出典を確認する</a></div>
+  </div>
+
+  <h2>IIJmio <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">初期費用の改定</div>
+    <div class="card-detail"><span class="label">還元</span>エントリーパッケージ利用で初期費用無料。ただし期間限定キャンペーンとの併用に制限あり</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>IIJmioモバイルサービス ギガプランおよびIIJmio eSIMサービス データプラン ゼロが対象。契約事務手数料は<span class="card-amount">3850円</span>に改定</div>
+    <div class="card-detail"><span class="label">期間</span>2026年12月1日以降の申し込み分から</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137720.html">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">25ギガプラン ステップアップキャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">5GB進呈</span>、実質30GBを月額2000円で利用可能</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>2ギガ・5ギガ・10ギガ・15ギガプランから25ギガプランへ変更。1回線につき1回まで</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日から2026年10月30日23時59分（申込期間）</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2137764.html">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※還元・条件は確認時点のものです。</p>
+</body>
+</html>

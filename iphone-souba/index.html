@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iPhone相場まとめ 2026-09-09</title>
+<style>
+  /* ===== デザイントークン（Apple DESIGN.md 由来） ===== */
+  :root {
+    color-scheme: light;
+    /* 配色 */
+    --primary: #0066cc;          /* Action Blue: 操作色はこの1色のみ */
+    --primary-focus: #0071e3;    /* フォーカスリング */
+    --ink: #1d1d1f;              /* 本文・見出しの近黒 */
+    --ink-muted-80: #333333;
+    --ink-muted-48: #7a7a7a;
+    --hairline: #e0e0e0;
+    --divider-soft: #f0f0f0;
+    --canvas: #ffffff;
+    --parchment: #f5f5f7;        /* Apple定番のオフホワイト */
+    --pearl: #fafafc;
+    --pos: #0a7d32;              /* プラス方向の値 */
+    --neg: #c0332e;              /* マイナス方向の値（前週比のみで使用） */
+    --hi-bg: #eef6ff;            /* 買取最高値セルの淡い強調 */
+    --band: #ffffff;             /* 機種グループの帯（奇数） */
+    --band-alt: #f5f5f7;         /* 機種グループの帯（偶数） */
+    --group-line: #d2d2d7;       /* 機種が切り替わる位置の区切り線 */
+    /* タイポグラフィ */
+    --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+            system-ui, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+            "Yu Gothic UI", "Meiryo", sans-serif;
+    /* 余白 */
+    --sp-xxs: 4px; --sp-xs: 8px; --sp-sm: 12px; --sp-md: 17px;
+    --sp-lg: 24px; --sp-xl: 32px; --sp-xxl: 48px; --sp-section: 80px;
+    /* 角丸 */
+    --r-sm: 8px; --r-md: 11px; --r-lg: 18px; --r-pill: 9999px;
+    /* 影（薄く1種類だけ） */
+    --shadow-soft: 0 1px 3px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.05);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.47;
+    letter-spacing: -0.374px;
+  }
+
+  /* ===== ヘッダー（白キャンバスの見出し帯） ===== */
+  .hero {
+    background: var(--canvas);
+    padding: var(--sp-lg) var(--sp-lg) var(--sp-md);
+    border-bottom: 1px solid var(--divider-soft);
+  }
+  /* 画面幅を使い切る（幅制限なし・左右は24pxの余白のみ） */
+  .hero-inner { max-width: none; margin: 0; }
+  .hero h1 {
+    margin: 0 0 var(--sp-xxs);
+    font-size: 32px; font-weight: 600; line-height: 1.1;
+    letter-spacing: -0.5px; text-wrap: balance;
+  }
+  .hero .meta {
+    margin: 0; font-size: 13px; line-height: 1.4;
+    color: var(--ink-muted-48); letter-spacing: -0.1px;
+  }
+
+  /* ===== 固定ツールバー（状態切替＋検索） ===== */
+  .toolbar {
+    position: sticky; top: 0; z-index: 30;
+    background: rgba(245,245,247,.82);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--hairline);
+    padding: var(--sp-sm) var(--sp-lg);
+  }
+  .toolbar-inner {
+    max-width: none; margin: 0;
+    display: flex; flex-direction: column; gap: var(--sp-xs);
+  }
+  .toolbar-row {
+    display: flex; align-items: center; gap: var(--sp-md); flex-wrap: wrap;
+  }
+  .toolbar-row.filters { gap: var(--sp-sm); }
+  /* プルダウン（シリーズ・機種） */
+  .sel { display: inline-flex; align-items: center; gap: var(--sp-xxs); }
+  .sel-lbl {
+    font-size: 13px; color: var(--ink-muted-48); letter-spacing: -0.1px; white-space: nowrap;
+  }
+  .sel select {
+    appearance: none; -webkit-appearance: none;
+    font-family: var(--font); font-size: 15px; letter-spacing: -0.224px; color: var(--ink);
+    background-color: var(--canvas);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='7'><path d='M1 1.5l4 4 4-4' fill='none' stroke='%237a7a7a' stroke-width='1.6' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat; background-position: right 14px center;
+    border: 1px solid rgba(0,0,0,.08); border-radius: var(--r-pill);
+    height: 40px; padding: 0 36px 0 16px; cursor: pointer;
+    max-width: 240px; text-overflow: ellipsis;
+  }
+  .sel select:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 1px; }
+  .seg.caps button { padding: 9px 14px; }
+  /* セグメンテッドコントロール */
+  .seg {
+    display: inline-flex; background: rgba(120,120,128,.12);
+    border-radius: var(--r-md); padding: 3px; gap: 2px;
+  }
+  .seg button {
+    appearance: none; border: 0; background: transparent; cursor: pointer;
+    font-family: var(--font); font-size: 15px; font-weight: 400;
+    letter-spacing: -0.224px; color: var(--ink);
+    padding: 9px 18px; border-radius: 9px; min-height: 40px;
+    transition: background .15s ease, box-shadow .15s ease;
+  }
+  .seg button[aria-pressed="true"] {
+    background: var(--canvas); font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  }
+  .seg button:active { transform: scale(.96); }
+  .seg button:focus-visible { outline: 2px solid var(--primary-focus); outline-offset: 2px; }
+
+  .search {
+    flex: 1 1 260px; min-width: 200px; max-width: 420px;
+    display: flex; align-items: center;
+  }
+  .search input {
+    width: 100%; height: 44px;
+    font-family: var(--font); font-size: 17px; letter-spacing: -0.374px;
+    color: var(--ink); background: var(--canvas);
+    border: 1px solid rgba(0,0,0,.08); border-radius: var(--r-pill);
+    padding: 0 20px;
+  }
+  .search input:focus { outline: 2px solid var(--primary-focus); outline-offset: 1px; }
+  #count { font-size: 14px; color: var(--ink-muted-48); letter-spacing: -0.224px; white-space: nowrap; }
+
+  /* ===== 本文 ===== */
+  .wrap { max-width: none; margin: 0; padding: var(--sp-md) var(--sp-lg) var(--sp-xxl); }
+
+  .warn {
+    background: var(--canvas); border: 1px solid var(--hairline);
+    border-left: 4px solid var(--ink-muted-48);
+    border-radius: var(--r-md); padding: var(--sp-md) var(--sp-lg);
+    font-size: 17px; margin: 0 0 var(--sp-md);
+  }
+
+  /* 要約カードは1枚だけ。表の表示開始位置を上げるため幅も抑える */
+  .cards {
+    display: grid; grid-template-columns: minmax(320px, 420px);
+    gap: var(--sp-md); margin-bottom: var(--sp-md);
+  }
+  .card {
+    background: var(--canvas); border: 1px solid var(--hairline);
+    border-radius: var(--r-lg); padding: var(--sp-lg);
+    box-shadow: var(--shadow-soft);
+  }
+  .card h2 {
+    margin: 0 0 var(--sp-sm);
+    font-size: 21px; font-weight: 600; line-height: 1.19;
+    letter-spacing: -0.3px;
+  }
+  .card .sub {
+    margin: 0 0 var(--sp-sm); font-size: 14px; color: var(--ink-muted-48);
+    letter-spacing: -0.224px;
+  }
+  .card ul { margin: 0; padding: 0; list-style: none; }
+  .card li {
+    font-size: 17px; line-height: 1.5; padding: 9px 0;
+    border-bottom: 1px solid var(--divider-soft);
+  }
+  .card li:last-child { border-bottom: 0; }
+  .card li b { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .card li .sub { display: block; margin: 2px 0 0; font-size: 14px; color: var(--ink-muted-48); }
+  .pos { color: var(--pos); }
+  .neg { color: var(--neg); }
+  .card .empty { margin: 0; font-size: 17px; color: var(--ink-muted-48); }
+  .card .note { font-size: 15px; line-height: 1.6; color: var(--ink-muted-80); margin: 0; }
+  .card .note + .note { margin-top: var(--sp-sm); }
+
+  /* ===== 表（PC幅） ===== */
+  .tablebox {
+    background: var(--canvas); border: 1px solid var(--hairline);
+    border-radius: var(--r-lg); box-shadow: var(--shadow-soft);
+    /* 表自体をスクロール枠にすることで見出し行と左2列の固定（sticky）を有効にする。
+       さらに枠ごと sticky にして、ページを縦スクロールしても枠が画面外へ流れない
+       ようにする（＝見出し行が常にツールバーの直下に残る）。
+       --toolbar-h はツールバーの実測高さをJSが設定する */
+    position: sticky; top: var(--toolbar-h, 104px);
+    overflow: auto; -webkit-overflow-scrolling: touch;
+    max-height: calc(100vh - var(--toolbar-h, 104px) - 28px);
+  }
+  table { border-collapse: separate; border-spacing: 0; width: 100%; white-space: nowrap; }
+  th, td {
+    border-bottom: 1px solid var(--divider-soft);
+    padding: 12px 16px; text-align: left;
+  }
+  th {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--pearl); cursor: pointer; user-select: none;
+    font-size: 14px; font-weight: 600; line-height: 1.29; letter-spacing: -0.224px;
+    color: var(--ink-muted-80); white-space: nowrap;
+  }
+  th:hover { color: var(--primary); }
+  th.asc::after { content: " ▲"; color: var(--primary); }
+  th.desc::after { content: " ▼"; color: var(--primary); }
+
+  /* 店舗名から各社の公式買取ページへ飛ぶリンク（下線は薄く、ホバーで青） */
+  th a, .shoplist a {
+    color: inherit; text-decoration: underline;
+    text-decoration-color: rgba(0,0,0,.2); text-underline-offset: 3px;
+  }
+  th a:hover, .shoplist a:hover { color: var(--primary); text-decoration-color: var(--primary); }
+  th a:focus-visible, .shoplist a:focus-visible {
+    outline: 2px solid var(--primary-focus); outline-offset: 2px;
+  }
+
+  /* 左2列（機種・容量）は横スクロールしても左端に残す。
+     --col1w は機種列の実測幅をJSが設定する（容量列の固定位置に使う） */
+  th.col-model, td.col-model { position: sticky; left: 0; }
+  th.col-cap, td.col-cap { position: sticky; left: var(--col1w, 210px); }
+  td.col-model, td.col-cap { z-index: 10; background: var(--row-bg); }
+  th.col-model, th.col-cap { z-index: 30; }   /* 交差部（左上）は最前面 */
+  th.col-cap, td.col-cap { border-right: 1px solid var(--hairline); }
+
+  tbody td { font-size: 17px; }
+  td.model { font-weight: 600; letter-spacing: -0.374px; }
+  td.num {
+    text-align: right; font-variant-numeric: tabular-nums;
+    font-size: 19px; letter-spacing: -0.3px;
+  }
+  td.empty-cell { color: var(--ink-muted-48); }
+  td.hi { background: var(--hi-bg); font-weight: 600; font-size: 20px; color: var(--primary); }
+  td.pos { color: var(--pos); font-weight: 600; }
+  td.neg { color: var(--neg); font-weight: 600; }
+
+  /* 機種グループごとの帯（同じ機種の容量違いをひとまとまりに見せる） */
+  tbody tr { --row-bg: var(--band); background: var(--row-bg); }
+  tbody tr.band { --row-bg: var(--band-alt); }
+  tbody tr.grp-start td { border-top: 2px solid var(--group-line); }
+  tbody tr:first-child td { border-top: 0; }
+  tbody tr:last-child td { border-bottom: 0; }
+
+  /* 店舗列のアクセント色（見出しの下線＋列セルの細い下線で縦に追える） */
+  th.shop-0 { background: #e1eaf3; box-shadow: inset 0 -3px 0 #5b8dbe; }
+  td.shop-0 { border-bottom-color: #a5c0db; }
+  .shoplist li.shop-0 { border-left-color: #5b8dbe; background: #f4f7fa; }
+  .dot.shop-0 { background: #5b8dbe; }
+  th.shop-1 { background: #e4efeb; box-shadow: inset 0 -3px 0 #6aa88f; }
+  td.shop-1 { border-bottom-color: #adcfc1; }
+  .shoplist li.shop-1 { border-left-color: #6aa88f; background: #f5f9f7; }
+  .dot.shop-1 { background: #6aa88f; }
+  th.shop-2 { background: #f1eaf3; box-shadow: inset 0 -3px 0 #b08bbf; }
+  td.shop-2 { border-bottom-color: #d4bfdc; }
+  .shoplist li.shop-2 { border-left-color: #b08bbf; background: #f9f7fb; }
+  .dot.shop-2 { background: #b08bbf; }
+  th.shop-3 { background: #f4eae4; box-shadow: inset 0 -3px 0 #c08a6a; }
+  td.shop-3 { border-bottom-color: #dcbfad; }
+  .shoplist li.shop-3 { border-left-color: #c08a6a; background: #fbf7f5; }
+  .dot.shop-3 { background: #c08a6a; }
+  th.shop-4 { background: #e7ecf5; box-shadow: inset 0 -3px 0 #7c93c9; }
+  td.shop-4 { border-bottom-color: #b7c4e1; }
+  .shoplist li.shop-4 { border-left-color: #7c93c9; background: #f6f7fb; }
+  .dot.shop-4 { background: #7c93c9; }
+  th.shop-5 { background: #eeefe5; box-shadow: inset 0 -3px 0 #a2a86e; }
+  td.shop-5 { border-bottom-color: #cccfaf; }
+  .shoplist li.shop-5 { border-left-color: #a2a86e; background: #f8f9f5; }
+  .dot.shop-5 { background: #a2a86e; }
+  th.shop-6 { background: #f5eaed; box-shadow: inset 0 -3px 0 #c98b9a; }
+  td.shop-6 { border-bottom-color: #e1bfc7; }
+  .shoplist li.shop-6 { border-left-color: #c98b9a; background: #fbf7f8; }
+  .dot.shop-6 { background: #c98b9a; }
+  th.shop-7 { background: #e5efef; box-shadow: inset 0 -3px 0 #6fa5a8; }
+  td.shop-7 { border-bottom-color: #b0cecf; }
+  .shoplist li.shop-7 { border-left-color: #6fa5a8; background: #f5f9f9; }
+  .dot.shop-7 { background: #6fa5a8; }
+  th.shop-8 { background: #edebf3; box-shadow: inset 0 -3px 0 #9a8fbf; }
+  td.shop-8 { border-bottom-color: #c7c1dc; }
+  .shoplist li.shop-8 { border-left-color: #9a8fbf; background: #f8f7fb; }
+  .dot.shop-8 { background: #9a8fbf; }
+  th.shop-9 { background: #f3eee4; box-shadow: inset 0 -3px 0 #bfa06a; }
+  td.shop-9 { border-bottom-color: #dccbad; }
+  .shoplist li.shop-9 { border-left-color: #bfa06a; background: #fbf8f5; }
+  .dot.shop-9 { background: #bfa06a; }
+  th.shop-10 { background: #e8eff5; box-shadow: inset 0 -3px 0 #7fa8c9; }
+  td.shop-10 { border-bottom-color: #b9cfe1; }
+  .shoplist li.shop-10 { border-left-color: #7fa8c9; background: #f6f9fb; }
+  .dot.shop-10 { background: #7fa8c9; }
+  th.shop-11 { background: #ebf0e8; box-shadow: inset 0 -3px 0 #8fae7f; }
+  td.shop-11 { border-bottom-color: #c1d2b9; }
+  .shoplist li.shop-11 { border-left-color: #8fae7f; background: #f7f9f6; }
+  .dot.shop-11 { background: #8fae7f; }
+  th.shop-12 { background: #f5ede7; box-shadow: inset 0 -3px 0 #c99a7a; }
+  td.shop-12 { border-bottom-color: #e1c7b6; }
+  .shoplist li.shop-12 { border-left-color: #c99a7a; background: #fbf8f6; }
+  .dot.shop-12 { background: #c99a7a; }
+  th.shop-13 { background: #ebedf1; box-shadow: inset 0 -3px 0 #8f9bb3; }
+  td.shop-13 { border-bottom-color: #c1c8d5; }
+  .shoplist li.shop-13 { border-left-color: #8f9bb3; background: #f7f8fa; }
+  .dot.shop-13 { background: #8f9bb3; }
+
+  /* ===== カード表示（スマホ幅） ===== */
+  .mobile-list { display: none; }
+  .mcard {
+    background: var(--canvas); border: 1px solid var(--hairline);
+    border-radius: var(--r-lg); box-shadow: var(--shadow-soft);
+    padding: var(--sp-lg); margin-bottom: var(--sp-sm);
+  }
+  /* 機種グループの見出し（カード表示でも機種の切れ目が分かるように挟む） */
+  .mgroup {
+    margin: var(--sp-lg) 0 var(--sp-xs); padding: 0 var(--sp-xxs);
+    font-size: 15px; font-weight: 600; color: var(--ink-muted-48);
+    letter-spacing: -0.224px; text-transform: none;
+    border-bottom: 2px solid var(--group-line); padding-bottom: var(--sp-xxs);
+  }
+  .mgroup:first-child { margin-top: 0; }
+  .mcard h3 {
+    margin: 0 0 var(--sp-sm); font-size: 21px; font-weight: 600;
+    line-height: 1.19; letter-spacing: -0.3px;
+  }
+  .mcard h3 .cap {
+    display: inline-block; margin-left: var(--sp-xs);
+    font-size: 14px; font-weight: 400; color: var(--ink-muted-48);
+    background: var(--parchment); border-radius: var(--r-pill); padding: 3px 12px;
+    vertical-align: middle; letter-spacing: -0.224px;
+  }
+  .mrow {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: var(--sp-sm); padding: 10px 0; border-bottom: 1px solid var(--divider-soft);
+  }
+  .mrow:last-of-type { border-bottom: 0; }
+  .mrow .lbl { font-size: 15px; color: var(--ink-muted-48); letter-spacing: -0.224px; }
+  .mrow .val { font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -0.4px; }
+  .mrow .val.small { font-size: 19px; font-weight: 400; }
+  .mrow .val.pos { color: var(--pos); }
+  .mrow .val.neg { color: var(--neg); }
+  .mrow .shop { font-size: 15px; font-weight: 400; color: var(--ink-muted-48); display: block; text-align: right; }
+  .mcard details { margin-top: var(--sp-sm); border-top: 1px solid var(--divider-soft); padding-top: var(--sp-sm); }
+  .mcard summary {
+    cursor: pointer; list-style: none; color: var(--primary);
+    font-size: 17px; letter-spacing: -0.374px; padding: 6px 0; min-height: 44px;
+    display: flex; align-items: center;
+  }
+  .mcard summary::-webkit-details-marker { display: none; }
+  .mcard summary::after { content: " ＋"; margin-left: 4px; }
+  .mcard details[open] summary::after { content: " －"; }
+  .shoplist { margin: 0; padding: 0; list-style: none; }
+  /* 店舗ごとの色帯（PC表の見出しと同じ14色）を左端に出す */
+  .shoplist li {
+    display: flex; justify-content: space-between; gap: var(--sp-sm);
+    padding: 8px 10px; border-bottom: 1px solid var(--divider-soft); font-size: 16px;
+    border-left: 3px solid transparent; border-radius: 4px;
+  }
+  .shoplist li:last-child { border-bottom: 0; }
+  /* 買取最高値の店名に添える丸ドット（折りたたみを開かなくても色で分かる） */
+  .dot {
+    display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+    margin-right: 6px; vertical-align: middle; background: var(--ink-muted-48);
+  }
+  .shoplist .p { font-variant-numeric: tabular-nums; font-weight: 600; }
+  .shoplist li.top .p { color: var(--primary); }
+  .shoplist .none { color: var(--ink-muted-48); font-weight: 400; }
+
+  footer {
+    margin-top: var(--sp-xl); padding-top: var(--sp-lg);
+    border-top: 1px solid var(--hairline);
+    font-size: 14px; line-height: 1.6; color: var(--ink-muted-48);
+    letter-spacing: -0.224px;
+  }
+  footer p { margin: 0 0 var(--sp-sm); }
+
+  /* ===== レスポンシブ ===== */
+  @media (max-width: 900px) {
+    body { font-size: 17px; }
+    .hero { padding: var(--sp-xl) var(--sp-md) var(--sp-lg); }
+    .hero h1 { font-size: 30px; letter-spacing: -0.4px; }
+    .hero .meta { font-size: 15px; }
+    .toolbar { padding: var(--sp-xs) var(--sp-md); }
+    .toolbar-inner { gap: var(--sp-xs); }
+    .toolbar-row { gap: var(--sp-xs); }
+    .seg { width: 100%; }
+    .seg button { flex: 1 1 0; padding: 9px 4px; font-size: 14px; }
+    /* 絞り込み: プルダウンは2列、容量ボタンは横スクロールで押しやすい大きさを保つ */
+    .sel { flex: 1 1 46%; }
+    .sel select { width: 100%; max-width: none; height: 42px; }
+    .seg.caps { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .seg.caps button { flex: 0 0 auto; padding: 9px 14px; min-width: 64px; }
+    .search { flex: 1 1 100%; max-width: none; }
+    .search input { height: 42px; font-size: 16px; }
+    .wrap { padding: var(--sp-lg) var(--sp-md) var(--sp-xxl); }
+    .cards { grid-template-columns: 1fr; gap: var(--sp-sm); }
+    .tablebox { display: none; }
+    .mobile-list { display: block; }
+  }
+  @media (max-width: 419px) {
+    .hero h1 { font-size: 26px; }
+    .mrow .val { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <h1>iPhone相場まとめ</h1>
+    <p class="meta">データ取得日: 2026-09-09（毎週月曜自動更新）</p>
+  </div>
+</div>
+
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <div class="toolbar-row">
+      <div class="seg" id="seg" role="group" aria-label="端末の状態"><button type="button" data-cond="unused" aria-pressed="false">未使用</button><button type="button" data-cond="used" aria-pressed="true">中古美品</button><button type="button" data-cond="worn" aria-pressed="false">中古使用感あり</button></div>
+      <div class="search">
+        <input id="q" type="search" placeholder="キーワードで絞り込み（例: 15 Pro 256GB）" aria-label="キーワードで絞り込み">
+      </div>
+      <span id="count"></span>
+    </div>
+    <div class="toolbar-row filters">
+      <label class="sel"><span class="sel-lbl">シリーズ</span>
+        <select id="fSeries" aria-label="シリーズで絞り込み"></select></label>
+      <label class="sel"><span class="sel-lbl">機種</span>
+        <select id="fModel" aria-label="機種で絞り込み"></select></label>
+      <span class="sel-lbl">容量</span>
+      <div class="seg caps" id="fCap" role="group" aria-label="容量で絞り込み"></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="cards">
+  <div class="card">
+    <h2>前週比 変動トップ5</h2>
+    <p class="sub">買取最高値の増減が大きい順（中古美品基準・固定）</p>
+    <p class='empty'>比較できる前回データがありません</p>
+  </div>
+</div>
+
+<div class="tablebox">
+  <table id="t">
+    <thead><tr><th class="col-model">機種</th><th class="col-cap">容量</th><th class="shop shop-0"><a href="https://www.cashgophone.jp/" target="_blank" rel="noopener">Cash Go!</a></th><th class="shop shop-1"><a href="https://www.pc-koubou.jp/kaitori/sumaho.php" target="_blank" rel="noopener">PC工房</a></th><th class="shop shop-2"><a href="https://mmoba.emcom.site/" target="_blank" rel="noopener">mmoba</a></th><th class="shop shop-3"><a href="https://furumoba.jp/" target="_blank" rel="noopener">ふるいち</a></th><th class="shop shop-4"><a href="https://buymobile.geo-online.co.jp/" target="_blank" rel="noopener">ゲオ</a></th><th class="shop shop-5"><a href="https://www.smartphone-kaitori.mb.softbank.jp/price/" target="_blank" rel="noopener">ソフトバンク</a></th><th class="shop shop-6"><a href="https://shiroromu.jp/" target="_blank" rel="noopener">ダイワンテレコム</a></th><th class="shop shop-7"><a href="https://www.nicosuma.com/sell/smartphone/iphone" target="_blank" rel="noopener">ニコスマ</a></th><th class="shop shop-8"><a href="https://www.netoff.co.jp/mobilebuy/" target="_blank" rel="noopener">ネットオフ</a></th><th class="shop shop-9"><a href="https://buymobile.nojima.co.jp/" target="_blank" rel="noopener">ノジマ</a></th><th class="shop shop-10"><a href="https://www.buyers-buy-mobile.com/" target="_blank" rel="noopener">バイヤーズ</a></th><th class="shop shop-11"><a href="https://pastec.net/" target="_blank" rel="noopener">モバステ</a></th><th class="shop shop-12"><a href="https://mobazo.jp/" target="_blank" rel="noopener">モバゾウ</a></th><th class="shop shop-13"><a href="https://raku-uru.sofmap.com/tradein/" target="_blank" rel="noopener">ラクウル</a></th><th>買取最高値</th><th>最高値の店</th><th>メルカリ 未使用に近い</th><th>メルカリ 傷なし</th><th>メルカリ やや傷あり</th><th>差額</th><th>前週比</th></tr></thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<div class="mobile-list" id="mlist"></div>
+
+<footer>
+  <p>差額 = メルカリ同状態の中央値 × 90% − 750円 − 買取最高値。プラスなら自分で売るほうが手取りが多い目安、マイナスなら買取のほうが手取りが多い目安です。</p>
+  <p>表の見方: 機種が変わるごとに背景の帯と太い区切り線が入ります。店舗名の見出しの色と、その列のセルの下線の色は対応しています。各行で最も高い買取価格は青字で強調しています。</p>
+  <p>データ源: 買取はモバウル（smartphone-kaitori-hikaku.com）、ソフトバンク Yahoo!スマホ買取（smartphone-kaitori.mb.softbank.jp）、ラクウル ソフマップ（raku-uru.sofmap.com）。メルカリは mercapi（売切・取引中を売切として集計）の中央値。前回比較: なし（初回）。</p>
+  <p>状態の対応: 未使用 → メルカリ「未使用に近い」／中古美品 → 「傷なし」／中古使用感あり → 「やや傷あり」。</p>
+  <p>ソフトバンクは査定ランク4段階のうち上位2つを中古美品・中古使用感ありに対応付け（未使用の区分なし）。ラクウルは状態別価格がなく単一価格のため中古美品として掲載。データのない区分は「−」で表示します。</p>
+  <p>自動生成のため実際の査定額とは異なる場合があります。</p>
+</footer>
+</div>
+
+<script>
+var DATA = {"shops":["Cash Go!","PC工房","mmoba","ふるいち","ゲオ","ソフトバンク","ダイワンテレコム","ニコスマ","ネットオフ","ノジマ","バイヤーズ","モバステ","モバゾウ","ラクウル"],"shopUrls":{"Cash Go!":"https://www.cashgophone.jp/","PC工房":"https://www.pc-koubou.jp/kaitori/sumaho.php","mmoba":"https://mmoba.emcom.site/","ふるいち":"https://furumoba.jp/","ゲオ":"https://buymobile.geo-online.co.jp/","ソフトバンク":"https://www.smartphone-kaitori.mb.softbank.jp/price/","ダイワンテレコム":"https://shiroromu.jp/","ニコスマ":"https://www.nicosuma.com/sell/smartphone/iphone","ネットオフ":"https://www.netoff.co.jp/mobilebuy/","ノジマ":"https://buymobile.nojima.co.jp/","バイヤーズ":"https://www.buyers-buy-mobile.com/","モバステ":"https://pastec.net/","モバゾウ":"https://mobazo.jp/","ラクウル":"https://raku-uru.sofmap.com/tradein/"},"conds":[{"key":"unused","label":"未使用","mer":"未使用に近い"},{"key":"used","label":"中古美品","mer":"傷なし"},{"key":"worn","label":"中古使用感あり","mer":"やや傷あり"}],"merLabels":["未使用に近い","傷なし","やや傷あり"],"keep":0.9,"ship":750,"records":[{"m":"iPhone SE(第2世代)","c":"64GB","cn":64,"ro":1,"s":"SE","k":{"unused":{"ダイワンテレコム":21000,"バイヤーズ":21000,"Cash Go!":15000,"ふるいち":15000,"ノジマ":14000,"ゲオ":13000,"モバゾウ":13000,"モバステ":10500,"ネットオフ":9450},"used":{"PC工房":13000,"モバゾウ":12500,"Cash Go!":12000,"ダイワンテレコム":11000,"バイヤーズ":11000,"ふるいち":11000,"ゲオ":9000,"ニコスマ":9000,"モバステ":8500,"ネットオフ":8400,"ノジマ":8000,"ソフトバンク":12000,"ラクウル":10000},"worn":{"ノジマ":12000,"ゲオ":7200,"ダイワンテレコム":7000,"バイヤーズ":7000,"ふるいち":7000,"ネットオフ":3150,"ソフトバンク":8800}},"mer":{"未使用に近い":14399,"傷なし":11000,"やや傷あり":10800},"pd":null,"pp":null},{"m":"iPhone SE(第2世代)","c":"128GB","cn":128,"ro":1,"s":"SE","k":{"unused":{"ダイワンテレコム":23000,"バイヤーズ":23000,"ふるいち":19000,"Cash Go!":17000,"ノジマ":16000,"モバゾウ":15000,"ゲオ":13000,"ネットオフ":11550,"モバステ":11500},"used":{"PC工房":15000,"モバゾウ":14500,"Cash Go!":14000,"ダイワンテレコム":13000,"バイヤーズ":13000,"ふるいち":13000,"ゲオ":11000,"ネットオフ":10500,"モバステ":9500,"ノジマ":9000,"ニコスマ":9000,"ソフトバンク":14000,"ラクウル":12000},"worn":{"ノジマ":14000,"ゲオ":8800,"ダイワンテレコム":8000,"バイヤーズ":8000,"ふるいち":8000,"ネットオフ":3675,"ソフトバンク":9600}},"mer":{"未使用に近い":16050,"傷なし":11900,"やや傷あり":10800},"pd":null,"pp":null},{"m":"iPhone SE(第2世代)","c":"256GB","cn":256,"ro":1,"s":"SE","k":{"unused":{"ダイワンテレコム":25000,"バイヤーズ":25000,"Cash Go!":19000,"ふるいち":19000,"ノジマ":18000,"モバゾウ":17000,"ゲオ":15400,"ネットオフ":13650,"モバステ":12500},"used":{"PC工房":17000,"モバゾウ":16500,"Cash Go!":16000,"ダイワンテレコム":15000,"バイヤーズ":15000,"ふるいち":15000,"ネットオフ":12600,"ゲオ":12000,"ニコスマ":12000,"ノジマ":11000,"モバステ":10500,"ソフトバンク":16000,"ラクウル":14000},"worn":{"ノジマ":16000,"ダイワンテレコム":10000,"バイヤーズ":10000,"ふるいち":10000,"ゲオ":9600,"ネットオフ":4200,"ソフトバンク":11200}},"mer":{"未使用に近い":22000,"傷なし":15000,"やや傷あり":13000},"pd":null,"pp":null},{"m":"iPhone SE(第3世代)","c":"64GB","cn":64,"ro":10,"s":"SE","k":{"unused":{"モバゾウ":50000,"モバステ":45000,"ノジマ":42000,"ネットオフ":39900,"Cash Go!":38700,"ふるいち":38000,"ダイワンテレコム":38000,"バイヤーズ":38000,"ゲオ":26000},"used":{"モバゾウ":26000,"ダイワンテレコム":22000,"バイヤーズ":22000,"ふるいち":20000,"ネットオフ":18900,"PC工房":18000,"ニコスマ":18000,"Cash Go!":17100,"ゲオ":16000,"モバステ":15500,"ノジマ":14000,"ソフトバンク":22000,"ラクウル":19000},"worn":{"ノジマ":22000,"ダイワンテレコム":14000,"バイヤーズ":14000,"ふるいち":13000,"ゲオ":12800,"ネットオフ":10500,"ソフトバンク":14400}},"mer":{"未使用に近い":28000,"傷なし":20500,"やや傷あり":30429},"pd":null,"pp":null},{"m":"iPhone SE(第3世代)","c":"128GB","cn":128,"ro":10,"s":"SE","k":{"unused":{"モバゾウ":53000,"ノジマ":50000,"モバステ":49000,"ネットオフ":48300,"ふるいち":43000,"Cash Go!":42300,"ダイワンテレコム":41000,"バイヤーズ":41000,"ゲオ":30000},"used":{"モバゾウ":26000,"ダイワンテレコム":26000,"バイヤーズ":26000,"モバステ":24500,"ふるいち":24000,"PC工房":24000,"ネットオフ":23100,"ゲオ":23000,"Cash Go!":20900,"ニコスマ":20000,"ノジマ":18400,"ソフトバンク":26000,"ラクウル":24000},"worn":{"ノジマ":26000,"ゲオ":18400,"ダイワンテレコム":18000,"バイヤーズ":18000,"ふるいち":17000,"ネットオフ":13650,"ソフトバンク":18400}},"mer":{"未使用に近い":38400,"傷なし":32980,"やや傷あり":27850},"pd":null,"pp":null},{"m":"iPhone SE(第3世代)","c":"256GB","cn":256,"ro":10,"s":"SE","k":{"unused":{"モバゾウ":58000,"ダイワンテレコム":55000,"ノジマ":55000,"バイヤーズ":55000,"ネットオフ":52500,"モバステ":51000,"ふるいち":50000,"Cash Go!":49000,"ゲオ":35000},"used":{"モバゾウ":34000,"ダイワンテレコム":34000,"バイヤーズ":34000,"PC工房":32000,"ネットオフ":30450,"ふるいち":30000,"Cash Go!":30000,"ニコスマ":28000,"モバステ":27500,"ゲオ":27000,"ノジマ":24000,"ソフトバンク":34000,"ラクウル":29000},"worn":{"ノジマ":34000,"ダイワンテレコム":24000,"バイヤーズ":24000,"ふるいち":22000,"ゲオ":21600,"ネットオフ":16800,"ソフトバンク":24000}},"mer":{"未使用に近い":44600,"傷なし":48800,"やや傷あり":43000},"pd":null,"pp":null},{"m":"iPhone 12","c":"64GB","cn":64,"ro":2,"s":"12","k":{"unused":{"ダイワンテレコム":37000,"バイヤーズ":37000,"Cash Go!":30100,"mmoba":29000,"ノジマ":29000,"モバゾウ":29000,"ふるいち":28000,"ネットオフ":26250,"ゲオ":25000,"モバステ":25000},"used":{"モバゾウ":28000,"Cash Go!":27000,"mmoba":26500,"ダイワンテレコム":25000,"バイヤーズ":25000,"ふるいち":23000,"モバステ":23000,"PC工房":23000,"ノジマ":19000,"ゲオ":19000,"ニコスマ":19000,"ネットオフ":18900,"ソフトバンク":27000,"ラクウル":19000},"worn":{"ノジマ":27000,"ダイワンテレコム":19000,"バイヤーズ":19000,"ゲオ":15200,"ふるいち":15000,"ネットオフ":9450,"ソフトバンク":19200}},"mer":{"未使用に近い":28000,"傷なし":21950,"やや傷あり":21000},"pd":null,"pp":null},{"m":"iPhone 12","c":"128GB","cn":128,"ro":2,"s":"12","k":{"unused":{"ダイワンテレコム":39000,"バイヤーズ":39000,"Cash Go!":33000,"ふるいち":32000,"ゲオ":32000,"ノジマ":32000,"モバゾウ":31000,"mmoba":30000,"ネットオフ":28350,"モバステ":27500},"used":{"モバゾウ":30000,"Cash Go!":29000,"mmoba":28500,"ダイワンテレコム":27000,"バイヤーズ":27000,"PC工房":26000,"モバステ":25500,"ふるいち":25000,"ゲオ":25000,"ネットオフ":22050,"ニコスマ":20500,"ノジマ":20000,"ソフトバンク":29000,"ラクウル":21000},"worn":{"ノジマ":29000,"ダイワンテレコム":21000,"バイヤーズ":21000,"ゲオ":20000,"ふるいち":17000,"ネットオフ":10500,"ソフトバンク":20800}},"mer":{"未使用に近い":35650,"傷なし":23000,"やや傷あり":23000},"pd":null,"pp":null},{"m":"iPhone 12","c":"256GB","cn":256,"ro":2,"s":"12","k":{"unused":{"ダイワンテレコム":41000,"バイヤーズ":41000,"ふるいち":36000,"Cash Go!":34000,"mmoba":33000,"ゲオ":33000,"ノジマ":33000,"モバゾウ":32000,"ネットオフ":31500,"モバステ":29000},"used":{"モバゾウ":31500,"ダイワンテレコム":31000,"バイヤーズ":31000,"Cash Go!":31000,"mmoba":31000,"PC工房":29000,"ふるいち":27000,"モバステ":27000,"ゲオ":26000,"ネットオフ":24150,"ノジマ":22000,"ニコスマ":21500,"ソフトバンク":31000,"ラクウル":24000},"worn":{"ノジマ":31000,"ダイワンテレコム":23000,"バイヤーズ":23000,"ゲオ":20800,"ふるいち":19000,"ネットオフ":12600,"ソフトバンク":21600}},"mer":{"未使用に近い":44800,"傷なし":30500,"やや傷あり":25000},"pd":null,"pp":null},{"m":"iPhone 12 mini","c":"64GB","cn":64,"ro":3,"s":"12","k":{"unused":{"ダイワンテレコム":33000,"バイヤーズ":33000,"Cash Go!":26200,"ノジマ":26000,"モバゾウ":26000,"ふるいち":25000,"mmoba":24000,"ネットオフ":21000,"ゲオ":20000,"モバステ":16500},"used":{"mmoba":21500,"ふるいち":21000,"PC工房":21000,"モバゾウ":20500,"Cash Go!":20000,"ダイワンテレコム":19000,"バイヤーズ":19000,"ネットオフ":16800,"ゲオ":15000,"ニコスマ":15000,"モバステ":14500,"ノジマ":14000,"ソフトバンク":20000,"ラクウル":17000},"worn":{"ノジマ":20000,"ダイワンテレコム":13000,"バイヤーズ":13000,"ふるいち":13000,"ゲオ":12000,"ネットオフ":8400,"ソフトバンク":14400}},"mer":{"未使用に近い":28000,"傷なし":18250,"やや傷あり":16600},"pd":null,"pp":null},{"m":"iPhone 12 mini","c":"128GB","cn":128,"ro":3,"s":"12","k":{"unused":{"ダイワンテレコム":36000,"バイヤーズ":36000,"Cash Go!":28100,"ふるいち":28000,"ノジマ":28000,"モバゾウ":28000,"mmoba":27000,"ネットオフ":24150,"ゲオ":21000,"モバステ":18500},"used":{"モバゾウ":25500,"Cash Go!":25000,"mmoba":24500,"PC工房":24000,"ダイワンテレコム":23000,"バイヤーズ":23000,"ふるいち":23000,"ネットオフ":19950,"ノジマ":18000,"ゲオ":17000,"ニコスマ":17000,"モバステ":16500,"ソフトバンク":25000,"ラクウル":19000},"worn":{"ノジマ":25000,"ダイワンテレコム":16000,"バイヤーズ":16000,"ふるいち":14000,"ゲオ":13600,"ネットオフ":9450,"ソフトバンク":16800}},"mer":{"未使用に近い":35800,"傷なし":18750,"やや傷あり":18950},"pd":null,"pp":null},{"m":"iPhone 12 mini","c":"256GB","cn":256,"ro":3,"s":"12","k":{"unused":{"ダイワンテレコム":40000,"バイヤーズ":40000,"Cash Go!":30100,"mmoba":30000,"ふるいち":30000,"ノジマ":30000,"モバゾウ":30000,"ネットオフ":27300,"ゲオ":24000,"モバステ":19500},"used":{"モバゾウ":27500,"Cash Go!":27000,"mmoba":27000,"PC工房":27000,"ふるいち":26000,"ダイワンテレコム":25000,"バイヤーズ":25000,"ネットオフ":22050,"ノジマ":19000,"ゲオ":19000,"ニコスマ":18000,"モバステ":17500,"ソフトバンク":27000,"ラクウル":21000},"worn":{"ノジマ":27000,"ダイワンテレコム":18000,"バイヤーズ":18000,"ふるいち":16000,"ゲオ":15200,"ネットオフ":10500,"ソフトバンク":18400}},"mer":{"未使用に近い":41400,"傷なし":22000,"やや傷あり":20750},"pd":null,"pp":null},{"m":"iPhone 12 Pro","c":"128GB","cn":128,"ro":4,"s":"12","k":{"unused":{"ダイワンテレコム":42000,"バイヤーズ":42000,"ノジマ":37000,"Cash Go!":36900,"モバステ":35500,"mmoba":35000,"ふるいち":35000,"モバゾウ":35000,"ネットオフ":34650,"ゲオ":30000},"used":{"モバゾウ":34500,"Cash Go!":34000,"モバステ":33500,"ダイワンテレコム":32000,"バイヤーズ":32000,"mmoba":31000,"ふるいち":30000,"PC工房":30000,"ネットオフ":26250,"ノジマ":24000,"ゲオ":24000,"ニコスマ":24000,"ソフトバンク":34000,"ラクウル":26000},"worn":{"ノジマ":34000,"ダイワンテレコム":24000,"バイヤーズ":24000,"ゲオ":19200,"ふるいち":19000,"ネットオフ":12600,"ソフトバンク":24000}},"mer":{"未使用に近い":43000,"傷なし":35000,"やや傷あり":33000},"pd":null,"pp":null},{"m":"iPhone 12 Pro","c":"256GB","cn":256,"ro":4,"s":"12","k":{"unused":{"ダイワンテレコム":47000,"バイヤーズ":47000,"ノジマ":41000,"Cash Go!":40700,"mmoba":40000,"ふるいち":40000,"モバステ":39500,"モバゾウ":39000,"ネットオフ":37800,"ゲオ":35000},"used":{"モバゾウ":38500,"Cash Go!":38000,"モバステ":37500,"ダイワンテレコム":36000,"バイヤーズ":36000,"mmoba":36000,"PC工房":34000,"ふるいち":33000,"ネットオフ":29400,"ゲオ":28000,"ニコスマ":28000,"ノジマ":27000,"ソフトバンク":38000,"ラクウル":29000},"worn":{"ノジマ":38000,"ダイワンテレコム":27000,"バイヤーズ":27000,"ゲオ":22400,"ふるいち":21000,"ネットオフ":13650,"ソフトバンク":27200}},"mer":{"未使用に近い":48000,"傷なし":36000,"やや傷あり":35000},"pd":null,"pp":null},{"m":"iPhone 12 Pro","c":"512GB","cn":512,"ro":4,"s":"12","k":{"unused":{"ダイワンテレコム":50000,"バイヤーズ":50000,"mmoba":48000,"ふるいち":45000,"ノジマ":44000,"Cash Go!":43700,"ネットオフ":43050,"モバステ":42500,"モバゾウ":42000,"ゲオ":40000},"used":{"mmoba":42000,"モバゾウ":41500,"Cash Go!":41000,"モバステ":40500,"ダイワンテレコム":40000,"バイヤーズ":40000,"PC工房":39000,"ふるいち":36000,"ネットオフ":33600,"ゲオ":31000,"ノジマ":29000,"ニコスマ":29000,"ソフトバンク":41000,"ラクウル":32000},"worn":{"ノジマ":41000,"ダイワンテレコム":30000,"バイヤーズ":30000,"ゲオ":24800,"ふるいち":23000,"ネットオフ":16800,"ソフトバンク":28800}},"mer":{"未使用に近い":57900,"傷なし":43750,"やや傷あり":40000},"pd":null,"pp":null},{"m":"iPhone 12 Pro Max","c":"128GB","cn":128,"ro":5,"s":"12","k":{"unused":{"ダイワンテレコム":50000,"バイヤーズ":50000,"mmoba":46000,"ふるいち":45000,"ノジマ":44000,"Cash Go!":43700,"ネットオフ":43050,"モバステ":42500,"モバゾウ":42000,"ゲオ":38000},"used":{"モバゾウ":41500,"Cash Go!":41000,"mmoba":40500,"モバステ":40500,"ダイワンテレコム":40000,"バイヤーズ":40000,"PC工房":38000,"ふるいち":37000,"ゲオ":35000,"ネットオフ":33600,"ニコスマ":29500,"ノジマ":29000,"ソフトバンク":41000,"ラクウル":34000},"worn":{"ノジマ":41000,"ダイワンテレコム":29000,"バイヤーズ":29000,"ゲオ":28000,"ふるいち":23000,"ネットオフ":17850,"ソフトバンク":28800}},"mer":{"未使用に近い":57000,"傷なし":45000,"やや傷あり":45250},"pd":null,"pp":null},{"m":"iPhone 12 Pro Max","c":"256GB","cn":256,"ro":5,"s":"12","k":{"unused":{"ダイワンテレコム":56000,"バイヤーズ":56000,"mmoba":51000,"ふるいち":50000,"ノジマ":50000,"Cash Go!":49500,"ネットオフ":49350,"モバステ":47500,"モバゾウ":47000,"ゲオ":45000},"used":{"モバゾウ":46500,"Cash Go!":46000,"モバステ":45500,"ダイワンテレコム":45000,"バイヤーズ":45000,"mmoba":44500,"PC工房":44000,"ふるいち":42000,"ゲオ":40000,"ネットオフ":38850,"ニコスマ":33500,"ノジマ":32000,"ソフトバンク":46000,"ラクウル":39000},"worn":{"ノジマ":46000,"ダイワンテレコム":33000,"バイヤーズ":33000,"ゲオ":32000,"ふるいち":26000,"ネットオフ":21000,"ソフトバンク":32800}},"mer":{"未使用に近い":62800,"傷なし":48250,"やや傷あり":47544},"pd":null,"pp":null},{"m":"iPhone 12 Pro Max","c":"512GB","cn":512,"ro":5,"s":"12","k":{"unused":{"ダイワンテレコム":59000,"バイヤーズ":59000,"ふるいち":55000,"ノジマ":54000,"ネットオフ":53550,"Cash Go!":53400,"mmoba":52000,"ゲオ":51000,"モバゾウ":51000,"モバステ":49500},"used":{"モバゾウ":50500,"Cash Go!":50000,"mmoba":50000,"ダイワンテレコム":49000,"バイヤーズ":49000,"PC工房":48000,"モバステ":47500,"ふるいち":46000,"ゲオ":45000,"ネットオフ":43050,"ニコスマ":36500,"ノジマ":36000,"ソフトバンク":50000,"ラクウル":44000},"worn":{"ノジマ":50000,"ダイワンテレコム":37000,"バイヤーズ":37000,"ゲオ":36000,"ふるいち":29000,"ネットオフ":23100,"ソフトバンク":36000}},"mer":{"未使用に近い":75000,"傷なし":54400,"やや傷あり":52500},"pd":null,"pp":null},{"m":"iPhone 13","c":"128GB","cn":128,"ro":6,"s":"13","k":{"unused":{"ダイワンテレコム":60000,"バイヤーズ":60000,"ノジマ":45000,"モバゾウ":44000,"Cash Go!":43700,"mmoba":42000,"ネットオフ":42000,"モバステ":41500,"ふるいち":40000,"ゲオ":32000},"used":{"ダイワンテレコム":43000,"バイヤーズ":43000,"モバゾウ":43000,"Cash Go!":42000,"モバステ":39500,"mmoba":38000,"PC工房":37000,"ふるいち":35000,"ネットオフ":31500,"ニコスマ":31000,"ノジマ":29000,"ゲオ":24000,"ソフトバンク":42000,"ラクウル":32000},"worn":{"ノジマ":42000,"ダイワンテレコム":32000,"バイヤーズ":32000,"ふるいち":23000,"ネットオフ":21000,"ゲオ":19200,"ソフトバンク":29600}},"mer":{"未使用に近い":51000,"傷なし":34249,"やや傷あり":33416},"pd":null,"pp":null},{"m":"iPhone 13","c":"256GB","cn":256,"ro":6,"s":"13","k":{"unused":{"ダイワンテレコム":63000,"バイヤーズ":63000,"ノジマ":47000,"モバゾウ":47000,"ネットオフ":46200,"mmoba":46000,"Cash Go!":45600,"ふるいち":45000,"モバステ":45000,"ゲオ":40000},"used":{"ダイワンテレコム":46000,"バイヤーズ":46000,"モバゾウ":46000,"Cash Go!":45000,"モバステ":43000,"PC工房":41000,"mmoba":40000,"ふるいち":40000,"ネットオフ":34650,"ゲオ":33000,"ニコスマ":33000,"ノジマ":32000,"ソフトバンク":45000,"ラクウル":35000},"worn":{"ノジマ":45000,"ダイワンテレコム":35000,"バイヤーズ":35000,"ふるいち":27000,"ゲオ":26400,"ネットオフ":23100,"ソフトバンク":32000}},"mer":{"未使用に近い":52999,"傷なし":39999,"やや傷あり":37000},"pd":null,"pp":null},{"m":"iPhone 13","c":"512GB","cn":512,"ro":6,"s":"13","k":{"unused":{"ダイワンテレコム":66000,"バイヤーズ":66000,"ふるいち":52000,"ネットオフ":51450,"mmoba":51000,"ノジマ":50000,"モバゾウ":49000,"Cash Go!":48500,"モバステ":48500,"ゲオ":45000},"used":{"ダイワンテレコム":52000,"バイヤーズ":52000,"モバゾウ":48500,"Cash Go!":48000,"モバステ":46500,"mmoba":45500,"ふるいち":45000,"PC工房":45000,"ネットオフ":39900,"ニコスマ":36000,"ノジマ":34000,"ゲオ":33000,"ソフトバンク":48000,"ラクウル":39000},"worn":{"ノジマ":48000,"ダイワンテレコム":40000,"バイヤーズ":40000,"ふるいち":30000,"ゲオ":26400,"ネットオフ":25200,"ソフトバンク":34400}},"mer":{"未使用に近い":79900,"傷なし":50000,"やや傷あり":66000},"pd":null,"pp":null},{"m":"iPhone 13 mini","c":"128GB","cn":128,"ro":7,"s":"13","k":{"unused":{"ダイワンテレコム":47000,"バイヤーズ":47000,"ネットオフ":39900,"mmoba":39000,"ノジマ":38000,"モバゾウ":38000,"Cash Go!":36900,"ふるいち":35000,"モバステ":34000,"ゲオ":32000},"used":{"ダイワンテレコム":35000,"バイヤーズ":35000,"mmoba":35000,"モバゾウ":34500,"Cash Go!":34000,"モバステ":32000,"PC工房":32000,"ネットオフ":30450,"ふるいち":30000,"ゲオ":24000,"ノジマ":23000,"ニコスマ":23000,"ソフトバンク":34000,"ラクウル":29000},"worn":{"ノジマ":34000,"ダイワンテレコム":24000,"バイヤーズ":24000,"ふるいち":20000,"ゲオ":19200,"ネットオフ":18900,"ソフトバンク":22400}},"mer":{"未使用に近い":49063,"傷なし":30000,"やや傷あり":29900},"pd":null,"pp":null},{"m":"iPhone 13 mini","c":"256GB","cn":256,"ro":7,"s":"13","k":{"unused":{"ダイワンテレコム":53000,"バイヤーズ":53000,"mmoba":47000,"ネットオフ":44100,"ノジマ":42000,"モバゾウ":42000,"Cash Go!":40700,"モバステ":40500,"ふるいち":40000,"ゲオ":36000},"used":{"mmoba":41000,"ダイワンテレコム":40000,"バイヤーズ":40000,"モバゾウ":38500,"モバステ":38500,"Cash Go!":38000,"ふるいち":37000,"PC工房":36000,"ネットオフ":35700,"ニコスマ":33000,"ゲオ":28000,"ノジマ":27000,"ソフトバンク":38000,"ラクウル":34000},"worn":{"ノジマ":38000,"ダイワンテレコム":29000,"バイヤーズ":29000,"ふるいち":25000,"ゲオ":22400,"ネットオフ":22050,"ソフトバンク":27200}},"mer":{"未使用に近い":68940,"傷なし":37500,"やや傷あり":36300},"pd":null,"pp":null},{"m":"iPhone 13 mini","c":"512GB","cn":512,"ro":7,"s":"13","k":{"unused":{"ダイワンテレコム":60000,"バイヤーズ":60000,"mmoba":52000,"ネットオフ":51450,"ノジマ":49000,"モバゾウ":49000,"Cash Go!":47500,"モバステ":45500,"ふるいち":45000,"ゲオ":41000},"used":{"ダイワンテレコム":47000,"バイヤーズ":47000,"mmoba":46000,"モバゾウ":44500,"Cash Go!":44000,"モバステ":43500,"ふるいち":42000,"PC工房":42000,"ネットオフ":39900,"ゲオ":33000,"ニコスマ":33000,"ノジマ":31000,"ソフトバンク":44000,"ラクウル":39000},"worn":{"ノジマ":44000,"ダイワンテレコム":34000,"バイヤーズ":34000,"ふるいち":28000,"ゲオ":26400,"ネットオフ":24150,"ソフトバンク":31200}},"mer":{"未使用に近い":82980,"傷なし":48400,"やや傷あり":49999},"pd":null,"pp":null},{"m":"iPhone 13 Pro","c":"128GB","cn":128,"ro":8,"s":"13","k":{"unused":{"ダイワンテレコム":64000,"バイヤーズ":64000,"mmoba":57000,"ネットオフ":54600,"ノジマ":53000,"ふるいち":52000,"モバステ":51500,"Cash Go!":51400,"モバゾウ":50000,"ゲオ":45000},"used":{"ダイワンテレコム":51000,"バイヤーズ":51000,"mmoba":50000,"モバステ":49500,"モバゾウ":49500,"Cash Go!":49000,"PC工房":45000,"ふるいち":42000,"ネットオフ":38850,"ニコスマ":38000,"ノジマ":34000,"ゲオ":32000,"ソフトバンク":49000,"ラクウル":37000},"worn":{"ノジマ":49000,"ダイワンテレコム":38000,"バイヤーズ":38000,"ふるいち":28000,"ゲオ":25600,"ネットオフ":24150,"ソフトバンク":35200}},"mer":{"未使用に近い":66400,"傷なし":45000,"やや傷あり":45300},"pd":null,"pp":null},{"m":"iPhone 13 Pro","c":"256GB","cn":256,"ro":8,"s":"13","k":{"unused":{"ダイワンテレコム":69000,"バイヤーズ":69000,"mmoba":60000,"ネットオフ":58800,"ノジマ":58000,"Cash Go!":56300,"モバステ":56000,"ふるいち":55000,"モバゾウ":55000,"ゲオ":50000},"used":{"ダイワンテレコム":58000,"バイヤーズ":58000,"モバゾウ":54500,"Cash Go!":54000,"モバステ":54000,"mmoba":53000,"PC工房":49000,"ふるいち":47000,"ネットオフ":45150,"ニコスマ":42000,"ノジマ":38000,"ゲオ":37000,"ソフトバンク":54000,"ラクウル":42000},"worn":{"ノジマ":54000,"ダイワンテレコム":44000,"バイヤーズ":44000,"ふるいち":31000,"ゲオ":29600,"ネットオフ":27300,"ソフトバンク":38400}},"mer":{"未使用に近い":66491,"傷なし":46000,"やや傷あり":45000},"pd":null,"pp":null},{"m":"iPhone 13 Pro","c":"512GB","cn":512,"ro":8,"s":"13","k":{"unused":{"ダイワンテレコム":72000,"バイヤーズ":72000,"mmoba":62000,"ネットオフ":61950,"ノジマ":61000,"ふるいち":60000,"Cash Go!":59200,"モバステ":58000,"モバゾウ":58000,"ゲオ":55000},"used":{"ダイワンテレコム":60000,"バイヤーズ":60000,"モバゾウ":56500,"Cash Go!":56000,"モバステ":56000,"mmoba":55000,"PC工房":53000,"ふるいち":52000,"ネットオフ":49350,"ニコスマ":44500,"ゲオ":44000,"ノジマ":39000,"ソフトバンク":56000,"ラクウル":49000},"worn":{"ノジマ":56000,"ダイワンテレコム":45000,"バイヤーズ":45000,"ゲオ":35200,"ふるいち":35000,"ネットオフ":31500,"ソフトバンク":40000}},"mer":{"未使用に近い":80800,"傷なし":65511,"やや傷あり":70890},"pd":null,"pp":null},{"m":"iPhone 13 Pro","c":"1TB","cn":1024,"ro":8,"s":"13","k":{"unused":{"ダイワンテレコム":77000,"バイヤーズ":77000,"mmoba":68000,"ネットオフ":66150,"ノジマ":66000,"ふるいち":65000,"Cash Go!":64000,"モバゾウ":63000,"モバステ":62000,"ゲオ":60000},"used":{"ダイワンテレコム":64000,"バイヤーズ":64000,"モバゾウ":61500,"Cash Go!":61000,"モバステ":60000,"mmoba":59000,"PC工房":58000,"ふるいち":57000,"ネットオフ":53550,"ニコスマ":48500,"ゲオ":48000,"ノジマ":43000,"ソフトバンク":61000,"ラクウル":54000},"worn":{"ノジマ":61000,"ダイワンテレコム":48000,"バイヤーズ":48000,"ゲオ":38400,"ふるいち":38000,"ネットオフ":35700,"ソフトバンク":43200}},"mer":{"未使用に近い":88000,"傷なし":74400,"やや傷あり":84000},"pd":null,"pp":null},{"m":"iPhone 13 Pro Max","c":"128GB","cn":128,"ro":9,"s":"13","k":{"unused":{"ダイワンテレコム":77000,"バイヤーズ":77000,"mmoba":72000,"ネットオフ":68250,"ノジマ":66000,"Cash Go!":64000,"モバステ":63000,"モバゾウ":63000,"ふるいち":60000,"ゲオ":53000},"used":{"mmoba":63000,"ダイワンテレコム":62000,"バイヤーズ":62000,"Cash Go!":62000,"モバゾウ":62000,"モバステ":61000,"PC工房":56000,"ネットオフ":50400,"ふるいち":50000,"ニコスマ":48000,"ノジマ":43000,"ゲオ":41000,"ソフトバンク":61000,"ラクウル":49000},"worn":{"ノジマ":61000,"ダイワンテレコム":46000,"バイヤーズ":46000,"ネットオフ":34650,"ふるいち":34000,"ゲオ":32800,"ソフトバンク":43200}},"mer":{"未使用に近い":72500,"傷なし":58500,"やや傷あり":74227},"pd":null,"pp":null},{"m":"iPhone 13 Pro Max","c":"256GB","cn":256,"ro":9,"s":"13","k":{"unused":{"ダイワンテレコム":80000,"バイヤーズ":80000,"mmoba":74000,"ネットオフ":71400,"ノジマ":70000,"Cash Go!":67900,"モバステ":66000,"モバゾウ":66000,"ふるいち":65000,"ゲオ":58000},"used":{"mmoba":65500,"ダイワンテレコム":65000,"バイヤーズ":65000,"Cash Go!":65000,"モバゾウ":65000,"モバステ":64000,"PC工房":59000,"ふるいち":55000,"ネットオフ":54600,"ニコスマ":51000,"ゲオ":46000,"ノジマ":45000,"ソフトバンク":64000,"ラクウル":54000},"worn":{"ノジマ":64000,"ダイワンテレコム":48000,"バイヤーズ":48000,"ネットオフ":37800,"ふるいち":37000,"ゲオ":36800,"ソフトバンク":45600}},"mer":{"未使用に近い":82500,"傷なし":65000,"やや傷あり":68200},"pd":null,"pp":null},{"m":"iPhone 13 Pro Max","c":"512GB","cn":512,"ro":9,"s":"13","k":{"unused":{"ダイワンテレコム":83000,"バイヤーズ":83000,"mmoba":79000,"ネットオフ":74550,"ノジマ":72000,"ふるいち":70000,"Cash Go!":69800,"モバゾウ":69000,"モバステ":68000,"ゲオ":63000},"used":{"mmoba":69000,"ダイワンテレコム":67000,"バイヤーズ":67000,"Cash Go!":67000,"モバゾウ":66500,"モバステ":66000,"PC工房":61000,"ふるいち":60000,"ネットオフ":57750,"ニコスマ":55000,"ゲオ":51000,"ノジマ":46000,"ソフトバンク":66000,"ラクウル":57000},"worn":{"ノジマ":66000,"ダイワンテレコム":49000,"バイヤーズ":49000,"ゲオ":40800,"ふるいち":40000,"ネットオフ":39900,"ソフトバンク":47200}},"mer":{"未使用に近い":87500,"傷なし":83500,"やや傷あり":71700},"pd":null,"pp":null},{"m":"iPhone 13 Pro Max","c":"1TB","cn":1024,"ro":9,"s":"13","k":{"unused":{"ダイワンテレコム":88000,"バイヤーズ":88000,"mmoba":84000,"ネットオフ":78750,"ノジマ":77000,"ふるいち":75000,"Cash Go!":74700,"モバゾウ":74000,"モバステ":73000,"ゲオ":68000},"used":{"mmoba":74000,"ダイワンテレコム":72000,"バイヤーズ":72000,"Cash Go!":72000,"モバゾウ":71500,"モバステ":71000,"PC工房":66000,"ふるいち":65000,"ネットオフ":64050,"ニコスマ":57000,"ゲオ":55000,"ノジマ":50000,"ソフトバンク":71000,"ラクウル":62000},"worn":{"ノジマ":71000,"ダイワンテレコム":53000,"バイヤーズ":53000,"ふるいち":44000,"ゲオ":44000,"ネットオフ":42000,"ソフトバンク":50400}},"mer":{"未使用に近い":105000,"傷なし":78000,"やや傷あり":79500},"pd":null,"pp":null},{"m":"iPhone 14","c":"128GB","cn":128,"ro":11,"s":"14","k":{"unused":{"ダイワンテレコム":70000,"バイヤーズ":70000,"モバステ":67000,"mmoba":61000,"ふるいち":55000,"ネットオフ":54600,"ノジマ":54000,"ゲオ":53000,"モバゾウ":53000,"Cash Go!":52400},"used":{"ダイワンテレコム":51000,"バイヤーズ":51000,"mmoba":50000,"モバゾウ":50000,"Cash Go!":49000,"モバステ":48500,"PC工房":46000,"ネットオフ":45150,"ふるいち":42000,"ニコスマ":40000,"ノジマ":37000,"ゲオ":33000,"ソフトバンク":49000,"ラクウル":47000},"worn":{"ノジマ":49000,"ダイワンテレコム":40000,"バイヤーズ":40000,"ネットオフ":30450,"ふるいち":28000,"ゲオ":26400,"ソフトバンク":35200}},"mer":{"未使用に近い":59800,"傷なし":45000,"やや傷あり":42361},"pd":null,"pp":null},{"m":"iPhone 14","c":"256GB","cn":256,"ro":11,"s":"14","k":{"unused":{"ダイワンテレコム":78000,"バイヤーズ":78000,"モバステ":75000,"mmoba":67000,"ネットオフ":63000,"ノジマ":62000,"ゲオ":61000,"モバゾウ":61000,"Cash Go!":60100,"ふるいち":60000},"used":{"ダイワンテレコム":56000,"バイヤーズ":56000,"mmoba":55000,"モバゾウ":55000,"Cash Go!":54000,"PC工房":53000,"モバステ":52000,"ふるいち":50000,"ネットオフ":49350,"ニコスマ":45000,"ノジマ":41000,"ゲオ":40000,"ソフトバンク":54000,"ラクウル":52000},"worn":{"ノジマ":54000,"ダイワンテレコム":44000,"バイヤーズ":44000,"ふるいち":34000,"ネットオフ":33600,"ゲオ":32000,"ソフトバンク":38400}},"mer":{"未使用に近い":1850,"傷なし":60400,"やや傷あり":52611},"pd":null,"pp":null},{"m":"iPhone 14","c":"512GB","cn":512,"ro":11,"s":"14","k":{"unused":{"ダイワンテレコム":83000,"バイヤーズ":83000,"モバステ":79000,"mmoba":71000,"ネットオフ":67200,"ノジマ":67000,"ふるいち":66000,"モバゾウ":66000,"Cash Go!":65000,"ゲオ":65000},"used":{"ダイワンテレコム":62000,"バイヤーズ":62000,"モバゾウ":59500,"Cash Go!":59000,"PC工房":59000,"mmoba":58000,"ふるいち":58000,"モバステ":56000,"ネットオフ":54600,"ニコスマ":48500,"ゲオ":45000,"ノジマ":44000,"ソフトバンク":59000,"ラクウル":57000},"worn":{"ノジマ":59000,"ダイワンテレコム":50000,"バイヤーズ":50000,"ふるいち":39000,"ネットオフ":36750,"ゲオ":36000,"ソフトバンク":42400}},"mer":{"未使用に近い":70000,"傷なし":70200,"やや傷あり":81000},"pd":null,"pp":null},{"m":"iPhone 14 Plus","c":"128GB","cn":128,"ro":12,"s":"14","k":{"unused":{"mmoba":66000,"ダイワンテレコム":63000,"バイヤーズ":63000,"ネットオフ":61950,"ノジマ":61000,"モバゾウ":61000,"ふるいち":60000,"Cash Go!":59200,"モバステ":55000,"ゲオ":53000},"used":{"ダイワンテレコム":56000,"バイヤーズ":56000,"モバゾウ":55500,"mmoba":55000,"Cash Go!":55000,"モバステ":53000,"PC工房":53000,"ネットオフ":50400,"ニコスマ":46000,"ふるいち":45000,"ノジマ":41000,"ゲオ":40000,"ソフトバンク":55000,"ラクウル":52000},"worn":{"ノジマ":55000,"ダイワンテレコム":44000,"バイヤーズ":44000,"ネットオフ":33600,"ゲオ":32000,"ふるいち":30000,"ソフトバンク":39200}},"mer":{"未使用に近い":83000,"傷なし":54490,"やや傷あり":53400},"pd":null,"pp":null},{"m":"iPhone 14 Plus","c":"256GB","cn":256,"ro":12,"s":"14","k":{"unused":{"mmoba":72000,"ダイワンテレコム":68000,"バイヤーズ":68000,"ネットオフ":65100,"ふるいち":65000,"ノジマ":65000,"モバゾウ":64000,"Cash Go!":63100,"ゲオ":59000,"モバステ":59000},"used":{"ダイワンテレコム":60000,"バイヤーズ":60000,"モバゾウ":59500,"Cash Go!":59000,"mmoba":58000,"PC工房":58000,"モバステ":57000,"ネットオフ":55650,"ふるいち":55000,"ゲオ":48000,"ニコスマ":48000,"ノジマ":44000,"ソフトバンク":59000,"ラクウル":57000},"worn":{"ノジマ":59000,"ダイワンテレコム":47000,"バイヤーズ":47000,"ゲオ":38400,"ふるいち":37000,"ネットオフ":35700,"ソフトバンク":42400}},"mer":{"未使用に近い":93900,"傷なし":61000,"やや傷あり":77000},"pd":null,"pp":null},{"m":"iPhone 14 Plus","c":"512GB","cn":512,"ro":12,"s":"14","k":{"unused":{"mmoba":81000,"ダイワンテレコム":79000,"バイヤーズ":79000,"ネットオフ":73500,"ノジマ":72000,"モバゾウ":72000,"ふるいち":70000,"Cash Go!":69800,"モバステ":66000,"ゲオ":62000},"used":{"mmoba":67000,"ダイワンテレコム":66000,"バイヤーズ":66000,"モバゾウ":65500,"Cash Go!":65000,"モバステ":64000,"PC工房":63000,"ネットオフ":60900,"ふるいち":60000,"ゲオ":55000,"ニコスマ":54000,"ノジマ":49000,"ソフトバンク":65000,"ラクウル":62000},"worn":{"ノジマ":65000,"ダイワンテレコム":52000,"バイヤーズ":52000,"ゲオ":44000,"ふるいち":40000,"ネットオフ":38850,"ソフトバンク":46400}},"mer":{"未使用に近い":105800,"傷なし":92400,"やや傷あり":85000},"pd":null,"pp":null},{"m":"iPhone 14 Pro","c":"128GB","cn":128,"ro":13,"s":"14","k":{"unused":{"mmoba":81000,"ダイワンテレコム":77000,"バイヤーズ":77000,"ネットオフ":75600,"ノジマ":75000,"モバゾウ":74000,"Cash Go!":72800,"ふるいち":70000,"モバステ":70000,"ゲオ":66000},"used":{"ダイワンテレコム":73000,"バイヤーズ":73000,"Cash Go!":72000,"モバゾウ":71500,"モバステ":68000,"mmoba":65000,"ふるいち":65000,"ネットオフ":64050,"PC工房":64000,"ニコスマ":55000,"ノジマ":53000,"ゲオ":50000,"ソフトバンク":71000,"ラクウル":62000},"worn":{"ノジマ":71000,"ダイワンテレコム":55000,"バイヤーズ":55000,"ネットオフ":44100,"ふるいち":44000,"ゲオ":40000,"ソフトバンク":50400}},"mer":{"未使用に近い":79800,"傷なし":67000,"やや傷あり":63500},"pd":null,"pp":null},{"m":"iPhone 14 Pro","c":"256GB","cn":256,"ro":13,"s":"14","k":{"unused":{"mmoba":88000,"ダイワンテレコム":82000,"バイヤーズ":82000,"ネットオフ":81900,"ノジマ":81000,"モバゾウ":80000,"Cash Go!":78600,"ふるいち":75000,"モバステ":75000,"ゲオ":72000},"used":{"ダイワンテレコム":78000,"バイヤーズ":78000,"Cash Go!":77000,"モバゾウ":76500,"モバステ":73000,"ふるいち":70000,"PC工房":70000,"ネットオフ":69300,"mmoba":69000,"ニコスマ":58000,"ノジマ":57000,"ゲオ":55000,"ソフトバンク":76000,"ラクウル":67000},"worn":{"ノジマ":76000,"ダイワンテレコム":60000,"バイヤーズ":60000,"ネットオフ":47250,"ふるいち":47000,"ゲオ":44000,"ソフトバンク":54400}},"mer":{"未使用に近い":91400,"傷なし":70000,"やや傷あり":67305},"pd":null,"pp":null},{"m":"iPhone 14 Pro","c":"512GB","cn":512,"ro":13,"s":"14","k":{"unused":{"mmoba":94000,"ダイワンテレコム":89000,"バイヤーズ":89000,"ネットオフ":87150,"ノジマ":86000,"モバゾウ":85000,"Cash Go!":83400,"ふるいち":80000,"モバステ":79000,"ゲオ":75000},"used":{"ダイワンテレコム":83000,"バイヤーズ":83000,"Cash Go!":81000,"モバゾウ":80500,"mmoba":77000,"モバステ":77000,"PC工房":76000,"ふるいち":75000,"ネットオフ":72450,"ノジマ":60000,"ゲオ":60000,"ニコスマ":59000,"ソフトバンク":80000,"ラクウル":72000},"worn":{"ノジマ":80000,"ダイワンテレコム":63000,"バイヤーズ":63000,"ネットオフ":51450,"ふるいち":51000,"ゲオ":48000,"ソフトバンク":57600}},"mer":{"未使用に近い":117400,"傷なし":74000,"やや傷あり":101127},"pd":null,"pp":null},{"m":"iPhone 14 Pro","c":"1TB","cn":1024,"ro":13,"s":"14","k":{"unused":{"mmoba":103000,"ダイワンテレコム":100000,"バイヤーズ":100000,"ネットオフ":93450,"ノジマ":92000,"モバゾウ":91000,"ふるいち":90000,"Cash Go!":89200,"ゲオ":83000,"モバステ":83000},"used":{"ダイワンテレコム":87000,"バイヤーズ":87000,"Cash Go!":86000,"モバゾウ":85500,"mmoba":83000,"モバステ":81000,"PC工房":81000,"ふるいち":80000,"ネットオフ":78750,"ニコスマ":71000,"ゲオ":65000,"ノジマ":64000,"ソフトバンク":85000,"ラクウル":77000},"worn":{"ノジマ":85000,"ダイワンテレコム":68000,"バイヤーズ":68000,"ネットオフ":55650,"ふるいち":54000,"ゲオ":52000,"ソフトバンク":60800}},"mer":{"未使用に近い":126000,"傷なし":122000,"やや傷あり":114954},"pd":null,"pp":null},{"m":"iPhone 14 Pro Max","c":"128GB","cn":128,"ro":14,"s":"14","k":{"unused":{"mmoba":93000,"ダイワンテレコム":93000,"バイヤーズ":93000,"ネットオフ":89250,"ノジマ":86000,"モバゾウ":85000,"Cash Go!":83400,"ふるいち":80000,"モバステ":80000,"ゲオ":75000},"used":{"ダイワンテレコム":84000,"バイヤーズ":84000,"Cash Go!":82000,"モバゾウ":81500,"モバステ":78000,"PC工房":77000,"ネットオフ":76650,"ふるいち":75000,"mmoba":74000,"ゲオ":70000,"ノジマ":61000,"ニコスマ":60000,"ソフトバンク":81000,"ラクウル":77000},"worn":{"ノジマ":81000,"ダイワンテレコム":66000,"バイヤーズ":66000,"ゲオ":56000,"ネットオフ":52500,"ふるいち":51000,"ソフトバンク":57600}},"mer":{"未使用に近い":90500,"傷なし":85000,"やや傷あり":90000},"pd":null,"pp":null},{"m":"iPhone 14 Pro Max","c":"256GB","cn":256,"ro":14,"s":"14","k":{"unused":{"ダイワンテレコム":98000,"バイヤーズ":98000,"ネットオフ":96600,"mmoba":96000,"ノジマ":92000,"モバゾウ":91000,"ふるいち":90000,"Cash Go!":89200,"モバステ":85000,"ゲオ":80000},"used":{"ダイワンテレコム":89000,"バイヤーズ":89000,"Cash Go!":87000,"モバゾウ":86500,"モバステ":83000,"PC工房":82000,"ネットオフ":81900,"ふるいち":80000,"mmoba":78000,"ゲオ":75000,"ノジマ":65000,"ニコスマ":64000,"ソフトバンク":86000,"ラクウル":84000},"worn":{"ノジマ":86000,"ダイワンテレコム":70000,"バイヤーズ":70000,"ゲオ":60000,"ネットオフ":54600,"ふるいち":54000,"ソフトバンク":61600}},"mer":{"未使用に近い":109000,"傷なし":85277,"やや傷あり":84500},"pd":null,"pp":null},{"m":"iPhone 14 Pro Max","c":"512GB","cn":512,"ro":14,"s":"14","k":{"unused":{"ダイワンテレコム":104000,"バイヤーズ":104000,"mmoba":101000,"ネットオフ":99750,"ノジマ":97000,"モバゾウ":96000,"ふるいち":95000,"Cash Go!":94100,"モバステ":90000,"ゲオ":84000},"used":{"ダイワンテレコム":98000,"バイヤーズ":98000,"Cash Go!":92000,"モバゾウ":91500,"モバステ":88000,"PC工房":88000,"ネットオフ":87150,"ふるいち":85000,"mmoba":84000,"ゲオ":80000,"ノジマ":68000,"ニコスマ":68000,"ソフトバンク":91000,"ラクウル":87000},"worn":{"ノジマ":91000,"ダイワンテレコム":78000,"バイヤーズ":78000,"ゲオ":64000,"ネットオフ":57750,"ふるいち":57000,"ソフトバンク":64800}},"mer":{"未使用に近い":111500,"傷なし":105500,"やや傷あり":120000},"pd":null,"pp":null},{"m":"iPhone 14 Pro Max","c":"1TB","cn":1024,"ro":14,"s":"14","k":{"unused":{"mmoba":113000,"ダイワンテレコム":112000,"バイヤーズ":112000,"ネットオフ":107100,"ノジマ":103000,"モバゾウ":102000,"ふるいち":100000,"Cash Go!":99900,"モバステ":94000,"ゲオ":92000},"used":{"ダイワンテレコム":103000,"バイヤーズ":103000,"Cash Go!":97000,"モバゾウ":96500,"PC工房":93000,"ネットオフ":92400,"モバステ":92000,"ふるいち":90000,"mmoba":88000,"ゲオ":85000,"ニコスマ":75500,"ノジマ":72000,"ソフトバンク":96000,"ラクウル":92000},"worn":{"ノジマ":96000,"ダイワンテレコム":81000,"バイヤーズ":81000,"ゲオ":68000,"ネットオフ":61950,"ふるいち":61000,"ソフトバンク":68800}},"mer":{"未使用に近い":134400,"傷なし":145404,"やや傷あり":135429},"pd":null,"pp":null},{"m":"iPhone 15","c":"128GB","cn":128,"ro":15,"s":"15","k":{"unused":{"ダイワンテレコム":85000,"バイヤーズ":85000,"モバステ":80000,"ノジマ":76000,"モバゾウ":76000,"Cash Go!":73700,"mmoba":73000,"ネットオフ":72450,"ふるいち":70000,"ゲオ":65000},"used":{"モバゾウ":72500,"ダイワンテレコム":71000,"バイヤーズ":71000,"Cash Go!":69000,"モバステ":66000,"mmoba":66000,"PC工房":63000,"ネットオフ":61950,"ふるいち":60000,"ゲオ":55000,"ニコスマ":53500,"ノジマ":52000,"ソフトバンク":69000,"ラクウル":63000},"worn":{"ノジマ":69000,"ダイワンテレコム":55000,"バイヤーズ":55000,"ゲオ":44000,"ネットオフ":42000,"ふるいち":40000,"ソフトバンク":49600}},"mer":{"未使用に近い":86900,"傷なし":67000,"やや傷あり":63500},"pd":null,"pp":null},{"m":"iPhone 15","c":"256GB","cn":256,"ro":15,"s":"15","k":{"unused":{"ダイワンテレコム":93000,"バイヤーズ":93000,"モバステ":90500,"モバゾウ":89000,"ノジマ":84000,"Cash Go!":81500,"mmoba":81000,"ふるいち":80000,"ネットオフ":79800,"ゲオ":75000},"used":{"モバゾウ":85500,"ダイワンテレコム":81000,"バイヤーズ":81000,"Cash Go!":77000,"モバステ":75000,"mmoba":73500,"ネットオフ":72450,"PC工房":71000,"ふるいち":70000,"ゲオ":65000,"ニコスマ":62000,"ノジマ":59000,"ソフトバンク":78000,"ラクウル":73000},"worn":{"ノジマ":78000,"ダイワンテレコム":61000,"バイヤーズ":61000,"ゲオ":52000,"ネットオフ":48300,"ふるいち":47000,"ソフトバンク":56000}},"mer":{"未使用に近い":6420,"傷なし":98000,"やや傷あり":83560},"pd":null,"pp":null},{"m":"iPhone 15","c":"512GB","cn":512,"ro":15,"s":"15","k":{"unused":{"ダイワンテレコム":104000,"バイヤーズ":104000,"モバステ":98000,"モバゾウ":93000,"ノジマ":92000,"mmoba":91000,"ふるいち":90000,"Cash Go!":89200,"ネットオフ":87150,"ゲオ":85000},"used":{"モバゾウ":89500,"ダイワンテレコム":89000,"バイヤーズ":89000,"Cash Go!":87000,"PC工房":81000,"モバステ":80000,"ネットオフ":78750,"mmoba":78000,"ふるいち":75000,"ゲオ":72000,"ニコスマ":66500,"ノジマ":65000,"ソフトバンク":87000,"ラクウル":83000},"worn":{"ノジマ":87000,"ダイワンテレコム":68000,"バイヤーズ":68000,"ゲオ":57600,"ネットオフ":53550,"ふるいち":51000,"ソフトバンク":62400}},"mer":{"未使用に近い":130000,"傷なし":120000,"やや傷あり":98000},"pd":null,"pp":null},{"m":"iPhone 15 Plus","c":"128GB","cn":128,"ro":16,"s":"15","k":{"unused":{"ダイワンテレコム":100000,"バイヤーズ":100000,"モバステ":94000,"mmoba":81000,"ノジマ":81000,"Cash Go!":79500,"ネットオフ":77700,"モバゾウ":74000,"ふるいち":70000,"ゲオ":66000},"used":{"ダイワンテレコム":75000,"バイヤーズ":75000,"モバゾウ":73500,"Cash Go!":73000,"モバステ":70000,"PC工房":69000,"mmoba":65500,"ネットオフ":65100,"ふるいち":60000,"ノジマ":55000,"ニコスマ":54000,"ゲオ":53000,"ソフトバンク":73000,"ラクウル":68000},"worn":{"ノジマ":73000,"ダイワンテレコム":58000,"バイヤーズ":58000,"ネットオフ":44100,"ゲオ":42400,"ふるいち":40000,"ソフトバンク":52000}},"mer":{"未使用に近い":105000,"傷なし":99000,"やや傷あり":83000},"pd":null,"pp":null},{"m":"iPhone 15 Plus","c":"256GB","cn":256,"ro":16,"s":"15","k":{"unused":{"ダイワンテレコム":114000,"バイヤーズ":114000,"モバステ":104000,"mmoba":91000,"ノジマ":91000,"Cash Go!":89200,"ネットオフ":87150,"ふるいち":85000,"モバゾウ":84000,"ゲオ":72000},"used":{"ダイワンテレコム":85000,"バイヤーズ":85000,"モバゾウ":83500,"Cash Go!":83000,"モバステ":79000,"PC工房":77000,"ネットオフ":75600,"mmoba":74000,"ふるいち":70000,"ニコスマ":62500,"ノジマ":62000,"ゲオ":60000,"ソフトバンク":83000,"ラクウル":78000},"worn":{"ノジマ":83000,"ダイワンテレコム":65000,"バイヤーズ":65000,"ネットオフ":50400,"ゲオ":48000,"ふるいち":47000,"ソフトバンク":59200}},"mer":{"未使用に近い":115000,"傷なし":88999,"やや傷あり":90000},"pd":null,"pp":null},{"m":"iPhone 15 Plus","c":"512GB","cn":512,"ro":16,"s":"15","k":{"unused":{"ダイワンテレコム":124000,"バイヤーズ":124000,"モバステ":110000,"mmoba":106000,"Cash Go!":101900,"ノジマ":97000,"ネットオフ":94500,"モバゾウ":94000,"ふるいち":90000,"ゲオ":77000},"used":{"モバゾウ":90500,"ダイワンテレコム":90000,"バイヤーズ":90000,"Cash Go!":90000,"モバステ":84000,"ネットオフ":84000,"PC工房":84000,"mmoba":82000,"ふるいち":75000,"ニコスマ":69000,"ゲオ":68000,"ノジマ":66000,"ソフトバンク":88000,"ラクウル":88000},"worn":{"ノジマ":88000,"ダイワンテレコム":69000,"バイヤーズ":69000,"ネットオフ":54600,"ゲオ":54400,"ふるいち":51000,"ソフトバンク":63200}},"mer":{"未使用に近い":128000,"傷なし":128000,"やや傷あり":112000},"pd":null,"pp":null},{"m":"iPhone 15 Pro","c":"128GB","cn":128,"ro":17,"s":"15","k":{"unused":{"モバステ":127000,"ダイワンテレコム":119000,"バイヤーズ":119000,"Cash Go!":111600,"ネットオフ":92400,"ノジマ":92000,"mmoba":91000,"モバゾウ":91000,"ふるいち":90000,"ゲオ":85000},"used":{"ダイワンテレコム":90000,"バイヤーズ":90000,"Cash Go!":89000,"モバゾウ":88500,"モバステ":84000,"ネットオフ":81900,"PC工房":79000,"mmoba":78500,"ふるいち":75000,"ゲオ":71000,"ニコスマ":67000,"ノジマ":66000,"ソフトバンク":88000,"ラクウル":78000},"worn":{"ノジマ":88000,"ダイワンテレコム":68000,"バイヤーズ":68000,"ゲオ":56800,"ネットオフ":55650,"ふるいち":51000,"ソフトバンク":63200}},"mer":{"未使用に近い":111000,"傷なし":112000,"やや傷あり":78000},"pd":null,"pp":null},{"m":"iPhone 15 Pro","c":"256GB","cn":256,"ro":17,"s":"15","k":{"unused":{"ダイワンテレコム":125000,"バイヤーズ":125000,"モバステ":125000,"Cash Go!":121300,"ノジマ":102000,"モバゾウ":99000,"mmoba":96000,"ふるいち":95000,"ネットオフ":94500,"ゲオ":90000},"used":{"ダイワンテレコム":100000,"バイヤーズ":100000,"Cash Go!":99000,"モバゾウ":98500,"モバステ":94000,"PC工房":88000,"ネットオフ":87150,"mmoba":86000,"ふるいち":85000,"ゲオ":75000,"ノジマ":74000,"ニコスマ":70000,"ソフトバンク":98000,"ラクウル":88000},"worn":{"ノジマ":98000,"ダイワンテレコム":76000,"バイヤーズ":76000,"ゲオ":60000,"ネットオフ":57750,"ふるいち":57000,"ソフトバンク":70400}},"mer":{"未使用に近い":120000,"傷なし":98500,"やや傷あり":108400},"pd":null,"pp":null},{"m":"iPhone 15 Pro","c":"512GB","cn":512,"ro":17,"s":"15","k":{"unused":{"ダイワンテレコム":137000,"バイヤーズ":137000,"モバステ":135000,"Cash Go!":131000,"ノジマ":111000,"ネットオフ":107100,"モバゾウ":103000,"mmoba":101000,"ふるいち":100000,"ゲオ":100000},"used":{"ダイワンテレコム":105000,"バイヤーズ":105000,"Cash Go!":103000,"モバゾウ":102500,"モバステ":98000,"PC工房":98000,"ネットオフ":94500,"mmoba":93000,"ふるいち":90000,"ゲオ":84000,"ノジマ":77000,"ニコスマ":74500,"ソフトバンク":102000,"ラクウル":98000},"worn":{"ノジマ":102000,"ダイワンテレコム":80000,"バイヤーズ":80000,"ゲオ":67200,"ネットオフ":63000,"ふるいち":61000,"ソフトバンク":72800}},"mer":{"未使用に近い":143000,"傷なし":128990,"やや傷あり":114500},"pd":null,"pp":null},{"m":"iPhone 15 Pro","c":"1TB","cn":1024,"ro":17,"s":"15","k":{"unused":{"ダイワンテレコム":148000,"バイヤーズ":148000,"モバステ":141000,"Cash Go!":140700,"ノジマ":121000,"ネットオフ":116550,"ふるいち":115000,"モバゾウ":113000,"mmoba":111000,"ゲオ":110000},"used":{"ダイワンテレコム":115000,"バイヤーズ":115000,"Cash Go!":113000,"モバゾウ":112500,"PC工房":108000,"ネットオフ":107100,"モバステ":105500,"ふるいち":100000,"mmoba":97500,"ゲオ":95000,"ノジマ":84000,"ニコスマ":79000,"ソフトバンク":112000,"ラクウル":108000},"worn":{"ノジマ":112000,"ダイワンテレコム":87000,"バイヤーズ":87000,"ゲオ":76000,"ネットオフ":73500,"ふるいち":68000,"ソフトバンク":80000}},"mer":{"未使用に近い":160000,"傷なし":131666,"やや傷あり":121000},"pd":null,"pp":null},{"m":"iPhone 15 Pro Max","c":"256GB","cn":256,"ro":18,"s":"15","k":{"unused":{"ダイワンテレコム":143000,"バイヤーズ":143000,"モバステ":139000,"Cash Go!":131000,"ノジマ":122000,"mmoba":121000,"モバゾウ":121000,"ふるいち":120000,"ネットオフ":117600,"ゲオ":110000},"used":{"ダイワンテレコム":114000,"バイヤーズ":114000,"Cash Go!":112000,"モバゾウ":111500,"モバステ":110500,"PC工房":106000,"ネットオフ":102900,"mmoba":102000,"ふるいち":90000,"ゲオ":88000,"ニコスマ":84500,"ノジマ":83000,"ソフトバンク":117000,"ラクウル":103000},"worn":{"ノジマ":111000,"ダイワンテレコム":85000,"バイヤーズ":85000,"ネットオフ":74550,"ゲオ":70400,"ふるいち":61000,"ソフトバンク":84000}},"mer":{"未使用に近い":133000,"傷なし":148029,"やや傷あり":114000},"pd":null,"pp":null},{"m":"iPhone 15 Pro Max","c":"512GB","cn":512,"ro":18,"s":"15","k":{"unused":{"ダイワンテレコム":151000,"バイヤーズ":151000,"モバステ":151000,"Cash Go!":147400,"mmoba":131000,"ノジマ":131000,"ふるいち":130000,"ネットオフ":127050,"モバゾウ":126000,"ゲオ":125000},"used":{"ダイワンテレコム":118000,"バイヤーズ":118000,"Cash Go!":117000,"モバゾウ":116500,"モバステ":113500,"PC工房":113000,"ネットオフ":112350,"mmoba":112000,"ふるいち":100000,"ゲオ":95000,"ニコスマ":88000,"ノジマ":87000,"ソフトバンク":121000,"ラクウル":113000},"worn":{"ノジマ":116000,"ダイワンテレコム":88000,"バイヤーズ":88000,"ネットオフ":76650,"ゲオ":76000,"ふるいち":68000,"ソフトバンク":86400}},"mer":{"未使用に近い":159500,"傷なし":161154,"やや傷あり":135000},"pd":null,"pp":null},{"m":"iPhone 15 Pro Max","c":"1TB","cn":1024,"ro":18,"s":"15","k":{"unused":{"モバステ":158000,"Cash Go!":154200,"ダイワンテレコム":154000,"バイヤーズ":154000,"mmoba":141000,"ノジマ":141000,"ふるいち":140000,"ゲオ":140000,"ネットオフ":136500,"モバゾウ":131000},"used":{"ダイワンテレコム":128000,"バイヤーズ":128000,"Cash Go!":127000,"モバゾウ":126500,"PC工房":122000,"ネットオフ":120750,"mmoba":117000,"モバステ":116500,"ふるいち":110000,"ゲオ":105000,"ニコスマ":99500,"ノジマ":95000,"ソフトバンク":130000,"ラクウル":123000},"worn":{"ノジマ":126000,"ダイワンテレコム":96000,"バイヤーズ":96000,"ゲオ":84000,"ネットオフ":84000,"ふるいち":74000,"ソフトバンク":93600}},"mer":{"未使用に近い":169899,"傷なし":174804,"やや傷あり":138000},"pd":null,"pp":null},{"m":"iPhone 16","c":"128GB","cn":128,"ro":19,"s":"16","k":{"unused":{"モバステ":110000,"ダイワンテレコム":107000,"バイヤーズ":107000,"ノジマ":101000,"Cash Go!":98000,"ネットオフ":96600,"モバゾウ":96000,"mmoba":95000,"ゲオ":92000,"ふるいち":90000},"used":{"モバゾウ":95500,"ダイワンテレコム":95000,"バイヤーズ":95000,"モバステ":90500,"Cash Go!":87000,"ゲオ":87000,"ふるいち":85000,"ネットオフ":84000,"PC工房":83000,"mmoba":81000,"ノジマ":71000,"ニコスマ":67000,"ソフトバンク":95000,"ラクウル":82000},"worn":{"ノジマ":95000,"ダイワンテレコム":74000,"バイヤーズ":74000,"ゲオ":69600,"ネットオフ":59850,"ふるいち":50000,"ソフトバンク":68000}},"mer":{"未使用に近い":95000,"傷なし":94479,"やや傷あり":88800},"pd":null,"pp":null},{"m":"iPhone 16","c":"256GB","cn":256,"ro":19,"s":"16","k":{"unused":{"モバステ":118000,"ノジマ":116000,"ダイワンテレコム":115000,"バイヤーズ":115000,"Cash Go!":110600,"ネットオフ":108150,"モバゾウ":107000,"mmoba":106000,"ゲオ":102000,"ふるいち":100000},"used":{"モバゾウ":105500,"ダイワンテレコム":105000,"バイヤーズ":105000,"Cash Go!":100000,"モバステ":98000,"ネットオフ":96600,"PC工房":96000,"mmoba":95000,"ゲオ":95000,"ふるいち":95000,"ノジマ":79000,"ニコスマ":79000,"ソフトバンク":105000,"ラクウル":95000},"worn":{"ノジマ":105000,"ダイワンテレコム":82000,"バイヤーズ":82000,"ゲオ":76000,"ネットオフ":68250,"ふるいち":60000,"ソフトバンク":75200}},"mer":{"未使用に近い":130000,"傷なし":104000,"やや傷あり":87999},"pd":null,"pp":null},{"m":"iPhone 16","c":"512GB","cn":512,"ro":19,"s":"16","k":{"unused":{"mmoba":126000,"ノジマ":126000,"ゲオ":122000,"ふるいち":120000,"モバステ":120000,"ネットオフ":119700,"ダイワンテレコム":117000,"バイヤーズ":117000,"モバゾウ":117000,"Cash Go!":116400},"used":{"モバゾウ":115500,"ダイワンテレコム":115000,"バイヤーズ":115000,"Cash Go!":115000,"mmoba":110000,"ゲオ":110000,"PC工房":109000,"ネットオフ":107100,"ふるいち":105000,"モバステ":102500,"ニコスマ":89000,"ノジマ":88000,"ソフトバンク":115000,"ラクウル":110000},"worn":{"ノジマ":115000,"ダイワンテレコム":89000,"バイヤーズ":89000,"ゲオ":88000,"ネットオフ":73500,"ふるいち":70000,"ソフトバンク":82400}},"mer":{"未使用に近い":151500,"傷なし":102400,"やや傷あり":94000},"pd":null,"pp":null},{"m":"iPhone 16 Plus","c":"128GB","cn":128,"ro":20,"s":"16","k":{"unused":{"ノジマ":111000,"モバステ":107500,"モバゾウ":106000,"ダイワンテレコム":105000,"ネットオフ":105000,"バイヤーズ":105000,"Cash Go!":103800,"ふるいち":100000,"mmoba":98000,"ゲオ":95000},"used":{"モバゾウ":105500,"ダイワンテレコム":105000,"バイヤーズ":105000,"Cash Go!":100000,"PC工房":95000,"ネットオフ":92400,"モバステ":90000,"ふるいち":85000,"ゲオ":85000,"mmoba":84500,"ノジマ":79000,"ニコスマ":71500,"ソフトバンク":105000,"ラクウル":93000},"worn":{"ノジマ":105000,"ダイワンテレコム":82000,"バイヤーズ":82000,"ゲオ":68000,"ネットオフ":66150,"ふるいち":60000,"ソフトバンク":75200}},"mer":{"未使用に近い":106000,"傷なし":110000,"やや傷あり":99245},"pd":null,"pp":null},{"m":"iPhone 16 Plus","c":"256GB","cn":256,"ro":20,"s":"16","k":{"unused":{"ノジマ":126000,"モバゾウ":121000,"モバステ":120500,"ダイワンテレコム":120000,"バイヤーズ":120000,"ネットオフ":119700,"Cash Go!":116400,"mmoba":115000,"ふるいち":110000,"ゲオ":103000},"used":{"モバゾウ":120500,"ダイワンテレコム":120000,"バイヤーズ":120000,"Cash Go!":105000,"PC工房":103000,"モバステ":100500,"mmoba":100000,"ネットオフ":99750,"ふるいち":95000,"ゲオ":93000,"ノジマ":90000,"ニコスマ":83000,"ソフトバンク":120000,"ラクウル":100000},"worn":{"ノジマ":120000,"ダイワンテレコム":93000,"バイヤーズ":93000,"ゲオ":74400,"ネットオフ":73500,"ふるいち":70000,"ソフトバンク":86400}},"mer":{"未使用に近い":134450,"傷なし":155904,"やや傷あり":92500},"pd":null,"pp":null},{"m":"iPhone 16 Plus","c":"512GB","cn":512,"ro":20,"s":"16","k":{"unused":{"ノジマ":136000,"mmoba":131000,"モバゾウ":131000,"ネットオフ":130200,"ダイワンテレコム":130000,"バイヤーズ":130000,"モバステ":127000,"ふるいち":125000,"Cash Go!":123200,"ゲオ":110000},"used":{"モバゾウ":130500,"ダイワンテレコム":130000,"バイヤーズ":130000,"Cash Go!":123000,"PC工房":118000,"ネットオフ":115500,"mmoba":110000,"モバステ":108500,"ふるいち":105000,"ノジマ":98000,"ゲオ":95000,"ニコスマ":89000,"ソフトバンク":130000,"ラクウル":115000},"worn":{"ノジマ":130000,"ダイワンテレコム":101000,"バイヤーズ":101000,"ネットオフ":84000,"ふるいち":80000,"ゲオ":76000,"ソフトバンク":93600}},"mer":{"未使用に近い":159800,"傷なし":122500,"やや傷あり":69000},"pd":null,"pp":null},{"m":"iPhone 16 Pro","c":"128GB","cn":128,"ro":21,"s":"16","k":{"unused":{"モバステ":153000,"ダイワンテレコム":150000,"バイヤーズ":150000,"Cash Go!":130000,"ノジマ":130000,"mmoba":126000,"モバゾウ":126000,"ふるいち":125000,"ネットオフ":120750,"ゲオ":120000},"used":{"ダイワンテレコム":126000,"バイヤーズ":126000,"モバゾウ":125500,"Cash Go!":122000,"モバステ":112500,"ふるいち":110000,"PC工房":108000,"ネットオフ":106050,"mmoba":106000,"ノジマ":100000,"ゲオ":100000,"ニコスマ":87000,"ソフトバンク":125000,"ラクウル":102000},"worn":{"ノジマ":125000,"ダイワンテレコム":103000,"バイヤーズ":103000,"ゲオ":80000,"ネットオフ":78750,"ふるいち":70000,"ソフトバンク":89600}},"mer":{"未使用に近い":147499,"傷なし":150129,"やや傷あり":16980},"pd":null,"pp":null},{"m":"iPhone 16 Pro","c":"256GB","cn":256,"ro":21,"s":"16","k":{"unused":{"モバステ":175500,"ダイワンテレコム":172500,"バイヤーズ":172500,"Cash Go!":149400,"ノジマ":146000,"mmoba":141000,"モバゾウ":141000,"ふるいち":140000,"ネットオフ":139650,"ゲオ":130000},"used":{"ダイワンテレコム":141000,"バイヤーズ":141000,"Cash Go!":141000,"モバゾウ":140500,"ふるいち":125000,"PC工房":122000,"モバステ":121500,"ネットオフ":120750,"mmoba":119000,"ノジマ":112000,"ゲオ":110000,"ニコスマ":100000,"ソフトバンク":140000,"ラクウル":112000},"worn":{"ノジマ":140000,"ダイワンテレコム":115000,"バイヤーズ":115000,"ネットオフ":89250,"ゲオ":88000,"ふるいち":80000,"ソフトバンク":100800}},"mer":{"未使用に近い":165000,"傷なし":162564,"やや傷あり":130000},"pd":null,"pp":null},{"m":"iPhone 16 Pro","c":"512GB","cn":512,"ro":21,"s":"16","k":{"unused":{"モバステ":198500,"ダイワンテレコム":195500,"バイヤーズ":195500,"mmoba":156000,"ノジマ":156000,"ふるいち":155000,"Cash Go!":151300,"モバゾウ":151000,"ネットオフ":150150,"ゲオ":145000},"used":{"ダイワンテレコム":151000,"バイヤーズ":151000,"Cash Go!":151000,"モバゾウ":150500,"PC工房":137000,"ふるいち":135000,"mmoba":133000,"ネットオフ":131250,"モバステ":128500,"ゲオ":125000,"ノジマ":120000,"ニコスマ":118000,"ソフトバンク":150000,"ラクウル":127000},"worn":{"ノジマ":150000,"ダイワンテレコム":123000,"バイヤーズ":123000,"ゲオ":100000,"ネットオフ":94500,"ふるいち":90000,"ソフトバンク":108000}},"mer":{"未使用に近い":187950,"傷なし":139500,"やや傷あり":102500},"pd":null,"pp":null},{"m":"iPhone 16 Pro","c":"1TB","cn":1024,"ro":21,"s":"16","k":{"unused":{"モバステ":214000,"ダイワンテレコム":211000,"バイヤーズ":211000,"mmoba":171000,"ふるいち":170000,"ノジマ":166000,"Cash Go!":164900,"モバゾウ":161000,"ネットオフ":160650,"ゲオ":155000},"used":{"ダイワンテレコム":161000,"バイヤーズ":161000,"Cash Go!":161000,"モバゾウ":160500,"PC工房":147000,"mmoba":146000,"ふるいち":145000,"ネットオフ":143850,"ゲオ":135000,"モバステ":131500,"ノジマ":128000,"ニコスマ":120000,"ソフトバンク":160000,"ラクウル":137000},"worn":{"ノジマ":160000,"ダイワンテレコム":131000,"バイヤーズ":131000,"ふるいち":110000,"ゲオ":108000,"ネットオフ":102900,"ソフトバンク":115200}},"mer":{"未使用に近い":186950,"傷なし":129800,"やや傷あり":103600},"pd":null,"pp":null},{"m":"iPhone 16 Pro Max","c":"256GB","cn":256,"ro":22,"s":"16","k":{"unused":{"モバステ":185000,"ダイワンテレコム":182000,"バイヤーズ":182000,"ノジマ":161000,"Cash Go!":160100,"モバゾウ":156000,"ネットオフ":155400,"mmoba":151000,"ふるいち":150000,"ゲオ":135000},"used":{"Cash Go!":156000,"モバゾウ":155500,"ダイワンテレコム":151000,"バイヤーズ":151000,"モバステ":140500,"PC工房":135000,"ネットオフ":133350,"mmoba":133000,"ふるいち":130000,"ゲオ":130000,"ノジマ":124000,"ニコスマ":109500,"ソフトバンク":155000,"ラクウル":125000},"worn":{"ノジマ":155000,"ダイワンテレコム":128000,"バイヤーズ":128000,"ゲオ":104000,"ネットオフ":97650,"ふるいち":90000,"ソフトバンク":111200}},"mer":{"未使用に近い":159999,"傷なし":192129,"やや傷あり":151000},"pd":null,"pp":null},{"m":"iPhone 16 Pro Max","c":"512GB","cn":512,"ro":22,"s":"16","k":{"unused":{"モバステ":210500,"ダイワンテレコム":207500,"バイヤーズ":207500,"Cash Go!":184300,"ノジマ":176000,"ネットオフ":168000,"mmoba":166000,"モバゾウ":166000,"ふるいち":165000,"ゲオ":150000},"used":{"Cash Go!":166000,"モバゾウ":165500,"ダイワンテレコム":165000,"バイヤーズ":165000,"PC工房":150000,"モバステ":148500,"mmoba":148000,"ネットオフ":147000,"ふるいち":145000,"ゲオ":137000,"ノジマ":132000,"ニコスマ":129000,"ソフトバンク":165000,"ラクウル":140000},"worn":{"ノジマ":165000,"ダイワンテレコム":136000,"バイヤーズ":136000,"ゲオ":109600,"ネットオフ":105000,"ふるいち":100000,"ソフトバンク":118400}},"mer":{"未使用に近い":182000,"傷なし":181390,"やや傷あり":149950},"pd":null,"pp":null},{"m":"iPhone 16 Pro Max","c":"1TB","cn":1024,"ro":22,"s":"16","k":{"unused":{"モバステ":237500,"ダイワンテレコム":234500,"バイヤーズ":234500,"Cash Go!":198900,"ノジマ":181000,"ふるいち":180000,"ネットオフ":176400,"mmoba":176000,"モバゾウ":176000,"ゲオ":160000},"used":{"Cash Go!":176000,"モバゾウ":175500,"ダイワンテレコム":175000,"バイヤーズ":175000,"ふるいち":160000,"PC工房":160000,"mmoba":157000,"ネットオフ":155400,"モバステ":155000,"ゲオ":150000,"ノジマ":140000,"ニコスマ":132000,"ソフトバンク":175000,"ラクウル":150000},"worn":{"ノジマ":175000,"ダイワンテレコム":144000,"バイヤーズ":144000,"ふるいち":120000,"ゲオ":120000,"ネットオフ":113400,"ソフトバンク":125600}},"mer":{"未使用に近い":230000,"傷なし":190000,"やや傷あり":168500},"pd":null,"pp":null},{"m":"iPhone 16e","c":"128GB","cn":128,"ro":23,"s":"16","k":{"unused":{"Cash Go!":81500,"ダイワンテレコム":80000,"ノジマ":80000,"モバゾウ":77000,"ふるいち":75000,"ネットオフ":73500,"ゲオ":73000,"mmoba":68000,"モバステ":68000},"used":{"モバゾウ":75500,"ダイワンテレコム":75000,"Cash Go!":72000,"PC工房":67000,"ネットオフ":65100,"ゲオ":65000,"モバステ":64000,"ノジマ":60000,"ふるいち":60000,"mmoba":58600,"ニコスマ":58000,"ソフトバンク":75000,"ラクウル":67000},"worn":{"ノジマ":75000,"ダイワンテレコム":62000,"ゲオ":52000,"ネットオフ":47250,"ふるいち":35000,"ソフトバンク":53600}},"mer":{"未使用に近い":87000,"傷なし":94479,"やや傷あり":79500},"pd":null,"pp":null},{"m":"iPhone 16e","c":"256GB","cn":256,"ro":23,"s":"16","k":{"unused":{"ダイワンテレコム":85000,"ノジマ":85000,"Cash Go!":82500,"モバゾウ":82000,"ふるいち":80000,"ネットオフ":78750,"mmoba":77000,"モバステ":77000,"ゲオ":76000},"used":{"モバゾウ":80500,"ダイワンテレコム":80000,"Cash Go!":80000,"PC工房":73000,"ネットオフ":71400,"モバステ":71000,"ふるいち":70000,"mmoba":70000,"ゲオ":70000,"ノジマ":64000,"ニコスマ":60000,"ソフトバンク":80000,"ラクウル":75000},"worn":{"ノジマ":80000,"ダイワンテレコム":66000,"ゲオ":56000,"ネットオフ":52500,"ふるいち":40000,"ソフトバンク":57600}},"mer":{"未使用に近い":103944,"傷なし":100400,"やや傷あり":76000},"pd":null,"pp":null},{"m":"iPhone 16e","c":"512GB","cn":512,"ro":23,"s":"16","k":{"unused":{"ダイワンテレコム":100000,"ノジマ":100000,"モバゾウ":97000,"ふるいち":95000,"ネットオフ":94500,"ゲオ":92000,"Cash Go!":90200,"モバステ":86000,"mmoba":83000},"used":{"モバゾウ":90500,"ダイワンテレコム":90000,"Cash Go!":89000,"ふるいち":85000,"ネットオフ":84000,"PC工房":84000,"ゲオ":83000,"モバステ":78000,"mmoba":77000,"ノジマ":72000,"ニコスマ":68000,"ソフトバンク":90000,"ラクウル":85000},"worn":{"ノジマ":90000,"ダイワンテレコム":74000,"ゲオ":66400,"ネットオフ":60900,"ふるいち":60000,"ソフトバンク":64800}},"mer":{"未使用に近い":120250,"傷なし":110100,"やや傷あり":50000},"pd":null,"pp":null},{"m":"iPhone 17","c":"256GB","cn":256,"ro":24,"s":"17","k":{"unused":{"モバステ":134000,"ダイワンテレコム":130000,"ノジマ":124000,"Cash Go!":123200,"ふるいち":115000,"モバゾウ":114000,"ネットオフ":113400,"ゲオ":101000},"used":{"ダイワンテレコム":116000,"Cash Go!":114000,"モバゾウ":113000,"ふるいち":105000,"ネットオフ":105000,"モバステ":104500,"ゲオ":100000,"PC工房":100000,"ニコスマ":98000,"ノジマ":93000,"ラクウル":105000},"worn":{"ノジマ":116000,"ダイワンテレコム":93000,"ゲオ":80000,"ネットオフ":78750,"ふるいち":70000}},"mer":{"未使用に近い":140000,"傷なし":148554,"やや傷あり":71000},"pd":null,"pp":null},{"m":"iPhone 17","c":"512GB","cn":512,"ro":24,"s":"17","k":{"unused":{"モバステ":156000,"ダイワンテレコム":153000,"ノジマ":151000,"Cash Go!":146500,"ネットオフ":139650,"モバゾウ":137000,"ふるいち":135000,"ゲオ":135000},"used":{"ダイワンテレコム":138000,"Cash Go!":137000,"モバゾウ":136000,"ネットオフ":127050,"モバステ":125500,"ふるいち":125000,"PC工房":125000,"ゲオ":120000,"ニコスマ":114000,"ノジマ":110000,"ラクウル":130000},"worn":{"ノジマ":138000,"ダイワンテレコム":110000,"ゲオ":96000,"ネットオフ":94500,"ふるいち":80000}},"mer":{"未使用に近い":218000,"傷なし":151700,"やや傷あり":59940},"pd":null,"pp":null},{"m":"iPhone 17 Air","c":"256GB","cn":256,"ro":25,"s":"17","k":{"unused":{"モバステ":130000,"ダイワンテレコム":127000,"ふるいち":120000,"ノジマ":120000,"Cash Go!":117400,"モバゾウ":113000,"ネットオフ":110250,"ゲオ":105000},"used":{"ニコスマ":117000,"ダイワンテレコム":116000,"Cash Go!":112000,"モバゾウ":112000,"ふるいち":110000,"モバステ":105500,"ネットオフ":100800,"PC工房":97000,"ノジマ":93000,"ゲオ":90000,"ラクウル":97000},"worn":{"ノジマ":116000,"ダイワンテレコム":93000,"ネットオフ":74550,"ゲオ":72000,"ふるいち":70000}},"mer":{"未使用に近い":139900,"傷なし":120000,"やや傷あり":46000},"pd":null,"pp":null},{"m":"iPhone 17 Air","c":"512GB","cn":512,"ro":25,"s":"17","k":{"unused":{"モバステ":137000,"ダイワンテレコム":134000,"ふるいち":130000,"ノジマ":130000,"Cash Go!":127100,"モバゾウ":123000,"ネットオフ":121800,"ゲオ":120000},"used":{"ダイワンテレコム":128000,"Cash Go!":127000,"ニコスマ":127000,"モバゾウ":122000,"ふるいち":120000,"モバステ":113500,"ネットオフ":108150,"PC工房":107000,"ノジマ":102000,"ゲオ":100000,"ラクウル":107000},"worn":{"ノジマ":128000,"ダイワンテレコム":102000,"ネットオフ":84000,"ふるいち":80000,"ゲオ":80000}},"mer":{"未使用に近い":159999,"傷なし":89400,"やや傷あり":87150},"pd":null,"pp":null},{"m":"iPhone 17 Air","c":"1TB","cn":1024,"ro":25,"s":"17","k":{"unused":{"モバステ":150000,"ダイワンテレコム":147000,"ふるいち":145000,"Cash Go!":140700,"ノジマ":140000,"モバゾウ":136000,"ネットオフ":134400,"ゲオ":130000},"used":{"ダイワンテレコム":137000,"Cash Go!":137000,"ニコスマ":137000,"モバゾウ":135000,"ふるいち":130000,"モバステ":122500,"ネットオフ":115500,"ゲオ":115000,"PC工房":115000,"ノジマ":110000,"ラクウル":112000},"worn":{"ノジマ":137000,"ダイワンテレコム":110000,"ふるいち":100000,"ゲオ":92000,"ネットオフ":90300}},"mer":{"未使用に近い":175500,"傷なし":156900,"やや傷あり":103000},"pd":null,"pp":null},{"m":"iPhone 17 Pro","c":"256GB","cn":256,"ro":26,"s":"17","k":{"unused":{"モバステ":176500,"ダイワンテレコム":172000,"ノジマ":171000,"Cash Go!":164900,"ネットオフ":162750,"モバゾウ":157000,"ふるいち":155000,"ゲオ":145000},"used":{"ダイワンテレコム":161000,"Cash Go!":160000,"モバゾウ":156000,"モバステ":150000,"PC工房":142000,"ネットオフ":141750,"ふるいち":140000,"ニコスマ":139000,"ノジマ":129000,"ゲオ":125000,"ラクウル":137000},"worn":{"ノジマ":161000,"ダイワンテレコム":129000,"ネットオフ":108150,"ゲオ":100000,"ふるいち":90000}},"mer":{"未使用に近い":188890,"傷なし":185000,"やや傷あり":60417},"pd":null,"pp":null},{"m":"iPhone 17 Pro","c":"512GB","cn":512,"ro":26,"s":"17","k":{"unused":{"モバステ":207000,"ダイワンテレコム":203000,"ノジマ":196000,"Cash Go!":191100,"ネットオフ":189000,"モバゾウ":187000,"ふるいち":185000,"ゲオ":175000},"used":{"ダイワンテレコム":190000,"Cash Go!":190000,"モバゾウ":186000,"ふるいち":170000,"ネットオフ":168000,"PC工房":168000,"モバステ":166000,"ニコスマ":166000,"ノジマ":152000,"ゲオ":148000,"ラクウル":162000},"worn":{"ノジマ":190000,"ダイワンテレコム":152000,"ネットオフ":120750,"ゲオ":118400,"ふるいち":100000}},"mer":{"未使用に近い":225000,"傷なし":196000,"やや傷あり":53594},"pd":null,"pp":null},{"m":"iPhone 17 Pro","c":"1TB","cn":1024,"ro":26,"s":"17","k":{"unused":{"モバステ":226000,"ダイワンテレコム":223000,"ノジマ":221000,"ネットオフ":216300,"ふるいち":215000,"Cash Go!":214400,"モバゾウ":209000,"ゲオ":187000},"used":{"Cash Go!":213000,"ダイワンテレコム":212000,"モバゾウ":208000,"ふるいち":200000,"PC工房":193000,"ニコスマ":189000,"モバステ":187000,"ネットオフ":183750,"ノジマ":170000,"ゲオ":170000,"ラクウル":182000},"worn":{"ノジマ":212000,"ダイワンテレコム":170000,"ゲオ":136000,"ネットオフ":134400,"ふるいち":120000}},"mer":{"未使用に近い":242950,"傷なし":220000,"やや傷あり":127155},"pd":null,"pp":null},{"m":"iPhone 17 Pro Max","c":"256GB","cn":256,"ro":27,"s":"17","k":{"unused":{"モバステ":193000,"ダイワンテレコム":188000,"ノジマ":186000,"Cash Go!":180400,"ネットオフ":176400,"ふるいち":172000,"モバゾウ":172000,"ゲオ":160000},"used":{"ダイワンテレコム":174000,"Cash Go!":173000,"モバステ":172000,"モバゾウ":171000,"ふるいち":160000,"PC工房":155000,"ニコスマ":153000,"ネットオフ":152250,"ゲオ":145000,"ノジマ":138000,"ラクウル":145000},"worn":{"ノジマ":172000,"ダイワンテレコム":140000,"ゲオ":116000,"ネットオフ":113400,"ふるいち":100000}},"mer":{"未使用に近い":212222,"傷なし":186000,"やや傷あり":49896},"pd":null,"pp":null},{"m":"iPhone 17 Pro Max","c":"512GB","cn":512,"ro":27,"s":"17","k":{"unused":{"モバステ":223000,"ダイワンテレコム":219000,"ノジマ":206000,"モバゾウ":202000,"Cash Go!":201800,"ネットオフ":200550,"ふるいち":200000,"ゲオ":185000},"used":{"ダイワンテレコム":204000,"モバゾウ":201000,"Cash Go!":201000,"モバステ":184000,"ふるいち":180000,"PC工房":180000,"ニコスマ":180000,"ネットオフ":176400,"ゲオ":165000,"ノジマ":162000,"ラクウル":170000},"worn":{"ノジマ":202000,"ダイワンテレコム":164000,"ゲオ":132000,"ネットオフ":128100,"ふるいち":120000}},"mer":{"未使用に近い":238000,"傷なし":202629,"やや傷あり":94595},"pd":null,"pp":null},{"m":"iPhone 17 Pro Max","c":"1TB","cn":1024,"ro":27,"s":"17","k":{"unused":{"モバステ":248000,"ダイワンテレコム":245000,"ノジマ":236000,"ふるいち":230000,"Cash Go!":229900,"モバゾウ":228000,"ネットオフ":223650,"ゲオ":210000},"used":{"ダイワンテレコム":234000,"Cash Go!":229000,"モバゾウ":227000,"ふるいち":215000,"ニコスマ":207000,"PC工房":202000,"モバステ":198500,"ネットオフ":194250,"ノジマ":186000,"ゲオ":185000,"ラクウル":190000},"worn":{"ノジマ":232000,"ダイワンテレコム":188000,"ゲオ":148000,"ネットオフ":143850,"ふるいち":140000}},"mer":{"未使用に近い":264000,"傷なし":218379,"やや傷あり":107700},"pd":null,"pp":null},{"m":"iPhone 17 Pro Max","c":"2TB","cn":2048,"ro":27,"s":"17","k":{"unused":{"モバステ":286000,"ダイワンテレコム":283000,"Cash Go!":263800,"ふるいち":260000,"ノジマ":256000,"モバゾウ":248000,"ネットオフ":246750,"ゲオ":225000},"used":{"ダイワンテレコム":254000,"Cash Go!":252000,"モバゾウ":247000,"ニコスマ":234000,"PC工房":232000,"ふるいち":230000,"ネットオフ":223650,"モバステ":217500,"ゲオ":215000,"ノジマ":202000,"ラクウル":220000},"worn":{"ノジマ":252000,"ダイワンテレコム":204000,"ゲオ":172000,"ネットオフ":168000,"ふるいち":150000}},"mer":{"未使用に近い":329800,"傷なし":367000,"やや傷あり":null},"pd":null,"pp":null}]};
+
+(function () {
+  var shops = DATA.shops;
+  var conds = DATA.conds;              // [{key,label,mer}] の順に並ぶ
+  var merLabels = DATA.merLabels;
+  var keep = DATA.keep;                // 手数料を引いた残り（0.9 など）
+  var ship = DATA.ship;                // 送料
+  var recs = DATA.records;
+
+  var shopUrls = DATA.shopUrls || {};
+
+  /* 初期表示は機種列（0列目）の発売順・降順＝新しい機種が上 */
+  var MODEL_COL = 0;
+  /* series/model/cap は空文字が「すべて」。フリー検索 q とAND条件で効く */
+  var state = { cond: 'used', sortCol: MODEL_COL, sortDir: 'desc', q: '',
+                series: '', model: '', cap: '' };
+
+  var tbody = document.getElementById('tbody');
+  var mlist = document.getElementById('mlist');
+  var countEl = document.getElementById('count');
+  var headers = document.getElementById('t').tHead.rows[0].cells;
+
+  function yen(v) { return (v === null || v === undefined) ? '−' : '¥' + Number(v).toLocaleString('ja-JP'); }
+  function signed(v) { return (v === null || v === undefined) ? '−' : (v > 0 ? '+' : '') + Number(v).toLocaleString('ja-JP'); }
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  /* 店舗名を公式買取ページへのリンクにする（URL未登録なら文字のまま） */
+  function shopName(name) {
+    var url = shopUrls[name];
+    if (!url) return esc(name);
+    return '<a href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(name) + '</a>';
+  }
+  /* 店舗ごとのアクセント色を丸ドットで表す（PC表の店舗列と同じ色） */
+  function shopDot(name) {
+    var idx = -1;
+    for (var i = 0; i < shops.length; i++) if (shops[i] === name) { idx = i; break; }
+    return (idx < 0) ? '' : '<span class="dot shop-' + idx + '"></span>';
+  }
+  function condMeta(key) {
+    for (var i = 0; i < conds.length; i++) if (conds[i].key === key) return conds[i];
+    return conds[0];
+  }
+
+  /* 1レコード×選択状態から、店舗価格・買取最高値・メルカリ中央値・差額を求める */
+  function calc(r) {
+    var prices = r.k[state.cond] || {};
+    var maxShop = null, maxPrice = null;
+    for (var s in prices) {
+      if (prices[s] !== null && (maxPrice === null || prices[s] > maxPrice)) {
+        maxPrice = prices[s]; maxShop = s;
+      }
+    }
+    var merLabel = condMeta(state.cond).mer;
+    var med = (r.mer && r.mer[merLabel] !== undefined) ? r.mer[merLabel] : null;
+    var sabun = null;
+    if (med !== null && med !== undefined && maxPrice !== null) {
+      sabun = Math.round(med * keep - ship - maxPrice);
+    }
+    return { r: r, prices: prices, maxShop: maxShop, maxPrice: maxPrice, med: med, sabun: sabun };
+  }
+
+  /* 並べ替え用の値。列番号は表の見出しと同じ並び */
+  function sortValue(c, col) {
+    var nShop = shops.length;
+    /* 機種列は名前のあいうえお順ではなく発売順（release_order）で並べる */
+    if (col === MODEL_COL) return c.r.ro;
+    if (col === 1) return c.r.cn;
+    if (col < 2 + nShop) {
+      var v = c.prices[shops[col - 2]];
+      return (v === undefined) ? null : v;
+    }
+    if (col === 2 + nShop) return c.maxPrice;
+    if (col === 3 + nShop) return c.maxShop;
+    if (col < 4 + nShop + merLabels.length) {
+      var v2 = c.r.mer[merLabels[col - 4 - nShop]];
+      return (v2 === undefined) ? null : v2;
+    }
+    if (col === 4 + nShop + merLabels.length) return c.sabun;
+    return c.r.pd;
+  }
+
+  function render() {
+    var words = state.q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    var list = [];
+    for (var i = 0; i < recs.length; i++) {
+      var rec = recs[i];
+      /* シリーズ・機種・容量・キーワードはすべてAND条件 */
+      if (state.series && rec.s !== state.series) continue;
+      if (state.model && rec.m !== state.model) continue;
+      if (state.cap && rec.c !== state.cap) continue;
+      var key = (rec.m + ' ' + rec.c).toLowerCase();
+      var ok = true;
+      for (var w = 0; w < words.length; w++) if (key.indexOf(words[w]) < 0) { ok = false; break; }
+      if (ok) list.push(calc(rec));
+    }
+
+    if (state.sortCol !== null) {
+      var col = state.sortCol, dir = state.sortDir;
+      list.sort(function (a, b) {
+        var av = sortValue(a, col), bv = sortValue(b, col);
+        var ae = (av === null || av === undefined || av === '');
+        var be = (bv === null || bv === undefined || bv === '');
+        if (ae && be) return 0;
+        if (ae) return 1;      /* 欠損は常に末尾 */
+        if (be) return -1;
+        /* 機種列は同一機種内の容量を常に昇順に保つ（向きの反転を受けない） */
+        if (col === MODEL_COL && av === bv) return a.r.cn - b.r.cn;
+        var r = (typeof av === 'number' && typeof bv === 'number')
+              ? av - bv : String(av).localeCompare(String(bv), 'ja');
+        return dir === 'asc' ? r : -r;
+      });
+    }
+
+    renderTable(list);
+    renderCards(list);
+    syncStickyOffset();
+    countEl.textContent = list.length + ' / ' + recs.length + ' 件';
+  }
+
+  /* 左端に固定した「機種」列の実測幅と、ツールバーの高さを CSS 変数に反映する */
+  function syncStickyOffset() {
+    var w = headers[0].getBoundingClientRect().width;
+    if (w) document.documentElement.style.setProperty('--col1w', w + 'px');
+    var bar = document.querySelector('.toolbar');
+    if (bar) {
+      document.documentElement.style.setProperty(
+        '--toolbar-h', Math.round(bar.getBoundingClientRect().height) + 'px');
+    }
+  }
+
+  function renderTable(list) {
+    var out = [];
+    var prevModel = null, band = false;
+    for (var i = 0; i < list.length; i++) {
+      var c = list[i], r = c.r;
+      /* 機種が変わるたびに帯の色を切り替え、先頭行に太い区切り線を付ける */
+      var isStart = (r.m !== prevModel);
+      if (isStart) { band = !band; prevModel = r.m; }
+      var td = [];
+      td.push('<td class="model col-model">' + esc(r.m) + '</td>');
+      td.push('<td class="col-cap">' + esc(r.c) + '</td>');
+      for (var s = 0; s < shops.length; s++) {
+        var v = c.prices[shops[s]];
+        v = (v === undefined) ? null : v;
+        td.push('<td class="num shop-' + s + (v === null ? ' empty-cell' : '') + '">'
+                + yen(v) + '</td>');
+      }
+      td.push('<td class="num hi">' + yen(c.maxPrice) + '</td>');
+      td.push('<td>' + (c.maxShop ? esc(c.maxShop) : '−') + '</td>');
+      for (var m = 0; m < merLabels.length; m++) {
+        var mv = r.mer[merLabels[m]];
+        mv = (mv === undefined) ? null : mv;
+        td.push('<td class="num' + (mv === null ? ' empty-cell' : '') + '">' + yen(mv) + '</td>');
+      }
+      /* 差額はプラスのみ色を付ける（マイナスの赤強調はしない） */
+      var sCls = c.sabun === null ? ' empty-cell' : (c.sabun > 0 ? ' pos' : '');
+      td.push('<td class="num' + sCls + '">' + signed(c.sabun) + '</td>');
+      var pdCls = (r.pd === null) ? ' empty-cell' : (r.pd >= 0 ? ' pos' : ' neg');
+      var pdTxt = (r.pd === null) ? '−'
+        : signed(r.pd) + ' (' + (r.pp > 0 ? '+' : '') + r.pp + '%)';
+      td.push('<td class="num' + pdCls + '">' + pdTxt + '</td>');
+      var cls = (band ? 'band' : '') + (isStart ? ' grp-start' : '');
+      out.push('<tr' + (cls.trim() ? ' class="' + cls.trim() + '"' : '') + '>'
+               + td.join('') + '</tr>');
+    }
+    tbody.innerHTML = out.join('');
+  }
+
+  function renderCards(list) {
+    var out = [];
+    var prevModel = null;
+    for (var i = 0; i < list.length; i++) {
+      var c = list[i], r = c.r;
+      /* 表と同じ並び順。機種が変わる位置に見出しを挟む */
+      if (r.m !== prevModel) {
+        out.push('<div class="mgroup">' + esc(r.m) + '</div>');
+        prevModel = r.m;
+      }
+      var sCls = c.sabun === null ? '' : (c.sabun > 0 ? ' pos' : '');
+      var shopRows = [];
+      for (var s = 0; s < shops.length; s++) {
+        var v = c.prices[shops[s]];
+        v = (v === undefined) ? null : v;
+        shopRows.push('<li class="shop-' + s + (shops[s] === c.maxShop ? ' top' : '') + '">'
+          + '<span>' + shopName(shops[s]) + '</span>'
+          + '<span class="p' + (v === null ? ' none' : '') + '">' + yen(v) + '</span></li>');
+      }
+      out.push(
+        '<div class="mcard">'
+        + '<h3>' + esc(r.m) + '<span class="cap">' + esc(r.c) + '</span></h3>'
+        + '<div class="mrow"><span class="lbl">買取最高値</span><span>'
+          + '<span class="val">' + yen(c.maxPrice) + '</span>'
+          + '<span class="shop">' + (c.maxShop ? shopDot(c.maxShop) + esc(c.maxShop) : '−')
+          + '</span></span></div>'
+        + '<div class="mrow"><span class="lbl">メルカリ中央値</span>'
+          + '<span class="val small">' + yen(c.med) + '</span></div>'
+        + '<div class="mrow"><span class="lbl">差額</span>'
+          + '<span class="val' + sCls + '">' + signed(c.sabun) + '</span></div>'
+        + '<details><summary>全' + shops.length + '店舗の価格を見る</summary>'
+        + '<ul class="shoplist">' + shopRows.join('') + '</ul></details>'
+        + '</div>');
+    }
+    mlist.innerHTML = out.join('');
+  }
+
+  /* 状態切替（セグメンテッドコントロール） */
+  var segBtns = document.getElementById('seg').getElementsByTagName('button');
+  for (var b = 0; b < segBtns.length; b++) {
+    (function (btn) {
+      btn.addEventListener('click', function () {
+        state.cond = btn.getAttribute('data-cond');
+        for (var k = 0; k < segBtns.length; k++) {
+          segBtns[k].setAttribute('aria-pressed', segBtns[k] === btn ? 'true' : 'false');
+        }
+        render();
+      });
+    })(segBtns[b]);
+  }
+
+  /* 列ソート（店舗名リンクをクリックしたときは並べ替えない） */
+  function markSort(idx) {
+    for (var k = 0; k < headers.length; k++) headers[k].classList.remove('asc', 'desc');
+    headers[idx].classList.add(state.sortDir);
+  }
+  for (var h = 0; h < headers.length; h++) {
+    (function (idx) {
+      headers[idx].addEventListener('click', function (ev) {
+        var t = ev.target;
+        while (t && t !== headers[idx]) {
+          if (t.tagName === 'A') return;
+          t = t.parentNode;
+        }
+        state.sortDir = (state.sortCol === idx && state.sortDir === 'asc') ? 'desc' : 'asc';
+        state.sortCol = idx;
+        markSort(idx);
+        render();
+      });
+    })(h);
+  }
+
+  /* 検索 */
+  var q = document.getElementById('q');
+  q.addEventListener('input', function () { state.q = q.value; render(); });
+
+  /* ===== 絞り込み（シリーズ・機種・容量）。状態切替とは独立に動く ===== */
+  var selSeries = document.getElementById('fSeries');
+  var selModel = document.getElementById('fModel');
+  var capBox = document.getElementById('fCap');
+
+  /* データに実在する機種・シリーズ・容量だけを選択肢にする */
+  var modelList = [];   /* [{m, s, ro}] を発売順（古い順）で保持 */
+  var seenModel = {};
+  var capSeen = {};
+  var capList = [];     /* [{c, cn}] */
+  for (var i = 0; i < recs.length; i++) {
+    var rec = recs[i];
+    if (!seenModel[rec.m]) {
+      seenModel[rec.m] = 1;
+      modelList.push({ m: rec.m, s: rec.s, ro: rec.ro });
+    }
+    if (!capSeen[rec.c]) { capSeen[rec.c] = 1; capList.push({ c: rec.c, cn: rec.cn }); }
+  }
+  modelList.sort(function (a, b) { return a.ro - b.ro; });
+  capList.sort(function (a, b) { return a.cn - b.cn; });
+
+  var seriesList = [];
+  var seenSeries = {};
+  for (var i2 = 0; i2 < modelList.length; i2++) {
+    if (!seenSeries[modelList[i2].s]) {
+      seenSeries[modelList[i2].s] = 1;
+      seriesList.push(modelList[i2].s);
+    }
+  }
+
+  function option(value, label, selected) {
+    return '<option value="' + esc(value) + '"' + (selected ? ' selected' : '') + '>'
+         + esc(label) + '</option>';
+  }
+
+  function fillSeries() {
+    var out = [option('', 'すべて', true)];
+    for (var i = 0; i < seriesList.length; i++) {
+      var lbl = (seriesList[i] === 'SE') ? 'SE' : 'iPhone ' + seriesList[i];
+      out.push(option(seriesList[i], lbl, false));
+    }
+    selSeries.innerHTML = out.join('');
+  }
+
+  /* 機種プルダウンはシリーズ選択に連動して選択肢を絞る */
+  function fillModels() {
+    var out = [option('', 'すべて', state.model === '')];
+    for (var i = 0; i < modelList.length; i++) {
+      if (state.series && modelList[i].s !== state.series) continue;
+      out.push(option(modelList[i].m, modelList[i].m, state.model === modelList[i].m));
+    }
+    selModel.innerHTML = out.join('');
+  }
+
+  function fillCaps() {
+    var out = ['<button type="button" data-cap="" aria-pressed="true">すべて</button>'];
+    for (var i = 0; i < capList.length; i++) {
+      out.push('<button type="button" data-cap="' + esc(capList[i].c) + '" aria-pressed="false">'
+               + esc(capList[i].c) + '</button>');
+    }
+    capBox.innerHTML = out.join('');
+    var btns = capBox.getElementsByTagName('button');
+    for (var b = 0; b < btns.length; b++) {
+      (function (btn) {
+        btn.addEventListener('click', function () {
+          state.cap = btn.getAttribute('data-cap');
+          for (var k = 0; k < btns.length; k++) {
+            btns[k].setAttribute('aria-pressed', btns[k] === btn ? 'true' : 'false');
+          }
+          render();
+        });
+      })(btns[b]);
+    }
+  }
+
+  selSeries.addEventListener('change', function () {
+    state.series = selSeries.value;
+    state.model = '';        /* シリーズを変えたら機種選択は「すべて」に戻す */
+    fillModels();
+    render();
+  });
+  selModel.addEventListener('change', function () {
+    state.model = selModel.value;
+    render();
+  });
+
+  fillSeries();
+  fillModels();
+  fillCaps();
+
+  /* 初期の並び順（機種列・発売の新しい順）を見出しの▼に反映する */
+  markSort(state.sortCol);
+
+  render();
+  window.addEventListener('resize', syncStickyOffset);
+})();
+</script>
+</body>
+</html>

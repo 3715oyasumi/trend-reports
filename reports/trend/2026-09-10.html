@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月10日（木）版</p>
+  <p class="total-count">本日のトレンド: 11件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">夜にも食べたい ココロの疲労感・カラダの疲労感・免疫サポートヨーグルト（いかるが牛乳）</div>
+    <div class="card-detail"><span class="label">特徴</span>「精神的・身体的疲労感の軽減」と「免疫機能の維持」の両方を表示した日本初のヨーグルト。ユーグレナグラシリス由来パラミロン350mg配合、低脂肪設計・乳糖分解済みで、「朝のヨーグルト」から「夜のヨーグルト」への習慣転換を提案</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月12日（土）より関西圏で順次</div>
+    <div class="card-detail"><span class="label">価格</span>不明（リリースに記載なし）</div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000003.000190446.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">matsukiyo LAB 免疫ケア プラズマ乳酸菌 のどケア ラクトフェリン のど飴（アロエヨーグルト風味）</div>
+    <div class="card-detail"><span class="label">特徴</span>プラズマ乳酸菌とラクトフェリンを同時配合したW機能性表示食品。「健康な人の免疫機能の維持」と「空気の乾燥に伴う一時的なのどの乾燥感の軽減」の2機能を表示。1日5粒・3日分（60g）設計</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月10日（土）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">429円（税込）</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000200.000089283.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">RIZIN餃子</div>
+    <div class="card-detail"><span class="label">特徴</span>格闘家・アスリート向けに開発された高機能餃子。たんぱく質を含む栄養バランスに配慮しつつ餃子本来の食味を維持する設計。本日9月10日、京セラドーム大阪「超RIZIN.5」会場でLINE登録者向けに無料試食を提供</div>
+    <div class="card-detail"><span class="label">発売日</span>不明（リリース時点で未定）</div>
+    <div class="card-detail"><span class="label">価格</span>不明</div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000009.000124734.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">楽天スーパーSALE ラストスパート スペシャルクーポン（MERCY Vegan Factory）</div>
+    <div class="card-detail"><span class="label">特典内容</span>全商品対象で新規顧客20%OFF・リピーター15%OFF（3,500円以上の購入が条件）</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月10日（木）00:00〜9月11日（金）01:59（楽天スーパーSALE全体は9月4日20:00〜9月11日01:59）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000037.000174572.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">久世福商店「うまいもの市」</div>
+    <div class="card-detail"><span class="label">特典内容</span>対象11商品を2点購入で5%OFF、3点以上購入で10%OFF</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月18日（金）〜9月27日（日）の10日間／全国の久世福商店店舗（一部対象外店舗あり、オンラインショップは対象外）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000238.000158568.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">かっぱ寿司×MOMOREI 食べ放題コラボ</div>
+    <div class="card-detail"><span class="label">特典内容</span>食べ放題利用者に「MOMOREI」オリジナル缶バッジ（全2種から選択）をプレゼント。小学生以上が対象。食べ放題料金はタイプA店舗が一般3,890円／シニア3,390円／小学生1,990円、タイプB店舗が一般4,190円／シニア3,690円／小学生1,990円（いずれも幼児無料）</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月1日（木）〜なくなり次第終了</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000001216.000018731.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">くら寿司×「ちいかわ」コラボ景品</div>
+    <div class="card-detail"><span class="label">市場状況</span>8月21日開始の「ビッくらポン！」コラボで限定フィギュアが当たらないとの投稿が相次ぎ、フリマサイトへの大量出品から従業員による横領疑惑が浮上。くら寿司は9月5日に不正行為の判明を発表し、9月6日営業開始時から景品配布・コラボメニューを含む全施策を中止。先着プレゼント品の配布前販売やのぼり旗の出品も確認されている。具体的な転売価格・出品点数は記事に記載がなく不明</div>
+    <div class="card-detail"><span class="label">注意点</span>ヤフオクは「不正な手段で入手した商品等の出品を禁止」との方針を明示し、出品者への入手経路確認と措置を進行中。メルカリも9月7日に出品削除対応を公表。入手経路が不透明な出品は購入後に削除・キャンセルとなるリスクがあり、二次流通での取得は避けるべき局面</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/9d773acb73670568a047da223e5bd59564deebd9">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケモンカードゲーム MEGA 拡張パック「30th CELEBRATION」</div>
+    <div class="card-detail"><span class="label">市場状況</span>2026年9月16日（水）発売の30周年記念商品。9月9日時点でAmazon・ノジマオンラインなど多数のショップが抽選販売を実施中で、受付締切は9月10日〜13日に集中している。定価および現時点のフリマ実売相場は当該記事に記載がなく不明</div>
+    <div class="card-detail"><span class="label">注意点</span>抽選販売が全国規模で並行しており、発売前から品薄が前提の需給構造。発売直後は相場が乱高下しやすいため、二次流通での即時購入は高値掴みのリスクが高い</div>
+    <div class="card-source"><a href="https://premium.gamepedia.jp/pokeca/archives/16612">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">一蘭ラーメン 博多細麺ストレート（5食入）／一蘭</div>
+    <div class="card-detail"><span class="label">理由</span>一部商品で賞味期限表示の欠落が判明し、自主回収</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>手元の該当商品は賞味期限印字の有無を確認する。対象ロット・回収数量・返金条件は掲載情報に記載がなく不明のため、一蘭公式の告知を確認したうえで対応すること</div>
+    <div class="card-source"><a href="https://www.recall-plus.jp/info?page=1">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">中食・惣菜のアレルギー表示欠落による自主回収が3件連続（9月8〜9日）</div>
+    <div class="card-detail"><span class="label">理由</span>アクシアルリテイル「紅鮭・チキン照焼海苔弁当」でえび・豚肉の表示欠落、丸合「炙りしめさば刺身」で小麦の表示欠落、富士シティオ「国産小麦タルタルフィッシュバーガー」でりんごの表示欠落。いずれも対象数量は不明</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★☆</span>（該当アレルギーを持つ消費者にとっては健康被害に直結）</div>
+    <div class="card-detail"><span class="label">アクション</span>直近数日にスーパー惣菜・弁当を購入した場合はレシートと商品を確認し、該当時は喫食せず販売店に連絡する</div>
+    <div class="card-source"><a href="https://www.recall-plus.jp/info?page=1">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">アシックスジャパン ランニングTシャツ</div>
+    <div class="card-detail"><span class="label">理由</span>一部で縫製不良が判明し自主回収</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★☆☆☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>対象品番・回収数量は掲載情報に記載がなく不明。ランニングウェアを最近購入した場合はアシックス公式の告知で対象を確認する</div>
+    <div class="card-source"><a href="https://www.recall-plus.jp/info?page=1">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>新商品側は「機能性表示の多機能化」が明確なトレンドで、いかるが牛乳の疲労感＋免疫の二重表示、マツキヨの免疫＋のどケアW表示と、1商品で複数の便益を訴求する設計が同日に2件並んだ点は象徴的です。一方、くら寿司×ちいかわの一件は、転売問題が「消費者の買い占め」から「供給側内部の不正」へ論点が移った事例で、メルカリ・ヤフオク双方が9月7〜8日に相次いで対応を表明したことは、プラットフォーム側の責任範囲が実務的に拡大していることを示します。品薄・販売停止ジャンルは今週、需給起因ではなく表示ミス起因の自主回収が9月8〜9日の2日間で4件と集中しており、中食カテゴリのアレルギー表示管理が当面の注視点です。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

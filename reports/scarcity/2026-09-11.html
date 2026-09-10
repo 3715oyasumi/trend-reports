@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>品薄予測レポート 2026-09-11</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>品薄予測レポート</h1>
+  <p class="report-date">2026年9月11日</p>
+  <p class="total-count">本日の品薄予測: 18件</p>
+
+  <h2>今買える・相場上昇の予兆 <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">BUNGUBOX万年筆「Bon Voyage BB Capless」（BUNGUBOX・文具、継続）</div>
+    <div class="card-detail"><span class="label">品薄度</span>本日正午の公式ニュースレター先行販売が最終段階。先行販売で完売した場合、9月28日予定の一般販売は実施されない。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>過去シリーズの発売時定価は<span class="card-amount">21,100円</span>。海外流通では約<span class="card-amount">9.7万〜12万円</span>で取引例があり、定価比4〜6倍のプレミアが確認されている。</div>
+    <div class="card-detail"><span class="label">根拠</span>過去2回の入荷はいずれも完売。15周年記念万年筆で、今回が最終入荷と告知されている。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>本日正午までに公式ニュースレターへ登録し、配信開始と同時に注文する。完売後は二次流通での相場を注視する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2097920504921530767">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">たまごっち カスタムキーリング2（BANDAI・食玩、継続）</div>
+    <div class="card-detail"><span class="label">品薄度</span>複数の実店舗で再入荷と売り切れの報告があり、地域差を伴う品薄が継続している。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>定価は<span class="card-amount">418円</span>。シークレット個体を中心に二次流通で出品例があるが、現在相場は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>発売から1か月以上経過後も、シークレットを狙う需要が続いている。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>コンビニや駄菓子卸取扱店を複数巡回し、入荷直後を狙う。シークレット個体の相場を個別に確認する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2097982611180445732">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Pokémon meets GELATO PIQUE 第3弾（gelato pique・ポケモンコラボアパレル、継続）</div>
+    <div class="card-detail"><span class="label">品薄度</span>先行予約分は完売商品があり、店舗在庫も流動的。一方でAmazonでは通常予約枠の一部再開が確認されている。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>定価は<span class="card-amount">1,650〜19,690円</span>。二次流通相場は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>予約開始直後から一部商品が完売しており、残存するサイズやアイテムは限定的とみられる。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>Amazonの予約ページを毎日確認し、希望のサイズとアイテムを定価で確保する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2097863892768813282">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケモンカード 30th CELEBRATION／ストームエメラルダ・メガブレイブ／メガシンフォニア（ポケモン・TCG、継続）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月16日</div>
+    <div class="card-detail"><span class="label">品薄度</span>複数店舗で抽選の当選発表が続き、応募可能な抽選枠も残る。一般販売分は短時間で枯れる可能性が高い。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>メガルカリオex[MUR]は<span class="card-amount">4.8万〜5万円</span>、メガサーナイトex[MUR]は<span class="card-amount">5.4万〜5.6万円</span>。ストームエメラルダのメガレックウザex[MUR]は<span class="card-amount">10万〜13万円</span>級が予想されている。</div>
+    <div class="card-detail"><span class="label">根拠</span>ふるいち、HMV、新星堂などで抽選の当選発表が継続。低封入率の高額カードに注目が集まっている。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>締切前の抽選へ並行して応募し、当選後は指定期間内に受け取る。発売日は店頭販売の開始時刻も確認する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2097852492772176284">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ハイラル・ヒストリア 復刊版（小学館・ゲーム公式記念本、ゼルダの伝説40周年、新規）</div>
+    <div class="card-detail"><span class="label">品薄度</span>絶版決定後に40周年記念で重版が決定したが、売り切れ報告が出始めている。最後の重版となる可能性が示されている。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>定価および現在の二次流通相場は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>取り寄せ可能な店舗がある一方、主要オンライン販売先では在庫切れの報告がある。原作イラストレーター公式アカウントによる重版決定告知が情報の裏付けとなっている。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>最寄りの小学館取扱書店へ取り寄せを依頼し、在庫を早めに確保する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098115756919750907">出典を確認する</a></div>
+  </div>
+
+  <h2>発売前・期待値高 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">iPhone 18 Pro／Pro Max・折りたたみiPhone Duo（Apple・スマートフォン、継続）</div>
+    <div class="card-detail"><span class="label">発売日</span>Pro／Pro Maxは2026年9月18日、Duoは2026年10月23日。Pro系の予約開始は9月12日21時、Duoは10月16日21時。</div>
+    <div class="card-detail"><span class="label">品薄度</span>Duoは生産数が極めて少ないとの見通しがあり、Pro Maxも供給状況次第で品薄化する可能性がある。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>Duo 256GBの定価は<span class="card-amount">364,800円</span>。発売前の二次流通相場は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>正式発表により製品名と予約日程が判明。Duoは2TBモデルで574,800円の高価格帯となる。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>Pro系は9月12日21時の予約開始に合わせ、Apple IDと支払い方法を事前確認する。Duo狙いは10月16日に備える。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2097862212283179274">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">しまむら『スターウォーズ』コラボ第2弾（しまむら・コラボアパレル雑貨、新規）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月12日。店頭先着販売。</div>
+    <div class="card-detail"><span class="label">品薄度</span>第1弾では売り切れが続出し、受注生産による再販売が実施された実績がある。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>発売前のため価格相場は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>グローグー関連を含むバッグ、チャーム、ポーチ、アパレルなど、多数の商品が同時発売される。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>発売日の開店直後に大型店舗を確認し、人気キャラクター関連の商品を優先する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2097891389464043977">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">初音ミク USB充電器／ガジェットポーチ 受注生産（公式キャラクターグッズ、新規）</div>
+    <div class="card-detail"><span class="label">発売日</span>受注期間は2026年10月2日から10月31日。</div>
+    <div class="card-detail"><span class="label">品薄度</span>完売済み商品の受注生産だが、製造可能数に達した時点で受注終了となる。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>USB充電器2色とガジェットポーチ2種について、期間限定の受注生産が正式に告知されている。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>10月2日の受注開始直後に注文し、期間満了前の早期終了に注意する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2097613374217683440">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ロマンシング サガ3 デスティニーユナイテッド（スクウェア・エニックス・Nintendo Switchゲーム、新規）</div>
+    <div class="card-detail"><span class="label">発売日</span>2027年2月16日。予約開始は2026年9月10日。</div>
+    <div class="card-detail"><span class="label">品薄度</span>根強い人気シリーズで、発売後に早期完売する可能性が販売店から案内されている。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>古本市場などで定価予約を受け付けている。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>店舗別の予約特典を確認しつつ予約枠を確保し、発売接近時に再度在庫動向を確認する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2097996004108730435">出典を確認する</a></div>
+  </div>
+
+  <h2>発売接近リマインド <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">LISA×MINISO GLOBAL POP-UP（MINISO・コラボポップアップ）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月11日</div>
+    <div class="card-detail"><span class="label">品薄度</span>フィギュア人気が集中する予兆がある。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>本日中に店舗在庫と予約状況を確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">阪神タイガース×仕事猫コラボグッズ再販（阪神タイガース公式・くまみね）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月12日</div>
+    <div class="card-detail"><span class="label">品薄度</span>個数制限があり、天候による日程変更にも注意が必要。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>販売条件と当日の開催状況を事前に確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケモンカード 30th CELEBRATION／プレミアムデッキセット（ポケモン・TCG）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月16日</div>
+    <div class="card-detail"><span class="label">品薄度</span>抽選および店頭販売の動向を継続して確認する必要がある。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>上記のポケモンカード案件の詳細を参照し、抽選と販売情報を確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Fitbit Air 限定モデル「Pokémon Sleep」（Google・Fitbit）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月15日</div>
+    <div class="card-detail"><span class="label">品薄度</span>量販店で予約枠の再開が確認され、発売後の品薄化が想定される。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>予約可能な販売先を確認し、発売日の在庫推移を注視する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">DX妖怪ウォッチ（レバンテ・バンダイ玩具）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月19日</div>
+    <div class="card-detail"><span class="label">品薄度</span>過去作では海外相場が高騰した実績がある。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>予約状況と海外を含む二次流通相場を確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ドラゴンクエスト40周年 キングスライム目薬（ロート製薬）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月24日</div>
+    <div class="card-detail"><span class="label">品薄度</span>受注販売のため、締切時期の確認が必要。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>受注条件と締切日を確認し、期限前に申し込む。</div>
+  </div>
+
+  <h2>対象外・参考情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">しまむら×ちいかわコラボ 母子手帳ケース</div>
+    <div class="card-detail"><span class="label">品薄度</span>予約開始から約1分で完売。追加販売は未定。</div>
+    <div class="card-detail"><span class="label">根拠</span>すでに入手困難となっており、参考情報として掲載。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">STIGMA2052 グッズ一部商品</div>
+    <div class="card-detail"><span class="label">品薄度</span>発売直後に完売。予約再販の準備中だが日程は未定。</div>
+    <div class="card-detail"><span class="label">根拠</span>現時点では定価での入手機会が限定的。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ベックスコーヒーショップ Suicaのペンギン アクリルキーホルダー付きドリンク</div>
+    <div class="card-detail"><span class="label">品薄度</span>予定数量に達し販売終了。再販は検討中だが時期未定。</div>
+    <div class="card-detail"><span class="label">根拠</span>すでに販売終了となっており、参考情報として掲載。</div>
+  </div>
+
+  <p class="note">※予測は収集時点の情報に基づくものです。</p>
+</body>
+</html>

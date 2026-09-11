@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月12日（土）版</p>
+  <p class="total-count">本日のトレンド: 13件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">湖池屋プライドポテト100％ あか牛にんにく醤油（熊本）</div>
+    <div class="card-detail"><span class="label">特徴</span>国産じゃがいも100％使用。熊本のブランド牛「くまもとあか牛」のうま味をにんにく・醤油で仕上げた52g入り。1袋につき1円を熊本県へ寄付（熊本地震からの復旧・復興支援）</div>
+    <div class="card-detail"><span class="label">発売日</span>コンビニ先行2026年9月21日／スーパーなど一般チャネル2026年10月12日</div>
+    <div class="card-detail"><span class="label">価格</span>オープン価格</div>
+    <div class="card-source"><a href="https://www.ssnp.co.jp/snack/701936/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">日本KFC「にんにく醤油チキン」／「超にんにく醤油マヨ」</div>
+    <div class="card-detail"><span class="label">特徴</span>にんにく醤油の旨みに唐辛子の辛みと胡麻の香りを効かせた秋の数量限定品。なくなり次第終了</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月16日（水）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">にんにく醤油チキン340円、超にんにく醤油マヨ30円、食べくらべセット990円、食べくらべ4ピースパック1,590円、同6ピースパック2,490円、超追いにんにくセット1,020円</span></div>
+    <div class="card-source"><a href="https://www.ssnp.co.jp/foodservice/701709/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">やよい軒「三陸の恵み さんまの塩焼定食」</div>
+    <div class="card-detail"><span class="label">特徴</span>三陸産さんまを注文後に店内で焼き上げ、大根おろしとレモンを添えて提供。全国379店舗で数量限定販売</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月16日（水）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">990円／揚げ出し茄子小鉢付1,190円／ミニすき焼き小鉢付1,310円</span></div>
+    <div class="card-source"><a href="https://www.ssnp.co.jp/foodservice/702011/">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">もち吉「創業祭感謝セール」</div>
+    <div class="card-detail"><span class="label">特典内容</span>あられ・おせんべいの袋物商品が税込価格から2割引き（20％OFF）。詰替パック、缶物、箱物、米、生菓子、えん餅、無撰別、久助、餅商品、冷蔵・冷凍品、力水、茶、酒類は対象外。全国の直営227店舗が対象（FC店・オンラインは除く）</div>
+    <div class="card-detail"><span class="label">期間</span>北海道・関東・中京・中四国地区は2026年9月12日～16日／関西・九州地区は2026年9月19日～23日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-source"><a href="https://www.ssnp.co.jp/snack/701965/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">熊本県「熊本ふっこう応援割」</div>
+    <div class="card-detail"><span class="label">特典内容</span>宿泊料金の60％割引、1泊あたり2万円を上限。熊本地震の影響で県内では約19万人の宿泊予約キャンセルが発生しており、県は30万人の宿泊を目標に掲げる</div>
+    <div class="card-detail"><span class="label">期間</span>予約受付は2026年9月15日午前10時開始、対象宿泊は2026年10月1日～12月25日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/a8a31e178eae9b92ea39458bc9481efbec91e2b5">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">東京銭湯半額クーポン（早期終了）</div>
+    <div class="card-detail"><span class="label">特典内容</span>通常600円の入浴料が半額の300円になるクーポン。当初は2026年9月1日～10月31日の予定だったが、「ご好評につき上限枚数に達したため」開始から10日あまりの9月11日で配布・利用とも終了。初日9月1日には発行が一時停止するトラブルが発生し、9月3日に再開していた</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月1日～9月11日（予定より約50日前倒しで終了）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★</span>（ただし現時点では利用不可）</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/expert/articles/b0655c98013be5d0e2bd61442da6f9c1a4453bb7">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ちいかわ「スマホに貼れるサイズのステッカー（腹が減りすぎて）」</div>
+    <div class="card-detail"><span class="label">市場状況</span>定価330円の商品がフリマアプリで4,000円超、定価の約12～13倍で出品。公式通販「ちいかわマーケット」では完売。作中のセリフがSNSでミーム化し、原作ファン以外にも需要が波及したことが背景</div>
+    <div class="card-detail"><span class="label">注意点</span>買い占め・転売が相次いでいる状況で、二次流通での購入は定価の10倍超を支払うことになる。公式の再販・再入荷を待つのが合理的</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/8889360681f80848aa9c527872f6347d8d3145a4">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">くら寿司「ちいかわ」コラボ景品・非売品販促物</div>
+    <div class="card-detail"><span class="label">市場状況</span>くら寿司コラボのフィギュア、配布開始前の湯呑み、非売品ののぼり、映画『ちいかわ 人魚の島のひみつ』入場者特典などがフリマアプリに出品。メルカリが「不正に入手された疑いのある出品商品の削除」を実施し、企業や警察とも連携して対応</div>
+    <div class="card-detail"><span class="label">注意点</span>従業員による景品着服が発端となった案件で、購入しても正当な所有権が争われる可能性がある。出品価格の具体的数値は記事に記載なし（不明）</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/cb88657756ecb3ed23898fe230315e68362505b0">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">かっぱ寿司「映画名探偵プリキュア！不思議な庭と2人の秘密」コラボグッズ</div>
+    <div class="card-detail"><span class="label">市場状況</span>配布開始日（2026年9月17日）より前の時点で、フリマサイト等に出品が確認された。かっぱ寿司は「当社公式サイト等の画像を無断で使用した、現物を伴わない出品であると考えられます」と説明</div>
+    <div class="card-detail"><span class="label">注意点</span>代金を支払っても商品が届かない詐欺被害につながる恐れがある。同社は転売目的の購入・受け取りを「固くお断り」し、各プラットフォーム事業者への通報や権利者との協議を進めるとしている</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/4d440807e5e4543ba84693d4cbb33d153488add8">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">カルディ「ガチャール（ホーンテッドマンション）24p」</div>
+    <div class="card-detail"><span class="label">市場状況</span>税込3,110円のハロウィーン限定菓子が公式オンラインストアで完売。店舗でも「お一人様1点まで」の購入制限が設けられ、フリマアプリでの転売事例が報告されている</div>
+    <div class="card-detail"><span class="label">注意点</span>内容はラムネ・キャンディ・ぶどうゼリー計24個で、菓子としての単価は高い。転売価格の具体的倍率は記事に記載なし（不明）。過去のクリスマス版も売り切れが相次いだ経緯があり、店頭での早期確保が現実的</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/cbfa38b52a84822ed3f4b9532f31e60d8e8fac48">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">八代産トマト（冬春トマト）</div>
+    <div class="card-detail"><span class="label">理由</span>2026年の熊本地震で不知火幹線水路が破損し、球磨川から2,200ヘクタールの農地への配水に影響。2025年8月の記録的大雨による農地冠水の打撃も残る。熊本県は25年産冬春トマトで833ヘクタール・10万6,200トンを生産する全国一の産地で、八代地域では約110戸が124ヘクタールに作付けしている</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>現時点で八代地域の7割の農地は定植が進み、例年と比べた遅れは生じていない。10月～翌年6月の出荷量は水の安定供給次第で、冬場のトマト相場は上振れリスクを見込んでおきたい</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/ce9694cc61ce30bb2f83a9f3506e59f5f1d7bd2f">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">テラ・スパークリング（韓国・果実炭酸酒／アルコール度数4.6～7％）</div>
+    <div class="card-detail"><span class="label">理由</span>2026年8月4日の発売から20日で150万缶が完売（1日平均7万5,000缶）。物流センターの在庫が尽き、CUがレモン味・スイカ味の発注を停止、GS25もスイカ味・レモン味を発注停止、セブンイレブンが両味を一時的に発注停止、イーマート24はレモン味4缶・スイカ味4缶・トマト味8缶までの購入制限を実施</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>韓国国内のコンビニ流通が事実上停止しており、旅行者の現地調達は期待しにくい。日本の輸入酒カテゴリでも果実炭酸酒の企画が加速する可能性があり、動向を注視</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/c2c1eda17415c2c105c6921d2b65b96ca39b819e">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">韓国コンビニ「出版社パン」付属のしおり</div>
+    <div class="card-detail"><span class="label">理由</span>出版社とコラボしたパンが発売13日で43万個を販売するヒットとなり、付属のしおりが品薄状態に</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>食品本体ではなく同梱ノベルティが需要を牽引する典型例。国内でも「おまけ目当て」需要による欠品パターンの再現に注意</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/f96298b370e6e472803f6a95cf0f6c8be5858d6c">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>本日の最大の論点は、IP（知的財産）コラボ景品が「商品」ではなく「事件」になり始めたことです。ちいかわステッカーの定価12倍、くら寿司景品のメルカリ削除対応、そしてかっぱ寿司の配布前（9月17日開始）出品への注意喚起までが3日以内に連続しており、チェーン各社は配布フローそのものを在庫管理・与信レベルで設計し直す段階に入ったと見ます。一方で供給側は、熊本地震の水路破損が全国一の冬春トマト産地（833ヘクタール・10万6,200トン）に影を落とし、その同じ熊本が60％割引・上限2万円の「ふっこう応援割」で需要を呼び戻すという、需給が逆方向に動く構図になっています。消費者の実利で言えば、もち吉の20％OFF（9月12日～）のような確実な値引きを取りにいき、転売プレミアムの付いた限定品は公式再販を待つのが最も合理的です。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

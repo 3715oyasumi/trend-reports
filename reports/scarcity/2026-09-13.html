@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>品薄予測レポート 2026-09-13</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>品薄予測レポート 2026-09-13</h1>
+  <p class="report-date">2026年9月13日</p>
+  <p class="total-count">本日の品薄予測: 23件</p>
+
+  <h2>今買える、相場上昇の予兆 <span class="section-count">（7件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">しまむら『スターウォーズ』コラボ第2弾（継続）</div>
+    <div class="card-detail"><span class="label">品薄度</span>9月12日発売済み。全国チラシ掲載の主力コラボで、初動から品薄化が見込まれる。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。発売直後のためフリマ相場は未形成。</div>
+    <div class="card-detail"><span class="label">根拠</span>広告未掲載のランダムフライトタグも先行入荷情報があり、売り切れ続出の予想が出ている。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>週末に開店直後の複数店舗を巡回し、広告掲載品とフライトタグを確認する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098418650487443545">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">しまむら『競走馬』コラボ（継続）</div>
+    <div class="card-detail"><span class="label">品薄度</span>9月12日発売済み。競馬ファンとコレクター双方の需要が見込まれる。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>イクノックス、メジロマックイーン、ディープインパクトなど名馬モチーフの人気化が報告されている。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>スターウォーズ商品と同時に巡回し、人気キャラ別の在庫を見て判断する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケモンカード 30th CELEBRATIONほか（継続）</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年9月16日</span></div>
+    <div class="card-detail"><span class="label">品薄度</span>主要抽選は終了済み。発売日の店頭販売と当日抽選が残る主な入手機会。</div>
+    <div class="card-detail"><span class="label">相場・価格</span><span class="card-amount">12,800円前後から42,000円</span>の事前情報。発売前の想定価格であり変動に注意。</div>
+    <div class="card-detail"><span class="label">根拠</span>30周年商品への期待値が上昇しているが、実売相場との乖離可能性が高い。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>発売日朝にコンビニとカードショップの当日抽選へ応募し、実売相場が固まる9月17日から20日ごろに判断する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">一番くじ HUNTER×HUNTER GREED ISLAND②（新規）</div>
+    <div class="card-detail"><span class="label">品薄度</span>公式ショップで再入荷報告が相次ぐ。追加割当分が時間差で放出されている可能性がある。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>A賞は<span class="card-amount">約3.2万から3.75万円</span>。発売直後の高値からは下落傾向。</div>
+    <div class="card-detail"><span class="label">根拠</span>長崎・福井など地方公式ショップでも再入荷が報告されている。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>A賞のみを狙い、B賞以下を見込みで仕入れることは避ける。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098375043797700720">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ユニオンアリーナ BLEACH 千年血戦篇Vol.3（新規）</div>
+    <div class="card-detail"><span class="label">品薄度</span>発売直後で、一部店舗ではBOX在庫が残る。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>一護金色APの掲載価格は<span class="card-amount">約84.9万円</span>、BOX定価は<span class="card-amount">6,160円</span>。</div>
+    <div class="card-detail"><span class="label">根拠</span>直筆サイン入りカードは超低確率かつ数量限定。価格は出品価格で実売ではない。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>BOX開封より、高レア単品を実売価格ベースで検討する。BOX判断は1週間後まで待つ。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098612011487932621">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">プラモ用うすめ液・ツールクリーナー品薄（継続）</div>
+    <div class="card-detail"><span class="label">品薄度</span>一部再入荷はあるものの、シンナー類の品薄は継続。店舗差が大きい。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>輸入系列ごとに入荷差があり、ナフサ不足が背景とされる。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>大量仕入れではなく、模型制作者向けの実需確保を優先する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098676449280733385">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">鳴潮TCG ブースターパック／スタートデッキ（継続）</div>
+    <div class="card-detail"><span class="label">品薄度</span>当日販売分は完売。後日再販分の予約受付へ移行している。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>店舗がBOX・デッキの後日再販予約を正式案内している。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>再販予約を確保し、シングル相場の立ち上がりを見て判断する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098350848795443260">出典を確認する</a></div>
+  </div>
+
+  <h2>発売前、期待値高 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">iPhone 18 Pro／Pro Max・折りたたみiPhone Duo（継続）</div>
+    <div class="card-detail"><span class="label">発売日</span>Pro／Pro Maxは<span class="card-amount">2026年10月23日ごろ</span>、Duoは10月16日予約開始。</div>
+    <div class="card-detail"><span class="label">品薄度</span>Pro Maxは多くのモデルが3から4週間待ちとの観測。通常Proは初期在庫が比較的多い。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。発売前のためフリマ相場は未形成。</div>
+    <div class="card-detail"><span class="label">根拠</span>前世代iPhone 17 Proはソフトバンクで全色完売済み。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>Pro Maxのオンライン在庫を毎日確認し、発売週以降の相場を見て判断する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098749612479918289">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ドラゴンクエスト×グラニフ「DQ+g」第6弾（継続）</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年9月18日</span></div>
+    <div class="card-detail"><span class="label">品薄度</span>一次予約は半日で完売。9月18日午前10時ごろに追加予約開始予定。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>予約段階で完売したため、公式から追加予約が告知された。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>アカウントと決済情報を準備し、追加予約開始時刻に注文する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098405507388379195">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セリア セボンスターコラボ第2弾（継続）</div>
+    <div class="card-detail"><span class="label">発売日</span>9月中旬から下旬に順次入荷予定。</div>
+    <div class="card-detail"><span class="label">品薄度</span>店頭目撃報告が増加。昨年は即完売が続出した。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>定価<span class="card-amount">100円＋税</span>。フリマ価格は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>ピンクゴールドのメタルチャームとピンバッジが初登場。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>店舗を毎日確認し、入荷初日に複数個を確保する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098747914545926438">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">プリキュアオールスターズファンブックvol.3 限定付録（継続）</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年9月18日</span></div>
+    <div class="card-detail"><span class="label">品薄度</span>予約受付中。過去シリーズの即完売実績から当日店頭在庫は薄い見込み。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>限定付録公開後、品薄を懸念する反応が出ている。情報源にはファンの推測を含む。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>今週中に書店または通販で予約する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098448771315282132">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">きのこ帝国 アナログ盤 追加プレス（継続）</div>
+    <div class="card-detail"><span class="label">発売日</span>11月中旬より順次販売開始予定。</div>
+    <div class="card-detail"><span class="label">品薄度</span>現行盤は各店舗・ECサイトで完売や品切れが継続。全4タイトルの追加プレスが決定。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>公式が好評による完売・品切れと追加プレス決定を告知している。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>取扱店の入荷情報と予約開始を継続監視する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098335748382654593">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ムギムギおてだま イム（新規）</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年9月18日</span></div>
+    <div class="card-detail"><span class="label">品薄度</span>ONE PIECEシリーズ人気キャラの初登場で、発売前から品薄を予想する反応がある。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>反応は1件のみで、裏付けは限定的。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>発売日に麦わらストア店頭と通販を開始直後に確認する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098244532416761914">出典を確認する</a></div>
+  </div>
+
+  <h2>発売接近リマインド <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">韓国ダイソー×VT「PDRNトーンオンジェリースキンパック」</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年9月14日</span></div>
+    <div class="card-detail"><span class="label">品薄度</span>発売まであと1日。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>発売直後にダイソー店舗を確認し、話題化前の確保を検討する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Fitbit Air 限定モデル「Pokémon Sleep（Sleepy Blue）」</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年9月15日</span></div>
+    <div class="card-detail"><span class="label">品薄度</span>発売まであと2日。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>量販店の予約再開状況を確認し、発売日の確保に備える。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">MILKFED.×ミッフィー コラボ</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年9月18日</span></div>
+    <div class="card-detail"><span class="label">品薄度</span>昨年の即完売実績がある。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>予約開始と同時の確保を検討する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">VOCE 11月号 豪華付録</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年9月24日</span></div>
+    <div class="card-detail"><span class="label">品薄度</span>楽天では完売済み。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>Amazonの予約在庫を確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ちいかわ「みんなで仮装なマスコット」シリーズ</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年9月25日</span></div>
+    <div class="card-detail"><span class="label">品薄度</span>シリーズ恒例の即完売パターンが見込まれる。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>発売直後の確保を優先する。</div>
+  </div>
+
+  <h2>対象外、既に入手困難・参考のみ <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ちいかわラーメン豚 オリジナルグッズ各種</div>
+    <div class="card-detail"><span class="label">品薄度</span>ミニソフビ、タンブラーなどが相次ぎ欠品。</div>
+    <div class="card-detail"><span class="label">根拠</span>再入荷時期は未定。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">WANIMAGAZINE COMIC FES.限定色紙セット「kakao」</div>
+    <div class="card-detail"><span class="label">品薄度</span>完売。</div>
+    <div class="card-detail"><span class="label">根拠</span>会期中の再販予定は未定。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">大黒湯×アニメ100カノコラボグッズ</div>
+    <div class="card-detail"><span class="label">品薄度</span>トレーディングミニフォト風カードなどが完売。</div>
+    <div class="card-detail"><span class="label">根拠</span>再入荷は未定。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Combi ミニチュアチャーム</div>
+    <div class="card-detail"><span class="label">品薄度</span>ガシャポンバンダイオフィシャルショップ限定再販分が品切れ。</div>
+    <div class="card-detail"><span class="label">根拠</span>再入荷は未定。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">BT21 めじるしアクセサリー エンジェルver.</div>
+    <div class="card-detail"><span class="label">品薄度</span>ガシャポン限定再販分が完売。</div>
+    <div class="card-detail"><span class="label">根拠</span>再入荷は未定。</div>
+  </div>
+
+  <h2>総括 <span class="section-count">（0件）</span></h2>
+  <div class="card">
+    <div class="card-title">本日の注目候補</div>
+    <div class="card-detail"><span class="label">最有力</span>ポケモンカード30th CELEBRATION。9月16日の発売日店頭販売が主な入手機会。</div>
+    <div class="card-detail"><span class="label">次点</span>しまむらのスターウォーズ、競走馬コラボ。開店直後の巡回で定価確保を検討する。</div>
+    <div class="card-detail"><span class="label">中期</span>iPhone 18 Pro Maxとドラゴンクエスト×グラニフの追加予約を継続監視する。</div>
+  </div>
+
+  <p class="note">※予測は収集時点の情報に基づくものです。</p>
+</body>
+</html>

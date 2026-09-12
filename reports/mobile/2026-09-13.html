@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のモバイルレポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のモバイルレポート</h1>
+  <p class="report-date">2026年9月13日</p>
+  <p class="total-count">本日のモバイル案件: 9件</p>
+
+  <h2>NTTドコモ <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">iPhone 18 Pro／Pro Maxの販売価格・割引を発表</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">5G WELCOME割 22,000円割引</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>いつでもカエドキプログラムなどを併用したMNP。256GBの実質負担額はiPhone 18 Proが99,990円から、Pro Maxが122,980円から。一括価格はPro 263,230円、Pro Max 291,500円。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/11 ～ 終了日未定。予約は9月12日21時開始、発売は9月18日。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2140379.html">出典を確認する</a> / <a href="https://k-tai.watch.impress.co.jp/docs/news/2140426.html">出典を確認する</a></div>
+  </div>
+
+  <h2>au（KDDI） <span class="section-count">（3件）</span></h2>
+  <div class="card">
+    <div class="card-title">iPhone 18 Pro／Pro Maxの販売価格・割引を発表</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">機種変更ゴールド割 最大16,500円還元</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>au（KDDI）</div>
+    <div class="card-detail"><span class="label">条件</span>スマホトクするプログラム＋併用のMNP。256GBの実質負担額はiPhone 18 Proが66,900円から、Pro Maxが126,000円から。一括価格はPro 268,800円、Pro Max 295,900円。下取り増額も実施。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/12 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2140419.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「au Online Shop お得割」の割引額を増額、iPhone Air（256GB）が実質47円</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大44,000円割引</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>au Online Shop</div>
+    <div class="card-detail"><span class="label">条件</span>他社からのMNPが条件。au買替特典22,000円とスマホトクするプログラム＋を併用すると実質47円。スマホミニプラン＋・povo1.0からの移行は対象外。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/11 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2140122.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「au海外放題」30％還元キャンペーン第2弾</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">利用料金の30％をau PAY残高で還元</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>au海外放題</div>
+    <div class="card-detail"><span class="label">条件</span>au、UQ mobile、povo1.0が対象。1回線1回限りで、エントリーと利用開始の両方が必要。第1弾で還元済みの場合は対象外。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/19 ～ 2026/09/27。エントリーは9月27日まで。</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2140277.html">出典を確認する</a></div>
+  </div>
+
+  <h2>ソフトバンク <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">iPhone 18 Pro／Pro Maxの販売価格・割引を発表</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">オンラインショップ割 33,000円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ソフトバンクオンラインショップ</div>
+    <div class="card-detail"><span class="label">条件</span>新トクするサポート＋を利用し25カ月目に返却・買い替え、かつ他社からのMNPが条件。Pro 256GBは実質23,760円、Pro Max 256GBは実質85,920円。一括価格はPro 268,560円、Pro Max 295,920円。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/12 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2140424.html">出典を確認する</a></div>
+  </div>
+
+  <h2>楽天モバイル <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">iPhone 18 Pro／Pro Maxの販売価格・割引を発表</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大40,000ポイント還元</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>買い替え超トクプログラムの48回払いで25カ月目に返却すると残債免除。MNP実質価格はPro 87,944円、Pro Max 104,456円。一括価格はPro 255,900円、Pro Max 288,900円。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/12 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2140407.html">出典を確認する</a></div>
+  </div>
+
+  <h2>UQ mobile <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">Google Pixel 10a（128GB）のMNP割引を増額、実質47円</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">MNP割引 44,000円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>UQ mobile</div>
+    <div class="card-detail"><span class="label">条件</span>他社からのMNP、コミコミプランバリューまたはトクトクプラン2と増量オプションIIへの加入が条件。スマホトクするプログラム利用時は実質47円。au・povoからの移行は対象外。返却時の査定条件により最大22,000円の追加費用が発生する場合あり。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/07 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2138873.html">出典を確認する</a></div>
+  </div>
+
+  <h2>Y!mobile <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">オンラインストア週替わりセール：ソフトバンク認定中古品 iPhone 13（128GB）が9,800円</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">販売価格 9,800円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>Y!mobileオンラインストア</div>
+    <div class="card-detail"><span class="label">条件</span>他社からのMNPとシンプル3 MまたはLの契約が条件。オンラインストア誕生感謝祭の一環。</div>
+    <div class="card-detail"><span class="label">期間</span>～ 2026/09/15 9:59</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2139009.html">出典を確認する</a></div>
+  </div>
+
+  <h2>povo <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">新トッピング「povoガチャ」「povoガチャSuper」の提供開始</div>
+    <div class="card-detail"><span class="label">還元</span>最大12週間のデータ使い放題などのデータ特典</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>povoガチャはデータ追加0.1GB（24時間）付き、povoガチャSuperはデータ追加0.1GB（7日間）付き。まとめ買い用のセットトッピングも用意。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/10 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://povo.jp/news/newsrelease/20260910_01/">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※還元・条件は確認時点のものです。</p>
+</body>
+</html>

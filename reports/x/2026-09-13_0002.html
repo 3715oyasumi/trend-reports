@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xツイート分析レポート</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card p {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+<h1>Xツイート分析レポート</h1>
+<p class="report-date">2026年9月13日 00:02 収集</p>
+<p class="total-count">分析ツイート: 1134件</p>
+
+<h2>人気商品・トレンド <span class="section-count">（7件）</span></h2>
+
+<div class="card">
+  <div class="card-title">iPhone 18 Pro Max（Max 256/512GBが品薄）</div>
+  <p>買取業者の実測レポートが最も具体的。Max 256GBはグレイ以外10分程度で売り切れ、グレイのみ30分以上。郵送は3〜4週間待ち。Amazonは低容量が1分以内に瞬殺、1TB/2TBは長く残った。香港も10分程度で低容量完売し、結論は「Max 256-512は品薄」。別筋も「Pro Maxはほぼ全モデル3-4週間待ち、18 Proは発売日ゲット可能・量販の初期在庫は多い」と一致している。</p>
+  <div class="card-detail"><span class="label">表示</span><span class="card-amount">9042</span></div>
+  <div class="card-detail"><span class="label">投稿者</span>@ip_kaitori2025、@mobile_hunting</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ちいかわが全ジャンル最強の集客力</div>
+  <p>くら寿司コラボ、GIGOの「昆布締め」確率機、ちいかわパーク入場特典めじるし、しまむら、プライズ全般が即日完売。「200円設定でも土日明けには完売」との声があり、四国の郊外しまむらでも初日に売り切れたとの報告がある。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@cyutaponSS、@yuruhuwadq</div>
+</div>
+
+<div class="card">
+  <div class="card-title">メロジョイ（平成女児ブーム）が急騰中</div>
+  <p>TikTokライブ配信限定通販で毎回1分完売。定価2,000円から転売価格は10,000円超まで跳ね上がっている。今週はポップアップが開催され、連日荒れている。</p>
+  <div class="card-detail"><span class="label">表示</span><span class="card-amount">244</span></div>
+  <div class="card-detail"><span class="label">投稿者</span>@riisu0120、@inon_0612_</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ヒスミニ「めじるし」が転売妙味あり</div>
+  <p>複数のアカウントが「転売したら儲かる」と観測。実店舗は売り切れが多発し、オンガチャ（アプリ上のガチャ）に需要が流入している。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@gacha_gacha_12、@tmwtjmwtnjd、@ricocoa728</div>
+</div>
+
+<div class="card">
+  <div class="card-title">SixTONES新曲でCD在庫が全国的に枯渇</div>
+  <p>「マイオンリー/Dance Forever」の店舗在庫が枯渇。新宿・渋谷のタワーレコードで売り切れ、地方店も1日で在庫が尽きたとの報告が相次いでいる。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@_0ttottoto、@keity_bo、@raku_six</div>
+</div>
+
+<div class="card">
+  <div class="card-title">映画『SEKIRO』パンフレットが全国品切れ・予約制に</div>
+  <p>複数の映画館で完売報告があり、多くの館で予約制に切り替わっている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@shimoyong、@h_aikawa_d、@Ki96351</div>
+</div>
+
+<div class="card">
+  <div class="card-title">カルディのマスコット・ご当地グッズが即完売</div>
+  <p>「チンチラ」「ヤギべえ」マスコットがオンラインで完売。ファミリーマートのご当地ステッカーも早くも転売・トレード対象になっている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@abare_udukihara、@shigepy_、@kokudo_ohtachi</div>
+</div>
+
+<h2>お得情報・セール <span class="section-count">（7件）</span></h2>
+
+<div class="card">
+  <div class="card-title">HGアリュゼウス 27%OFF（Amazon）</div>
+  <p>「以前ならプレ値や抽選でもおかしくなかった大型ガンプラが特価で出ている」との指摘。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@Nao_Mgreen、@Kelly_Fujikura</div>
+</div>
+
+<div class="card">
+  <div class="card-title">つや姫12,900円＋1,674pt（実質値下げ）</div>
+  <p>同店の新之助は既に売り切れとなっている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@chacha_tokka</div>
+</div>
+
+<div class="card">
+  <div class="card-title">HGUCバイアランカスタムを1,760円で購入（定価2,860円）</div>
+  <p>中古ショップでは他がプレ値の中、これだけ安値だったという現場報告。</p>
+  <div class="card-detail"><span class="label">価格</span><span class="card-amount">1,760円</span>（定価2,860円）</div>
+  <div class="card-detail"><span class="label">投稿者</span>@happyhofu</div>
+</div>
+
+<div class="card">
+  <div class="card-title">RG イングラム+ を中古約4,000円で確保</div>
+  <p>「もっとプレ値になってると思ったが安かった」との声。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@PxvLW6JG1qRm19a</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ZOZOTOWN 24時間限定1,000円OFFクーポン</div>
+  <p>完売していたムートン商品もクーポン対象に含まれている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@MURUA_care</div>
+</div>
+
+<div class="card">
+  <div class="card-title">吉野家×はなまる 札幌オーロラタウン店オープンで200円引きクーポン配布</div>
+  <p>クーポンの利用期限は配布翌日まで。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@ScopeSapporo</div>
+</div>
+
+<div class="card">
+  <div class="card-title">値上げ前の駆け込み銘柄が複数</div>
+  <p>カロリーメイトは11月値上げで箱買い推奨との声。鳥貴族は10月値上げ、サイゼリヤも値上げ決定、ショーメは9%値上げでリミットは9/29とされている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@bV7x1fSBUp78228、@POPOTYAN97、@METAMETA6L、@Hisu1_Hakua、@hny_flora</div>
+</div>
+
+<h2>転売情報 <span class="section-count">（7件）</span></h2>
+
+<div class="card">
+  <div class="card-title">Amazon物販リサーチ7手法の実務まとめ</div>
+  <p>最も体系的な整理として、7つの手法が挙げられている。1. 値上がりリサーチ（Keepa＝Amazon商品の価格推移を追跡できる価格追跡ツールでプレ値化した商品を追い、値下がりした時に仕入れる）2. 値下がりリサーチ（投げ売りの底値で拾い、価格が戻るのを待つ）3. トレンドリサーチ 4. Amazon本体の在庫切れ狙い 5. セラーリサーチ 6. クーポンリサーチ（50%OFFになる場合もある）7. 定期便リサーチ。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@skill_up_year</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ちいかわ「昆布締め」プライズが即現金化ライン</div>
+  <p>2,000円で取得して売却し、「今日の買い物が実質タダ」になったとの報告。一方でGIGOに6,000〜7,000円かけても取れず絶望した層もおり、転売価格を見て初めて相場に納得するというレベルになっている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@yujiii1023、@byacco42</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ポケカ MEGA 30th「CELEBRATION BOX」（9/16発売）のプレ値予想記事</div>
+  <p>発売前から予想記事が出回っており、転売勢が既に仕込み段階に入っている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@10Buy_NEXT</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Appleの転売対策が効いて日本市場から転売ヤーが離脱中</div>
+  <p>返品手数料マイナス15%の導入と強気の為替レート設定の合わせ技で、去年は売り切れていた枠が当日でも余る状況になっている。</p>
+  <div class="card-detail"><span class="label">表示</span><span class="card-amount">1603</span></div>
+  <div class="card-detail"><span class="label">投稿者</span>@uratataru、@takkun7645、@roid_s</div>
+</div>
+
+<div class="card">
+  <div class="card-title">為替が転売ヤー・買取屋を直撃</div>
+  <p>「為替レートが上がっていて、転売ヤーも買取屋もお通夜モード」との声。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@ds_9999</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Switch2ゼルダエディションが発表2日目で10万前後の予約販売</div>
+  <p>楽天・Yahoo・Amazonで、時のオカリナ発売日に合わせた事実上の転売価格が付いている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@mona1300</div>
+</div>
+
+<div class="card">
+  <div class="card-title">チケット系の転売動向</div>
+  <p>朗読劇のチケットが15万円で取引、球団オークションで購入したユニフォームの転売疑惑、GIGOキャンペーン景品の即転売など複数報告がある。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@yj_1228_、@blueing5tm、@nm7_kaimaru7fan</div>
+</div>
+
+<h2>抽選・限定販売 <span class="section-count">（7件）</span></h2>
+
+<div class="card">
+  <div class="card-title">ガンプラ再販の抽選が9/14 15:00〆で進行中（DMM）</div>
+  <p>品薄キットに絞った構成。2027年1月分はRE/100ナイチンゲール、RE/100ディジェ、RGジョニー・ライデン専用ザクII、HGUCパラス・アテネ、MGジムVer.2.0。2027年2月分はMGウイングガンダムプロトゼロEW、MGゼータプラスC1、HG G-アルケイン、HGUCリゼルC型。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@trend02oudou01</div>
+</div>
+
+<div class="card">
+  <div class="card-title">RICOH GR IV フジヤカメラ抽選販売</div>
+  <p>価格190,620円、9/15(火)17:00〆。GR IVは「買えないまま2万円弱値上げされた」との怒りの声もあり、抽選当選自体が実質的な妙味になっている。</p>
+  <div class="card-detail"><span class="label">価格</span><span class="card-amount">190,620円</span></div>
+  <div class="card-detail"><span class="label">投稿者</span>@c_a_m_p__、@rnakkylw</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ワンピースカード「神の支配」がAmazon招待制抽選で定価5,782円</div>
+  <p>招待をリクエストし、メールで案内が来れば購入できる仕組み。プレ値出品ではない正規ルートとして注目されている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@5kanemo</div>
+</div>
+
+<div class="card">
+  <div class="card-title">エディオン×トレカキャピタルのトレカ抽選、9/13〆</div>
+  <p>ポケカ・遊戯王が対象。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@c_a_m_p__</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ポケカ抽選は当選過多の兆候</div>
+  <p>「抽選しまくったら当選し過ぎて破産しそう。エーフィブラッキー6セット当たった」との声があり、供給増によるプレ値崩れの警戒サインとなっている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@aisu_apexman</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ブックオフ各店でポケカ抽選が同時多発</div>
+  <p>武蔵小金井・姫路・大田ほか複数店舗で抽選が行われ、カードショップ側でも買取抽選が実施されている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@RMOK6121、@Toshimau3588、@usagicardsalon</div>
+</div>
+
+<div class="card">
+  <div class="card-title">遊戯王WCS2026デュエルセットの後日抽選販売が炎上中</div>
+  <p>販売方式そのものに対する批判が広がっている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@garapon321</div>
+</div>
+
+<h2>サクセス報告 <span class="section-count">（7件）</span></h2>
+
+<div class="card">
+  <div class="card-title">廃盤DVDを定価3,520円の新品未開封で入手</div>
+  <p>中古は常時数万円、新品未開封なら約10万円相当とされる品。本レポート中で最大の含み益となっている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@arucyuu66</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ちいかわ昆布締めを2,000円で取得し売却</div>
+  <p>売却により当日の買い物が実質タダになったとの報告。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@yujiii1023</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ポケカ抽選でエーフィ・ブラッキーが6セット当選</div>
+  <p>抽選運の良さを示す報告。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@aisu_apexman</div>
+</div>
+
+<div class="card">
+  <div class="card-title">HGUCバイアランカスタムを定価2,860円から1,760円で確保</div>
+  <p>周囲がプレ値の中、これだけ安く買えたという報告。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@happyhofu</div>
+</div>
+
+<div class="card">
+  <div class="card-title">プレ値がついていたデジモンのスリーブを定価圏で確保</div>
+  <p>相場を大きく下回る価格での確保に成功。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@trnkdrsk</div>
+</div>
+
+<div class="card">
+  <div class="card-title">超かぐや姫のヴァイスシュヴァルツを予約確保</div>
+  <p>プレ値の1BOXに手を出す寸前で回避できたとの報告。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@T2_Revive</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ベイブレード早朝販売で先頭列を取得</div>
+  <p>転売目的グループの並び方の読み違いを突いて、列の先頭を確保した。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@HQ4VGaxzDGB2ZUd</div>
+</div>
+
+<h2>プレ値情報 <span class="section-count">（7件）</span></h2>
+
+<div class="card">
+  <div class="card-title">遊戯王WCS2026デュエルセットが8万円</div>
+  <p>後日抽選販売の方式そのものが炎上している。</p>
+  <div class="card-detail"><span class="label">価格</span><span class="card-amount">8万円</span></div>
+  <div class="card-detail"><span class="label">投稿者</span>@garapon321</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ストライダー飛竜 PS3通常盤が1万円前後</div>
+  <p>特Aエディションはさらに高値で取引されている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@n_z5cb</div>
+</div>
+
+<div class="card">
+  <div class="card-title">イーブイボックスが日本で7,000円オーバー</div>
+  <p>海外での購入価格との差が大きく開いている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@tantalus009</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ポケカ大阪出店記念の無料配布カードがプレ値化</div>
+  <p>無料配布ゆえに行方不明が多く希少化。「ナガノピカ」もプレ値のまま集められない水準になっている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@music_19800725、@OamepikaO、@T2Jxif</div>
+</div>
+
+<div class="card">
+  <div class="card-title">1/100ルプスレクスが再販なしで転売価格</div>
+  <p>MG級ガンプラの中古品もプレ値がつき、30MSの髪型パーツは単品でも+200円のプレ値になっている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@a9qA0VM7np31837、@kamewai</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ご当地BOXが定価2,000円から25,000円のプレ値</div>
+  <p>下げ幅が大きく、最初から仕入れ側に不利な商材との警告が出ている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@Inrpmn</div>
+</div>
+
+<div class="card">
+  <div class="card-title">廃盤DVD類・周辺グッズもプレ値化</div>
+  <p>某作品のDVDが15,000円オーバー、LD（レーザーディスク）でも6,000円。ロジクールのG600マウスもプレ値化している。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@Cyber_G_1224、@sura_nori</div>
+</div>
+
+<h2>入荷・再販情報 <span class="section-count">（7件）</span></h2>
+
+<div class="card">
+  <div class="card-title">Amazon在庫復活が深夜帯（23時台〜0時台）に集中</div>
+  <p>確認できた復活銘柄は、RGシャア専用ズゴック2,929円（5%off）、HGUCケンプファー2,200円、HGUCザク2改1,540円、HGAWダブルエックス1,777円（15%off）、30MSオプションパーツセット28/29、30MP草薙素子4,950円、HG G-ルシファー2,750円、MGスーパーガンダム、FULL MECHANICSグレイズアイン、HGハンマ・ハンマ、RG Hi-νガンダムなど。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@MIMIO37135018、@aanc20、@gunpla_saihan、@Brainpapa7、@cocoro_trend</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ハズブロ 等身大グローグー、Amazon在庫復活</div>
+  <p>超合金魂GX-72大獣神＆GX-78ドラゴンシーザーも楽天ブックスで販売再開している。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@aki07ot、@chantono2</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ポケモンfit（マッスグマ・カイロス）がAmazonで在庫復活</div>
+  <p>ポケモンセンターオンラインは在庫なしの状態が続いており、カイロスは定価+960円で取引されている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@pokemonfitstock</div>
+</div>
+
+<div class="card">
+  <div class="card-title">カルディ「ヤギべえ ボールチェーンマスコット」9月上旬から再販</div>
+  <p>公式オンラインは即売り切れとなったが、店舗にはまだ在庫が残っている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@shigepy_</div>
+</div>
+
+<div class="card">
+  <div class="card-title">予約開始・発売日が確定した仕込み候補</div>
+  <p>ポケカMEGA 30th CELEBRATION BOX（9/16）、遊戯王ORIGINAL ARTWORK COLLECTION（9/26）、ヴァイスシュヴァルツanemoi（10/2）、30MPアリス(メイド)6,050円、AirPods5、ゼルダ40周年Switch2本体・Proコン（10/29発売）が候補として挙がっている。</p>
+</div>
+
+<div class="card">
+  <div class="card-title">ルナソル クリスマスコフレ2026が予約開始</div>
+  <p>毎年早期完売する定番アイテム。MEDICOM TOYのグレート・ムタ（緑版）は9/13受注開始となっている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@kinebiotoriyose、@MEDICOM_TOY</div>
+</div>
+
+<div class="card">
+  <div class="card-title">しまむらのちいかわ・グローグー関連が受注生産に移行</div>
+  <p>完売後の救済枠として受注生産が用意されているが、納期は11月以降になる見込み。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@Re_Mule、@hachi_tata</div>
+</div>
+
+<h2>注意・警告 <span class="section-count">（9件）</span></h2>
+
+<div class="card">
+  <div class="card-title">詐欺リンク注意</div>
+  <p>「高額商品がたったの0円」を謳うURL投稿が流入している。絶対にクリックしないこと。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@yukachi_0814</div>
+</div>
+
+<div class="card">
+  <div class="card-title">相場が明確に冷えている領域が3つ</div>
+  <p>ウイスキーはボトラーズ（蒸留元と別の業者が瓶詰め・販売する銘柄）が大幅下落し、ジャパニーズウイスキーはオークション相場で55%減。高級時計はロレックスの代表機種が1カ月で35万円安くなり、「プレ値頼みは急落で含み損化する。相場任せの経営はもう通用しない」との指摘。スニーカーは堀米SBエアフォースワンのプレ値が定価近くまで下落している。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@jumbo_room、@kaikei_c、@NYHCSWORNENEMY</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ガンプラのプレ値も崩壊過程</div>
+  <p>「プレ値（アホ価格）が落ち着いてきた」「ジークアクス版ドムがなぜこんなに安く」といった声が出ている。バンダイが値上げと引き換えに再販を増やしており、再販が数回入れば希少価値は消えるとの指摘がある。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@milanero_rs、@kakugo_mma、@hyakki128、@ZoneKeen</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ご当地BOX型の商材は構造的に不利</div>
+  <p>定価2,000円が25,000円まで上がるという下げ幅の大きい建て付けは、仕込む側にとって不利だと警告されている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@Inrpmn</div>
+</div>
+
+<div class="card">
+  <div class="card-title">代行を名乗る転売ヤーが増殖</div>
+  <p>「代行を名乗った転売ヤーが2人目、スタンプ画像が同一」「余った枠をどうしようが勝手だが、代行と言いながら転売ヤーすぎる」との批判が上がっている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@ribon1222_、@youmi_0914</div>
+</div>
+
+<div class="card">
+  <div class="card-title">予約品の横流し事例</div>
+  <p>予約が入っていたガンプラを「商品が入荷できなかった」と偽り、店頭で新古品としてプレ値販売した業者への告発があった。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@wooddoll_ELDTXB</div>
+</div>
+
+<div class="card">
+  <div class="card-title">無在庫転売・アカウント販売の横行</div>
+  <p>無料貸出品の盗難転売や、複数の名義を使い分けるアカウントへの通報要請も出ている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@BooGeyM4nn、@butadon_mtg、@_SnowMan_2023、@1rigotobot__</div>
+</div>
+
+<div class="card">
+  <div class="card-title">仕入れ環境の悪化</div>
+  <p>トイザらスがアプリクーポンを必須化し、小学生が単独で買えなくなる副作用も出ている。Appleは返品手数料15%と強気の為替設定で外国人転売を封じている。中国は日本人向けビザ手数料を2,250円から16,750円へ（7倍）9/14から値上げし、越境仕入れの渡航コストが増加する。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@MANKEYFUNKY、@takkun7645、@takakura1982</div>
+</div>
+
+<div class="card">
+  <div class="card-title">原材料・物流コストの上昇圧力</div>
+  <p>サウジアラビアのパイプライン停止で原油価格が1バレル100ドル台に高止まりし、電気代・輸送費・食品価格への波及リスクがある。100円ショップでもボア布・レース素材の入荷が細っており、ハンドメイド系の仕入れに影響が出ている。</p>
+  <div class="card-detail"><span class="label">投稿者</span>@mtd_tmk_keizoku、@0830lay</div>
+</div>
+
+<h2>総括：今すぐ動くなら <span class="section-count">（4件）</span></h2>
+
+<div class="card">
+  <div class="card-title">1. iPhone 18 Pro Max 256/512GB</div>
+  <p>品薄が数値で確認できている唯一の大型案件。ただしApple側の対策で日本市場での旨味は縮小しつつある。</p>
+</div>
+
+<div class="card">
+  <div class="card-title">2. ちいかわ／メロジョイ／ヒスミニ</div>
+  <p>現場の即時性が最も高いジャンル。特にメロジョイは定価2,000円から転売価格10,000円超まで伸びており、余地が大きい。</p>
+</div>
+
+<div class="card">
+  <div class="card-title">3. ガンプラ再販抽選（9/14 15:00〆）とAmazon深夜の在庫復活</div>
+  <p>定価で取得できるチャンスだが、再販が増えるほどプレ値は崩壊方向に向かう。長期保有ではなく短期回転が推奨される。</p>
+</div>
+
+<div class="card">
+  <div class="card-title">4. ウイスキー・高級時計・スニーカー・ガンプラのプレ値在庫</div>
+  <p>相場が同時に冷えているため、処分を検討すべきフェーズに入っている。</p>
+</div>
+
+<p class="note">
+※本レポートはX上の投稿を分析したもので、内容の正確性は投稿元の情報に依存します。取引・購入の判断は自己責任で行ってください。
+</p>
+</body>
+</html>

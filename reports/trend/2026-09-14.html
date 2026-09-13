@@ -1,0 +1,346 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+    :root {
+      --canvas: #faf9f5;
+      --card: #fffdf8;
+      --surface-soft: #f5f0e8;
+      --hairline: #e6dfd8;
+      --hairline-soft: #ebe6df;
+      --primary: #cc785c;
+      --primary-active: #a9583e;
+      --ink: #141413;
+      --text: #3d3d3a;
+      --muted: #6c6a64;
+      --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+      --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--canvas);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.75;
+      padding: 40px 24px 64px;
+      max-width: 760px;
+      margin: 0 auto;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      text-wrap: balance;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .report-date {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .total-count {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+      text-wrap: balance;
+      padding-left: 14px;
+      border-left: 3px solid var(--primary);
+      margin: 40px 0 16px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 24px 0 8px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--hairline);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-soft);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .card-detail {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text);
+      margin-top: 8px;
+    }
+
+    .label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      min-width: 40px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .card-amount {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary-active);
+    }
+
+    .section-count {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+      margin-left: 8px;
+      font-family: var(--font-body);
+    }
+
+    .card-source {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--hairline-soft);
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--hairline);
+      margin: 40px 0;
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 24px 16px 48px; }
+      h1 { font-size: 25px; }
+      h2 { font-size: 19px; }
+      .card { padding: 16px 18px; }
+      .card-detail {
+        flex-direction: column;
+        gap: 2px;
+      }
+      .label {
+        min-width: auto;
+        text-align: left;
+      }
+      .card-amount { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月14日（月）版</p>
+  <p class="total-count">本日のトレンド: 10件</p>
+
+  <h2>新商品情報<span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">築地銀だこ「デミたまチーズ」</div>
+    <div class="card-detail">
+      <span class="label">特徴</span>「てりたま」をベースに特製デミグラスソース・たまごサラダ・チーズソースを組み合わせた期間限定の秋の新作。1舟8個入り
+    </div>
+    <div class="card-detail">
+      <span class="label">発売日</span>2026年9月15日
+    </div>
+    <div class="card-detail">
+      <span class="label">価格</span>商品価格<span class="card-amount">780円</span>／持ち帰り842円（税込）・店内飲食858円（税込）
+    </div>
+    <div class="card-source">
+      <a href="https://www.ssnp.co.jp/foodservice/702000/">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">モロゾフ「パンプディン」</div>
+    <div class="card-detail">
+      <span class="label">特徴</span>生パン粉と生クリームの生地をじっくり蒸し焼きにしたパン製カスタードプディング。ほんのりラム酒が香り、カラメルソースがアクセント。約250mm×84mm×43mmのシェアサイズで5日間限定販売
+    </div>
+    <div class="card-detail">
+      <span class="label">発売日</span>2026年9月19日〜9月23日（全国の洋生菓子販売店舗）
+    </div>
+    <div class="card-detail">
+      <span class="label">価格</span><span class="card-amount">1,404円</span>（税込／本体1,300円）
+    </div>
+    <div class="card-source">
+      <a href="https://www.ssnp.co.jp/snack/701723/">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">HIKAKIN「ONICHA コーン茶」</div>
+    <div class="card-detail">
+      <span class="label">特徴</span>累計2000万本を突破した自身のお茶ブランド「ONICHA」の新フレーバー。既存の麦茶に続く第2弾で黄色基調のデザイン。価格・容量は記事に記載なく不明
+    </div>
+    <div class="card-detail">
+      <span class="label">発売日</span>2026年10月8日 朝10時（全国のセブン‐イレブン）
+    </div>
+    <div class="card-source">
+      <a href="https://news.yahoo.co.jp/articles/0e68c0df23c66d2edee396c81305573aeaacebb5">出典を確認する</a>
+    </div>
+  </div>
+
+  <h2>お得キャンペーン情報<span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">セブン‐イレブン「セブンカフェ ベーカリー」全品30円引き</div>
+    <div class="card-detail">
+      <span class="label">特典内容</span>カウンターケース内のベーカリー全品が税抜価格から30円引き。全国約12,000店が対象。お店で揚げたカレーパンは180.36円→147.96円（約18%引き）、ふんわりメロンパンは160.92円→128.52円（約20%引き）、ハンディピザ マルゲリータは270円→237.60円。「エコだ値」値引き対象品はさらに30円引き
+    </div>
+    <div class="card-detail">
+      <span class="label">期間</span>2026年9月14日（月）〜9月17日（木）の4日間
+    </div>
+    <div class="card-detail">
+      <span class="label">お得度</span><span class="card-amount">★★★★</span>
+    </div>
+    <div class="card-source">
+      <a href="https://www.ssnp.co.jp/distribution/701251/">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">コストコ 9月14日限定の1日値下げ</div>
+    <div class="card-detail">
+      <span class="label">特典内容</span>刺身用アトランティックサーモンフィレが1パック1,000円引き、刺身用天然赤海老が1パック500円引き。通常価格は記事に記載がなく不明のため割引率は算出不可
+    </div>
+    <div class="card-detail">
+      <span class="label">期間</span>2026年9月14日（月）1日限り
+    </div>
+    <div class="card-detail">
+      <span class="label">お得度</span><span class="card-amount">★★★★</span>
+    </div>
+    <div class="card-source">
+      <a href="https://news.yahoo.co.jp/expert/articles/3aa91f32e2261a9ad95fc787d6f3200a6622b370">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">業務スーパー「総力祭」</div>
+    <div class="card-detail">
+      <span class="label">特典内容</span>年2回の大型セール。生ラーメン（太麺・細麺）5人前が181円、冷凍讃岐うどん5食入りが170円、強炭酸水／強炭酸水レモンが各36円。値下げ前価格の記載はなく割引率は不明。エリアにより対象商品が異なる
+    </div>
+    <div class="card-detail">
+      <span class="label">期間</span>2026年9月1日スタート（終了日は不明）
+    </div>
+    <div class="card-detail">
+      <span class="label">お得度</span><span class="card-amount">★★★</span>
+    </div>
+    <div class="card-source">
+      <a href="https://news.yahoo.co.jp/expert/articles/5546dc597b7db3fdd47a30be3b399ab785c3deef">出典を確認する</a>
+    </div>
+  </div>
+
+  <h2>転売・市場過熱情報<span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">くら寿司×「ちいかわ」コラボ景品</div>
+    <div class="card-detail">
+      <span class="label">市場状況</span>フリマサイトでセット価格が数万円で流通し、最高出品額は約200万円に達した。グッズ・景品の大量流出をきっかけに従業員による横領が発覚し、くら寿司は警察に被害相談を行っているとされる。SNSでは「2万円近く食べてお目当てのフィギュアが1個も出なかった」という不満も拡散
+    </div>
+    <div class="card-detail">
+      <span class="label">注意点</span>景品配布を含むコラボ施策そのものが中止となっており、二次流通品は正規ルートでの補完・交換が不可能。極端な高額出品は実売価格を反映していない可能性が高く、購入判断は慎重に
+    </div>
+    <div class="card-source">
+      <a href="https://news.yahoo.co.jp/articles/2ced04bc141bed9a73762bdcbab882f292a157d8">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">週刊少年ジャンプ「ONE PIECE」限定カード付録</div>
+    <div class="card-detail">
+      <span class="label">市場状況</span>定価340円の雑誌が最高1冊2,000円（定価の約5.9倍）で転売され、1冊あたり約1,700円の利益。取材に応じた転売事業者は100冊以上を購入したと証言。同氏は7月発売のポケモンカードも50箱以上確保し、5年後に1箱20万円での売却を見込むと語っている
+    </div>
+    <div class="card-detail">
+      <span class="label">注意点</span>転売ビジネス歴20年の船原徹雄氏（物販総合研究所所長）は「せどり・転売は悪ではない。法律違反はダメ」とコメント。雑誌付録・トレカは初動価格の振れ幅が大きく、高値掴みのリスクがある
+    </div>
+    <div class="card-source">
+      <a href="https://news.yahoo.co.jp/articles/2ced04bc141bed9a73762bdcbab882f292a157d8">出典を確認する</a>
+    </div>
+  </div>
+
+  <h2>販売停止・品薄情報<span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">iPhone 18 Pro Max</div>
+    <div class="card-detail">
+      <span class="label">理由</span>9月12日21時の予約開始から10分を経たずに一部モデルの到着予定が10月2日に切り替わり、開始2時間後の23時時点では多くのモデルが「3〜4週間」の出荷表示に変更。折りたたみモデル「iPhone Duo」登場後も上位モデルへの需要が集中
+    </div>
+    <div class="card-detail">
+      <span class="label">影響度</span><span class="card-amount">★★★★</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">アクション</span>発売日（9月18日）入手を狙うなら実質的に受付済み分のみ。iPhone Duoの予約開始は10月16日からのため、Pro Maxにこだわらないなら待つ選択肢もある。価格は256GBモデルで239,800円と昨秋比で45,000円の値上がり
+    </div>
+    <div class="card-source">
+      <a href="https://ascii.jp/elem/000/004/434/4434374/">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セザンヌ「セラムクッションファンデーション」</div>
+    <div class="card-detail">
+      <span class="label">理由</span>2026年春の発売から半年が経過した9月時点でも品薄が継続。税込1,155円（詰め替え用957円）という価格に対しSPF50＋／PA＋＋＋＋・紫外線吸収剤不使用という仕様でコスパ評価が高く、需要が供給を上回っている状態。SNSでは「どこにも売ってない」との投稿が相次ぐ
+    </div>
+    <div class="card-detail">
+      <span class="label">影響度</span><span class="card-amount">★★★</span>
+    </div>
+    <div class="card-detail">
+      <span class="label">アクション</span>カラーはP5／N10／N20の3色展開。店頭で見つけた時点での確保が現実的。詰め替え用は本体より198円安いため、本体を持っているなら詰め替えを優先
+    </div>
+    <div class="card-source">
+      <a href="https://news.yahoo.co.jp/articles/56af556ffcd6d2d753dc1589d026831d519e6464">出典を確認する</a>
+    </div>
+  </div>
+
+  <p class="note">
+    ※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。
+  </p>
+</body>
+</html>

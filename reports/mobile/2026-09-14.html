@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のモバイル情報レポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のモバイル情報レポート</h1>
+  <p class="report-date">2026年9月14日</p>
+  <p class="total-count">本日のモバイル案件: 16件</p>
+
+  <h2>NTTドコモ <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">5G WELCOME割：Galaxy S26 256GBの割引を開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">43,989円引き</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>他社からの乗り換え。機種代金152,790円が108,801円。適用日から1年間は他社経由での再乗り換え時に再適用不可。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月9日から終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2139597.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">iPhone 18 Pro／Pro Max の販売価格・MNP実質価格を発表</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">22,000円引き</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>5G WELCOME割といつでもカエドキプログラム適用で、MNP実質価格はPro 99,990円、Pro Max 122,980円。一括価格はPro 263,230円、Pro Max 291,500円。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月11日から。発売は2026年9月18日</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2140379.html">出典を確認する</a></div>
+  </div>
+
+  <h2>au（KDDI） <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">iPhone Air が MNP で実質47円に</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大44,000円引き</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>au Online Shop</div>
+    <div class="card-detail"><span class="label">条件</span>スマホミニプラン+でMNP申込。スマホトクするプログラム+、au買替特典を組み合わせた実質負担は<span class="card-amount">47円</span>。povo1.0からの移行は対象外。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月11日から終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2140122.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">iPhone 18 Pro／Pro Max の販売価格・実質価格を発表</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>au</div>
+    <div class="card-detail"><span class="label">条件</span>スマホトクするプログラム、機種変更ゴールド割などの適用でMNP実質価格はPro 66,900円、Pro Max 126,000円。一括価格はPro 268,800円、Pro Max 295,900円。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月11日から。発売は2026年9月18日</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2140419.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">au海外放題 30％還元キャンペーン 第2弾</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">利用料金の30％をau PAY残高で還元</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>au・UQ mobile・povo1.0</div>
+    <div class="card-detail"><span class="label">条件</span>9月27日までにエントリーし、9月19日から27日の間にau海外放題の利用開始。1回線1回限り。法人契約・割引特典付帯プランは対象外。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月19日から2026年9月27日。エントリー期限は2026年9月27日</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2140277.html">出典を確認する</a></div>
+  </div>
+
+  <h2>楽天モバイル <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">iPhone 18 Pro／Pro Max の販売価格・実質価格を発表</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大4万ポイント</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>買い替え超トクプログラム併用でMNP実質価格はPro 87,944円、Pro Max 104,456円。一括価格はPro 255,900円、Pro Max 288,900円。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月12日から。発売は2026年9月18日</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2140407.html">出典を確認する</a></div>
+  </div>
+
+  <h2>ソフトバンク <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">iPhone 18 Pro／Pro Max の販売価格・実質価格を発表</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ソフトバンク</div>
+    <div class="card-detail"><span class="label">条件</span>新トクするサポート＋とオンラインショップ割適用でMNP実質価格はPro 23,760円、Pro Max 107,760円。一括価格はPro 268,560円、Pro Max 295,920円。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月12日から。発売は2026年9月18日</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2140424.html">出典を確認する</a></div>
+  </div>
+
+  <h2>UQ mobile <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">MNP割引を増額、Google Pixel 10a が実質47円</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">44,000円引き</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>UQ mobile</div>
+    <div class="card-detail"><span class="label">条件</span>コミコミプランバリューまたはトクトクプラン2と増量オプションIIへの加入。スマホトクするプログラム利用・端末返却時の実質負担は<span class="card-amount">47円</span>。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月4日から終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2138873.html">出典を確認する</a></div>
+  </div>
+
+  <h2>povo <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">1年間トッピング購入でGoogle Store 10％割引クーポンを進呈</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">Google Store 10％割引</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>データ追加60GBから1.32TBの365日間トッピング、またはAmazonプライム1年間付きトッピングが対象。本気割と併用可能。Google Pixel 11 Proは174,800円から157,320円となる例が示されている。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月7日から2026年12月31日。クーポン利用期限は2027年1月6日</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2138733.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">横浜DeNAベイスターズとの連携キャンペーンを開始</div>
+    <div class="card-detail"><span class="label">還元</span>povoのデータ容量や選手サイン入りグッズ</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>詳細は公式告知を確認。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月7日から</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2138701.html">出典を確認する</a></div>
+  </div>
+
+  <h2>LINEMO <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">紹介キャンペーン開始：乗り換えなら契約事務手数料が無料</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">契約事務手数料3,850円が無料</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>LINEMO</div>
+    <div class="card-detail"><span class="label">条件</span>専用の紹介URL経由で申込。LINEMOベストプランまたはLINEMOベストプランVが対象。申込月の翌月末までに利用開始。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月7日から2026年9月18日</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2138684.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セキュリティパックプレミアム（L）が最大3カ月無料</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">月額770円が最大3カ月無料</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>LINEMO</div>
+    <div class="card-detail"><span class="label">条件</span>新規契約者、ベストプランまたはベストプランVへの変更・継続ユーザーが対象。既存ユーザーはプラン変更後、9月7日から30日の間にオプション追加が必要。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月7日から2026年9月13日。既存ユーザーのオプション追加は2026年9月30日まで</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2138724.html">出典を確認する</a></div>
+  </div>
+
+  <h2>Y!mobile（ワイモバイル） <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">週替わりセール：認定中古 iPhone 13 128GBが9,800円</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">通常31,800円が9,800円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>Y!mobile</div>
+    <div class="card-detail"><span class="label">条件</span>MNPとシンプル3 MまたはLの契約。他のAndroid機種やY!mobile Free Style取扱機種も同時に割引。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月8日から2026年9月15日9時59分</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2139009.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AQUOS wish6を9月17日発売、MNP・新規なら2年間24円</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">24カ月間の総額負担24円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>Y!mobile</div>
+    <div class="card-detail"><span class="label">条件</span>MNPまたは新規契約と新トクするサポート（A）申込。25カ月目に端末返却する場合に適用。通常価格は46,224円。</div>
+    <div class="card-detail"><span class="label">期間</span>予約は2026年9月9日開始。発売は2026年9月17日から終了日未定</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2139389.html">出典を確認する</a></div>
+  </div>
+
+  <h2>中古端末・リファビッシュ <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Back Market：整備済 iPhone 15 Pro／16 Pro 割引セール</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">iPhone 15 Proは5,500円引き、iPhone 16 Proは7,500円引き</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>Back Market</div>
+    <div class="card-detail"><span class="label">条件</span>15 Proは先着100台、16 Proは先着50台。カート投入時に自動適用。複数商品同時購入は対象外、1人1回限り、他キャンペーンとの併用不可。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月11日から2026年9月16日</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2140186.html">出典を確認する</a></div>
+  </div>
+
+  <h2>補足：値上げ情報 <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">アップル：iPhone Proシリーズが大幅値上げ</div>
+    <div class="card-detail"><span class="label">還元</span>前年同型モデル比で<span class="card-amount">最低4万円・最大12万円の値上げ</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>Apple</div>
+    <div class="card-detail"><span class="label">条件</span>iPhone 17など既存モデルも値上げ。キャリアの割引・端末購入プログラムを前提としても総支払額が上昇するため、乗り換え時の実質負担比較が重要。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月10日発表</div>
+    <div class="card-source"><a href="https://k-tai.watch.impress.co.jp/docs/news/2139677.html">出典を確認する</a>　<a href="https://k-tai.watch.impress.co.jp/docs/news/2139679.html">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※還元・条件は確認時点のものです。</p>
+</body>
+</html>

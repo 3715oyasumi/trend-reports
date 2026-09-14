@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレカ情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレカ情報</h1>
+  <p class="report-date">2026年9月14日</p>
+  <p class="total-count">本日のトレカ情報: 41件</p>
+
+  <h2>ポケモンカードゲーム <span class="section-count">（16件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">新弾 MEGA拡張パック「30th CELEBRATION」関連（30周年記念シリーズ）</div>
+    <div class="card-detail"><span class="label">発売日</span>9月16日（水）</div>
+    <div class="card-detail"><span class="label">価格・相場</span>30種のピカチュウ収録が話題。当店応募時価格は1BOX <span class="card-amount">7,200円</span></div>
+    <div class="card-detail"><span class="label">入手先</span>BOOKOFF心斎橋、JTC八王子駅前店、カードショップあーと大阪日本橋店ほか</div>
+    <div class="card-detail"><span class="label">反響</span>公式告知 いいね<span class="card-amount">4,795件</span>、表示88.2万回ほか</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098305547246125379">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 ポケモンセンターオンライン（公式） 30th CELEBRATION各種</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/09/16 16:59まで</div>
+    <div class="card-detail"><span class="label">入手先</span>公式サイトで追加抽選販売の応募受付中</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">4,795件</span>、表示88万2,351回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098305547246125379">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 駿河屋秋葉原 拡張パック「30th CELEBRATION」</div>
+    <div class="card-detail"><span class="label">入手先</span>駿河屋通販トレカ情報と店舗アカウントをフォローし、投稿をリポスト。本人来店可能な方のみ対象</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">4,555件</span>、表示26万9,197回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098592432799568373">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 ブックオフ心斎橋 拡張パック「30th CELEBRATION」</div>
+    <div class="card-detail"><span class="label">入手先</span>当日の一般販売なし。当選時は店頭のみ、1点限りで購入</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">3,038件</span>、表示17万240回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098699023758881211">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 torekaopen2024 拡張パック「30th CELEBRATION」BOX</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/09/15（火）23:59まで</div>
+    <div class="card-detail"><span class="label">入手先</span>当店と南浦和店をフォローし、投稿にいいね。1BOXまで購入可、送料800円別途</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">2,993件</span>、表示4万590回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2099153538475872534">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 ブックオフ港 プレミアムデッキセット エーフィ・ブラッキー</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/09/14（月）終日まで</div>
+    <div class="card-detail"><span class="label">入手先</span>アカウントのフォローと投稿のリポスト</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">2,088件</span>、表示7万1,314回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098327313738068228">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 JTC八王子駅前店 拡張パック「30th CELEBRATION」</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/09/11から2026/09/14まで</div>
+    <div class="card-detail"><span class="label">入手先</span>当店Xのフォローとリポスト。店頭受取、マイナンバーカード必須。当選はDM通知</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">2,814件</span>、表示17万7,914回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098379109407801381">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 BEPOP柏店 拡張パック「30th CELEBRATION」</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/09/14（月）18:00まで</div>
+    <div class="card-detail"><span class="label">価格・相場</span>1人1BOXまで <span class="card-amount">7,200円</span></div>
+    <div class="card-detail"><span class="label">入手先</span>アカウントをフォローとリポスト。当選発表はDM、購入期限は9月20日（日）</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,698件</span>、表示6万2,661回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2099064190082363514">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 BSBshops_HO プレミアムデッキセット エーフィ・ブラッキー</div>
+    <div class="card-detail"><span class="label">入手先</span>X上での事前抽選販売。詳細は告知画像を参照</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">2,247件</span>、表示7万2,766回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098607541471334860">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 bookoff_LaLa 拡張パック「30th CELEBRATION」／プレミアムデッキセット</div>
+    <div class="card-detail"><span class="label">入手先</span>アカウントのフォローと投稿のリポスト。2商品それぞれ別投稿で告知</div>
+    <div class="card-detail"><span class="label">反響</span>拡張パック いいね<span class="card-amount">3,103件</span>、プレミアムデッキセット いいね<span class="card-amount">2,859件</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2098216202367803415">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 ブックオフ武蔵小金井 ポケカ抽選</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/09/14（火）まで</div>
+    <div class="card-detail"><span class="label">入手先</span>ブックオフ公式アプリ会員かつトレーナーズウェブサイト本人認証済みの方が対象</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">803件</span>、表示14万2,181回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098635363883581599">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 カードショップあーと大阪日本橋店 30th CELEBRATION各種</div>
+    <div class="card-detail"><span class="label">抽選期間</span>令和8年9月30日（水）21:00まで</div>
+    <div class="card-detail"><span class="label">入手先</span>フォローとリポスト。店舗受取・発送どちらも対応</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">697件</span>、表示2万5,252回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2099107205194699032">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 トレカ最新情報｜MEISYまとめ その他ポケモンカード抽選店舗</div>
+    <div class="card-detail"><span class="label">抽選期間</span>カードボックス系列・バトロコ・ブックオフは9/14、福福トレカは9/14 23:59、アピタ・ピアゴ・ユニーは9/15、カードラボは9/20、トイザらスは9/27まで</div>
+    <div class="card-detail"><span class="label">入手先</span>個人まとめ情報のため、各店舗の公式アナウンスを要確認</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">144件</span>、表示13万2,030回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098707516070982145">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">高騰 拡張パック「30th CELEBRATION」の転売価格</div>
+    <div class="card-detail"><span class="label">価格・相場</span>発売5日前時点で日本語版が定価の<span class="card-amount">9倍以上</span>で取引との未確認報告。都内・大阪などからの流出が推測される</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">410件</span>、表示62万3,701回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098684889738739850">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">高騰 ポケモンカード市場全体の下落傾向</div>
+    <div class="card-detail"><span class="label">価格・相場</span>海外で価格下落が先行との未確認分析。円高やPSA10の枚数増加による希少性低下が要因として挙げられている</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">198件</span>、表示9万9,155回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098982813856842220">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">話題 ポケモンカードゲーム学園祭2026</div>
+    <div class="card-detail"><span class="label">入手先</span>日本各地の大学で9月から順次開催。ルール体験コーナーでステッカーを配布</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">930件</span>、表示35万138回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098607534751797402">出典を確認する</a></div>
+  </div>
+
+  <h2>ワンピースカードゲーム <span class="section-count">（8件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">新弾 プロモーションパックEX vol.5</div>
+    <div class="card-detail"><span class="label">発売日</span>10月より開催の対象イベントで配布</div>
+    <div class="card-detail"><span class="label">入手先</span>「メラメラの実争奪戦」サイドイベント等</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">2,040件</span>、表示52万665回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098335749716488195">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">新弾 ONE PIECE Heroines Edition vol.2【EB-05】</div>
+    <div class="card-detail"><span class="label">入手先</span>キャラクターカード「ひばり」を含む収録カードを公式が順次紹介中</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">589件</span>、表示50万4,967回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098939720529293376">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">新弾 世界最強の戦士【OP-17】クルーバトル</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/11（金）から10/03（土）</div>
+    <div class="card-detail"><span class="label">入手先</span>公式がイベントで使用可能な特定リーダーカードを紹介</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">545件</span>、表示26万8,588回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098344509151309907">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 ヤマシロヤ ONE PIECEカードゲーム各種</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/09/13（日）21:30から2026/09/15（火）21:30まで</div>
+    <div class="card-detail"><span class="label">入手先</span>先着順ではない抽選販売。詳細はリンク先を確認</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">856件</span>、表示13万3,897回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2099060522977026511">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 シンソク秋葉原5号店 ブースターパック「新時代の主役」</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/09/30（水）23:59まで</div>
+    <div class="card-detail"><span class="label">入手先</span>アカウントをフォローし、投稿をリポストといいね。9/16に秋葉原5号店オープン予定</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,262件</span>、表示6万4,430回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2099075620114473159">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 genki302 「世界最強の戦士」第5回目抽選店頭販売</div>
+    <div class="card-detail"><span class="label">入手先</span>Googleフォームより応募。Googleアカウント必須</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">193件</span>、表示3万8,853回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098739665398555061">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 ONE PIECEカードゲーム公式ショップ／デクスタ 世界最強の戦士【OP-17】</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/09/15（火）23:59まで</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">144件</span>、表示13万2,030回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098707516070982145">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">付録 週刊少年ジャンプ No.42・43 ONE PIECE×NIKEコラボステッカー</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月14日（月）</div>
+    <div class="card-detail"><span class="label">入手先</span>とじこみ付録。カードではなくコラボステッカー</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">15件</span>、表示7,598回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2099204159535030659">出典を確認する</a></div>
+  </div>
+
+  <h2>遊戯王オフィシャルカードゲーム <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">新弾 遊☆戯☆王 ORIGINAL ARTWORK COLLECTION</div>
+    <div class="card-detail"><span class="label">発売日</span>2026/09/26（土）</div>
+    <div class="card-detail"><span class="label">入手先</span>「幻想の邪眼－サクリファイス」「現世と冥界の逆転」を収録。モノクロ版・カラー版のMANGA-STYLEカードが登場</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">2,039件</span>、表示33万5,026回ほか</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098909529429954737">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">新弾 IMMORTAL PHOENIX</div>
+    <div class="card-detail"><span class="label">発売日</span>2026/10/31（土）</div>
+    <div class="card-detail"><span class="label">入手先</span>「暗黒の太陽神－ラーの翼神竜」を収録</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">3,396件</span>、表示38万5,257回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2099105822202532276">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">新弾 Vジャンプ11月特大号「CARDニュース(OCG)」</div>
+    <div class="card-detail"><span class="label">入手先</span>「サラマングレイト」「白鴉」の新カード、再録カードを公開</div>
+    <div class="card-detail"><span class="label">反響</span>第5回 いいね<span class="card-amount">6,014件</span>、第6回 いいね<span class="card-amount">1万2,447件</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2097882773788799446">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 コナミスタイル デュエルセット WCS2026</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/09/18（金）11:00から2026/09/24（木）23:59まで</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">144件</span>、表示13万2,030回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098707516070982145">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 orikuji 遊戯王「BEYOND THE BRAVE」3BOXセット</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/09/13（日）23:59で終了</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">514件</span>、表示1万2,904回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098667934134460426">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">話題 遊戯王クロニクルズ「罪宝狩りの悪魔」声優キャスティング公開</div>
+    <div class="card-detail"><span class="label">入手先</span>百鬼羅刹 巨魁ガボンガ役に千葉繁さんが決定。キャストコメントとアニメ設定画を公開</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">3,402件</span>、表示32万5,937回ほか</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098747202046722187">出典を確認する</a></div>
+  </div>
+
+  <h2>ドラゴンボールスーパーカードゲーム フュージョンワールド <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">新弾 BRIGHTNESS OF HOPE【FB11】</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月11日（金）</div>
+    <div class="card-detail"><span class="label">入手先</span>発売に合わせてシングル通販開始、記念キャンペーンも実施</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">613件</span>、表示7万8,736回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098426352084856846">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 dragonball_40 フォローとリポストキャンペーン</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/09/23（水）23:59まで</div>
+    <div class="card-detail"><span class="label">入手先</span>フォローとリポスト。対象3商品を各1名にプレゼント</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,660件</span>、表示11万8,011回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098578303993160075">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 プレミアムバンダイ BRIGHTNESS OF HOPE【FB11】</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/09/17（木）23:00まで</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">144件</span>、表示13万2,030回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098707516070982145">出典を確認する</a></div>
+  </div>
+
+  <h2>デュエル・マスターズ <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">新弾 逆札篇 第3弾「勝敵！逆転おこせ鬼の∞ディスペクター!!」</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月19日（土）</div>
+    <div class="card-detail"><span class="label">入手先</span>金トレジャー「クイーン＆かぼちゃうちゃう」を収録</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">2,217件</span>、表示20万4,245回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098969920537284655">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 DMCardNEO 「鬼の∞ディスペクター発売記念キャンペーン」</div>
+    <div class="card-detail"><span class="label">入手先</span>アカウントと固定投稿の両方をリポスト。1BOXプレゼント、締切記載なし</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">284件</span>、表示1万1,958回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098723245709029743">出典を確認する</a></div>
+  </div>
+
+  <h2>トレカ全般 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">抽選 イオンスタイルオンライン 対象商品</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/09/21（金）23:59まで</div>
+    <div class="card-detail"><span class="label">入手先</span>ポケモンカード、ONE PIECEカード、ドラゴンボールフュージョンワールドの対象5商品。受け取りは郵送</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">547件</span>、表示13万714回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098268771509289109">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">抽選 プレミアムバンダイ UNION ARENA「BLEACH 千年血戦篇 Vol.3【EX15BT】」</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/09/16（水）23:00まで</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">144件</span>、表示13万2,030回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098707516070982145">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">付録 コロコロコミック2026年10月号 ジャンボステッカー ピカチュウ</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月15日（火）</div>
+    <div class="card-detail"><span class="label">入手先</span>Amazonで在庫復活・再販中。付録はポケモンカードではなくステッカー</div>
+    <div class="card-detail"><span class="label">反響</span>在庫復活報告 いいね<span class="card-amount">9件</span>、表示3万7,199回ほか</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098558106905305300">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">転売 トレカ買い占め・転売ヤーへの報道</div>
+    <div class="card-detail"><span class="label">入手先</span>トレカ・漫画誌を買い占める転売ヤーへの取材を紹介した投稿。引用元記事自体は本レポートで未確認</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">275件</span>、表示6万8,042回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098752134498103641">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">転売 トレカ市場全体の下落を指摘する声</div>
+    <div class="card-detail"><span class="label">価格・相場</span>ポケカ・ワンピースの下落や、トレカ・カメラ・スターリンクの下落を指摘する個人投稿。いずれも裏取りなし</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">235件</span>、表示27万8,447回ほか</div>
+    <div class="card-source"><a href="https://x.com/i/status/2099039924741865630">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">転売 カードショップアシスト横浜 強化買取キャンペーン</div>
+    <div class="card-detail"><span class="label">価格・相場</span>スニダン相場からマイナス5%を基準にポケカを買取。PSA10は<span class="card-amount">2万円以上</span>が対象</div>
+    <div class="card-detail"><span class="label">入手先</span>カードショップアシスト横浜。BOXは制限なしで買取</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">216件</span>、表示7万5,731回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2098402384510910594">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※価格・相場は確認時点のものです。</p>
+</body>
+</html>

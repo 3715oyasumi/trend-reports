@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月15日（火）版</p>
+  <p class="total-count">本日のトレンド: 10件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">セブンプレミアム 秋のお芋スイーツ・お菓子 全9品</div>
+    <div class="card-detail"><span class="label">特徴</span>鹿児島県産安納芋を使った「蜜芋まんじゅう」（321.84円）、「むぎゅっと押し出す芋ようかん」（246.24円）、「蜜芋あんバターサンド」（321.84円）など計9品を一斉展開。取扱地域は東北・茨城・埼玉・千葉・東京・神奈川（紅はるかチップスのみ北海道・東北・関東）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月15日（火）から順次</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">192.24円〜321.84円（税込）</span></div>
+    <div class="card-source"><a href="https://convenicheck.com/newitem/newit_seven/135467/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ファミリーマート 今週の新商品5品</div>
+    <div class="card-detail"><span class="label">特徴</span>「コク旨！パイコー飯（台湾風豚から揚げ）」698円、「ラーメン荘 歴史を刻め監修 ファミマの豚ラーメン」698円、「太麺使用 広島お好み焼」645円、「にんにく香る炙りチキンのトマト煮込み」478円、「クリスピーチョコサンド」298円</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月15日（火）〜9月21日（月）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">298円〜698円</span></div>
+    <div class="card-source"><a href="https://news.mynavi.jp/article/20260914-4965534/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">バンダイ食玩 今週の新商品 全9種</div>
+    <div class="card-detail"><span class="label">特徴</span>「ちいかわ」わっふれ～むの新作、『ガンダム』にふぉるめーしょんなど計9アイテムを同日投入</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月14日（月）</div>
+    <div class="card-detail"><span class="label">価格</span>不明</div>
+    <div class="card-source"><a href="https://news.mynavi.jp/article/20260913-shokugan/">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">しゃぶしゃぶ温野菜「敬老の日キャンペーン」</div>
+    <div class="card-detail"><span class="label">特典内容</span>専用クーポン提示で食べ放題コースが平日20%OFF・土日祝10%OFF。小学生は半額、小学生未満は無料。条件は2名以上かつ会計合計5,500円（税込）以上</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月14日（月）〜9月30日（水）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://yurunago.or.jp/31953/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブン-イレブン「セブンカフェ ベーカリー」全品30円引き</div>
+    <div class="card-detail"><span class="label">特典内容</span>セブンカフェ ベーカリー対象商品が全品30円引き。全国約12,000店で実施の4日間限定セール</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月14日（月）〜9月17日（木）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-source"><a href="https://manetatsu.com/article/2026/09/14/467710.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ほっともっと「ごはん大盛・中盛無料キャンペーン」</div>
+    <div class="card-detail"><span class="label">特典内容</span>ごはん量を選べる対象弁当で「大盛」「中盛」を「並盛」と同価格に。対象は宮崎県内49店舗（8月末時点）限定。特注弁当・季節のごはん・ドラえもんランチ・特製ナポリタン弁当・もちミニシリーズは対象外</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月15日（火）〜12月31日（木）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span>（対象地域が宮崎県限定のため全国的なお得度は限定的）</div>
+    <div class="card-source"><a href="https://www.anemo.co.jp/topics/lifestyle/campaign-lifestyle/438201-20260914/">出典を確認する</a>　<a href="https://news.yahoo.co.jp/articles/c22d1aaf470ea63f361f9911a9ca008ce1da250c">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">メルカリ「105万円」高額出品・マネロン疑惑騒動</div>
+    <div class="card-detail"><span class="label">市場状況</span>数千円程度のマンガ数冊セットが「105万円」でSOLD表示、さらに「999万9999円」の古本・漫画が多数並ぶ状態がSNSで拡散し、マネーロンダリング（資金洗浄）疑惑が浮上。メルカリ側は「表示されている価格で実際に取引された事実はない」と否定し、取引成立後に出品者が価格を極端に高く変更したものと説明</div>
+    <div class="card-detail"><span class="label">注意点</span>フリマアプリの「SOLD表示価格」は取引時点の実売価格と一致しない場合がある。相場判断の根拠に売り切れ表示だけを使わず、複数の取引実績で確認すること</div>
+    <div class="card-source"><a href="https://www.itmedia.co.jp/news/article/2609/14/2000001455/">出典を確認する</a>　<a href="https://news.livedoor.com/topics/detail/32298216/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケモンカードゲーム「30th CELEBRATION」</div>
+    <div class="card-detail"><span class="label">市場状況</span>定価は1パック360円（税込）、1BOX 7,200円（税込）。2026年9月16日（水）世界同時発売に向け、9月11日〜9月14日にかけて多数のカードショップ・ブックオフ店舗で抽選受付が集中し大半が受付終了。ポケモンセンターオンラインは9月11日16:00〜9月16日16:59で追加抽選を受付中、Amazonは招待リクエスト制、ローソンは9月16日7:00から先着販売（なくなり次第終了）</div>
+    <div class="card-detail"><span class="label">注意点</span>二次流通の具体的な相場価格は、過去3日以内に公開・更新された信頼できるソースで確認できず不明。発売直後は価格が乱高下しやすく、定価購入ルート（抽選・先着）を優先するのが合理的</div>
+    <div class="card-source"><a href="https://snkrdunk.com/articles/32425/">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">江崎グリコ「アーモンド効果PROTEINナッツミックス250g」ほか</div>
+    <div class="card-detail"><span class="label">理由</span>風味劣化を引き起こす品質基準未達の製品が流通していることが判明。対象は2026年7月27日に製造委託先工場（熊本県果実農業協同組合連合会／山梨県北杜市の白州工場）で製造されたもの。回収規模は約10万本</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>手元に対象商品がある場合は飲用を控え、グリコの公式発表で対象ロット（製造日・賞味期限）を照合すること</div>
+    <div class="card-source"><a href="https://news.livedoor.com/topics/detail/32322099/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">秋サケ（北海道産） 歴史的不漁による供給逼迫</div>
+    <div class="card-detail"><span class="label">理由</span>気候変動による海水温上昇と餌となるプランクトンの減少で回帰率が低下。北海道沿岸への今季来遊予想は約364万5000匹と、前年の半分程度に落ち込む見通し。札幌市中央卸売市場の初競りでは日高産「銀聖」（メス4.5kg）が1kgあたり18万8888円、1匹換算で約85万円のご祝儀価格を記録</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>店頭価格は例年の1.3〜1.5倍（スーパー例で100g 239円）に上昇。9月11日時点の平均相場はオス1kg 2,710円・メス1kg 2,039円。いくら・筋子を含め年末に向けさらに上昇する余地があるため、必要量は早めに確保するか代替魚種（イワシ等）へ切り替える判断を</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/c8cf5210b39358641e308cd43beca28b1af38913">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>本日は「秋の芋・栗需要」を狙ったコンビニPB（プライベートブランド＝小売が自社で企画する自主開発商品）の一斉投入が最大のトピックで、セブンは9品同時展開と“面”で棚を押さえに来ています。一方で供給サイドは秋サケの来遊量が前年比半減という構造的な逼迫に直面しており、鮮魚とその加工品（いくら・筋子）は年末に向けた価格上昇リスクを織り込む局面です。転売領域では、メルカリの「105万円」騒動が示した通り、フリマの表示価格が実売価格から乖離するケースが顕在化しており、相場判断は単一の売り切れ表示ではなく複数の取引実績で裏取りする運用が不可欠です。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

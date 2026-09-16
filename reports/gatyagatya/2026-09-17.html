@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ガチャガチャ情報まとめ（2026-09-16）</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+    :root {
+      --canvas: #faf9f5;
+      --card: #fffdf8;
+      --surface-soft: #f5f0e8;
+      --hairline: #e6dfd8;
+      --hairline-soft: #ebe6df;
+      --primary: #cc785c;
+      --primary-active: #a9583e;
+      --ink: #141413;
+      --text: #3d3d3a;
+      --muted: #6c6a64;
+      --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+      --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--canvas);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.75;
+      padding: 40px 24px 64px;
+      max-width: 760px;
+      margin: 0 auto;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      text-wrap: balance;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .report-date {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .total-count {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+      text-wrap: balance;
+      padding-left: 14px;
+      border-left: 3px solid var(--primary);
+      margin: 40px 0 16px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 24px 0 8px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--hairline);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-soft);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .card-detail {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text);
+      margin-top: 8px;
+    }
+
+    .label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      min-width: 40px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .card-amount {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary-active);
+    }
+
+    .total-count { }
+
+    .section-count {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+      margin-left: 8px;
+      font-family: var(--font-body);
+    }
+
+    .card-source {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--hairline-soft);
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--hairline);
+      margin: 40px 0;
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 24px 16px 48px; }
+      h1 { font-size: 25px; }
+      h2 { font-size: 19px; }
+      .card { padding: 16px 18px; }
+      .card-detail {
+        flex-direction: column;
+        gap: 2px;
+      }
+      .label {
+        min-width: auto;
+        text-align: left;
+      }
+      .card-amount { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>ガチャガチャ情報まとめ（2026-09-16）</h1>
+  <p class="report-date">2026年9月16日</p>
+  <p class="total-count">本日のガチャガチャ情報: 30件</p>
+
+  <h2>新商品・発売情報 <span class="section-count">（26件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">名探偵プリキュア！ カプセルラバーマスコット2</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>名探偵プリキュア！のカプセルラバーマスコット第2弾です。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2099992811240386953">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ディズニーキャラクター バレエリボンフィギュア</div>
+    <div class="card-detail"><span class="label">発売時期</span>発売済み</div>
+    <div class="card-detail"><span class="label">内容</span>ディズニーキャラクターをバレエリボンの意匠で表現したフィギュアです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2099989135973126247">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サンリオミニチュアパッケージチャームシリーズ</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月16日10時発売</div>
+    <div class="card-detail"><span class="label">内容</span>サンリオキャラクターのミニチュアパッケージチャームです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100005268235165882">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サンリオ フロッキーミラー＆コーム</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月16日10時発売</div>
+    <div class="card-detail"><span class="label">内容</span>フロッキー加工を施したミラーとコームのグッズです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100006692524310776">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サンリオ バンスクリップ</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月16日10時発売</div>
+    <div class="card-detail"><span class="label">内容</span>サンリオキャラクターデザインのバンスクリップです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100007027208847772">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サンリオ フロッキーピアス</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月16日10時発売</div>
+    <div class="card-detail"><span class="label">内容</span>フロッキー加工を用いたサンリオデザインのピアスです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100007516981895187">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サンリオ シール＆シール帳</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月16日10時発売</div>
+    <div class="card-detail"><span class="label">内容</span>サンリオキャラクターのシールとシール帳のグッズです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100008035687284978">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サンリオ チアリステイルズシリーズ</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月16日10時発売</div>
+    <div class="card-detail"><span class="label">内容</span>サンリオのチアリステイルズシリーズのグッズです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100008717156774100">出典を確認する</a> / <a href="https://x.com/japancapsuletoy/status/2100008900615676376">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">wani souma flocky figure</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>wani soumaのフロッキーフィギュアです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2100034433071898959">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">麻辣湯アピるチャーム</div>
+    <div class="card-detail"><span class="label">発売時期</span>発売済み</div>
+    <div class="card-detail"><span class="label">内容</span>麻辣湯とトッピングを組み合わせた2個セットのチャームです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2100064634115866653">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ちいかわ ミニコレクトブックキーホルダー①</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月中旬発売</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">500円</span></div>
+    <div class="card-detail"><span class="label">内容</span>ちいかわデザインのミニコレクトブックキーホルダーです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100068503181291638">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">wiggle wiggle ぷっくり前髪クリップ</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月18日順次発売</div>
+    <div class="card-detail"><span class="label">内容</span>wiggle wiggleのぷっくりした前髪クリップです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100070045753950383">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ゼルダの伝説 ヒストリカルチャーム＋</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>ゼルダの伝説のヒストリカルチャームシリーズです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100070639235453395">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブン-イレブン まちぼうけ</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月17日順次発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>セブン-イレブンを題材にしたまちぼうけシリーズです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100076335456768389">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">たまごっち手作りおやつチャーム＃平成女児チョコ</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月17日順次発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>平成女児チョコをテーマにしたたまごっちの手作りおやつチャームです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100076743587762586">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ケロロ軍曹 ちびケロめじるしアクセサリーSP</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月17日順次発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>ちびケロをデザインしためじるしアクセサリーのスペシャル版です。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100077036312428744">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サンリオキャラクターズ 手作りおやつチャーム＃しぼりクッキー</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月17日順次発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>しぼりクッキーをテーマにしたサンリオキャラクターズの手作りおやつチャームです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100077265677926872">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サンリオキャラクターズ 手作りおやつチャーム 平成女児チョコ スペシャルカラーver.</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月17日順次発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>平成女児チョコをテーマにした手作りおやつチャームのスペシャルカラー版です。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100077465268109654">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ズートピア アイスキャンディチャーム</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月17日順次発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>ズートピアをモチーフにしたアイスキャンディチャームです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100077650413039744">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ぷちきゅあ〜PrecureFairies〜 めじるしアクセサリー スペシャルカラーver.</div>
+    <div class="card-detail"><span class="label">発売時期</span>9月17日順次発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>ぷちきゅあのめじるしアクセサリー、スペシャルカラー版です。本日の投稿で大きな反響を集めました。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100077828549255356">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">アートユニブテクニカラー カニタマ カプセルエディション2</div>
+    <div class="card-detail"><span class="label">発売時期</span>発売済み</div>
+    <div class="card-detail"><span class="label">内容</span>カプセルからそのまま変形するギミックを備えたカニタマのカプセルエディションです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2100117483147468907">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">胃 フィギュアマスコット</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>胃弱な人に向けたコンセプトのフィギュアマスコットです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2100162785938428254">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ドムドムハンバーガー ブリスターチャーム</div>
+    <div class="card-detail"><span class="label">発売時期</span>発売済み</div>
+    <div class="card-detail"><span class="label">内容</span>どむぞうくんをブリスターパッケージで表現したチャームです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2100177896199381306">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">tomica PREMIUM BOX型シリコンポーチ2</div>
+    <div class="card-detail"><span class="label">発売時期</span>発売済み</div>
+    <div class="card-detail"><span class="label">内容</span>tomica PREMIUMのボックス型シリコンポーチ第2弾です。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2100192992678072451">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">おめかしうさぎ</div>
+    <div class="card-detail"><span class="label">発売時期</span>発売済み</div>
+    <div class="card-detail"><span class="label">内容</span>おめかしをしたうさぎをテーマにした商品です。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2100208091740451196">出典を確認する</a></div>
+  </div>
+
+  <h2>その他の話題 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">セブン-イレブン まちぼうけの反響</div>
+    <div class="card-detail"><span class="label">内容</span>セブン-イレブン まちぼうけに対して「欲しすぎる」との反響投稿がありました。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100078882129055778">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">だし巻き卵ブランケット</div>
+    <div class="card-detail"><span class="label">入手先・相場</span>クレーンゲーム系のPR商品</div>
+    <div class="card-detail"><span class="label">内容</span>最大370プレイ無料キャンペーンの対象として紹介されています。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100084171486191829">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">赤トウガラシのぬいぐるみ</div>
+    <div class="card-detail"><span class="label">入手先・相場</span>クレーンゲーム系のPR商品</div>
+    <div class="card-detail"><span class="label">内容</span>最大370プレイ無料キャンペーンの対象として紹介されています。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2100085459271688437">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ことり隊ミニテラリウム</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月再販予定</div>
+    <div class="card-detail"><span class="label">内容</span>ことり隊を題材にしたミニテラリウムシリーズです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2100143904297230340">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※価格・発売時期は確認時点のものです。</p>
+</body>
+</html>

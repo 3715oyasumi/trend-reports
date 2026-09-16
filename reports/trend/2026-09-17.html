@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月17日（木）版</p>
+  <p class="total-count">本日のトレンド: 9件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ローソン「一点突破すぎ！」「贅沢すぎ！」シリーズ</div>
+    <div class="card-detail"><span class="label">特徴</span>具材を1種類に絞ることで価格を最大5割抑えた「一点突破すぎ！」シリーズと、具材の量・質にこだわった「贅沢すぎ！」シリーズ9品を同時展開。「敷き詰めごはん てりやきソーセージ」は約6本分のソーセージだけをごはんに敷き詰めた構成</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月22日（ぼだっこ・てりやきソーセージ・肉オールスター弁当）、2026年9月29日（キーマカレー〈激辛〉・焼とうもろこし）</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">てりやきソーセージ397円／ぼだっこ（鮭）297円／キーマカレー（激辛）297円／焼とうもろこし297円／肉オールスター弁当994円</span>（いずれも税込）</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2141533.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ガスト「おいしい秋色グルメ」フェア</div>
+    <div class="card-detail"><span class="label">特徴</span>ガスト初となるシャインマスカットスイーツシリーズを投入。国産マスカットと紅茶パイを組み合わせたパフェ・サンデーのほか、月見需要を狙ったハンバーグや秋の和膳を展開</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月17日〜10月21日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">焼き野菜と月見チーズINハンバーグ〜きのこデミソース〜 1,044円〜1,154円／魚介たっぷりトマトスープパスタ 1,209円／カキフライ和膳［3個］989円／紅茶香るフレッシュシャインマスカットのパフェ 1,099円／同サンデー 769円</span>（いずれも税込）</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2141425.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サントリー「ほろよい〈焼きりんご〉」</div>
+    <div class="card-detail"><span class="label">特徴</span>りんごの甘さにシナモンが香る焼きりんごを思わせる味わいの限定フレーバー。フライパンを模した限定アイコンをあしらったパッケージ。アルコール度数3％、350mL缶</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年11月4日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">171円前後</span>（税別）</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2140603.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">すかいらーく「秋の食べ歩きクーポン」ブック</div>
+    <div class="card-detail"><span class="label">特典内容</span>20ブランド合計78枚（関東圏／関東圏以外は58枚）のクーポンを収録。ガスト「チーズINハンバーグ」25％オフ、バーミヤン「本格焼餃子」110円引き、資さんうどん50円引きなど、ブランドにより10％オフ・7％オフ等を設定</div>
+    <div class="card-detail"><span class="label">期間</span>配布2026年9月17日〜30日、利用2026年10月1日〜11月30日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2141464.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブン-イレブン「お菓子無料クーポン」配信</div>
+    <div class="card-detail"><span class="label">特典内容</span>「明治 チョコッとミルチ」と引き換えできる無料クーポンを配信。セブン-イレブンアプリ会員で、各クーポン配信前日23時59分までに登録済みの人が対象。9月19日・22日に各1枚ずつ配信</div>
+    <div class="card-detail"><span class="label">期間</span>利用は2026年9月19日〜20日、9月22日〜23日（各期間1回限り）</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★☆☆☆</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2141419.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ポケモンカードゲーム「30th CELEBRATION」関連商品</div>
+    <div class="card-detail"><span class="label">市場状況</span>メルカリが2026年9月16日0時から、未開封の拡張パック「30th CELEBRATION」および「30th CELEBRATION カードセット」（全9種）、これらを含むセット販売の出品を一定期間禁止。カードセットは開封・未開封を問わず禁止で、開封済みシングルカードのみ出品可能。終期は未定。禁止期間中はAIを活用した検知システムと専門チームによる目視監視を実施し、繰り返し違反したアカウントには利用制限を含む措置を取る。一方、発売当日朝から規制の抜け穴を突いた出品が相次ぎ、各地の店頭でも行列やトラブルの発生が報告された</div>
+    <div class="card-detail"><span class="label">注意点</span>禁止対象は「未開封パック」と「カードセット」に限定されており、対象外のシングルカード等を経由した実質的な高値取引は残る。購入時は出品物が規制対象かを確認し、規制対象品の取引はアカウント利用制限リスクがある点に留意</div>
+    <div class="card-source"><a href="https://about.mercari.com/press/news/articles/20260915_principles/">出典を確認する</a> ／ <a href="https://news.yahoo.co.jp/articles/c9a5640b4e0da6ee162ca2eaed5608c7bcf179f4">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ヤフオク・Yahoo!フリマのポケカ30周年商品への対応</div>
+    <div class="card-detail"><span class="label">市場状況</span>ヤフオクおよびYahoo!フリマは、発売時点では出品禁止も価格制限も実施しない方針を表明。今後は「商品特性や供給状況、市場動向などを踏まえて判断する」としている。メルカリが出品禁止・監視強化に踏み切ったのとは対照的な対応となった</div>
+    <div class="card-detail"><span class="label">注意点</span>プラットフォームごとに規制方針が割れているため、規制の緩い側へ出品が流入し、価格が形成される可能性がある。購入検討者は複数プラットフォームの相場を比較し、単一サイトの提示価格を基準にしないこと</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/a3ffcaf5b3e68a03c96c83d05ba8b5acd1dddc5b">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">紀文食品 カニ風味かまぼこ「The SURIMI（ザ・スリミ）」</div>
+    <div class="card-detail"><span class="label">理由</span>一部製品でパッケージの膨張が発生し、開封すると腐敗臭がすることが判明。同社が9月16日に自主回収を発表。回収規模は約24万個で、対象商品は2026年9月1日に発売されたばかりの新商品</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>手元に該当商品がある場合は食べずに、紀文食品の案内に従って対応すること。発売直後の全国流通品であり、店頭からの撤去で当面入手不可となる見込み</div>
+    <div class="card-source"><a href="https://www.nikkei.com/article/DGXZQOUC16A1K0W5A910C2000000/">出典を確認する</a> ／ <a href="https://news.yahoo.co.jp/articles/08d70bd5921466f64a8940b4544a8413f7043a05">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">カプセルトイ「めじるしアクセサリー」</div>
+    <div class="card-detail"><span class="label">理由</span>ガシャポンバンダイオフィシャルショップ（アルプラザ水口店、福山エーガル8シネマズ店、豊田KiTARA店、未来屋書店日根野店）およびガシャポンのデパート（松戸店、ゆめタウン徳島店）で販売見合わせが相次ぐ。バンダイ本社広報は「混雑緩和のため」「安全面を考慮」と説明。アルプラザ水口店は「当面の間」としており、終期は不明</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>来店前に各店舗の公式SNS等で取り扱い状況を確認すること。店舗単位の措置であり全面販売終了ではないため、再開情報を待つのが合理的</div>
+    <div class="card-source"><a href="https://www.j-cast.com/2026/09/15517943.html?p=all">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>本日の最大の論点は、プラットフォーム間で転売規制の足並みが揃っていない点にある。メルカリがポケカ30周年商品を発売0時から出品禁止とし監視体制まで敷いた一方、ヤフオク・Yahoo!フリマは価格制限を見送っており、規制の緩い側へ出品が流れる「水路効果」が起きやすい構図だ。外食側では、すかいらーくが20ブランド78枚のクーポンブックで10〜11月の来店を先に囲い込み、ガスト・ローソンが「具材1種類で最大5割減」のような原価構造そのものを訴求点に変えてきており、値上げ局面における価格訴求の手法が一段と可視化されている。供給面では紀文の新商品が発売からわずか2週間で約24万個の自主回収となり、発売直後の品質トラブルが即座に棚落ちへ直結するリスクが改めて示された。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

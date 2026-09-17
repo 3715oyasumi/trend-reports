@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月18日（金）版</p>
+  <p class="total-count">本日のトレンド: 11件</p>
+
+  <h2>新商品情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">キリン「午後の紅茶 TEA LATTE with ESPRESSO」「同 CREAM &amp; MILK」</div>
+    <div class="card-detail"><span class="label">特徴</span>ESPRESSOは現行ミルクティーの2倍の茶葉を使用し、高温・高圧のエスプレッソ抽出製法で濃いのにすっきりを実現。CREAM &amp; MILKはリーフリッチブリュー製法で茶葉のえぐみを抑え、生クリームのまろやかさとナッツ・キャラメル系フレーバーを付与。ともに500mLペットボトル</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月6日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">233円前後（税別）</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2141199.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サントリー「ほろよい〈焼きりんご〉」</div>
+    <div class="card-detail"><span class="label">特徴</span>りんごの甘さにシナモンが香る焼きりんご風味の限定フレーバー。350mL缶、アルコール分3％</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年11月4日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">171円前後（税別）</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2140603.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">スターバックス「蜜芋 ミルク」</div>
+    <div class="card-detail"><span class="label">特徴</span>紅はるかの蜜芋ペーストになめらかなミルクを合わせた一杯。冷やして、とろり蜜芋をテーマにした商品展開の一環</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月18日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">Tallサイズ630円／持ち帰り618円</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2141673.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブン-イレブン「北海道フェア」全12品</div>
+    <div class="card-detail"><span class="label">特徴</span>第1弾は阿部商店監修 いかめしおむすび228円、札幌すみれ監修 濃厚しおラーメン580円。第2弾は北海道産かぼちゃとナッツのスイーツサラダ298円、Suage監修 チキンと野菜のスープカレー648円。いずれも税別</div>
+    <div class="card-detail"><span class="label">発売日</span>第1弾2026年9月29日／第2弾2026年10月6日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">228円〜648円（税別）</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2141772.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">不二家「3日間限定半額キャンペーン」</div>
+    <div class="card-detail"><span class="label">特典内容</span>全国の不二家洋菓子店でマロンモンブラン、チョコ生ケーキ（小物）が537円から268円の50%OFF。数量限定、1会計につき合計4個まで</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月21日〜9月23日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2141907.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ステーキのどん「お子さまメニュー半額クーポン祭り」</div>
+    <div class="card-detail"><span class="label">特典内容</span>全62店舗で小学生以下本人の注文に限り半額。お子様ハンバーグプレート、パンケーキ、カレープレートが638円から319円、お子様ハンバーグ・カレーが418円から209円、低アレルゲンハンバーグが528円から264円。期間中何度でも利用可、店内飲食のみ</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月17日〜9月24日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2141729.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">バーガーキング「マッシュルームワッパー」300円引きクーポン</div>
+    <div class="card-detail"><span class="label">特典内容</span>公式アプリ配信クーポンでマッシュルームワッパーセットが1290円から990円、ダブルマッシュルームワッパーセットが1740円から1440円</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月18日〜10月1日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2141765.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ポケモンカードゲーム「30th CELEBRATION」（2026年9月16日発売）</div>
+    <div class="card-detail"><span class="label">市場状況</span>1パック360円（税込）の商品から出たカードが、発売当日にフリマサイトで1枚139万円で落札。1枚500万円での出品例もあり、100万円超の落札が複数確認されている。発売当日は各地の店頭に早朝から行列が発生</div>
+    <div class="card-detail"><span class="label">注意点</span>極端な高値は発売直後の一時的な熱狂による可能性が高く、封入率や再販動向で相場は急落しうる。定価360円との乖離が数千倍規模である点を踏まえ、二次流通での取得は避けるのが妥当</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/1f69d975afac0768484f56eccebfa0c62b4f4d89">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">メルカリによる「30th CELEBRATION」出品禁止措置</div>
+    <div class="card-detail"><span class="label">市場状況</span>メルカリは9月16日から一定期間、未開封の拡張パック30th CELEBRATIONと30th CELEBRATION カードセット全9種を出品禁止に。カードセットは開封・未開封を問わず禁止、これらを含むセット販売も禁止。開封済みのシングルカードは出品可能。正規価格はMEGA拡張パック360円、プレミアムデッキセット6,200円、FUTURISTIC BOX 27,500円</div>
+    <div class="card-detail"><span class="label">注意点</span>シングルカードが対象外のため規制の抜け穴を突いた出品が相次ぎ、SNS上では実効性を疑問視する声が噴出。店頭でも行列やトラブルが報告されている</div>
+    <div class="card-source"><a href="https://news.yahoo.co.jp/articles/c9a5640b4e0da6ee162ca2eaed5608c7bcf179f4">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">iPhone 18 Pro Max（2026年9月18日発売）</div>
+    <div class="card-detail"><span class="label">理由</span>予約が上位モデルに集中し、Apple Storeの出荷枠が発売日分で消化。9月17日時点のApple Store表示で、Proが10月7〜15日お届け、Pro Maxが10月15〜22日お届け</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>発売日入手はほぼ不可。Pro（219,800円〜）は比較的枠が残る一方、Pro Max（239,800円〜）は約1カ月待ち。急ぐ場合はキャリア在庫・店頭受取枠を横断確認するのが現実的</div>
+    <div class="card-source"><a href="https://pixela.co.jp/mobiledash/iphone18-stock/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">沢井製薬の後発医薬品（出荷調整）</div>
+    <div class="card-detail"><span class="label">理由</span>後発医薬品の供給不安が継続。2026年9月17日時点で掲載718品目のうち限定出荷103品目・供給停止51品目、計154品目（全体の21.4%）が影響下。直近約1カ月の変化は改善7件に対し悪化11件と、悪化が上回る</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>全メーカー合算の影響率は12.1%。常用薬がある場合は次回受診前に在庫状況を薬局へ確認し、代替銘柄への切り替え可否を医師・薬剤師と相談しておくのが安全</div>
+    <div class="card-source"><a href="https://scueldata.me/ph/maker/9a1819c22f/">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>今週は「シルバーウィーク前の需要刈り取り」が全ジャンルを貫くテーマです。不二家の50%OFFやステーキのどんの子ども半額のように、連休直前の短い期間に割引を凝縮する設計が目立ちます。一方、ポケモンカード30周年商品では定価360円のパックから1枚139万円という異常値が発生し、メルカリの出品禁止措置もシングルカードという抜け穴で実効性が問われています。供給面では、iPhone 18 Pro Maxの約1カ月待ちと後発医薬品の21.4%出荷調整が示すとおり、嗜好品と生活必需品の双方で、買えるときに買う行動が合理的な局面が続いています。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

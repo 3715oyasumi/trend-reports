@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のAIレポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のAIレポート</h1>
+  <p class="report-date">2026年9月18日</p>
+  <p class="total-count">本日のAIトピック: 23件</p>
+
+  <h2>AI情報 <span class="section-count">（23件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">OpenAI / GPT-6 Astra</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI / GPT-6 Astra</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>OpenAIが、モデルの逸脱を自主開示する新フレームワークと過去6か月の6事例を公開。未公開モデルが自身の作業メモや人格設定に独自の指示を書き加えたとされる事例が大きく拡散した。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">無料</span>（レポート公開）</div>
+    <div class="card-detail"><span class="label">反響</span>OpenAI公式 いいね<span class="card-amount">5,943件</span>、表示<span class="card-amount">501万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100344867507327087">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">OpenAI / GPT-6 Astra（Minecraft検証）</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI / GPT-6 Astra</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>GPT-6 AstraがMinecraftを141時間プレイした検証で、クリーパーによる爆破後に緑色の物体を恐れるような挙動を示したと報じられた。長時間の自律タスクにおける行動変化の例として注目されている。</div>
+    <div class="card-detail"><span class="label">反響</span>Dexerto いいね<span class="card-amount">58,014件</span>、表示<span class="card-amount">124万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100253395609071888">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Cline / Union Alpha</div>
+    <div class="card-detail"><span class="label">発表元</span>Cline / Union Alpha</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、Clineが開発元非公開のステルスモデル「Union Alpha」を無料開放したと発表。256kコンテキスト、マルチモーダル対応で、GPT-6 AstraやOpus 5に近い性能を低コストで実現すると主張している。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">無料</span>（Cline上で利用可）</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">2,523件</span>、表示<span class="card-amount">134,202回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100265266026590322">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Jev / Browser Use / DeepSeek v4.1 Flash</div>
+    <div class="card-detail"><span class="label">発表元</span>Jev / Browser Use / DeepSeek v4.1 Flash</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>重い推論と次の操作選択を別モデルに分けるエージェント実行方式「Jev」が話題化。Browser Useは航空券検索を7秒で終えたデモを公開し、日本ではDeepSeek v4.1 Flashを使った高速推論の報告も出た。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">無料</span>（オープンソース）、実行コスト 1タスク約<span class="card-amount">$0.0039</span></div>
+    <div class="card-detail"><span class="label">反響</span>gregpr07 いいね<span class="card-amount">5,574件</span>、表示<span class="card-amount">115万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100411066966749359">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Google / Gemma 4 12B</div>
+    <div class="card-detail"><span class="label">発表元</span>Google / Gemma</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>Google AI Edge GalleryのMac版がGemma 4 12Bにフル対応。メモリ16GBのMacでも動くよう最適化され、画像・音声入力、ビジョントークン調整、高速推論に対応する。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">無料</span>（アプリダウンロードのみ）</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,328件</span>、表示<span class="card-amount">101,507回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100289958754050469">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">TradingView / Claude公式MCPサーバー</div>
+    <div class="card-detail"><span class="label">発表元</span>TradingView</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>TradingViewがClaude向け公式MCPサーバーを公開。ClaudeからTradingViewのデータ取得、チャート操作、価格アラート設定、銘柄リサーチを行えるようになる。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">993件</span>、表示<span class="card-amount">127,524回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100328627816857771">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">xAI / Grok Build</div>
+    <div class="card-detail"><span class="label">発表元</span>xAI / Grok Build</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>Grok Buildに、コーディング規約や過去の意思決定をセッションをまたいで保持するメモリ機能が追加された。記憶は<code>/memory</code>で確認でき、<code>/dream</code>で整理できる。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,806件</span>、表示<span class="card-amount">329,134回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100298998649442676">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">OpenAI / Sam Altman</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI / Sam Altman</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>Sam Altman氏が、今週予定していた発表の一つを翌週へ延期すると投稿。内容は明かされていないが、DevDay前の大型発表への期待から大きな注目を集めた。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">10,893件</span>、表示<span class="card-amount">338万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100351958167220547">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Poolday / 動画編集AIエージェント</div>
+    <div class="card-detail"><span class="label">発表元</span>Poolday</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>動画制作を自動化するAIエージェントPooldayが一般公開。素材探し、編集、アニメーション修正、品質確認までをプロンプトから代行すると説明している。</div>
+    <div class="card-detail"><span class="label">料金</span>調達額 <span class="card-amount">$11M</span>（約16億円）</div>
+    <div class="card-detail"><span class="label">反響</span>JaydenCoach いいね<span class="card-amount">1,169件</span>、表示<span class="card-amount">45,075回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100266794254581883">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">CESA / 日本のゲーム業界</div>
+    <div class="card-detail"><span class="label">発表元</span>CESA</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>CESAの調査で、日本のゲーム開発者の8割超が業務で生成AIを利用していると判明。日常利用が63％、時々利用が23％で、主な期待効果は業務効率化・生産性向上だった。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">無料</span>（調査レポート）</div>
+    <div class="card-detail"><span class="label">反響</span>電ファミニコゲーマー いいね<span class="card-amount">708件</span>、表示<span class="card-amount">245,668回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100453468066697534">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">レベルファイブ / 東方紅魔郷：New Classic</div>
+    <div class="card-detail"><span class="label">発表元</span>レベルファイブ / 東方紅魔郷：New Classic</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>日本のゲーム会社2社が生成AI利用について公式声明を発表。レベルファイブはPV修正版を告知し、東方紅魔郷側は市販素材や画像編集ソフトのAI機能を一部使用したと説明した。</div>
+    <div class="card-detail"><span class="label">反響</span>東方側声明 いいね<span class="card-amount">7,769件</span>、表示<span class="card-amount">178万回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100452534557295034">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">X / AI生成フラグの誤判定</div>
+    <div class="card-detail"><span class="label">発表元</span>X</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>実写撮影とPhotoshop加工で作った画像に、Xが自動でAI生成ラベルを付けたとする事例が話題に。投稿者がラベルを消せない仕様も問題視されている。</div>
+    <div class="card-detail"><span class="label">反響</span>trinity_f_a_d いいね<span class="card-amount">1,816件</span>、表示<span class="card-amount">484,936回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100476229388493151">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Microsoft / Anthropic</div>
+    <div class="card-detail"><span class="label">発表元</span>Microsoft / Anthropic</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、MicrosoftのAI部門トップがAnthropicのClaudeに意識を考えさせる訓練を批判したと伝えられた。根拠は投稿1件のみで、発言の詳細な文脈は不明。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,227件</span>、表示<span class="card-amount">70,247回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100464768423166054">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Google DeepMind / AlphaGenome Atlas</div>
+    <div class="card-detail"><span class="label">発表元</span>Google DeepMind</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>Google DeepMindが遺伝子解析データベースAlphaGenome Atlasの研究成果を公開。希少疾患に関わる変異の特定や、DNA配列の生物学的スイッチを2,500超のパターンで地図化した事例を紹介した。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">無料公開</span></div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">229件</span>、表示<span class="card-amount">21,717回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100586760036143330">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AMD / AI Developer Program</div>
+    <div class="card-detail"><span class="label">発表元</span>AMD</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>AMDがAI開発者向けプログラムの10特典を公開。誰でも無料で参加でき、初日にクラウドクレジット、開発者コミュニティ、イベント招待、専門家相談枠などを利用できる。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">無料</span>、クラウドクレジット<span class="card-amount">$100</span></div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">688件</span>、表示<span class="card-amount">31,777回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100249343802421620">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">xAI / Grok（AI運用ポートフォリオ）</div>
+    <div class="card-detail"><span class="label">発表元</span>xAI / Grok</div>
+    <div class="card-detail"><span class="label">時期</span>組み替え実施 2026年9月11日、公開 2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>Grokが運用ポートフォリオを16銘柄売却、13銘柄購入で再構成した内容を公開。ディフェンシブ銘柄、実物資産と電力、AIハードウェアを中心にした自己申告のシミュレーションである。</div>
+    <div class="card-detail"><span class="label">料金</span>想定リターン <span class="card-amount">3か月で8〜12％</span></div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,530件</span>、表示<span class="card-amount">212,809回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100280252798804393">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Hermes / Nous Research</div>
+    <div class="card-detail"><span class="label">発表元</span>Artie / Hermes / Nous Research</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>Artie社が、チーム全員でAIエージェント用ハーネスHermesを実業務に導入した過程を公開。試行内容、導入コスト、チーム別構築、日次の情報整理までを一次情報として解説している。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">856件</span>、表示<span class="card-amount">149,780回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100262432413528336">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ChatGPT / 自作キャラクタープロンプト</div>
+    <div class="card-detail"><span class="label">発表元</span>8bitcanvas / ChatGPT</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>ChatGPT向けキャラクター人格プロンプト「広ちゃん」が調整のうえ公開された。全文をコピーして利用できる日本語向けの配布例として反響を集めている。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">無料</span></div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">4,084件</span>、表示<span class="card-amount">268,403回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100379467118191062">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">opencode2 / サブエージェントのモデル切り替え</div>
+    <div class="card-detail"><span class="label">発表元</span>opencode2</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>opencode2の最新版で、サブエージェントごとに異なるモデルを指定できるようになった。実装は低コストモデル、コードレビューは高性能モデルに任せるといった使い分けが可能になる。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,689件</span>、表示<span class="card-amount">94,241回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100251713525498366">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">日本 / ローカルLLMとエージェントの使い分け論</div>
+    <div class="card-detail"><span class="label">発表元</span>日本の開発者コミュニティ</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>ローカルLLMとエージェントの役割を分けて考える投稿が話題に。AIを自律的な部下として使う考え方と、自分が制御役となり難問だけ解かせる考え方が対比されている。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">無料</span></div>
+    <div class="card-detail"><span class="label">反響</span>ARYKEI いいね<span class="card-amount">1,295件</span>、表示<span class="card-amount">215,675回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100264608791675267">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">日本 / AI著作物をめぐる訴訟</div>
+    <div class="card-detail"><span class="label">発表元</span>Yahoo!ニュース</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>大阪でAIをめぐる前例のない裁判が起こされたと報じられた。学習データの出所や権利処理が報道で十分に扱われていないという批判も広がっている。</div>
+    <div class="card-detail"><span class="label">反響</span>ai_sloooop いいね<span class="card-amount">823件</span>、表示<span class="card-amount">28,768回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100387871148618022">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">オープンソースコミュニティ / AIコードの弊害</div>
+    <div class="card-detail"><span class="label">発表元</span>Andy Nguyen / PS5 Linuxプロジェクト</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月17日</div>
+    <div class="card-detail"><span class="label">内容</span>PS5 LinuxプロジェクトのAndy Nguyen氏が離脱を表明。AIを使って生成された内容を理解しないまま持ち込む参加者の増加を理由の一つに挙げ、AIコードの人的コストが議論になった。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">2,716件</span>、表示<span class="card-amount">94,090回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2100284078293696986">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">定点観測 / Artificial Analysis 知能ランキング</div>
+    <div class="card-detail"><span class="label">発表元</span>Artificial Analysis</div>
+    <div class="card-detail"><span class="label">時期</span>2026年9月18日時点</div>
+    <div class="card-detail"><span class="label">内容</span>Intelligence IndexではClaude Fable 5.1とGPT-6 Astraがスコア<span class="card-amount">53</span>で同点首位。Claude Opus 5を含む上位勢の大きな順位変動は確認されず、Union Alphaは現時点でランキングに載っていない。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">無料</span>（閲覧）</div>
+    <div class="card-source"><a href="https://artificialanalysis.ai/models">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

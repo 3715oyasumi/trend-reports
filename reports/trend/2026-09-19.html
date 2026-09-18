@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月19日（土）版</p>
+  <p class="total-count">本日のトレンド: 13件</p>
+
+  <h2>新商品情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ザバス ジュニアPROTEIN 脂肪0 チョコバナナ風味</div>
+    <div class="card-detail"><span class="label">特徴</span>たんぱく質12g、カルシウム500mg、鉄4.5mgなどを配合した200mlの常温保存可能なジュニア向けプロテイン飲料</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月29日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">希望小売価格189円（税込）</span></div>
+    <div class="card-source"><a href="https://www.meiji.co.jp/corporate/pressrelease/2026/09_08/index.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ザバス スムージープロテイン アップルミックス風味</div>
+    <div class="card-detail"><span class="label">特徴</span>1食28g当たり大豆たんぱく質12.5g、21種類の野菜由来成分、1日分の3分の1の食物繊維などを配合した粉末プロテイン</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月28日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">420g、希望小売価格2,700円（税込）</span></div>
+    <div class="card-source"><a href="https://www.meiji.co.jp/corporate/pressrelease/2026/09_08/index.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">クリア アサヒ＜生＞</div>
+    <div class="card-detail"><span class="label">特徴</span>「クリア アサヒ」を新ジャンルからビールへ変更。麦芽比率を高め、独自の鮮度製法による雑味のない味わいを訴求</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月27日</div>
+    <div class="card-detail"><span class="label">価格</span>オープン価格</div>
+    <div class="card-source"><a href="https://www.asahibeer.co.jp/news/2026/0918_2.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブンティーンアイス キャラメルマキアート</div>
+    <div class="card-detail"><span class="label">特徴</span>高校生との共創から生まれた、自動販売機前をカフェのような交流空間にすることを目指したアイス</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月21日</div>
+    <div class="card-detail"><span class="label">価格</span>不明</div>
+    <div class="card-source"><a href="https://www.glico.com/jp/newscenter/pressrelease/47855/">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">大阪王将「秋のビール＆餃子祭り」</div>
+    <div class="card-detail"><span class="label">特典内容</span>対象の生ビール1杯の注文につき、次回来店時に使える餃子一人前無料券を1枚進呈</div>
+    <div class="card-detail"><span class="label">期間</span>無料券配布は2026年9月18日～9月27日、利用は9月28日～10月31日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://www.osaka-ohsho.com/news/%E3%80%8C%E7%A7%8B%E3%81%AE%E3%83%93%E3%83%BC%E3%83%AB%EF%BC%86%E9%A4%83%E5%AD%90%E7%A5%AD%E3%82%8A%E3%80%8D%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%9A%E3%83%BC%E3%83%B3/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">出前館「超ゴイゴイ増すー増量祭」</div>
+    <div class="card-detail"><span class="label">特典内容</span>加盟店の対象商品について、ご飯・麺の大盛りや、おかず・サイドメニューの追加を追加料金なしで提供</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月18日～9月28日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://cdntest.digitalpr.jp/r/143305">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ジョナサン「乾杯ジョナサンフェス」</div>
+    <div class="card-detail"><span class="label">特典内容</span>酒類・おつまみ用クーポンを提供。対象商品の一例は通常494円から384円となり、110円引き</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月24日～10月7日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-source"><a href="https://www.zaikei.co.jp/releases/3621148/">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">東京ゲームショウ2026会場配布ノベルティ</div>
+    <div class="card-detail"><span class="label">市場状況</span>一般公開前のビジネスデイに配布されたグッズがメルカリへ相次いで出品され、数百円から最高1万円程度の出品を確認。PRカードなどは数千円～1万円前後で取引</div>
+    <div class="card-detail"><span class="label">注意点</span>企業によっては景品のフリマアプリ出品を禁止しているため、購入前に配布条件や権利関係を確認</div>
+    <div class="card-source"><a href="https://www.itmedia.co.jp/news/article/2609/18/2000001623/">出典を確認する</a>　<a href="https://www.gamebusiness.jp/article/2026/09/18/28094.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ポケモンカードゲーム「30th CELEBRATION」</div>
+    <div class="card-detail"><span class="label">市場状況</span>2026年9月19日更新の抽選情報では、1BOX税込7,200円の販売例がある一方、27,500円に送料700円を加えた販売例も掲載され、価格差は約3.8倍</div>
+    <div class="card-detail"><span class="label">注意点</span>メルカリでは未開封拡張パックとカードセット全9種が一時出品禁止の対象。抽選販売では本人確認、店頭受取、購入数制限などの条件を確認</div>
+    <div class="card-source"><a href="https://pokeca-navi.jp/products/30th-CELEBRATION/">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">国菊あまざけペットボトル300g</div>
+    <div class="card-detail"><span class="label">理由</span>保存サンプルの微生物検査で一般生菌数が社内基準値を超過したため、賞味期限が2027年8月25日の商品を自主回収</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>対象商品の飲用を控え、株式会社篠崎のお客様相談室へ連絡</div>
+    <div class="card-source"><a href="https://shop.shinozaki-shochu.co.jp/view/news/20260918165554">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">こだわり酵母ブルーベリーとクリームチーズのパン（国産小麦）2個</div>
+    <div class="card-detail"><span class="label">理由</span>表示と異なる添加物「グァーガム酵素分解物」が使われていたため。注文者6,284名、計6,455点が対象で、9月18日分は欠品</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>手元の商品を廃棄。商品代金は9月分の請求書で全額返金</div>
+    <div class="card-source"><a href="https://information.pal-system.co.jp/topics/20260917-owabi2/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">よつ葉生協の生鮮野菜・果物</div>
+    <div class="card-detail"><span class="label">理由</span>品質低下、生育不足、生育不良などにより、有機栽培空芯菜、リーフレタス、えだまめ、桃などが全部または一部コースで欠品</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>代替品や次週配送の有無を明細書で確認し、必要な生鮮品は別の販売店でも確保</div>
+    <div class="card-source"><a href="https://yotsubacoop.jp/information/17943/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">パルシステム9月21日配達分</div>
+    <div class="card-detail"><span class="label">理由</span>台風25号の影響により、一部地域で配達時間が遅れる可能性</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>配達当日の午前6時以降、注文サイトまたはパルシステムアプリで配送状況を確認</div>
+    <div class="card-source"><a href="https://information.pal-system.co.jp/topics/20260918-delivery-delay/">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>新商品では、子ども向け・朝食向けプロテインや既存ブランドのビール化など、利用場面を明確にした商品設計が目立ちます。一方、限定ノベルティや記念カードでは配布・抽選直後から価格差が拡大しており、連休中は台風による配送遅延や生鮮品の欠品にも注意が必要です。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

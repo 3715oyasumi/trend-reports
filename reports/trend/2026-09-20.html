@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月20日（日）版</p>
+  <p class="total-count">本日のトレンド: 9件</p>
+
+  <h2>新商品情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ICHIBIKO「いちごミルクティーのもと」</div>
+    <div class="card-detail"><span class="label">特徴</span>ブランドいちご「ミガキイチゴ」の果肉とアールグレイ茶葉を使用。牛乳などで3～4倍に割って楽しむ325g入りの濃縮ドリンク。</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月18日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">1,360円（税込）</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000098.000045451.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">マルヤナギ「コリコリきくちゃん ねぎ塩」</div>
+    <div class="card-detail"><span class="label">特徴</span>極細きくらげに、きざみネギと塩だれを合わせた常温保存可能なごはんのおとも。内容量90g、賞味期間90日。</div>
+    <div class="card-detail"><span class="label">発売日</span>不明</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">246円（税込）</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000159.000035737.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ピザハット「食欲の秋特大セール」</div>
+    <div class="card-detail"><span class="label">特典内容</span>対象ピザ6商品を持ち帰り880円から販売し、最大56％OFF。対象店舗の配達では2枚目が最大78％OFF。</div>
+    <div class="card-detail"><span class="label">期間</span>持ち帰りは2026年9月18日～9月27日、配達の2枚目割引は9月18日～10月12日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000382.000031164.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">出前館「超ゴイゴイ増すー増量祭」</div>
+    <div class="card-detail"><span class="label">特典内容</span>対象商品の価格を据え置き、ご飯・麺の大盛り、商品のサイズアップ、おかず・サイドメニューの追加などを無料化。ドミノ・ピザではMサイズ価格でLサイズを注文できる対象商品も用意。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月18日～9月28日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000546.000029254.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">すかいらーくポイント山分けキャンペーン</div>
+    <div class="card-detail"><span class="label">特典内容</span>ガスト、バーミヤン、しゃぶ葉など16ブランド・全国約2,600店舗を対象に、総額1億ポイントを利用回数に応じて山分け。対象会計1回につき1口となり、事前エントリーは不要。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月19日～9月23日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000707.000017486.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">「ファイナルファンタジー レゾナンス」東京ゲームショウ2026試遊特典</div>
+    <div class="card-detail"><span class="label">市場状況</span>無料配布された「レトロパッケージ風BOX」とPRカードが、9月18日時点で1万円前後・40点以上出品。9月19日には16,000～17,800円台でSOLD表示された商品も確認された。</div>
+    <div class="card-detail"><span class="label">注意点</span>イベント開催中の配布品であり、高額出品を急いで購入せず、公式の配布条件や今後の入手機会を確認する必要がある。</div>
+    <div class="card-source"><a href="https://www.itmedia.co.jp/news/article/2609/18/2000001623/">出典を確認する</a>　<a href="https://zai-taku.work/blog/trend/19761/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「ONE PIECE 海のごちそうレストラン」試遊ノベルティ</div>
+    <div class="card-detail"><span class="label">市場状況</span>東京ゲームショウ2026で配布されたカトラリーセットが、メルカリで1,845～1,999円で複数出品され、SOLD表示も確認された。</div>
+    <div class="card-detail"><span class="label">注意点</span>数量限定という理由だけで即決せず、配布元の注意事項や正規の入手方法を確認することが望ましい。</div>
+    <div class="card-source"><a href="https://zai-taku.work/blog/trend/19761/">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">篠崎「国菊あまざけペットボトル300g」</div>
+    <div class="card-detail"><span class="label">理由</span>保存サンプルの微生物検査で、一般生菌数が社内基準値を超過したため自主回収。対象は賞味期限が2027年8月25日の商品。</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>対象商品は飲用せず、株式会社篠崎のお客様相談室へ連絡。発表時点で健康被害の申し出はない。</div>
+    <div class="card-source"><a href="https://shop.shinozaki-shochu.co.jp/view/news/20260918165554">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">正根商事「とろろ昆布スープ」</div>
+    <div class="card-detail"><span class="label">理由</span>カビの一種であるアスペルギルス属による汚染。同一ロット180パックが流通し、賞味期限「26.10.27」の商品が回収対象。</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>対象商品を食べず、送り主の連絡先を明記して株式会社正根商事へ料金着払いで送付する。</div>
+    <div class="card-source"><a href="https://kuroneko-recall.jp/index/info.php?LinkID=31550">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ヨークベニマル柴田店「韓国風大きな肉餃子」</div>
+    <div class="card-detail"><span class="label">理由</span>「韓国餃子プルコギマンドゥ」のラベルを誤って貼付し、アレルゲンの「卵」「乳成分」が表示されていなかったため。販売数量は3パック。</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>消費期限「26.9.20」の該当商品は食べず、販売店の回収案内に従う。nanaco利用者には個別連絡も実施。</div>
+    <div class="card-source"><a href="https://www.atopicco-foodallergy.org/faicm/kaishu/e_332468.html">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>シルバーウィーク需要を狙い、値下げだけでなく増量やポイント還元を組み合わせた外食キャンペーンが集中しています。一方、限定ノベルティの高額転売と食品回収が同時に目立っており、購入時には価格だけでなく正規流通、賞味期限、アレルゲン表示の確認が重要です。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

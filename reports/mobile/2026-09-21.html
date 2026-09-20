@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のモバイル情報</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+    :root {
+      --canvas: #faf9f5;
+      --card: #fffdf8;
+      --surface-soft: #f5f0e8;
+      --hairline: #e6dfd8;
+      --hairline-soft: #ebe6df;
+      --primary: #cc785c;
+      --primary-active: #a9583e;
+      --ink: #141413;
+      --text: #3d3d3a;
+      --muted: #6c6a64;
+      --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+      --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--canvas);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.75;
+      padding: 40px 24px 64px;
+      max-width: 760px;
+      margin: 0 auto;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      text-wrap: balance;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .report-date {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .total-count {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+      text-wrap: balance;
+      padding-left: 14px;
+      border-left: 3px solid var(--primary);
+      margin: 40px 0 16px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 24px 0 8px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--hairline);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-soft);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .card-detail {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text);
+      margin-top: 8px;
+    }
+
+    .label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      min-width: 40px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .card-amount {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary-active);
+    }
+
+    .total-count { }
+
+    .section-count {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+      margin-left: 8px;
+      font-family: var(--font-body);
+    }
+
+    .card-source {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--hairline-soft);
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--hairline);
+      margin: 40px 0;
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 24px 16px 48px; }
+      h1 { font-size: 25px; }
+      h2 { font-size: 19px; }
+      .card { padding: 16px 18px; }
+      .card-detail {
+        flex-direction: column;
+        gap: 2px;
+      }
+      .label {
+        min-width: auto;
+        text-align: left;
+      }
+      .card-amount { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>本日のモバイル情報</h1>
+  <p class="report-date">2026年9月21日</p>
+  <p class="total-count">本日のモバイル案件: 14件</p>
+
+  <h2>MNP・モバイル情報 <span class="section-count">（14件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">データ1日放題おためしキャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">550円減算</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>au</div>
+    <div class="card-detail"><span class="label">条件</span>案内を受けた対象者がデータ1日放題を購入</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/18 ～ 2026/09/30</div>
+    <div class="card-source"><a href="https://www.au.com/mobile/charge/discount-option/data-houdai-free-campaign26091830/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">iPadおトクに購入キャンペーン26</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">iPad（A16）128GB 5,500円割引</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>au</div>
+    <div class="card-detail"><span class="label">条件</span>対象のiPadを購入</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/18 ～ 2026/10/31</div>
+    <div class="card-source"><a href="https://www.au.com/mobile/campaign/2609_ipad/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ソフトバンクホークス 優勝キャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大20万円相当のPayPayポイント、店舗抽選最大2,000ポイント</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ソフトバンク／Y!mobile</div>
+    <div class="card-detail"><span class="label">条件</span>WEBまたは対象店舗で応募・抽選。Y!mobileは抽選でホークスTVの6カ月無料クーポンを進呈</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/17 ～ 2026/10/01</div>
+    <div class="card-source"><a href="https://www.softbank.jp/mobile/special/hawks-championship2026/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Apple TVおよびApple Arcadeのサービス提供終了</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ソフトバンク／Y!mobile／LINEMO</div>
+    <div class="card-detail"><span class="label">条件</span>2026年12月16日で契約終了。同年11月18日以降の契約期間に対する月額料金は発生しない</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/16 ～ 2026/12/16</div>
+    <div class="card-source"><a href="https://www.linemo.jp/info/press/2026/26091601.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">LINEMO5周年大週穫祭 9月第3弾</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大20,000円相当のPayPayポイント還元</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>LINEMO</div>
+    <div class="card-detail"><span class="label">条件</span>他社からの乗り換えまたは新規契約。契約事務手数料3,850円無料</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/19 ～ 2026/10/04</div>
+    <div class="card-source"><a href="https://www.linemo.jp/campaign/syukakusai/202609/0919/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">楽天マジ得フェスティバル</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">20,000ポイント、楽天カード特典と合わせて最大30,000ポイント</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>楽天カード保有者が楽天モバイルを初めて申し込み、利用開始後にRakuten Linkで10秒以上通話</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/18 ～ 2026/10/05</div>
+    <div class="card-source"><a href="https://network.mobile.rakuten.co.jp/campaign/card-mobile-majitoku/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">REDMI Note 17 Pro Max 5G・AQUOS wish6のMNP限定価格</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">REDMI Note 17 Pro Max 5G 64,980円から、AQUOS wish6 39,800円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>ギガプランの音声SIMまたは音声eSIMへMNP転入し、端末を同時購入</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/17 ～ 2026/11/04</div>
+    <div class="card-source"><a href="https://www.iijmio.jp/info/iij/1788852413.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">中古未使用品iPhoneの価格改定</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">MNP価格 iPhone 16 128GB 112,800円から</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>ギガプランへのMNP同時契約。通常価格は全対象機種で値上げ</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/18 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.iijmio.jp/info/iij/1789006502.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">秋のピッタリ割</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">月額料金を最大6カ月割引、3GB 880円から</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>mineo</div>
+    <div class="card-detail"><span class="label">条件</span>音声通話付きマイピタを新規契約、またはデータ通信専用から変更。3GB・7GBはパケット放題 3Mbpsも最大6カ月無料</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/17 ～ 2026/11/30</div>
+    <div class="card-source"><a href="https://mineo.jp/campaign/cp-20260917-1/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">自由自在3.0プラン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">月額280円から</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>HISモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>20GB・30GBは6分かけ放題付き。海外用eSIMの4GB・15日間プランを年1回利用可能</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/17 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://his-mobile.com/domestic/planlp_vc-2">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Huluオプション新設</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">初月無料、月額1,026円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>LinksMate</div>
+    <div class="card-detail"><span class="label">条件</span>初回加入者が対象。Huluをカウントフリーオプション対象へ追加し、対象通信量を90％以上削減</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/15 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://linksmate.jp/news/900/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">みんなでシェア</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">契約事務手数料が1回線目半額、2回線目以降1円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>イオンモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>MNPでシェアプランを契約</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/18 ～ 2026/09/30</div>
+    <div class="card-source"><a href="https://aeonmobile.jp/campaign/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">機種変更で10ギガクーポンプレゼント</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">10GB分のデータクーポン</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>イオンモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>既存契約者が期間中に機種変更</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/18 ～ 2026/09/27</div>
+    <div class="card-source"><a href="https://aeonmobile.jp/campaign/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ありがとう抽選会</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">合計500名にプレミアムギフト</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>イオンモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>契約者が追加費用なしで1日1回応募可能</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/16 ～ 2026/11/20</div>
+    <div class="card-source"><a href="https://aeonmobile.jp/news/release_260820_01/">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※還元・条件は確認時点のものです。</p>
+</body>
+</html>

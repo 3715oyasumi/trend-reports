@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月21日（月）版</p>
+  <p class="total-count">本日のトレンド: 7件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">シーバスリーガル 16年 シャルル・ルクレール リミテッドエディション</div>
+    <div class="card-detail"><span class="label">特徴</span>16年以上熟成させた16種の原酒をブレンドした、ブランド初の16年熟成ウイスキー</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年11月上旬予定</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">Amazon予約価格7,688円</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2142461.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サントリー梅酒〈山崎蒸溜所貯蔵梅酒〉リッチアンバースモーキー2026</div>
+    <div class="card-detail"><span class="label">特徴</span>ウイスキー古樽で貯蔵した梅酒に、梅酒樽で後熟させたグレーンウイスキーとモルトウイスキーをブレンドした数量限定品。容量750mL、アルコール度数18％</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月29日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">7,700円</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2142457.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">フィレステーキ～彩り野菜のアヒージョ仕立て～</div>
+    <div class="card-detail"><span class="label">特徴</span>フィレステーキにブロッコリー、にんじん、ほうれん草、ガーリック、オリーブオイルを合わせた期間限定メニュー</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">120g 1,480円、180g 1,970円、240g 2,380円</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2141930.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ケンタッキーフライドチキン「とりの日パック」</div>
+    <div class="card-detail"><span class="label">特典内容</span>オリジナルチキン4ピースとナゲット5ピースを、単品積上げ価格1,710円より420円安い1,290円で販売。対象サイドメニューは2個390円</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月28日限定</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">5段階中5</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2142488.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">安楽亭「肉の日祭り」</div>
+    <div class="card-detail"><span class="label">特典内容</span>カルビなど全11品を319円で提供するクーポンと、「黒毛和牛ロース」「焼きしゃぶカルビ」の肉量を価格据え置きで1.5倍にするクーポンを展開</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月19日～9月30日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">5段階中4</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2142089.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（0件）</span></h2>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">生活クラブ「こなす500g・おかひじき90g・里芋500g」</div>
+    <div class="card-detail"><span class="label">理由</span>長雨や曇天による品質・生育不良で必要数量を確保できず、2026年9月21日～25日配達分の一部または全量が欠品</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">5段階中3</span></div>
+    <div class="card-detail"><span class="label">アクション</span>対象利用者は配達明細を確認し、代替野菜の購入を検討</div>
+    <div class="card-source"><a href="https://shop.seikatsuclub.coop/vege-news.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">生活クラブ「西村早生柿400g」</div>
+    <div class="card-detail"><span class="label">理由</span>断続的な降雨で収穫作業ができず、当初予定していた2026年9月21日～25日の配達を1週間延期</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">5段階中2</span></div>
+    <div class="card-detail"><span class="label">アクション</span>変更後の2026年9月28日～10月2日の配達予定を確認</div>
+    <div class="card-source"><a href="https://shop.seikatsuclub.coop/vege-news.html">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>新商品では、熟成期間や原酒構成を明確にした高付加価値酒類と、期間限定外食メニューが目立ちます。一方、生鮮品では長雨や曇天による欠品・配送延期が発生しており、販促期でも調達環境を確認しながら購入時期を判断する必要があります。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

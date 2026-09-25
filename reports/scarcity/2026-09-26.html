@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>品薄予測レポート 2026-09-26</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>品薄予測レポート</h1>
+  <p class="report-date">2026年9月26日</p>
+  <p class="total-count">本日の品薄予測: 28件</p>
+
+  <h2>今買える×相場上昇の予兆 <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ベイブレードX（タカラトミー・玩具）（継続）</div>
+    <div class="card-detail"><span class="label">品薄度</span>6店舗連続欠品と再入荷告知が出る再逼迫状態。小規模店に定価在庫が偏る可能性がある。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>商品型番が特定できず価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>6店舗を回っても購入できない報告が<span class="card-amount">228万閲覧</span>まで拡散。ベイの種類で需要差が大きい。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>個人玩具店、古本市場、郊外量販店へ在庫を確認し、型番別の成約相場を確認できた商品のみ確保する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2102567990168576230">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ビオレ おうちdeエステ ディープクレイ洗顔 180g（花王・コスメ）（継続）</div>
+    <div class="card-detail"><span class="label">品薄度</span>人気・品薄報告がある中、来週のテレビ紹介予定で需要再加速の可能性がある。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>メルカリ新品は<span class="card-amount">1,600～1,900円前後</span>、単品例1,750円。希望価格がオープン価格のため差額は算定不能。</div>
+    <div class="card-detail"><span class="label">根拠</span>具体的な在庫店舗は未確認。番組紹介予定は投稿者情報であり公式情報は未確認。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>放送前に通常価格在庫を確認し、放送直後の欠品発生時のみセット販売を検討する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2103431459193467269">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「REBORN／BUGS LIFE／DIGITAL GIRL」（Number_i・音楽CD）（新規）</div>
+    <div class="card-detail"><span class="label">品薄度</span>9月23日発売後に売り切れ店が続出。一部TSUTAYAではシリアルコード・特典付き在庫が残る。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>盤種、シリアル、店舗特典の組み合わせが混在し、比較可能な実勢価格は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>通常盤・初回限定盤、映像媒体、シリアル使用有無、店舗特典で価値が変動する。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>投稿店舗へ盤種と特典残数を確認し、未使用シリアルと人気特典付きのみ定価確保する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2103309113493201310">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">つながるほっぺちゃん 全7種（サン宝石・キャラクターアクセサリー）（新規）</div>
+    <div class="card-detail"><span class="label">品薄度</span>過去に売り切れが続出した商品を全7種で特別販売中。公式が早期完売を警告している。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>種類別在庫と購入上限は未確認。小額商品のため送料と販売手数料の比率が高い。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>公式サイトで在庫、上限、単価を確認し、新規色を優先して全種セット需要を確認する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2103318594754928819">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">TREK Émonda ALR 5 レッド54cm（TREK・ロードバイク）（新規）</div>
+    <div class="card-detail"><span class="label">品薄度</span>生産終了が告知され、店頭在庫はレッド54cmの1台のみ。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>新品販売価格<span class="card-amount">208,000円</span>、通常320,000円から35％引き。年式違いの中古は約168,000～177,400円。</div>
+    <div class="card-detail"><span class="label">根拠</span>サイズ54cm限定で買い手が限られ、配送費も高い。現時点ではプレミア相場ではない。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>同年式・同仕様の成約価格が販売価格を十分上回る場合だけ在庫確認し、実需客を先に確保する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2103435486195036405">出典を確認する</a></div>
+  </div>
+
+  <h2>発売前×期待値高 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">WPL JAPAN「C104 UAZ-452」（RAYWOOD・RCカー）（新規）</div>
+    <div class="card-detail"><span class="label">発売日</span>未公表。予約再開は<span class="card-amount">2026年9月26日12:00</span>。</div>
+    <div class="card-detail"><span class="label">品薄度</span>予約開始分が当日中に完売し、翌日に緊急再販が決定。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>数量、購入上限、発送日は未確認。緊急再販で供給量が増える点に注意。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>11時50分までに販売ページへログインし、購入上限内で予約。二次予約の完売速度を確認する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2103339709246435357">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">GIANNAPLUS 12 藤本洸大・簡秀吉特集版（ナンバーセブン・俳優雑誌）（新規）</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年10月30日</span>。予約開始は9月25日。</div>
+    <div class="card-detail"><span class="label">品薄度</span>前回登場号が完売。26ページ特集と店舗別特典が用意される。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>楽天ブックス、HMV、タワーレコード、紀伊國屋書店で先行予約。付録は店舗ごとに異なる。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>各チェーンの予約残数を比較し、反応が集中する絵柄だけを少量予約する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2103321206338515391">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「Gretel」ショートケープコート（Sheglit・ロリータファッション）（新規）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年11月入荷予定。二次予約開始は9月25日。</div>
+    <div class="card-detail"><span class="label">品薄度</span>初回生産分が予約完売し、同じ納期の二次生産へ移行。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>色・サイズ別の残数は不明。二次生産で需要が満たされる可能性がある。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>人気色・サイズの欠品順を監視し、二次分まで早期完売した構成のみ予約する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2103434714824708164">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">国道路線図2026年版（街道情報室・地図／同人出版）（新規）</div>
+    <div class="card-detail"><span class="label">発売日</span>未公表。第3弾予約再開は数日以内。</div>
+    <div class="card-detail"><span class="label">品薄度</span>増刷第2弾が予約開始から約6時間で完売し、第3弾増刷が決定。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>増刷が繰り返されており、供給増による相場下落リスクが高い。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>公式アカウントの通知を設定し、第3弾開始時は最小数だけ確保する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2103466281773236562">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">YCSJ TOKYO 2026「神を超えたしもべ－青眼の究極竜 デュエルセット」（KONAMI・遊戯王OCG）（新規）</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年11月22日</span>。WEB抽選開始は10月2日19:00。</div>
+    <div class="card-detail"><span class="label">品薄度</span>限定カード・プレイマットを収録。WEB抽選と会場分があり供給は少なくない。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>定価<span class="card-amount">6,000円</span>＋送料。前回セットには約1万円の取引例がある。</div>
+    <div class="card-detail"><span class="label">根拠</span>極端な品薄になるかは当選数次第。会場分は来場者全員が購入可能な数量を予定。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>10月2日にWEB抽選へ1口のみ応募し、当選後も会場供給量と初動成約を確認する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2103462932747305408">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">遊戯王ラッシュデュエル CROSS ART COLLECTION BOX（KONAMI・TCG）（新規）</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年10月10日</span>。予約受付中。</div>
+    <div class="card-detail"><span class="label">品薄度</span>全カードがスーパーレア以上で、初回生産分には100枚限定のデュエルマーカー企画がある。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>定価<span class="card-amount">5,940円</span>。実勢価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>100枚限定なのはマーカーであり、BOX自体の生産数は非公表。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>初回生産表記を確認できる店舗で1～2BOXに限定して予約する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2103462795702649215">出典を確認する</a></div>
+  </div>
+
+  <h2>発売接近リマインド <span class="section-count">（7件）</span></h2>
+
+  <div class="card"><div class="card-title">マンダロリアン・アンド・グローグー キラキラシールブック 重版分</div><div class="card-detail"><span class="label">発売日</span>2026年9月30日（あと4日）</div><div class="card-detail"><span class="label">推奨アクション</span>定価予約の残数と重版部数を確認する。</div></div>
+  <div class="card"><div class="card-title">レゴ スターウォーズ アドベントカレンダー2026</div><div class="card-detail"><span class="label">発売日</span>2026年10月1日（あと5日）</div><div class="card-detail"><span class="label">推奨アクション</span>認定販売店の予約復活と発売日店頭分を確認する。</div></div>
+  <div class="card"><div class="card-title">ザ・カハラ・ホテル＆リゾート横浜 クリスマスケーキ2026</div><div class="card-detail"><span class="label">発売日</span>予約開始日 2026年10月1日（あと5日）</div><div class="card-detail"><span class="label">推奨アクション</span>限定30台の受付時刻と条件を確認する。</div></div>
+  <div class="card"><div class="card-title">今西軒「おはぎ」</div><div class="card-detail"><span class="label">発売日</span>販売日 2026年10月1日（あと5日）</div><div class="card-detail"><span class="label">推奨アクション</span>予約方法、個数制限、受取条件を確認する。</div></div>
+  <div class="card"><div class="card-title">初音ミク USB充電器／ガジェットポーチ 受注生産</div><div class="card-detail"><span class="label">発売日</span>発売・締切基準日 2026年10月2日（あと6日）</div><div class="card-detail"><span class="label">推奨アクション</span>受注締切時刻と生産上限を確認する。</div></div>
+  <div class="card"><div class="card-title">Polaroid ポケモンコラボ インスタントカメラ 3種</div><div class="card-detail"><span class="label">発売日</span>2026年10月6日（あと10日）</div><div class="card-detail"><span class="label">推奨アクション</span>量販店キャンセル分と当日販売を確認する。</div></div>
+  <div class="card"><div class="card-title">高橋和希原画展 YU-GI-OH! ART WORKS「決闘王の証」限定カード</div><div class="card-detail"><span class="label">発売日</span>発売・イベント基準日 2026年10月10日（あと14日）</div><div class="card-detail"><span class="label">推奨アクション</span>10月2日の当落確認後、購入手続きを忘れない。</div></div>
+
+  <h2>対象外（既に入手困難・参考のみ） <span class="section-count">（10件）</span></h2>
+
+  <div class="card"><div class="card-title">KATO京都駅店特製品「D51 194 山口線管理所」</div><div class="card-detail"><span class="label">品薄度</span>予約完売で店頭一般販売なし。</div></div>
+  <div class="card"><div class="card-title">MGSD クシャトリヤ</div><div class="card-detail"><span class="label">品薄度</span>予約完売で当日一般枠を確認できない。</div></div>
+  <div class="card"><div class="card-title">遊戯王OCG ORIGINAL ARTWORK COLLECTION</div><div class="card-detail"><span class="label">品薄度</span>複数店舗で予約完売・一般販売なし。</div></div>
+  <div class="card"><div class="card-title">バトルスピリッツ ディーバブースター ネクストストーリー</div><div class="card-detail"><span class="label">品薄度</span>新品は予約分で完売。</div></div>
+  <div class="card"><div class="card-title">PTW1N「FRAGGER MODE」</div><div class="card-detail"><span class="label">品薄度</span>9月25日に受注終了済み。</div></div>
+  <div class="card"><div class="card-title">TVアニメ『進撃の巨人』メタルキャンバス</div><div class="card-detail"><span class="label">品薄度</span>最終受注が9月25日23時59分で終了。</div></div>
+  <div class="card"><div class="card-title">ポケモンカード 30th CELEBRATION</div><div class="card-detail"><span class="label">品薄度</span>発売前高値から下落し、10月再販情報もあるため高値追い不可。</div></div>
+  <div class="card"><div class="card-title">Suzy’s Zoo めじるしアクセサリー2</div><div class="card-detail"><span class="label">品薄度</span>再販分も完売し、次回入荷未定。</div></div>
+  <div class="card"><div class="card-title">WANIMAGAZINE COMIC FES. 2026 AUTUMN「じゅらい」グッズ</div><div class="card-detail"><span class="label">品薄度</span>完売、会期中の再販未定。</div></div>
+  <div class="card"><div class="card-title">アストロつらみ</div><div class="card-detail"><span class="label">品薄度</span>完売後、現状再販未定。</div></div>
+
+  <h2>総括 <span class="section-count">（0件）</span></h2>
+  <p>今日の最優先は、即日完売後に本日12時から再予約されるWPL C104 UAZ-452。次点は、小規模店に定価在庫が残るベイブレードXと、テレビ紹介前のビオレ。</p>
+  <p>中期候補は前回完売実績と店舗別特典があるGIANNAPLUS 12だが、増刷・店頭供給を見越して人気特典だけに絞る。</p>
+
+  <p class="note">※予測は収集時点の情報に基づくものです。</p>
+</body>
+</html>

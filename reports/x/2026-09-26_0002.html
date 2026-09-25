@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xツイートデータ分析レポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+:root {
+  --canvas: #faf9f5; --card: #fffdf8; --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8; --hairline-soft: #ebe6df;
+  --primary: #cc785c; --primary-active: #a9583e;
+  --ink: #141413; --text: #3d3d3a; --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20,20,19,0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--canvas); color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.75; padding: 40px 20px 64px; max-width: 760px; margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+.report-header {
+  background: var(--card); border: 1px solid var(--hairline); border-radius: 16px;
+  padding: 28px; margin-bottom: 32px; box-shadow: var(--shadow-soft);
+}
+.report-label {
+  font-family: var(--font-body); font-size: 11px;
+  color: var(--muted); letter-spacing: 2px; margin-bottom: 10px;
+}
+.report-title {
+  font-family: var(--font-display); font-size: 28px; font-weight: 700;
+  color: var(--ink); line-height: 1.3; letter-spacing: -0.01em; text-wrap: balance;
+  margin-bottom: 16px;
+}
+.report-meta { display: flex; flex-wrap: wrap; gap: 16px; }
+.meta-item { font-size: 14px; color: var(--muted); }
+.meta-item span { color: var(--text); font-weight: 600; }
+.report-section { margin-bottom: 24px; }
+.section-title {
+  font-family: var(--font-display); font-size: 20px; font-weight: 600;
+  color: var(--ink); line-height: 1.4; text-wrap: balance;
+  padding-left: 14px; border-left: 3px solid var(--primary); margin: 32px 0 14px;
+}
+.section-num { font-size: 13px; color: var(--muted); }
+.item-card {
+  background: var(--card); border: 1px solid var(--hairline);
+  border-radius: 12px; padding: 18px 20px; margin-bottom: 10px;
+  box-shadow: var(--shadow-soft); transition: border-color 0.2s, box-shadow 0.2s;
+}
+.item-card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20,20,19,0.08); }
+.item-header { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+.item-title { font-weight: 700; font-size: 15px; color: var(--ink); flex: 1; line-height: 1.5; }
+.item-desc { font-size: 14px; color: var(--text); margin-bottom: 8px; line-height: 1.7; }
+.item-desc strong { color: var(--ink); }
+.item-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-size: 12px; padding: 2px 10px; border-radius: 9999px; }
+.tag-user  { background: var(--surface-soft); color: var(--primary-active); border: 1px solid var(--hairline); }
+.tag-stat  { background: var(--surface-soft); color: var(--muted); border: 1px solid var(--hairline); }
+.badge { font-size: 11px; padding: 2px 10px; border-radius: 9999px; font-weight: 600; white-space: nowrap; border: 1px solid var(--hairline); }
+.badge-danger  { background: #fbeae5; color: #a9583e; border-color: #e6cabd; }
+.badge-warning { background: #f6efe2; color: #8a6d2f; border-color: #e6dcc4; }
+.badge-info    { background: #f5f0e8; color: #6c6a64; border-color: var(--hairline); }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--card); border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; }
+.summary-table th {
+  background: var(--surface-soft); padding: 10px 14px; text-align: left;
+  color: var(--muted); border-bottom: 1px solid var(--hairline);
+}
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid var(--hairline-soft); color: var(--text); }
+hr { border: none; border-top: 1px solid var(--hairline); margin: 32px 0; }
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  .report-title { font-size: 23px; }
+  .section-title { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+  <div class="report-header">
+    <div class="report-label">X TWEET DATA ANALYSIS REPORT</div>
+    <h1 class="report-title">Xツイートデータ分析レポート</h1>
+    <div class="report-meta">
+      <div class="meta-item">📅 収集日時：<span>2026-09-26 00:02</span></div>
+      <div class="meta-item">📊 対象件数：<span>1,147件</span></div>
+    </div>
+  </div>
+  <section class="report-section">
+  <h2 class="section-title">1. 人気商品・トレンド</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ちいかわ ボンボンドロップシール3種セット</span><span class="badge badge-warning">高騰</span></div>
+  <div class="item-desc">：9月25日11時発売、仕入れ値1,650円に対してメルカリ相場7,300円前後。約4,700円の利益例があり、即日高騰した最重要商材。公式オンラインでも急速に売り切れ。、</div><div class="item-tags"><span class="tag tag-user">@puutarou__</span><span class="tag tag-user">@maako_no_xx</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">遊戯王 ORIGINAL ARTWORK COLLECTION</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">：定価5,940円、発売前プレ値8,140円で約37％上昇。抽選落選者が多い一方、一般販売・予約情報も増えており、短期売却向きだが供給過多に注意。、、</div><div class="item-tags"><span class="tag tag-user">@Zone_Axie</span><span class="tag tag-user">@makotoroma</span><span class="tag tag-user">@hibarin_078</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">RICOH GRシリーズ</span><span class="badge badge-warning">高騰</span></div>
+  <div class="item-desc">：GR IIIxは155,400円→約220,000円、GR IIIx HDFは168,800円→約220,000円など高騰。抽選販売が始まり、金額差が大きい。</div><div class="item-tags"><span class="tag tag-user">@sedokoX</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ「30th CELEBRATION」</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：数量限定再販が発生。カードショップでは1パック1,400円、BOX最大20,000円買取との現場報告があり、需要が強い。、</div><div class="item-tags"><span class="tag tag-user">@gamestylejp</span><span class="tag tag-user">@JHffIcNhEuUupLa</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">MGSD クシャトリヤ</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：発売日前から転売価格14,000円との報告。抽選落選者や長時間待機者が多いが、10月・11月再販予定との情報もあり注目度と供給リスクが併存。、、</div><div class="item-tags"><span class="tag tag-user">@no_cold_heart</span><span class="tag tag-user">@yuki_jiromaru</span><span class="tag tag-user">@ironwater193</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケモン×スターバックス</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">：発売前から購入希望と転売懸念が複数発生。関連商品のピカチュウ・イーブイ系は既に売り切れ報告があり、初動需要が強い。、、</div><div class="item-tags"><span class="tag tag-user">@nakoharuna</span><span class="tag tag-user">@Roanosuke_games</span><span class="tag tag-user">@unicorn5231</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ギャツビー アイスボディペーパー 氷冷ブルーミングソルベ</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">：Diorの香水に似ているとバズり、買い占め・品薄化。店舗で12個購入できたとの報告があり、店頭在庫差が大きい。</div><div class="item-tags"><span class="tag tag-user">@motineko1013</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Poké-Charm 30周年ロゴマスコット10個セット</span></div>
+  <div class="item-desc">：Amazonで販売再開。再開通知は約11,954表示を集めており、ポケモン30周年関連の需要が継続。</div><div class="item-tags"><span class="tag tag-user">@pokecayoyaku</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「ギャル技師ちゃん」の本</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">：Amazon・楽天で品薄または入荷未定となり、重版期待が発生。小規模出版物の先行需要として要監視。</div><div class="item-tags"><span class="tag tag-user">@100nichigonoRT</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">OLIVE des OLIVE トレンチコート</span></div>
+  <div class="item-desc">：市場登場から約10日で全色完売し、一部再入荷。ペプラムラインとキャンディスリーブが現在の人気要素との現場情報。</div><div class="item-tags"><span class="tag tag-user">@8877_romi</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">2. お得情報・セール</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ユピテル GST-7 BLE</span></div>
+  <div class="item-desc">：Amazonで13,614円OFFクーポンと149ポイントが付き、投稿時点の実質価格は1,151円。表示・クーポン条件の確認が必要だが、突出した価格差。</div><div class="item-tags"><span class="tag tag-user">@SOKUTWO</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">VIVANTポテトチップス</span></div>
+  <div class="item-desc">：セブン-イレブンで発売直後ながら半額処分を確認。在庫処分店舗を回れる場合の短期仕入れ候補。</div><div class="item-tags"><span class="tag tag-user">@S2854204</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">タカラトミー「アンプリファイド マグナガルルモン」</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：Amazon直販で5,226円、21％OFFで再販。</div><div class="item-tags"><span class="tag tag-user">@rakualert</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">S.H.フィギュアーツ バルタン星人 60th Anniversary Edition</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">：9,002円から8,326円へ値下げ、24％OFF。品薄商品の値下げとして掲載。</div><div class="item-tags"><span class="tag tag-user">@rakualert</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">30MM DAEMON X MACHINA TS 名状しがたきもの</span></div>
+  <div class="item-desc">：4,085円から3,522円、16％OFF。</div><div class="item-tags"><span class="tag tag-user">@rakualert</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">タワーレコードのCD在庫復活</span></div>
+  <div class="item-desc">：在庫復活時に20％ポイント付与を確認。商品を狙っていた購入者には実質値引き効果が大きい。</div><div class="item-tags"><span class="tag tag-user">@piiiiiyo12345</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">mineoキャンペーン</span></div>
+  <div class="item-desc">：パケット放題3Mbps込みで最大6か月、月額880円から。10月以降は事務手数料値上げ予定。</div><div class="item-tags"><span class="tag tag-user">@Sp_Mobile_Blog</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ふるさと納税</span></div>
+  <div class="item-desc">：10月から一部返礼品終了・寄付額値上げとの情報。厚切り牛タン、牛もつ鍋、豚肉バラエティセットなどは値上げ前の申込み候補。、、</div><div class="item-tags"><span class="tag tag-user">@bird3693</span><span class="tag tag-user">@benepo_001</span><span class="tag tag-user">@street0604</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">九州ふっこう応援割・佐賀県分</span></div>
+  <div class="item-desc">：販売開始から10分で完売したとの報告。追加枠やキャンセル分が出る場合は即時性が高い。</div><div class="item-tags"><span class="tag tag-user">@dokuaza</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">3. 転売情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ちいかわ ボンボンドロップシール</span></div>
+  <div class="item-desc">：仕入れ1,650円、販売相場7,300円前後、想定利益約4,700円。今回データ中で最も具体的な即日転売例。</div><div class="item-tags"><span class="tag tag-user">@puutarou__</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">遊戯王 ORIGINAL ARTWORK COLLECTION</span></div>
+  <div class="item-desc">：定価5,940円→8,140円、差額2,200円。ポイント還元のあるヨドバシカメラが仕入れ候補として挙げられている。</div><div class="item-tags"><span class="tag tag-user">@Zone_Axie</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">RICOH GR IIIx</span></div>
+  <div class="item-desc">：定価155,400円→相場約220,000円で差額約64,600円。GR IIIx HDFは差額約51,200円、Urban Editionは差額約56,800円。</div><div class="item-tags"><span class="tag tag-user">@sedokoX</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30th</span></div>
+  <div class="item-desc">：1パック1,400円、BOX最大20,000円買取との報告。転売品3BOXを68,000円で購入し、SAR数枚を34,000円で売却した購入者例もある。、</div><div class="item-tags"><span class="tag tag-user">@JHffIcNhEuUupLa</span><span class="tag tag-user">@gomitakec</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">遊戯王商品の仕入れ動向</span></div>
+  <div class="item-desc">：複数のバイヤーが予約し、予約枠が即枯れしたとの現場情報。プレ値500円程度なら大量回収したいという需要も確認。</div><div class="item-tags"><span class="tag tag-user">@banapipipi_card</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ちいかわらんど原宿の代行</span></div>
+  <div class="item-desc">：定価＋送料＋1個500円の代行費で、9月26日夕方に買付予定。転売より低リスクな代行需要が存在。</div><div class="item-tags"><span class="tag tag-user">@tomokikun_n</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ抽選QR情報</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">：関東の1店舗分を40Payで販売する投稿を確認。情報自体を商品化する動きがある。</div><div class="item-tags"><span class="tag tag-user">@kinebiotoriyose</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">クレーンゲーム景品</span></div>
+  <div class="item-desc">：店舗側が過剰在庫を減らすため、個数制限20個や無制限設定を行っているとの分析。仕入れ前に在庫過多を見極める必要がある。</div><div class="item-tags"><span class="tag tag-user">@IH2224xvtq</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ラスタードラグーン</span></div>
+  <div class="item-desc">：BOT予約された一方、タカラトミーが大量生産しているとの情報。転売在庫の値崩れリスクが高い。</div><div class="item-tags"><span class="tag tag-user">@aero_pegasus_</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">4. 抽選・限定販売</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">RICOH GRシリーズ Web抽選</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">：応募締切は9月28日12:00。GR IIIx 155,400円、GR IIIx HDF 168,800円、Urban Edition 163,200円、GR IV 211,800円、GR IV HDF 222,000円、GR IV Monochrome 299,800円。</div><div class="item-tags"><span class="tag tag-user">@sedokoX</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ「ストームエメラルダ」</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">：ヤマシロヤオンラインで9月28日21:30まで抽選受付、当選発表10月2日、入金期限10月8日13:00。送料950円から、銀行振込のみ。</div><div class="item-tags"><span class="tag tag-user">@stock_alert_lab</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ウイスキー抽選</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">：オーケーで「山崎18年」「白州18年」「響21年」「竹鶴ピュアモルト エッセンシャルズ」などを抽選販売。</div><div class="item-tags"><span class="tag tag-user">@gourmetwatch</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30th CELEBRATION BOX</span></div>
+  <div class="item-desc">：TSUTAYA府中駅前の応募ページが案内されている。プレ値回避の定価購入ルート。</div><div class="item-tags"><span class="tag tag-user">@sedokoX</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">あんスタ MELLOW DEAR USぬいぐるみ</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">：GiGO池袋1号館で9月26日のプレイ順をQR抽選。整理券必須。</div><div class="item-tags"><span class="tag tag-user">@GiGO_Ikebukuro1</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">MGSD クシャトリヤ</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">：タムタム相模原などで抽選販売。落選者が一般販売店へ流れる可能性が高い。、</div><div class="item-tags"><span class="tag tag-user">@ryoukoubbc</span><span class="tag tag-user">@ZDrive10</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">三或ぐぅ2周年グッズ</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：「とくとくパック」「歴代缶バッジ6個セット」ともに再販なし・限定50セット。、、</div><div class="item-tags"><span class="tag tag-user">@hijirinFFD</span><span class="tag tag-user">@rui_boss_cha</span><span class="tag tag-user">@Sackey718</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Favoriteコラボ服</span></div>
+  <div class="item-desc">：一定数の予約で生産決定する受注企画。受注期間は9月25日～10月25日23:59、海外発送対応。</div><div class="item-tags"><span class="tag tag-user">@ne_mu_tai_zzz</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">LiSA Europe & UK TOUR 2026グッズ</span></div>
+  <div class="item-desc">：受注締切は9月27日23:59。</div><div class="item-tags"><span class="tag tag-user">@teide_kei</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">パンチくん切手</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：月曜10時から、再販数不明で限定3との情報。極端に少ない可能性があり、争奪戦注意。</div><div class="item-tags"><span class="tag tag-user">@Aoe58432128</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">5. サクセス報告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30thの売却回収例</span></div>
+  <div class="item-desc">：転売品3BOXを68,000円で購入後、SAR数枚を34,000円で売却。残した3枚の実質取得費は30,000円強。</div><div class="item-tags"><span class="tag tag-user">@gomitakec</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">オンライン販売より安く落札</span></div>
+  <div class="item-desc">：プレ値より安い価格で商品を落札できたとの報告。具体的な商品名・価格は不明だが、オークション経由の仕入れ成功例。</div><div class="item-tags"><span class="tag tag-user">@kochikochikoid</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">メトロイドamiibo</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：以前は大幅なプレ値だった商品をヨドバシの再販で定価購入。再販監視が有効だった事例。</div><div class="item-tags"><span class="tag tag-user">@Shin_umiushi_O</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">アルベド鎧姿フィギュア</span></div>
+  <div class="item-desc">：ネットでは品切れ・転売価格だったが、グッドスマイルカンパニーのポップアップ再訪で定価購入に成功。</div><div class="item-tags"><span class="tag tag-user">@hi1ro0</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">JO1 POPUP・河野純喜グッズ</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：23日から再販を監視し、突然の在庫復活時に購入成功。直後に再完売。</div><div class="item-tags"><span class="tag tag-user">@frog4110</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ抽選当選</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">：「メガブルイブ」2BOXと「30thセレブレーション」BOXを確保。</div><div class="item-tags"><span class="tag tag-user">@miyu_iris1209</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">HP制作の新規受注</span></div>
+  <div class="item-desc">：8時間稼働で新規HP案件を獲得し、今月の収益が過去最高になったと報告。</div><div class="item-tags"><span class="tag tag-user">@haru315i</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">動画編集副業</span></div>
+  <div class="item-desc">：初受注後1年間継続して案件を獲得し、横型動画30～40本を納品。</div><div class="item-tags"><span class="tag tag-user">@aya19shelil23</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">パチスロ高配分実績</span></div>
+  <div class="item-desc">：ハイパージアス立川で総差枚＋172,003枚、平均＋333枚。ヴァルヴレイヴ2は平均＋5,178枚など。</div><div class="item-tags"><span class="tag tag-user">@illya_slo</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">6. プレ値情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ちいかわ ボンボンドロップシール3種セット</span></div>
+  <div class="item-desc">：1,650円→約7,300円、約4.4倍。</div><div class="item-tags"><span class="tag tag-user">@puutarou__</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">RICOH GR IIIx</span></div>
+  <div class="item-desc">：155,400円→約220,000円。GR IIIx HDFは168,800円→約220,000円、Urban Editionは163,200円→約220,000円。</div><div class="item-tags"><span class="tag tag-user">@sedokoX</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">遊戯王 ORIGINAL ARTWORK COLLECTION</span></div>
+  <div class="item-desc">：5,940円→8,140円、約37％高。</div><div class="item-tags"><span class="tag tag-user">@Zone_Axie</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">アイドルマスター完全限定生産BOX</span><span class="badge badge-info">限定</span></div>
+  <div class="item-desc">：定価30,000円→プレ値80,000円との報告。</div><div class="item-tags"><span class="tag tag-user">@nary0819</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30th</span></div>
+  <div class="item-desc">：1パック1,400円、BOX買取最大20,000円。</div><div class="item-tags"><span class="tag tag-user">@JHffIcNhEuUupLa</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">77ST-PRO</span></div>
+  <div class="item-desc">：約100,000円近いプレ値との報告。</div><div class="item-tags"><span class="tag tag-user">@Hayate_72</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">GR86関連の高額車両</span></div>
+  <div class="item-desc">：一時6,500万円付近、新車価格は約5,000万円との投稿。</div><div class="item-tags"><span class="tag tag-user">@Light_Yagami_a</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">遊戯王CD・サントラ</span><span class="badge badge-warning">高騰</span></div>
+  <div class="item-desc">：流通量不足で高騰し、5枚合計約70,000円で購入した例。</div><div class="item-tags"><span class="tag tag-user">@nanameni201</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">一部新品商品</span></div>
+  <div class="item-desc">：定価の8倍以上で販売されているとの報告。商品名が投稿本文から特定できないため要確認。</div><div class="item-tags"><span class="tag tag-user">@kk___1090</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">MGSD クシャトリヤ</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：転売価格14,000円との報告。再販予定があるため、現在のプレ値維持には疑問。</div><div class="item-tags"><span class="tag tag-user">@no_cold_heart</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">7. 入荷・再販情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">Amazonガンプラ大量復活</span></div>
+  <div class="item-desc">：MGシャア専用ゲルググ Ver.2.0が公式価格5,390円、HGUCケンプファー、アッガイ、グフ Ver.2.0、グフカスタム、V2アサルトバスターなどが相次いで復活。、、</div><div class="item-tags"><span class="tag tag-user">@GunplaNotice</span><span class="tag tag-user">@GunplaOnlineX</span><span class="tag tag-user">@Gundam_Alert</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">楽天ブックスのガンプラ再販</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：MGガンダムバルバトスルプス7,150円、HGUCゾック2,970円、FULL MECHANICSグレイズアインなど。、</div><div class="item-tags"><span class="tag tag-user">@gonzareiasu0945</span><span class="tag tag-user">@gunplaquest_0</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ディズニー・ロルカナ「ハイペリアシティ」BOX</span></div>
+  <div class="item-desc">：Amazonで販売開始・在庫復活。発売予定日は10月16日。、、</div><div class="item-tags"><span class="tag tag-user">@y_toreca</span><span class="tag tag-user">@JQo8kZjEX7qKkSx</span><span class="tag tag-user">@JdwigjFaTN72163</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">30MP 鹿目まどか／暁美ほむら</span></div>
+  <div class="item-desc">：Amazonで再入荷・予約開始。暁美ほむらの定価は4,950円。、</div><div class="item-tags"><span class="tag tag-user">@30MS____</span><span class="tag tag-user">@marumon_ama2</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Poké-Charm 30周年ロゴマスコットBOX</span></div>
+  <div class="item-desc">：Amazonで販売再開。</div><div class="item-tags"><span class="tag tag-user">@pokecayoyaku</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30th CELEBRATION</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：数量限定で再販中。</div><div class="item-tags"><span class="tag tag-user">@gamestylejp</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">メトロイドamiibo</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：ヨドバシ店頭で再販を確認。以前のプレ値から定価購入へ切り替わっている。</div><div class="item-tags"><span class="tag tag-user">@Shin_umiushi_O</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">JO1 POPUP・河野純喜グッズ</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：夜に突発再販し、短時間で再完売。キャンセル戻り監視が有効。</div><div class="item-tags"><span class="tag tag-user">@frog4110</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Disneyハロウィーングッズ</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：「かぼランタン」キーチェーンとボンボが再販中。おばけちゃんチャーム、ベビースタイ、黒レースカチューシャなどは品切れ。</div><div class="item-tags"><span class="tag tag-user">@disney_tdr_plan</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">OLIVE des OLIVE トレンチコート</span></div>
+  <div class="item-desc">：全色完売後、一部カラーが再入荷。</div><div class="item-tags"><span class="tag tag-user">@8877_romi</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">トゥッカーノテトラ／コリドラス・ハブロスス</span></div>
+  <div class="item-desc">：前回すぐ完売した生体が店舗再入荷。通販不可。</div><div class="item-tags"><span class="tag tag-user">@aquashop_bueno</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「みきゃん募金ガチャ」</span></div>
+  <div class="item-desc">：実質4日間で在庫切れとなったが、9月29日に愛媛県庁本館で再開予定。</div><div class="item-tags"><span class="tag tag-user">@kabujpxhyz</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">LiSA×Ancelsカラーバター</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：再販決定、9月25日0時から発売開始。</div><div class="item-tags"><span class="tag tag-user">@teide_kei</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ロードス島戦記サウンドトラック</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：再販情報あり。</div><div class="item-tags"><span class="tag tag-user">@mitamama_A40</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ10月再販</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：時期・量・入荷場所を解説する情報が公開。詳細確認が必要。</div><div class="item-tags"><span class="tag tag-user">@carton_knight</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">8. 注意・警告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">リアルヘッド「サンダーヘッド」の偽物</span></div>
+  <div class="item-desc">：Yahoo!フリマで80,000円購入された商品が偽物との警告。購入者へキャンセル・事務局申請を推奨。</div><div class="item-tags"><span class="tag tag-user">@tenbaiya_buster</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">メルカリの偽装売り切れ疑惑</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">：遊戯王アーコレを8,500円付近で維持するため、似た写真の商品を別アカウント同士でコンビニ払い購入し、未払いのまま売り切れ表示にしているとの指摘。相場判断に売り切れ履歴を鵜呑みにしない。</div><div class="item-tags"><span class="tag tag-user">@ecochan0985</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">MGSD クシャトリヤ</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">：14,000円の転売価格に対し、機体人気より新作・品薄要因が大きく、10月・11月再販情報もあるため高値掴み注意。、</div><div class="item-tags"><span class="tag tag-user">@no_cold_heart</span><span class="tag tag-user">@ironwater193</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">遊戯王 ORIGINAL ARTWORK COLLECTION</span></div>
+  <div class="item-desc">：一般販売情報が増えており、流通量が多い可能性。7個確保した購入者からも「普通に買えそう」「遊戯王はお金にならない」との声があり、在庫過多に注意。、</div><div class="item-tags"><span class="tag tag-user">@hibarin_078</span><span class="tag tag-user">@9x6biSbxzK11p8O</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ラスタードラグーン</span></div>
+  <div class="item-desc">：タカラトミーが大量生産しているとの情報。BOT予約在庫は値崩れリスクが高い。</div><div class="item-tags"><span class="tag tag-user">@aero_pegasus_</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ホロカ</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">：発売1か月未満で複数店舗がパックを値下げし、シングル価格も低迷。「サマホロ大爆死」との現場報告があり、品薄時の価格を前提にした仕入れは危険。</div><div class="item-tags"><span class="tag tag-user">@shion_inori</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30thのクレーンゲーム仕入れ</span></div>
+  <div class="item-desc">：1,000円で獲得後も投入を続け、最終的にプレ値を超えた例あり。上限金額を事前に決める必要がある。</div><div class="item-tags"><span class="tag tag-user">@JHffIcNhEuUupLa</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Amazonマーケットプレイス</span></div>
+  <div class="item-desc">：ガンプラや人気商品は発送元・販売元がAmazon以外の場合、プレ値の可能性がある。定価3,520円・7,700円の商品例で注意喚起。</div><div class="item-tags"><span class="tag tag-user">@orange_2178</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">無在庫取引</span></div>
+  <div class="item-desc">：「何でもあります」と持ちかけ、注文後に交換投稿を探していた疑いのある取引報告。現物写真・在庫確認前の送金は避ける。</div><div class="item-tags"><span class="tag tag-user">@YunohaR</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">発売前・発送確定直後の無在庫転売</span></div>
+  <div class="item-desc">：発送日が確定した瞬間に出品が増えるとの報告。手元に商品がない出品は納期・キャンセルリスクが高い。</div><div class="item-tags"><span class="tag tag-user">@KABTOL_2o</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ再販・レア封入率上昇</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">：供給増や封入率変更でBOX価値が下がる可能性があり、未開封在庫の長期保有には注意。、</div><div class="item-tags"><span class="tag tag-user">@9OnVAoClqC57514</span><span class="tag tag-user">@y_syumiyou</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">播磨屋本店</span></div>
+  <div class="item-desc">：悪質な転売横行を理由にネット通販を休止。朝10時時点で店舗・工場とも完売との報告があり、非公式販売品の高値掴みに注意。、</div><div class="item-tags"><span class="tag tag-user">@arakawakohsen_B</span><span class="tag tag-user">@zilariya_yume</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">高額転売品の保証・修理</span></div>
+  <div class="item-desc">：メルカリでプレ値購入したイヤホンが故障し、正規修理を受けられるか不明との事例。家電・音響品は保証書と購入証明を確認する。</div><div class="item-tags"><span class="tag tag-user">@kurot0_2434</span></div>
+</div></div>
+</section>
+
+</body>
+</html>

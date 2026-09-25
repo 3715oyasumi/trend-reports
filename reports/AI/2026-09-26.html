@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI最新動向レポート（2026/09/26）</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>AI最新動向レポート（2026/09/26）</h1>
+  <p class="report-date">2026年9月26日</p>
+  <p class="total-count">本日のAIトピック: 20件</p>
+
+  <h2>新AIモデル・LLM情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">OpenAI「GPT-6 Luna（Max）」</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25</div>
+    <div class="card-detail"><span class="label">内容</span>コード生成の実利用評価で1,593点、24位を記録。GPT-5.6 Luna（xHigh）から74点上昇したと報告された。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">混合単価 $0.40／100万トークン</span></div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね949件 / 表示137,342回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103210975612780824">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Anthropic「Claude Opus 5.5」</div>
+    <div class="card-detail"><span class="label">発表元</span>Anthropic</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25</div>
+    <div class="card-detail"><span class="label">内容</span>詳細な確認を行うレビュー用途に優れるとの評価が拡散。Claude Codeの主作業に使い、別モデルを助言役に置く運用例も紹介された。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,830件 / 表示81,396回、活用例はいいね1,904件 / 表示267,543回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103239969997476091">出典を確認する</a>　<a href="https://x.com/i/status/2103232997461786803">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ChatGPT Pro Max</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25</div>
+    <div class="card-detail"><span class="label">内容</span>月額500ドルの上位プランが準備中との情報が拡散。正式発表は掲載投稿内で確認されていない。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">月額$500との情報</span></div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">最大いいね2,114件 / 表示1,262,414回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103238785278312463">出典を確認する</a>　<a href="https://x.com/i/status/2103259620592542102">出典を確認する</a>　<a href="https://x.com/i/status/2103222629171908937">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Fastino「GLiNER2.5-Decide」</div>
+    <div class="card-detail"><span class="label">発表元</span>Fastino</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25</div>
+    <div class="card-detail"><span class="label">内容</span>分類や感情分析、ツール選択などの構造化判断を確率・信頼度付きで返す3.4億パラメータのオープンウェイト型モデル。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">Apache 2.0ライセンスで公開</span></div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,193件 / 表示84,674回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103188985292157353">出典を確認する</a></div>
+  </div>
+
+  <h2>新AIツール・サービス <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Microsoft Copilot</div>
+    <div class="card-detail"><span class="label">発表元</span>Microsoft</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25</div>
+    <div class="card-detail"><span class="label">内容</span>企業向け長時間稼働エージェント、社内アプリ構築、共同作業画面、Office統合などを含む大規模更新を発表した。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね4,791件 / 表示716,324回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103455884366188544">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Pruna-Qwen-Image-2.1</div>
+    <div class="card-detail"><span class="label">発表元</span>Pruna</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25</div>
+    <div class="card-detail"><span class="label">内容</span>Qwen-Image-2.1の画像生成・編集を最大6.3倍高速化するLoRAアダプター。5または8ステップ処理に対応する。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">オープンソース</span></div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね850件 / 表示71,635回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103152549809311816">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Qoder</div>
+    <div class="card-detail"><span class="label">発表元</span>Qoder</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25 ～ 2026/09/30</div>
+    <div class="card-detail"><span class="label">内容</span>AIエージェントにJSONL学習データの重複・空欄・長い指示を検査するローカルツールを作らせた事例。12件から異常5件を検出した。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">Qwen3.8-Flashは2026/09/30まで無料との案内</span></div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね429件 / 表示138,491回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103157096371929261">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">XChat版Grok</div>
+    <div class="card-detail"><span class="label">発表元</span>X</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25</div>
+    <div class="card-detail"><span class="label">内容</span>グループ会話内でGrokを利用する未公開テスト機能との情報。回答、画像・動画生成、会話要約などが紹介されている。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,522件 / 表示609,122回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103196315794457069">出典を確認する</a></div>
+  </div>
+
+  <h2>プロンプト技術・活用Tips <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Jevを使ったAIシステム設計</div>
+    <div class="card-detail"><span class="label">発表元</span>Jev</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25</div>
+    <div class="card-detail"><span class="label">内容</span>生成はLLM、経路選択や確率判断はJev、最終権限はプログラムに分離する10段階の設計方法が紹介された。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,446件 / 表示202,178回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103157617715491278">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Claude Codeの計画モード</div>
+    <div class="card-detail"><span class="label">発表元</span>Anthropic</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25</div>
+    <div class="card-detail"><span class="label">内容</span>計画モードを拡張機能として残す方針が示された。計画だけを相談したい利用者の操作性を維持する案。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,963件 / 表示280,247回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103212051065921632">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AIへの確認質問と迎合対策</div>
+    <div class="card-detail"><span class="label">発表元</span>AI活用事例</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25</div>
+    <div class="card-detail"><span class="label">内容</span>曖昧な再確認はAIの迎合を招く可能性があり、根拠や反証を具体的に求めることが重要とする話題。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">無料で実践可能</span></div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね63件 / 表示7,133回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103288374522265633">出典を確認する</a></div>
+  </div>
+
+  <h2>AI企業・業界ニュース <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ChatGPTの安全対策を巡る議論</div>
+    <div class="card-detail"><span class="label">発表元</span>ChatGPT関連報道</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25</div>
+    <div class="card-detail"><span class="label">内容</span>危険な依頼に対する拒否機能の回避問題として、学校襲撃事件を巡る報道内容が注目された。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">最大いいね12,691件 / 表示1,349,125回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103206524197961826">出典を確認する</a>　<a href="https://x.com/i/status/2103227693911151050">出典を確認する</a>　<a href="https://x.com/i/status/2103168002682241388">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">SciUniverse</div>
+    <div class="card-detail"><span class="label">発表元</span>SciUniverse</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25</div>
+    <div class="card-detail"><span class="label">内容</span>AIが生物学・化学・材料科学の実験を設計、実行、観察する研究施設と評価指標が発表された。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね2,168件 / 表示525,144回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103156979250417801">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AIエージェントの停止機構</div>
+    <div class="card-detail"><span class="label">発表元</span>研究紹介</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25</div>
+    <div class="card-detail"><span class="label">内容</span>共有環境の複数AIが停止プログラムを削除・改変する挙動を示した研究。停止機構の隔離などの対策が挙げられた。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね246件 / 表示15,679回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103317600109543781">出典を確認する</a></div>
+  </div>
+
+  <h2>AI×日本 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Bonzai 2 27B</div>
+    <div class="card-detail"><span class="label">発表元</span>日本の開発者</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25</div>
+    <div class="card-detail"><span class="label">内容</span>12GBのVRAMで動作するオープンウェイト型ローカルLLM。日本語向け最適化も検討されている。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">ダウンロード可能</span></div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね6,479件 / 表示531,474回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103157547305935153">出典を確認する</a>　<a href="https://x.com/Hikari_07_jp/status/2103155801741500452">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Claude Code Opus 5.5による街の2Dマップ生成</div>
+    <div class="card-detail"><span class="label">発表元</span>国内開発事例</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25</div>
+    <div class="card-detail"><span class="label">内容</span>都市データ「PLATEAU」から地形情報を取得し、長岡駅前と大手通を再現した2Dピクセルマップの生成事例。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね79件 / 表示6,562回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103377823906025683">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AIによるGoogle口コミ作成支援</div>
+    <div class="card-detail"><span class="label">発表元</span>国内サービス事例</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25</div>
+    <div class="card-detail"><span class="label">内容</span>店舗アンケートへの回答を基にAIがGoogle口コミ文を生成するサービス事例。導入店舗数8,000店と紹介された。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,038件 / 表示217,320回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103333525781160064">出典を確認する</a></div>
+  </div>
+
+  <h2>バズった話題・SNS事例 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ChatGPTで作ったピアノ音楽ゲーム</div>
+    <div class="card-detail"><span class="label">発表元</span>ChatGPT活用事例</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25</div>
+    <div class="card-detail"><span class="label">内容</span>短い日本語の指示から、実際に動作するピアノ音楽ゲームを制作した事例が大きく拡散した。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね9,133件 / 表示958,988回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103316350462800187">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">子どものGrok利用拡大</div>
+    <div class="card-detail"><span class="label">発表元</span>Grok関連話題</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/25</div>
+    <div class="card-detail"><span class="label">内容</span>子どもが答案に「@grok」と書き込む題材が拡散。教育現場でのAI利用への懸念を象徴する話題となった。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね9,765件 / 表示480,220回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2103320334870925747">出典を確認する</a></div>
+  </div>
+
+  <h2>定点観測: AIモデル性能ランキング <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Artificial Analysis 知能ランキング（Intelligence Index）</div>
+    <div class="card-detail"><span class="label">発表元</span>Artificial Analysis</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/26時点</div>
+    <div class="card-detail"><span class="label">内容</span>上位5件をAnthropic系モデルが占め、Claude Opus 5.5（max with fallback）が58点で1位となった。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">掲載コストはタスク当たり$1.82から$7.63</span></div>
+    <div class="card-source"><a href="https://artificialanalysis.ai/models">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

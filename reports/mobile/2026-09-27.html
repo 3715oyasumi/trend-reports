@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のモバイル情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のモバイル情報</h1>
+  <p class="report-date">2026年9月27日</p>
+  <p class="total-count">本日のモバイル案件: 9件</p>
+
+  <h2>モバイル情報 <span class="section-count">（9件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">「ahamo」を40GB・60GB・120GBの3段階制へ改定</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">40GBまで月額3,135円、60GBまで月額4,125円、120GBまで月額5,115円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>従来の「大盛りオプション」は11月30日で終了</div>
+    <div class="card-detail"><span class="label">期間</span>2026/12/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.docomo.ne.jp/info/news_release/2026/09/25_00.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">新料金プラン「ドコモ mini2」を開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大割引適用時は6GBが月額858円、12GBが月額2,178円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>6GBは月額3,278円、12GBは月額4,598円。60歳以上はかけ放題オプションを月額990円で利用可能。従来の「ドコモ mini」は11月30日で新規受付終了</div>
+    <div class="card-detail"><span class="label">期間</span>2026/12/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.docomo.ne.jp/info/news_release/2026/09/25_00.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「ドコモ MAX 60歳以上割」を開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大3カ月間、月額最大2,970円割引</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>60歳以上が新規契約・MNP・機種変更・対象外プランからの変更で「ドコモ MAX」を契約。家族・dカード・光回線割引併用時は30GB以下を月額858円から利用可能</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.docomo.ne.jp/info/news_release/2026/09/25_00.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ahamo・irumo・eximoなどの月額料金を値上げ</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>ahamoは月額165円、irumoの3GB・6GB・9GBは330円、0.5GBは110円、eximo・eximoポイ活・ギガホ系は550円値上げ。OCNモバイルONEを含む新規受付終了済みプランも月額110～550円値上げ</div>
+    <div class="card-detail"><span class="label">期間</span>2026/12/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.docomo.ne.jp/info/news_release/2026/09/25_00.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">海外利用可能データ量を30GBから40GBへ増量</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">海外利用可能データ量を40GBへ増量</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>「ドコモ MAX」「ドコモ ポイ活 MAX」「ahamo」などが対象。海外データ通信日数追加オプションを24時間980円で開始</div>
+    <div class="card-detail"><span class="label">期間</span>2026/12/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.docomo.ne.jp/info/news_release/2026/09/25_00.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「ahamoリニューアルキャンペーン～秋の豪華プレゼントキャンペーン～」を開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">dポイント50,000ポイントを30名、Insta360 X4 Airを5名、宿泊カタログギフトを5名に抽選で進呈</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ahamo</div>
+    <div class="card-detail"><span class="label">条件</span>新規・乗り換え・既存契約者が対象。10月31日時点でahamoを契約していること</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/25 ～ 2026/10/31</div>
+    <div class="card-source"><a href="https://ahamo.com/special/presentcampaign15/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Amazon「プライム感謝祭」に合わせた2つのキャンペーンを開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大20％還元、抽選で1,000名に利用総額の100％、最大10,000ポイントを還元</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>初めてAmazonアカウントとdアカウントを連携して買い物。Amazonでd払いを利用した方が対象</div>
+    <div class="card-detail"><span class="label">期間</span>エントリー・連携 2026/09/24 ～ 2026/10/19、買物対象 2026/10/13 ～ 2026/10/19</div>
+    <div class="card-source"><a href="https://www.docomo.ne.jp/info/news_release/topics/index.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「データ増量祭」を開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">365日間トッピングを価格据え置きで最大15GB増量</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>60GBは63GB、120GBは125GB、360GBは375GBへ増量。Amazonプライム1年間セットとデータ専用初回トッピングも対象</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/24 ～ 2026/09/30</div>
+    <div class="card-source"><a href="https://povo.jp/campaign/detail/data-increase_2026_09/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「Google Birthday × povo 2.0 5周年キャンペーン」を開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">500GBを3日間利用可能、Google Pixel 10またはPixel 10aを20％引き</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>新規加入時にコード「THANKS5TH」を入力。Google Storeで利用できるプロモーションコードを進呈</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/25 ～ 2026/10/21</div>
+    <div class="card-source"><a href="https://povo.jp/lp/googlecpn_birthday2026/">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※還元・条件は確認時点のものです。</p>
+</body>
+</html>

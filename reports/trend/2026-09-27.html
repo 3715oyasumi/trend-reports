@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月27日（日曜日）版</p>
+  <p class="total-count">本日のトレンド: 8件</p>
+
+  <h2>新商品情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">プチダノン みかん&amp;緑黄色野菜</div>
+    <div class="card-detail"><span class="label">特徴</span>みかん果汁と、にんじん・ホウレンソウ・小松菜・ブロッコリー・アスパラガスの5種類の緑黄色野菜を組み合わせた幼児向けヨーグルト</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月28日</div>
+    <div class="card-detail"><span class="label">価格</span>不明</div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000029.000175740.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ゴディバ「100周年 サブレショコラ アソートメント」</div>
+    <div class="card-detail"><span class="label">特徴</span>安納芋、宇治抹茶、アーモンド、カカオ72％ダークチョコレートの4種類を詰め合わせた創業100周年記念商品</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">4個入2,268円、8個入3,996円、12個入5,616円（税込）</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000949.000015355.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ほっとカスタードパイ／ほっとあんバターパイ</div>
+    <div class="card-detail"><span class="label">特徴</span>ザクッとしたパイ生地に、カスタードまたは粒あんとバターを合わせた数量限定の温かいスイーツ</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">各190円（税込）</span></div>
+    <div class="card-source"><a href="https://www.hottomotto.com/contents/news/20260925_new.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">アスクル オリジナル無糖強炭酸水</div>
+    <div class="card-detail"><span class="label">特徴</span>炭酸強度4.0以上。ろ過した純水と炭酸3段仕込みを採用した500mlペットボトル</div>
+    <div class="card-detail"><span class="label">発売日</span>不明</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">48本2,400円（税込、1本当たり50円）</span></div>
+    <div class="card-source"><a href="https://dtimes.jp/post-1389443/">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">朝ファミマのコンビ割</div>
+    <div class="card-detail"><span class="label">特典内容</span>午前5時から11時まで、対象のおむすびまたはパンと、対象のお茶・紅茶またはコーヒーをセットで250円（税込）で販売</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月15日開始、終了日不明</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000002527.000046210.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">出前館「超ゴイゴイ増すー増量祭」</div>
+    <div class="card-detail"><span class="label">特典内容</span>対象商品の価格を変えず、ご飯・麺の増量や、おかず・サイドメニュー1品を追加</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月28日まで、開始日不明</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★</span></div>
+    <div class="card-source"><a href="https://meals.iid.co.jp/demaecan-coupon/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">CIAOPANIC「GRAIN限定1,000円OFFクーポン」</div>
+    <div class="card-detail"><span class="label">特典内容</span>対象のGRAIN商品に1,000円引きクーポンを適用。他のクーポンや値引きキャンペーンとの併用不可</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月26日0時から9月27日0時まで</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★</span></div>
+    <div class="card-source"><a href="https://www.palcloset.jp/display/article/detail/?acd=260926cia_001&amp;b=ciaopanic&amp;cpvcd=sex-type%7C000">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（0件）</span></h2>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ゴディバ商品の千葉県向け配送</div>
+    <div class="card-detail"><span class="label">理由</span>台風25号の影響により、千葉県向け商品の配送に遅延が発生</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>贈答品など到着日が重要な注文は、公式の配送情報を確認して余裕を持って手配</div>
+    <div class="card-source"><a href="https://www.godiva.co.jp/news/">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>直近3日では、創業記念商品や幼児向け栄養商品など、対象を明確に絞った新商品発表が目立ちました。キャンペーンは一律値引きよりも、セット販売や無料増量によって実質的なお得感を出す施策が中心です。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

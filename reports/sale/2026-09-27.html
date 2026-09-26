@@ -1,0 +1,179 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="sale-revision" content="7c28232b3484b943"><meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>セール情報 2026-09-27</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+:root {
+  --canvas: #faf9f5; --card: #fffdf8; --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8; --hairline-soft: #ebe6df;
+  --primary: #cc785c; --primary-active: #a9583e;
+  --ink: #141413; --text: #3d3d3a; --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20,20,19,0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--canvas); color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.75; padding: 40px 20px 64px; max-width: 760px; margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+.report-header {
+  background: var(--card); border: 1px solid var(--hairline); border-radius: 16px;
+  padding: 28px; margin-bottom: 32px; box-shadow: var(--shadow-soft);
+}
+.report-label {
+  font-family: var(--font-body); font-size: 11px;
+  color: var(--muted); letter-spacing: 2px; margin-bottom: 10px;
+}
+.report-title {
+  font-family: var(--font-display); font-size: 28px; font-weight: 700;
+  color: var(--ink); line-height: 1.3; letter-spacing: -0.01em; text-wrap: balance;
+  margin-bottom: 16px;
+}
+.report-meta { display: flex; flex-wrap: wrap; gap: 16px; }
+.meta-item { font-size: 14px; color: var(--muted); }
+.meta-item span { color: var(--text); font-weight: 600; }
+.report-section { margin-bottom: 24px; }
+.section-title {
+  font-family: var(--font-display); font-size: 20px; font-weight: 600;
+  color: var(--ink); line-height: 1.4; text-wrap: balance;
+  padding-left: 14px; border-left: 3px solid var(--primary); margin: 32px 0 14px;
+}
+.section-num { font-size: 13px; color: var(--muted); }
+.item-card {
+  background: var(--card); border: 1px solid var(--hairline);
+  border-radius: 12px; padding: 18px 20px; margin-bottom: 10px;
+  box-shadow: var(--shadow-soft); transition: border-color 0.2s, box-shadow 0.2s;
+}
+.item-card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20,20,19,0.08); }
+.item-header { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+.item-title { font-weight: 700; font-size: 15px; color: var(--ink); flex: 1; line-height: 1.5; }
+.item-desc { font-size: 14px; color: var(--text); margin-bottom: 8px; line-height: 1.7; }
+.item-desc strong { color: var(--ink); }
+.item-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-size: 12px; padding: 2px 10px; border-radius: 9999px; }
+.tag-user  { background: var(--surface-soft); color: var(--primary-active); border: 1px solid var(--hairline); }
+.tag-stat  { background: var(--surface-soft); color: var(--muted); border: 1px solid var(--hairline); }
+.badge { font-size: 11px; padding: 2px 10px; border-radius: 9999px; font-weight: 600; white-space: nowrap; border: 1px solid var(--hairline); }
+.badge-danger  { background: #fbeae5; color: #a9583e; border-color: #e6cabd; }
+.badge-warning { background: #f6efe2; color: #8a6d2f; border-color: #e6dcc4; }
+.badge-info    { background: #f5f0e8; color: #6c6a64; border-color: var(--hairline); }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--card); border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; }
+.summary-table th {
+  background: var(--surface-soft); padding: 10px 14px; text-align: left;
+  color: var(--muted); border-bottom: 1px solid var(--hairline);
+}
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid var(--hairline-soft); color: var(--text); }
+hr { border: none; border-top: 1px solid var(--hairline); margin: 32px 0; }
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  .report-title { font-size: 23px; }
+  .section-title { font-size: 18px; }
+}
+
+nav { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+nav button { font: 500 13px var(--font-body); color: var(--muted); background: var(--surface-soft); border: 1px solid var(--hairline); border-radius: 8px; padding: 8px 12px; cursor: pointer; min-height: 40px; }
+nav button[aria-pressed=true] { color: var(--ink); border-color: var(--primary); }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; }
+.filters select { font: 14px var(--font-body); color: var(--text); background: var(--card); border: 1px solid var(--hairline); border-radius: 8px; padding: 8px 10px; min-height: 40px; }
+.shop-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+.shop-header .item-title { font-size: 17px; }
+.sale-item { padding: 16px 0; border-top: 1px solid var(--hairline-soft); }
+.sale-item h3 { font-size: 15px; color: var(--ink); line-height: 1.5; margin: 8px 0; }
+.sale-item p { font-size: 14px; line-height: 1.7; margin: 6px 0; }
+.sale-item .price { color: var(--ink); font-weight: 600; }
+.sale-item .muted, .sale-item small { color: var(--muted); font-size: 13px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags span { font-size: 12px; padding: 2px 10px; border-radius: 9999px; background: var(--surface-soft); color: var(--muted); border: 1px solid var(--hairline); }
+.sale-item a { display: inline-block; color: var(--primary-active); font-size: 14px; margin-top: 6px; }
+[hidden] { display: none !important; }
+@media (max-width: 600px) { .filters select { max-width: 100%; } }
+
+    </style></head><body><header class="report-header"><div class="report-label">SALE INFORMATION REPORT</div>
+    <h1 class="report-title">セール情報レポート</h1><div class="report-meta"><div class="meta-item">確認日：<span>2026-09-27</span></div><div class="meta-item">掲載件数：<span>10件</span></div></div></header>
+    <nav aria-label="カテゴリー"><button type="button" data-category="all" aria-pressed="true" onclick="filterCards('all')">すべて</button><button type="button" data-category="game" aria-pressed="false" onclick="filterCards('game')">ゲーム</button><button type="button" data-category="electronics" aria-pressed="false" onclick="filterCards('electronics')">家電</button><button type="button" data-category="mobile" aria-pressed="false" onclick="filterCards('mobile')">スマホ</button><button type="button" data-category="camera" aria-pressed="false" onclick="filterCards('camera')">カメラ</button><button type="button" data-category="extra" aria-pressed="false" onclick="filterCards('extra')">番外</button></nav>
+    <div class="filters"><select id="shopFilter" aria-label="店舗"><option value="">全店舗</option></select></div>
+    <section class="report-section"><h2 class="section-title">1. 店舗別セール</h2><article class="item-card card"><div class="shop-header"><h3 class="item-title">ゲオ</h3><span class="badge badge-info sale-count">3件のセール</span></div>
+    <section class="sale-item" data-category="game" data-scope="対象地域要確認" data-shop="ゲオ" data-pref="都県未確認" data-channel="店舗・本部告知" data-condition="状態未確認" data-coupon="記載なし">
+      <div class="tags"><span>ゲーム</span><span>告知発見</span></div>
+      <h3>『ゲームセール』9月27日(日)まで！</h3>
+      <p class="price">価格は公式告知で確認 </p>
+      <p>購入条件: ※店舗によって各商品の在庫状況は異なります。 ※セール対象品の同一タイトルのご購入は、お一人様1点限りとさせていただきます。</p><p class="muted">期限: 2026-09-27 ／ 対象: 対象地域要確認</p>
+      <a href="https://geo-online.co.jp/store_info/sale_campaign/gamesale/lp.html" rel="noopener noreferrer" target="_blank">このセールの公式告知を見る ↗</a>
+    </section><section class="sale-item" data-category="mobile" data-scope="対象地域要確認" data-shop="ゲオ" data-pref="都県未確認" data-channel="店舗・本部告知" data-condition="中古" data-coupon="記載なし">
+      <div class="tags"><span>スマホ・タブレット</span><span>告知発見</span></div>
+      <h3>格安SIMのご契約で中古スマホ・タブレットが最大15,000円OFF！</h3>
+      <p class="price">価格は公式告知で確認 </p>
+      <p class="muted">期限: 公式告知で確認 ／ 対象: 対象地域要確認</p>
+      <a href="https://geo-online.co.jp/campaign/special/other/geomobile/kakuyasusimtirasi20260912.html" rel="noopener noreferrer" target="_blank">このセールの公式告知を見る ↗</a>
+    </section><section class="sale-item" data-category="mobile" data-scope="対象地域要確認" data-shop="ゲオ" data-pref="都県未確認" data-channel="店舗・本部告知" data-condition="中古" data-coupon="記載なし">
+      <div class="tags"><span>スマホ・タブレット</span><span>告知発見</span></div>
+      <h3>『中古スマホセール』9月27日(日)まで！</h3>
+      <p class="price">価格は公式告知で確認 </p>
+      <p>購入条件: ※店舗により商品・在庫状況・ご契約可能なSIMが異なる場合がございますのであらかじめご了承ください。</p><p class="muted">期限: 2026-09-27 ／ 対象: 対象地域要確認</p>
+      <a href="https://geo-online.co.jp/store_info/sale_campaign/sumahosale/lp.html" rel="noopener noreferrer" target="_blank">このセールの公式告知を見る ↗</a>
+    </section></article>
+<article class="item-card card"><div class="shop-header"><h3 class="item-title">でんきち</h3><span class="badge badge-info sale-count">4件のセール</span></div>
+    <section class="sale-item" data-category="electronics" data-scope="対象地域要確認" data-shop="でんきち" data-pref="都県未確認" data-channel="店舗・本部告知" data-condition="状態未確認" data-coupon="記載なし">
+      <div class="tags"><span>家電</span><span>告知発見</span></div>
+      <h3>NECパソコンが期間限定で最大3万円引きのお買い得！</h3>
+      <p class="price">価格は公式告知で確認 </p>
+      <p class="muted">期限: 公式告知で確認 ／ 対象: 対象地域要確認</p>
+      <a href="https://denkichi.com/special/111" rel="noopener noreferrer" target="_blank">このセールの公式告知を見る ↗</a>
+    </section><section class="sale-item" data-category="electronics" data-scope="対象地域要確認" data-shop="でんきち" data-pref="都県未確認" data-channel="店舗・本部告知" data-condition="状態未確認" data-coupon="記載なし">
+      <div class="tags"><span>家電</span><span>告知発見</span></div>
+      <h3>シャープドラム式洗濯機暮らし応援キャンペーン20000円キャッシュバック</h3>
+      <p class="price">価格は公式告知で確認 </p>
+      <p class="muted">期限: 公式告知で確認 ／ 対象: 対象地域要確認</p>
+      <a href="https://www.denkichi.com/information/28175/" rel="noopener noreferrer" target="_blank">このセールの公式告知を見る ↗</a>
+    </section><section class="sale-item" data-category="electronics" data-scope="対象地域要確認" data-shop="でんきち" data-pref="都県未確認" data-channel="店舗・本部告知" data-condition="状態未確認" data-coupon="記載なし">
+      <div class="tags"><span>家電</span><span>告知発見</span></div>
+      <h3>東芝ドラム洗濯機新発売キャッシュバックキャンペーン</h3>
+      <p class="price">価格は公式告知で確認 </p>
+      <p class="muted">期限: 公式告知で確認 ／ 対象: 対象地域要確認</p>
+      <a href="https://www.denkichi.com/information/27955/" rel="noopener noreferrer" target="_blank">このセールの公式告知を見る ↗</a>
+    </section><section class="sale-item" data-category="mobile" data-scope="対象地域要確認" data-shop="でんきち" data-pref="都県未確認" data-channel="店舗・本部告知" data-condition="状態未確認" data-coupon="記載なし">
+      <div class="tags"><span>スマホ・タブレット</span><span>告知発見</span></div>
+      <h3>NECタブレット デビューキャンペーン</h3>
+      <p class="price">価格は公式告知で確認 </p>
+      <p class="muted">期限: 公式告知で確認 ／ 対象: 対象地域要確認</p>
+      <a href="https://denkichi.com/special/112" rel="noopener noreferrer" target="_blank">このセールの公式告知を見る ↗</a>
+    </section></article>
+<article class="item-card card"><div class="shop-header"><h3 class="item-title">古本市場・ふるいち</h3><span class="badge badge-info sale-count">1件のセール</span></div>
+    <section class="sale-item" data-category="game" data-scope="対象地域要確認" data-shop="古本市場・ふるいち" data-pref="都県未確認" data-channel="店舗・本部告知" data-condition="状態未確認" data-coupon="記載なし">
+      <div class="tags"><span>ゲーム</span><span>告知発見</span></div>
+      <h3>Nintendo Switch 2 ダウンロード版ソフト ご購入キャンペーン｜2026年09月27日（日）まで</h3>
+      <p class="price">価格は公式告知で確認 </p>
+      <p>購入条件: ※数量限定のため、期間内でも早期終了する場合があります。</p><p class="muted">期限: 2026-09-27 ／ 対象: 対象地域要確認</p>
+      <a href="https://www.furu1.net/news/news_campaign/Switch2_Downloadable_Software_campaign" rel="noopener noreferrer" target="_blank">このセールの公式告知を見る ↗</a>
+    </section></article>
+<article class="item-card card"><div class="shop-header"><h3 class="item-title">ケーズデンキ</h3><span class="badge badge-info sale-count">2件のセール</span></div>
+    <section class="sale-item" data-category="electronics" data-scope="関東" data-shop="ケーズデンキ" data-pref="東京" data-channel="公式通販" data-condition="状態未確認" data-coupon="記載なし">
+      <div class="tags"><span>家電</span><span>告知発見</span></div>
+      <h3>ASUS/ROG 東京ゲームショウ2026 出展記念セール</h3>
+      <p class="price">価格は公式告知で確認 </p>
+      <p class="muted">期限: 公式告知で確認 ／ 対象: 関東</p>
+      <a href="https://www.ksdenki.com/shop/pages/special_20260917asus_sale.aspx" rel="noopener noreferrer" target="_blank">このセールの公式告知を見る ↗</a>
+    </section><section class="sale-item" data-category="electronics" data-scope="公式通販" data-shop="ケーズデンキ" data-pref="都県未確認" data-channel="公式通販" data-condition="状態未確認" data-coupon="記載なし">
+      <div class="tags"><span>家電</span><span>告知発見</span></div>
+      <h3>パソコン特別クーポン配信中！9/30(水)まで</h3>
+      <p class="price">価格は公式告知で確認 </p>
+      <p class="muted">期限: 2026-09-30 ／ 対象: 公式通販</p>
+      <a href="https://www.ksdenki.com/shop/pages/amd.aspx" rel="noopener noreferrer" target="_blank">このセールの公式告知を見る ↗</a>
+    </section></article></section>
+    <p class="meta-item">価格・期間・条件は、購入前に各店の公式告知で確認してください。</p><script>
+    let currentCategory='all';
+    for(const [id,key] of [['shopFilter','shop']]){
+      const select=document.getElementById(id);const values=[...new Set([...document.querySelectorAll('.sale-item')].map(item=>item.dataset[key]))].sort();
+      for(const value of values){const option=document.createElement('option');option.value=value;option.textContent=value;select.appendChild(option)}
+      select.addEventListener('change',applyFilters);
+    }
+    function filterCards(kind){currentCategory=kind;document.querySelectorAll('nav button').forEach(button=>button.setAttribute('aria-pressed',button.dataset.category===kind));applyFilters()}
+    function applyFilters(){document.querySelectorAll('.card').forEach(card=>{
+      const filters=[['shopFilter','shop']];
+      let visible=0;card.querySelectorAll('.sale-item').forEach(item=>{
+        item.hidden=(currentCategory!=='all'&&item.dataset.category!==currentCategory)||filters.some(([id,key])=>document.getElementById(id).value&&item.dataset[key]!==document.getElementById(id).value);
+        if(!item.hidden)visible++;
+      });card.hidden=visible===0;card.querySelector('.sale-count').textContent=visible+'件のセール';
+    })}
+    </script></body></html>

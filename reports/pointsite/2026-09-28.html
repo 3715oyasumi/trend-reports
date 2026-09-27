@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のポイントサイト情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のポイントサイト情報</h1>
+  <p class="report-date">2026年9月28日</p>
+  <p class="total-count">本日のお得案件: 14件</p>
+
+  <h2>急上昇・新着広告 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">SBI証券 こども口座（終了間際・タイムセール）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">130,000ポイント（13,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>アメフリ／モッピー（同額最高還元）</div>
+    <div class="card-detail"><span class="label">条件</span>新規こども口座開設完了。終了日: 要確認</div>
+    <div class="card-source"><a href="https://www.amefri.net/detail/id/140664">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">@nifty光（ポイントアップ中）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">240,000ポイント（24,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>アメフリ</div>
+    <div class="card-detail"><span class="label">条件</span>アメフリ経由の光回線申込み。終了日: 要確認</div>
+    <div class="card-source"><a href="https://www.amefri.net/detail/id/111255">出典を確認する</a></div>
+  </div>
+
+  <h2>クレジットカード <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">MONEY CARD（9月超還元）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">20,000ポイント（20,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>モッピー（最高還元）</div>
+    <div class="card-detail"><span class="label">条件</span>初めて申し込み、申込月の2カ月後末までに審査通過・新規カード発行完了。安定収入のある20～75歳が対象。終了日: 要確認</div>
+    <div class="card-source"><a href="https://pc.moppy.jp/ad/detail.php?site_id=161188">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">三菱ＵＦＪカード（9月30日終了）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">14,000ポイント（14,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>アメフリ／モッピー／ポイントタウン（同額最高還元）</div>
+    <div class="card-detail"><span class="label">条件</span>新規カード発行完了。終了日: 2026年9月30日</div>
+    <div class="card-source"><a href="https://www.amefri.net/detail/id/139806">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">三井住友カード（NL）（本日限定）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">13,000ポイント（13,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>モッピー（最高還元）</div>
+    <div class="card-detail"><span class="label">条件</span>対象カードの新規発行完了。申込みから60日以内の発行が必要。終了日: 2026年9月28日</div>
+    <div class="card-source"><a href="https://pc.moppy.jp/ad/detail.php?site_id=149052">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">エポスカード（緊急ポイントアップ）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">13,000ポイント（13,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>モッピー（アメフリの9,000円相当より高還元）</div>
+    <div class="card-detail"><span class="label">条件</span>初めてエポスカードを申し込み、新規カード発行完了。終了日: 2026年9月30日</div>
+    <div class="card-source"><a href="https://pc.moppy.jp/ad/detail.php?site_id=102162">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ライフカード（利用条件付き）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">11,000ポイント（11,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>モッピー（アメフリの10,000円相当より高還元）</div>
+    <div class="card-detail"><span class="label">条件</span>新規カード発行・受取り後、発券月の翌月末までに合計5,500円以上利用。利用限度額30,001円以上が必要。終了日: 2026年9月30日</div>
+    <div class="card-source"><a href="https://pc.moppy.jp/ad/detail.php?site_id=100826">出典を確認する</a></div>
+  </div>
+
+  <h2>銀行口座開設 <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">楽天銀行（期間限定チャレンジ）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">合計13,000ポイント（13,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>モッピー（最高還元）</div>
+    <div class="card-detail"><span class="label">条件</span>新規口座開設後、初回ログイン。通常1,500ポイント＋達成済みチャレンジボーナス11,500ポイント。終了日: 2026年9月30日</div>
+    <div class="card-source"><a href="https://pc.moppy.jp/campaign/challenge/detail.php?id=2466">出典を確認する</a></div>
+  </div>
+
+  <h2>証券口座開設 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">SBI証券（超高還元）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">14,000ポイント（14,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>モッピー（最高還元）</div>
+    <div class="card-detail"><span class="label">条件</span>新規口座開設後、証券総合口座からSBIハイブリッド預金へ一括50,000円以上振替。終了日: 要確認</div>
+    <div class="card-source"><a href="https://pc.moppy.jp/ad/detail.php?site_id=120788">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">楽天証券</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">13,000ポイント（13,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>モッピー（最高還元）</div>
+    <div class="card-detail"><span class="label">条件</span>総合取引口座開設後、30日以内に楽天証券口座へ50,000円以上入金。終了日: 要確認</div>
+    <div class="card-source"><a href="https://pc.moppy.jp/ad/detail.php?site_id=111069">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">オルタナバンク（期間限定キャンペーン）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">300,000ポイント（30,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>アメフリ</div>
+    <div class="card-detail"><span class="label">条件</span>新規口座開設申込み後、90日以内に運用期間4カ月以上のファンドへ累計30万円以上投資。終了日: 2026年9月30日</div>
+    <div class="card-source"><a href="https://www.amefri.net/detail/id/129887">出典を確認する</a></div>
+  </div>
+
+  <h2>光回線 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ソフトバンクAir</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">50,000ポイント（50,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>モッピー（最高還元）</div>
+    <div class="card-detail"><span class="label">条件</span>初めてソフトバンクAirを申し込み、申込み後6カ月以内に開通。終了日: 要確認</div>
+    <div class="card-source"><a href="https://pc.moppy.jp/ad/detail.php?site_id=157457">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">auひかり（株式会社NEXT）</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">400,000ポイント（40,000円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>アメフリ</div>
+    <div class="card-detail"><span class="label">条件</span>新規申込み後、回線開通完了。終了日: 要確認</div>
+    <div class="card-source"><a href="https://www.amefri.net/detail/id/129066">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">GMOとくとくBB ドコモ光</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">35,500ポイント（35,500円相当）</span></div>
+    <div class="card-detail"><span class="label">サイト</span>モッピー（最高還元）</div>
+    <div class="card-detail"><span class="label">条件</span>新規回線の申込み・開通完了。終了日: 要確認</div>
+    <div class="card-source"><a href="https://pc.moppy.jp/ad/detail.php?site_id=136894">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新の還元率・条件は各サイトにてご確認ください。</p>
+</body>
+</html>

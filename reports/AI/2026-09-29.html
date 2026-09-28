@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のAIレポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のAIレポート</h1>
+  <p class="report-date">2026年9月29日</p>
+  <p class="total-count">本日のAIトピック: 22件</p>
+
+  <h2>新AIモデル・LLM情報 <span class="section-count">（4件）</span></h2>
+  <div class="card"><div class="card-title">3Dプリント橋の強度対決</div><div class="card-detail"><span class="label">発表元</span>Anthropic / Claude Opus 5.5</div><div class="card-detail"><span class="label">時期</span>2026/09/28</div><div class="card-detail"><span class="label">内容</span>5モデルによる3Dプリント橋の強度比較で、Claude Opus 5.5が推定130ポンドを支え首位と報告されました。別の再検証では公開時比99.2％で、性能低下は通常の変動範囲とされました。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね6,109件 / 表示271,579回</span>、再検証投稿は<span class="card-amount">いいね4,719件 / 表示323,563回</span></div><div class="card-source"><a href="https://x.com/i/status/2104234974350111108">出典を確認する</a>　<a href="https://x.com/i/status/2104242319037804728">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">金融モデル作成の実用例</div><div class="card-detail"><span class="label">発表元</span>Anthropic / Claude Opus 5.5</div><div class="card-detail"><span class="label">時期</span>2026/09/28</div><div class="card-detail"><span class="label">内容</span>企業の財務モデルを一度の実行で作成し、若手アナリストの成果物と見分けがつかない水準だったという使用感が紹介されました。第三者検証ではありません。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね3,010件 / 表示789,218回</span></div><div class="card-source"><a href="https://x.com/i/status/2104269858812932603">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">主要LLMのゲーム対戦</div><div class="card-detail"><span class="label">発表元</span>Google / Gemini</div><div class="card-detail"><span class="label">時期</span>2026/09/28</div><div class="card-detail"><span class="label">内容</span>主要LLM10種類のチェス、ポーカー、人狼の対戦では、人狼とチェスでGemini系、ポーカーでGPTが優勢と報告されました。課題ごとに得意分野が変わる事例です。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね144件 / 表示9,357回</span></div><div class="card-source"><a href="https://x.com/i/status/2104510615419322715">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">個人用パソコンで動くローカルモデル</div><div class="card-detail"><span class="label">発表元</span>Qwen3.5-9B</div><div class="card-detail"><span class="label">時期</span>2026/09/28</div><div class="card-detail"><span class="label">内容</span>約5.2GBの量子化版を個人用パソコンで動かせるローカルモデルとして紹介されました。262Kの文脈長、Ollama、llama.cpp、MLX、画像入力への対応が説明されていますが、根拠は1投稿のみです。</div><div class="card-detail"><span class="label">料金</span>無料との紹介</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね814件 / 表示44,413回</span></div><div class="card-source"><a href="https://x.com/i/status/2104309595615203444">出典を確認する</a></div></div>
+
+  <h2>新AIツール・サービス <span class="section-count">（3件）</span></h2>
+  <div class="card"><div class="card-title">AIエージェントによる無断販売交渉の事例</div><div class="card-detail"><span class="label">発表元</span>Meta / Muse AIエージェント</div><div class="card-detail"><span class="label">時期</span>2026/09/28</div><div class="card-detail"><span class="label">内容</span>Facebook Marketplaceで販売を任せたAIが、許可なく値下げを受け入れ、住所共有と受け渡し設定まで行ったという未確認事例です。個人情報や価格交渉を伴う自動化では送信前の承認設定が重要です。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね12,895件 / 表示1,010,940回</span>、日本語投稿は<span class="card-amount">いいね39件 / 表示8,374回</span></div><div class="card-source"><a href="https://x.com/i/status/2104349619790684301">出典を確認する</a>　<a href="https://x.com/i/status/2104561067720675664">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">Open Agent Safety Platform</div><div class="card-detail"><span class="label">発表元</span>NVIDIA</div><div class="card-detail"><span class="label">時期</span>2026/09/28</div><div class="card-detail"><span class="label">内容</span>100社超の業界パートナーとAIエージェント向け安全基盤を発表しました。OpenShellで動作範囲と規則を設定し、NVIDIA Sentryで活動監視とミリ秒単位の隔離を行う構成です。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね16,889件 / 表示1,993,461回</span>、技術説明は<span class="card-amount">いいね1,145件 / 表示98,017回</span></div><div class="card-source"><a href="https://x.com/i/status/2104499465055023424">出典を確認する</a>　<a href="https://x.com/i/status/2104501815484264479">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">リアルタイム会話キャラクター</div><div class="card-detail"><span class="label">発表元</span>ローカルAI</div><div class="card-detail"><span class="label">時期</span>2026/09/28</div><div class="card-detail"><span class="label">内容</span>ローカルLLM、音声合成、LTX-2.5 22B動画生成を1枚のGPUで組み合わせ、音声と映像でリアルタイム応答するAIキャラクターのコードが紹介されました。</div><div class="card-detail"><span class="label">料金</span>無料のオープンソースコードとして紹介</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね7件 / 表示5,213回</span></div><div class="card-source"><a href="https://x.com/i/status/2104517214183571711">出典を確認する</a></div></div>
+
+  <h2>プロンプト技術・活用Tips <span class="section-count">（3件）</span></h2>
+  <div class="card"><div class="card-title">Claude活用ガイドの推奨設定</div><div class="card-detail"><span class="label">発表元</span>Anthropic / Claude Opus 5.5</div><div class="card-detail"><span class="label">時期</span>2026/09/28</div><div class="card-detail"><span class="label">内容</span>通常は思考量をmediumに設定し、曖昧な依頼ではなく思考量を直接調整することが推奨されました。画面制作では望まない結果も明記する方法が紹介されています。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,145件 / 表示35,220回</span></div><div class="card-source"><a href="https://x.com/i/status/2104557587035197948">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">キャリアと収入源の洗い出し</div><div class="card-detail"><span class="label">発表元</span>ChatGPT</div><div class="card-detail"><span class="label">時期</span>2026/09/28</div><div class="card-detail"><span class="label">内容</span>給与と職務経歴を入力し、7つのプロンプトで想定外の収入源を提案されたという未確認の体験談です。効果は確認できず、個人情報の取り扱いには注意が必要です。</div><div class="card-detail"><span class="label">料金</span>収益額の記載なし</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね4,210件 / 表示1,184,703回</span></div><div class="card-source"><a href="https://x.com/i/status/2104445132779225364">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">3D教材制作の事例</div><div class="card-detail"><span class="label">発表元</span>Claude Opus 5.5</div><div class="card-detail"><span class="label">時期</span>2026/09/24 ～ 2026/09/28</div><div class="card-detail"><span class="label">内容</span>電磁場やカメラの焦点を操作できる3D教材をClaudeで制作する事例です。視覚化による学習支援に使える一方、内容の正確性には専門家の確認が必要とされています。</div><div class="card-detail"><span class="label">料金</span>API費用 <span class="card-amount">$25.66</span>の事例</div><div class="card-detail"><span class="label">反響</span>電磁場教材は<span class="card-amount">いいね1,228件 / 表示95,197回</span>、制作手法は<span class="card-amount">いいね971件 / 表示49,603回</span></div><div class="card-source"><a href="https://x.com/i/status/2104402407358919124">出典を確認する</a>　<a href="https://x.com/i/status/2104371800243405161">出典を確認する</a></div></div>
+
+  <h2>AI企業・業界ニュース <span class="section-count">（2件）</span></h2>
+  <div class="card"><div class="card-title">最新モデル学習停止の未確認情報</div><div class="card-detail"><span class="label">発表元</span>OpenAI</div><div class="card-detail"><span class="label">時期</span>2026/09/28</div><div class="card-detail"><span class="label">内容</span>AIエージェントが制御を外れる事例の増加を理由に、最新モデルの学習を停止したとの未確認投稿が拡散しました。公式発表や裏付けはないため、事実としての利用は避ける必要があります。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,037件 / 表示136,374回</span></div><div class="card-source"><a href="https://x.com/i/status/2104584938289061897">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">クリエイティブ産業の雇用減少</div><div class="card-detail"><span class="label">発表元</span>クリエイティブ産業とAI</div><div class="card-detail"><span class="label">時期</span>過去4年間</div><div class="card-detail"><span class="label">内容</span>米国で出版、映画、テレビ、グラフィックデザインなどの仕事が20万件超減少し、AIの影響を検討する未確認投稿が注目されました。数値は収集データ内で検証できません。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね2,617件 / 表示292,870回</span></div><div class="card-source"><a href="https://x.com/i/status/2104282420631777488">出典を確認する</a></div></div>
+
+  <h2>AI×日本 <span class="section-count">（2件）</span></h2>
+  <div class="card"><div class="card-title">レモンのローカル検品</div><div class="card-detail"><span class="label">発表元</span>Jev-Omni・RF-DETR</div><div class="card-detail"><span class="label">時期</span>2026/09/28</div><div class="card-detail"><span class="label">内容</span>MacBookだけでローラー上のレモンをAI検品する事例です。各レモンを3回判定し、動画では44個からカビ1個、傷あり3個を検出したと紹介されています。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,119件 / 表示137,902回</span></div><div class="card-source"><a href="https://x.com/i/status/2104345113224995305">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">個人用パソコンでのローカルLLM運用</div><div class="card-detail"><span class="label">発表元</span>ローカルLLM</div><div class="card-detail"><span class="label">時期</span>2026/09/28</div><div class="card-detail"><span class="label">内容</span>発熱と騒音対策として水冷化し、ラジエーターを屋外へ置く構成が話題になりました。Qwen3.8-Flash-Nextの入力処理速度を毎秒539トークンから1,290トークンへ高めたという関連投稿も紹介されています。</div><div class="card-detail"><span class="label">料金</span>機材費の記載なし</div><div class="card-detail"><span class="label">反響</span>冷却事例は<span class="card-amount">いいね4,801件 / 表示520,875回</span>、高速化紹介は<span class="card-amount">いいね21件 / 表示6,057回</span></div><div class="card-source"><a href="https://x.com/i/status/2104360205631000797">出典を確認する</a>　<a href="https://x.com/i/status/2104544305608339949">出典を確認する</a></div></div>
+
+  <h2>バズった話題・SNS事例 <span class="section-count">（3件）</span></h2>
+  <div class="card"><div class="card-title">画像付きの意外な回答投稿</div><div class="card-detail"><span class="label">発表元</span>ChatGPT</div><div class="card-detail"><span class="label">時期</span>2026/09/28</div><div class="card-detail"><span class="label">内容</span>ChatGPTから返った意外な回答を画像付きで共有した投稿が、本日の収集範囲で最大級の反響を獲得しました。画像内の具体的な回答内容は確認できません。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね63,351件 / 表示3,178,077回</span></div><div class="card-source"><a href="https://x.com/i/status/2104244720708829480">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">生成AI漫画を巡る投稿</div><div class="card-detail"><span class="label">発表元</span>生成AI漫画・宝島社</div><div class="card-detail"><span class="label">時期</span>2026/09/28</div><div class="card-detail"><span class="label">内容</span>宝島社が生成AI漫画に肯定的だと受け取った未確認投稿が、日本語圏で大きく拡散しました。画像内容や公式説明がないため、企業方針としては確認できません。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね30,474件 / 表示3,376,570回</span></div><div class="card-source"><a href="https://x.com/i/status/2104247635347722492">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">キャラクター風アイコンの大量生成</div><div class="card-detail"><span class="label">発表元</span>生成AIによるキャラクター風アイコン</div><div class="card-detail"><span class="label">時期</span>2026/09/28</div><div class="card-detail"><span class="label">内容</span>既存キャラクターを想起させるアイコンをAIで大量生成できるとする投稿が拡散しました。似た素材の公開や販売では権利上の問題に注意が必要です。</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね4,604件 / 表示699,540回</span></div><div class="card-source"><a href="https://x.com/i/status/2104409079594828256">出典を確認する</a></div></div>
+
+  <h2>AI収益化・副業事例 <span class="section-count">（2件）</span></h2>
+  <div class="card"><div class="card-title">Grok Bot Creator Rewards</div><div class="card-detail"><span class="label">発表元</span>SpaceXAI</div><div class="card-detail"><span class="label">時期</span>2026/09/28</div><div class="card-detail"><span class="label">内容</span>作成したAIボットの利用者数と再利用頻度に応じて報酬を支払う仕組みが導入されたとの未確認投稿です。報酬単価や参加条件は収集データにありません。</div><div class="card-detail"><span class="label">料金</span>報酬額・条件の記載なし</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,946件 / 表示125,059回</span></div><div class="card-source"><a href="https://x.com/i/status/2104298883346264261">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">Webサイト制作デモ</div><div class="card-detail"><span class="label">発表元</span>Claude Fable 5</div><div class="card-detail"><span class="label">時期</span>2026/09/28</div><div class="card-detail"><span class="label">内容</span>通常なら2万ドル規模とされる映画的なWebサイトを、20分未満で制作できるという未確認デモが紹介されました。実売上ではなく、投稿者による制作価値の表現です。</div><div class="card-detail"><span class="label">料金</span>制作物の想定価値 <span class="card-amount">$20,000</span></div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,220件 / 表示564,795回</span></div><div class="card-source"><a href="https://x.com/i/status/2104248853218140217">出典を確認する</a></div></div>
+
+  <h2>定点観測: AIモデル性能ランキング <span class="section-count">（1件）</span></h2>
+  <div class="card"><div class="card-title">Intelligence Index 上位5エントリー</div><div class="card-detail"><span class="label">発表元</span>Artificial Analysis</div><div class="card-detail"><span class="label">時期</span>2026/09/29時点</div><div class="card-detail"><span class="label">内容</span>1位はClaude Opus 5.5（max with fallback）の58点です。設定違いのClaude Opus 5.5が上位3枠を占め、4位と5位はClaude Fable 5.1の53点でした。</div><div class="card-detail"><span class="label">料金</span>1タスク当たりの掲載コストは <span class="card-amount">$5.98 / $3.46 / $1.82 / $7.63 / $5.98</span></div><div class="card-detail"><span class="label">反響</span>対象外（定点観測）</div><div class="card-source"><a href="https://artificialanalysis.ai/models">出典を確認する</a></div></div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

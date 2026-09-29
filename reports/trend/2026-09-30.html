@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年9月30日（水）版</p>
+  <p class="total-count">本日のトレンド: 10件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">セブンプレミアム まるで蜜芋</div>
+    <div class="card-detail"><span class="label">特徴</span>紅はるかを100％使用した蜜芋アイスと、甘さを抑えたバニラアイスの2層仕立て。容量を従来の65mLから68mLへ増量。</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月29日から順次</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">190円（税別）</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2143993.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">健康のど飴たたかうマヌカハニーミルク</div>
+    <div class="card-detail"><span class="label">特徴</span>ニュージーランド産MGO115+のマヌカハニーにミルクを合わせた、内容量80gののど飴。</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月29日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">279円前後</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2143820.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">よくばり合体メシ チャーハン＆背脂焼ラーメン</div>
+    <div class="card-detail"><span class="label">特徴</span>黒胡椒マヨネーズをかけたチャーハンと背脂焼ラーメンを組み合わせたローソン商品。熱量は1,125kcalで、九州・沖縄およびナチュラルローソンは対象外。</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年9月29日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">754円</span></div>
+    <div class="card-source"><a href="https://news.mynavi.jp/article/20260929-5042503/">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ケンタッキー「カーネルクリスピー1ピース半額」</div>
+    <div class="card-detail"><span class="label">特典内容</span>通常290円の商品を140円で販売。値引額は150円で、通常価格比約51.7％引き。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月30日～10月13日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2144014.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サンマルクカフェの日</div>
+    <div class="card-detail"><span class="label">特典内容</span>通常2,250円のチョコクロ9個入りBOXを30％オフの1,570円で販売。数量限定で「ミニオンズ＆モンスターズ」コラボカップ1個が付属。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月30日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2143880.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">松屋 肉の日企画</div>
+    <div class="card-detail"><span class="label">特典内容</span>公式アプリからの注文限定で「牛焼肉W定食」「カルビ焼肉W定食」を各1,380円から1,180円へ200円引き。対象ハンバーグ定食も各100円引き。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年9月29日0時～23時59分</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-source"><a href="https://www.matsuyafoods.co.jp/whatsnew/campaign/179076.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">東京ゲームショウ2026限定ノベルティ</div>
+    <div class="card-detail"><span class="label">市場状況</span>業界関係者向け開催日が「仕入れの場」になったと報道された。PlayStationブースのシアター視聴特典「グランド・セフト・オートVI」Tシャツは、フリマサイトで1万円を超える価格で取引された。</div>
+    <div class="card-detail"><span class="label">注意点</span>無料配布品や限定ノベルティは正規販売価格との比較ができず、相場が急変しやすい。購入時は取引実績と商品の真贋を確認したい。</div>
+    <div class="card-source"><a href="https://naigaitimes.com/society/508237/?source=alongside">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「ポケモンカード151」ゲンガー MM</div>
+    <div class="card-detail"><span class="label">市場状況</span>2026年9月29日の最新販売価格は<span class="card-amount">104,900円</span>で、月間最低価格68,000円から36,900円上昇。上昇率は約54.3％で、推定買取価格は74,850円。</div>
+    <div class="card-detail"><span class="label">注意点</span>掲載相場には店舗ごとの価格差があり、同日時点でも99,800円から110,000円の販売価格が確認されている。</div>
+    <div class="card-source"><a href="https://pokeka-atari.jp/ranking/soaring">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">にら・チンゲン菜・リーフレタス</div>
+    <div class="card-detail"><span class="label">理由</span>よつ葉生協が、生育不良を理由に2026年9月29日配送分を全コースで欠品と案内。使い切り小松菜も一部コースで欠品となった。</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>よつ葉生協の利用者は配送明細を確認し、代替品が必要な場合は別の小売店で早めに確保する。</div>
+    <div class="card-source"><a href="https://yotsubacoop.jp/information/18015/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">石井さんの桃 2玉・4玉</div>
+    <div class="card-detail"><span class="label">理由</span>品質低下により今季の取り扱いを終了し、2026年9月29日配送分が全コースで欠品。</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>今季終了のため再入荷待ちは避け、他産地の桃または旬の代替果物を検討する。</div>
+    <div class="card-source"><a href="https://yotsubacoop.jp/information/18015/">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>本日は、秋向け新商品が相次ぐ一方、外食では30～50％規模の即効性が高い値引き施策が目立ちました。限定ノベルティやトレーディングカードでは高額化が続いていますが、生鮮品では生育不良による欠品も発生しており、需要過熱と供給制約を分けて判断する必要があります。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

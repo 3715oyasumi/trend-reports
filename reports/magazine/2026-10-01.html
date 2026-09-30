@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>雑誌・付録情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>雑誌・付録情報</h1>
+  <p class="report-date">2026年10月1日</p>
+  <p class="total-count">本日の雑誌・付録情報: 23件</p>
+
+  <h2>高騰予想 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">古手川唯 雨濡れフィギュア</div>
+    <div class="card-detail"><span class="label">応募締切</span>10月18日23時58分</div>
+    <div class="card-detail"><span class="label">申込金額</span><span class="card-amount">27,500円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>誌面コードまたは定期購読者資格が必要な受注商品で、入手機会が限定される。</div>
+    <div class="card-source"><a href="https://www.shonenjump.com/p/teiki/2026/ec_giga2026summer_0817/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vジャンプ限定カード6種</div>
+    <div class="card-detail"><span class="label">発売日</span>9月18日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">730円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>遊戯王、ドラゴンボール、鬼滅の刃、BLEACH、ホロライブの限定仕様カード6種を収録。</div>
+    <div class="card-source"><a href="https://vjump.shueisha.co.jp/newinfo/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ジャンプSQ. 11月特大号</div>
+    <div class="card-detail"><span class="label">発売日</span>10月2日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">710円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>『ファントムバスターズ』フォト風クリアカード8枚セットとポストカードを付録として収録。</div>
+    <div class="card-source"><a href="https://jumpsq.shueisha.co.jp/sq/yokoku.html">出典を確認する</a></div>
+  </div>
+
+  <h2>週刊少年ジャンプ <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">2026年44号</div>
+    <div class="card-detail"><span class="label">発売日</span>9月28日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">320円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>公式最新号ページで物理付録を確認できない。</div>
+    <div class="card-source"><a href="https://www.shonenjump.com/j/weeklyshonenjump/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">2026年45号</div>
+    <div class="card-detail"><span class="label">発売日</span>10月5日</div>
+    <div class="card-detail"><span class="label">注目点</span>付録は現時点で未発表。</div>
+    <div class="card-source"><a href="https://www.shonenjump.com/j/weeklyshonenjump/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">定期購読者限定の応募企画</div>
+    <div class="card-detail"><span class="label">注目点</span>応募者全員サービス3件、限定プレゼント1件が掲載中。賞品名、期限、金額は画像案内のみで文字情報では未確認。対象作品の事前予告は『魔男のイチ』と『鵺の陰陽師』。</div>
+    <div class="card-source"><a href="https://www.shonenjump.com/p/sp/tekigentei_information/">出典を確認する</a></div>
+  </div>
+
+  <h2>週刊ヤングジャンプ <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">No.44特大号</div>
+    <div class="card-detail"><span class="label">発売日</span>10月1日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">510円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>水野Retaのミニワチャ8ページ小冊子付き。対象店舗・数量限定の記載なし。</div>
+    <div class="card-source"><a href="https://youngjump.jp/magazine/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">No.45</div>
+    <div class="card-detail"><span class="label">発売日</span>10月8日</div>
+    <div class="card-detail"><span class="label">注目点</span>付録、グラビア小冊子、クリアファイル等は現時点で未発表。</div>
+    <div class="card-source"><a href="https://youngjump.jp/magazine/">出典を確認する</a></div>
+  </div>
+
+  <h2>Vジャンプ <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">11月特大号</div>
+    <div class="card-detail"><span class="label">発売日</span>9月18日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">730円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>遊戯王OCG「装甲魔導士パズー」、ドラゴンボール2種、鬼滅の刃、BLEACH、hololiveの紙版付録カード6種。店舗限定の記載なし。</div>
+    <div class="card-source"><a href="https://vjump.shueisha.co.jp/newinfo/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">12月特大号</div>
+    <div class="card-detail"><span class="label">発売日</span>10月21日</div>
+    <div class="card-detail"><span class="label">注目点</span>付録は現時点で未発表。</div>
+    <div class="card-source"><a href="https://adnavi.shueisha.co.jp/media/vjump/">出典を確認する</a></div>
+  </div>
+
+  <h2>最強ジャンプ <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">10月号</div>
+    <div class="card-detail"><span class="label">発売日</span>9月4日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">710円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>『ハイキュー!!×ヒナガラス』ホロステッカー、バボカ、ドラゴンボール、遊戯王ラッシュデュエル、別冊「勉タメジャンプ」を収録。</div>
+    <div class="card-source"><a href="https://www.saikyojump.com/_news/news2610_03.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">11月号</div>
+    <div class="card-detail"><span class="label">発売日</span>10月2日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">710円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>遊戯王ラッシュデュエル「雲海竜 ネーレイディス」、ドラゴンボール「バーダック」、デジモンカードゲーム「デジタルゲートオープン」を収録。</div>
+    <div class="card-source"><a href="https://www.saikyojump.com/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">最強ガシャステーション特製『ハイキュー!!』アクリルスタンド2026</div>
+    <div class="card-detail"><span class="label">応募締切</span>店頭申込は10月1日各店舗営業終了まで。WEB申込は10月15日23時59分まで。</div>
+    <div class="card-detail"><span class="label">申込金額</span><span class="card-amount">1回800円</span>。WEB申込は別途送料660円。</div>
+    <div class="card-detail"><span class="label">注目点</span>全4種のランダム商品。4回申し込んでも全種が揃う保証はない。</div>
+    <div class="card-detail"><span class="label">応募方法</span>店頭は10月号の店頭用二次元コード、WEBは紙版・ゼブラック版・Kindle版のWEB用ゲットコードを使用。</div>
+    <div class="card-source"><a href="https://www.saikyojump.com/_news/news2610_04.html">出典を確認する</a></div>
+  </div>
+
+  <h2>ジャンプSQ. <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">10月特大号</div>
+    <div class="card-detail"><span class="label">発売日</span>9月4日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">700円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>『新テニスの王子様』デュアルカードコレクション第1弾付き。</div>
+    <div class="card-source"><a href="https://jumpsq.shueisha.co.jp/sq/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">11月特大号</div>
+    <div class="card-detail"><span class="label">発売日</span>10月2日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">710円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>『ファントムバスターズ』フォト風クリアカード8枚セット＆ポストカード、『新テニスの王子様』デュアルカードコレクション第2弾付き。</div>
+    <div class="card-source"><a href="https://jumpsq.shueisha.co.jp/sq/yokoku.html">出典を確認する</a></div>
+  </div>
+
+  <h2>ジャンプGIGA <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">2026 SUMMER</div>
+    <div class="card-detail"><span class="label">発売日</span>8月17日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">紙版1,350円、電子版1,283円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>水尾くらげと古手川唯のアクリルスタンド、古手川唯雨濡れポスターなどを収録。電子版には一部内容が収録されない。</div>
+    <div class="card-source"><a href="https://www.shonenjump.com/j/jumpgiga/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">2026 SUMMER 購入者限定通販</div>
+    <div class="card-detail"><span class="label">応募締切</span>10月18日23時58分</div>
+    <div class="card-detail"><span class="label">申込金額</span><span class="card-amount">1,650円から44,000円</span>。別途送料880円。</div>
+    <div class="card-detail"><span class="label">注目点</span>古手川唯雨濡れフィギュア、額装高精細デジタルカラーなどを販売。フィギュアを含む注文は2027年10月下旬発送予定。</div>
+    <div class="card-detail"><span class="label">応募方法</span>紙版の封入注文コード、または少年ジャンプ＋・ゼブラックの週刊少年ジャンプ定期購読者資格が必要。</div>
+    <div class="card-source"><a href="https://www.shonenjump.com/p/teiki/2026/ec_giga2026summer_0817/">出典を確認する</a></div>
+  </div>
+
+  <h2>ウルトラジャンプ <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">2026年10月号</div>
+    <div class="card-detail"><span class="label">発売日</span>9月17日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">800円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>『スティール・ボール・ラン』複製原稿風クリアファイル付き。アニメ第7部配信開始記念の第3弾付録。</div>
+    <div class="card-source"><a href="https://ultra.shueisha.co.jp/nowonsale/nowonsale-9245/">出典を確認する</a></div>
+  </div>
+
+  <h2>グランドジャンプ <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">No.20</div>
+    <div class="card-detail"><span class="label">発売日</span>9月16日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">510円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>公式最新号ページで付録を確認できない。</div>
+    <div class="card-source"><a href="https://grandjump.shueisha.co.jp/honsi/">出典を確認する</a></div>
+  </div>
+
+  <h2>月刊コロコロコミック <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">2026年10月号</div>
+    <div class="card-detail"><span class="label">発売日</span>9月15日ごろ</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">730円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>ポケモンカードゲーム30周年ジャンボステッカー、運命の巻戻士袋とじ、スプラトゥーン全11種ブキシール、ヴァンガード、オレカバトル2付録を収録。</div>
+    <div class="card-source"><a href="https://corocoro-news.jp/news/402388/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">2026年11月号</div>
+    <div class="card-detail"><span class="label">発売日</span>10月15日ごろ</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">770円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>『ホロビート』50枚デッキとプレイマット、名探偵コナンTCG特別PRカード、ポケモンフレンダチケットなどを収録。</div>
+    <div class="card-source"><a href="https://corocoro-news.jp/news/402538/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">限定メタリックカラー バリバコイン3枚セット</div>
+    <div class="card-detail"><span class="label">応募締切</span>10月14日消印有効</div>
+    <div class="card-detail"><span class="label">申込金額</span><span class="card-amount">1,780円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>「ボーダー」「ニャルバン」「ラッティー」の3枚セット。商品代、送料、手数料込み。</div>
+    <div class="card-detail"><span class="label">応募方法</span>10月号の応募ハガキを使用。必要券の細則は誌面で確認。</div>
+    <div class="card-source"><a href="https://corocoro.jp/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">『ホロビート』スタートデッキプレゼント</div>
+    <div class="card-detail"><span class="label">応募締切</span>10月14日消印有効</div>
+    <div class="card-detail"><span class="label">注目点</span>「レオジン 赤」または「不死火翔 緑」を合計1,000名にプレゼント。</div>
+    <div class="card-detail"><span class="label">応募方法</span>10月号の銀はがしを使用。必要事項・郵送方法は誌面で確認。</div>
+    <div class="card-source"><a href="https://corocoro.jp/">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※価格・発売日は確認時点のものです。</p>
+</body>
+</html>

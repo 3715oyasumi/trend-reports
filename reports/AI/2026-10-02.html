@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI最新動向レポート（2026/10/02）</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>AI最新動向レポート</h1>
+  <p class="report-date">2026年10月2日</p>
+  <p class="total-count">本日のAIトピック: 22件</p>
+
+  <h2>新AIモデル・LLM情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Google / Gemini 4 Argon</div>
+    <div class="card-detail"><span class="label">発表元</span>Google / Gemini 4 Argon</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>Googleが長期間・多段階の作業を想定した最上位モデルを発表。出力上限は100万トークンで、現在は信頼できるテスター向けに提供されている。</div>
+    <div class="card-detail"><span class="label">料金</span>開始時割引は入力<span class="card-amount">$2</span>・出力<span class="card-amount">$10</span>、通常価格は入力$4・出力$20（各100万トークン）。知能指数タスク当たり$1.99。</div>
+    <div class="card-detail"><span class="label">反響</span>Google公式は<span class="card-amount">いいね39,665件 / 表示7,757,152回</span>、Google DeepMind公式はいいね41,409件 / 表示7,676,902回。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2105388143902175529">出典を確認する</a>　<a href="https://x.com/i/status/2105388084154056939">出典を確認する</a>　<a href="https://x.com/i/status/2105392625788637299">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Google / Gemini 4 Argonの業務活用</div>
+    <div class="card-detail"><span class="label">発表元</span>Google / Gemini 4 Argon</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>Google社内でデータセンター解析、300TiB超のメモリ解放、大規模なC/C++コードのRust移行に利用された。動画デコーダー書き換えでは既存版の2.7倍の速度を達成したとしている。</div>
+    <div class="card-detail"><span class="label">料金</span>開始時割引で入力<span class="card-amount">$2</span> / 出力<span class="card-amount">$10</span>（各100万トークン）。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね4,328件 / 表示304,211回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105395385191776455">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">DeepSeek Harness</div>
+    <div class="card-detail"><span class="label">発表元</span>DeepSeek Harness</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>DeepSeek Harnessのデスクトップ版がmacOSとWindowsに対応。具体的な機能や利用条件は投稿内で案内されていない。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね4,499件 / 表示469,578回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105330281389662575">出典を確認する</a></div>
+  </div>
+
+  <h2>新AIツール・サービス <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Google / Gemini Skills</div>
+    <div class="card-detail"><span class="label">発表元</span>Google / Gemini Skills</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>Geminiアプリに繰り返し使う指示を保存するSkillsが追加された。「/」の入力で呼び出せ、定型メールや調査手順などの反復作業を短縮できる。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね3,793件 / 表示910,656回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105331451294314809">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Ideogram / Ideogram 4.5</div>
+    <div class="card-detail"><span class="label">発表元</span>Ideogram / Ideogram 4.5</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>繰り返し編集時の色ずれや不要な生成物の蓄積を抑える画像編集モデルが公開された。Ideogram本体、API、提携サービスで利用でき、オープンウェイト版も予定されている。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね3,953件 / 表示625,803回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105327223431737780">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Grok Bot / Cursor連携</div>
+    <div class="card-detail"><span class="label">発表元</span>Grok Bot / Cursor</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>Grok Botがチーム共有、財務情報の検索・管理、音声通話中のチャット検索に対応。Slack上のBotからCursorのクラウドエージェントへ開発作業を渡す運用例も紹介された。</div>
+    <div class="card-detail"><span class="label">反響</span>新機能紹介は<span class="card-amount">いいね3,901件 / 表示2,985,362回</span>、Cursor連携例はいいね1,278件 / 表示1,903,035回。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2105345158162063493">出典を確認する</a>　<a href="https://x.com/i/status/2105377066942349794">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ChatGPT Sites / MCPサーバー・プラグイン作成</div>
+    <div class="card-detail"><span class="label">発表元</span>ChatGPT Sites</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>ChatGPT SitesからMCPサーバーを作成・公開し、そのままChatGPT用プラグインとして導入できる事例が紹介された。別の開発者はプラグイン拡張の発表後、利用が2,000%以上増えたと報告している。</div>
+    <div class="card-detail"><span class="label">反響</span>Sites機能紹介は<span class="card-amount">いいね1,384件 / 表示622,890回</span>、成長報告はいいね3,177件 / 表示1,144,143回。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2105428405571428785">出典を確認する</a>　<a href="https://x.com/i/status/2105353473118404648">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Zed / AIサブエージェント</div>
+    <div class="card-detail"><span class="label">発表元</span>Zed / Zed v1.22</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>コードエディターZed v1.22が、作業中に異なるAIモデルのサブエージェントを起動する機能に対応した。各サブエージェントカードには使用中のモデルが表示される。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね576件 / 表示26,029回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105336857689035054">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vivix Labs / A1 Playground＋Agent</div>
+    <div class="card-detail"><span class="label">発表元</span>Vivix Labs / A1 Playground＋Agent</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>画像と説明から、会話、全身動作、移動、商品の提示、Webゲームへの参加ができるAIキャラクターを作成するサービスが発表された。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,257件 / 表示947,160回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105329123271033028">出典を確認する</a></div>
+  </div>
+
+  <h2>プロンプト技術・活用Tips <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Codex / Solを実装役、Astraを設計レビュー役に分ける運用</div>
+    <div class="card-detail"><span class="label">発表元</span>Codex / GPT-6.1 Sol・GPT-6 Astra</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>GPT-6.1 Solを実装担当、GPT-6 Astraを計画前・エラー再発時・完了直前のレビューに限定する構成が提案された。軽量モデル、Sol、Astraを役割ごとに使い分ける方法。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね792件 / 表示168,661回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105398038026195279">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Google / Gemini Skillsによる定型プロンプト保存</div>
+    <div class="card-detail"><span class="label">発表元</span>Google / Gemini Skills</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>よく使う長い指示をSkillsとして保存し、「/」から再利用する方法が公式に紹介された。文章校正、商品調査、定型レポートなど処理手順が固定された仕事と相性がよい。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね3,793件 / 表示910,656回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105331451294314809">出典を確認する</a></div>
+  </div>
+
+  <h2>AI企業・業界ニュース <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Google DeepMind / SynthID Bio</div>
+    <div class="card-detail"><span class="label">発表元</span>Google DeepMind / SynthID Bio</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>AIが設計したタンパク質配列へ、機能を変えずに識別情報を埋め込む電子透かし技術を発表。DNA研究施設でのAI生成合成タンパク質の確認や生物安全性向上を想定している。</div>
+    <div class="card-detail"><span class="label">料金</span>研究利用向けにオープン提供。</div>
+    <div class="card-detail"><span class="label">反響</span>発表投稿は<span class="card-amount">いいね358件 / 表示53,350回</span>、用途説明はいいね53件 / 表示13,120回。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2105624656170643854">出典を確認する</a>　<a href="https://x.com/i/status/2105624658951176323">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">OpenAI / 中小企業向けAIエージェント支援</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>OpenAIが中小企業の顧客獲得、製品開発、財務管理におけるAIエージェント活用を扱うレポートを公開。ASBDCとの提携による経営者向けAI研修と地域支援も発表した。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,531件 / 表示220,150回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105373267171438779">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">日本の声優 / 生成AIによる声の無断模倣</div>
+    <div class="card-detail"><span class="label">発表元</span>日本の声優</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>声優の声を無断模倣し、わいせつな内容を発声させる生成AIコンテンツを受け、声の権利を保護する実効的な法整備を求める問題が話題になった。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,279件 / 表示54,335回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105424407024009623">出典を確認する</a></div>
+  </div>
+
+  <h2>AI×日本 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Strata / Qwen3.8 Flash Nextのローカル実行</div>
+    <div class="card-detail"><span class="label">発表元</span>Strata / Qwen3.8 Flash Next</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>容量87GBのモデルを一般的なゲーミングPCで動かしたという未確認の利用報告。投稿者測定ではRTX 5090で毎秒120から150トークンとしている。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね787件 / 表示103,499回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105489881715937326">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">個人漫画制作者 / AI対応漫画ツールの自作</div>
+    <div class="card-detail"><span class="label">発表元</span>個人漫画制作者</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>コード経験がなかったという漫画制作者が、AIを使って数日で個人用漫画ツールを作ったと自己申告。CLIP形式の互換機能と画像生成機能を搭載している。</div>
+    <div class="card-detail"><span class="label">料金</span>投稿者は<span class="card-amount">GPTの定額契約料のみ</span>と説明。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね286件 / 表示13,691回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105614451802075333">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Sonnet 5.5 / 自然言語からゲーム化</div>
+    <div class="card-detail"><span class="label">発表元</span>Sonnet 5.5</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>three.jsで再現したアニメーションを、自然言語の指示で遊べるゲームへ変換したという日本語圏の実演が紹介された。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね32件 / 表示2,493回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105647446164725865">出典を確認する</a></div>
+  </div>
+
+  <h2>バズった話題・SNS事例 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">日本のイラスト制作者 / 生成AI普及後の依頼減少</div>
+    <div class="card-detail"><span class="label">発表元</span>日本のイラスト制作者</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>生成AIの普及後にイラスト依頼がほぼなくなったという制作者の投稿が大きな反響を集めた。業界全体の統計ではないものの、既存クリエイターの仕事への影響が議論されている。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね21,894件 / 表示2,595,468回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105478334163615846">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AI生成動画 / 配膳ロボットから肉を奪う映像</div>
+    <div class="card-detail"><span class="label">発表元</span>AI生成動画</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>ネコ型配膳ロボットから人々が肉を奪う場面を生成AIで映像化した投稿が話題になった。短い状況説明と視覚的に分かりやすい展開を組み合わせたSNS向けの事例。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね884件 / 表示132,339回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105540884922241418">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Figure AI / Figure 02の退役企画</div>
+    <div class="card-detail"><span class="label">発表元</span>Figure AI / Figure 02</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>旧型人型ロボットFigure 02を鋳造炉へ自律的に飛び込ませ、溶かした金属を限定記念品へ加工する企画が話題になった。投稿では映像はAI生成ではないと説明されている。</div>
+    <div class="card-detail"><span class="label">料金</span>記念品の価格・販売方法は未発表。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,444件 / 表示244,773回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105430166876869113">出典を確認する</a></div>
+  </div>
+
+  <h2>AI収益化・副業事例 <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ChatGPTプラグイン開発者 / 発表後2,000%以上の成長</div>
+    <div class="card-detail"><span class="label">発表元</span>ChatGPTプラグイン開発者</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月1日</div>
+    <div class="card-detail"><span class="label">内容</span>ChatGPT向けプラグイン拡張を開発する投稿者が、発表後に利用規模が2,000%以上伸びたと自己申告。MCPサーバーの作成・公開・プラグイン化による業務用ミニツール配布が注目されている。</div>
+    <div class="card-detail"><span class="label">料金</span>売上額は記載なし。利用規模<span class="card-amount">2,000%以上増加</span>との自己申告。</div>
+    <div class="card-detail"><span class="label">反響</span>成長報告は<span class="card-amount">いいね3,177件 / 表示1,144,143回</span>、Sites機能紹介はいいね1,384件 / 表示622,890回。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2105353473118404648">出典を確認する</a>　<a href="https://x.com/i/status/2105428405571428785">出典を確認する</a></div>
+  </div>
+
+  <h2>定点観測: AIモデル性能ランキング <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Artificial Analysis / Intelligence Index</div>
+    <div class="card-detail"><span class="label">発表元</span>Artificial Analysis / Intelligence Index</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月2日時点</div>
+    <div class="card-detail"><span class="label">内容</span>上位はClaude Opus 5.5が58、Claude Opus 5.5とClaude Sonnet 5.5が56。Gemini 4 Argonは53を記録し、GPT-6 Astraと同点、GPT-6.1 Solを1ポイント上回った。</div>
+    <div class="card-detail"><span class="label">料金</span>上位5構成のタスク当たり費用は<span class="card-amount">$1.82から$7.63</span>。Gemini 4 Argonは開始時割引でタスク当たり$1.99。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね4,428件 / 表示465,552回</span></div>
+    <div class="card-source"><a href="https://artificialanalysis.ai/models">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

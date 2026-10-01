@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のモバイル情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のモバイル情報</h1>
+  <p class="report-date">2026年10月2日</p>
+  <p class="total-count">本日のモバイル案件: 17件</p>
+
+  <h2>NTTドコモ <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">「ahamo」リニューアルと料金改定</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>2026年12月から40GB・60GB・120GBの3段階制となり、月額3,135円／4,125円／5,115円へ変更。現行契約者にも適用。大盛りオプションは11月30日で終了。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/12/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.docomo.ne.jp/info/news_release/2026/09/25_00.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">新料金プラン「ドコモ mini2」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">月額858円／2,178円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>6GBは月額3,278円、12GBは月額4,598円。家族・dカード・ドコモ光またはhome 5G・ドコモでんきの各割引を最大適用時。「ドコモ mini」は11月30日で新規受付終了。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/12/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.docomo.ne.jp/info/news_release/2026/09/25_00.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「ドコモ MAX 60歳以上割」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大3カ月間、月額最大2,970円引き</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>60歳以上が対象。各種割引適用時は30GB以下を月額858円から利用可能。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.docomo.ne.jp/info/news_release/2026/09/25_00.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">旧料金プランを中心とする値上げ予告</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>eximoなどは月額550円、irumoの3GB・6GB・9GBなどは330円、OCNモバイルONEの10GBなどは220円、irumo 0.5GBは110円値上げ。ahamoもリニューアルに伴い月額165円上がります。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/12/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.docomo.ne.jp/info/news_release/2026/09/25_00.html">出典を確認する</a></div>
+  </div>
+
+  <h2>ahamo <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">リニューアル記念プレゼントキャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">dポイント50,000ポイント</span>を30名、Insta360 X4 Airを5名、宿泊カタログギフトを5名に進呈</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ahamo</div>
+    <div class="card-detail"><span class="label">条件</span>エントリーし、10月31日時点でahamoを契約・開通している人が対象。既存契約者も対象。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/25 ～ 2026/10/31</div>
+    <div class="card-source"><a href="https://ahamo.com/special/presentcampaign15/">出典を確認する</a></div>
+  </div>
+
+  <h2>au <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Google AI Proの料金改定</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">月額660円割引</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>au</div>
+    <div class="card-detail"><span class="label">条件</span>月額1,760円から2,420円へ値上げ、ストレージは5TB。9月30日までの加入者は2026年12月利用分まで実質月額1,760円を維持。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.au.com/entertainment/googleone/">出典を確認する</a></div>
+  </div>
+
+  <h2>povo <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Google・povo2.0の5周年キャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">500GBを3日間利用可能、Pixel 10／Pixel 10aを20％引き</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo2.0</div>
+    <div class="card-detail"><span class="label">条件</span>コード「THANKS5TH」で新規契約・SIM有効化。MNPも対象。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/09/25 ～ 2026/10/21</div>
+    <div class="card-source"><a href="https://povo.jp/news/newsrelease/20260925_01/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">データ専用プラン新規契約者向け「0.5GB（24時間）」5円トッピング</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">5円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>データ専用プランの新規契約者が対象。初回購入時のみ利用可能。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/10/31</div>
+    <div class="card-source"><a href="https://povo.jp/news/newsrelease/20260929_01/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「12GB（365日間）」トッピング</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">税込6,240円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>1カ月当たり約1GB・520円の長期利用向けトッピング。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/10/13</div>
+    <div class="card-source"><a href="https://povo.jp/news/newsrelease/20261001_04/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「通勤・通学定期」2種</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">2,200円／3,600円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>データ使い放題1時間×40回分を2,200円、2時間×40回分を3,600円で提供。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/10/08</div>
+    <div class="card-source"><a href="https://povo.jp/news/newsrelease/20261001_03/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「毎週末だけ放題」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">2,370円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>週末データ使い放題3日間を4回分、通常3回分相当の価格で提供。コード入力期限は11月15日。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/10/05</div>
+    <div class="card-source"><a href="https://povo.jp/news/newsrelease/20261001_01/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">つくば市の自動運転バスで「povo Data Oasis」を提供</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">合計最大1GBを無料</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>車内QRコードから1回0.1GB（24時間）。1日1回・月最大10回。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/02 ～ 2027/01/29</div>
+    <div class="card-source"><a href="https://povo.jp/news/newsrelease/20261001_02/">出典を確認する</a></div>
+  </div>
+
+  <h2>楽天モバイル <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">AppleCare Services関連オプションの値上げ</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>iPhone向けは月額1,310～1,650円から1,800～2,200円へ、対象Apple Watch向けは月額500～650円から600～800円へ改定。10月1日までの加入者は従来料金のまま。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/02 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://network.mobile.rakuten.co.jp/information/news/service/3897/">出典を確認する</a></div>
+  </div>
+
+  <h2>mineo <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">各種事務手数料の改定</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>mineo</div>
+    <div class="card-detail"><span class="label">条件</span>契約・変更事務手数料は3,300円から3,850円、SIMカード再発行手数料は2,200円から2,750円へ値上げ。eSIMプロファイル発行料は440円から無料へ変更。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://support.mineo.jp/news/1829/">出典を確認する</a></div>
+  </div>
+
+  <h2>BB.exciteモバイル <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Flatプラン30GBの月額料金を値下げ</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">音声SIM 月額1,980円、SMS付きSIM 月額1,947円、データ専用SIM 月額1,870円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>BB.exciteモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>既存契約者にも自動適用。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://bb.excite.co.jp/info/detail/1051/">出典を確認する</a></div>
+  </div>
+
+  <h2>J:COM MOBILE <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">新規受付終了済みの「Aプラン スマホセット／長期タイプS」の料金改定</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">5GB 月額1,958円、10GB 月額2,508円、20GB 月額3,058円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>J:COM MOBILE</div>
+    <div class="card-detail"><span class="label">条件</span>1GBは月額1,078円から1,408円へ値上げ。5GB・10GB・20GBは値下げ。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.jcom.co.jp/service/mobile/user/change_plan/">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※還元・条件は確認時点のものです。</p>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ガチャガチャ情報まとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>ガチャガチャ情報まとめ</h1>
+  <p class="report-date">2026年10月2日</p>
+  <p class="total-count">本日のガチャガチャ情報: 34件</p>
+
+  <h2>本日の注目トピック <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ちびまる子ちゃん おじいさんぬいぐるみマスコット vol.1.5</div>
+    <div class="card-detail"><span class="label">発売時期</span>1月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>「佐々木のじいさん」が注目を集め、対象日の投稿では最多となる8,645件のいいねを記録しました。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105896518742138905">出典を確認する</a> / <a href="https://x.com/japancapsuletoy/status/2105896521854292441">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ウェーブくん</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月へ延期</div>
+    <div class="card-detail"><span class="label">内容</span>発売時期が延期となりました。商品詳細と価格は投稿内に記載されていません。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105956379634868592">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">スパイダーマン ファッションリング</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月発売</div>
+    <div class="card-detail"><span class="label">内容</span>対象日の新商品投稿の中でも高い反響を集めたファッションリングです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105937569720791140">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">DEATH NOTE まちぼうけ2</div>
+    <div class="card-detail"><span class="label">発売時期</span>2月発売予定</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">500円</span></div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105932805041709544">出典を確認する</a></div>
+  </div>
+
+  <h2>新商品・発売情報 <span class="section-count">（26件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">おぺんとポーラの氷砂糖シャカシャカキーホルダー</div>
+    <div class="card-detail"><span class="label">発売時期</span>発売案内</div>
+    <div class="card-detail"><span class="label">内容</span>フロスト加工の動物と細かい氷が入ったキーホルダーです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2105787343101640737">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サルゲッチュ エコバッグ</div>
+    <div class="card-detail"><span class="label">発売時期</span>発売案内</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2105832641295438149">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">カエルのmineチャーム</div>
+    <div class="card-detail"><span class="label">発売時期</span>発売案内</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2105862838187417930">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">らぼっと ふわふわフロッキーチャーム</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月第5週より順次発売</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">400円</span></div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105891564761551072">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ちびまる子ちゃん おじいさんぬいぐるみマスコット vol.1.5</div>
+    <div class="card-detail"><span class="label">発売時期</span>1月発売予定</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105896521854292441">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ちびまる子ちゃん がまぐちポーチ</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>小物やコインを収納できるポーチです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2105915687437017170">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ゴマ豆腐アザラシ</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月発売</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105928265835942314">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">DEATH NOTE まちぼうけ2</div>
+    <div class="card-detail"><span class="label">発売時期</span>2月発売予定</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">500円</span></div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105932805041709544">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">アニメ「ぼっち・ざ・ろっく！」カラフルマルチチャーム</div>
+    <div class="card-detail"><span class="label">発売時期</span>2月発売予定</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">400円</span></div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105933118821802313">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">空想寝相シリーズ マスコットフィギュア</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月発売</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105933855660343486">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">タニクの妖精 マスコットフィギュア 2</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月発売</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105933988636561423">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">まなつ＆まふゆ フィギュアコレクショ</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月発売</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105934114184729068">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">カラフルレトロゼリィヌ マスコットフィギュア</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月発売</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105934211438051598">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">アヒル隊長 もこもこポーチ</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月発売</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105934304207601854">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ブチャグルミ いろいろきんちゃく</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月発売</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105934417923612790">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">シャキッとしな菜！3</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月発売</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105934558927691830">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">コジコジのぬいぐるみ</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月発売</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105934668986208475">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ミッフィー 貯金箱</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月発売</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105934846455644222">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ナンジャモンジャのぬいぐるみ</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月発売</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105934936305987939">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">スパイダーマン ファッションリング</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月発売</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105937569720791140">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Shaky！バブルヘッドドール ゴジラ</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2105942110121640448">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ダサいTシャツ屋さん ミニTキーホルダー</div>
+    <div class="card-detail"><span class="label">発売時期</span>発売案内</div>
+    <div class="card-detail"><span class="label">内容</span>ぬいぐるみにも使用できるミニサイズのTシャツ型キーホルダーです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2105960986796802291">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">テレタビーズ ふわふわデニムポーチ</div>
+    <div class="card-detail"><span class="label">発売時期</span>発売案内</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2105976105706348585">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">wani souma flocky figure</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月12日より順次発売</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105991067141374104">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">facaierr かわいい秋の犬たちチャームになるフィギュア</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>犬を題材にしたチャーム対応フィギュアです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2105991198175527044">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ふくふくシマちゃん ここだよますこっと</div>
+    <div class="card-detail"><span class="label">発売時期</span>発売案内</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2106006286395494881">出典を確認する</a></div>
+  </div>
+
+  <h2>その他の話題 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ウェーブくん</div>
+    <div class="card-detail"><span class="label">発売時期</span>10月へ延期</div>
+    <div class="card-detail"><span class="label">内容</span>価格やメーカーなどの詳細は投稿内に記載されていません。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105956379634868592">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ガチャガチャ商品入荷情報</div>
+    <div class="card-detail"><span class="label">入手先・相場</span>5回に分けて合計56種の入荷を案内。「ジョジョ」は最強ガシャステーションで先行販売。</div>
+    <div class="card-detail"><span class="label">内容</span>個別の商品名、価格、設置場所は本文内に記載されていません。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105971478965694800">出典を確認する</a> / <a href="https://x.com/japancapsuletoy/status/2105971628236853700">出典を確認する</a> / <a href="https://x.com/japancapsuletoy/status/2105971854808953033">出典を確認する</a> / <a href="https://x.com/japancapsuletoy/status/2105972053392396376">出典を確認する</a> / <a href="https://x.com/japancapsuletoy/status/2105972207436640381">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">来年発売予定商品の定価購入に関する話題</div>
+    <div class="card-detail"><span class="label">内容</span>対象商品名、発売時期、価格、販売先は投稿本文内に記載されていません。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105931927488528604">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">マンダロリアン・アンド・グローグー 卓上カレンダー</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>ガチャガチャ商品とは明記されていないグッズです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2105940828841709886">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※価格・発売時期は確認時点のものです。</p>
+</body>
+</html>

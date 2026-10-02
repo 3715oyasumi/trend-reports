@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年10月3日（土）版</p>
+  <p class="total-count">本日のトレンド: 9件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">成城石井「新商品祭り」約80品</div>
+    <div class="card-detail"><span class="label">特徴</span>自家製惣菜・デザート・パン・グロサリーなど、過去最大級となる約80品を230店舗で順次発売。24カ月熟成パルミジャーノ・レジャーノなどを使ったパスタソースも登場</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月2日から順次</div>
+    <div class="card-detail"><span class="label">価格</span>商品により異なる</div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000161.000027211.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Dole フルーツパック みかん／フルーツミックス</div>
+    <div class="card-detail"><span class="label">特徴</span>常温保存できる425g入りフルーツ加工品。「フルーツミックス」はパイン、みかん、黄桃の3種類を使用</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月6日から順次</div>
+    <div class="card-detail"><span class="label">価格</span>オープン価格</div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000145.000086482.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">UHA味覚糖「新満腹バー」シリーズ</div>
+    <div class="card-detail"><span class="label">特徴</span>電子レンジ加熱に対応した55g入りのごはんバー。「十六雑穀うすしお味」「ごま鮭」「焼きおにぎり風味」「しそおにぎり風味」の4商品</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月5日</div>
+    <div class="card-detail"><span class="label">価格</span>オープン価格</div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000493.000011343.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">7NOW モバイルオーダー対象商品30％引き</div>
+    <div class="card-detail"><span class="label">特典内容</span>対象のピザ、からあげ、フライドポテトなどが<span class="card-amount">30％引き</span>。「若鶏のからあげ15個」は税込1,279.80円から税込895.32円</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月2～4日、9～11日、23～25日、30～31日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000001228.000155396.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">au PAY マーケット「BIGお買い物ラリー」</div>
+    <div class="card-detail"><span class="label">特典内容</span>6店舗以上の買い回りでラリー分最大11％、各種特典を合わせて最大<span class="card-amount">40％相当</span>。上限は2,000円相当</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月3日0時～10月12日9時59分</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000432.000035663.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">出前館「ピザ半額祭」</div>
+    <div class="card-detail"><span class="label">特典内容</span>ドミノ・ピザ、ピザーラ、ピザハット、ナポリの窯など、対象店舗の対象ピザを通常価格から<span class="card-amount">50％引き</span></div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月9～12日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://corporate.demae-can.co.jp/pr/news/20261001_pizza50off.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">スターバックス×ポケモン「リユーザブルカップ」</div>
+    <div class="card-detail"><span class="label">市場状況</span>定価1,300円に対し、発売初日のメルカリ相場は約2,000円で、定価の約<span class="card-amount">1.54倍</span>。出品価格の中央値は2,261円</div>
+    <div class="card-detail"><span class="label">注意点</span>2026年10月3日から購入個数制限が解除されるため、供給増加で相場が下がる可能性がある。スターバックスカード付き商品は残高の有無を要確認</div>
+    <div class="card-source"><a href="https://note.com/acid_rain/n/nd426eded88ee">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">丸久「徳用ウインナー」</div>
+    <div class="card-detail"><span class="label">理由</span>消費期限が本来10月2日の商品を10月4日と誤表示して販売したため自主回収。2026年10月1日時点で健康被害の報告はなし</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>対象商品を食べず、販売店または事業者へ交換・返金方法を確認</div>
+    <div class="card-source"><a href="https://nutrimap-japan.com/articles/c777d934-1d9f-5c4d-8cfd-be367991cd3e">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">イオン琉球「3種細巻（鉄火、きゅうり、明太）」</div>
+    <div class="card-detail"><span class="label">理由</span>「鉄火細巻」のラベルを誤貼付し、明太に使用される小麦の表示が欠落したため自主回収。小麦アレルギーのある人には重篤症状の可能性</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>対象商品を食べず、特に小麦アレルギーのある人は販売店へ回収方法を確認</div>
+    <div class="card-source"><a href="https://nutrimap-japan.com/articles/b8c6df2c-daa0-5561-85ab-e7cd70782383">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>EC・外食では30～50％引きや最大40％相当など、秋商戦に合わせた強い販促が目立ちます。一方、限定コラボ品は発売直後に定価の約1.5倍まで上昇しており、購入制限解除後の供給増加を待つ判断が有効です。食品回収では期限表示やアレルゲン表示の誤りが発生しているため、購入済み商品のラベル確認が重要です。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

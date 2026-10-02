@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI最新動向レポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>AI最新動向レポート</h1>
+  <p class="report-date">2026年10月3日</p>
+  <p class="total-count">本日のAIトピック: 19件</p>
+
+  <h2>新AIモデル・LLM情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">GPT-6.1 Sol</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/02</div>
+    <div class="card-detail"><span class="label">内容</span>公開直後の負荷集中による低速化は解消し、想定どおりの速度に戻ったとSam Altman氏が説明しました。OpenAI史上最速で利用が拡大したモデルとも述べています。</div>
+    <div class="card-detail"><span class="label">料金</span>有料ChatGPTアカウント向けとの投稿あり。具体額は記載なし</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね11,293件・表示685,703回</span>、利用上限に関する投稿は<span class="card-amount">いいね18,041件・表示2,294,195回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105688354834756036">出典を確認する</a>　<a href="https://x.com/i/status/2105843926221660585">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">GLM 5.3・GLM 5.3 Flash</div>
+    <div class="card-detail"><span class="label">発表元</span>Cursor</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/02</div>
+    <div class="card-detail"><span class="label">内容</span>CursorでGLM 5.3と軽量版GLM 5.3 Flashが利用可能になりました。GLM 5.3 MaxはCursorBench 4.0でオープンウェイトモデル最高得点と説明されています。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね3,021件・表示180,674回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105787358557999585">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Clef・Clef-flash</div>
+    <div class="card-detail"><span class="label">発表元</span>Cloudflare</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/02</div>
+    <div class="card-detail"><span class="label">内容</span>テキスト、JSON、画像、動画から状態を読み取り、選択肢ごとの確率を返すオープンソースの意思決定モデルです。分類やAIエージェントの判断処理に特化し、Workers AIにも対応します。</div>
+    <div class="card-detail"><span class="label">料金</span>オープンソース。API料金は記載なし</div>
+    <div class="card-detail"><span class="label">反響</span>公式投稿は<span class="card-amount">いいね665件・表示145,338回</span>、日本語紹介投稿は<span class="card-amount">いいね1,024件・表示113,042回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105747536510099540">出典を確認する</a>　<a href="https://x.com/i/status/2105746165195252140">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">国産LLM</div>
+    <div class="card-detail"><span class="label">発表元</span>KDDI傘下ELYZA</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/02</div>
+    <div class="card-detail"><span class="label">内容</span>「LLM-jp-4」を基盤に性能を強化した、完全国産をうたうAIが無料公開されたと報じられました。具体的なモデル名や利用条件は投稿本文に記載されていません。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">無料</span></div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね475件・表示75,809回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105906921010237846">出典を確認する</a></div>
+  </div>
+
+  <h2>新AIツール・サービス <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Griffin</div>
+    <div class="card-detail"><span class="label">発表元</span>Tavus</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/02</div>
+    <div class="card-detail"><span class="label">内容</span>ライブ映像で会話した人の48％が人間だと判断したという、Human Interaction Modelです。全二重通信型AI動画のNVIDIAベンチマークでも首位と開発元が主張しています。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね34,109件・表示14,907,095回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105704169009246248">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">OpenDots</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenDots</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/02</div>
+    <div class="card-detail"><span class="label">内容</span>自分で運用できる常時稼働型AI同僚のオープンソース構成です。ブラウザ、端末、ファイル操作やSlack・Teams連携などを掲げ、テンプレートから独自用途に改造できます。</div>
+    <div class="card-detail"><span class="label">料金</span>セルフホスト可能。具体的な運用費は記載なし</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね3,772件・表示674,207回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105710796198322659">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AIネイティブ3Dエディター</div>
+    <div class="card-detail"><span class="label">発表元</span>Mixar</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/02</div>
+    <div class="card-detail"><span class="label">内容</span>Blenderを基盤に、複数のAIエージェントが地形、建物、小物、照明を同時制作する3Dエディターです。生成結果は編集可能な3Dメッシュとして扱えると紹介されています。</div>
+    <div class="card-detail"><span class="label">反響</span>日本語紹介投稿は<span class="card-amount">いいね573件・表示37,602回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105685934805250384">出典を確認する</a></div>
+  </div>
+
+  <h2>プロンプト技術・活用Tips <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ASD-STE100を使ったAI文章の明確化</div>
+    <div class="card-detail"><span class="label">発表元</span>AI活用Tips</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/02</div>
+    <div class="card-detail"><span class="label">内容</span>AIにASD-STE100に沿って説明するよう指示し、短文、一手順一動作、動作主体の明示、用語の統一を促す方法です。図解やHTML、解説動画として出力させる方法も提案されています。</div>
+    <div class="card-detail"><span class="label">料金</span>使用するAIサービスによる</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,792件・表示282,214回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105949373532119324">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AI動画生成のプロンプト設計</div>
+    <div class="card-detail"><span class="label">発表元</span>AI活用Tips</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/02</div>
+    <div class="card-detail"><span class="label">内容</span>目的、被写体と動作、画角、レンズ、カメラ移動などを順番に指定する手法です。1ショット・1カメラ・1つの明確な動きに絞り、画像から動画を作る際は動きと時間配分を指定することが推奨されています。</div>
+    <div class="card-detail"><span class="label">料金</span>使用する動画生成AIによる</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,064件・表示42,338回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105685837812007258">出典を確認する</a></div>
+  </div>
+
+  <h2>AI企業・業界ニュース <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Sign in with ChatGPT・Plugin Extensions</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/02</div>
+    <div class="card-detail"><span class="label">内容</span>Sam Altman氏が、AIの契約を必要なサービスで横断利用できるSign in with ChatGPTとプラグイン拡張に大きな可能性があると発言しました。今後のサービス連携基盤として注目されています。</div>
+    <div class="card-detail"><span class="label">反響</span>関連投稿は<span class="card-amount">いいね4,369件・表示923,782回</span>、追加投稿は<span class="card-amount">いいね1,249件・表示137,233回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105739098640298253">出典を確認する</a>　<a href="https://x.com/i/status/2105687922234237364">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AI生成プルリクエスト問題</div>
+    <div class="card-detail"><span class="label">発表元</span>オープンソース開発</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/02</div>
+    <div class="card-detail"><span class="label">内容</span>開発者Sindre Sorhus氏が、AIによる低品質なプルリクエスト急増を理由に、全リポジトリで外部からの変更提案を停止しました。同氏は自分でAIを使って修正・検証・公開する方が10倍速いと説明しています。</div>
+    <div class="card-detail"><span class="label">料金</span>該当なし</div>
+    <div class="card-detail"><span class="label">反響</span>停止発表は<span class="card-amount">いいね2,205件・表示465,503回</span>、補足投稿は<span class="card-amount">いいね557件・表示73,128回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105693826690298314">出典を確認する</a>　<a href="https://x.com/i/status/2105720399266984369">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AI生成物の来歴確認</div>
+    <div class="card-detail"><span class="label">発表元</span>Google DeepMind</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/02</div>
+    <div class="card-detail"><span class="label">内容</span>人間、AI、自然由来のコンテンツを区別するため、来歴情報と目に見えない電子透かしの役割を紹介しました。SynthIDによる画像・動画の識別に加え、生物学的設計への応用も取り上げています。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね467件・表示51,483回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105707085287567709">出典を確認する</a></div>
+  </div>
+
+  <h2>AI×日本 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ゲーム開発でのAI活用</div>
+    <div class="card-detail"><span class="label">発表元</span>CAPCOM</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/02</div>
+    <div class="card-detail"><span class="label">内容</span>AIは盾、人間は槍という役割分担が紹介されました。大量パターンの確認や矛盾検出をAIに任せ、人間は創造性、操作感、感情表現に集中する構想です。</div>
+    <div class="card-detail"><span class="label">料金</span>該当なし</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,194件・表示62,699回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105927081573990566">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Blenderによる3D空間制作</div>
+    <div class="card-detail"><span class="label">発表元</span>dot</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/02</div>
+    <div class="card-detail"><span class="label">内容</span>日本の利用者がdotにBlender上のゲームセンターを制作させ、完成空間のウォークスルーまで公開しました。AIエージェントによる3D制作を試した国内事例です。</div>
+    <div class="card-detail"><span class="label">反響</span>制作途中の投稿は<span class="card-amount">いいね341件・表示39,383回</span>、完成確認投稿は<span class="card-amount">いいね112件・表示15,615回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105944757315002372">出典を確認する</a>　<a href="https://x.com/i/status/2105959422740889846">出典を確認する</a></div>
+  </div>
+
+  <h2>バズった話題・SNS事例 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">生成AIによるゲーム模倣と金銭要求</div>
+    <div class="card-detail"><span class="label">発表元</span>個人開発者事例</div>
+    <div class="card-detail"><span class="label">時期</span>2026/09/30 ～ 2026/10/02</div>
+    <div class="card-detail"><span class="label">内容</span>個人開発者が公開していたゲームをAIで再現し、Steamでの公開を巡って金銭を要求されたとする未確認情報が拡散しました。制作物をSNSへ公開する際の模倣・権利侵害リスクを示す話題です。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">$200</span></div>
+    <div class="card-detail"><span class="label">反響</span>日本語紹介投稿は<span class="card-amount">いいね4,557件・表示182,169回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105686459118473481">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">生成AIとクリエイター保護を巡る議論</div>
+    <div class="card-detail"><span class="label">発表元</span>創作分野の議論</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/02</div>
+    <div class="card-detail"><span class="label">内容</span>音楽業界と画像制作分野では生成AIに対する権利保護の差があるとの批判が拡散しました。イラスト依頼の減少に関する報道や画像生成AIへの反発も重なり、議論が続いています。</div>
+    <div class="card-detail"><span class="label">料金</span>該当なし</div>
+    <div class="card-detail"><span class="label">反響</span>主な批判投稿は<span class="card-amount">いいね7,445件・表示330,013回</span>、仕事減少に関する投稿は<span class="card-amount">いいね2,135件・表示545,697回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2105840123141390461">出典を確認する</a>　<a href="https://x.com/i/status/2105885738852086083">出典を確認する</a>　<a href="https://x.com/i/status/2105824928142700947">出典を確認する</a></div>
+  </div>
+
+  <h2>定点観測: AIモデル性能ランキング <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Intelligence Index</div>
+    <div class="card-detail"><span class="label">発表元</span>Artificial Analysis</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/03時点</div>
+    <div class="card-detail"><span class="label">内容</span>知能ランキング上位5件はClaude Opus 5.5とClaude Sonnet 5.5、Claude Fable 5.1が占めています。1位はClaude Opus 5.5（max with fallback）の58点です。</div>
+    <div class="card-detail"><span class="label">料金</span>1タスク当たり推定コストは<span class="card-amount">$5.98 / $3.46 / $7.62 / $1.82 / $7.63</span></div>
+    <div class="card-detail"><span class="label">反響</span>該当なし（ランキング定点観測）</div>
+    <div class="card-source"><a href="https://artificialanalysis.ai/models">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

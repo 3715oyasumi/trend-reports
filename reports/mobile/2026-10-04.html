@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のモバイル情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のモバイル情報</h1>
+  <p class="report-date">2026年10月4日</p>
+  <p class="total-count">本日のモバイル案件: 7件</p>
+
+  <h2>MNP・モバイル情報 <span class="section-count">（7件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">「povo Data Oasis」をつくば市の自動運転バスで提供</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">0.1GB（24時間）を1日1回、月最大10回、合計1GBまで無料</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>つくば市の自動運転バス乗車時に受け取り</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/02 ～ 2027/01/29</div>
+    <div class="card-source"><a href="https://povo.jp/news/newsrelease/20261001_02/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「データ追加12GB（365日間）」を販売</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">12GBを6,240円、1カ月あたり1GB・520円相当</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>データ追加12GB（365日間）の対象トッピング購入</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/10/13</div>
+    <div class="card-source"><a href="https://povo.jp/topping-list/detail/12G_365d_limit/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「通勤・通学定期」2種類を新規提供</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">通常相当額の半額</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>データ使い放題1時間×40回分を2,200円、2時間×40回分を3,600円で販売</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/10/08</div>
+    <div class="card-source"><a href="https://povo.jp/news/newsrelease/20261001_03/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">IIJmioクーポンカード／デジタル20％増量キャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">データ量20％増量</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio、ローソン・ミニストップ</div>
+    <div class="card-detail"><span class="label">条件</span>500MBは600MB、2GBは2.4GB、5GBは6GB、10GBは12GBに増量</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/11/30</div>
+    <div class="card-source"><a href="https://www.iijmio.jp/info/iij/1789614016.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">スマホ＆ガラホ 得々SIMセット割キャンペーンを延長</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">中古ガラホ全品50％OFF、Android中古端末最大50％OFF、認定中古スマホ全品10％OFF</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>HISモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>新プランの回線開通と対象端末の同時購入。認定中古iPhone SE（第3世代）は29,980円から26,982円</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/10/31</div>
+    <div class="card-source"><a href="https://his-mobile.com/news20261001-2.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">契約者向け特典「HIS Travel eSIM」を開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">海外用eSIM 4GB・15日間を年1回無料</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>HISモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>海外130以上の国・地域で利用可能。新規・既存ユーザーとも対象、1回線につき年1回</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://his-mobile.com/campaign_foruser/histravelesim2">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">カウントフリーオプションにDMM GAMESの7タイトルを追加</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>LinksMate</div>
+    <div class="card-detail"><span class="label">条件</span>「SDガンダム ジージェネレーション エターナル」「麻雀一番街」「無職転生 クロニクル・オブ・エコーズ」などが対象</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://linksmate.jp/news/904/">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※還元・条件は確認時点のものです。</p>
+</body>
+</html>

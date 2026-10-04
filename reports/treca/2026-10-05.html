@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレカ情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレカ情報</h1>
+  <p class="report-date">2026年10月5日</p>
+  <p class="total-count">本日のトレカ情報: 26件</p>
+
+  <h2>ポケモンカードゲーム <span class="section-count">（13件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">[抽選] 駿河屋秋葉原トレカ・ボードゲーム館 — 拡張パック「30th ELEBRATION」</div>
+    <div class="card-detail"><span class="label">抽選期間</span>応募期限は投稿本文に記載なし</div>
+    <div class="card-detail"><span class="label">入手先</span>「駿河屋通販トレカ情報【公式】」と店舗アカウントをフォローし、対象投稿をリポスト。本人が来店できることが条件</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">4,692件</span> / 表示354,853回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106187483687850055">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[抽選] Luruna Card — 拡張パック「30th CELEBRATION」</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/10/31まで</div>
+    <div class="card-detail"><span class="label">価格・相場</span>1BOX <span class="card-amount">7,200円（税込）</span></div>
+    <div class="card-detail"><span class="label">入手先</span>@luruna_cardをフォローし、対象投稿をいいね・リポスト。当選者へDMで詳細を連絡、全国配送</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">3,361件</span> / 表示118,317回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106286816974500152">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[抽選] ポケタウン秋葉原店 — 拡張パック「30th CELEBRATION」</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/10/04～2026/10/11</div>
+    <div class="card-detail"><span class="label">価格・相場</span>1BOX <span class="card-amount">7,200円</span></div>
+    <div class="card-detail"><span class="label">入手先</span>@poketown_akibaをフォローし、対象投稿をリポスト。応募期間終了後1週間以内に当選者へDMで連絡</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">877件</span> / 表示45,603回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106685766566887767">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[抽選] ポケ堂秋葉原店 — 「30th CELEBRATION プレミアムデッキセット エーフィ・ブラッキー」</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/10/05 23:59まで</div>
+    <div class="card-detail"><span class="label">入手先</span>@Pokedou_Akibaをフォローし、対象投稿へのリポスト・リプライ・いいねを行う。当選人数は1名</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,538件</span> / 表示47,970回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106606932333371621">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[抽選] SCS秋葉原 — 「30th CELEBRATION プレミアムデッキセット エーフィ・ブラッキー」</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/10/02～2026/10/16</div>
+    <div class="card-detail"><span class="label">入手先</span>@scsakibaをフォローし、対象投稿をリポスト。当選者へDMで連絡</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">579件</span> / 表示16,685回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2105952903211139418">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[抽選] カードショップLark — 「30th Celebration」1BOX</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/10/15まで</div>
+    <div class="card-detail"><span class="label">入手先</span>@lark17c1oをフォローし、対象投稿をリポスト。「#カードショップlark」を付けた引用とコメントも必要。当選人数は10名、当選者へDMで連絡</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">562件</span> / 表示29,049回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2105905546767573031">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[抽選] EDEN — 「30th CELEBRATION」1BOX</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/10/12まで</div>
+    <div class="card-detail"><span class="label">入手先</span>@EDEN02_tcgをフォローし、対象投稿をリポスト。商品はペリペリなし</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,051件</span> / 表示34,124回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2105957788749119847">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[抽選] 静岡鑑定団 — 「30th CELEBRATION プレミアムデッキセット エーフィ・ブラッキー」</div>
+    <div class="card-detail"><span class="label">抽選期間</span>応募期限は投稿本文に記載なし</div>
+    <div class="card-detail"><span class="label">入手先</span>店舗アカウントをフォローし、対象投稿をリポスト</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,228件</span> / 表示81,080回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2105943396384907267">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[抽選] カードウイングス下品野店 — 「30th CELEBRATION」</div>
+    <div class="card-detail"><span class="label">抽選期間</span>応募期限は投稿本文に記載なし</div>
+    <div class="card-detail"><span class="label">入手先</span>店頭販売分の予約抽選。応募上限に達した場合、予定時刻前に予告なく終了する可能性あり</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">402件</span> / 表示90,620回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106222709281902728">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[新弾] 「30th CELEBRATION カードセット」</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/16</div>
+    <div class="card-detail"><span class="label">価格・相場</span>定価 <span class="card-amount">1,200円</span></div>
+    <div class="card-detail"><span class="label">入手先</span>公式ではない単独投稿に基づく発売情報</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">195件</span> / 表示97,995回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106353574800212260">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[新弾] 「ハードシーカー」</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/11/27予定</div>
+    <div class="card-detail"><span class="label">価格・相場</span>メガルカリオZ ex MUR 約<span class="card-amount">89,000円</span>、メガルカリオZ ex SAR 約31,000円、メガガブリアスZ ex SAR 約26,000円</div>
+    <div class="card-detail"><span class="label">入手先</span>個人アカウントによる発売予定・予想相場であり、裏取りなし。今後のメガシンカZ追加やカードイラストで注目度と相場が動く可能性を指摘</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">580件</span> / 表示201,585回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2105682878021644722">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[高騰] レックウザVMAX SA・ブラッキーVMAX SA・メガダークライex SAR</div>
+    <div class="card-detail"><span class="label">価格・相場</span>10月3日時点でブラッキーVMAX SAとレックウザVMAX SAのPSA10価格が反転。メガダークライex SARのPSA10は29,000円台まで下落、10月4日時点でレックウザVMAX SAのPSA10は<span class="card-amount">890,000円台</span>まで戻ったとの報告</div>
+    <div class="card-detail"><span class="label">入手先</span>個人アカウントによる相場報告のため裏取りなし</div>
+    <div class="card-detail"><span class="label">反響</span>10月3日投稿はいいね153件 / 表示57,338回、10月4日投稿はいいね106件 / 表示24,166回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106362036817105019">出典を確認する</a>　<a href="https://x.com/i/status/2106728066328482038">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[高騰] 「30th CELEBRATION」ミュウex SAR</div>
+    <div class="card-detail"><span class="label">価格・相場</span>2026/10/04時点、美品が<span class="card-amount">8,500円前後</span>を維持しているとの報告</div>
+    <div class="card-detail"><span class="label">入手先</span>個人アカウントによる相場報告のため裏取りなし</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">106件</span> / 表示24,166回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106728066328482038">出典を確認する</a></div>
+  </div>
+
+  <h2>ワンピースカードゲーム <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">[抽選] プレミアムバンダイ — 「プレミアムカードコレクション -ONE PIECE DAY'26-」</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/10/05 12:00開始</div>
+    <div class="card-detail"><span class="label">入手先</span>プレミアムバンダイ。1人1個まで、2027年8月発送予定。受付開始時刻が変更される可能性あり</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,200件</span> / 表示189,027回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106715970639180105">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[新弾] 「Heroines Edition vol.2【EB-05】」</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/31</div>
+    <div class="card-detail"><span class="label">価格・相場</span>1BOX <span class="card-amount">5,760円</span></div>
+    <div class="card-detail"><span class="label">入手先</span>パラレルイラスト一覧や、スペシャルカード・リーダーカード「ナミ」の実物動画が話題</div>
+    <div class="card-detail"><span class="label">反響</span>パラレル一覧はいいね1,990件 / 表示267,855回、実物動画紹介はいいね386件 / 表示33,006回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106628894979936289">出典を確認する</a>　<a href="https://x.com/i/status/2106659064985825751">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[抽選] Meisy TCG News — 「Heroines Edition vol.2【EB-05】」</div>
+    <div class="card-detail"><span class="label">抽選期間</span>当選発表 2026/10/30</div>
+    <div class="card-detail"><span class="label">入手先</span>対象投稿をリポストし、@Meisy_TCG_Newsと@MVISION_Oripaをフォロー。当選者には1BOX、引用リポスト済みの当選者には追加でもう1BOX</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">628件</span> / 表示70,260回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2105976094591680690">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[新弾] ブースターパック「神の支配【OP-18】」</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/11/21</div>
+    <div class="card-detail"><span class="label">入手先</span>注目カードはキャラクターカード「ロロノア・ゾロ」</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">334件</span> / 表示137,106回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106564968602574946">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[付録] ワンピカードコラボ「LUFFY's」 — ホロ仕様「ドン!!カード」</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>予約開始 2026/10/02 16:00</div>
+    <div class="card-detail"><span class="label">入手先</span>プレミアムバンダイ限定商品のセット特典</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">597件</span> / 表示119,630回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2105858252760367456">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[話題] 「メラメラの実争奪戦」</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2日間で9,000名以上が参加</div>
+    <div class="card-detail"><span class="label">入手先</span>優勝は夜叉丸選手、準優勝はいとう選手。公式が両選手のデッキを公開</div>
+    <div class="card-detail"><span class="label">反響</span>特別番組告知はいいね121件 / 表示638,880回、優勝デッキはいいね1,754件 / 表示193,454回、大会総括はいいね202件 / 表示56,219回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106527216267878540">出典を確認する</a>　<a href="https://x.com/i/status/2106712650973634754">出典を確認する</a>　<a href="https://x.com/i/status/2106729976255181281">出典を確認する</a></div>
+  </div>
+
+  <h2>遊戯王オフィシャルカードゲーム <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">[新弾] 「IMMORTAL PHOENIX」</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/31</div>
+    <div class="card-detail"><span class="label">入手先</span>「白鴉の魔女の光彩」を収録し、新テーマ「白鴉」が登場</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">194件</span> / 表示52,299回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106689535409332666">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[新弾] 「ORIGINAL ARTWORK COLLECTION」</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>公式投稿時点で発売中</div>
+    <div class="card-detail"><span class="label">入手先</span>注目カードは「沈黙の闘者－サイレント・マジシャン」</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">113件</span> / 表示37,992回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106708411769299455">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[抽選] 新潟ホビーステーション — 「ORIGINAL ARTWORK COLLECTION」</div>
+    <div class="card-detail"><span class="label">抽選期間</span>2026/10/10 23:59まで</div>
+    <div class="card-detail"><span class="label">入手先</span>店舗アカウントをフォローし、対象投稿をリポスト。当選人数は3名に各1BOX</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">299件</span> / 表示23,804回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106222403118625180">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">[高騰] 「白き幻獣」「カーテン」鑑定品</div>
+    <div class="card-detail"><span class="label">価格・相場</span>白き幻獣PSA10平均<span class="card-amount">194,000円</span>、ARS10平均150,000円、カーテンPSA10平均140,000円、ARS10平均125,000円。投稿者申告では投資合計606万円に対し現在相場391万円</div>
+    <div class="card-detail"><span class="label">入手先</span>個人アカウントによる相場・投資結果の報告であり、裏取りなし</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">464件</span> / 表示308,163回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106604715706617857">出典を確認する</a></div>
+  </div>
+
+  <h2>ドラゴンボールスーパーカードゲーム フュージョンワールド <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">[抽選] MVISION — フュージョンワールドBOX</div>
+    <div class="card-detail"><span class="label">抽選期間</span>応募期限は投稿本文に記載なし</div>
+    <div class="card-detail"><span class="label">入手先</span>『ドラゴンボールスーパーカードゲーム フュージョンワールド』のBOX。同日投稿された対象ポストを探してリポスト。商品名は投稿本文に記載なし</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">126件</span> / 表示6,134回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106353129826771416">出典を確認する</a></div>
+  </div>
+
+  <h2>デュエル・マスターズ <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">[抽選] HARUYAトレカベース新下関店 — 「燃えろ禁断!逆転のドギラゴン革命!!」</div>
+    <div class="card-detail"><span class="label">抽選期間</span>応募期限は投稿本文に記載なし</div>
+    <div class="card-detail"><span class="label">入手先</span>1BOX。@haruya_toreca4をフォローし、対象投稿をリポスト。当選人数は1名、当選者へDMで連絡</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">374件</span> / 表示21,776回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2105950936568836412">出典を確認する</a></div>
+  </div>
+
+  <h2>トレカ全般 <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">[付録] 「最強ジャンプ 2026年12月号」 — ドラゴンボールスーパーダイバーズ付録</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/11/04</div>
+    <div class="card-detail"><span class="label">入手先</span>ドラゴンボールスーパーダイバーズ2周年記念のカードケースとアップグレードカード。予約開始との投稿あり</div>
+    <div class="card-detail"><span class="label">反響</span>付録紹介はいいね528件 / 表示76,348回、予約紹介はいいね32件 / 表示199,354回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2105685089275510920">出典を確認する</a>　<a href="https://x.com/i/status/2105710555449446534">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※価格・相場は確認時点のものです。</p>
+</body>
+</html>

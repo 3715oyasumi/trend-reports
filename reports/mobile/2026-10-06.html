@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のモバイル情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のモバイル情報</h1>
+  <p class="report-date">2026年10月6日</p>
+  <p class="total-count">本日のモバイル案件: 20件</p>
+
+  <h2>MNP・モバイル情報 <span class="section-count">（20件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">UQ紹介キャンペーン増額</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">1回線5,000円分、最大20,000円相当のau PAY残高</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>UQ mobile</div>
+    <div class="card-detail"><span class="label">条件</span>対象プランへ加入した人を紹介。月4回線まで</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.uqwimax.jp/mobile/cp/introduction/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">通勤・通学定期2種を新規提供</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">1時間40回分2,200円、2時間40回分3,600円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>データ使い放題トッピングを購入</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/10/08</div>
+    <div class="card-source"><a href="https://povo.jp/news/newsrelease/20261001_03/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">データ追加12GB（365日間）を期間限定販売</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">6,240円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>データ追加12GB（365日間）を購入。月平均1GBあたり520円</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/10/13</div>
+    <div class="card-source"><a href="https://povo.jp/topping-list/detail/12G_365d_limit/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">5周年記念5円トッピング</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">0.5GB・24時間を5円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>データ専用プランへ新規登録。初回限定</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/10/31</div>
+    <div class="card-source"><a href="https://povo.jp/news/newsrelease/20260929_01/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">つくば市の自動運転バスでpovo Data Oasisを開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">1回0.1GB・24時間を無料</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>車内のQRコードから取得。1日1回、月10回まで</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/02 ～ 2027/01/29</div>
+    <div class="card-source"><a href="https://povo.jp/news/newsrelease/20261001_02/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">楽天モバイル最強感謝祭</div>
+    <div class="card-detail"><span class="label">還元</span>ファミリーマート商品の無料引換券、楽天グループのクーポンやポイント企画</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>楽天モバイル契約者向け</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/10/27</div>
+    <div class="card-source"><a href="https://network.mobile.rakuten.co.jp/lp/link/campaign/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ファミリーマートで楽天ポイント20倍</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">楽天ポイント20倍</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル、ファミリーマート</div>
+    <div class="card-detail"><span class="label">条件</span>要エントリー。楽天ポイントカード提示で月間3,000円以上購入し、所定期限まで対象プランを利用</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/10/31</div>
+    <div class="card-source"><a href="https://network.mobile.rakuten.co.jp/campaign/rpoint-familymart/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">テザリング利用で100ポイント</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">100ポイント</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>開始時点でRakuten最強プランを利用中で、過去に月20GBを超えていない人</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/10/31</div>
+    <div class="card-source"><a href="https://network.mobile.rakuten.co.jp/campaign/tethering-100pt/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">初めて月20GBを超えて利用すると1,500ポイント</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">1,500ポイント</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>過去に20GBを超えたことがない対象契約者。超過前のエントリーが必要</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/10/31</div>
+    <div class="card-source"><a href="https://network.mobile.rakuten.co.jp/campaign/data/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">楽天モバイル契約者向けチャージ額1％ポイント還元</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">チャージ額の1％ポイント還元</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>対象サービスへのチャージと、月末時点での対象プラン利用</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/10/31</div>
+    <div class="card-source"><a href="https://network.mobile.rakuten.co.jp/campaign/dream/dream_mobile_charge2610/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">海外支払い対象のPayPayスクラッチくじにLINEMOユーザーを追加</div>
+    <div class="card-detail"><span class="label">還元</span>PayPayポイントが必ず当たる</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>LINEMO</div>
+    <div class="card-detail"><span class="label">条件</span>電話番号連携後、海外実店舗でPayPayまたは対象PayPayカードで決済</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.linemo.jp/info/press/2026/26092501.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">audiobook.jp 聴き放題プランを新規提供</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">初回最大1カ月無料、月額220円割引、開始記念で2～3カ月目は月額321円割引</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>月額1,331円。ギガプランまたはIIJmioひかりとのセット</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2027/01/31</div>
+    <div class="card-source"><a href="https://www.iijmio.jp/info/iij/1790211022.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">IIJmioクーポンカード／デジタルのデータ量を20％増量</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">データ量20％増量</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio、ローソン、ミニストップ</div>
+    <div class="card-detail"><span class="label">条件</span>500MBは600MB、2GBは2.4GB、5GBは6GB、10GBは12GB</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/11/30</div>
+    <div class="card-source"><a href="https://www.iijmio.jp/info/iij/1789614016.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">各種手数料を改定</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">eSIMプロファイル発行料を無料へ変更</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>mineo</div>
+    <div class="card-detail"><span class="label">条件</span>契約・変更事務手数料は3,850円、SIM再発行手数料は2,750円へ改定</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://king.mineo.jp/staff_blogs/3171">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">iPhone端末保証最大2カ月無料キャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">月額料金最大2カ月無料</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>mineo</div>
+    <div class="card-detail"><span class="label">条件</span>mineoでiPhoneを購入し、mineo端末安心保証 for iPhoneへ同時加入</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2027/03/31</div>
+    <div class="card-source"><a href="https://mineo.jp/campaign/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Flatプラン30GBを値下げ、5G通信を提供開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">音声SIM月額1,980円、SMS SIM月額1,947円、データSIM月額1,870円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>エキサイトモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>Flatプラン30GBが対象</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://bb.excite.co.jp/info/detail/1049/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">イオンモバイルDAYS</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">契約事務手数料1円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>イオンモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>他社からMNPで音声通話SIMを契約。通常3,300円の契約事務手数料が対象</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/10/12</div>
+    <div class="card-source"><a href="https://campaign.aeonmobile.jp/campaign/10th_september/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">イオンネットスーパーお試しキャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">配送料1回220円引きクーポン</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>イオンモバイル、イオンネットスーパー</div>
+    <div class="card-detail"><span class="label">条件</span>既存利用者向け。対象地域で税込8,000円以上購入</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/10/31</div>
+    <div class="card-source"><a href="https://hiroba.aeonmobile.jp/announcements/vcukvjbbbyn6spko">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">スマホ＆ガラホ得々SIMセット割</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">中古ガラホ全品50％、Android中古端末最大50％、認定中古スマホ全品10％割引</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>HISモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>新料金プランの回線開通と対象中古端末を同時購入。認定中古iPhone SE（第3世代）は26,982円</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/10/31</div>
+    <div class="card-source"><a href="https://his-mobile.com/news20261001-2.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">法人向け音声通話プラン for Bizを値下げ</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">新規法人向け最大1カ月無料</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>HISモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>10GB月額1,299円、20GB月額1,699円、30GB月額1,999円。既存契約者にも自動適用。お試しは1社1回線まで</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/01 ～ 2026/12/20</div>
+    <div class="card-source"><a href="https://his-mobile.com/news20260930.html">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※還元・条件は確認時点のものです。</p>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>品薄予測レポート 2026-10-06</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>品薄予測レポート 2026-10-06</h1>
+  <p class="report-date">2026年10月6日</p>
+  <p class="total-count">本日の品薄予測: 24件</p>
+
+  <h2>今買える×相場上昇の予兆 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Hypercoils（Hyperco・自動車用レーシングスプリング）（継続）</div>
+    <div class="card-detail"><span class="label">品薄度</span>製造工場閉鎖に伴い新規生産が必要な注文を停止。今後は完成在庫だけとなり、人気レート・品番から枯れる段階。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>メルカリ出品は仕様別2本組で<span class="card-amount">約8,000～35,420円</span>。品番・レートが異なるため定価との差額は算出不能。成約価格ではなく出品価格。</div>
+    <div class="card-detail"><span class="label">根拠</span>本体および販売店の完成在庫のみ。レート・内径・自由長で需要が分かれるため、安いだけの不人気品番は避ける。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>本日中に専門店へ実在庫を照会し、装着車種の多い品番だけを1～2組確保。販売店在庫が廃番表示へ変わった後に品番を明記して放出する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106768042420281500">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ぬい用ベレー帽＆ケープセット（ISEKI大阪なんば・推し活／ぬい服）（継続）</div>
+    <div class="card-detail"><span class="label">品薄度</span>売り切れ続出品が再入荷。10～20cm対応の2サイズで複数サイズのぬい需要を拾える。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。該当品を特定できる信頼性の高い二次流通相場は確認できず。</div>
+    <div class="card-detail"><span class="label">根拠</span>ISEKI大阪なんば店へ店頭再入荷済み。再補充が続くと希少性は低下する。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>本日開店後に在庫と定価を確認し、人気色・汎用性の高いサイズを少量購入。店頭再完売後、次回入荷未定を確認できた段階で短期放出する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106698797971870017">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Sou LIVE Tour 2026「Finder」グッズ（Sou Official Goods・音楽公式グッズ）（継続）</div>
+    <div class="card-detail"><span class="label">品薄度</span>海外販売用の戻り在庫を再販中。追加生産予定なしで、過去の完売品も対象。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。現在の公式価格と信頼できる成約相場を照合できず。</div>
+    <div class="card-detail"><span class="label">根拠</span>ユニフォームTシャツ、マフラータオル、目印チャーム、アクキー、バッジセットが対象。海外戻り在庫の数量は不明。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>本日中に在庫を確認し、過去に一度完売した目印チャームやアクキーを優先して少量確保。公式完売後からツアー余韻が残る期間に放出する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106643195920785490">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ズートピア FROZEN MOMENTS／EMOJISシリーズ（TOP TOY・ブラインドフィギュア）（新規）</div>
+    <div class="card-detail"><span class="label">品薄度</span>売り切れ続出品が町田モディ店へ再入荷。明確な再購入窓が開いた低確度案件。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>各シリーズ<span class="card-amount">税込1,980円</span>。該当シリーズの信頼できるメルカリ成約相場は確認できず。</div>
+    <div class="card-detail"><span class="label">根拠</span>根拠は1店舗の公式再入荷告知のみで、現時点ではプレミア確認前。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>本日、町田モディ店で残数と購入制限を確認。仕入れる場合は人気キャラクターを含む未開封品を最小ロットに限定し、再完売後に相場を確認してから放出する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106947917655543898">出典を確認する</a></div>
+  </div>
+
+  <h2>発売前×期待値高 <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">セブン-イレブン『アイカツ！』カード／シール付きインデックスキャンペーン（セブン-イレブン／グリコ・店頭ノベルティ）（新規）</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年10月8日</span>。予約なし。</div>
+    <div class="card-detail"><span class="label">品薄度</span>2026年2月実施時に即終了店舗が多発。今回は全6種で、都市部と地方の在庫差も予想される。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。ノベルティ単体相場は未形成。</div>
+    <div class="card-detail"><span class="label">根拠</span>10月8日から対象のグリコ菓子購入で店頭配布。対象菓子代と送料を含めて採算を判断する。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>配布開始時刻前に郊外店を優先巡回し、対象商品と購入上限を確認して全6種を組む。初日完売が広がった場合のみ週末前にセット販売する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106926222047580319">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">hide めじるしアクセサリー（BANDAI・オンラインガシャポン）（新規）</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2027年4月下旬発送予定</span>。予約開始は2026年10月6日11時。</div>
+    <div class="card-detail"><span class="label">品薄度</span>9月30日の一次受注が即日完売し、本日から数量上限付きの二次受注を実施。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>公式定価は<span class="card-amount">1回400円</span>。正確な二次流通相場は未形成。</div>
+    <div class="card-detail"><span class="label">根拠</span>本日11時から10月25日23時59分まで受注。ただし準備数到達で早期終了。全国のカプセル自販機で先行販売される可能性がある。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>本日10時55分までにログイン・決済準備を済ませ、11時から人気デザインを狙う。大量確保は避け、発送時の店頭供給量を確認後に放出する。</div>
+    <div class="card-source"><a href="https://parks2.bandainamco-am.co.jp/category/GASHAPON_TOP_TAG/PRE_4582770068474.html">出典を確認する</a>　<a href="https://x.com/i/status/2107017956068901310">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">VOCE 2026年12月号（講談社・美容雑誌／雑誌付録）（継続）</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年10月22日</span>。予約開始は2026年10月5日。</div>
+    <div class="card-detail"><span class="label">品薄度</span>楽天は予約完売、Amazonには正規価格枠が残っているとの情報。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>通常版<span class="card-amount">1,400円</span>、スペシャル版・増刊版は各950円。二次流通成約相場は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>通常版の付録は約1万1,000円相当と訴求。発売日に書店へ大量入荷すると予約時の品薄感が崩れる可能性がある。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>Amazon販売・発送の正規価格枠だけを少量予約。10月22日の店頭在庫が少ない版に絞り、発売直後の需要期に放出する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2107123394621710410">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">LUAFEE ヘア＆ボディパフュームミスト White Apricot／Oh, Love（LUAFEE・韓国コスメ）（継続）</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年10月10日</span>。予約開始は未公表。</div>
+    <div class="card-detail"><span class="label">品薄度</span>日韓のオンライン販売でランキング1位、Qoo10では発売初日から品薄になったとされる。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>10月10日からロフト・PLAZAでオフライン先行販売。PR投稿が根拠であり、日本店頭での実需は未確認。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>10月10日の開店時にロフト・PLAZAで購入上限と客足を確認。各少量に留め、初週完売が確認できた場合のみ放出する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2106254305816908027">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">しまむら×ドラゴンクエスト限定グッズ（しまむら／スクウェア・エニックス・アパレル雑貨）（新規）</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年10月7日</span>。オンライン受注は10月8日10時。</div>
+    <div class="card-detail"><span class="label">品薄度</span>100種超の大型展開で、税込5,000円以上購入時の先着ショッパーは数量限定。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>主力商品は<span class="card-amount">1,639～4,389円</span>。二次流通価格は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>全国約1,400店舗で販売。翌日から受注生産があるため通常商品は相場上昇しにくい。投稿は公式アカウントではないため条件の一次確認が必要。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>10月7日の店頭では先着ショッパーと初回店頭限定要素を優先。通常商品は大量仕入れせず、人気柄の初動完売確認後だけ短期販売する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2107101407409275163">出典を確認する</a></div>
+  </div>
+
+  <h2>発売接近リマインド <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Polaroid ポケモンコラボ インスタントカメラ 3種</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年10月6日（本日）</span></div>
+    <div class="card-detail"><span class="label">推奨アクション</span>店頭在庫・購入上限・3種別の初動を確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">高橋和希原画展 YU-GI-OH! ART WORKS「決闘王の証」限定カード</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年10月10日（あと4日）</span></div>
+    <div class="card-detail"><span class="label">推奨アクション</span>事後受注が数量上限なしのため高値追いを避ける。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">遊戯王ラッシュデュエル CROSS ART COLLECTION BOX</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年10月10日（あと4日）</span></div>
+    <div class="card-detail"><span class="label">推奨アクション</span>限定マーカーの封入率と予約残数を確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">LUAFEE ヘア＆ボディパフュームミスト White Apricot／Oh, Love</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年10月10日（あと4日）</span></div>
+    <div class="card-detail"><span class="label">推奨アクション</span>ロフト・PLAZAの開店時刻と購入上限を確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ONE PIECE × Tendence 復刻コラボ腕時計</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年10月16日（あと10日）</span></div>
+    <div class="card-detail"><span class="label">推奨アクション</span>500本限定の予約残数と型別需要を確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Ado×Pusheen コラボグッズ</div>
+    <div class="card-detail"><span class="label">発売日</span><span class="card-amount">2026年10月16日（あと10日）</span></div>
+    <div class="card-detail"><span class="label">推奨アクション</span>通販・店頭の在庫配分と購入制限を確認する。</div>
+  </div>
+
+  <h2>対象外（既に入手困難・参考のみ） <span class="section-count">（9件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">カミガタ公式グッズ</div>
+    <div class="card-detail"><span class="label">根拠</span>売り切れ続出で商品別の購入可能在庫も不明。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">R指定 ONEMAN TOUR「-WAR-」グッズ</div>
+    <div class="card-detail"><span class="label">根拠</span>複数商品が完売、次回入荷未定を含む。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">おふうかいグッズ</div>
+    <div class="card-detail"><span class="label">根拠</span>売り切れ続出だが商品名・販売場所が不明。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Stray Kids RUN IT JAPAN サンリオコラボグッズ</div>
+    <div class="card-detail"><span class="label">根拠</span>MIYASHITAパーク会場で売り切れ続出。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">マツケンサンバ×ハローキティ シャカシャカHAPPYキーホルダー</div>
+    <div class="card-detail"><span class="label">根拠</span>梅田主要設置店でほぼ完売、定価入手窓が極小。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ギャラクシーエンジェル ポップアップストア商品</div>
+    <div class="card-detail"><span class="label">根拠</span>店頭終了・オンライン供給ありで希少性が弱い。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Suzy’s Zoo めじるしアクセサリー2</div>
+    <div class="card-detail"><span class="label">根拠</span>金沢店完売、再入荷未定。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「ブレイクマイケース」防災セット／防犯ブザー</div>
+    <div class="card-detail"><span class="label">根拠</span>10月5日で受注終了。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">バツ子の日2026記念グッズ</div>
+    <div class="card-detail"><span class="label">根拠</span>受注期間終了。</div>
+  </div>
+
+  <h2>総括 <span class="section-count">（0件）</span></h2>
+  <p>今日の最優先は11時開始のhideめじるし二次受注だが、店頭先行と長期納期を考慮して少量限定。次点は供給終了が確定したHypercoの人気品番、短期案件は10月8日のアイカツ店頭ノベルティ。中期ではVOCE通常版とLUAFEEを監視し、発売日の供給量を見てから追加判断する。</p>
+
+  <p class="note">※予測は収集時点の情報に基づくものです。</p>
+</body>
+</html>

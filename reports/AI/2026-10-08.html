@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のAIレポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のAIレポート</h1>
+  <p class="report-date">2026年10月8日</p>
+  <p class="total-count">本日のAIトピック: 15件</p>
+
+  <h2>新AIモデル・LLM情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">未公開の社内フロンティアモデルによる数学研究成果</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月6日</div>
+    <div class="card-detail"><span class="label">内容</span>約4,000件の研究課題から722本の論文・372系統の成果を作成したと報告されています。数学上の主張は今後専門家による検証が必要です。</div>
+    <div class="card-detail"><span class="label">反響</span>公式発表は<span class="card-amount">いいね32,009件・表示13,944,564回</span>、解説投稿は<span class="card-amount">いいね4,856件・表示1,124,472回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107596713791767021">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">EmbeddingGemma 2</div>
+    <div class="card-detail"><span class="label">発表元</span>Google DeepMind</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月6日</div>
+    <div class="card-detail"><span class="label">内容</span>テキスト、コード、画像、音声、動画を同じ空間で検索できる端末向けネイティブ・マルチモーダル埋め込みモデルです。740Mパラメータで、約0.5GBのRAMでも動作すると紹介されています。</div>
+    <div class="card-detail"><span class="label">料金</span>オープンモデル、Apache 2.0ライセンス</div>
+    <div class="card-detail"><span class="label">反響</span>公式発表は<span class="card-amount">いいね4,092件・表示708,060回</span>、ローカル実行紹介は<span class="card-amount">いいね3,406件・表示170,367回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107502286758895878">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">plamo-3-translate</div>
+    <div class="card-detail"><span class="label">発表元</span>Preferred Networks</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月7日</div>
+    <div class="card-detail"><span class="label">内容</span>日本発の翻訳特化LLMです。日英・多言語翻訳でフロンティア級の性能を目指し、文脈に沿った自然な翻訳を重視しています。</div>
+    <div class="card-detail"><span class="label">料金</span>既存APIの数十分の一のコストと説明、具体額は記載なし</div>
+    <div class="card-detail"><span class="label">反響</span>公式投稿は<span class="card-amount">いいね2,035件・表示429,979回</span>、紹介投稿は<span class="card-amount">いいね5,669件・表示381,537回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107686115004334097">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">外部モデル・APIの使い分け方針</div>
+    <div class="card-detail"><span class="label">発表元</span>Grok Bot / SpaceX</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月7日</div>
+    <div class="card-detail"><span class="label">内容</span>タスクに応じてClaude Opus 5.5、Midjourney、Sunoなどを使い分ける方針を発表しました。文章、画像、音楽などの用途別に最適なAIへ振り分ける構成です。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね74,017件・表示41,963,263回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107724314451878104">出典を確認する</a></div>
+  </div>
+
+  <h2>新AIツール・サービス <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Nano Banana 2.1</div>
+    <div class="card-detail"><span class="label">発表元</span>Google AI Studio</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月6日</div>
+    <div class="card-detail"><span class="label">内容</span>画像生成モデルの新バージョンです。視覚デザイン、マスク指定編集、人物・被写体の一貫性、自然な画像表現が改善されたとしています。</div>
+    <div class="card-detail"><span class="label">料金</span>具体的な料金は記載なし</div>
+    <div class="card-detail"><span class="label">反響</span>Google AI Studioの投稿は<span class="card-amount">いいね6,782件・表示507,173回</span>、Nano Bananaの投稿は<span class="card-amount">いいね3,737件・表示178,311回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107501303890915550">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Adobeプロジェクト変換機能</div>
+    <div class="card-detail"><span class="label">発表元</span>Tesseract</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月6日</div>
+    <div class="card-detail"><span class="label">内容</span>ClaudeとChatGPTからPremiere ProおよびAfter Effectsのプロジェクトファイルを直接作成できるオープンソース変換機能です。既存プロジェクトの編集引き継ぎにも対応しますが、互換性は完全ではありません。</div>
+    <div class="card-detail"><span class="label">料金</span>無料で試用可能</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,846件・表示311,234回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107504042205139269">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ChatGPT 音声ファイル対応</div>
+    <div class="card-detail"><span class="label">発表元</span>ChatGPT</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月6日</div>
+    <div class="card-detail"><span class="label">内容</span>有料ユーザーが音声ファイルをアップロードし、文字起こし、要約、内容への質問を行えるようになったとの未確認情報です。OpenAI公式投稿は収集データ内で確認できていません。</div>
+    <div class="card-detail"><span class="label">料金</span>有料ユーザー向け、無料ユーザーは対象外との投稿</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,007件・表示51,002回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107610224936845484">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">SynthID Detector</div>
+    <div class="card-detail"><span class="label">発表元</span>Google DeepMind</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月7日</div>
+    <div class="card-detail"><span class="label">内容</span>AI生成コンテンツを判定するツールを一般公開しました。画像、動画、音声に含まれる透かしを、編集後でも検出できると説明しています。</div>
+    <div class="card-detail"><span class="label">反響</span>公開発表は<span class="card-amount">いいね585件・表示51,672回</span>、機能説明は<span class="card-amount">いいね31件・表示9,112回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107834249680499136">出典を確認する</a></div>
+  </div>
+
+  <h2>プロンプト技術・活用Tips <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">複数参照画像からの動画制作工程</div>
+    <div class="card-detail"><span class="label">発表元</span>Seedance 2.5 / Dreamina / ChatGPT / Suno</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月6日</div>
+    <div class="card-detail"><span class="label">内容</span>6人分の参照画像を整え、オムニリファレンス機能で30秒動画を生成し、音源と組み合わせる工程が公開されました。実在人物や他者の素材を使う場合は権利・利用規約の確認が必要です。</div>
+    <div class="card-detail"><span class="label">料金</span>Dreamina初回オファー<span class="card-amount">248円・2,500クレジット</span>との自己申告</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね2,165件・表示280,950回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107525570703847742">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Claude Codeによるゲーム制作</div>
+    <div class="card-detail"><span class="label">発表元</span>Claude Code</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月6日</div>
+    <div class="card-detail"><span class="label">内容</span>投稿者がClaude Codeと画像・アニメーション制作フローを組み合わせ、2日間でNINTENDO 64風レースゲームを再構築したと報告しました。制作期間と完成度は投稿者の自己申告です。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね927件・表示45,814回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107500485821510085">出典を確認する</a></div>
+  </div>
+
+  <h2>AI企業・業界ニュース <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Cyber Verification Programの拡大</div>
+    <div class="card-detail"><span class="label">発表元</span>Anthropic</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月6日</div>
+    <div class="card-detail"><span class="label">内容</span>セキュリティ専門家向け認証プログラムを拡大しました。認証済み利用者は防御目的でClaudeの対象モデルを利用でき、許可された侵入テストやレッドチーム演習に対応する利用区分も追加されます。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね5,270件・表示1,045,945回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107546569654636883">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">オープンモデルのバックドア問題</div>
+    <div class="card-detail"><span class="label">発表元</span>研究者・開発者コミュニティ</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月6日から2026年10月7日</div>
+    <div class="card-detail"><span class="label">内容</span>7B規模のオープンモデルへバックドアを仕込み、特定の合図で認証情報を送信させる実験の報告です。端末や秘密情報の権限を直接渡さず、新モデルは隔離環境で検証する重要性が指摘されています。</div>
+    <div class="card-detail"><span class="label">料金</span>バックドア作成費用は<span class="card-amount">50ドル未満</span>との自己申告</div>
+    <div class="card-detail"><span class="label">反響</span>元投稿は<span class="card-amount">いいね2,798件・表示455,435回</span>、日本語解説は<span class="card-amount">いいね1,914件・表示227,255回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107527299239498042">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">誤解を招くサムネイルの全面禁止方針</div>
+    <div class="card-detail"><span class="label">発表元</span>VRChat</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月7日</div>
+    <div class="card-detail"><span class="label">内容</span>AI生成を含む、実際の内容と一致しないサムネイルを全面的に禁止する方針が紹介されました。AIそのものではなく、釣り表示への対策として伝えられています。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね2,751件・表示284,270回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107654258841804857">出典を確認する</a></div>
+  </div>
+
+  <h2>バズった話題・SNS事例 <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">tsc-rs（ts-rust）</div>
+    <div class="card-detail"><span class="label">発表元</span>tsc-rs</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月7日</div>
+    <div class="card-detail"><span class="label">内容</span>TypeScriptのコンパイラ、型チェッカー、LSPをRustで作り直したオープンソース互換実装です。AIコーディングではモデル料金だけでなく、完成までの総費用で比較すべき事例として注目されています。</div>
+    <div class="card-detail"><span class="label">料金</span>Codex約<span class="card-amount">400,000ドル</span>、Claude Opus約<span class="card-amount">20,000ドル</span>との自己申告</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね3,742件・表示284,591回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107789940482621795">出典を確認する</a></div>
+  </div>
+
+  <h2>定点観測: AIモデル性能ランキング <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Artificial Analysis Intelligence Index</div>
+    <div class="card-detail"><span class="label">発表元</span>Artificial Analysis</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月8日確認</div>
+    <div class="card-detail"><span class="label">内容</span>上位5モデルはClaude Opus 5.5、Claude Sonnet 5.5、Claude Opus 5.5、Claude Opus 5.5、Claude Fable 5.1で、上位5枠をAnthropic製モデルが占めています。</div>
+    <div class="card-detail"><span class="label">料金</span>タスク当たり<span class="card-amount">5.98ドル、7.67ドル、3.46ドル、1.82ドル、7.63ドル</span></div>
+    <div class="card-detail"><span class="label">反響</span>対象外（性能ランキング）</div>
+    <div class="card-source"><a href="https://artificialanalysis.ai/models">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

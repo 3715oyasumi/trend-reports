@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>雑誌・付録情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>雑誌・付録情報</h1>
+  <p class="report-date">2026年10月8日</p>
+  <p class="total-count">本日の雑誌・付録情報: 27件</p>
+
+  <h2>週刊少年ジャンプ <span class="section-count">（3件）</span></h2>
+  <div class="card">
+    <div class="card-title">2026年45号</div>
+    <div class="card-detail"><span class="label">発売日</span>10月5日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">320円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>公式Web上で付録の掲載なし。『ONE PIECE』は休載号です。</div>
+    <div class="card-source"><a href="https://www.shonenjump.com/j/weeklyshonenjump/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">2026年46号</div>
+    <div class="card-detail"><span class="label">発売日</span>10月13日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">320円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>付録は現時点では未発表です。</div>
+  </div>
+  <div class="card">
+    <div class="card-title">『魔男のイチ』応募者全員サービス</div>
+    <div class="card-detail"><span class="label">応募締切</span>未発表</div>
+    <div class="card-detail"><span class="label">申込金額</span>未発表</div>
+    <div class="card-detail"><span class="label">注目点</span>デジタル版定期購読者向けに10月実施予定と告知されています。</div>
+    <div class="card-source"><a href="https://www.shonenjump.com/p/sp/tekigentei_information/">出典を確認する</a></div>
+  </div>
+
+  <h2>週刊ヤングジャンプ <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">2026年No.45特大号</div>
+    <div class="card-detail"><span class="label">発売日</span>10月8日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">510円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>『ジャンケットバンク』VIP専用パス第1弾 Ver.真経津晨。3号連続付録の第1弾で、数量限定・対象店舗の指定はありません。</div>
+    <div class="card-source"><a href="https://youngjump.jp/magazine/">出典を確認する</a></div>
+  </div>
+
+  <h2>Vジャンプ <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">2026年11月特大号</div>
+    <div class="card-detail"><span class="label">発売日</span>9月18日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">730円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>紙版限定の付録カード6枚。『遊☆戯☆王OCG』『ドラゴンボール』『鬼滅の刃』『BLEACH』『hololive』などを収録し、電子版には付きません。</div>
+    <div class="card-source"><a href="https://vjump.shueisha.co.jp/newinfo/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">2026年12月特大号</div>
+    <div class="card-detail"><span class="label">発売日</span>10月21日</div>
+    <div class="card-detail"><span class="label">注目点</span>確認済み付録は『遊☆戯☆王OCG』カウンターマジック「攻撃の無力化」。そのほかの付録カードは未発表です。</div>
+    <div class="card-source"><a href="https://yu-gi-oh.jp/news/">出典を確認する</a></div>
+  </div>
+
+  <h2>最強ジャンプ <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">2026年11月号</div>
+    <div class="card-detail"><span class="label">発売日</span>10月2日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">710円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>紙版限定。『ファイアーエムブレム 万紫千紅』両面ロングカード、別冊『勉タメジャンプ』、各種カード付録を収録。</div>
+    <div class="card-source"><a href="https://www.saikyojump.com/?id=1">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">2026年12月号</div>
+    <div class="card-detail"><span class="label">発売日</span>11月4日</div>
+    <div class="card-detail"><span class="label">注目点</span>公式サイトに次号予告画像はありますが、付録名を確認できる本文情報は未発表です。</div>
+    <div class="card-source"><a href="https://www.saikyojump.com/_news/yokoku.html">出典を確認する</a></div>
+  </div>
+
+  <h2>ジャンプSQ. <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">2026年11月特大号</div>
+    <div class="card-detail"><span class="label">発売日</span>10月2日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">710円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>紙版特別付録は『ファントムバスターズ』フォト風クリアカード8枚セット＆ポストカード、『新テニスの王子様』デュアルカードコレクション第2弾。</div>
+    <div class="card-source"><a href="https://jumpsq.shueisha.co.jp/sq/index.html">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">2026年12月特大号</div>
+    <div class="card-detail"><span class="label">発売日</span>11月4日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">730円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>紙版特別付録は『終わりのセラフ』ポストカード10枚セット、『新テニスの王子様』デュアルカードコレクション第3弾。</div>
+    <div class="card-source"><a href="https://jumpsq.shueisha.co.jp/sq/yokoku.html">出典を確認する</a></div>
+  </div>
+
+  <h2>ジャンプGIGA <span class="section-count">（3件）</span></h2>
+  <div class="card">
+    <div class="card-title">ジャンプGIGA 2026 SUMMER</div>
+    <div class="card-detail"><span class="label">発売日</span>8月17日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">1,350円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>紙版付録は『さむわんへるつ』『To LOVEる -とらぶる-』『ゆらぎ荘の幽奈さん』のアクリルスタンド、ポスター、ポストカード。電子版では一部付録・ポスターが収録されません。</div>
+    <div class="card-source"><a href="https://www.shonenjump.com/j/jumpgiga/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">ジャンプGIGA 2026 AUTUMN</div>
+    <div class="card-detail"><span class="label">発売日</span>10月30日</div>
+    <div class="card-detail"><span class="label">注目点</span>紙版限定で『魔男のイチ』『ハイキュー!!』スペシャル付録多数を告知。個別の付録名、数量、仕様は未発表です。</div>
+    <div class="card-source"><a href="https://www.shonenjump.com/j/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">ジャンプGIGA 2026 SUMMER 誌上通販</div>
+    <div class="card-detail"><span class="label">応募締切</span>10月18日23時58分</div>
+    <div class="card-detail"><span class="label">申込金額</span><span class="card-amount">1,650円から44,000円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>『さむわんへるつ』と『To LOVEる -とらぶる-』のキーホルダー、スタンド、衣類、複製原画、フィギュアなどを注文可能。送料は別途880円です。</div>
+    <div class="card-detail"><span class="label">応募方法</span>紙版SUMMER封入の注文コードを会計時に入力。定期購読者は対象アプリから注文できます。</div>
+    <div class="card-source"><a href="https://jumpcs.shueisha.co.jp/shop/g/g4530430584123/">出典を確認する</a></div>
+  </div>
+
+  <h2>ウルトラジャンプ <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">2026年10月号</div>
+    <div class="card-detail"><span class="label">発売日</span>9月17日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">800円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>アニメ『スティール・ボール・ラン』2nd STAGE名場面 複製原稿風クリアファイル第3弾。</div>
+    <div class="card-source"><a href="https://ultra.shueisha.co.jp/nowonsale/nowonsale-9245/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">2026年11月号</div>
+    <div class="card-detail"><span class="label">発売日</span>10月19日</div>
+    <div class="card-detail"><span class="label">注目点</span>JOJO両面ポストカード。付録名は書店商品情報によるもので、公式サイト本文では詳細未発表です。</div>
+  </div>
+
+  <h2>グランドジャンプ <span class="section-count">（3件）</span></h2>
+  <div class="card">
+    <div class="card-title">2026年No.21</div>
+    <div class="card-detail"><span class="label">発売日</span>10月7日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">510円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>公式最新号ページに付録の案内はありません。</div>
+    <div class="card-source"><a href="https://grandjump.shueisha.co.jp/news/261007gj.html">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">2026年No.22</div>
+    <div class="card-detail"><span class="label">発売日</span>10月21日</div>
+    <div class="card-detail"><span class="label">注目点</span>特別付録はすずら クリアファイル。</div>
+    <div class="card-source"><a href="https://grandjump.shueisha.co.jp/honsi/next.html">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">2026年No.23</div>
+    <div class="card-detail"><span class="label">発売日</span>11月4日</div>
+    <div class="card-detail"><span class="label">注目点</span>付録は現時点では未発表です。</div>
+    <div class="card-source"><a href="https://grandjump.shueisha.co.jp/honsi/next.html">出典を確認する</a></div>
+  </div>
+
+  <h2>月刊コロコロコミック <span class="section-count">（9件）</span></h2>
+  <div class="card">
+    <div class="card-title">2026年10月号</div>
+    <div class="card-detail"><span class="label">発売日</span>9月15日ごろ</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">730円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>『カードファイト!! ヴァンガード』『オレカバトル2』『ポケモンカードゲーム』ステッカー、『スプラトゥーン』などの紙版付録。スプラトゥーン付録には名称の公式訂正があります。</div>
+    <div class="card-source"><a href="https://corocoro-news.jp/news/402388/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">2026年11月号</div>
+    <div class="card-detail"><span class="label">発売日</span>10月15日ごろ</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">770円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>『ホロビート』50枚デッキ、ルールブックとプレイマット、『名探偵コナンTCG』特別PRカードなどを収録。オレカバトル2の2点はカード付録ではありません。</div>
+    <div class="card-source"><a href="https://corocoro-news.jp/news/402538/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">限定メタリックカラーバリバコイン3枚セット</div>
+    <div class="card-detail"><span class="label">応募締切</span>10月14日当日消印有効</div>
+    <div class="card-detail"><span class="label">申込金額</span><span class="card-amount">1,780円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>ニャルバン、ラッティー、ボーダーの3枚セット。税・送料・手数料込みです。</div>
+    <div class="card-detail"><span class="label">応募方法</span>本誌付属応募ハガキを使用。必要応募券数と支払い手順は公式Webでは未掲載です。</div>
+  </div>
+  <div class="card">
+    <div class="card-title">『ホロビート』スタートデッキ2種プレゼント</div>
+    <div class="card-detail"><span class="label">応募締切</span>10月14日当日消印有効</div>
+    <div class="card-detail"><span class="label">注目点</span>「レオジン 赤」または「不死火翔 緑」を合計1,000名にプレゼント。</div>
+    <div class="card-detail"><span class="label">応募方法</span>本誌の銀はがし。申込金額なし。</div>
+    <div class="card-source"><a href="https://shogakukan-comic.jp/news/70443">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">キッドハント メタルコート：ホワイトK4-70TK</div>
+    <div class="card-detail"><span class="label">応募締切</span>未発表</div>
+    <div class="card-detail"><span class="label">申込金額</span><span class="card-amount">2,600円</span></div>
+    <div class="card-detail"><span class="label">注目点</span>『BEYBLADE X』と『名探偵コナン』怪盗キッドのコラボ品。応募者全員有料サービスで1人1個限定、受付開始前です。</div>
+    <div class="card-detail"><span class="label">応募方法</span>11月号の応募規則で発表予定です。</div>
+  </div>
+  <div class="card">
+    <div class="card-title">11月号誌上プレゼント バリバコイン最新弾フルコンプ＋パック</div>
+    <div class="card-detail"><span class="label">応募締切</span>未発表</div>
+    <div class="card-detail"><span class="label">注目点</span>当選数は500名。基準日時点では受付開始前です。</div>
+    <div class="card-detail"><span class="label">応募方法</span>銀はがし。詳細は未発表です。</div>
+  </div>
+  <div class="card">
+    <div class="card-title">11月号誌上プレゼント 『ホロビート』第1弾1BOX</div>
+    <div class="card-detail"><span class="label">応募締切</span>未発表</div>
+    <div class="card-detail"><span class="label">注目点</span>当選数は100名。基準日時点では受付開始前です。</div>
+    <div class="card-detail"><span class="label">応募方法</span>銀はがし。詳細は未発表です。</div>
+  </div>
+
+  <p class="note">※価格・発売日は確認時点のものです。</p>
+</body>
+</html>

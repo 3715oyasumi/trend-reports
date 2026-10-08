@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のAIレポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のAIレポート</h1>
+  <p class="report-date">2026年10月9日</p>
+  <p class="total-count">本日のAIトピック: 20件</p>
+
+  <h2>新AIモデル・LLM情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">OpenAI / ChatGPT</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI / ChatGPT</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/08</div>
+    <div class="card-detail"><span class="label">内容</span>GPT-6とIntelligent UIを公開。質問に応じて文章、図表、ボタン、フォーム、計算ツールなどを組み合わせた専用画面を会話内に自動生成する。</div>
+    <div class="card-detail"><span class="label">料金</span>Free・Goを含め順次提供</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">21,094件</span> / 表示<span class="card-amount">4,712,168回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107894997538525580">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Anthropic / Claude Haiku 5.5</div>
+    <div class="card-detail"><span class="label">発表元</span>Anthropic / Claude Haiku 5.5</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/08</div>
+    <div class="card-detail"><span class="label">内容</span>低コストで高速な小型モデルとしてClaude Haiku 5.5を公開。最大100万トークンの文脈に対応し、文章読解、軽微な編集、ツール呼び出しなどの大量処理に向く。</div>
+    <div class="card-detail"><span class="label">料金</span>10万トークン以下は入力$0.10・出力$0.50／100万トークン、10万トークン超は入力$0.50・出力$2.50／100万トークン</div>
+    <div class="card-detail"><span class="label">反響</span>公式発表 いいね<span class="card-amount">42,975件</span> / 表示<span class="card-amount">5,282,868回</span>、性能分析 いいね<span class="card-amount">1,876件</span> / 表示<span class="card-amount">180,852回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107894039626277339">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Underdog / Saluki 27B</div>
+    <div class="card-detail"><span class="label">発表元</span>Underdog / Saluki 27B</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/08</div>
+    <div class="card-detail"><span class="label">内容</span>Qwen 3.8 27Bを基にした小型ローカルモデルSaluki 27Bを公開。元のフル精度モデルより約7分の1のサイズで性能の96％を維持し、8GB未満で動かせるとされる。</div>
+    <div class="card-detail"><span class="label">料金</span>無料・オープンソース</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,964件</span> / 表示<span class="card-amount">155,438回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108021482983133395">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Microsoft / MAI-Code-1.1-Flash</div>
+    <div class="card-detail"><span class="label">発表元</span>Microsoft / MAI-Code-1.1-Flash</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/08</div>
+    <div class="card-detail"><span class="label">内容</span>コーディングモデルMAI-Code-1.1-FlashをGitHub Copilot内で端末実行できるようにすると発表。機密コードを端末側で処理したい用途にも注目される。</div>
+    <div class="card-detail"><span class="label">料金</span>ローカルモデル呼び出しの推論料金なし</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,689件</span> / 表示<span class="card-amount">95,918回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107926901150908483">出典を確認する</a></div>
+  </div>
+
+  <h2>新AIツール・サービス <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Grok Bot</div>
+    <div class="card-detail"><span class="label">発表元</span>Grok Bot</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/08</div>
+    <div class="card-detail"><span class="label">内容</span>指示から作業全体を処理するAIとして話題化。自然ガスの供給経路を説明する動画を、入力した指示から約15秒で生成した事例が紹介された。</div>
+    <div class="card-detail"><span class="label">料金</span>投稿内に具体的な料金記載なし</div>
+    <div class="card-detail"><span class="label">反響</span>動画事例 いいね<span class="card-amount">1,580件</span> / 表示<span class="card-amount">717,743回</span>、活用紹介 いいね<span class="card-amount">1,343件</span> / 表示<span class="card-amount">319,723回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107995991483777246">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Crafting Apps</div>
+    <div class="card-detail"><span class="label">発表元</span>Crafting Apps</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/08</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、PhotoshopやIllustratorなどに相当する7種類の制作ソフトをRust製オープンソースアプリとして提供するとの紹介が拡散。オフライン処理とAIエージェント操作に対応するとされる。</div>
+    <div class="card-detail"><span class="label">料金</span>無料・オープンソースと投稿者が説明</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,921件</span> / 表示<span class="card-amount">61,765回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108057833094951245">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ComfyUI / Trellis2・Pixal3D</div>
+    <div class="card-detail"><span class="label">発表元</span>ComfyUI / Trellis2・Pixal3D</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/08</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、ComfyUIに3Dモデル生成AIのTrellis2とPixal3Dがネイティブ統合されたとの紹介。画像生成ワークフローから3D制作へ展開したい利用者向けの動きとして注目された。</div>
+    <div class="card-detail"><span class="label">料金</span>投稿内に具体的な料金記載なし</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">205件</span> / 表示<span class="card-amount">28,337回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108131055786168578">出典を確認する</a></div>
+  </div>
+
+  <h2>プロンプト技術・活用Tips <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ChatGPT＋Higgsfield / 一貫したAIキャラクター制作</div>
+    <div class="card-detail"><span class="label">発表元</span>ChatGPT＋Higgsfield</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/08</div>
+    <div class="card-detail"><span class="label">内容</span>キャラクター設定表と強い基準画像を作り、HiggsfieldのGenjutsuで参考動画の動きやカメラ表現を適用する手順。人物、動き、カメラ、表情、照明を一要素ずつ検証するのが要点とされた。</div>
+    <div class="card-detail"><span class="label">料金</span>手順解説は無料、Higgsfieldの本格利用は有料との説明</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">5,127件</span> / 表示<span class="card-amount">321,405回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107907509084111310">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Claude・Codex / Webアニメーション指定</div>
+    <div class="card-detail"><span class="label">発表元</span>Claude・Codex</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/08</div>
+    <div class="card-detail"><span class="label">内容</span>LP制作では曖昧な表現ではなく、パララックス、スティッキー、スクロールスナップなど実装方式の名称を指定すると、狙った動きを生成しやすいという実用的なプロンプト術。</div>
+    <div class="card-detail"><span class="label">料金</span>無料で参照可能</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,018件</span> / 表示<span class="card-amount">56,755回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108065874511077598">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Claude Haiku 5.5 / API料金を抑える設定</div>
+    <div class="card-detail"><span class="label">発表元</span>Claude Haiku 5.5</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/08</div>
+    <div class="card-detail"><span class="label">内容</span>API利用時にHaiku 5.5の自動圧縮開始位置を10万トークンへ設定し、低価格帯を維持する方法が共有された。Claude CodeではモデルをHaikuに切り替えたうえで設定する。</div>
+    <div class="card-detail"><span class="label">料金</span>10万トークン以下の低価格帯を維持しやすくする節約策</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">2,149件</span> / 表示<span class="card-amount">133,887回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107898889508700209">出典を確認する</a></div>
+  </div>
+
+  <h2>AI企業・業界ニュース <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">OpenAI / ChatGPT for Teens</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI / ChatGPT for Teens</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/08</div>
+    <div class="card-detail"><span class="label">内容</span>18歳未満と判定されたアカウントへ保護設定を自動適用するChatGPT for Teensの進捗を発表。米国の高校生向けにはCollege Plannerも予告された。</div>
+    <div class="card-detail"><span class="label">料金</span>投稿内に料金記載なし</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">2,935件</span> / 表示<span class="card-amount">324,084回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107909792945832070">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">OpenAI / ChatGPTプラグイン拡張</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI / ChatGPT</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/08</div>
+    <div class="card-detail"><span class="label">内容</span>ChatGPT向けプラグインで、サイドバーからの起動、メンション、ファイル閲覧機能を追加できる拡張機能を開発者向けに案内。常設ツールに近い形でプラグインを利用できる。</div>
+    <div class="card-detail"><span class="label">料金</span>投稿内に料金記載なし</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,033件</span> / 表示<span class="card-amount">84,110回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107927072165548276">出典を確認する</a></div>
+  </div>
+
+  <h2>AI×日本 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">日清食品 / 生成AI活用事例</div>
+    <div class="card-detail"><span class="label">発表元</span>日清食品</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/08</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、日清食品が公開した生成AI活用資料が紹介された。社内への浸透方法、具体的施策、リスク管理、業務効率化の定量成果まで確認できる実務資料とされる。</div>
+    <div class="card-detail"><span class="label">料金</span>無料で閲覧可能との紹介</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">944件</span> / 表示<span class="card-amount">99,789回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108031377044324417">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ZEN大学 / LANA project</div>
+    <div class="card-detail"><span class="label">発表元</span>ZEN大学 / LANA project</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/08</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、OpenAIの数学リポジトリにある設定ファイルで、ZEN大学のlana-agentsリポジトリが多数引用されているとの指摘。日本の大学によるAIエージェント関連成果として注目された。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">21件</span> / 表示<span class="card-amount">3,432回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108021192422748310">出典を確認する</a></div>
+  </div>
+
+  <h2>バズった話題・SNS事例 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Vidu / AI短編映画</div>
+    <div class="card-detail"><span class="label">発表元</span>Vidu</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/08</div>
+    <div class="card-detail"><span class="label">内容</span>投稿者がViduを中心に制作したAI短編映画を公開。3カ月前にはフォロワー約60人だった投稿者が大きな反響を得た事例で、日本語字幕も用意されている。</div>
+    <div class="card-detail"><span class="label">料金</span>無料公開、収益化しない方針</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">3,556件</span> / 表示<span class="card-amount">174,985回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107918334872436826">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Pixiv / 生成AI画像を巡る検索性への不満</div>
+    <div class="card-detail"><span class="label">発表元</span>Pixiv</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/08</div>
+    <div class="card-detail"><span class="label">内容</span>Pixivの検索・探索結果に生成AI画像が多く表示され、目的の作品を探しにくいという不満が日本語圏で拡散。生成物の表示区分や検索フィルターへの需要の強さを示す反応となった。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">3,008件</span> / 表示<span class="card-amount">125,701回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107878936072142910">出典を確認する</a></div>
+  </div>
+
+  <h2>AI収益化・副業事例 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Anthropic / Claude for Startups</div>
+    <div class="card-detail"><span class="label">発表元</span>Anthropic / Claude for Startups</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/08、支援期間は1年間との自己申告</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、スタートアップ運営者が申請から24時間以内に採択され、1年間の支援を受けられたと自己申告。会社ドメインのメール、確認可能なWebサイト、具体的なAPI利用方法の提示を申請のポイントとして挙げた。</div>
+    <div class="card-detail"><span class="label">料金</span>月約<span class="card-amount">1,100万インドネシアルピア相当</span>×12カ月の支援</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">916件</span> / 表示<span class="card-amount">51,029回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108025812448600435">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Anthropic / Claude Max APIクレジット</div>
+    <div class="card-detail"><span class="label">発表元</span>Anthropic / Claude Max</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/08以降、毎月付与との報告</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、Claude Max契約者へ毎月APIクレジットが付与されるとの利用報告。自作アプリやAgent SDKなどAPIを直接使う用途が対象で、未使用分は翌月へ繰り越されないとされる。</div>
+    <div class="card-detail"><span class="label">料金</span>Max 5xは月<span class="card-amount">$100</span>、Max 20xは月<span class="card-amount">$200</span>のAPIクレジット</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">802件</span> / 表示<span class="card-amount">119,735回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2107981467003592916">出典を確認する</a></div>
+  </div>
+
+  <h2>定点観測: AIモデル性能ランキング <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Artificial Analysis / Intelligence Index</div>
+    <div class="card-detail"><span class="label">発表元</span>Artificial Analysis / Intelligence Index</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/09時点</div>
+    <div class="card-detail"><span class="label">内容</span>知能ランキング上位はClaude Opus 5.5とClaude Sonnet 5.5が占めた。新公開のClaude Haiku 5.5は最大思考設定で43点となり、小型モデルではGLM-5.3 Flash、Gemini 3.8 Flash、GPT-6 Lunaを上回った。</div>
+    <div class="card-detail"><span class="label">料金</span>上位モデルの1タスク当たり推定費用は<span class="card-amount">$1.82から$7.63</span></div>
+    <div class="card-source"><a href="https://artificialanalysis.ai/models">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

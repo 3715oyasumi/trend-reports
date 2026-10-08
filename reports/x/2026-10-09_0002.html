@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xツイートデータ分析レポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+:root {
+  --canvas: #faf9f5; --card: #fffdf8; --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8; --hairline-soft: #ebe6df;
+  --primary: #cc785c; --primary-active: #a9583e;
+  --ink: #141413; --text: #3d3d3a; --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20,20,19,0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--canvas); color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.75; padding: 40px 20px 64px; max-width: 760px; margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+.report-header {
+  background: var(--card); border: 1px solid var(--hairline); border-radius: 16px;
+  padding: 28px; margin-bottom: 32px; box-shadow: var(--shadow-soft);
+}
+.report-label {
+  font-family: var(--font-body); font-size: 11px;
+  color: var(--muted); letter-spacing: 2px; margin-bottom: 10px;
+}
+.report-title {
+  font-family: var(--font-display); font-size: 28px; font-weight: 700;
+  color: var(--ink); line-height: 1.3; letter-spacing: -0.01em; text-wrap: balance;
+  margin-bottom: 16px;
+}
+.report-meta { display: flex; flex-wrap: wrap; gap: 16px; }
+.meta-item { font-size: 14px; color: var(--muted); }
+.meta-item span { color: var(--text); font-weight: 600; }
+.report-section { margin-bottom: 24px; }
+.section-title {
+  font-family: var(--font-display); font-size: 20px; font-weight: 600;
+  color: var(--ink); line-height: 1.4; text-wrap: balance;
+  padding-left: 14px; border-left: 3px solid var(--primary); margin: 32px 0 14px;
+}
+.section-num { font-size: 13px; color: var(--muted); }
+.item-card {
+  background: var(--card); border: 1px solid var(--hairline);
+  border-radius: 12px; padding: 18px 20px; margin-bottom: 10px;
+  box-shadow: var(--shadow-soft); transition: border-color 0.2s, box-shadow 0.2s;
+}
+.item-card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20,20,19,0.08); }
+.item-header { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+.item-title { font-weight: 700; font-size: 15px; color: var(--ink); flex: 1; line-height: 1.5; }
+.item-desc { font-size: 14px; color: var(--text); margin-bottom: 8px; line-height: 1.7; }
+.item-desc strong { color: var(--ink); }
+.item-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-size: 12px; padding: 2px 10px; border-radius: 9999px; }
+.tag-user  { background: var(--surface-soft); color: var(--primary-active); border: 1px solid var(--hairline); }
+.tag-stat  { background: var(--surface-soft); color: var(--muted); border: 1px solid var(--hairline); }
+.badge { font-size: 11px; padding: 2px 10px; border-radius: 9999px; font-weight: 600; white-space: nowrap; border: 1px solid var(--hairline); }
+.badge-danger  { background: #fbeae5; color: #a9583e; border-color: #e6cabd; }
+.badge-warning { background: #f6efe2; color: #8a6d2f; border-color: #e6dcc4; }
+.badge-info    { background: #f5f0e8; color: #6c6a64; border-color: var(--hairline); }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--card); border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; }
+.summary-table th {
+  background: var(--surface-soft); padding: 10px 14px; text-align: left;
+  color: var(--muted); border-bottom: 1px solid var(--hairline);
+}
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid var(--hairline-soft); color: var(--text); }
+hr { border: none; border-top: 1px solid var(--hairline); margin: 32px 0; }
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  .report-title { font-size: 23px; }
+  .section-title { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+  <div class="report-header">
+    <div class="report-label">X TWEET DATA ANALYSIS REPORT</div>
+    <h1 class="report-title">Xツイートデータ分析レポート</h1>
+    <div class="report-meta">
+      <div class="meta-item">📅 収集日時：<span>2026-10-09 00:02</span></div>
+      <div class="meta-item">📊 対象件数：<span>1,150件</span></div>
+    </div>
+  </div>
+  <section class="report-section">
+  <h2 class="section-title">1. 人気商品・トレンド</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">映画「ちいかわ」の第6弾入場者特典需要が非常に強く、10月10日は都内・近畿・地方館でも全回完売との報告が続出。再配布も決定済みで、特典・関連グッズ市場の継続的な需要が見込まれる。@kurobaskisekis2、@imu_sora2、@sakura_osamu、@hachigoro_、@soryu02</span></div>
+  <div class="item-desc">映画「ちいかわ」の第6弾入場者特典需要が非常に強く、10月10日は都内・近畿・地方館でも全回完売との報告が続出。再配布も決定済みで、特典・関連グッズ市場の継続的な需要が見込まれる。、、、、</div><div class="item-tags"><span class="tag tag-user">@kurobaskisekis2</span><span class="tag tag-user">@imu_sora2</span><span class="tag tag-user">@sakura_osamu</span><span class="tag tag-user">@hachigoro_</span><span class="tag tag-user">@soryu02</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「アイカツ」新筐体・カードは、店舗で長蛇の列やカード切れが発生。一部店舗では翌日の追加入荷情報もあり、初動需要が供給を上回っている。@tkirou13、@332?（投稿者 @yayoi51718153）、@hechima_6c、@921?（投稿者 @aacp_dragon）、@7X0kl2Cc5xyTu0O</span></div>
+  <div class="item-desc">「アイカツ」新筐体・カードは、店舗で長蛇の列やカード切れが発生。一部店舗では翌日の追加入荷情報もあり、初動需要が供給を上回っている。、?（投稿者 ）、、?（投稿者 ）、</div><div class="item-tags"><span class="tag tag-user">@tkirou13</span><span class="tag tag-user">@332</span><span class="tag tag-user">@yayoi51718153</span><span class="tag tag-user">@hechima_6c</span><span class="tag tag-user">@921</span><span class="tag tag-user">@aacp_dragon</span><span class="tag tag-user">@7X0kl2Cc5xyTu0O</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Teapickのお楽しみ袋は、前年の1.5倍を用意したにもかかわらず日付が変わる前に完売。福袋系商材として強い需要を確認。@teapick_teapick、@coucha_daisuki</span></div>
+  <div class="item-desc">Teapickのお楽しみ袋は、前年の1.5倍を用意したにもかかわらず日付が変わる前に完売。福袋系商材として強い需要を確認。、</div><div class="item-tags"><span class="tag tag-user">@teapick_teapick</span><span class="tag tag-user">@coucha_daisuki</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ちいかわ、モフハロ、ToLOVEるなどのPOPUP商品で初日・早時間の完売が相次いだ。特にトートバッグは開始10分で完売、刺繍バッジは12時の回までに全種完売との報告がある。@94nekokami、@96sou5love23、@779?（投稿者 @ice_mfmf）、@kaede_9632</span></div>
+  <div class="item-desc">ちいかわ、モフハロ、ToLOVEるなどのPOPUP商品で初日・早時間の完売が相次いだ。特にトートバッグは開始10分で完売、刺繍バッジは12時の回までに全種完売との報告がある。、、?（投稿者 ）、</div><div class="item-tags"><span class="tag tag-user">@94nekokami</span><span class="tag tag-user">@96sou5love23</span><span class="tag tag-user">@779</span><span class="tag tag-user">@ice_mfmf</span><span class="tag tag-user">@kaede_9632</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">MM6×SALOMONのバックパックが「国内完売・プレ値」の状態から定価再入荷。表示数3,728と反応が強く、ファッション系の注目商品。@happy_____maria</span></div>
+  <div class="item-desc">MM6×SALOMONのバックパックが「国内完売・プレ値」の状態から定価再入荷。表示数3,728と反応が強く、ファッション系の注目商品。</div><div class="item-tags"><span class="tag tag-user">@happy_____maria</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケモンカード「30th CELEBRATION」は抽選販売中心で、店頭でほぼ見かけないとの報告あり。数量限定再販も告知されている。@Mzdao_ankomochiへの返信者 @nezumihari02、@gamestylejp</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">ポケモンカード「30th CELEBRATION」は抽選販売中心で、店頭でほぼ見かけないとの報告あり。数量限定再販も告知されている。 、</div><div class="item-tags"><span class="tag tag-user">@Mzdao_ankomochiへの返信者</span><span class="tag tag-user">@nezumihari02</span><span class="tag tag-user">@gamestylejp</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ガンプラはAmazonで複数商品が短時間に再入荷。特に「MG ガンダムバルバトスルプス」は公式価格7,150円で販売開始され、表示数1,605。@GunplaNotice</span></div>
+  <div class="item-desc">ガンプラはAmazonで複数商品が短時間に再入荷。特に「MG ガンダムバルバトスルプス」は公式価格7,150円で販売開始され、表示数1,605。</div><div class="item-tags"><span class="tag tag-user">@GunplaNotice</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「一番くじ お文具といっしょ ～ちっちゃくなっちゃった!?～」が10月31日にファミリーマートなどで発売予定。ぬいぐるみ、トートバッグ、ラストワンクッションなどのラインナップ。@shimapatobu</span></div>
+  <div class="item-desc">「一番くじ お文具といっしょ ～ちっちゃくなっちゃった!?～」が10月31日にファミリーマートなどで発売予定。ぬいぐるみ、トートバッグ、ラストワンクッションなどのラインナップ。</div><div class="item-tags"><span class="tag tag-user">@shimapatobu</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">2. お得情報・セール</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">あみあみで「Koenigsegg Capsule 01」などのミニカー商品が20％OFFで予約開始。一部はすでに完売。@chantono2</span></div>
+  <div class="item-desc">あみあみで「Koenigsegg Capsule 01」などのミニカー商品が20％OFFで予約開始。一部はすでに完売。</div><div class="item-tags"><span class="tag tag-user">@chantono2</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ASMR作品「雨宿りサロンセラピー」が40％OFFの990円で販売開始。収録時間は3時間54分。@NLP_ASMR_Voice</span></div>
+  <div class="item-desc">ASMR作品「雨宿りサロンセラピー」が40％OFFの990円で販売開始。収録時間は3時間54分。</div><div class="item-tags"><span class="tag tag-user">@NLP_ASMR_Voice</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">BRAYE「お隣さんとふたりゴト」が発売記念20％OFF。期間は10月22日23:59まで。購入者向けに直筆サイン色紙の抽選も実施。@Seraphic_Lie</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">BRAYE「お隣さんとふたりゴト」が発売記念20％OFF。期間は10月22日23:59まで。購入者向けに直筆サイン色紙の抽選も実施。</div><div class="item-tags"><span class="tag tag-user">@Seraphic_Lie</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ピジョン「母乳実感」が11月の値上げ前に値下げされているとの情報。具体的な販売価格は投稿内にないため、購入先での確認が必要。@lua_kosodate</span></div>
+  <div class="item-desc">ピジョン「母乳実感」が11月の値上げ前に値下げされているとの情報。具体的な販売価格は投稿内にないため、購入先での確認が必要。</div><div class="item-tags"><span class="tag tag-user">@lua_kosodate</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">出産関連商品について、値上げ前の20％OFF情報が投稿されている。対象商品・適用条件はリンク先確認が必要。@lua_kosodate</span></div>
+  <div class="item-desc">出産関連商品について、値上げ前の20％OFF情報が投稿されている。対象商品・適用条件はリンク先確認が必要。</div><div class="item-tags"><span class="tag tag-user">@lua_kosodate</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">mineoで最大6カ月の料金割引が実施され、パケット放題3Mbps込みで月額880円から。10月から事務手数料は値上げされたが、eSIMプロファイル発行手数料は無料。@Sp_Mobile_Blog</span></div>
+  <div class="item-desc">mineoで最大6カ月の料金割引が実施され、パケット放題3Mbps込みで月額880円から。10月から事務手数料は値上げされたが、eSIMプロファイル発行手数料は無料。</div><div class="item-tags"><span class="tag tag-user">@Sp_Mobile_Blog</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">楽天市場で令和8年産の銘柄米が2,580円、新米5％OFFクーポン配布中との情報。@FOODIE43280956</span></div>
+  <div class="item-desc">楽天市場で令和8年産の銘柄米が2,580円、新米5％OFFクーポン配布中との情報。</div><div class="item-tags"><span class="tag tag-user">@FOODIE43280956</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ドラゴンクエスト「メタリックモンスターズギャラリー 竜王」が7,879円から7,102円へ値下げ。投稿では定価扱い。@p9BdeZbMqkpuinU</span></div>
+  <div class="item-desc">ドラゴンクエスト「メタリックモンスターズギャラリー 竜王」が7,879円から7,102円へ値下げ。投稿では定価扱い。</div><div class="item-tags"><span class="tag tag-user">@p9BdeZbMqkpuinU</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">MODEROID「モスピーダ VR-052F」が7,804円から7,395円へ値下げ、13％OFF。@MIMIO37135018</span></div>
+  <div class="item-desc">MODEROID「モスピーダ VR-052F」が7,804円から7,395円へ値下げ、13％OFF。</div><div class="item-tags"><span class="tag tag-user">@MIMIO37135018</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">クーポン利用により、1個158円の商品が20円引きの138円になるとの店舗情報。在庫量も多かったとの報告だが、商品名は投稿だけでは特定できない。@guregurepon</span></div>
+  <div class="item-desc">クーポン利用により、1個158円の商品が20円引きの138円になるとの店舗情報。在庫量も多かったとの報告だが、商品名は投稿だけでは特定できない。</div><div class="item-tags"><span class="tag tag-user">@guregurepon</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">3. 転売情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">キャンプランタン「Miyabi wood the rich（JOKER）」は定価22,000円、投稿時相場約60,000円。抽選期限は10月11日20:00、当選発表は10月12日9:00で、単純差額は約38,000円。@wanwaan4848</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">キャンプランタン「Miyabi wood the rich（JOKER）」は定価22,000円、投稿時相場約60,000円。抽選期限は10月11日20:00、当選発表は10月12日9:00で、単純差額は約38,000円。</div><div class="item-tags"><span class="tag tag-user">@wanwaan4848</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">トレカBOX4種を定価で確保した報告。投稿時相場は「DBFW ST01」約12,000円、「DBFW FB10」約7,500円、「DBFW FB11」約7,500円、「遊戯王 ORIGINAL ARTWORK COLLECTION」約8,500円。@MhyuRu</span></div>
+  <div class="item-desc">トレカBOX4種を定価で確保した報告。投稿時相場は「DBFW ST01」約12,000円、「DBFW FB10」約7,500円、「DBFW FB11」約7,500円、「遊戯王 ORIGINAL ARTWORK COLLECTION」約8,500円。</div><div class="item-tags"><span class="tag tag-user">@MhyuRu</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ビリケン商会「ジラース ソフビキット」は19,000円仕入れから27,000円出品、ウルトラマンは5,440円仕入れから8,000円出品との追跡情報。手数料前差額はそれぞれ8,000円、2,560円。@f9hAEsUpGDN3t4y</span></div>
+  <div class="item-desc">ビリケン商会「ジラース ソフビキット」は19,000円仕入れから27,000円出品、ウルトラマンは5,440円仕入れから8,000円出品との追跡情報。手数料前差額はそれぞれ8,000円、2,560円。</div><div class="item-tags"><span class="tag tag-user">@f9hAEsUpGDN3t4y</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">商品名不明ながら「5,000円を20,000円で転売」との報告。4倍価格になっているが、対象商品の確認が必要。@toarugunner</span></div>
+  <div class="item-desc">商品名不明ながら「5,000円を20,000円で転売」との報告。4倍価格になっているが、対象商品の確認が必要。</div><div class="item-tags"><span class="tag tag-user">@toarugunner</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ブランケットとチャームが販売開始5分で完売し、フリマサイトでは定価の6～8倍で多数出品されているとの報告。@shiroyumi1903</span></div>
+  <div class="item-desc">ブランケットとチャームが販売開始5分で完売し、フリマサイトでは定価の6～8倍で多数出品されているとの報告。</div><div class="item-tags"><span class="tag tag-user">@shiroyumi1903</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「ゴキブリの女の子」と呼ばれる商品がメルカリで10,000円で転売されているとの情報。正式商品名は画像確認が必要。@noroizoroi</span></div>
+  <div class="item-desc">「ゴキブリの女の子」と呼ばれる商品がメルカリで10,000円で転売されているとの情報。正式商品名は画像確認が必要。</div><div class="item-tags"><span class="tag tag-user">@noroizoroi</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">一部グッズは高確率でプレ値化し、1点数万円で売れる場合があるとの投稿。友人が初月30万円を稼いだとの事例もあるが、対象商品名が本文にないため画像確認必須。@katukatu1996</span></div>
+  <div class="item-desc">一部グッズは高確率でプレ値化し、1点数万円で売れる場合があるとの投稿。友人が初月30万円を稼いだとの事例もあるが、対象商品名が本文にないため画像確認必須。</div><div class="item-tags"><span class="tag tag-user">@katukatu1996</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">FC27ゲーム内市場向けに約100枚を仕込んだとの報告。現実の商品ではなくゲーム内転売。@FC26FC27</span></div>
+  <div class="item-desc">FC27ゲーム内市場向けに約100枚を仕込んだとの報告。現実の商品ではなくゲーム内転売。</div><div class="item-tags"><span class="tag tag-user">@FC26FC27</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">POPUP代行では「1品につき＋500円」の代行費例が確認された。在庫枯れが進み、10月11日13時枠ではクリアファイル以外が残らない可能性が指摘されている。@ringoarufa777</span></div>
+  <div class="item-desc">POPUP代行では「1品につき＋500円」の代行費例が確認された。在庫枯れが進み、10月11日13時枠ではクリアファイル以外が残らない可能性が指摘されている。</div><div class="item-tags"><span class="tag tag-user">@ringoarufa777</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">カード系転売への参入者が周囲で増えているとの現場報告。供給増加局面では競争激化に注意。@nasebaruch</span></div>
+  <div class="item-desc">カード系転売への参入者が周囲で増えているとの現場報告。供給増加局面では競争激化に注意。</div><div class="item-tags"><span class="tag tag-user">@nasebaruch</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">4. 抽選・限定販売</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケモンカード「30th CELEBRATION」は楽天ブックスで10月14日10:00からWeb抽選、ポケモンセンター各店では10月12日23:59までLINE抽選。@tenbaiquest</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">ポケモンカード「30th CELEBRATION」は楽天ブックスで10月14日10:00からWeb抽選、ポケモンセンター各店では10月12日23:59までLINE抽選。</div><div class="item-tags"><span class="tag tag-user">@tenbaiquest</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「ストームエメラルダ」「アビスアイ」「メガブレイブ＆メガシンフォニア」も楽天ブックスで10月14日10:00からWeb抽選。@tenbaiquest</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">「ストームエメラルダ」「アビスアイ」「メガブレイブ＆メガシンフォニア」も楽天ブックスで10月14日10:00からWeb抽選。</div><div class="item-tags"><span class="tag tag-user">@tenbaiquest</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「Miyabi wood the rich（JOKER）」は10月11日20:00まで抽選受付、10月12日9:00当選発表。定価22,000円、投稿時相場約60,000円。@wanwaan4848</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">「Miyabi wood the rich（JOKER）」は10月11日20:00まで抽選受付、10月12日9:00当選発表。定価22,000円、投稿時相場約60,000円。</div><div class="item-tags"><span class="tag tag-user">@wanwaan4848</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ゆきむら。聖誕グッズは10月10日締切の完全受注で、今後の再販なしと告知。限定性が高い。@Xykmr</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">ゆきむら。聖誕グッズは10月10日締切の完全受注で、今後の再販なしと告知。限定性が高い。</div><div class="item-tags"><span class="tag tag-user">@Xykmr</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">戦国乙女の新規・再販受注商品は10月14日12:00販売開始。コスチュームチェンジアクリルスタンド、LEDパネルキーホルダーなどが対象。@quenmall</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">戦国乙女の新規・再販受注商品は10月14日12:00販売開始。コスチュームチェンジアクリルスタンド、LEDパネルキーホルダーなどが対象。</div><div class="item-tags"><span class="tag tag-user">@quenmall</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「Free! Series×岩美町2026」グッズは10月10日8:30から注文シート配布。商品ごとに1～2点、缶バッジは20個以下などの購入制限あり。@santec_k</span></div>
+  <div class="item-desc">「Free! Series×岩美町2026」グッズは10月10日8:30から注文シート配布。商品ごとに1～2点、缶バッジは20個以下などの購入制限あり。</div><div class="item-tags"><span class="tag tag-user">@santec_k</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「ALL IN 東京公演」の限定Tシャツ付きRAISEチケットが10月9日22:00から枚数限定で追加販売。@Himari__Sasaki</span><span class="badge badge-info">限定</span></div>
+  <div class="item-desc">「ALL IN 東京公演」の限定Tシャツ付きRAISEチケットが10月9日22:00から枚数限定で追加販売。</div><div class="item-tags"><span class="tag tag-user">@Himari__Sasaki</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">おこさまぷれ〜と。10周年Zepp TourのVIPチケット2次抽選は10月9日21:00～10月12日23:59、当落発表は10月14日。@okopureofficial</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">おこさまぷれ〜と。10周年Zepp TourのVIPチケット2次抽選は10月9日21:00～10月12日23:59、当落発表は10月14日。</div><div class="item-tags"><span class="tag tag-user">@okopureofficial</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「人狼TLPTO VIII」アクスタの事前受注は10月11日22:00まで。公演後通販も予定。@honami_shibuya</span></div>
+  <div class="item-desc">「人狼TLPTO VIII」アクスタの事前受注は10月11日22:00まで。公演後通販も予定。</div><div class="item-tags"><span class="tag tag-user">@honami_shibuya</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">エルザ100st記念の受注生産限定アクリルスタンドは10月11日22:00まで。@masahiro_kase53</span><span class="badge badge-info">限定</span></div>
+  <div class="item-desc">エルザ100st記念の受注生産限定アクリルスタンドは10月11日22:00まで。</div><div class="item-tags"><span class="tag tag-user">@masahiro_kase53</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">5. サクセス報告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">TikTokショップで当日5,100円の収益。新規投稿が少ない週でも過去投稿から継続収益が発生し、美容系の高単価商品へ注力予定。@wan2_money</span></div>
+  <div class="item-desc">TikTokショップで当日5,100円の収益。新規投稿が少ない週でも過去投稿から継続収益が発生し、美容系の高単価商品へ注力予定。</div><div class="item-tags"><span class="tag tag-user">@wan2_money</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">9月に動画編集を20本受注し、パート勤務先でもSNS担当に採用されたとの報告。在宅動画編集から継続業務へ発展した事例。@h3BHQurxjV84740</span></div>
+  <div class="item-desc">9月に動画編集を20本受注し、パート勤務先でもSNS担当に採用されたとの報告。在宅動画編集から継続業務へ発展した事例。</div><div class="item-tags"><span class="tag tag-user">@h3BHQurxjV84740</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">経営者が集まる場へ直接参加し、すでに1件受注。信金・商工会系の交流機会が営業先として有効だったとの実体験。@hiromahiroex</span></div>
+  <div class="item-desc">経営者が集まる場へ直接参加し、すでに1件受注。信金・商工会系の交流機会が営業先として有効だったとの実体験。</div><div class="item-tags"><span class="tag tag-user">@hiromahiroex</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">トレカ情報コミュニティを活用し、プレ値BOX4種類を同時に定価購入することに成功。投稿時相場合計は約35,500円。@MhyuRu</span></div>
+  <div class="item-desc">トレカ情報コミュニティを活用し、プレ値BOX4種類を同時に定価購入することに成功。投稿時相場合計は約35,500円。</div><div class="item-tags"><span class="tag tag-user">@MhyuRu</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ブライス「さくらちゃん」は12時にカート投入後いったん売り切れたが、リロードを続けて在庫復活時に購入成功。瞬間的なキャンセル在庫を拾った事例。@fuu002020</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">ブライス「さくらちゃん」は12時にカート投入後いったん売り切れたが、リロードを続けて在庫復活時に購入成功。瞬間的なキャンセル在庫を拾った事例。</div><div class="item-tags"><span class="tag tag-user">@fuu002020</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">パチスロ「リコリコ」で投資22本、回収7,905枚の勝利報告。一方で再現性の低いギャンブル収益である点に注意。@09xx_u_mcrs</span></div>
+  <div class="item-desc">パチスロ「リコリコ」で投資22本、回収7,905枚の勝利報告。一方で再現性の低いギャンブル収益である点に注意。</div><div class="item-tags"><span class="tag tag-user">@09xx_u_mcrs</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">受注生産の注文数が想定以上に増えたとの販売者報告。商品ミスも一部発生しており、在庫・受注管理の負荷が課題。@kri_cos_</span></div>
+  <div class="item-desc">受注生産の注文数が想定以上に増えたとの販売者報告。商品ミスも一部発生しており、在庫・受注管理の負荷が課題。</div><div class="item-tags"><span class="tag tag-user">@kri_cos_</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">お楽しみ袋を前年の1.5倍用意し、0時前に完売。販売者側の需要拡大事例。@teapick_teapick</span></div>
+  <div class="item-desc">お楽しみ袋を前年の1.5倍用意し、0時前に完売。販売者側の需要拡大事例。</div><div class="item-tags"><span class="tag tag-user">@teapick_teapick</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">6. プレ値情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">「Miyabi wood the rich（JOKER）」は定価22,000円に対し相場約60,000円で、約2.7倍。@wanwaan4848</span></div>
+  <div class="item-desc">「Miyabi wood the rich（JOKER）」は定価22,000円に対し相場約60,000円で、約2.7倍。</div><div class="item-tags"><span class="tag tag-user">@wanwaan4848</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">一部限定グッズはフリマサイトで定価の6～8倍。販売開始5分で完売したブランケットとチャームが対象。@shiroyumi1903</span><span class="badge badge-info">限定</span></div>
+  <div class="item-desc">一部限定グッズはフリマサイトで定価の6～8倍。販売開始5分で完売したブランケットとチャームが対象。</div><div class="item-tags"><span class="tag tag-user">@shiroyumi1903</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">まどか☆マギカ映画特典のフィルムコマに高いプレ値が付いているとの報告。柄による価格差が大きい可能性がある。@MhyuRu</span></div>
+  <div class="item-desc">まどか☆マギカ映画特典のフィルムコマに高いプレ値が付いているとの報告。柄による価格差が大きい可能性がある。</div><div class="item-tags"><span class="tag tag-user">@MhyuRu</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Snow Man「LABO」初回盤Bが品薄となり、1万円で購入した事例。@ymn_skm</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">Snow Man「LABO」初回盤Bが品薄となり、1万円で購入した事例。</div><div class="item-tags"><span class="tag tag-user">@ymn_skm</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">抽選商品のプレ値が6万円超で、購入を断念しているとの報告。対象商品は引用元画像の確認が必要。@fkn_fkn68010727</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">抽選商品のプレ値が6万円超で、購入を断念しているとの報告。対象商品は引用元画像の確認が必要。</div><div class="item-tags"><span class="tag tag-user">@fkn_fkn68010727</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「リアリティ・フラクチャー Secret Lair Bundle」英語版がAmazonで18,990円のプレ値。@Other_casT01</span></div>
+  <div class="item-desc">「リアリティ・フラクチャー Secret Lair Bundle」英語版がAmazonで18,990円のプレ値。</div><div class="item-tags"><span class="tag tag-user">@Other_casT01</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「ORIGINAL ARTWORK COLLECTION」のBOX相場は約8,500円、「DBFW ST01」は約12,000円との投稿。@MhyuRu</span></div>
+  <div class="item-desc">「ORIGINAL ARTWORK COLLECTION」のBOX相場は約8,500円、「DBFW ST01」は約12,000円との投稿。</div><div class="item-tags"><span class="tag tag-user">@MhyuRu</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">旧ゲーム・模型・書籍でもプレ値報告が多く、PS版「怒首領蜂」、山崎12年、東京マルイ製M16、シュガーメヌエット既存グッズなどが挙げられている。@kfir_area88、@HiroHorneo、@Syain481、@reala_hobby</span></div>
+  <div class="item-desc">旧ゲーム・模型・書籍でもプレ値報告が多く、PS版「怒首領蜂」、山崎12年、東京マルイ製M16、シュガーメヌエット既存グッズなどが挙げられている。、、、</div><div class="item-tags"><span class="tag tag-user">@kfir_area88</span><span class="tag tag-user">@HiroHorneo</span><span class="tag tag-user">@Syain481</span><span class="tag tag-user">@reala_hobby</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">MGSDなどガンプラは再販によりプレ値から定価圏へ戻る例が増加。RGサザビーは定価8,910円に対し9,800円、HGヘビーアームズは定価と同じ1,870円。@j5XSnhLcKI59065</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">MGSDなどガンプラは再販によりプレ値から定価圏へ戻る例が増加。RGサザビーは定価8,910円に対し9,800円、HGヘビーアームズは定価と同じ1,870円。</div><div class="item-tags"><span class="tag tag-user">@j5XSnhLcKI59065</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ちいかわのデスクトップフィギュアは再販増加により「ほぼ利益がない」水準まで転売価格が下落。@ichika_0227</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">ちいかわのデスクトップフィギュアは再販増加により「ほぼ利益がない」水準まで転売価格が下落。</div><div class="item-tags"><span class="tag tag-user">@ichika_0227</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">7. 入荷・再販情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">MM6×SALOMONのバックパックが定価再入荷。国内完売・プレ値化していた商品との情報。@happy_____maria</span></div>
+  <div class="item-desc">MM6×SALOMONのバックパックが定価再入荷。国内完売・プレ値化していた商品との情報。</div><div class="item-tags"><span class="tag tag-user">@happy_____maria</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Amazonで「MG ガンダムバルバトスルプス」が公式価格7,150円で販売開始。@GunplaNotice</span></div>
+  <div class="item-desc">Amazonで「MG ガンダムバルバトスルプス」が公式価格7,150円で販売開始。</div><div class="item-tags"><span class="tag tag-user">@GunplaNotice</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Amazonで「HGUC ガンダムGP-02A」が2,420円で在庫復活。@okinaco315o、@hilwlander</span></div>
+  <div class="item-desc">Amazonで「HGUC ガンダムGP-02A」が2,420円で在庫復活。、</div><div class="item-tags"><span class="tag tag-user">@okinaco315o</span><span class="tag tag-user">@hilwlander</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Amazonで「HGUC R・ジャジャ」が定価2,310円で再入荷。@p9BdeZbMqkpuinU、@hisui3693</span></div>
+  <div class="item-desc">Amazonで「HGUC R・ジャジャ」が定価2,310円で再入荷。、</div><div class="item-tags"><span class="tag tag-user">@p9BdeZbMqkpuinU</span><span class="tag tag-user">@hisui3693</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Amazonで「MG ゲルググ Ver.2.0」が定価5,390円で再入荷。@MIMIO37135018</span></div>
+  <div class="item-desc">Amazonで「MG ゲルググ Ver.2.0」が定価5,390円で再入荷。</div><div class="item-tags"><span class="tag tag-user">@MIMIO37135018</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Amazonで「MG シャア専用ザク Ver.2.0」が4,290円で入荷。@gonzareiasu0945</span></div>
+  <div class="item-desc">Amazonで「MG シャア専用ザク Ver.2.0」が4,290円で入荷。</div><div class="item-tags"><span class="tag tag-user">@gonzareiasu0945</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「HG デスティニーガンダムSpecⅡ＆ゼウスシルエット」「ブラックナイトスコードカルラ」「RG シャア専用ズゴック」などがAmazonで連続在庫復活。@IhiZ8mk0vZciTY9、@GunplaOnlineX</span></div>
+  <div class="item-desc">「HG デスティニーガンダムSpecⅡ＆ゼウスシルエット」「ブラックナイトスコードカルラ」「RG シャア専用ズゴック」などがAmazonで連続在庫復活。、</div><div class="item-tags"><span class="tag tag-user">@IhiZ8mk0vZciTY9</span><span class="tag tag-user">@GunplaOnlineX</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">遊戯王「THE DARK SIDE OF DIMENSIONS 10th ANNIVERSARY MOVIE BOX」がAmazonで予約復活。@penchanTCG、@azukicyan_tcg</span></div>
+  <div class="item-desc">遊戯王「THE DARK SIDE OF DIMENSIONS 10th ANNIVERSARY MOVIE BOX」がAmazonで予約復活。、</div><div class="item-tags"><span class="tag tag-user">@penchanTCG</span><span class="tag tag-user">@azukicyan_tcg</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「ポケモンカード 30th CELEBRATION」が数量限定で再販中。@gamestylejp</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">「ポケモンカード 30th CELEBRATION」が数量限定で再販中。</div><div class="item-tags"><span class="tag tag-user">@gamestylejp</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ベイブレードX「BX-49 ドランストライク4-50FF」がAmazonで在庫復活。@hathi7515</span></div>
+  <div class="item-desc">ベイブレードX「BX-49 ドランストライク4-50FF」がAmazonで在庫復活。</div><div class="item-tags"><span class="tag tag-user">@hathi7515</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「ひみつのアイプリスマホR」がAmazonで在庫復活。@kntocr</span></div>
+  <div class="item-desc">「ひみつのアイプリスマホR」がAmazonで在庫復活。</div><div class="item-tags"><span class="tag tag-user">@kntocr</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「たまごっち たまもりシール」とサンリオ新作ボンドロの在庫復活報告。@UKosumo72983</span></div>
+  <div class="item-desc">「たまごっち たまもりシール」とサンリオ新作ボンドロの在庫復活報告。</div><div class="item-tags"><span class="tag tag-user">@UKosumo72983</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">戦国乙女の再販受注商品は10月14日12:00販売開始。クリスマスリース、お正月飾りなどが対象。@quenmall</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">戦国乙女の再販受注商品は10月14日12:00販売開始。クリスマスリース、お正月飾りなどが対象。</div><div class="item-tags"><span class="tag tag-user">@quenmall</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「アイカツアンコール」は早い店舗で10月9日に追加入荷予定との情報。@7X0kl2Cc5xyTu0O</span></div>
+  <div class="item-desc">「アイカツアンコール」は早い店舗で10月9日に追加入荷予定との情報。</div><div class="item-tags"><span class="tag tag-user">@7X0kl2Cc5xyTu0O</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">8. 注意・警告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカは再販によりシングル価格がさらに暴落する可能性が指摘されており、プレ値BOX仕入れは高値づかみの危険がある。@mgjwjadwj</span><span class="badge badge-danger">暴落</span></div>
+  <div class="item-desc">ポケカは再販によりシングル価格がさらに暴落する可能性が指摘されており、プレ値BOX仕入れは高値づかみの危険がある。</div><div class="item-tags"><span class="tag tag-user">@mgjwjadwj</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ちいかわのデスクトップフィギュアは大量再販で転売価格が下落し、利益がほぼ消失。再販予定商品の在庫保有は要注意。@ichika_0227</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">ちいかわのデスクトップフィギュアは大量再販で転売価格が下落し、利益がほぼ消失。再販予定商品の在庫保有は要注意。</div><div class="item-tags"><span class="tag tag-user">@ichika_0227</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">メルカリ依存のせどりで、アカウント停止により月20万円の収入が消え、在庫200万円分を抱えた事例が紹介されている。複数販路の確保が必要。@firekiboudesu</span></div>
+  <div class="item-desc">メルカリ依存のせどりで、アカウント停止により月20万円の収入が消え、在庫200万円分を抱えた事例が紹介されている。複数販路の確保が必要。</div><div class="item-tags"><span class="tag tag-user">@firekiboudesu</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ハイゲのチケット譲渡投稿について、支払い後に連絡が途絶える詐欺の可能性が指摘されている。公式リセール以外での送金は危険。@kamekame_mekame</span><span class="badge badge-danger">詐欺</span></div>
+  <div class="item-desc">ハイゲのチケット譲渡投稿について、支払い後に連絡が途絶える詐欺の可能性が指摘されている。公式リセール以外での送金は危険。</div><div class="item-tags"><span class="tag tag-user">@kamekame_mekame</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">X上のチケット取引は詐欺投稿が多いとの報告。@maon_k_FM</span><span class="badge badge-danger">詐欺</span></div>
+  <div class="item-desc">X上のチケット取引は詐欺投稿が多いとの報告。</div><div class="item-tags"><span class="tag tag-user">@maon_k_FM</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Amazonでは出品者都合のキャンセルや、値上げ後の再注文誘導が問題視されている。販売元・キャンセル条件を確認する必要がある。@Fuu8qog</span></div>
+  <div class="item-desc">Amazonでは出品者都合のキャンセルや、値上げ後の再注文誘導が問題視されている。販売元・キャンセル条件を確認する必要がある。</div><div class="item-tags"><span class="tag tag-user">@Fuu8qog</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">「大人の図鑑シール」は定価330円、キャラクター版418円、3D版495円。割高な転売品を避け、販売元がAmazonか確認するよう注意喚起。@happylucky516</span></div>
+  <div class="item-desc">「大人の図鑑シール」は定価330円、キャラクター版418円、3D版495円。割高な転売品を避け、販売元がAmazonか確認するよう注意喚起。</div><div class="item-tags"><span class="tag tag-user">@happylucky516</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">BRAYE「ゼロティントリムーバー」は転売品が多いとして、Qoo10公式など正規販売元からの購入が推奨されている。@meguro_nono、@Rosie_No5、@KnFmak</span></div>
+  <div class="item-desc">BRAYE「ゼロティントリムーバー」は転売品が多いとして、Qoo10公式など正規販売元からの購入が推奨されている。、、</div><div class="item-tags"><span class="tag tag-user">@meguro_nono</span><span class="tag tag-user">@Rosie_No5</span><span class="tag tag-user">@KnFmak</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">萌猫堂の商品がAmazonで無在庫・高額販売されている可能性があり、同店はAmazonに出品していないと明示。@moe_eva</span></div>
+  <div class="item-desc">萌猫堂の商品がAmazonで無在庫・高額販売されている可能性があり、同店はAmazonに出品していないと明示。</div><div class="item-tags"><span class="tag tag-user">@moe_eva</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">バックオーダー型予約は販売店都合のキャンセル例があり、確保済み在庫ではない予約に注意。@collectorfunko7</span></div>
+  <div class="item-desc">バックオーダー型予約は販売店都合のキャンセル例があり、確保済み在庫ではない予約に注意。</div><div class="item-tags"><span class="tag tag-user">@collectorfunko7</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">受注・再販発表後はプレ値が急落する。シーサーを6倍の価格で購入した直後に再販が来た事例が報告されている。@yjh_rmn</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">受注・再販発表後はプレ値が急落する。シーサーを6倍の価格で購入した直後に再販が来た事例が報告されている。</div><div class="item-tags"><span class="tag tag-user">@yjh_rmn</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">医薬品や生活必需品の品薄情報には転売目的で反応せず、必要量を超える買い占めを避けるべき。薬の品薄・取り寄せ報告が複数確認された。@k_setani、@CWBPiXtc1PKNe66、@akyu_kyun</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">医薬品や生活必需品の品薄情報には転売目的で反応せず、必要量を超える買い占めを避けるべき。薬の品薄・取り寄せ報告が複数確認された。、、</div><div class="item-tags"><span class="tag tag-user">@k_setani</span><span class="tag tag-user">@CWBPiXtc1PKNe66</span><span class="tag tag-user">@akyu_kyun</span></div>
+</div></div>
+</section>
+
+</body>
+</html>

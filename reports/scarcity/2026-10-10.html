@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>品薄予測レポート 2026-10-10</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>品薄予測レポート</h1>
+  <p class="report-date">2026年10月10日</p>
+  <p class="total-count">本日の品薄予測: 28件</p>
+
+  <h2>今買える×相場上昇の予兆 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ビオレ おうちdeエステ ディープクレイ洗顔 180g（花王・コスメ）</div>
+    <div class="card-detail"><span class="label">品薄度</span>売り切れ報告が続く一方、地方店舗では店頭在庫が確認されている。都市部と地方の在庫差を利用できる段階。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。同一容量の信頼できる成約相場と通常販売価格を比較できない。</div>
+    <div class="card-detail"><span class="label">根拠</span>10月9日に地方店舗での購入報告あり。通常流通のコスメのため、再入荷で需給が戻りやすい。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>地方のドラッグストア・スーパーで店頭価格と使用期限を確認し、売却済み相場が十分に上回る場合だけ少量確保する。</div>
+    <div class="card-source"><a href="https://www.kao.com/jp/newsroom/news/release/2026/20260303-001/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブン-イレブン『アイカツ！』カード／シール付きインデックスキャンペーン（セブン-イレブン／グリコ・店頭ノベルティ）</div>
+    <div class="card-detail"><span class="label">品薄度</span>開始翌日までに複数地域で売り切れ報告があり、対象菓子も品薄。都市部・激戦店から枯れ始めている。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>ノベルティ単体の安定した成約相場は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>複数投稿で売り切れと対象商品の品薄が報告されている。再配布や追加納品の可能性に注意。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>郊外店を店頭巡回し、全種類を揃えられる店舗だけ対象商品を必要数購入して週末需要の間にセット売りを検討する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2108327942162157633">出典を確認する</a></div>
+  </div>
+
+  <h2>発売前×期待値高 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">『劇場版 魔法少女まどか☆マギカ』スマートウォッチ／リングウォッチ（GARRACK・コラボ時計）</div>
+    <div class="card-detail"><span class="label">発売日</span>スマートウォッチ2026年10月30日、リングウォッチ2026年12月11日。予約開始は10月9日。</div>
+    <div class="card-detail"><span class="label">品薄度</span>予約開始当日にスマートウォッチの暁美ほむらモデルが公式オンラインで完売。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>スマートウォッチ定価<span class="card-amount">10,890円</span>、リングウォッチ定価<span class="card-amount">16,500円</span>。実売相場は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>公式オンラインでの完売確認はほむらモデルのみで、他店・他モデルの完売は未確認。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>正規取扱店のほむらモデル在庫を優先確認し、定価予約できる場合も1点に限定する。</div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000002002.000025284.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">BUG244コンバージョンキット（RAYWOOD／WPL JAPAN・RCカー改造キット）</div>
+    <div class="card-detail"><span class="label">発売日</span>未公表。予約開始は2026年10月9日。</div>
+    <div class="card-detail"><span class="label">品薄度</span>過去の販売枠が毎回完売し、月ごとの追加予約方式になっている。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>公式価格<span class="card-amount">12,100円</span>。中古・成約相場は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>10月分予約の受付開始が告知された。専門商品で買い手が限定され、追加枠が続けば上昇しにくい。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>10月枠の残数と過去の売却済み相場を確認し、定価を上回る場合だけ予約を検討する。</div>
+    <div class="card-source"><a href="https://raywood.jp/products/r-wpl-ug-bug244kit">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">I・O・O — Island Of One hundred choices／百択島サバイバルクラフト（YOG GAME・ボードゲーム）</div>
+    <div class="card-detail"><span class="label">発売日</span>未公表。予約は2026年10月10日から11日の週末に締切予定。</div>
+    <div class="card-detail"><span class="label">品薄度</span>予約数が200個を超え、イベント当日分も例年は開始約2時間で完売。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>今年はイベント当日分を増やす予定で、予約完売後にも供給がある。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>締切前に価格・購入上限・発送日を確認し、当日分の供給数判明後に判断する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2108546891923259851">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">田村直美『GIMME FIVE!!』増版分（MOJOST／音楽CD）</div>
+    <div class="card-detail"><span class="label">発売日</span>未公表。予約開始は2026年10月13日、発送は10月26日以降。</div>
+    <div class="card-detail"><span class="label">品薄度</span>初回制作分が完売し、増版が正式決定。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>増版数・購入上限・予約期間は不明で、供給量により希少性が薄れる可能性がある。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>受付開始時に増版数と特典差を確認し、再完売の確認後に判断する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2108483484549620108">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Nintendo Switch2 ゼルダの伝説40周年アニバーサリーエディション本体／Proコントローラー／キャリングケース（任天堂・ゲーム機／周辺機器）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月29日。予約受付中。</div>
+    <div class="card-detail"><span class="label">品薄度</span>楽天ブックスの本体単品予約が再開され、早期完売警告が出ている。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>定価<span class="card-amount">62,980円</span>に対し、メルカリ出品は約<span class="card-amount">73,000円</span>。</div>
+    <div class="card-detail"><span class="label">根拠</span>発売前の出品は確認できるが、発売日の大量出荷や予約復活で相場が下落する可能性がある。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>正規店で本体単品を定価予約し、再販頻度を監視して相場次第でキャンセル可能期間内に判断する。</div>
+    <div class="card-source"><a href="https://www.nintendo.co.jp/corporate/release/2026/260908_2.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">からふるDreamin'／てまり～A Gift from M.K.～（アゾンインターナショナル・1/6ドール）</div>
+    <div class="card-detail"><span class="label">発売日</span>未公表。予約開始は2026年10月8日。</div>
+    <div class="card-detail"><span class="label">品薄度</span>他店で即完売した一方、あみあみでは予約開始後も購入可能との報告がある。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>在庫は一次確認が必要で、2種類の人気差も不明。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>あみあみの在庫と購入上限を確認し、先に完売した人気側を優先する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2108123001812291892">出典を確認する</a></div>
+  </div>
+
+  <h2>発売接近リマインド <span class="section-count">（10件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">高橋和希原画展 YU-GI-OH! ART WORKS「決闘王の証」限定カード</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月10日、本日。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>事後受注予定があるため、高値追いはしない。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">遊戯王ラッシュデュエル CROSS ART COLLECTION BOX</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月10日、本日。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>定価<span class="card-amount">5,940円</span>、メルカリ約<span class="card-amount">8,999～9,400円</span>。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>当日定価在庫を確認できる店舗だけを対象にする。</div>
+    <div class="card-source"><a href="https://jp.mercari.com/search?keyword=%E9%81%8A%E6%88%AF%E7%8E%8B%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5%E3%83%87%E3%83%A5%E3%82%A8%E3%83%AB+cross+art+collection+box">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">LUAFEE ヘア＆ボディパフュームミスト White Apricot／Oh, Love</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月10日、本日。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>香調別の完売速度と店頭在庫を確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">スイートポテトなカメさん</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月10日、本日。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>21時の予定数限定受注に備え、開始前にログインする。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ONE PIECE × Tendence 復刻コラボ腕時計</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月16日、あと6日。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>500本限定の予約残数とキャンセル条件を確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Ado×Pusheen コラボグッズ</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月16日、あと6日。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>通販・店頭の在庫配分と購入上限を確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">なにわ男子『Moonlit』通常盤特典トレカパック</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月21日、あと11日。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>通常盤の追加供給量と特典終了店舗を監視する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">VOCE 2026年12月号</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月22日、あと12日。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>発売日の大量入荷に備え、予約完売だけで仕入れ判断しない。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ドラゴンクエスト×人生ゲーム</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月24日、あと14日。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>店頭供給を確認するまで追加仕入れを控える。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">濃厚抹茶マドレーヌ</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月24日、あと14日。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>催事の販売数・購入上限・消費期限を確認する。</div>
+  </div>
+
+  <h2>対象外（既に入手困難・参考のみ） <span class="section-count">（10件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">遊戯王ラッシュデュエル CROSS ART COLLECTION BOX</div>
+    <div class="card-detail"><span class="label">根拠</span>予約完売で、当日販売なしの店舗あり。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2108450558436929543">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">『君の好きは無敵』ぬいぐるみ大 チュチュチュエラ</div>
+    <div class="card-detail"><span class="label">根拠</span>完売、次回入荷未定。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2108119347587961142">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">モフハロストア バッジ／シール等</div>
+    <div class="card-detail"><span class="label">根拠</span>初日11時時点で複数完売、事後通販も在庫限り。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2108513472460063111">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">かいじゅうもんすた～追加販売</div>
+    <div class="card-detail"><span class="label">根拠</span>少量販売が10月9日20時に開始済みで、次回未定。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2108514570524590195">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">河村優愛／伊藤虹々美 KANGOL REWARDコラボ</div>
+    <div class="card-detail"><span class="label">根拠</span>受注予約終了。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2108573202116923615">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">魔道祖師 in SWEETS PARADISE第2弾グッズ</div>
+    <div class="card-detail"><span class="label">根拠</span>多数完売、再入荷日未定。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2108409013411135863">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">こびとづかん カクレモモジリコレクション再販</div>
+    <div class="card-detail"><span class="label">根拠</span>再販分完売、再入荷未定。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2108525197418713434">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">『お前はただの現在にすぎない』</div>
+    <div class="card-detail"><span class="label">相場・価格</span>約<span class="card-amount">2万円</span>まで上昇。</div>
+    <div class="card-detail"><span class="label">根拠</span>Amazon在庫なし、再販未定。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2108447689432342950">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Snow Man『AMENITY』</div>
+    <div class="card-detail"><span class="label">相場・価格</span>メルカリ出品は<span class="card-amount">2,000～3,777円</span>帯。</div>
+    <div class="card-detail"><span class="label">根拠</span>一部形態は品薄だが、明確なプレミアを確認できず仕入れ妙味が弱い。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2107351805504160227">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブンプレミアム マカロンアイス キャラメル</div>
+    <div class="card-detail"><span class="label">根拠</span>再入荷は確認できるが、冷凍食品で発送・保管コストが高く転売向きではない。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2108375699442856097">出典を確認する</a></div>
+  </div>
+
+  <h2>総括 <span class="section-count">（0件）</span></h2>
+  <p>今日の最優先は、地方在庫が確認されたビオレと、郊外店に残る可能性があるアイカツ！ノベルティの現物確認。次点は本日21時のスイートポテトなカメさんと、予約復活したゼルダ40周年Switch2。中期候補は、初日完売モデルが出たまどか☆マギカ時計と、過去販売枠が連続完売したBUG244。</p>
+
+  <p class="note">※予測は収集時点の情報に基づくものです。</p>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年10月10日（土）版</p>
+  <p class="total-count">本日のトレンド: 9件</p>
+
+  <h2>新商品情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">VATEN F（バテン エフ）</div>
+    <div class="card-detail"><span class="label">特徴</span>国産米と米麹を使用した米発酵由来成分100％の清涼飲料。必須アミノ酸全9種や食物繊維を含む150g入り</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月8日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">432円（税込・参考小売価格）</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000050.000071988.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">久世福商店「2026秋の福袋」</div>
+    <div class="card-detail"><span class="label">特徴</span>ごはんのお供やだしなど5,073円相当の全7品を、オリジナル巾着袋に詰めたオンライン限定商品。送料は無料</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月9日15時</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">4,380円（税込）</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000245.000158568.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">PayPayポイントアップ店「ダイソン公式オンラインストア」</div>
+    <div class="card-detail"><span class="label">特典内容</span>通常分に10.0％を上乗せし、条件達成時は最大11.5％付与。付与上限は月間20,000</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月12日10時開始、終了日は不明</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://paypay.ne.jp/notice/20261009/cp-point_oct_launch/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">＆ON「AUTUMN SPECIAL DAYS」</div>
+    <div class="card-detail"><span class="label">特典内容</span>購入額に応じて最大7,000円分のクーポンを進呈。Jinesの対象アウター・アウトレット商品は表示価格からさらに10％OFF</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月9日10時～10月19日10時</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-source"><a href="https://www.andon-jione.com/ext/pickup/2026/10/autumn-special-days.html?condition=ALL_ITEM_NEW%3AALL_ITEM_NEW">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ロレックス「コスモグラフ デイトナ Ref.126500LN」</div>
+    <div class="card-detail"><span class="label">市場状況</span>2026年10月8日更新の買取相場で、ホワイト文字盤は定価比265.3％、ブラック文字盤は245.7％。定価をそれぞれ4,130,800円、3,640,800円上回る推定買取相場</div>
+    <div class="card-detail"><span class="label">注意点</span>表示額は推定買取相場上限であり、実際の売却価格は店舗や個体状態で変動する</div>
+    <div class="card-source"><a href="https://roleyome.com/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">「最強の到達点」FB09-119 金文字パラレル・UC★</div>
+    <div class="card-detail"><span class="label">市場状況</span>2026年10月9日の観測価格は2,200円で在庫なし。通常版の掲載価格80円に対して高値だが、パラレル版は7月18日の5,000円から56％下落</div>
+    <div class="card-detail"><span class="label">注意点</span>ショップの公開価格・在庫記録であり、メルカリやヤフオクの成約相場ではない。下落局面のため高値追いに注意</div>
+    <div class="card-source"><a href="https://torecatch.com/fw/items/000000006414">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">日水物流が取り扱う冷蔵・冷凍食品</div>
+    <div class="card-detail"><span class="label">理由</span>委託先データセンターへの第三者による不正アクセスでシステム障害が発生。10月9日から一部の入出荷を再開したが、通常体制への全面復旧時期は不明</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>特定商品の欠品に備え、店頭在庫と代替メーカー品を確認する。買い占めは避ける</div>
+    <div class="card-source"><a href="https://www.lnews.jp/2026/10/s1009706.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">タッキーフーズ「福舞亭 ごま豆乳鍋」</div>
+    <div class="card-detail"><span class="label">理由</span>アレルゲン「乳成分」、添加物、原料原産地名の表示欠落と、原材料の重量順に不備があり、2026年10月8日から返金・回収</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>ヤスサキで購入した対象品は食べず、販売店または事業者の案内に従って返品する</div>
+    <div class="card-source"><a href="https://www.recall.caa.go.jp/result/detail.php?rcl=00000035951&amp;screenkbn=05">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">市場動向のまとめ</div>
+    <div class="card-detail"><span class="label">コメント</span>本日は最大11.5％の付与や最大7,000円クーポンなど、具体的な特典額を示す施策が目立ちます。一方、希少品市場では高いプレミア率と急落が併存しており、食品物流でも全面復旧に至っていないため、過熱商品の高値購入や品薄を見越した買い占めは避けるのが妥当です。</div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

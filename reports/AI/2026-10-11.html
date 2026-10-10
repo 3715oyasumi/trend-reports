@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI最新動向レポート（2026年10月11日）</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>AI最新動向レポート（2026年10月11日）</h1>
+  <p class="report-date">2026年10月11日</p>
+  <p class="total-count">本日のAIトピック: 20件</p>
+
+  <h2>新AIモデル・LLM情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Nace AI / Drex 1.5</div>
+    <div class="card-detail"><span class="label">発表元</span>Nace AI</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10</div>
+    <div class="card-detail"><span class="label">内容</span>小型の意思決定モデル「Drex 1.5」がオープンソース化された。128Kコンテキストに対応し、ローカル実行や開発ツール連携が可能。</div>
+    <div class="card-detail"><span class="label">料金</span>オープンソース、クラウド新規利用者に<span class="card-amount">$25分</span>の特典</div>
+    <div class="card-detail"><span class="label">反響</span>公式投稿 いいね<span class="card-amount">604件</span>・表示<span class="card-amount">391,461回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108668596276867118">出典を確認する</a>　<a href="https://x.com/i/status/2108676341126369756">出典を確認する</a>　<a href="https://x.com/i/status/2108670552076337544">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Nandakishorm1 / Vega</div>
+    <div class="card-detail"><span class="label">発表元</span>Nandakishorm1</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10</div>
+    <div class="card-detail"><span class="label">内容</span>物理シミュレーション型の意思決定モデル「Vega」をオープンソース公開。8億・40億パラメータ版があり、73Kトークンと画像入力に対応する。</div>
+    <div class="card-detail"><span class="label">料金</span>オープンソース</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,545件</span>・表示<span class="card-amount">39,399回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108836195639984284">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Qwen-Image-2.1-Turbo GGUF</div>
+    <div class="card-detail"><span class="label">発表元</span>Qwen-Image-2.1-Turbo</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10</div>
+    <div class="card-detail"><span class="label">内容</span>軽量なGGUF量子化版が公開され、2ビット・2.6GBからBF16・14.2GBまで選択可能になった。安価なGPUでローカル画像生成を試しやすい。</div>
+    <div class="card-detail"><span class="label">料金</span>無料公開</div>
+    <div class="card-detail"><span class="label">反響</span>紹介投稿 いいね<span class="card-amount">549件</span>・表示<span class="card-amount">33,128回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108638141829841388">出典を確認する</a>　<a href="https://x.com/i/status/2108684290833998079">出典を確認する</a></div>
+  </div>
+
+  <h2>新AIツール・サービス <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Claude Managed Agents</div>
+    <div class="card-detail"><span class="label">発表元</span>Anthropic</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10</div>
+    <div class="card-detail"><span class="label">内容</span>複数のAIエージェントを段階的に動かす動的ワークフローが公開ベータになった。統括エージェントが計画、分配、結果統合を行う。</div>
+    <div class="card-detail"><span class="label">料金</span>公開ベータ</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">11,161件</span>・表示<span class="card-amount">775,562回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108591328732856655">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ChatGPT dots</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI / ChatGPT</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10</div>
+    <div class="card-detail"><span class="label">内容</span>ChatGPTのiOS・Androidアプリから「dot」を直接作成できるようになった。24時間動かせるAIエージェント機能として紹介された。</div>
+    <div class="card-detail"><span class="label">反響</span>公式投稿 いいね<span class="card-amount">3,236件</span>・表示<span class="card-amount">932,810回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108636745915052037">出典を確認する</a>　<a href="https://x.com/i/status/2108905695525646437">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">HeyGen Voice</div>
+    <div class="card-detail"><span class="label">発表元</span>HeyGen</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10 ～ 2026/10/31</div>
+    <div class="card-detail"><span class="label">内容</span>新音声モデル「HeyGen Voice」を公開。音声合成モデル比較で首位となり、サービス本体とAPIで利用できるとしている。</div>
+    <div class="card-detail"><span class="label">料金</span>APIは10月31日まで<span class="card-amount">50％割引</span>、100万文字あたり<span class="card-amount">$15</span></div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,226件</span>・表示<span class="card-amount">560,317回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108608631696740793">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">oh-my-mermaid</div>
+    <div class="card-detail"><span class="label">発表元</span>oh-my-mermaid</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10</div>
+    <div class="card-detail"><span class="label">内容</span>AI生成コードを解析し、Mermaid形式の構成図と説明を作るオープンソースソフトウェア。コード把握や引き継ぎ用途で注目された。</div>
+    <div class="card-detail"><span class="label">料金</span>オープンソース</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,438件</span>・表示<span class="card-amount">98,750回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108686946424029603">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">VoxCPM2Web</div>
+    <div class="card-detail"><span class="label">発表元</span>VoxCPM2Web</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10</div>
+    <div class="card-detail"><span class="label">内容</span>23億パラメータの音声生成AIをブラウザ内で動かすサービスが公開された。Webだけで音声合成を完結できる。</div>
+    <div class="card-detail"><span class="label">料金</span>無料公開</div>
+    <div class="card-detail"><span class="label">反響</span>解説投稿 いいね<span class="card-amount">27件</span>・表示<span class="card-amount">4,265回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108706890419151319">出典を確認する</a>　<a href="https://x.com/i/status/2108706587405926416">出典を確認する</a>　<a href="https://x.com/i/status/2108706647996825915">出典を確認する</a></div>
+  </div>
+
+  <h2>プロンプト技術・活用Tips <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Claude Code / 自動要約の使用量対策</div>
+    <div class="card-detail"><span class="label">発表元</span>Claude Code</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、自動コンパクト前の長い会話履歴が使用量に加算されるとの解説が話題になった。早めの要約で使用量増加を抑える方法が紹介された。</div>
+    <div class="card-detail"><span class="label">料金</span>使用量削減策</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">2,659件</span>・表示<span class="card-amount">355,194回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108624109538291901">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">prompts.chat</div>
+    <div class="card-detail"><span class="label">発表元</span>prompts.chat</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10</div>
+    <div class="card-detail"><span class="label">内容</span>ChatGPT、Claude、Geminiなどで使えるオープンソースのプロンプト集。コマンドライン、MCPサーバー、Claude Codeプラグインとして利用できる。</div>
+    <div class="card-detail"><span class="label">料金</span>無料、オープンソース</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,532件</span>・表示<span class="card-amount">48,000回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108594811196625386">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ChatGPT Astra / 紙の問題を撮影して学習</div>
+    <div class="card-detail"><span class="label">発表元</span>ChatGPT Astra</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10</div>
+    <div class="card-detail"><span class="label">内容</span>紙に書いた数学問題を撮影してChatGPTへ送り、その場で添削を受ける学習方法が話題になった。紙で考えながらAIを個人教師として使う事例。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">4,512件</span>・表示<span class="card-amount">147,430回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108675665373589841">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Jev / 小さな判断を低コスト化</div>
+    <div class="card-detail"><span class="label">発表元</span>Jev</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10</div>
+    <div class="card-detail"><span class="label">内容</span>単純な二択判断を小型モデルJevへ回し、大規模言語モデルをより複雑な作業に使う構成が紹介された。</div>
+    <div class="card-detail"><span class="label">料金</span>約1万回の判断で<span class="card-amount">約$0.42</span>との投稿者試算</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">145件</span>・表示<span class="card-amount">24,885回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108664035109470637">出典を確認する</a></div>
+  </div>
+
+  <h2>AI企業・業界ニュース <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Anthropic / AIモデルの想定外行動レポート</div>
+    <div class="card-detail"><span class="label">発表元</span>Anthropic</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10</div>
+    <div class="card-detail"><span class="label">内容</span>Claudeの評価中や社内利用中に確認された4種類の想定外行動を報告した。AIエージェントに明確な作業範囲、隔離環境、監視が必要との実務上の注意点を示した。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">3,483件</span>・表示<span class="card-amount">787,726回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108680150556737819">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Prime Agent</div>
+    <div class="card-detail"><span class="label">発表元</span>Prime Agent</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10までの2週間</div>
+    <div class="card-detail"><span class="label">内容</span>2,000以上のAIエージェントと1万以上の隔離実行環境を使い、Prime Agent自身をRustで書き直す実験が行われた。起動速度は約13倍、起動時メモリ使用量は83％改善したとしている。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,900件</span>・表示<span class="card-amount">281,686回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108672479007047952">出典を確認する</a></div>
+  </div>
+
+  <h2>AI×日本 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Google AI Pro / Colabの高性能GPU特典</div>
+    <div class="card-detail"><span class="label">発表元</span>Google AI Pro / Google Colab</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10</div>
+    <div class="card-detail"><span class="label">内容</span>Google AI ProにColabの高性能GPU特典が加わり、A100の40GB・80GB環境をブラウザから利用できるとして話題になった。日本の利用者による実測報告も紹介された。</div>
+    <div class="card-detail"><span class="label">料金</span>Google AI Proは月額<span class="card-amount">約¥2,900</span>、月200 CUとの紹介</div>
+    <div class="card-detail"><span class="label">反響</span>主な紹介投稿 いいね<span class="card-amount">2,896件</span>・表示<span class="card-amount">684,639回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108666081510670721">出典を確認する</a>　<a href="https://x.com/i/status/2108808702577009033">出典を確認する</a>　<a href="https://x.com/i/status/2108895176202817574">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">NOIZ関係者 / 建築設計とVibe Modeling</div>
+    <div class="card-detail"><span class="label">発表元</span>NOIZ関係者</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10</div>
+    <div class="card-detail"><span class="label">内容</span>建築設計でAIがBIMや3Dモデリングを扱えるようになり、設計工程が急速に圧縮される可能性が議論された。</div>
+    <div class="card-detail"><span class="label">料金</span>半年の基本設計工程が約2か月と1週間まで短縮し、設計料が半分以下になる可能性との試算</div>
+    <div class="card-detail"><span class="label">反響</span>関連解説投稿 いいね<span class="card-amount">262件</span>・表示<span class="card-amount">30,676回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108592291007074428">出典を確認する</a>　<a href="https://x.com/toyoda_noiz/status/2108563615750217948">出典を確認する</a></div>
+  </div>
+
+  <h2>バズった話題・SNS事例 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">LLM生成のGLSLドラゴン</div>
+    <div class="card-detail"><span class="label">発表元</span>LLM生成事例</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10</div>
+    <div class="card-detail"><span class="label">内容</span>LLMが生成した27KBのGLSLコードだけで、ドラゴンの立体形状を表現した事例が話題になった。数式で定義した閉じた暗黙曲面として実装している。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">4,056件</span>・表示<span class="card-amount">351,904回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108708523236602056">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">画像編集AI / 30回連続編集の比較</div>
+    <div class="card-detail"><span class="label">発表元</span>Artificial Analysis</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10</div>
+    <div class="card-detail"><span class="label">内容</span>同じ室内写真へ30回連続で編集を加えた比較で、Ideogram 4.5が元の部屋を最も維持したと報告された。連続編集時の一貫性を確認する必要性が示された。</div>
+    <div class="card-detail"><span class="label">反響</span>日本語紹介投稿 いいね<span class="card-amount">169件</span>・表示<span class="card-amount">12,970回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108624360366096791">出典を確認する</a>　<a href="https://x.com/ArtificialAnlys/status/2108600224478572767">出典を確認する</a></div>
+  </div>
+
+  <h2>AI収益化・副業事例 <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">TikTok LIVE / AIインフルエンサー</div>
+    <div class="card-detail"><span class="label">発表元</span>TikTok LIVE</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/10、関連教材は2026/10/17公開予定</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、AIキャラクターがコメントやギフトを読み取り、音声、表情、動きを自動生成して応答する仕組みが紹介された。収益は保証されず、規約確認や常時監視が必要。</div>
+    <div class="card-detail"><span class="label">料金</span>投げ銭額・教材価格とも記載なし</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,249件</span>・表示<span class="card-amount">630,587回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2108762201800790161">出典を確認する</a></div>
+  </div>
+
+  <h2>定点観測: AIモデル性能ランキング <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Artificial Analysis 知能ランキング（Intelligence Index）</div>
+    <div class="card-detail"><span class="label">発表元</span>Artificial Analysis</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/11確認</div>
+    <div class="card-detail"><span class="label">内容</span>上位5構成はClaude Opus 5.5が58点で首位、Claude Sonnet 5.5が56点で2位。上位5枠をAnthropic製モデルが占めた。</div>
+    <div class="card-detail"><span class="label">料金</span>1タスク当たり<span class="card-amount">$1.82～$7.63</span></div>
+    <div class="card-detail"><span class="label">反響</span>該当なし（ランキング定点観測）</div>
+    <div class="card-source"><a href="https://artificialanalysis.ai/models">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

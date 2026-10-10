@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年10月11日（日）版</p>
+  <p class="total-count">本日のトレンド: 8件</p>
+
+  <h2>新商品情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">雪見だいふくPREMIUM 白いショコラとあまおう苺のご褒美</div>
+    <div class="card-detail"><span class="label">特徴</span>北海道産乳原料を使ったホワイトチョコレートアイスに、あまおう苺のソースを合わせた3層構造。</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年11月9日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">270円前後</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2147210.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Far Yeast Grapevine 2026</div>
+    <div class="card-detail"><span class="label">特徴</span>シャトー・メルシャンのブドウ栽培で発生した摘房ブドウ約500kgを活用した、アルコール度数6％のクラフトビール。350mL缶と15L樽で数量限定販売。</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月13日</div>
+    <div class="card-detail"><span class="label">価格</span>オープン価格</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2147168.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">山下本気うどんの日</div>
+    <div class="card-detail"><span class="label">特典内容</span>「釜明太醤油バターうどん」「鶏天ぶっかけうどん」「鶏天うどん」を各690円、「白い明太チーズクリームうどん」を980円で提供。国内全24店舗が対象。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月11日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2147173.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブン-イレブン おでん全品10％引きセール</div>
+    <div class="card-detail"><span class="label">特典内容</span>レジカウンターのおでん全品と「セブンプレミアムおでん（カップ）」を、基準となる税別販売価格から10％引き。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月16日～10月20日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2147118.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">RDCグループ40周年感謝祭</div>
+    <div class="card-detail"><span class="label">特典内容</span>国産生本マグロ3貫を968円相当から580円、黒毛和牛がってんカルビを1,353円から811円にするなど、対象料理を最大40％引き。生ビールも40％引き。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月16日～11月1日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://www.rdcgroup.co.jp/campaign/detail/template.html?id=1942">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">＆ON AUTUMN SPECIAL DAYS</div>
+    <div class="card-detail"><span class="label">特典内容</span>購入額に応じて最大7,000円分のクーポンを進呈。Jinesの対象アウター・アウトレット商品は表示価格からさらに10％引き。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月9日10時～10月19日10時</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://www.andon-jione.com/ext/pickup/2026/10/autumn-special-days.html?condition=JN_B8081_SALE%3AJN_B8081_SALE">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（0件）</span></h2>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">福舞亭 ごま豆乳鍋</div>
+    <div class="card-detail"><span class="label">理由</span>アレルゲン「乳成分」、添加物、原料原産地名の表示欠落と、原材料の重量順の不備が判明し、返金・回収を開始。</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>対象商品を食べず、販売元の案内に従って返品・返金を申し込む。</div>
+    <div class="card-source"><a href="https://www.recall.caa.go.jp/result/detail.php?rcl=00000035951&amp;screenkbn=05">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">めしウマ！あごだし仕立てポークステーキほか18商品</div>
+    <div class="card-detail"><span class="label">理由</span>原材料名、添加物、アレルゲン、栄養成分表示の欠落が判明。ヤマナカ57店舗で販売された全19商品が返金・回収対象。</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>該当商品を食べず、商品表示を確認して販売店へ返品する。</div>
+    <div class="card-source"><a href="https://www.recall.caa.go.jp/result/detail.php?rcl=00000035950&amp;screenkbn=05">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>今週は秋冬向け商品の投入に加え、外食各社の周年企画や短期値引きが目立ちます。一方、食品表示の欠落を理由とする回収が相次いでいるため、対象地域の購入者は商品名と表示内容を早めに確認してください。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年10月12日（月）版</p>
+  <p class="total-count">本日のトレンド: 7件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ダノン ビオ 脂肪燃焼ヨーグルトドリンク アップル風味</div>
+    <div class="card-detail"><span class="label">特徴</span>アルロースとビフィズス菌BE80を配合。脂肪燃焼とお腹の調子を支える機能性表示食品で、内容量は100g</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月12日</div>
+    <div class="card-detail"><span class="label">価格</span>不明</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2147090.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">チロルチョコきなこもちアイスバー</div>
+    <div class="card-detail"><span class="label">特徴</span>きなこチョコのコーティング、きなこアイス、もちグミをイメージした柔らかいもちソースを組み合わせたファミリーマート限定商品</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月13日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">194円</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2146768.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Far Yeast Grapevine 2026</div>
+    <div class="card-detail"><span class="label">特徴</span>シャトー・メルシャンのブドウ畑で摘房されたブドウ約500kgを活用した、アルコール度数6％のクラフトビール。350mL缶と15L樽で数量限定販売</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月13日</div>
+    <div class="card-detail"><span class="label">価格</span>オープン価格</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2147168.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">RDCグループ40周年感謝祭</div>
+    <div class="card-detail"><span class="label">特典内容</span>がってん寿司グループの国産生本マグロ3貫を968円相当から580円にするほか、対象料理を20％引き、対象ピザと生ビールを40％引きで提供</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月16日～11月1日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://www.rdcgroup.co.jp/campaign/detail/template.html?id=1927">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">伝説のすた丼屋「累計5万食突破感謝キャンペーン」</div>
+    <div class="card-detail"><span class="label">特典内容</span>全国の対象店舗でチャーハン7商品を100円引き。通常930円のチャーハンは830円、通常1,330円のすたみなチャーハンなどは1,230円</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月13日～10月22日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-source"><a href="https://ascii.jp/elem/000/004/441/4441634/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">近江ちゃんぽん亭「ファン倍増キャンペーン」</div>
+    <div class="card-detail"><span class="label">特典内容</span>対象8店舗で「近江ちゃんぽん」の野菜並盛を750円、野菜大盛を850円、野菜1日盛を950円の感謝価格で提供</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月10日・11日・17日・18日・24日・25日・31日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-source"><a href="https://chanpontei.com/%E6%97%A5%E9%A0%83%E3%81%AE%E3%81%94%E6%84%9B%E9%A1%A7%E3%81%AB%E6%84%9F%E8%AC%9D%E3%82%92%E8%BE%BC%E3%82%81%E3%81%A6%E3%80%82%E8%BF%91%E6%B1%9F%E3%81%A1%E3%82%83%E3%82%93%E3%81%BD%E3%82%93%E4%BA%AD/">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（0件）</span></h2>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">明治 エッセル スーパーカップ 抹茶 200ml</div>
+    <div class="card-detail"><span class="label">理由</span>世界的な抹茶需要の高まりで原料不足の可能性が生じ、安定供給を重視して終売。明治によると、実際の製造終了時期は2026年2月で、公式サイトに掲載されていた「2026年8月」は誤り</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>すでに製造終了しているため、店頭在庫を購入する際は賞味期限や保管状態を確認し、高額な二次流通品は避ける</div>
+    <div class="card-source"><a href="https://news.livedoor.com/article/detail/32535148/">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>今週は、健康機能を訴求する飲料や食品ロス削減型の酒類など、明確な付加価値を持つ新商品が目立ちます。一方、世界的な抹茶需要が定番アイスの終売につながっており、原料調達の変化が身近な商品構成にまで波及しています。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレカ情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレカ情報</h1>
+  <p class="report-date">2026年10月12日</p>
+  <p class="total-count">本日のトレカ情報: 34件</p>
+
+  <h2>ポケモンカードゲーム <span class="section-count">（7件）</span></h2>
+
+  <div class="card"><div class="card-title">抽選 プラスアルファ名古屋店 30th CELEBRATION</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/16 13:00まで</div><div class="card-detail"><span class="label">入手先</span>店舗アカウントをフォローし対象投稿をリポスト。1人1BOX限定、名古屋市名東区の店頭購入可能者が対象</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,397件</span> / 表示72,834回</div><div class="card-source"><a href="https://x.com/i/status/2108440914268192785">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">抽選 West Beach Gym／アフロくま 30th CELEBRATION カードセット</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/30 23:59まで。当選発表は2026/11/08営業時間中</div><div class="card-detail"><span class="label">価格・相場</span><span class="card-amount">1セット1,200円（税込）</span></div><div class="card-detail"><span class="label">入手先</span>対象アカウントをフォローし、投稿をいいね・リポスト。店頭受取または送料990円の郵送</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね350件</span> / 表示19,954回</div><div class="card-source"><a href="https://x.com/i/status/2108563082519912702">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">抽選 店舗名記載なし（@4122kat）30th CELEBRATION</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/25まで。受取期間は2026/10/26〜11/01</div><div class="card-detail"><span class="label">入手先</span>アカウントをフォローし対象投稿をリポスト。発送なし、店頭受取可能者のみ。店舗正式名称は未確認</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね445件</span> / 表示23,426回</div><div class="card-source"><a href="https://x.com/i/status/2108804368237797807">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">話題 30th CELEBRATIONのシングル需要</div><div class="card-detail"><span class="label">価格・相場</span>入荷後すぐ売れ在庫がほとんどなくなったとして買取を募集。具体的な買取価格は記載なし</div><div class="card-detail"><span class="label">入手先</span>トレカ侍池袋本店による個別店舗の販売・在庫報告。市場全体の相場とは断定できない</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね152件</span> / 表示254,378回</div><div class="card-source"><a href="https://x.com/i/status/2108390664153268406">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">高騰 ポケカ指数チャート（PSA10）</div><div class="card-detail"><span class="label">価格・相場</span>10/08時点<span class="card-amount">125,021円</span>、10/09時点<span class="card-amount">127,215円</span>。2日続けて上昇が報告されたが、指数の対象カード・算出方法は未記載</div><div class="card-detail"><span class="label">入手先</span>算出元は@pokeca_chart</div><div class="card-detail"><span class="label">反響</span>10/08投稿 いいね470件 / 表示892,056回、10/09投稿 いいね195件 / 表示115,443回</div><div class="card-source"><a href="https://x.com/i/status/2108316757597573209">出典を確認する</a>　<a href="https://x.com/i/status/2108679145404416194">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">転売 カードショップアシスト スニダン相場基準の買取</div><div class="card-detail"><span class="label">価格・相場</span>直近1週間以内のスニダン相場から5％を引いた価格で買取</div><div class="card-detail"><span class="label">入手先</span>BOXは数量制限なし。PSA10は20,000円以上の鑑定品が対象、シングルカードも受付。個別店舗の告知</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね192件</span> / 表示18,697回</div><div class="card-source"><a href="https://x.com/i/status/2108502291720626257">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">話題 ポケカチャンネル10周年記念イベント</div><div class="card-detail"><span class="label">発売日・期間</span>2026/10/11、渋谷「POKÉMON CARD LOUNGE」</div><div class="card-detail"><span class="label">入手先</span>公式ポケモンカードチャンネルが午前・午後の部の開催と終了を報告</div><div class="card-detail"><span class="label">反響</span>開催告知 いいね208件 / 表示28,066回、終了報告 いいね203件 / 表示13,511回</div><div class="card-source"><a href="https://x.com/i/status/2109081482669240810">出典を確認する</a>　<a href="https://x.com/i/status/2109241836531503239">出典を確認する</a></div></div>
+
+  <h2>ワンピースカードゲーム <span class="section-count">（19件）</span></h2>
+
+  <div class="card"><div class="card-title">新弾 ブースターパック 神の支配【OP-18】</div><div class="card-detail"><span class="label">発売日・期間</span>2026/11/21</div><div class="card-detail"><span class="label">入手先</span>公式がキャラクターカード「トニートニー・チョッパー」「バギー」を公開</div><div class="card-detail"><span class="label">反響</span>バギー いいね467件 / 表示157,629回、トニートニー・チョッパー いいね308件 / 表示102,230回</div><div class="card-source"><a href="https://x.com/i/status/2109101681069715561">出典を確認する</a>　<a href="https://x.com/i/status/2108739293283820029">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">新弾 ONE PIECE Heroines Edition vol.2【EB-05】</div><div class="card-detail"><span class="label">入手先</span>公式が複数の注目カードと特ホロを公開</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね758件</span> / 表示248,614回</div><div class="card-source"><a href="https://x.com/i/status/2108724199741096408">出典を確認する</a>　<a href="https://x.com/i/status/2109086590442308091">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">新弾 スタートデッキ「砂漠の女王と海賊たち」「バロックワークス」</div><div class="card-detail"><span class="label">発売日・期間</span>2026/12/19</div><div class="card-detail"><span class="label">価格・相場</span><span class="card-amount">各1,320円</span></div><div class="card-detail"><span class="label">入手先</span>リーダーカードは赤青「モンキー・D・ルフィ」、青黒「Mr.0（クロコダイル）」</div><div class="card-detail"><span class="label">反響</span>商品情報 いいね310件 / 表示210,509回、紹介 いいね1,102件 / 表示221,088回</div><div class="card-source"><a href="https://x.com/i/status/2108841907136954775">出典を確認する</a>　<a href="https://x.com/i/status/2108842452811645232">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">抽選 ONE PIECEカードゲーム公式ショップ（ナムコ）各店 世界最強の戦士【OP-17】</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/08 10:00〜10/12 23:59。当選発表は10/14 17:00</div><div class="card-detail"><span class="label">入手先</span>ナムコパークス オンラインストア会員限定。1人1回・1店舗まで。10/18〜10/19に購入、1BOX24パックまで</div><div class="card-detail"><span class="label">反響</span>いいね7件 / 表示7,103回</div><div class="card-source"><a href="https://x.com/i/status/2109281208232452410">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">抽選 フルコンプ対象店舗 EB-05／HEROINES PRECIOUS BOX</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/13 11:59まで。当選発表は10/23〜10/24</div><div class="card-detail"><span class="label">価格・相場</span>EB-05 <span class="card-amount">1BOX5,760円</span>、PRECIOUS BOX <span class="card-amount">1個8,470円</span></div><div class="card-detail"><span class="label">入手先</span>LivePocketとBANDAI TCG+プレイヤーIDが必要。購入時にマイナンバーカード実物が必要。公式発表未照合</div><div class="card-detail"><span class="label">反響</span>いいね7件 / 表示7,103回</div><div class="card-source"><a href="https://x.com/i/status/2109281208232452410">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">抽選 DMM通販 OP-17／OP-16／OP-15／OP-13／EB-03</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/07 15:00〜10/13 15:00。当選発表は10/16から4日以内</div><div class="card-detail"><span class="label">価格・相場</span>OP-17 <span class="card-amount">5,781円</span>、その他各<span class="card-amount">5,280円</span></div><div class="card-detail"><span class="label">入手先</span>DMM会員かつ国内在住者。クレジットカード決済限定、各商品1人1点まで。公式発表未照合</div><div class="card-detail"><span class="label">反響</span>いいね7件 / 表示7,103回</div><div class="card-source"><a href="https://x.com/i/status/2109281208232452410">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">抽選 カードボックス池袋店 EB-05</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/14 23:59まで。当選発表は10/15予定</div><div class="card-detail"><span class="label">入手先</span>会員カードが必要。当選者は10/19〜10/25に予約。本人確認証などが必要。公式発表未照合</div><div class="card-detail"><span class="label">反響</span>いいね7件 / 表示7,103回</div><div class="card-source"><a href="https://x.com/i/status/2109281208232452410">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">抽選 イエローサブマリン各店 世界最強の戦士【OP-17】10月再販分</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/11 09:00〜10/14 20:05。当選発表は10/17</div><div class="card-detail"><span class="label">入手先</span>LivePocket登録と300円以上の購入または買取レシートが必要。公式発表未照合</div><div class="card-detail"><span class="label">反響</span>いいね7件 / 表示7,103回</div><div class="card-source"><a href="https://x.com/i/status/2109281208232452410">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">抽選 イオン キッズリパブリック EB-05</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/09 11:00〜10/15 19:59</div><div class="card-detail"><span class="label">入手先</span>キッズリパブリックアプリから応募。会員登録時にイオンカードまたはWAONなどの登録が必要。公式発表未照合</div><div class="card-detail"><span class="label">反響</span>いいね7件 / 表示7,103回</div><div class="card-source"><a href="https://x.com/i/status/2109281208232452410">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">抽選 TSUTAYA合川店 EB-05</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/09 09:00〜10/16 09:00。当選発表は10/23〜10/26</div><div class="card-detail"><span class="label">入手先</span>LivePocket会員限定、1人1回。クレジットカード決済は当選時に決済。公式発表未照合</div><div class="card-detail"><span class="label">反響</span>いいね7件 / 表示7,103回</div><div class="card-source"><a href="https://x.com/i/status/2109281208232452410">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">抽選 カードボックス横浜西口店 EB-05</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/08 13:00〜10/16 22:00。当選発表は10/18予定</div><div class="card-detail"><span class="label">入手先</span>会員カードが必要。当選者は10/19〜10/27に予約。本人確認証などが必要。公式発表未照合</div><div class="card-detail"><span class="label">反響</span>いいね7件 / 表示7,103回</div><div class="card-source"><a href="https://x.com/i/status/2109281208232452410">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">抽選 ワンハッピー高田馬場 EB-05</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/16 23:59まで。当選発表は10/19までに当選者のみメール</div><div class="card-detail"><span class="label">価格・相場</span><span class="card-amount">1BOX5,760円（税込）</span></div><div class="card-detail"><span class="label">入手先</span>1人1回。本人確認書類が必要。10/30までに通販で事前決済し、10/31〜11/01に店頭受取。公式発表未照合</div><div class="card-detail"><span class="label">反響</span>いいね7件 / 表示7,103回</div><div class="card-source"><a href="https://x.com/i/status/2109281208232452410">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">抽選 TSUTAYA Trading Card平塚店 EB-05</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/07 18:00〜10/18 20:00。当選発表は10/25までを予定</div><div class="card-detail"><span class="label">入手先</span>LivePocket会員登録と店舗Xのフォローが必要。本人確認書類が必要。公式発表未照合</div><div class="card-detail"><span class="label">反響</span>いいね7件 / 表示7,103回</div><div class="card-source"><a href="https://x.com/i/status/2109281208232452410">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">抽選 楽天ブックス EB-05／世界最強の戦士【OP-17】</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/14 10:00〜10/18 23:59。当選者販売は10/29〜11/03</div><div class="card-detail"><span class="label">価格・相場</span><span class="card-amount">各5,781円（税込・送料無料）</span></div><div class="card-detail"><span class="label">入手先</span>住所登録済み楽天会員、クレジットカード決済限定。1世帯1人まで。公式発表未照合</div><div class="card-detail"><span class="label">反響</span>いいね7件 / 表示7,103回</div><div class="card-source"><a href="https://x.com/i/status/2109281208232452410">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">抽選 CBトレコロ 世界最強の戦士【OP-17】</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/21 23:59まで</div><div class="card-detail"><span class="label">入手先</span>会員限定。対象中古商品を3,000円以上購入していることが条件。送料500円、テープあり。公式発表未照合</div><div class="card-detail"><span class="label">反響</span>いいね7件 / 表示7,103回</div><div class="card-source"><a href="https://x.com/i/status/2109281208232452410">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">抽選 TSUTAYA鎌ケ谷店 EB-05</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/09 09:30〜10/25 21:45。当選発表は10/27予定</div><div class="card-detail"><span class="label">価格・相場</span><span class="card-amount">1BOX5,760円（税込）</span></div><div class="card-detail"><span class="label">入手先</span>LivePocket会員限定。顔写真付き本人確認書類とVポイントカードが必要。公式発表未照合</div><div class="card-detail"><span class="label">反響</span>いいね7件 / 表示7,103回</div><div class="card-source"><a href="https://x.com/i/status/2109281208232452410">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">抽選 MINT GAMES池袋店 EB-05</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/28 21:00まで。当選発表は10/29〜10/30予定</div><div class="card-detail"><span class="label">価格・相場</span><span class="card-amount">1BOX5,760円（税込）</span></div><div class="card-detail"><span class="label">入手先</span>店舗Xをフォローしオンライン応募。店頭受取限定、本人確認あり。公式発表未照合</div><div class="card-detail"><span class="label">反響</span>いいね7件 / 表示7,103回</div><div class="card-source"><a href="https://x.com/i/status/2109281208232452410">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">抽選 ティアワン渋谷店 ONE PIECE HEROINES PRECIOUS BOX</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/28 23:59まで。当選発表は10/30までにXのDM</div><div class="card-detail"><span class="label">価格・相場</span>2026/10/31発売、<span class="card-amount">1個8,470円（税込）</span></div><div class="card-detail"><span class="label">入手先</span>マイナンバーカードが必要。現金のみ。購入期間は10/31〜11/01。公式発表未照合</div><div class="card-detail"><span class="label">反響</span>いいね7件 / 表示7,103回</div><div class="card-source"><a href="https://x.com/i/status/2109281208232452410">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">話題 チャンピオンシップ26-27 Season 2 3on3 Autumn</div><div class="card-detail"><span class="label">発売日・期間</span>2026/10/10開催</div><div class="card-detail"><span class="label">入手先</span>公式が優勝チーム「ブルーマウンテン」と準優勝チーム「破壊神海賊団」のデッキを公開</div><div class="card-detail"><span class="label">反響</span>優勝デッキ いいね419件 / 表示127,692回、準優勝デッキ いいね197件 / 表示85,488回</div><div class="card-source"><a href="https://x.com/i/status/2108880220220751907">出典を確認する</a>　<a href="https://x.com/i/status/2108880471778271398">出典を確認する</a></div></div>
+
+  <h2>遊戯王オフィシャルカードゲーム <span class="section-count">（3件）</span></h2>
+
+  <div class="card"><div class="card-title">新弾 IMMORTAL PHOENIX</div><div class="card-detail"><span class="label">発売日・期間</span>2026/10/31</div><div class="card-detail"><span class="label">入手先</span>新テーマ「白鴉」の「白鴉の魔女の光彩」「白鴉の森の女主人ディアベルゼ」を公式が公開</div><div class="card-detail"><span class="label">反響</span>いいね166件 / 表示40,322回、いいね142件 / 表示41,796回</div><div class="card-source"><a href="https://x.com/i/status/2109226250246254645">出典を確認する</a>　<a href="https://x.com/i/status/2109245124664238312">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">新弾 PRIDE AND SOUL【CG2163】</div><div class="card-detail"><span class="label">発売日・期間</span>2027/01/23発売予定</div><div class="card-detail"><span class="label">価格・相場</span><span class="card-amount">1BOX5,940円（税込）</span>、30パック入り</div><div class="card-detail"><span class="label">入手先</span>全80種。Amazon公式販売・発送として予約受付中。公式発表未照合</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね108件</span> / 表示76,306回</div><div class="card-source"><a href="https://x.com/i/status/2108380630342119673">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">付録 Vジャンプ12月特大号 攻撃の無力化</div><div class="card-detail"><span class="label">入手先</span>付録カードはカウンターマジック「攻撃の無力化」。公式発表未照合</div><div class="card-detail"><span class="label">反響</span>いいね0件 / 表示2,564回</div><div class="card-source"><a href="https://x.com/i/status/2108721319009497202">出典を確認する</a></div></div>
+
+  <h2>ドラゴンボールスーパーカードゲーム フュージョンワールド <span class="section-count">（1件）</span></h2>
+
+  <div class="card"><div class="card-title">付録 Vジャンプ12月号 FP-104「孫悟空」</div><div class="card-detail"><span class="label">入手先</span>「進化」スキルを持ち、手札から《サイヤ人》カードへつなげられる攻撃型バトルカード。公式発表未照合</div><div class="card-detail"><span class="label">反響</span>いいね0件 / 表示153回</div><div class="card-source"><a href="https://x.com/i/status/2108496189574275422">出典を確認する</a></div></div>
+
+  <h2>デュエル・マスターズ <span class="section-count">（3件）</span></h2>
+
+  <div class="card"><div class="card-title">抽選 はなまるトレカ 切札不滅!! デュエキング FOREVER 2026</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/18 23:59まで。当選発表は10/19 18:30</div><div class="card-detail"><span class="label">入手先</span>@hanamaru_tcgをフォローし、対象投稿をいいね・リポスト。1BOXを1人にプレゼント</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね698件</span> / 表示14,065回</div><div class="card-source"><a href="https://x.com/i/status/2108894721150206416">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">抽選 Card NEO 切札不滅!! デュエキング FOREVER 2026</div><div class="card-detail"><span class="label">入手先</span>@DMCardNEOをフォローし、対象投稿と固定された販売予告投稿をリポスト。応募により当選者発表時のXアカウント名掲載へ同意</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね329件</span> / 表示16,070回</div><div class="card-source"><a href="https://x.com/i/status/2108844179065626896">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">話題 デュエル・マスターズ25周年ツアー福岡会場</div><div class="card-detail"><span class="label">発売日・期間</span>2026/12/06、マリンメッセ福岡</div><div class="card-detail"><span class="label">入手先</span>公式が福岡会場チケットの2次抽選受付と出演者情報を告知</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね374件</span> / 表示126,375回</div><div class="card-source"><a href="https://x.com/i/status/2108489041725571147">出典を確認する</a></div></div>
+
+  <h2>トレカ全般 <span class="section-count">（1件）</span></h2>
+
+  <div class="card"><div class="card-title">新弾 ブシロード トレーディングカード コレクションクリア「バンドリ！ ゆめ∞みた」</div><div class="card-detail"><span class="label">発売日・期間</span>2026/10/09以降、順次発売</div><div class="card-detail"><span class="label">入手先</span>店舗により取扱いや在庫がない場合あり</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,147件</span> / 表示65,641回</div><div class="card-source"><a href="https://x.com/i/status/2108422203419103685">出典を確認する</a></div></div>
+
+  <p class="note">※価格・相場は確認時点のものです。</p>
+</body>
+</html>

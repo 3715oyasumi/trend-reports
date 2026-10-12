@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xツイートデータ分析レポート</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+<h1>Xツイートデータ分析レポート</h1>
+<p class="report-date">2026年10月13日 0:04 収集</p>
+<p class="total-count">分析ツイート: 1150件</p>
+
+<h2>人気商品・トレンド <span class="section-count">（8件）</span></h2>
+
+<div class="card">
+  <div class="card-title">ポケカ「30th CELEBRATION」BOX転売</div>
+  <div class="card-detail"><span class="label">価格</span><span class="card-amount">約25,000円</span></div>
+  <div class="card-detail"><span class="label">動向</span>シュリンク付きBOXを売れば高額シングル購入後も差額が残るとの試算があり、転売・投機需要が集中</div>
+  <div class="card-detail"><span class="label">投稿者</span>@jimu53</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ベイブレード オールインワンセット</div>
+  <div class="card-detail"><span class="label">海外成約</span><span class="card-amount">13万円</span>（中国）</div>
+  <div class="card-detail"><span class="label">動向</span>海外需要を背景に買い回りが発生</div>
+  <div class="card-detail"><span class="label">投稿者</span>@tomoyuki_58</div>
+</div>
+
+<div class="card">
+  <div class="card-title">「KAITO V1」発売13年目で完売</div>
+  <div class="card-detail"><span class="label">動向</span>クリプトン公式サイトで完売。品薄を受け、がくぽなど他の男性VOCALOIDにも需要が波及</div>
+  <div class="card-detail"><span class="label">投稿者</span>@sono__123 他</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ディズニーグッズ多数完売</div>
+  <div class="card-detail"><span class="label">対象</span>スティッチ・エンジェルのファンキャップ、ハロウィーンぬいぐるみ、マグカップ、写真セット、着物姿ミニーぬいば</div>
+  <div class="card-detail"><span class="label">相場</span>ファンキャップはメルカリ<span class="card-amount">15,000円</span>で購入検討の投稿あり</div>
+  <div class="card-detail"><span class="label">投稿者</span>@disney_tdr_plan 他</div>
+</div>
+
+<div class="card">
+  <div class="card-title">スターバックス 黒猫耳関連グッズ</div>
+  <div class="card-detail"><span class="label">動向</span>黒猫耳関連商品・フラペチーノが複数店舗で売り切れ。翌夕入荷予定との店舗案内も確認され、短期的な品薄が目立つ</div>
+  <div class="card-detail"><span class="label">投稿者</span>@maturica_123 他</div>
+</div>
+
+<div class="card">
+  <div class="card-title">戌亥とこ「One day」在庫切れ</div>
+  <div class="card-detail"><span class="label">動向</span>タワーレコード渋谷店で朝一番に残り1点、その後完売。横浜・亀有でも在庫切れ報告</div>
+  <div class="card-detail"><span class="label">投稿者</span>@01Caff</div>
+</div>
+
+<div class="card">
+  <div class="card-title">NewDays トレインペットボトルカバー全6種</div>
+  <div class="card-detail"><span class="label">配布開始</span>10月13日から</div>
+  <div class="card-detail"><span class="label">注意</span>伊藤園「お～いお茶」×OJICOのコンビニ限定おまけとして初動需要に注意</div>
+  <div class="card-detail"><span class="label">投稿者</span>@shimapatobu</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ハンバーガー ニューTシャツ品薄</div>
+  <div class="card-detail"><span class="label">動向</span>XL・XXLが品薄。現行在庫限りで再販なしと告知</div>
+  <div class="card-detail"><span class="label">投稿者</span>@hbb_info</div>
+</div>
+
+<h2>お得情報・セール <span class="section-count">（10件）</span></h2>
+
+<div class="card">
+  <div class="card-title">Amazonプライム感謝祭</div>
+  <div class="card-detail"><span class="label">先行</span>10月13日0:00〜15日23:59</div>
+  <div class="card-detail"><span class="label">本セール</span>10月16日0:00〜19日23:59</div>
+  <div class="card-detail"><span class="label">条件</span>合計10,000円以上購入等でポイントアップ、上限10,000ポイント</div>
+  <div class="card-detail"><span class="label">投稿者</span>@Z_otoku</div>
+</div>
+
+<div class="card">
+  <div class="card-title">iPhone Air 値下げ</div>
+  <div class="card-detail"><span class="label">256GB</span>189,800円→<span class="card-amount">149,800円</span>（21%OFF）</div>
+  <div class="card-detail"><span class="label">512GB</span>224,800円→<span class="card-amount">171,600円</span></div>
+  <div class="card-detail"><span class="label">投稿者</span>@yiY5yISVjt3UtPQ 他</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Meta Quest 3S セール</div>
+  <div class="card-detail"><span class="label">128GB</span>59,400円→<span class="card-amount">50,490円</span>（条件次第で実質47,361円）</div>
+  <div class="card-detail"><span class="label">256GB</span>77,000円→<span class="card-amount">65,450円</span>（条件次第で実質61,423円）</div>
+  <div class="card-detail"><span class="label">投稿者</span>@penchanTCG 他</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Amazon初回決済キャンペーン</div>
+  <div class="card-detail"><span class="label">メルペイ</span>初回利用40%還元、上限1,500ポイント（3,750円の支払いで上限到達）</div>
+  <div class="card-detail"><span class="label">d払い</span>抽選1,000名に100%還元、上限10,000ポイント</div>
+  <div class="card-detail"><span class="label">投稿者</span>@Z_otoku</div>
+</div>
+
+<div class="card">
+  <div class="card-title">完全メシ コーンクリームポタージュ6食</div>
+  <div class="card-detail"><span class="label">価格</span>1,284円、70%相当のポイント還元で実質391円との投稿</div>
+  <div class="card-detail"><span class="label">注意</span>表示ミスの可能性もあるため決済画面確認必須</div>
+  <div class="card-detail"><span class="label">投稿者</span>@SelectInfoDeals</div>
+</div>
+
+<div class="card">
+  <div class="card-title">HGCE デスティニーガンダム ハイネ専用機</div>
+  <div class="card-detail"><span class="label">価格</span>定価2,640円→<span class="card-amount">2,079円</span>（21%OFF）</div>
+  <div class="card-detail"><span class="label">在庫</span>Amazon在庫復活</div>
+  <div class="card-detail"><span class="label">投稿者</span>@tsumipla_kuzuse</div>
+</div>
+
+<div class="card">
+  <div class="card-title">トレカ用ドライボックス27L</div>
+  <div class="card-detail"><span class="label">割引</span>46%OFFで在庫復活</div>
+  <div class="card-detail"><span class="label">動向</span>売り切れを繰り返している商品として紹介</div>
+  <div class="card-detail"><span class="label">投稿者</span>@NinjaMaruTCG</div>
+</div>
+
+<div class="card">
+  <div class="card-title">カーケア用品 Amazon感謝祭</div>
+  <div class="card-detail"><span class="label">割引</span>最大60%OFF</div>
+  <div class="card-detail"><span class="label">動向</span>「THE CLASS バレットフェニックス」も再入荷し、対象品は10〜60%OFF</div>
+  <div class="card-detail"><span class="label">投稿者</span>@800rr1</div>
+</div>
+
+<div class="card">
+  <div class="card-title">「タクタビ」日本語版値下げ</div>
+  <div class="card-detail"><span class="label">価格</span>通常2,500円→送料込み<span class="card-amount">2,000円</span></div>
+  <div class="card-detail"><span class="label">期間</span>10月18日23:59まで</div>
+  <div class="card-detail"><span class="label">補足</span>台湾中国語版は初版1,000個完売、増刷1,000個を販売中</div>
+  <div class="card-detail"><span class="label">投稿者</span>@BokuyadoKyoto</div>
+</div>
+
+<div class="card">
+  <div class="card-title">カーナベルDAYS 遊戯王セール</div>
+  <div class="card-detail"><span class="label">期間</span>10月13〜15日</div>
+  <div class="card-detail"><span class="label">内容</span>3,000円以下の商品が5%OFF。注文1,000円ごとに抽選1口、合計100名当選</div>
+  <div class="card-detail"><span class="label">投稿者</span>@ka_nabell_yg</div>
+</div>
+
+<h2>転売情報 <span class="section-count">（10件）</span></h2>
+
+<div class="card">
+  <div class="card-title">ポケカ30周年BOX 底値仕入れ戦略</div>
+  <div class="card-detail"><span class="label">手法</span>定価5,500円の商品を発売後の価格下落局面で8,000円前後から大量仕入れし、長期保管</div>
+  <div class="card-detail"><span class="label">狙い</span>発売直後ではなく「底値」を狙う戦略</div>
+  <div class="card-detail"><span class="label">投稿者</span>@oroshinohito</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ポケカ30周年9種セット プレ値試算</div>
+  <div class="card-detail"><span class="label">定価</span>10,800円</div>
+  <div class="card-detail"><span class="label">プレ値</span><span class="card-amount">18,000〜20,000円</span></div>
+  <div class="card-detail"><span class="label">試算</span>SAR1枚を得る平均コストは定価約12,000円、プレ値18,000円なら約20,000円、20,000円なら約22,200円</div>
+  <div class="card-detail"><span class="label">投稿者</span>@to03162</div>
+</div>
+
+<div class="card">
+  <div class="card-title">セカンドストリート発の小口転売</div>
+  <div class="card-detail"><span class="label">対象</span>色付きデジカメや姿勢矯正チェアなど</div>
+  <div class="card-detail"><span class="label">利益</span>メルカリへ出すだけで1点<span class="card-amount">5,000〜10,000円</span>を狙えるケースがあるとの現場情報</div>
+  <div class="card-detail"><span class="label">投稿者</span>@shizuka_resale</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ポケカ30周年BOX相場観</div>
+  <div class="card-detail"><span class="label">BOX</span>約25,000円</div>
+  <div class="card-detail"><span class="label">FUR</span>7,800円 / SAR高くて10,000円 / 復刻ルギア高くて20,000円</div>
+  <div class="card-detail"><span class="label">動向</span>BOXのまま売ってシングル購入する動きが示されている</div>
+  <div class="card-detail"><span class="label">投稿者</span>@jimu53</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ベイブレード 海外転売狙い</div>
+  <div class="card-detail"><span class="label">中国成約</span><span class="card-amount">13万円</span></div>
+  <div class="card-detail"><span class="label">動向</span>国内仕入れから海外転売を狙う買い手が増えている可能性</div>
+  <div class="card-detail"><span class="label">投稿者</span>@tomoyuki_58</div>
+</div>
+
+<div class="card">
+  <div class="card-title">JR九州 大野下駅の補充券</div>
+  <div class="card-detail"><span class="label">落札額</span><span class="card-amount">8,251円</span>（ヤフオク）</div>
+  <div class="card-detail"><span class="label">動向</span>鉄道関連の紙物にも高額取引が発生</div>
+  <div class="card-detail"><span class="label">投稿者</span>@Ken_music_x</div>
+</div>
+
+<div class="card">
+  <div class="card-title">銀テープの高額転売</div>
+  <div class="card-detail"><span class="label">相場</span>1本<span class="card-amount">7,000円</span>で取引</div>
+  <div class="card-detail"><span class="label">動向</span>ライブ会場で大量回収する転売目的とみられる行動も複数確認</div>
+  <div class="card-detail"><span class="label">投稿者</span>@furu_0811</div>
+</div>
+
+<div class="card">
+  <div class="card-title">TAAG関連商品の高騰</div>
+  <div class="card-detail"><span class="label">動向</span>定価の2倍を超える価格でも売れているとの報告</div>
+  <div class="card-detail"><span class="label">投稿者</span>@springhascome51</div>
+</div>
+
+<div class="card">
+  <div class="card-title">アクスタ等の高騰報告</div>
+  <div class="card-detail"><span class="label">動向</span>定価の2〜3倍で出品されているとの購入者報告。トレーディング商品以外にも高騰が波及</div>
+  <div class="card-detail"><span class="label">投稿者</span>@Choocopanklia</div>
+</div>
+
+<div class="card">
+  <div class="card-title">新刊同人誌の即日転売</div>
+  <div class="card-detail"><span class="label">動向</span>頒布翌日にメルカリへ出品</div>
+  <div class="card-detail"><span class="label">注意</span>二次創作品は権利関係から通報が逆効果になる可能性があるため、「買わない」対応が推奨されている</div>
+  <div class="card-detail"><span class="label">投稿者</span>@ai__________02</div>
+</div>
+
+<h2>抽選・限定販売 <span class="section-count">（10件）</span></h2>
+
+<div class="card">
+  <div class="card-title">ONE PIECEカード「神の支配【OP-18】」ヤマダ電機抽選</div>
+  <div class="card-detail"><span class="label">締切</span>10月14日23:59</div>
+  <div class="card-detail"><span class="label">発表</span>11月18日12時頃 / 購入期間11月21〜27日</div>
+  <div class="card-detail"><span class="label">条件</span>店舗購入履歴またはゴールド会員が応募条件</div>
+  <div class="card-detail"><span class="label">投稿者</span>@onepiecenyuka</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Levi's「S506XX 1944 JACKET」再販抽選</div>
+  <div class="card-detail"><span class="label">締切</span>10月13日23:59</div>
+  <div class="card-detail"><span class="label">価格</span><span class="card-amount">52,800円</span></div>
+  <div class="card-detail"><span class="label">日程</span>当選通知10月23日以降 / 店頭購入10月30日〜11月1日</div>
+  <div class="card-detail"><span class="label">投稿者</span>@stock_alert_lab</div>
+</div>
+
+<div class="card">
+  <div class="card-title">初音ミク×MTG Secret Lair ファン商品バンドル再抽選</div>
+  <div class="card-detail"><span class="label">期間</span>10月14日10:00〜18日23:59（楽天ブックス）</div>
+  <div class="card-detail"><span class="label">投稿者</span>@Other_casT01</div>
+</div>
+
+<div class="card">
+  <div class="card-title">駿河屋秋葉原本店 ONE PIECEカード抽選</div>
+  <div class="card-detail"><span class="label">対象</span>「世界最強の戦士」</div>
+  <div class="card-detail"><span class="label">締切</span>10月14日</div>
+  <div class="card-detail"><span class="label">条件</span>指定アカウントのフォローとリポストが必要</div>
+  <div class="card-detail"><span class="label">投稿者</span>@AkiPokemonLife</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ポケカ ポケモンセンター・ジムセット定価抽選</div>
+  <div class="card-detail"><span class="label">対象</span>スノーハザード＆クレイバースト</div>
+  <div class="card-detail"><span class="label">条件</span>10月の購入者限定</div>
+  <div class="card-detail"><span class="label">投稿者</span>@luruna_card</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ポケカ「30th CELEBRATION」ヤマダ電機当選発表</div>
+  <div class="card-detail"><span class="label">発表</span>10月13日12:00</div>
+  <div class="card-detail"><span class="label">購入期間</span>10月16〜22日</div>
+  <div class="card-detail"><span class="label">注意</span>指定店舗受取、本人限定、アプリのバーコード必須、スクリーンショット不可</div>
+  <div class="card-detail"><span class="label">投稿者</span>@Cipher__JP</div>
+</div>
+
+<div class="card">
+  <div class="card-title">「ぬいパル」受注終了</div>
+  <div class="card-detail"><span class="label">期限</span>10月12日23:59で終了</div>
+  <div class="card-detail"><span class="label">動向</span>期限直前の駆け込み購入や買い逃し報告が相次いだ</div>
+  <div class="card-detail"><span class="label">投稿者</span>@__ponpoko__ 他</div>
+</div>
+
+<div class="card">
+  <div class="card-title">「Love学院購買部」ジャージ受注</div>
+  <div class="card-detail"><span class="label">締切</span>10月14日23:59まで</div>
+  <div class="card-detail"><span class="label">投稿者</span>@tvwod235</div>
+</div>
+
+<div class="card">
+  <div class="card-title">小日向千虎 誕生日記念グッズ＆ボイス2026</div>
+  <div class="card-detail"><span class="label">締切</span>11月12日23:59までの期間限定受注</div>
+  <div class="card-detail"><span class="label">投稿者</span>@haconect</div>
+</div>
+
+<div class="card">
+  <div class="card-title">スクライド25周年メタルキャンバス</div>
+  <div class="card-detail"><span class="label">動向</span>期間限定で受注開始</div>
+  <div class="card-detail"><span class="label">投稿者</span>@ART_MERCH_JAPAN</div>
+</div>
+
+<h2>プレ値情報 <span class="section-count">（10件）</span></h2>
+
+<div class="card">
+  <div class="card-title">ポケカPSA10 高額買取上位</div>
+  <div class="card-detail"><span class="label">1位</span>レックウザCLV.X 1ED <span class="card-amount">825,000円</span></div>
+  <div class="card-detail"><span class="label">2位</span>ミュウツーEXプロモ 823,000円</div>
+  <div class="card-detail"><span class="label">3位</span>サンダースVMAX夏ポケカ 815,000円 / リザードンG再販790,000円 / 旧裏ブラッキー782,000円</div>
+  <div class="card-detail"><span class="label">投稿者</span>@tashikane</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ベイブレード オールインワンセット 中国成約</div>
+  <div class="card-detail"><span class="label">価格</span><span class="card-amount">13万円</span></div>
+  <div class="card-detail"><span class="label">動向</span>海外相場が国内需要を押し上げている</div>
+  <div class="card-detail"><span class="label">投稿者</span>@tomoyuki_58</div>
+</div>
+
+<div class="card">
+  <div class="card-title">PS5 Pro 転売価格</div>
+  <div class="card-detail"><span class="label">価格</span><span class="card-amount">200,000円超</span></div>
+  <div class="card-detail"><span class="label">比較</span>同価格帯でRyzen 7 5700X、32GB、1TB、RTX 5070搭載の整備済みPCが比較対象になっている</div>
+  <div class="card-detail"><span class="label">投稿者</span>@hiroshi164373</div>
+</div>
+
+<div class="card">
+  <div class="card-title">MTG「リアリティ・フラクチャー 統率者デッキ」英語版</div>
+  <div class="card-detail"><span class="label">定価</span>6,980円</div>
+  <div class="card-detail"><span class="label">現在価格</span><span class="card-amount">8,670円</span>（プレ値ながら10,000円未満）</div>
+  <div class="card-detail"><span class="label">投稿者</span>@Other_casT01</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Haigamineの円盤</div>
+  <div class="card-detail"><span class="label">相場</span>メルカリで約<span class="card-amount">10,000円</span>取引</div>
+  <div class="card-detail"><span class="label">動向</span>CDとしてはプレ値化の速度が異常に速いとの報告</div>
+  <div class="card-detail"><span class="label">投稿者</span>@mytk_premium</div>
+</div>
+
+<div class="card">
+  <div class="card-title">2009年度「天才てれびくん」イベントDVD</div>
+  <div class="card-detail"><span class="label">価格</span>Amazonで<span class="card-amount">10,000円超</span></div>
+  <div class="card-detail"><span class="label">投稿者</span>@uuhhaa48</div>
+</div>
+
+<div class="card">
+  <div class="card-title">PSYRENのテレホンカード</div>
+  <div class="card-detail"><span class="label">提示価格</span>500万円で出品</div>
+  <div class="card-detail"><span class="label">注意</span>成約価格ではなく極端な提示価格のため相場扱いは危険</div>
+  <div class="card-detail"><span class="label">投稿者</span>@makudara</div>
+</div>
+
+<div class="card">
+  <div class="card-title">VANS レオパード柄 高額化</div>
+  <div class="card-detail"><span class="label">対象</span>オーセンティック、オールドスクール、エラ</div>
+  <div class="card-detail"><span class="label">動向</span>各所売り切れで高額化</div>
+  <div class="card-detail"><span class="label">投稿者</span>@METH_STONE_PSY</div>
+</div>
+
+<div class="card">
+  <div class="card-title">SALOMON 完売モデル再入荷</div>
+  <div class="card-detail"><span class="label">価格</span>定価<span class="card-amount">6,000円</span>で再入荷</div>
+  <div class="card-detail"><span class="label">動向</span>国内完売モデルのプレ値回避の購入機会</div>
+  <div class="card-detail"><span class="label">投稿者</span>@happy_____maria</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ガンプラ定価圏への下落</div>
+  <div class="card-detail"><span class="label">MGソードインパルス</span>定価5,390円→9,800円（※定価8,910円のRGサザビー誤記なし）</div>
+  <div class="card-detail"><span class="label">RG MSN-04FF サザビー</span>定価8,910円に対し9,800円まで定価圏へ下落</div>
+  <div class="card-detail"><span class="label">投稿者</span>@j5XSnhLcKI59065</div>
+</div>
+
+<h2>入荷・再販情報 <span class="section-count">（13件）</span></h2>
+
+<div class="card">
+  <div class="card-title">ポケカ「30th CELEBRATION」数量限定再販</div>
+  <div class="card-detail"><span class="label">投稿者</span>@gamestylejp</div>
+</div>
+
+<div class="card">
+  <div class="card-title">「PG UNLEASHED RX-78-2 ガンダム」在庫復活</div>
+  <div class="card-detail"><span class="label">価格</span>定価<span class="card-amount">27,500円</span>（Amazon）</div>
+  <div class="card-detail"><span class="label">投稿者</span>@tsumipla_kuzuse</div>
+</div>
+
+<div class="card">
+  <div class="card-title">「HG フルアーマー・ガンダム THUNDERBOLT Ver.」再販</div>
+  <div class="card-detail"><span class="label">価格</span>定価<span class="card-amount">3,190円</span>（Amazon）</div>
+  <div class="card-detail"><span class="label">投稿者</span>@aanc20 他</div>
+</div>
+
+<div class="card">
+  <div class="card-title">「HGCE デスティニーガンダム ハイネ専用機」復活</div>
+  <div class="card-detail"><span class="label">価格</span>2,079円（定価2,640円から21%OFF）</div>
+  <div class="card-detail"><span class="label">投稿者</span>@tsumipla_kuzuse</div>
+</div>
+
+<div class="card">
+  <div class="card-title">「30MS ネヴァリア」「30MS ティアーシャ」再入荷</div>
+  <div class="card-detail"><span class="label">価格</span>ネヴァリア定価2,750円（Amazon）</div>
+  <div class="card-detail"><span class="label">投稿者</span>@aanc20 他</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Switch 2「ゼルダ 時のオカリナ」セット販売再開</div>
+  <div class="card-detail"><span class="label">内容</span>40周年Proコントローラーとのセット（Amazon）</div>
+  <div class="card-detail"><span class="label">投稿者</span>@kntocr</div>
+</div>
+
+<div class="card">
+  <div class="card-title">「フツーにカワイイ アクリルスタンド」全5種 在庫復活</div>
+  <div class="card-detail"><span class="label">動向</span>公式通販で一度即完売後に在庫復活。送料200円で全種購入可能</div>
+  <div class="card-detail"><span class="label">投稿者</span>@mobadventurer_c</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ちいかわ6巻・御朱印帳付き特装版 予約再開</div>
+  <div class="card-detail"><span class="label">条件</span>3,980円以上で送料無料</div>
+  <div class="card-detail"><span class="label">投稿者</span>@yukidaruma_room</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Snow Man「AMENITY」楽天ブックス再入荷</div>
+  <div class="card-detail"><span class="label">対象</span>初回盤A、通常盤、3形態セット</div>
+  <div class="card-detail"><span class="label">投稿者</span>@p9BdeZbMqkpuinU</div>
+</div>
+
+<div class="card">
+  <div class="card-title">デュエル・マスターズ「切札不滅!! FOREVER 2026 BOX」</div>
+  <div class="card-detail"><span class="label">価格</span>楽天で<span class="card-amount">6,200円</span>、楽天ブックスでも販売再開</div>
+  <div class="card-detail"><span class="label">投稿者</span>@rakualert 他</div>
+</div>
+
+<div class="card">
+  <div class="card-title">「S.H.Figuarts ウルトラマンマックス」再販</div>
+  <div class="card-detail"><span class="label">価格</span>定価<span class="card-amount">9,350円</span>（Amazon）</div>
+  <div class="card-detail"><span class="label">投稿者</span>@rakualert</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ハセガワ「VF-11B サンダーボルト マクロスプラス」再販出荷</div>
+  <div class="card-detail"><span class="label">出荷開始</span>10月13日</div>
+  <div class="card-detail"><span class="label">投稿者</span>@hobbywatch_jp</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ペンライト・パンフレット在庫復活</div>
+  <div class="card-detail"><span class="label">動向</span>一方でアクスタは在庫なし</div>
+  <div class="card-detail"><span class="label">投稿者</span>@krdm1111</div>
+</div>
+
+<h2>注意・警告 <span class="section-count">（10件）</span></h2>
+
+<div class="card">
+  <div class="card-title">完売公演チケット募集の詐欺疑いアカウント</div>
+  <div class="card-detail"><span class="label">対象</span>「bmqrlek」（所在地Nigeria表示）、「Mwami_8」（Kenya表示）</div>
+  <div class="card-detail"><span class="label">注意</span>外国人中心のフォロー構成と過去の手口から注意喚起</div>
+  <div class="card-detail"><span class="label">投稿者</span>@garagapo</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ロレックス相場 下落警戒</div>
+  <div class="card-detail"><span class="label">注意</span>翌月からさらに下落する可能性があるとの現場観測。高値仕入れや短期転売は値崩れリスクが高い</div>
+  <div class="card-detail"><span class="label">投稿者</span>@bokuwa_seina</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ガンプラ増産による需給改善</div>
+  <div class="card-detail"><span class="label">注意</span>以前の品薄品が「不人気プラモの売れ残り」と評される状況へ変化。過去の高騰を前提にした寝かせ仕入れは危険</div>
+  <div class="card-detail"><span class="label">投稿者</span>@okachimachijkt</div>
+</div>
+
+<div class="card">
+  <div class="card-title">スニーカーブームの失速</div>
+  <div class="card-detail"><span class="label">注意</span>AJ1など従来なら即完売・プレ値化したモデルも在庫が残っている。定価自体が約10,000円上昇したことも需要減の要因</div>
+  <div class="card-detail"><span class="label">投稿者</span>@yuuking1988103 他</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ポケカ値崩れリスク警告</div>
+  <div class="card-detail"><span class="label">注意</span>「プレ値では少量しか売れない商品」に大量の出品者が群がると値崩れしやすい。仕入れ前にプレ値期間中の実売数を確認すべき</div>
+  <div class="card-detail"><span class="label">投稿者</span>@KeepaSaikou</div>
+</div>
+
+<div class="card">
+  <div class="card-title">ポケカ30周年BOX 初動仕入れへの警告</div>
+  <div class="card-detail"><span class="label">注意</span>発売直後が最も高く、その後下がるとの見方。高値の初動仕入れではなく底値確認が必要</div>
+  <div class="card-detail"><span class="label">投稿者</span>@oroshinohito</div>
+</div>
+
+<div class="card">
+  <div class="card-title">映画ちいかわ 特典需要の一時性</div>
+  <div class="card-detail"><span class="label">注意</span>特典目的で予約満席でも上映時に空席が目立つとの報告。ランダム特典の初日配布終了による一時需要の可能性があり、継続相場と誤認しない注意が必要</div>
+  <div class="card-detail"><span class="label">投稿者</span>@KINECT023_X</div>
+</div>
+
+<div class="card">
+  <div class="card-title">三田ガーデンヒルズ 値下がり事例</div>
+  <div class="card-detail"><span class="label">価格</span>売出53,800万円→<span class="card-amount">48,000万円</span>（元値54,800万円から6,800万円安）</div>
+  <div class="card-detail"><span class="label">注意</span>転売在庫の値下がり事例として不動産投機にも警戒</div>
+  <div class="card-detail"><span class="label">投稿者</span>@essaysinidlenes</div>
+</div>
+
+<div class="card">
+  <div class="card-title">中国人購入者減少によるマンション値下げ</div>
+  <div class="card-detail"><span class="label">価格</span>20,000,000円値下げ、159,900,000円に</div>
+  <div class="card-detail"><span class="label">注意</span>拡散情報を理由に買い手が手を引き、転売在庫の処分が難しくなっている可能性</div>
+  <div class="card-detail"><span class="label">投稿者</span>@curry_udon_soba</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Amazon高ポイント商品の不自然な表示</div>
+  <div class="card-detail"><span class="label">注意</span>「実質価格がマイナス」など不自然な表示も確認された。ポイント条件、上限、販売元、決済画面を必ず確認する必要がある</div>
+  <div class="card-detail"><span class="label">投稿者</span>@SelectInfoDeals</div>
+</div>
+
+<p class="note">
+※掲載情報はX（Twitter）投稿時点のものです。価格・在庫・相場は変動するため、購入・取引前に最新情報をご確認ください。
+</p>
+</body>
+</html>

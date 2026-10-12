@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI情報レポート 2026/10/13</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>AI情報レポート 2026/10/13</h1>
+  <p class="report-date">2026年10月13日</p>
+  <p class="total-count">本日のAIトピック: 19件</p>
+
+  <h2>新AIモデル・LLM情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Coinbase / Qwen3.5-9B</div>
+    <div class="card-detail"><span class="label">発表元</span>Coinbase</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/12</div>
+    <div class="card-detail"><span class="label">内容</span>社内データで追加学習したQwen3.5-9Bが、不正防止業務で高性能な汎用モデルを上回ったと報告。低コストかつ高速で、指示一つで追加学習と配備を始められる仕組みも用意されています。</div>
+    <div class="card-detail"><span class="label">料金</span>汎用モデルより低コストとの報告</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね7,104件 / 表示809,025回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2109412046244913643">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">未確認情報: Claude Next</div>
+    <div class="card-detail"><span class="label">発表元</span>Claude Nextとされる開発中モデル</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/12</div>
+    <div class="card-detail"><span class="label">内容</span>1文の指示からBlender MCPを約2時間操作し3D作品を制作したとの検証が話題に。Anthropic公式発表ではなく、性能やモデル名は未確認です。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね5,214件 / 表示1,023,919回、ほか2投稿</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2109375245320847702">出典を確認する</a>　<a href="https://x.com/i/status/2109396343114666207">出典を確認する</a>　<a href="https://x.com/i/status/2109619340580725222">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Sakana AI / MASS</div>
+    <div class="card-detail"><span class="label">発表元</span>Sakana AI</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/12</div>
+    <div class="card-detail"><span class="label">内容</span>複数の仮想エージェントを協働させ、優れた実行過程を元モデルへ学習させるMASSを発表。公開モデルでの改善後、4つの研究ベンチマークで出力トークン当たりのスコアが基礎モデルの1.2～1.6倍と報告されています。</div>
+    <div class="card-detail"><span class="label">料金</span>論文・コード公開</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">公式投稿 いいね1,321件 / 表示125,410回、解説投稿 いいね1,292件 / 表示61,459回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2109385006603006435">出典を確認する</a>　<a href="https://x.com/i/status/2109385496237678844">出典を確認する</a></div>
+  </div>
+
+  <h2>新AIツール・サービス <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ArtCraft / WordCraft・GridCraft・DeckCraft</div>
+    <div class="card-detail"><span class="label">発表元</span>個人開発者 Brandon Thomas氏</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/12</div>
+    <div class="card-detail"><span class="label">内容</span>Claudeを活用し、Word、Excel、PowerPointに相当する代替アプリを開発。いずれも初期開発段階で、Rust製かつLinuxを含む複数環境への対応が紹介されています。</div>
+    <div class="card-detail"><span class="label">料金</span>無料 / オープンソース</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">代表投稿 いいね11,770件 / 表示186,813回、関連投稿 いいね777件 / 表示29,860回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2109358375209427301">出典を確認する</a>　<a href="https://x.com/i/status/2109355818671812844">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vivix W1</div>
+    <div class="card-detail"><span class="label">発表元</span>Vivix</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/12</div>
+    <div class="card-detail"><span class="label">内容</span>会話や感情、場面の指示を受けながら映像を連続的に変更できるリアルタイム動画モデル。音声の途切れや場面転換には課題があるとされています。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">1秒$0.003 / 映像1時間当たり約$10.80</span></div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,301件 / 表示42,962回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2109492503926002014">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">SlashDocs</div>
+    <div class="card-detail"><span class="label">発表元</span>SlashDocs</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/12</div>
+    <div class="card-detail"><span class="label">内容</span>AIエージェントが生成したHTMLやMarkdown資料を共有し、権限管理、コメント、文書更新を行える基盤。Razorpay社内では28,000件以上の文書が作成されたと報告されています。</div>
+    <div class="card-detail"><span class="label">料金</span>オープンソース / 自己運用可能</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね780件 / 表示59,647回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2109600308825587994">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">PentAGI</div>
+    <div class="card-detail"><span class="label">発表元</span>PentAGI</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/12</div>
+    <div class="card-detail"><span class="label">内容</span>複数のAIエージェントが連携してセキュリティ検査を行う完全自動型のレッドチーム用ツール。利用は許可を得たシステムの防御検証に限る必要があります。</div>
+    <div class="card-detail"><span class="label">料金</span>無料 / オープンソース</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,796件 / 表示103,696回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2109475720015851688">出典を確認する</a></div>
+  </div>
+
+  <h2>プロンプト技術・活用Tips <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">AIコーディングエージェント / 自己検証</div>
+    <div class="card-detail"><span class="label">発表元</span>AIコーディング実践事例</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/12</div>
+    <div class="card-detail"><span class="label">内容</span>コード生成後に実際にアプリを操作して確認させる検証ループの重要性が紹介されています。画面開発では動画やスクリーンショットを証拠として提出させる方法が有効とされています。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね2,434件 / 表示124,013回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2109436202554372476">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AIコーディング / 曖昧な依頼を先に質問させる方法</div>
+    <div class="card-detail"><span class="label">発表元</span>AIエージェント実験</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/12</div>
+    <div class="card-detail"><span class="label">内容</span>13種類のAIエージェントを用いた実験では、エンジニアによる依頼の要求達成率は78％、コードを読めない利用者では23％と紹介されています。実装前に不明点を質問させる方法が提案されています。</div>
+    <div class="card-detail"><span class="label">料金</span>無料で実践可能</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね187件 / 表示19,977回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2109492310874677489">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AIエージェント / 使用量削減</div>
+    <div class="card-detail"><span class="label">発表元</span>AIエージェント活用事例</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/12</div>
+    <div class="card-detail"><span class="label">内容</span>正解後の過剰な再確認を減らすため、最短で正しい答えに着き余計な確認や解説を求めない方針を明記する方法が紹介されています。成功率を維持しながら使用量を減らせる場合があるとの報告です。</div>
+    <div class="card-detail"><span class="label">料金</span>使用量とAPI費用の削減が見込める</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね33件 / 表示3,732回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2109519111822913820">出典を確認する</a></div>
+  </div>
+
+  <h2>AI×日本 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Google AI Pro</div>
+    <div class="card-detail"><span class="label">発表元</span>Google AI Pro</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/12</div>
+    <div class="card-detail"><span class="label">内容</span>Google ColabのA100 GPU、動画生成、音楽生成などを利用する方法をまとめた日本語解説が公開されました。複数の生成機能を試したい利用者向けの情報です。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">月額2,900円</span></div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね188件 / 表示26,846回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2109546745676046414">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">MiniMax H3 / Google Colab・Codex</div>
+    <div class="card-detail"><span class="label">発表元</span>MiniMax H3検証事例</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/12</div>
+    <div class="card-detail"><span class="label">内容</span>Google ColabにMiniMax H3を設定し、Codexから動画生成を行った日本語検証。投稿ではセットアップ約14秒、10秒の動画生成に約6分32秒とされる一方、本文の時間表記には食い違いがあります。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね147件 / 表示9,496回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2109556947112652832">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">堀井雄二氏 / 生成AIゲーム制作</div>
+    <div class="card-detail"><span class="label">発表元</span>堀井雄二氏</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/12</div>
+    <div class="card-detail"><span class="label">内容</span>生成AIへの指示でスマートフォン向けゲームを約30分で制作した事例が話題に。短時間制作への驚きと、著作権やゲーム業界の姿勢をめぐる懸念が同時に広がっています。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">批判投稿 いいね2,135件 / 表示74,667回、ほか2投稿</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2109376466849030159">出典を確認する</a>　<a href="https://x.com/i/status/2109489553430229109">出典を確認する</a>　<a href="https://x.com/i/status/2109420127905329283">出典を確認する</a></div>
+  </div>
+
+  <h2>バズった話題・SNS事例 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ChatGPT / 登山案内の安全性</div>
+    <div class="card-detail"><span class="label">発表元</span>ChatGPT関連報道</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/12</div>
+    <div class="card-detail"><span class="label">内容</span>ChatGPTの軽装で登山可能との回答を信じ、槍ケ岳で遭難した事例が報じられました。安全に直結する判断では、現地の公式情報や専門家への確認が必要です。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね2,470件 / 表示442,861回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2109532368990056643">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">生成AI画像 / 商品予約詐欺への注意</div>
+    <div class="card-detail"><span class="label">発表元</span>生成AI画像に関する注意喚起</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/12</div>
+    <div class="card-detail"><span class="label">内容</span>実物を用意できない店舗が生成AI画像のみで予約を取り、当日に問題となる事例への注意喚起が拡散。実物写真や店舗実績を照合する必要があります。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね7,143件 / 表示167,060回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2109430138693902526">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">オープンモデル / 重みへ埋め込まれたバックドア</div>
+    <div class="card-detail"><span class="label">発表元</span>オープンモデルの安全性検証</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/12</div>
+    <div class="card-detail"><span class="label">内容</span>追加学習により、特定の合言葉で環境変数やSSH秘密鍵を外部送信させる実験が紹介されました。未知の配布者によるモデルは、実行環境の隔離や外部通信の制限が重要です。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">改変実験は$50未満</span></div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,309件 / 表示85,114回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2109355823738798124">出典を確認する</a></div>
+  </div>
+
+  <h2>AI収益化・副業事例 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Grok Bot / AI事例サイトの自動立ち上げ</div>
+    <div class="card-detail"><span class="label">発表元</span>Grok Bot</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/12 / 公開後15時間</div>
+    <div class="card-detail"><span class="label">内容</span>投稿者の自己申告では、Webサイト構築、事業計画、メール収集、ニュースレター配信、スポンサー営業までを約15時間で自動実行。公開後20,000人の訪問と1,500件のメール登録があったとされています。</div>
+    <div class="card-detail"><span class="label">料金</span>売上未確定 / 訪問20,000件 / メール登録1,500件</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね896件 / 表示121,662回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2109350802041291031">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AI活用によるSaaS代替</div>
+    <div class="card-detail"><span class="label">発表元</span>levelsio氏</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/12</div>
+    <div class="card-detail"><span class="label">内容</span>事業用SaaSの大半を解約し、必要機能を自作するか、Claudeで既存のオープンソース製品を自分向けに変更していると報告。固定費削減につながるAI活用法として注目されています。</div>
+    <div class="card-detail"><span class="label">料金</span>節約額は未公表。AI推論、サーバー、ストレージは継続支払い</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね3,665件 / 表示257,291回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2109352968122515681">出典を確認する</a></div>
+  </div>
+
+  <h2>定点観測: AIモデル性能ランキング <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Artificial Analysis / Intelligence Index</div>
+    <div class="card-detail"><span class="label">発表元</span>Artificial Analysis</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/13時点</div>
+    <div class="card-detail"><span class="label">内容</span>知能ランキング上位5モデルはClaude系モデルが占めています。1位はClaude Opus 5.5（max with fallback）の<span class="card-amount">58点</span>です。</div>
+    <div class="card-detail"><span class="label">料金</span>1タスク当たり推定コスト: $5.98 / $5.46 / $3.46 / $1.82 / $7.63</div>
+    <div class="card-source"><a href="https://artificialanalysis.ai/models">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

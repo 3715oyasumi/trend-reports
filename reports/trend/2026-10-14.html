@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年10月14日（水）版</p>
+  <p class="total-count">本日のトレンド: 7件</p>
+
+  <h2>新商品情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">忍者めし鉄筋 レッドエナジー味</div>
+    <div class="card-detail"><span class="label">特徴</span>たんぱく質15g、ビタミンB6・ビタミンCを配合した脂質ゼロのハードグミ。内容量82gで、ボルト型とナット型の2種類入り</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月13日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">オープン価格</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000496.000011343.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">大人のためのやさいジュレ＋ 赤の実り</div>
+    <div class="card-detail"><span class="label">特徴</span>ラクチュロース2.0gとサケ鼻軟骨由来プロテオグリカン5.0mgを配合した機能性表示食品。常温・長期保存に対応するスパウト付きパウチを採用</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年11月6日にAmazonで先行発売</div>
+    <div class="card-detail"><span class="label">価格</span>不明</div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000001532.000021580.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">吉野家「秋の牛丼フェス」</div>
+    <div class="card-detail"><span class="label">特典内容</span>牛丼、牛丼弁当、牛皿などの対象商品を各サイズ税込100円引き。期間中の店内利用者には「牛すき鍋膳」用50円引きクーポン2枚とテイクアウト10％引きクーポン1枚を配付</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月15日11時～10月21日15時</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000608.000019432.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">EcoFlow×Amazonプライム感謝祭</div>
+    <div class="card-detail"><span class="label">特典内容</span>ポータブル電源やソーラーパネルセットなどが最大56％OFF。対象商品を6万円以上購入する場合は、指定コードの入力でさらに5％OFF</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月13日～10月19日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000254.000050601.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">TP-Link Amazonプライム感謝祭</div>
+    <div class="card-detail"><span class="label">特典内容</span>Wi-Fi 7ルーター、見守りカメラ、スマートホーム機器など100点以上を最大45％OFFで販売。在庫がなくなり次第終了</div>
+    <div class="card-detail"><span class="label">期間</span>先行セールは2026年10月13日～10月15日、本セールは10月16日～10月19日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000314.000093240.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ポケモンカードゲーム MEGA 拡張パック「30th CELEBRATION」</div>
+    <div class="card-detail"><span class="label">市場状況</span>Yahoo!オークションとYahoo!フリマが、市場および取引状況を踏まえてカートン出品、空箱・空パック、同一BOXの大量出品を禁止。大量出品の禁止期間は2026年10月31日まで</div>
+    <div class="card-detail"><span class="label">注意点</span>違反出品は削除やアカウント利用停止の対象となる可能性がある。公式発表には実売価格や定価に対する転売倍率の記載なし</div>
+    <div class="card-source"><a href="https://auctions.yahoo.co.jp/topic/notice/rule/post_4205/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">トレーディングカードの空パック・空箱</div>
+    <div class="card-detail"><span class="label">市場状況</span>Yahoo!オークションとYahoo!フリマが、ポケモンカードを含むすべてのトレーディングカードについて空パック・空箱の出品を禁止</div>
+    <div class="card-detail"><span class="label">注意点</span>内容物を入れ替えて再包装し、未開封品を装うトラブルが確認されている。未開封品は包装状態だけで判断しない</div>
+    <div class="card-source"><a href="https://auctions.yahoo.co.jp/topic/notice/rule/post_4206/">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（0件）</span></h2>
+  <p>該当なし</p>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>本日はAmazonプライム感謝祭に連動した最大45～56％OFFのキャンペーンが目立つ一方、直近3日以内に公表された消費財の新たな販売停止・品薄情報は確認できませんでした。トレーディングカード市場では、価格高騰そのものよりも大量出品や再包装トラブルへの規制強化が重要な動きとなっています。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

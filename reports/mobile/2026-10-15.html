@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>モバイル情報レポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>モバイル情報レポート</h1>
+  <p class="report-date">2026年10月15日</p>
+  <p class="total-count">本日のモバイル案件: 4件</p>
+
+  <h2>MNP・モバイル情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">楽天モバイル最強感謝祭 機種変更応援クーポン第2弾</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">iPhone 17 Pro Max 1TB／2TBは44,000円引き</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル公式 楽天市場店</div>
+    <div class="card-detail"><span class="label">条件</span>楽天モバイル契約中の対象者限定。クーポンは1人1種類・1回限りで事前取得が必要</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/15 10:00 ～ 2026/10/27 09:59</div>
+    <div class="card-source"><a href="https://network.mobile.rakuten.co.jp/lp/link/device/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">povoガチャ 2種類を期間限定販売</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">100円で最大3GB、999円で最大データ使い放題7日間12回分</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>povo</div>
+    <div class="card-detail"><span class="label">条件</span>100円のpovoガチャはデータ追加0.1GB 24時間付き。999円のpovoガチャ スーパーはデータ追加0.1GB 7日間付き</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/13 10:00 ～ 2026/10/20 09:30</div>
+    <div class="card-source">
+      <a href="https://povo.jp/news/newsrelease/20261013_03/">出典を確認する</a>
+      <a href="https://povo.jp/topping-list/detail/100M_24h_povo-gacha/">出典を確認する</a>
+      <a href="https://povo.jp/topping-list/detail/100M_7d_povo-gacha-super/">出典を確認する</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">マイネ王ハロウィン企画2026</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">毎回10MB・100MB・1,000MBのいずれかを獲得</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>mineo マイネ王</div>
+    <div class="card-detail"><span class="label">条件</span>eoID連携者はトリックオアパケットに1回線あたり1日1回、最大5回参加可能</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/14 ～ 2026/11/02 10:00</div>
+    <div class="card-source"><a href="https://king.mineo.jp/staff_blogs/3279">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">2026年度JCSI顧客満足度1位獲得記念キャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">抽選で30名にずっとmineoがいい巾着＆ステッカーをプレゼント</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>mineo マイネ王</div>
+    <div class="card-detail"><span class="label">条件</span>mineo回線とマイネ王アカウントをeoID連携し、対象記事へ応募コメントを投稿</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/09 ～ 2026/10/23</div>
+    <div class="card-source"><a href="https://king.mineo.jp/staff_blogs/3294">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※還元・条件は確認時点のものです。</p>
+</body>
+</html>

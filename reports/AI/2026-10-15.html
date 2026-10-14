@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のAIレポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のAIレポート</h1>
+  <p class="report-date">2026年10月15日</p>
+  <p class="total-count">本日のAIトピック: 19件</p>
+
+  <h2>新AIモデル・LLM情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Google / Gemini 4 Argon</div>
+    <div class="card-detail"><span class="label">発表元</span>Google / Gemini 4 Argon</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/14</div>
+    <div class="card-detail"><span class="label">内容</span>Googleの最新フロンティアモデルが世界提供を開始。コーディング、企業業務、サイバー防御、科学研究に対応する。</div>
+    <div class="card-detail"><span class="label">料金</span>APIは入力100万トークン<span class="card-amount">$2</span>、出力100万トークン<span class="card-amount">$10</span>。2026/11/30以降は入力$4、出力$20へ値上げ予定。</div>
+    <div class="card-detail"><span class="label">反響</span>公式発表は<span class="card-amount">いいね5,933件 / 表示2,312,305回</span>、性能・価格分析はいいね2,662件 / 表示147,569回</div>
+    <div class="card-source"><a href="https://x.com/i/status/2110039274922131792">出典を確認する</a>　<a href="https://x.com/i/status/2110043498854355057">出典を確認する</a>　<a href="https://x.com/i/status/2110068185793970576">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Liquid AI / LFM2.5-24B-A2B</div>
+    <div class="card-detail"><span class="label">発表元</span>Liquid AI / LFM2.5-24B-A2B</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/14</div>
+    <div class="card-detail"><span class="label">内容</span>ノートPCやデスクトップでのローカル実行を想定した推論モデル。基本モデルと学習済みモデルの重みを公開している。</div>
+    <div class="card-detail"><span class="label">料金</span>オープンウェイト / 料金記載なし</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね2,843件 / 表示263,033回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2110055807194931348">出典を確認する</a></div>
+  </div>
+
+  <h2>新AIツール・サービス <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">XERJ Corpus Hub</div>
+    <div class="card-detail"><span class="label">発表元</span>XERJ Corpus Hub</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/14</div>
+    <div class="card-detail"><span class="label">内容</span>AIエージェントへ専門資料、ソースコード、文書、ログを参照記憶として与えるツール。Apache 2.0ライセンスの無料オープンソースとして提供される。</div>
+    <div class="card-detail"><span class="label">料金</span>無料</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね2,212件 / 表示65,477回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2110038855047164404">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Kylon</div>
+    <div class="card-detail"><span class="label">発表元</span>Kylon</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/14</div>
+    <div class="card-detail"><span class="label">内容</span>AIエージェントとGoogle Drive、Slack、Notionなど多数の業務ツールを連携する企業向け基盤として発表された。</div>
+    <div class="card-detail"><span class="label">料金</span>記載なし</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね973件 / 表示1,311,950回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2110036327286886731">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">OpenCode / Gemini 4 Argon</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenCode / Gemini 4 Argon</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/14</div>
+    <div class="card-detail"><span class="label">内容</span>コード支援ツールOpenCodeがGemini 4 Argonへ対応。同チーム内で実作業に多く利用されたモデルとして関心を集めた。</div>
+    <div class="card-detail"><span class="label">料金</span>記載なし</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね3,106件 / 表示172,125回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2110078016688648606">出典を確認する</a></div>
+  </div>
+
+  <h2>プロンプト技術・活用Tips <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ai_database / AIによるゲームの自動テスト</div>
+    <div class="card-detail"><span class="label">発表元</span>ai_database</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/14</div>
+    <div class="card-detail"><span class="label">内容</span>AIにプレイ用スクリプトを書かせて何十回も実行し、試行結果を修正へつなげるゲーム自動テスト手法を紹介した。</div>
+    <div class="card-detail"><span class="label">料金</span>記載なし</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね430件 / 表示44,813回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2110206778470514845">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">shi3z / Claude Codeによる動画編集</div>
+    <div class="card-detail"><span class="label">発表元</span>shi3z / Claude Code</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/14</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報。Claude Codeで8時間分の映像を約30分で1時間の動画へ編集し、字幕も付けられたとの報告が注目された。</div>
+    <div class="card-detail"><span class="label">料金</span>記載なし</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね200件 / 表示21,580回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2110192062872354881">出典を確認する</a></div>
+  </div>
+
+  <h2>AI企業・業界ニュース <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">OpenAI</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/14</div>
+    <div class="card-detail"><span class="label">内容</span>社内で発見した高度な録音装置を自社モデルで分析し、設置者を特定したと発表。関係従業員を解雇しFBIへ通報した。</div>
+    <div class="card-detail"><span class="label">料金</span>該当なし</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね73,608件 / 表示21,428,412回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2110095403198849132">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Anthropic / 社内ソース管理システム</div>
+    <div class="card-detail"><span class="label">発表元</span>Anthropic</div>
+    <div class="card-detail"><span class="label">時期</span>2026/05/01 ～ 2026/09/30</div>
+    <div class="card-detail"><span class="label">内容</span>コード統合数の急増を受け、約5か月で独自のバージョン管理システムを構築し、巨大リポジトリをGitから全面移行した。</div>
+    <div class="card-detail"><span class="label">料金</span>該当なし</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね22,801件 / 表示6,245,952回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2110047081414987957">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Anthropic / シンガポール政府</div>
+    <div class="card-detail"><span class="label">発表元</span>Anthropic / シンガポール政府</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/14</div>
+    <div class="card-detail"><span class="label">内容</span>Anthropicがシンガポール事務所を開設し、同国政府とAI安全性および責任ある導入に関する覚書を締結した。</div>
+    <div class="card-detail"><span class="label">料金</span>該当なし</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね2,616件 / 表示391,341回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2110289695888511368">出典を確認する</a></div>
+  </div>
+
+  <h2>AI×日本 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">デジタルハリウッド大学 / Claude</div>
+    <div class="card-detail"><span class="label">発表元</span>デジタルハリウッド大学 / Claude</div>
+    <div class="card-detail"><span class="label">時期</span>2026/11/01から</div>
+    <div class="card-detail"><span class="label">内容</span>国内大学初としてClaudeを全学導入。全学生・全教職員がAIを実践的な道具として使う教育を進める。</div>
+    <div class="card-detail"><span class="label">料金</span>学生・教職員は追加費用や回数を気にせず利用可能</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,416件 / 表示264,814回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2110204194569519347">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">shi3z / 中古GPUによるローカルAI</div>
+    <div class="card-detail"><span class="label">発表元</span>shi3z</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/14</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報。中古GPUなどを組み合わせたローカルAI環境で、推論速度42.3トークン毎秒を記録したとの個人検証。</div>
+    <div class="card-detail"><span class="label">料金</span>機材価格の記載なし</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね223件 / 表示12,573回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2110263697574928536">出典を確認する</a></div>
+  </div>
+
+  <h2>バズった話題・SNS事例 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">jjaow_ / 「逆AI生成飯」</div>
+    <div class="card-detail"><span class="label">発表元</span>jjaow_</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/14</div>
+    <div class="card-detail"><span class="label">内容</span>本物の料理写真をAI生成らしい不自然な見た目へ加工する「逆AI生成飯」が話題に。参加型企画として表示回数が250万回を超えた。</div>
+    <div class="card-detail"><span class="label">料金</span>記載なし</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね4,833件 / 表示2,542,033回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2110197723228160078">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">gembia2 / AI生成3Dモデル</div>
+    <div class="card-detail"><span class="label">発表元</span>gembia2</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/14</div>
+    <div class="card-detail"><span class="label">内容</span>AI生成のキャラクター3Dモデルが約150万ポリゴンという極端に重い構造だったことが話題に。素材の実用性確認の重要性が示された。</div>
+    <div class="card-detail"><span class="label">料金</span>記載なし</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね43,704件 / 表示895,539回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2110067619441361340">出典を確認する</a></div>
+  </div>
+
+  <h2>AI収益化・副業事例 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Railway / AI検索対策</div>
+    <div class="card-detail"><span class="label">発表元</span>Railway</div>
+    <div class="card-detail"><span class="label">時期</span>約1年間</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報。AIが読みやすい文書やエージェント向け手順を整備し、ChatGPTやClaudeから推薦されやすくしたAI向けSEOの事例。</div>
+    <div class="card-detail"><span class="label">料金</span>年間経常収益が<span class="card-amount">$20Mから約$100M</span>へ増加との自己申告</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,207件 / 表示108,420回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2110189752666440181">出典を確認する</a>　<a href="https://x.com/nakul/status/2110053419067322566">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">0xFitz / Polestar</div>
+    <div class="card-detail"><span class="label">発表元</span>0xFitz / Polestar</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/14</div>
+    <div class="card-detail"><span class="label">内容</span>AIで制作したゲーム攻略ツール「Polestar」を無料オープンソースとして公開。全種族、レベル1から60に対応する158本のガイドを収録する。</div>
+    <div class="card-detail"><span class="label">料金</span>無料</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,674件 / 表示69,952回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2110348627210313787">出典を確認する</a></div>
+  </div>
+
+  <h2>定点観測: AIモデル性能ランキング <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Artificial Analysis / Intelligence Index</div>
+    <div class="card-detail"><span class="label">発表元</span>Artificial Analysis / Intelligence Index</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/15</div>
+    <div class="card-detail"><span class="label">内容</span>上位はClaude Opus 5.5とClaude Sonnet 5.5が中心。Gemini 4 Argonは53点でGPT-6 Astraと同点の上位グループに入った。</div>
+    <div class="card-detail"><span class="label">料金</span>Gemini 4 Argon（high）のタスク単価は<span class="card-amount">$1.99</span></div>
+    <div class="card-detail"><span class="label">反響</span>対象外（ランキング定点観測）</div>
+    <div class="card-source"><a href="https://artificialanalysis.ai/models">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xツイートデータ分析レポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+:root {
+  --canvas: #faf9f5; --card: #fffdf8; --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8; --hairline-soft: #ebe6df;
+  --primary: #cc785c; --primary-active: #a9583e;
+  --ink: #141413; --text: #3d3d3a; --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20,20,19,0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--canvas); color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.75; padding: 40px 20px 64px; max-width: 760px; margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+.report-header {
+  background: var(--card); border: 1px solid var(--hairline); border-radius: 16px;
+  padding: 28px; margin-bottom: 32px; box-shadow: var(--shadow-soft);
+}
+.report-label {
+  font-family: var(--font-body); font-size: 11px;
+  color: var(--muted); letter-spacing: 2px; margin-bottom: 10px;
+}
+.report-title {
+  font-family: var(--font-display); font-size: 28px; font-weight: 700;
+  color: var(--ink); line-height: 1.3; letter-spacing: -0.01em; text-wrap: balance;
+  margin-bottom: 16px;
+}
+.report-meta { display: flex; flex-wrap: wrap; gap: 16px; }
+.meta-item { font-size: 14px; color: var(--muted); }
+.meta-item span { color: var(--text); font-weight: 600; }
+.report-section { margin-bottom: 24px; }
+.section-title {
+  font-family: var(--font-display); font-size: 20px; font-weight: 600;
+  color: var(--ink); line-height: 1.4; text-wrap: balance;
+  padding-left: 14px; border-left: 3px solid var(--primary); margin: 32px 0 14px;
+}
+.section-num { font-size: 13px; color: var(--muted); }
+.item-card {
+  background: var(--card); border: 1px solid var(--hairline);
+  border-radius: 12px; padding: 18px 20px; margin-bottom: 10px;
+  box-shadow: var(--shadow-soft); transition: border-color 0.2s, box-shadow 0.2s;
+}
+.item-card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20,20,19,0.08); }
+.item-header { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+.item-title { font-weight: 700; font-size: 15px; color: var(--ink); flex: 1; line-height: 1.5; }
+.item-desc { font-size: 14px; color: var(--text); margin-bottom: 8px; line-height: 1.7; }
+.item-desc strong { color: var(--ink); }
+.item-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-size: 12px; padding: 2px 10px; border-radius: 9999px; }
+.tag-user  { background: var(--surface-soft); color: var(--primary-active); border: 1px solid var(--hairline); }
+.tag-stat  { background: var(--surface-soft); color: var(--muted); border: 1px solid var(--hairline); }
+.badge { font-size: 11px; padding: 2px 10px; border-radius: 9999px; font-weight: 600; white-space: nowrap; border: 1px solid var(--hairline); }
+.badge-danger  { background: #fbeae5; color: #a9583e; border-color: #e6cabd; }
+.badge-warning { background: #f6efe2; color: #8a6d2f; border-color: #e6dcc4; }
+.badge-info    { background: #f5f0e8; color: #6c6a64; border-color: var(--hairline); }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--card); border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; }
+.summary-table th {
+  background: var(--surface-soft); padding: 10px 14px; text-align: left;
+  color: var(--muted); border-bottom: 1px solid var(--hairline);
+}
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid var(--hairline-soft); color: var(--text); }
+hr { border: none; border-top: 1px solid var(--hairline); margin: 32px 0; }
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  .report-title { font-size: 23px; }
+  .section-title { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+  <div class="report-header">
+    <div class="report-label">X TWEET DATA ANALYSIS REPORT</div>
+    <h1 class="report-title">Xツイートデータ分析レポート</h1>
+    <div class="report-meta">
+      <div class="meta-item">📅 収集日時：<span>2026-10-17 00:02</span></div>
+      <div class="meta-item">📊 対象件数：<span>1,174件</span></div>
+    </div>
+  </div>
+  <section class="report-section">
+  <h2 class="section-title">1. 人気商品・トレンド</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">iPhone Duoが予約開始直後から極端な品薄</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">。256GBは364,800円、2TBは574,800円。開始約1分で発売日配送分が枯れ、10分で納期6週間以上、予約時期によっては2027年1月23日配送まで後退。米国でも年内納品分が数時間で完売したとの報告あり。、、、</div><div class="item-tags"><span class="tag tag-user">@moguraz</span><span class="tag tag-user">@iPhone18_news</span><span class="tag tag-user">@ECpD87tjgamtam</span><span class="tag tag-user">@w5ooUoGp6OVmZvg</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ「30th CELEBRATION 御三家カードセット」全9種が人気</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">。1種1,200円、9種定価10,800円に対し、10月16日18時時点の9種セット相場は約22,000円。各地で売り切れ・抽選落選報告が相次ぐ。、、</div><div class="item-tags"><span class="tag tag-user">@sunrising162136</span><span class="tag tag-user">@daina_pokeca2</span><span class="tag tag-user">@AkaririCom</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ「スペシャルデッキセットMEGA」</span></div>
+  <div class="item-desc">が注目商品。メガオーダイル・メガカイリュー・メガゲンガーの3デッキ入りで定価5,500円、発売日は11月13日。過去の同系統商品には5,500円→36,500円、約6.6倍の成約例あり。</div><div class="item-tags"><span class="tag tag-user">@torecaradar</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">M!LKツアーのミニマスコットぬい</span><span class="badge badge-warning">高騰</span></div>
+  <div class="item-desc">が高騰。定価1,700円に対しメルカリ約7,000円で取引され、定価の4倍以上。</div><div class="item-tags"><span class="tag tag-user">@puutarou__</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Ado×Pusheen POP UP STORE</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">は初日からタオルなどが売り切れ。現地品切れでもWebで買えたとの報告があり、オンライン在庫が狙い目。、、</div><div class="item-tags"><span class="tag tag-user">@Jen_nyaka00</span><span class="tag tag-user">@Noa1019684</span><span class="tag tag-user">@conan3</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">バイオハザード「かぷころん」レオン関連商品</span></div>
+  <div class="item-desc">は人気集中と混乱により販売中止報告。バイオ30周年展でも同様の需要集中が警戒されている。、、</div><div class="item-tags"><span class="tag tag-user">@ruirui_ura</span><span class="tag tag-user">@warabimochi_dgs</span><span class="tag tag-user">@Bachiko82</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">DX角獣シリーズ</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">は先週より明確に在庫減少。「全部売り切れ」「特定商品だけ在庫」「ラス1」が増えており、全合体目的なら年内確保推奨との現場報告。、</div><div class="item-tags"><span class="tag tag-user">@ISA_DIAATACKER</span><span class="tag tag-user">@naochami_4</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">mu-moの6種セット・MINI BOX</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">が予約初日から売り切れ表示。詳細発表前から購入が進んでいる。、</div><div class="item-tags"><span class="tag tag-user">@EMI_NANA_HOLIC</span><span class="tag tag-user">@js20230205</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">2. お得情報・セール</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">アタックZERO パーフェクトスティック55本入り</span></div>
+  <div class="item-desc">が1個1,379円→812円相当。3点で2,470円＋33ポイント、投稿者の条件では823ポイント還元。</div><div class="item-tags"><span class="tag tag-user">@yamadadesugana</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">カゴメ 野菜生活100 アップルサラダ24本</span></div>
+  <div class="item-desc">がAmazonで60%オフ＋10%オフクーポン対象との投稿。</div><div class="item-tags"><span class="tag tag-user">@shyakanotoreca</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ダイナースポイント→キャセイ「アジア・マイル」交換が10%増量</span></div>
+  <div class="item-desc">。通常2,500ポイント＝1,000マイルが1,100マイルに。25万ポイントなら110,000マイル、期間は2027年1月14日まで。事前登録が必要。</div><div class="item-tags"><span class="tag tag-user">@dragoninvest1</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">チョコレート効果 カカオ72%</span></div>
+  <div class="item-desc">がAmazonで1,200円オフとの情報。</div><div class="item-tags"><span class="tag tag-user">@ohana_no_tane</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ピジョン製品が11月2日から値上げ予定</span></div>
+  <div class="item-desc">。母乳実感乳首は最大21%オフ、ポチットはプライムセール10%オフ、シュポットは1,000円オフクーポンとの投稿。</div><div class="item-tags"><span class="tag tag-user">@iyaiya_kowaza</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">カルピス194円→120円、アクエリアス183円→120円、冷檸檬183円→120円</span></div>
+  <div class="item-desc">へ値下げ。各14本、15本、10本の数量情報あり。</div><div class="item-tags"><span class="tag tag-user">@FM_Sinpara</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ガンプラ6商品が定価圏へ復帰</span></div>
+  <div class="item-desc">。MGデスティニー5,720円、MGダブルオークアンタ5,390円、HGヴァサーゴ3,190円、HGギャンシュトローム3,190円、HGCEデスティニー・ハイネ専用機2,640円、HGUCガブスレイ1,980円。</div><div class="item-tags"><span class="tag tag-user">@j5XSnhLcKI59065</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">HGアリュゼウスが33%オフ</span></div>
+  <div class="item-desc">とのAmazon情報。</div><div class="item-tags"><span class="tag tag-user">@Kelly_Fujikura</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">3. 転売情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">M!LKミニマスコットぬい</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">は仕入れ1,700円、売値約7,000円、投稿試算の利益は約4,200円。10月13日21時30分に再販された商品。</div><div class="item-tags"><span class="tag tag-user">@puutarou__</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">SATOSHI NAKAMOTO × VANS</span></div>
+  <div class="item-desc">は定価28,600円に対し、商品到着前からメルカリで4～5倍の価格帯に出品。約114,400～143,000円相当。</div><div class="item-tags"><span class="tag tag-user">@goto_furugi</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30th御三家9種セット</span></div>
+  <div class="item-desc">は定価合計10,800円に対し約22,000円相場。約11,200円の価格差があるが、発売直後相場のため下落リスクが高い。、</div><div class="item-tags"><span class="tag tag-user">@sunrising162136</span><span class="tag tag-user">@VWND0ogMgpdMIJa</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Supreme×Martine Rose「NIKE SB DUNK LOW」</span></div>
+  <div class="item-desc">は定価23,100円。10月17日11時発売予定で、投稿者は35,000円前後のプレ値を予想。想定価格差は11,900円。</div><div class="item-tags"><span class="tag tag-user">@wanwaan4848</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30thパック</span></div>
+  <div class="item-desc">はプレ値で1パック700円～との報告。カードセットを約20,000円で仕入れ、内容物を選別する動きも投稿されている。、</div><div class="item-tags"><span class="tag tag-user">@PKC_SOARER</span><span class="tag tag-user">@okaneaisare000</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">iPhone Duo</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">は品薄を受け、「定価で売れれば試用リスクが低い」「利益が取れそう」と保有・転売期待が増加。旧17・18シリーズの相場上昇を期待する保有者もいる。、、</div><div class="item-tags"><span class="tag tag-user">@S_kyh</span><span class="tag tag-user">@_caniev</span><span class="tag tag-user">@uratataru</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">阪神戦チケット不正転売事件</span></div>
+  <div class="item-desc">では、親子が7年間で約4,200万円を売り上げた疑いで逮捕。高額チケット転売は刑事事件化するリスクが明確。、</div><div class="item-tags"><span class="tag tag-user">@atamayowaisagi</span><span class="tag tag-user">@yuzuki_yoshida</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">4. 抽選・限定販売</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">iPhone Duo ヨドバシ・ドット・コム抽選</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">は10月19日10時59分まで。品薄商品のため即時性が高い。</div><div class="item-tags"><span class="tag tag-user">@hirofuji84</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ「スペシャルデッキセットMEGA」イオン九州抽選</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">は10月25日23時59分締切。結果発表は11月12日12時以降、購入期間は11月13～17日。iAEONアプリから応募。</div><div class="item-tags"><span class="tag tag-user">@PiROKiCHi_6513</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ENNOY日本製ブラックデニム</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">は10月17日12時から抽選開始。近年商品と同様に激戦予想。</div><div class="item-tags"><span class="tag tag-user">@japanicanblog</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">HG 1/144 ムラサメ改（初期生産型）</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">はDMM通販で抽選販売。申込期限は10月21日15時。</div><div class="item-tags"><span class="tag tag-user">@applinavi_rank</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">S.H.Figuarts 真骨彫製法 ボルキャンサー＆仮面ライダーシザース オプションパーツセット</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">は2次抽選受付中。</div><div class="item-tags"><span class="tag tag-user">@hobbywatch_jp</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">サンリオ ボンボンドロップミニチュアチャーム2／ぶりぶりざえもん着ぐるみ めじるしアクセサリー</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">はC-plaゆめタウン徳島店で10月18日23時59分まで抽選。</div><div class="item-tags"><span class="tag tag-user">@gacha_radar</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30thカードセット一般販売</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">は万代音更店で10月17日10時開始。1グループ3種まで、同種購入可、売り切れ次第終了。</div><div class="item-tags"><span class="tag tag-user">@Mandai_Otofuke2</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">清里フィールドバレエウイスキー36周年記念ボトル</span><span class="badge badge-info">限定</span></div>
+  <div class="item-desc">は数量限定で販売予定。詳細はメルマガ告知待ち。</div><div class="item-tags"><span class="tag tag-user">@eight_shizuoka</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">5. サクセス報告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30th御三家9種を定価10,800円で当選購入</span></div>
+  <div class="item-desc">し、購入時点で倍以上の価値になったとの報告。未開封保存予定。</div><div class="item-tags"><span class="tag tag-user">@VWND0ogMgpdMIJa</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30th御三家9種セットを相場約22,000円より安く購入</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">。抽選中心の商品を事前確保できた成功例。</div><div class="item-tags"><span class="tag tag-user">@sunrising162136</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">30thカードセットを1.7万～2万円で大量注文</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">し、想定より多く発送通知を確認。さらに2次抽選も家族分と合わせて当選。</div><div class="item-tags"><span class="tag tag-user">@SingleCh</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30周年カードセット9種類を抽選当選で購入成功</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">。</div><div class="item-tags"><span class="tag tag-user">@maronsannatu1</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">30thカードセット9種類を抽選当選で確保</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">。発売後の品薄・プレ値化前に入手できた事例。</div><div class="item-tags"><span class="tag tag-user">@siosakenokirimi</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">MIZUNO WAVE PROPHECY MOCを抽選当選で購入</span><span class="badge badge-info">抽選</span></div>
+  <div class="item-desc">。</div><div class="item-tags"><span class="tag tag-user">@sary_p</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">再販で過去に買えなかった商品を複数確保し「大勝利」</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">との報告。</div><div class="item-tags"><span class="tag tag-user">@ReactorU</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">6. プレ値情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">M!LKミニマスコットぬい</span></div>
+  <div class="item-desc">は1,700円→約7,000円、約4.1倍。</div><div class="item-tags"><span class="tag tag-user">@puutarou__</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">SATOSHI NAKAMOTO × VANS</span></div>
+  <div class="item-desc">は28,600円→定価の4～5倍。</div><div class="item-tags"><span class="tag tag-user">@goto_furugi</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30th御三家9種セット</span></div>
+  <div class="item-desc">は定価10,800円→約22,000円、約2倍。</div><div class="item-tags"><span class="tag tag-user">@sunrising162136</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">過去のポケカ・スペシャルデッキセット</span></div>
+  <div class="item-desc">は5,500円→36,500円で成約、約6.6倍。新作MEGAの比較材料。</div><div class="item-tags"><span class="tag tag-user">@torecaradar</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Supreme×Martine Rose NIKE SB DUNK LOW</span></div>
+  <div class="item-desc">は23,100円→35,000円前後になるとの予想。</div><div class="item-tags"><span class="tag tag-user">@wanwaan4848</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ジュエルベル</span></div>
+  <div class="item-desc">は現在もプレ値10,000円超との報告。</div><div class="item-tags"><span class="tag tag-user">@tr1nitydivine</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">廃盤Blu-rayや再販されないフィギュア</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">のプレ値化報告が複数。薬師寺久遠制服版、宝多六花フィギュアなどが定価入手困難。、、</div><div class="item-tags"><span class="tag tag-user">@ZodiacJTK</span><span class="tag tag-user">@hogeyama_pics</span><span class="tag tag-user">@TruckGoGo</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">30thパック</span></div>
+  <div class="item-desc">は1パック700円～、9種セットは定価以上での購入が常態化。ただしカード単価は下落傾向も強い。、</div><div class="item-tags"><span class="tag tag-user">@PKC_SOARER</span><span class="tag tag-user">@daina_pokeca2</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">7. 入荷・再販情報</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ「30th CELEBRATION」拡張パック</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">が数量限定で再販中。</div><div class="item-tags"><span class="tag tag-user">@gamestylejp</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ガンプラがAmazonで一斉在庫復活</span></div>
+  <div class="item-desc">。RGジオング6,050円、HGUCドーベン・ウルフ2,640円、HGUCジェガン1,870円、HGUCゾック2,970円など定価販売を確認。、、</div><div class="item-tags"><span class="tag tag-user">@tsumipla_kuzuse</span><span class="tag tag-user">@okinaco315o</span><span class="tag tag-user">@gunpla_saihan</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">RG Hi-νガンダム</span></div>
+  <div class="item-desc">のAmazon在庫復活報告。数分で消える可能性が高い商品として通知。</div><div class="item-tags"><span class="tag tag-user">@Brainpapa7</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ちいかわ6巻・8巻特装版</span></div>
+  <div class="item-desc">が予約再開。6巻は御朱印帳付き。</div><div class="item-tags"><span class="tag tag-user">@yukidaruma_room</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">スリコ×ポケモン30周年アイテム</span></div>
+  <div class="item-desc">は10月17日から受注販売開始。傘も対象。</div><div class="item-tags"><span class="tag tag-user">@9_tpe</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">水曜どうでしょう祭グッズ</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">が再販。現地で早期完売した公式Tシャツとサイコロポーチが購入可能になったとの報告。</div><div class="item-tags"><span class="tag tag-user">@o_n_hdk</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">超かぐや姫！ファミマアクスタ</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">は再販決定。再販発表後、転売在庫の放出が始まったとの観測。</div><div class="item-tags"><span class="tag tag-user">@Beat_Star_Yuri</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Ado Official Shopオンライン</span><span class="badge badge-warning">売り切れ</span></div>
+  <div class="item-desc">は店頭より売り切れが少なく、種類は限定されるが購入先として狙い目。</div><div class="item-tags"><span class="tag tag-user">@conan3</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">Meta Quest 3S 128GB</span></div>
+  <div class="item-desc">が50,490円、楽天カード利用想定で実質49,114円・1,376ポイント還元で在庫復活。</div><div class="item-tags"><span class="tag tag-user">@SelectInfoDeals</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">パラノマサイト FILE38コラボ商品</span></div>
+  <div class="item-desc">のキャンセル分在庫販売が開始。ネックレスとクロスが対象。</div><div class="item-tags"><span class="tag tag-user">@Super_Groupies</span></div>
+</div></div>
+</section>
+<section class="report-section">
+  <h2 class="section-title">8. 注意・警告</h2>
+  <div class="section-content"><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30th収録カードは初動から1カ月で大幅下落</span></div>
+  <div class="item-desc">。ミュウツーex FURは38,000円→6,500円、ミュウex FURは50,000円→8,500円、ゲンガーex SARは19,800円→5,000円、レックウザEX 30thは8,000円→2,000円。発売直後の高値仕入れは危険。</div><div class="item-tags"><span class="tag tag-user">@Zabi_pokeka</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ガンプラは再販でプレ値が定価まで戻る例が多数</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">。定価5,720円、5,390円、3,190円などへ復帰しており、高値在庫の抱え込みに注意。</div><div class="item-tags"><span class="tag tag-user">@j5XSnhLcKI59065</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">超かぐファミマアクスタは再販決定後に転売品の放出が発生</span><span class="badge badge-info">再販</span></div>
+  <div class="item-desc">。再販発表だけで相場が崩れる典型例。</div><div class="item-tags"><span class="tag tag-user">@Beat_Star_Yuri</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">バイオ「かぷころん」は混乱を受け全店販売中止</span></div>
+  <div class="item-desc">。現場トラブルや運営判断で、仕入れ済み商品でも販売機会が消えるリスクがある。、</div><div class="item-tags"><span class="tag tag-user">@Bachiko82</span><span class="tag tag-user">@ruirui_ura</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">SATOSHI NAKAMOTO × VANSは未着商品が先行出品</span></div>
+  <div class="item-desc">されている。現物未保有出品、発送不能、相場下落のリスクに注意。</div><div class="item-tags"><span class="tag tag-user">@goto_furugi</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">iPhone Duoの品薄は需要過多か初期在庫不足か不明</span><span class="badge badge-warning">品薄</span></div>
+  <div class="item-desc">。全容量・全色で納期が近いことから「実質受注生産では」との指摘もあり、高値転売目的の大量仕入れは危険。、</div><div class="item-tags"><span class="tag tag-user">@885</span><span class="tag tag-user">@chloe319_akari</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">ポケカ30th御三家セットは定価10,800円に対し約22,000円だが、発売直後価格だけで将来価値を判断しないよう警告</span></div>
+  <div class="item-desc">。</div><div class="item-tags"><span class="tag tag-user">@daina_pokeca2</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">阪神戦チケット不正転売で約4,200万円売上の親子が逮捕</span></div>
+  <div class="item-desc">。チケット類は高利益でも法的リスクが特に高い。</div><div class="item-tags"><span class="tag tag-user">@atamayowaisagi</span></div>
+</div><div class="item-card">
+  <div class="item-header"><span class="item-title">フリマ商品は偽物・盗品・規約違反品の可能性</span></div>
+  <div class="item-desc">があり、悪質出品者から買わないよう注意喚起が出ている。、</div><div class="item-tags"><span class="tag tag-user">@c_02ro04</span><span class="tag tag-user">@pkpk_p73</span></div>
+</div></div>
+</section>
+
+</body>
+</html>

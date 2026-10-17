@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI最新動向レポート 2026/10/18</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>AI最新動向レポート 2026/10/18</h1>
+  <p class="report-date">2026年10月18日</p>
+  <p class="total-count">本日のAIトピック: 21件</p>
+
+  <h2>1. 新AIモデル・LLM情報 <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">OpenAI / GPT-6 Astra Pro</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月17日</div>
+    <div class="card-detail"><span class="label">内容</span>ChatGPT版GPT-6 Astra Proで、応答速度とプラグイン・ツール利用能力を強化。複数AIエージェントの並行作業と個別レビューに対応した。</div>
+    <div class="card-detail"><span class="label">料金</span>ChatGPT Proユーザー向け</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね10,469件 / 表示1,724,073回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111192259073094035">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Google / Gemini 4 Argon</div>
+    <div class="card-detail"><span class="label">発表元</span>Google</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月17日</div>
+    <div class="card-detail"><span class="label">内容</span>AI StudioのBuild・PlaygroundでGoogle AI Proユーザーへ提供開始。4体のGeminiエージェントが27時間でMinecraftを攻略した実験も公開された。</div>
+    <div class="card-detail"><span class="label">料金</span>Google AI Pro契約者向け</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね5,159件 / 表示366,665回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111240722426802258">出典を確認する</a> / <a href="https://x.com/i/status/2111127991401247033">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Anthropic / Claude Mythos 5</div>
+    <div class="card-detail"><span class="label">発表元</span>Anthropic</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月17日</div>
+    <div class="card-detail"><span class="label">内容</span>自然言語の指示から量子回路を設計し、公開済み回路を上回る効率を示したと発表。化学・材料科学での量子計算活用を早める可能性がある。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね10,231件 / 表示1,464,825回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111152183240511640">出典を確認する</a> / <a href="https://x.com/i/status/2111153608368476564">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Tencent Hunyuan / Hy-Memory-30B-A3B</div>
+    <div class="card-detail"><span class="label">発表元</span>Tencent Hunyuan</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月17日</div>
+    <div class="card-detail"><span class="label">内容</span>会話・作業履歴から保存情報を選別し、更新しながらプロジェクト別の長期記憶として使うオープンウェイトモデル。OpenAI互換APIなどにも対応する。</div>
+    <div class="card-detail"><span class="label">料金</span>Apache 2.0のオープンウェイト、ローカル実行可能</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね842件 / 表示50,644回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111213116159918158">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">MOSS Image</div>
+    <div class="card-detail"><span class="label">発表元</span>MOSS Image</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月17日</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、5B規模の画像生成モデルがApache 2.0で公開されたと紹介された。性能や利用条件の詳細は投稿のみでは確認できない。</div>
+    <div class="card-detail"><span class="label">料金</span>Apache 2.0、詳細料金は投稿に記載なし</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,800件 / 表示77,305回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111154846737064337">出典を確認する</a></div>
+  </div>
+
+  <h2>2. 新AIツール・サービス <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Muxin</div>
+    <div class="card-detail"><span class="label">発表元</span>Muxin</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月17日</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、Mac、Linux、Windows PC、クラウドを一画面で操作し、複数環境のAIコーディングエージェントをまとめて実行するアプリが紹介された。</div>
+    <div class="card-detail"><span class="label">料金</span>無料・オープンソース</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね790件 / 表示48,857回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111180686958981302">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Claude Code × Blender × Unity</div>
+    <div class="card-detail"><span class="label">発表元</span>海外の個人ゲーム開発者</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月17日</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、Claude CodeからMCP経由でBlenderとUnityを操作し、釣りゲーム用3D素材を制作した事例。カニのモデルを3回の指示と53分で作ったとされる。</div>
+    <div class="card-detail"><span class="label">料金</span>Blender用アドオンは無料</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,733件 / 表示113,426回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111230206614946253">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Bluesky / Attie</div>
+    <div class="card-detail"><span class="label">発表元</span>Bluesky</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月16日</div>
+    <div class="card-detail"><span class="label">内容</span>ゲーム、クイズ、ゲストブックなどのWebサイトを会話的に作れるAttieを公開。SNS内で試せるバイブコーディング機能として話題になった。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね829件 / 表示94,506回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111223183521329515">出典を確認する</a></div>
+  </div>
+
+  <h2>3. プロンプト技術・活用Tips <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ChatGPT / 無料の画像着せ替え</div>
+    <div class="card-detail"><span class="label">発表元</span>ChatGPT</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月17日</div>
+    <div class="card-detail"><span class="label">内容</span>人物写真と着せたいシャツ画像をアップロードし、シャツ部分を差し替える活用法が拡散。商品イメージや衣装案の簡易モックアップにも応用できる。</div>
+    <div class="card-detail"><span class="label">料金</span>無料版ChatGPTを使用したとの自己申告</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね17,539件 / 表示196,436回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111194671544201336">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Walking Labs / Harness Engineering講座</div>
+    <div class="card-detail"><span class="label">発表元</span>Walking Labs</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月17日</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、AIコーディングエージェントの安定運用を学ぶ無料講座が紹介された。長期記憶、引き継ぎ、テスト、監視、複数エージェント制御などを扱う。</div>
+    <div class="card-detail"><span class="label">料金</span>無料・オープンソース</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね751件 / 表示28,512回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111159344754745592">出典を確認する</a></div>
+  </div>
+
+  <h2>4. AI企業・業界ニュース <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Anthropic・Microsoft・Meta・Apple</div>
+    <div class="card-detail"><span class="label">発表元</span>AI業界市場観測</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月17日</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、MicrosoftとMetaのAI投資縮小やAnthropicの評価額予想低下、Appleの再評価に関する市場観測が拡散。企業発表による裏付けはない。</div>
+    <div class="card-detail"><span class="label">料金</span>Anthropic評価額予想 <span class="card-amount">$1.5兆</span></div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね2,968件 / 表示251,322回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111172771581682124">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">生成AIとクリエイターの権利</div>
+    <div class="card-detail"><span class="label">発表元</span>日本語圏のクリエイターコミュニティ</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月17日</div>
+    <div class="card-detail"><span class="label">内容</span>作風模倣やAI画像のトレースをめぐり、現行の著作権の考え方が大量生成時代の保護に十分か議論が拡大。AI生成を疑われた作家への対応策も共有された。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね2,355件 / 表示84,493回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111318778072240356">出典を確認する</a> / <a href="https://x.com/i/status/2111268751421387249">出典を確認する</a></div>
+  </div>
+
+  <h2>5. AI×日本 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">SB Intuitions / Sarashinaサービス</div>
+    <div class="card-detail"><span class="label">発表元</span>SB Intuitions</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月13日</div>
+    <div class="card-detail"><span class="label">内容</span>国産生成AI「Sarashina」の無償ベータ版が話題に。6種類のAIモデルを使えるAPI機能とチャット機能が一般公開された。</div>
+    <div class="card-detail"><span class="label">料金</span>無料ベータ版</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,216件 / 表示64,074回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111305595919933488">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">医療機関 / ChatGPT製の患者呼び出しシステム</div>
+    <div class="card-detail"><span class="label">発表元</span>医療機関関係者</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月17日</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、プログラミング未経験の産院関係者が院内LAN用の患者呼び出しシステムを作った事例。患者情報を外部AIへ送らない設計と安全確認の必要性が指摘された。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね3,245件 / 表示549,406回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111285681960173875">出典を確認する</a></div>
+  </div>
+
+  <h2>6. バズった話題・SNS事例 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Gemini / 存在しない経歴の生成</div>
+    <div class="card-detail"><span class="label">発表元</span>Gemini利用者</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月17日</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、実在しない駅長就任歴をGeminiが事実のように回答した利用者報告。人物経歴は出典を開き、一次情報と照合する必要性を示した。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね4,066件 / 表示2,311,575回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111276034477977674">出典を確認する</a> / <a href="https://x.com/i/status/2111276037355266504">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Claude / コードで制作した25分アニメ</div>
+    <div class="card-detail"><span class="label">発表元</span>Claude利用者</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月17日</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、Claude Opus 5.5 MAXを15時間以上動かし、生成動画を使わずコードベースで25分の3Dアニメを制作したとの報告。</div>
+    <div class="card-detail"><span class="label">料金</span>API価格換算 <span class="card-amount">約$370</span>との自己申告</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,390件 / 表示156,474回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111212505947357651">出典を確認する</a></div>
+  </div>
+
+  <h2>7. AI収益化・副業事例 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ChatGPT経由の顧客獲得</div>
+    <div class="card-detail"><span class="label">発表元</span>事業者投稿</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月17日</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、ChatGPTから特定事業者へ131人が送客されたという自己申告。AIの回答内で推薦される状態を作る重要性を示す事例として拡散した。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">131人</span>を送客、売上額は不明</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね9,937件 / 表示575,927回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111145144506352107">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Codex × CapCut Web / AIインフルエンサー動画制作</div>
+    <div class="card-detail"><span class="label">発表元</span>事例紹介投稿</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月17日</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、AIキャラクターの企画・素材からCodexとCapCut Webで動画を自動編集する事例。編集可能な下書きで出力でき、人間がタイムラインを修正できる。</div>
+    <div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね583件 / 表示54,713回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111156606939631886">出典を確認する</a></div>
+  </div>
+
+  <h2>定点観測: AIモデル性能ランキング <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Artificial Analysis / Intelligence Index</div>
+    <div class="card-detail"><span class="label">発表元</span>Artificial Analysis</div>
+    <div class="card-detail"><span class="label">時期</span>2026年10月18日時点</div>
+    <div class="card-detail"><span class="label">内容</span>上位はAnthropic系が占め、Claude Opus 5.5が58点で単独首位。Claude Sonnet 5.5、Claude Opus 5.5の各設定、Muse Wonder Fullが続く。</div>
+    <div class="card-detail"><span class="label">反響</span>対象外（モデル性能ランキング）</div>
+    <div class="card-source"><a href="https://artificialanalysis.ai/models">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

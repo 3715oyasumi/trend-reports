@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年10月18日（日）版</p>
+  <p class="total-count">本日のトレンド: 7件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">クーリッシュ×雪印コーヒー</div>
+    <div class="card-detail"><span class="label">特徴</span>微細氷入りの飲むアイスで「雪印コーヒー」のマイルドでほろ苦い味わいを再現。容量135mL。</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月26日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">205円前後</span></div>
+    <div class="card-detail"><span class="label">記事公開日</span>2026年10月17日</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2148776.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">星のカービィチロルチョコ</div>
+    <div class="card-detail"><span class="label">特徴</span>「星のカービィチロルチョコBOX」は12個入り・全4種類。「いちごショートケーキ」はセブン‐イレブンで順次発売。</div>
+    <div class="card-detail"><span class="label">発売日</span>BOXは2026年10月19日、いちごショートケーキは10月22日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">BOXは税込参考価格324円、いちごショートケーキは税込参考価格48円</span></div>
+    <div class="card-detail"><span class="label">記事公開日</span>2026年10月16日</div>
+    <div class="card-source"><a href="https://www.ssnp.co.jp/snack/707235/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ローソン×きまぐれクック監修 魚介メニュー12品</div>
+    <div class="card-detail"><span class="label">特徴</span>弁当、おにぎり、スープ、冷凍食品、即席麺、ポテトチップスなどを展開。第1弾には「蟹味噌香る！あんかけ炒飯」や「魚介の旨味が決め手！ブイヤベーススープ」を含む。</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月19日から順次</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">397円～797円の第1弾5品など、商品により異なる</span></div>
+    <div class="card-detail"><span class="label">記事公開日</span>2026年10月16日</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2148903.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Amazon「新潟県産 新潟のお米 無洗米 5kg」20％引き</div>
+    <div class="card-detail"><span class="label">特典内容</span>参考価格3,274円から663円引きの2,611円で販売。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月16日時点で実施中、終了日は記事内で不明</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-detail"><span class="label">記事公開日</span>2026年10月16日</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2148920.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">松のや「倍量フェア」</div>
+    <div class="card-detail"><span class="label">特典内容</span>対象の盛合せ定食8品で、カキフライ、アジフライ、海老フライ、本格唐揚げを価格据え置きで2倍に増量。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月21日15時から、終了日は記事内で不明</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-detail"><span class="label">記事公開日</span>2026年10月16日</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2148648.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ファミペイ「モカブレンド・プレミアムモカ30円引き」</div>
+    <div class="card-detail"><span class="label">特典内容</span>対象商品のアイス・ホット全サイズに利用できる30円引きクーポンを4週連続で配信。</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月21日～11月17日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-detail"><span class="label">記事公開日</span>2026年10月16日</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2148675.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">不二家「創業祭セール」</div>
+    <div class="card-detail"><span class="label">特典内容</span>対象ケーキを537円から268円へ半額。第1弾では3,000円以上の購入者に手帳とボールペンを先着プレゼント。</div>
+    <div class="card-detail"><span class="label">期間</span>第1弾は2026年11月1日から、第2弾は11月14日～16日、第3弾は11月27日～29日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-detail"><span class="label">記事公開日</span>2026年10月16日</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2148802.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（0件）</span></h2>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（0件）</span></h2>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>直近3日では、食品・飲料の新商品発表と、値引き額や増量数を明示した販促策が目立ちました。一方、高額転売や消費財の供給停止については、対象期間内の公開日と具体的な市場価格・供給状況を確認できる信頼性の高い新規記事が見当たりませんでした。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ガチャガチャ情報まとめ（2026-10-18）</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>ガチャガチャ情報まとめ（2026-10-18）</h1>
+  <p class="report-date">2026年10月18日</p>
+  <p class="total-count">本日のガチャガチャ情報: 33件</p>
+
+  <h2>本日の注目トピック <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">美術館好き向けのカプセルトイが大きな反響</div>
+    <div class="card-detail"><span class="label">内容</span>美術館好き向けのカプセルトイとして紹介され、大きな反響を獲得しました。<span class="card-amount">563万回以上表示、約6.2万件のいいね</span>を記録しています。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111602372040638659">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">めじるしじゅえりーず エジプト編</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>エジプトを題材にした「めじるし」シリーズとして注目を集めています。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111607161340269009">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">kiwi_life めじるしぬいチャーム</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>投稿された新商品の中で特に反響が大きく、6,000件以上のいいねを獲得しました。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111654174907846818">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">デスノート DEATH NOTE メタルチャーム</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>作品を題材にしたメタルチャーム商品です。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111651568516997451">出典を確認する</a></div>
+  </div>
+
+  <h2>新商品・発売情報 <span class="section-count">（26件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ポメラニアンもち さがらキーホルダー</div>
+    <div class="card-detail"><span class="label">発売時期</span>発売告知</div>
+    <div class="card-detail"><span class="label">内容</span>ふわふわとした、さがら刺繍のキーホルダーです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2111585547496079542">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">めじるしじゅえりーず エジプト編</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111607161340269009">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">UPA めじるしチャームコレクション</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111607945691890148">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">猫釣れました</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111610058224382345">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">THE DOG AND FRIENDS めじるしマスコットコレクション2</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>「THE DOG AND FRIENDS」のめじるしマスコット第2弾です。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111611793231732834">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ゲゲゲの鬼太郎 エコバッグコレクション</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>「ゲゲゲの鬼太郎」を題材にしたエコバッグです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111615945403977846">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">おくすりケース2</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>シリーズ第2弾です。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111617497418100825">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">おんどりのぬいぐるみ</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111623906813710787">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">人体模型めじるしマスコット</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>人体模型を題材にしためじるしマスコットです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111629497628029119">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">和猫根付</div>
+    <div class="card-detail"><span class="label">発売時期</span>発売告知</div>
+    <div class="card-detail"><span class="label">内容</span>和猫を題材にした根付です。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2111630844456751335">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">クリオネのmineチャーム</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>クリオネを題材にしたチャームです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111632229688623141">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">まけるもんか2</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>シリーズ第2弾です。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111633564152586512">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">まるっとおじさん お野菜ぷちマークチャーム</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>野菜をモチーフにした小型チャームです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111647318500082040">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">facaierr かわいい秋の犬たち チャームになるフィギュア</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>秋の犬たちを表現した、チャームとしても使えるフィギュアです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111650070173278401">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">デスノート DEATH NOTE メタルチャーム</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>「DEATH NOTE」を題材にしたメタルチャームです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111651568516997451">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">呪術廻戦 証明写真風アクリルキーホルダー</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>「呪術廻戦」のキャラクターを証明写真風に表現したアクリルキーホルダーです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111651772049809642">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">kiwi_life めじるしぬいチャーム</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>ぬいぐるみタイプのめじるしチャームです。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111654174907846818">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">コレサワ れ子ちゃんソフビマスコット3</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>れ子ちゃんのソフビマスコット第3弾です。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111655091287777460">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">まいにちみーちゃんグッズコレクション</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111655382309573070">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">たぬきケーキ めじるしマイチャーム</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>たぬきケーキを題材にしためじるしチャームです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2111661046138392873">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">おねがいアイプリ ぷっくりドロップめじるしガチャマスコット</div>
+    <div class="card-detail"><span class="label">発売時期</span>発売告知</div>
+    <div class="card-detail"><span class="label">内容</span>ぷっくりとしたドロップ型のめじるしマスコットです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2111713897195384983">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">おひげのポン めじるしマスコット 着ぐるみコレクション</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>着ぐるみ姿を題材にしためじるしマスコットです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2111740316533346311">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">魔法少女まどか☆マギカ かぷっこふれんず2</div>
+    <div class="card-detail"><span class="label">発売時期</span>発売告知</div>
+    <div class="card-detail"><span class="label">内容</span>「魔法少女まどか☆マギカ」のシリーズ第2弾です。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2111759201693315439">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">べびあざらし</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>子どものアザラシを題材にした商品です。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2111774289657843895">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">すみっコのおきにいりバッグコレクション</div>
+    <div class="card-detail"><span class="label">発売時期</span>発売告知</div>
+    <div class="card-detail"><span class="label">内容</span>バッグのコレクション商品です。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2111789396609376374">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ぷよぷよ さがらポーチ</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>「ぷよぷよ」を、もこもこと立体的なさがら刺繍で表現したポーチです。</div>
+    <div class="card-source"><a href="https://x.com/gachaxpompom/status/2111804492241084698">出典を確認する</a></div>
+  </div>
+
+  <h2>その他の話題 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">美術館好き向けカプセルトイの紹介</div>
+    <div class="card-detail"><span class="label">内容</span>美術館好きに薦める内容として投稿され、大きな反響を獲得しました。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111602372040638659">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">盗ットリポーチ</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月へ発売延期</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111635899335520314">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">11月の新作ガチャまとめ</div>
+    <div class="card-detail"><span class="label">発売時期</span>11月発売予定</div>
+    <div class="card-detail"><span class="label">内容</span>11月発売予定の新作をまとめた速報投稿です。</div>
+    <div class="card-source"><a href="https://x.com/japancapsuletoy/status/2111764954022048101">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※価格・発売時期は確認時点のものです。</p>
+</body>
+</html>

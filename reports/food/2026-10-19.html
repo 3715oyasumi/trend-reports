@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日の飲食情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日の飲食情報</h1>
+  <p class="report-date">2026年10月19日</p>
+  <p class="total-count">本日の飲食情報: 21件</p>
+
+  <h2>マクドナルド <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">ザクザクジューシーマックなど新商品4品</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/21～ レギュラー販売、期間限定商品は2026/11下旬まで予定</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">単品460円から</span></div>
+    <div class="card-detail"><span class="label">販売店</span>マクドナルド</div>
+    <div class="card-detail"><span class="label">内容</span>もも一枚肉を使った新商品を発売。平日昼は対象セットが650円となり、期間限定ポテトとレモネードも登場します。</div>
+    <div class="card-source"><a href="https://www.mcdonalds.co.jp/company/news/2026/1008a/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">ハッピーセット USJオールスターズ</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/16～2026/11中旬予定、第2弾は2026/10/23～2026/10/29</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">510円から</span></div>
+    <div class="card-detail"><span class="label">販売店</span>全国の一部店舗を除くマクドナルド</div>
+    <div class="card-detail"><span class="label">内容</span>対象セット1つにつき、USJキャラクターのおもちゃ全10種から1個が付きます。</div>
+    <div class="card-source"><a href="https://www.mcdonalds.co.jp/company/news/2026/1009a/">出典を確認する</a></div>
+  </div>
+
+  <h2>吉野家 <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">秋の牛丼フェス</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/15 11:00～2026/10/21 15:00</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">牛丼並盛398円</span></div>
+    <div class="card-detail"><span class="label">販売店</span>吉野家</div>
+    <div class="card-detail"><span class="label">内容</span>牛丼、弁当、牛皿、トッピング牛丼などが全サイズ税込100円引き。デリバリーは対象外です。</div>
+    <div class="card-source"><a href="https://www.yoshinoya.com/wp-content/uploads/2026/10/09174740/news_2026101301.pdf">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">牛すき鍋膳発売とクーポン配布</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>配布は2026/10/15 11:00～2026/10/21 15:00、利用は2026/11/09まで。牛すき鍋膳は10/23販売開始</div>
+    <div class="card-detail"><span class="label">販売店</span>吉野家</div>
+    <div class="card-detail"><span class="label">内容</span>店内飲食で牛すき鍋膳50円引き2枚とテイクアウト10％引き1枚のクーポンを配布。なくなり次第終了です。</div>
+    <div class="card-source"><a href="https://www.yoshinoya.com/wp-content/uploads/2026/10/09174740/news_2026101301.pdf">出典を確認する</a></div>
+  </div>
+
+  <h2>すき家 <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">ローストポーク丼とSukiシェイク アサイー・バナナ</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/14～ 終了日未公表</div>
+    <div class="card-detail"><span class="label">販売店</span>すき家</div>
+    <div class="card-detail"><span class="label">内容</span>期間限定の新商品を販売。公式アプリでは新商品などを割引する10月得すきクーポン第2弾も配信中です。</div>
+    <div class="card-source"><a href="https://www.sukiya.jp/news/">出典を確認する</a></div>
+  </div>
+
+  <h2>松屋 <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">PayPayスクラッチくじ</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/01～2026/10/31</div>
+    <div class="card-detail"><span class="label">販売店</span>松弁ネット、松弁デリバリー、松屋モバイルオーダー</div>
+    <div class="card-detail"><span class="label">内容</span>PayPay利用で、抽選により最大全額相当が戻るスクラッチくじを実施。対象の注文方法と支払い条件の確認が必要です。</div>
+    <div class="card-source"><a href="https://paypay.ne.jp/event/">出典を確認する</a></div>
+  </div>
+
+  <h2>ケンタッキーフライドチキン <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">オリジナルチキンバーガーズ全6種類</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/14～ レギュラー販売</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">バーガー490円、セット890円、ランチ790円</span></div>
+    <div class="card-detail"><span class="label">販売店</span>ケンタッキーフライドチキン</div>
+    <div class="card-detail"><span class="label">内容</span>鶏むね肉から鶏もも一枚肉へ変更した新定番バーガーを展開。プレミアバーガーも用意されています。</div>
+    <div class="card-source"><a href="https://japan.kfc.co.jp/news_release/8179">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Vポイント導入記念キャンペーン</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/01 10:00～2026/10/31 23:59</div>
+    <div class="card-detail"><span class="label">販売店</span>ケンタッキーフライドチキン</div>
+    <div class="card-detail"><span class="label">内容</span>対象カードの提示で期間中は通常の2倍貯まります。記念日・エピソード登録では抽選365名に3,300ポイントを進呈します。</div>
+    <div class="card-source"><a href="https://japan.kfc.co.jp/news_release/8178">出典を確認する</a></div>
+  </div>
+
+  <h2>スシロー <span class="section-count">（3件）</span></h2>
+  <div class="card">
+    <div class="card-title">地中海産 本鮪中とろ</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>商品販売は2026/10/14～売り切れ次第終了、Xキャンペーンは2026/10/25まで</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">110円から</span></div>
+    <div class="card-detail"><span class="label">販売店</span>スシロー</div>
+    <div class="card-detail"><span class="label">内容</span>本鮪中とろを販売。公式Xの対象投稿で抽選10名に食事券1万円分が当たる企画も実施中です。</div>
+    <div class="card-source"><a href="https://akindo-sushiro.co.jp/news/detail.php?id=4550">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">魚介豚骨ラーメンとおいもフェス2026</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/14～ 売り切れ次第終了</div>
+    <div class="card-detail"><span class="label">販売店</span>スシロー</div>
+    <div class="card-detail"><span class="label">内容</span>頑者監修の魚粉薫る魚介豚骨ラーメンと、SUSHIRO Cafe おいもフェス2026を開催中です。</div>
+    <div class="card-source"><a href="https://akindo-sushiro.co.jp/news/detail.php?id=4566">出典を確認する</a>　<a href="https://akindo-sushiro.co.jp/news/detail.php?id=4565">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">スシローでポムロー</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/07～ 売り切れ次第終了</div>
+    <div class="card-detail"><span class="label">販売店</span>スシロー</div>
+    <div class="card-detail"><span class="label">内容</span>ポムポムプリンとの初コラボ。限定メニュー、オリジナルグッズ、景品を数量限定で展開しています。</div>
+    <div class="card-source"><a href="https://akindo-sushiro.co.jp/news/detail.php?id=4450">出典を確認する</a></div>
+  </div>
+
+  <h2>はま寿司 <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">牡蠣と旨ねた秋祭り 第3弾</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/13～ 売り切れ次第終了</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">一部商品110円</span></div>
+    <div class="card-detail"><span class="label">販売店</span>はま寿司</div>
+    <div class="card-detail"><span class="label">内容</span>広島県産牡蠣の握りや、カキフライを使った寿司などを販売します。</div>
+    <div class="card-source"><a href="https://www.hamazushi.com/topics/">出典を確認する</a></div>
+  </div>
+
+  <h2>かっぱ寿司 <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">PayPayクーポンキャンペーン</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/01～2026/10/31</div>
+    <div class="card-detail"><span class="label">販売店</span>対象のかっぱ寿司店舗</div>
+    <div class="card-detail"><span class="label">内容</span>事前にPayPayクーポンを獲得し、対象店舗で決済する企画。対象店舗、最低利用額、上限はアプリで確認が必要です。</div>
+    <div class="card-source"><a href="https://kappasushi.jp/campaign_list/">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">PayPayスタンプキャンペーン</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/01～2026/12/31</div>
+    <div class="card-detail"><span class="label">販売店</span>かっぱ寿司</div>
+    <div class="card-detail"><span class="label">内容</span>PayPayで支払うと自動でスタンプが貯まるキャンペーン。一部セルフレジなどは対象外です。</div>
+    <div class="card-source"><a href="https://kappasushi.jp/campaign_list/">出典を確認する</a></div>
+  </div>
+
+  <h2>ココス <span class="section-count">（2件）</span></h2>
+  <div class="card">
+    <div class="card-title">プロジェクトセカイ feat. 初音ミク コラボ</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/21～2026/12/15、第1弾は2026/11/03まで</div>
+    <div class="card-detail"><span class="label">販売店</span>ココス</div>
+    <div class="card-detail"><span class="label">内容</span>対象メニューで限定クリアファイルを進呈。コラボメニュー、限定グッズ、店内ボイスなどを展開し、景品はなくなり次第終了です。</div>
+    <div class="card-source"><a href="https://www.cocos-jpn.co.jp/news/2026/campaign/1014-107009.html">出典を確認する</a></div>
+  </div>
+  <div class="card">
+    <div class="card-title">マロンフェア</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/13～ 終了日未公表</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">パフェ1,419円、モンブラン759円、ミニパフェ539円</span></div>
+    <div class="card-detail"><span class="label">販売店</span>ココス</div>
+    <div class="card-detail"><span class="label">内容</span>マロンとチョコのパフェ、イタリア栗のしぼりたてモンブランなど全5品を販売中です。</div>
+    <div class="card-source"><a href="https://www.cocos-jpn.co.jp/news/2026/menu/1013-115297.html">出典を確認する</a></div>
+  </div>
+
+  <h2>スターバックス <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">ハロウィン限定フラペチーノとスコーンサンド</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/09～ 売り切れ次第終了</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">フラペチーノ 持ち帰り717円、店内730円</span></div>
+    <div class="card-detail"><span class="label">販売店</span>スターバックス</div>
+    <div class="card-detail"><span class="label">内容</span>ブラックベリー ヨーグルト フラペチーノ黒耳ver.と白耳ver.を販売。抹茶あんバター チョコスコーンサンドも登場します。</div>
+    <div class="card-source"><a href="https://stories.starbucks.co.jp/press/2026/pr-2026-1006-01/">出典を確認する</a></div>
+  </div>
+
+  <h2>ミスタードーナツ <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">期間限定メニュー各種</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/09/30～ 終了日未公表</div>
+    <div class="card-detail"><span class="label">販売店</span>ミスタードーナツ</div>
+    <div class="card-detail"><span class="label">内容</span>ポン・デ・ショコラシリーズ、世界の料理を楽しむサクッとパイ、ごほうび飲茶を展開しています。</div>
+    <div class="card-source"><a href="https://www.misterdonut.jp/businessinfo/news_release/">出典を確認する</a></div>
+  </div>
+
+  <h2>大起水産回転寿司 <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">秋の厳選ネタ祭り</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/01～2026/10/25</div>
+    <div class="card-detail"><span class="label">販売店</span>大起水産回転寿司、京橋店・道頓堀店を除く</div>
+    <div class="card-detail"><span class="label">内容</span>しまあじ、秋刀魚、かつおなど旬の魚を提供します。</div>
+    <div class="card-source"><a href="https://sushi.daiki-suisan.co.jp/news/288?page=1&type=">出典を確認する</a></div>
+  </div>
+
+  <h2>平禄寿司 <span class="section-count">（1件）</span></h2>
+  <div class="card">
+    <div class="card-title">豊の秋めぐり</div>
+    <div class="card-detail"><span class="label">発売日・期間</span>2026/10/15～2026/12/02</div>
+    <div class="card-detail"><span class="label">販売店</span>平禄寿司</div>
+    <div class="card-detail"><span class="label">内容</span>北海道産・宮城県産さんま、さんま三昧、気仙沼産カツオたたき、秋の貝三昧などを期間限定販売しています。</div>
+    <div class="card-source"><a href="https://www.heiroku.jp/campaign-info/campaign-info-4091/">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※価格・期間は確認時点のものです。最新情報は各店舗・公式サイトにてご確認ください。</p>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のモバイル情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のモバイル情報</h1>
+  <p class="report-date">2026年10月20日</p>
+  <p class="total-count">本日のモバイル案件: 10件</p>
+
+  <h2>モバイル情報 <span class="section-count">（10件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">「NBA docomo on DAZN」を開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">シーズンプラン 16,500円、月間プラン 月額2,728円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>レギュラーシーズン400試合などを配信</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/16 ～ 2027/06/30（販売期間）</div>
+    <div class="card-source"><a href="https://www.docomo.ne.jp/info/news_release/2026/10/16_00.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">au Online Shopスペシャルセールを開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大22,000円割引</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>au Online Shop</div>
+    <div class="card-detail"><span class="label">条件</span>Xperia 10 VIIまたはAQUOS sense10への機種変更、対象プラン・端末補償への加入など</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/16 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://onlineshop.au.com/info/CSfViewInfo.jsp?no=258&amp;sort=6">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">HANEW EXPERIENCE店頭キャンペーンを開始</div>
+    <div class="card-detail"><span class="label">還元</span>先着で限定アクリルスタンドを進呈</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>au／UQ mobile 対象店舗</div>
+    <div class="card-detail"><span class="label">条件</span>au PAY ゴールドカードを保有または申し込み、対象料金プランに新規加入または変更</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/16 ～ 在庫終了まで</div>
+    <div class="card-source"><a href="https://www.au.com/pr/hanew_pj/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">海外データ通信の月間無料枠を提供</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">毎月2GBまで追加料金なし</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>Y!mobile</div>
+    <div class="card-detail"><span class="label">条件</span>「シンプル」「シンプル2」「シンプル3」が対象。200以上の国・地域で利用可能。2GB超過後は最大128kbps、1GBあたり1,000円で追加可能</div>
+    <div class="card-detail"><span class="label">期間</span>2026/11/18 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.ymobile.jp/info/press/2026/26101601.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">オンラインストア「ハロウィンセール」を開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">SIM契約特典 15,000円相当、対象スマートフォン 1円から</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>Y!mobile オンラインストア</div>
+    <div class="card-detail"><span class="label">条件</span>新規契約・他社からの乗り換え。シンプル3 SのSIM契約特典を増額、事務手数料無料</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/16 ～ 2026/11/02</div>
+    <div class="card-source"><a href="https://www.ymobile.jp/store/sp/special_sale/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">LINEMO週穫祭第3弾を開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大12,000円相当のPayPayポイント</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>LINEMO</div>
+    <div class="card-detail"><span class="label">条件</span>ベストプランVは翌月から2カ月間、基本料2,970円を割引。ベストプラン／ベストプランVはデータ追加を2カ月間毎月最大10回割引。他社からの乗り換えが対象</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/17 ～ 2026/10/23</div>
+    <div class="card-source"><a href="https://www.linemo.jp/campaign/syukakusai/202610/1017/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">スマホ大特価セールへ新機種を追加</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">POCO F9 Ultra 124,800円から、Xperia 10 VIII 84,800円、motorola edge 70 fusion 69,800円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>音声SIMまたは音声eSIMへMNP転入し、端末を同時購入</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/15 ～ 2026/11/04</div>
+    <div class="card-source"><a href="https://www.iijmio.jp/info/iij/1791342895.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">新料金「超なっとくプラン」を提供開始</div>
+    <div class="card-detail"><span class="label">還元</span>3GBを5GB、8GBを10GB、30GBを40GBへ増量。光回線セット割は月額最大<span class="card-amount">660円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>LIBMO</div>
+    <div class="card-detail"><span class="label">条件</span>従来の「なっとくプラン」「ゴーゴープラン」は10月19日で新規受付終了</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/20 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.libmo.jp/newsarchive/2026/10/13/17393/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Web限定「WEB得キャンペーン」を開始</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大6カ月間、月額550円または月額1,540円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>LIBMO Web</div>
+    <div class="card-detail"><span class="label">条件</span>超なっとくプランの音声SIMを新規契約。5GB・10GBは月額550円、20GB・40GB・60GBは月額1,540円。光セット割と併用可能</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/20 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.libmo.jp/news-archive/2026/10/15/17486/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">60歳以上を対象とした店舗限定MNPキャンペーンを開始</div>
+    <div class="card-detail"><span class="label">還元</span>通常<span class="card-amount">3,300円</span>の契約事務手数料が<span class="card-amount">1円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>イオンモバイル 店舗</div>
+    <div class="card-detail"><span class="label">条件</span>60歳以上が対象。指定期間中の平日に店頭で乗り換え</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/13 ～ 2026/10/30（平日の指定日のみ）</div>
+    <div class="card-source"><a href="https://aeonmobile.jp/campaign/">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※還元・条件は確認時点のものです。</p>
+</body>
+</html>

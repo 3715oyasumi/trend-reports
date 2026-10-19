@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のAIレポート</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のAIレポート</h1>
+  <p class="report-date">2026年10月20日</p>
+  <p class="total-count">本日のAIトピック: 17件</p>
+
+  <h2>新AIモデル・LLM情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">MiniMax / MiniMax M3.1 Flash</div>
+    <div class="card-detail"><span class="label">発表元</span>MiniMax</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/19</div>
+    <div class="card-detail"><span class="label">内容</span>M3.1 Flashを発表。自動化、コーディング、視覚推論向けの性能を掲げ、M3比で費用3分の1、速度3倍と説明しています。モデルの重みは10月23日公開予定です。</div>
+    <div class="card-detail"><span class="label">料金</span>入力<span class="card-amount">$0.15</span>・出力<span class="card-amount">$0.60</span> / 100万トークン</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">4,889件</span> / 表示<span class="card-amount">625,108回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112150867868541221">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">DeepSeek / DeepSeek-V4.1-Flash-1017</div>
+    <div class="card-detail"><span class="label">発表元</span>DeepSeek</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/18 ～ 2026/10/20</div>
+    <div class="card-detail"><span class="label">内容</span>Code ArenaのWeb開発部門でオープンモデル首位になったと報告されました。総合12位、1,670点で、従来版より52点上昇したとされています。</div>
+    <div class="card-detail"><span class="label">料金</span>入力<span class="card-amount">$0.30</span>・出力<span class="card-amount">$1.20</span> / 100万トークン</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">2,273件</span> / 表示<span class="card-amount">177,983回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111894091168682086">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">MiniMax / DeepSeek / オープンモデルのローカル高速化</div>
+    <div class="card-detail"><span class="label">発表元</span>MiniMax / DeepSeek</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/19</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、RTX 3090でQwen3.8 27Bの生成速度を推論設定の調整だけで最大82から382トークン毎秒へ高めた事例が紹介されました。通常会話では約133トークン毎秒とされています。</div>
+    <div class="card-detail"><span class="label">料金</span>追加機材費なしと投稿者が説明</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,254件</span> / 表示<span class="card-amount">80,806回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111885825218838905">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Wicked-Tutu-31B</div>
+    <div class="card-detail"><span class="label">発表元</span>Wicked-Tutu-31B</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/19</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、創作・ロールプレイ向けの31Bローカルモデルが公開されたとの投稿です。GGUFのQ4量子化版は約19～21GBで、RTX 3090／4090やMacの共有メモリー環境を対象としています。</div>
+    <div class="card-detail"><span class="label">料金</span>無料と投稿者が説明</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,594件</span> / 表示<span class="card-amount">115,475回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112047008731308453">出典を確認する</a></div>
+  </div>
+
+  <h2>新AIツール・サービス <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Grok Bot</div>
+    <div class="card-detail"><span class="label">発表元</span>Grok Bot</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/19</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、専用メール、音声操作、Webサイトやフォームの操作、各種サービスとの接続、定期実行、複数ボットの分業などが紹介されました。就寝中に定型処理を動かす用途が注目されています。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,422件</span> / 表示<span class="card-amount">356,304回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111968185566077191">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">GitHub / AIゲーム開発用オープンソース集</div>
+    <div class="card-detail"><span class="label">発表元</span>GitHub</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/19</div>
+    <div class="card-detail"><span class="label">内容</span>Claude CodeやCodexからGodot・Unity・Unrealなどを操作する技能集や、画像からの3Dモデル作成、物理演算、NPC制御など、ゲーム開発に使える10件の公開リポジトリが紹介されました。</div>
+    <div class="card-detail"><span class="label">料金</span>無料のオープンソース</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">604件</span> / 表示<span class="card-amount">26,200回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112115634335363577">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Anthropic / Claude Personal Finance</div>
+    <div class="card-detail"><span class="label">発表元</span>Anthropic</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/19</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、Plaidを介して口座データを分析し、支出などの画面を作るPersonal Finance機能をClaude向けに準備しているとの投稿です。公開時期や提供地域は明らかになっていません。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">909件</span> / 表示<span class="card-amount">99,785回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111944960652034447">出典を確認する</a></div>
+  </div>
+
+  <h2>プロンプト技術・活用Tips <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Google DeepMind研究者によるAIへの依頼方法</div>
+    <div class="card-detail"><span class="label">発表元</span>Google DeepMind</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/19</div>
+    <div class="card-detail"><span class="label">内容</span>ユーザーが誤った原因推測を添えると、AIがそれに引きずられる可能性があると紹介されました。投稿内の実験ではGeminiの端末操作成功率が67.4%から36.0%へ低下したとされています。</div>
+    <div class="card-detail"><span class="label">料金</span>無料で実践可能</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">999件</span> / 表示<span class="card-amount">110,558回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112062584933478419">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AI出力の検証とClaude Code利用時の負担</div>
+    <div class="card-detail"><span class="label">発表元</span>AI利用者</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/19</div>
+    <div class="card-detail"><span class="label">内容</span>専門外ではAIの誤答を信じやすいという事例と、Claude Codeとの長期作業で強いストレスを感じたという投稿が話題になりました。重要分野では専門家や原資料での確認が必要です。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,384件・1,928件</span> / 表示<span class="card-amount">74,483回・317,544回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112115522099667417">出典を確認する</a> / <a href="https://x.com/i/status/2112010229823230234">出典を確認する</a></div>
+  </div>
+
+  <h2>AI企業・業界ニュース <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Anthropic / Anthropic Public Benefit Fund</div>
+    <div class="card-detail"><span class="label">発表元</span>Anthropic</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/19</div>
+    <div class="card-detail"><span class="label">内容</span>Anthropicが自社株式の5%から始める公益基金を設立。企業価値が基準から50%上がるごとに最大2%を追加し、最終的に約20%の株式を公益目的へ充てる方針です。</div>
+    <div class="card-detail"><span class="label">料金</span>Anthropic株式の約<span class="card-amount">20%</span>を公益目的に充当予定</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">19,397件</span> / 表示<span class="card-amount">5,957,568回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111881963657412903">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Anthropic / 次期Claudeモデル</div>
+    <div class="card-detail"><span class="label">発表元</span>Anthropic</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/19</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、1件の不具合修正を頼むと関連する問題群まで発見し、まとめて直すか確認できる新モデルをAnthropicが準備中との投稿です。モデル名と公開日は不明です。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">2,060件</span> / 表示<span class="card-amount">67,182回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112185581597860349">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AIエージェントを使ったサイバー攻撃</div>
+    <div class="card-detail"><span class="label">発表元</span>報道紹介</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/19</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、中国語話者の攻撃者がAIエージェントを使い、1,200超のWebサイトへ侵入を試み、100社超への侵入に成功したとする報道紹介です。</div>
+    <div class="card-detail"><span class="label">料金</span>推定トークン費用約<span class="card-amount">$5,000</span>、成功1件当たり約<span class="card-amount">$50</span></div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">585件</span> / 表示<span class="card-amount">71,701回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112133997505794285">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">米国政府機関 / DeepSeek</div>
+    <div class="card-detail"><span class="label">発表元</span>米国政府機関</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/19</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、米政権が連邦政府機関のシステムから中国製AIモデルDeepSeekを削除するよう命じたとの投稿です。命令文や詳細条件は示されていません。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,097件</span> / 表示<span class="card-amount">64,766回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112173639684510090">出典を確認する</a></div>
+  </div>
+
+  <h2>AI×日本 <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">日本俳優連合 / 故人の声のAI再現指針</div>
+    <div class="card-detail"><span class="label">発表元</span>日本俳優連合</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/15 ～ 2026/10/19</div>
+    <div class="card-detail"><span class="label">内容</span>亡くなった声優の声をAIで再現することを原則禁止し、学習・生成・作品公開の各段階で本人の事前同意を求める指針が話題になりました。商用利用では権利者の同意と契約確認が欠かせないことを示す事例です。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,238件</span> / 表示<span class="card-amount">16,917回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112060141390717153">出典を確認する</a></div>
+  </div>
+
+  <h2>バズった話題・SNS事例 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ChatGPTを使った予約の失敗事例</div>
+    <div class="card-detail"><span class="label">発表元</span>ChatGPT利用者</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/19</div>
+    <div class="card-detail"><span class="label">内容</span>ChatGPTを使って子どもの誕生日会を予約したつもりが、会場へ行くと予約できていなかったという自己申告が話題になりました。外部操作を伴う依頼では店舗側の受付記録まで確認する必要があります。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">4,806件</span> / 表示<span class="card-amount">29,328回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2111951355497877509">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Google AI Pro学生向け割引</div>
+    <div class="card-detail"><span class="label">発表元</span>Google</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/19</div>
+    <div class="card-detail"><span class="label">内容</span>未確認情報として、学生向けGoogle AI Proを$8.99で長期間利用できるとの投稿が複数伸びました。利用期間は3年と4年で投稿内容が一致しておらず、申込前の確認が呼びかけられています。</div>
+    <div class="card-detail"><span class="label">料金</span><span class="card-amount">$8.99</span>との自己申告</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">825件・512件</span> / 表示<span class="card-amount">131,156回・140,843回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112013186803404945">出典を確認する</a> / <a href="https://x.com/i/status/2112098933002395682">出典を確認する</a></div>
+  </div>
+
+  <h2>定点観測: AIモデル性能ランキング <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Artificial Analysis / Intelligence Index</div>
+    <div class="card-detail"><span class="label">発表元</span>Artificial Analysis</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/20確認</div>
+    <div class="card-detail"><span class="label">内容</span>知能ランキング上位はClaude Opus 5.5、Claude Sonnet 5.5、Muse Wonder Fullなどで、設定違いを別項目として順位付けしています。Anthropic系が上位を占めています。</div>
+    <div class="card-detail"><span class="label">料金</span>タスク当たり<span class="card-amount">$5.98 / $5.46 / $3.46 / 掲載なし / $1.82</span></div>
+    <div class="card-detail"><span class="label">反響</span>対象外（ランキング定点観測）</div>
+    <div class="card-source"><a href="https://artificialanalysis.ai/models">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

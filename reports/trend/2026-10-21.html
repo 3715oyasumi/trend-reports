@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年10月21日（水）版</p>
+  <p class="total-count">本日のトレンド: 7件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">鬼金棒監修カラシビ味噌らー麺</div>
+    <div class="card-detail"><span class="label">特徴</span>赤味噌と白味噌の濃厚スープに、唐辛子、花椒、焦がし黒マー油を合わせたファミリーマートの冷凍食品</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月20日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">354円</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2149572.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">もちどー きなこ／もちどー シュガー</div>
+    <div class="card-detail"><span class="label">特徴</span>超強力粉、準強力粉、でんぷんを使った、もちっとした食感のドーナツ。全国のローソンで販売</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月20日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">各171円</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2149348.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ガツン、と濃いぶどう</div>
+    <div class="card-detail"><span class="label">特徴</span>ぶどう果汁・果肉を50％使用し、巨峰果肉と隠し味のぶどう酢を配合した90mLのアイスキャンディー</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月20日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">216円前後</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2148707.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">無印良品週間</div>
+    <div class="card-detail"><span class="label">特典内容</span>無印良品メンバーを対象に、一部商品を除く全品を10％割引</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月23日～11月3日。ネットストアは11月4日10時まで</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2149535.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ステーキのあさくま「肉の日 お客様感謝デー」</div>
+    <div class="card-detail"><span class="label">特典内容</span>サーロイン、テンダーロイン、ランプの対象ステーキを価格据え置きで50％増量。200g価格で300g、300g価格で450gを提供</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月24日～25日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2149407.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">カフェ・ベローチェ「パスタ2倍盛りキャンペーン」</div>
+    <div class="card-detail"><span class="label">特典内容</span>15時以降にドリンクと対象パスタを注文すると、追加100円でパスタを通常の2倍に増量</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月22日開始、終了日不明</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2149188.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ローソン「MACHI cafe＋」ドリンク100円引き</div>
+    <div class="card-detail"><span class="label">特典内容</span>MACHI cafe＋導入店舗でドリンク全品を100円引き</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月31日～11月3日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2149531.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（0件）</span></h2>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（0件）</span></h2>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>直近3日間は、10月下旬商戦に向けた食品の新商品投入と、外食・小売の増量キャンペーンが中心でした。特に値下げよりも「価格据え置きで増量」する施策が目立ち、原価上昇下でも体感的なお得感を打ち出す動きが強まっています。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

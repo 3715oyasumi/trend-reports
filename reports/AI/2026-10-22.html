@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI最新動向レポート（2026/10/22）</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>AI最新動向レポート（2026/10/22）</h1>
+  <p class="report-date">2026年10月22日</p>
+  <p class="total-count">本日のAIトピック: 17件</p>
+
+  <h2>新AIモデル・LLM情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">DeepInfer公開で推論基盤と収益構造が話題に</div>
+    <div class="card-detail"><span class="label">発表元</span>DeepSeek</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/20 ～ 2026/10/21</div>
+    <div class="card-detail"><span class="label">内容</span>本番サービス用の推論フレームワーク「DeepInfer」を公開。推論・ストレージ・通信を含むAI基盤の公開や、処理量と収益性の試算が話題になった。</div>
+    <div class="card-detail"><span class="label">料金</span>APIピーク料金は入力100万トークン当たり<span class="card-amount">$0.30</span>、出力100万トークン当たり<span class="card-amount">$1.20</span>。推定粗利率は約<span class="card-amount">82％</span>。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">4,669件</span>・表示<span class="card-amount">225,550回</span>／いいね<span class="card-amount">1,170件</span>・表示<span class="card-amount">28,143回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112653788574339075">出典を確認する</a>　<a href="https://x.com/i/status/2112723839620981190">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">163MBで端末内動作する無料の音声認識モデル</div>
+    <div class="card-detail"><span class="label">発表元</span>Underdog Bark 3.0</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/21</div>
+    <div class="card-detail"><span class="label">内容</span>163MBの音声認識モデルを公開。MacBookでは1分の音声を0.25秒未満で文字起こしでき、ノートパソコンとスマートフォンで端末内処理できるとしている。</div>
+    <div class="card-detail"><span class="label">料金</span>無料／オープンソース（CC BY 4.0）</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">2,951件</span>・表示<span class="card-amount">118,920回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112733007484518470">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">小型ローカルLLMの新版を公開</div>
+    <div class="card-detail"><span class="label">発表元</span>Spark-X2.6-4B</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/20</div>
+    <div class="card-detail"><span class="label">内容</span>SparkLLMが40億パラメータの新版を公開。コーディング、AIエージェント、長文処理を強化し、思考量は3段階から選択できる。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">690件</span>・表示<span class="card-amount">33,558回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112614036227408363">出典を確認する</a></div>
+  </div>
+
+  <h2>新AIツール・サービス <span class="section-count">（5件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">メッセージ、音声通話、外部連携をまとめて強化</div>
+    <div class="card-detail"><span class="label">発表元</span>Grok Bot</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/20 ～ 2026/10/21</div>
+    <div class="card-detail"><span class="label">内容</span>チャットカード、メール別名、XのDM、外部連携、音声通話、通知、Androidアシスタントなどを追加。行政手続きに使った事例もあるが、本人確認書類の扱いには注意が必要とされる。</div>
+    <div class="card-detail"><span class="label">料金</span>行政手続き事例は無料</div>
+    <div class="card-detail"><span class="label">反響</span>公式更新はいいね<span class="card-amount">9,129件</span>・表示<span class="card-amount">1,562,764回</span>／活用事例はいいね<span class="card-amount">1,047件</span>・表示<span class="card-amount">87,458回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112589019380875714">出典を確認する</a>　<a href="https://x.com/i/status/2112749563274551685">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Mac上でモデルとエージェントを完全ローカル実行</div>
+    <div class="card-detail"><span class="label">発表元</span>Perplexity Computer</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/20</div>
+    <div class="card-detail"><span class="label">内容</span>Macアプリ上でモデルとAIエージェントの完全ローカル動作に対応。アプリやファイルを扱いながら、機密データをクラウドへ送らずにタスクを実行できる。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,708件</span>・表示<span class="card-amount">297,777回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112571597798461920">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ChatGPT・Claude向けに2億7,000万件超の企業・人物データを提供</div>
+    <div class="card-detail"><span class="label">発表元</span>Firecrawl Alexandria</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/20</div>
+    <div class="card-detail"><span class="label">内容</span>AIエージェントから企業・人物情報を検索できるプラグインを公開。見込み客リスト作成、仕事用メールアドレス探索、職歴調査などの営業調査に活用できる。</div>
+    <div class="card-detail"><span class="label">料金</span>毎月1,000クレジットまで無料</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,696件</span>・表示<span class="card-amount">328,941回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112571818322116860">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">未確認情報: 約0.5秒で応答する音声対話AI</div>
+    <div class="card-detail"><span class="label">発表元</span>Eleven Realtime</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/20</div>
+    <div class="card-detail"><span class="label">内容</span>日本の利用者による試用報告では、音声から音声へ直接応答し、話し始めまで約0.5秒で日本語も自然だったとされる。性能値は単一投稿に基づくため追加確認が必要。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">859件</span>・表示<span class="card-amount">126,730回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112571894423826757">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">未確認情報: 500種類超の生成モデルを1つの画面に統合</div>
+    <div class="card-detail"><span class="label">発表元</span>Blender向けAIプラグイン</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/20</div>
+    <div class="card-detail"><span class="label">内容</span>画像、動画、3D、音声、テクスチャなど500種類を超えるモデルをBlender内で利用できるオープンソースのプラグイン。AIエージェントからの操作にも対応するとしている。</div>
+    <div class="card-detail"><span class="label">料金</span>無料／オープンソース</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,084件</span>・表示<span class="card-amount">46,675回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112673359775310084">出典を確認する</a></div>
+  </div>
+
+  <h2>プロンプト技術・活用Tips <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">「AIっぽさを消して」ではなく修正箇所を具体化</div>
+    <div class="card-detail"><span class="label">発表元</span>生成AIによるデザイン改善</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/21</div>
+    <div class="card-detail"><span class="label">内容</span>囲み・下線を減らす、文字サイズに強弱を付ける、質感を分けるなど、変更箇所を具体的に指定する方法を紹介。残したい魅力も同時に伝えることがポイントとされる。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">851件</span>・表示<span class="card-amount">161,885回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112820458714452195">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">判定モデルのしきい値を調整してAIエージェントを評価</div>
+    <div class="card-detail"><span class="label">発表元</span>LLM評価手法</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/20</div>
+    <div class="card-detail"><span class="label">内容</span>LLMを別のLLMで採点する代わりに、判定専用モデルを評価役に使う手法を紹介。初期値をそのまま使わず、目的に合わせて判定しきい値を調整する重要性が示された。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">1,234件</span>・表示<span class="card-amount">92,009回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112632133357346889">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">実測値付きのWebサイト高速化チェックリスト</div>
+    <div class="card-detail"><span class="label">発表元</span>AIを使ったWeb高速化</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/21</div>
+    <div class="card-detail"><span class="label">内容</span>フォント分割配信、キャッシュ、データベース取得列削減など8項目を紹介。投稿者の実測では、最大コンテンツ表示時間がPCで7.0秒から2.3秒へ改善した。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">22件</span>・表示<span class="card-amount">3,042回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112746675739808189">出典を確認する</a></div>
+  </div>
+
+  <h2>AI企業・業界ニュース <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">医薬品開発企業の買収とGPT-Rosalindによる研究支援</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/20 ～ 2026/10/21</div>
+    <div class="card-detail"><span class="label">内容</span>医薬品開発基盤「Orchestra Bio」を買収し、生命科学向けAIモデル群「Rosalind」との組み合わせを目指す。GPT-Rosalindは研究候補となる仮説を提示したが、科学者による検証が必要とされる。</div>
+    <div class="card-detail"><span class="label">反響</span>買収発表はいいね<span class="card-amount">6,803件</span>・表示<span class="card-amount">748,048回</span>／研究発表はいいね<span class="card-amount">2,661件</span>・表示<span class="card-amount">219,374回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112607347688583586">出典を確認する</a>　<a href="https://x.com/i/status/2112899854569762936">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">AIがPHPの重大な脆弱性を攻撃者より先に発見</div>
+    <div class="card-detail"><span class="label">発表元</span>OpenAI「Patch the Planet」</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/21</div>
+    <div class="card-detail"><span class="label">内容</span>PHPの重大なセキュリティ上の欠陥をAIモデルが発見したと発表。保守担当者やセキュリティ企業と修正・防御策を準備し、公開前に対処したとしている。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">6,117件</span>・表示<span class="card-amount">868,251回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112907856018309586">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サソリ毒に結合するタンパク質候補をAIで設計</div>
+    <div class="card-detail"><span class="label">発表元</span>Anthropic・Claude</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/20</div>
+    <div class="card-detail"><span class="label">内容</span>Claudeを使い、5種類のサソリ毒を対象とするタンパク質候補を64時間で30万件以上生成。211件の実験で17件が結合体の基準を満たしたが、毒の中和は未検証。</div>
+    <div class="card-detail"><span class="label">料金</span>研究データを公開</div>
+    <div class="card-detail"><span class="label">反響</span>主要発表はいいね<span class="card-amount">6,722件</span>・表示<span class="card-amount">1,545,367回</span>／詳細はいいね<span class="card-amount">626件</span>・表示<span class="card-amount">152,925回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112579251555721573">出典を確認する</a>　<a href="https://x.com/i/status/2112579254538141981">出典を確認する</a>　<a href="https://x.com/i/status/2112579263039725659">出典を確認する</a></div>
+  </div>
+
+  <h2>AI×日本・バズった話題 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">未確認情報: 生成AI風広告の漢字表現を巡り批判</div>
+    <div class="card-detail"><span class="label">発表元</span>日本漢字能力検定協会の広告</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/21</div>
+    <div class="card-detail"><span class="label">内容</span>生成AI画像のように見え、小学2年生程度の漢字に誤りがあるとの批判が拡散。元画像が生成AI製かは確認できず、文字を扱う広告での人手校正の重要性が示された。</div>
+    <div class="card-detail"><span class="label">反響</span>いいね<span class="card-amount">2,577件</span>・表示<span class="card-amount">32,579回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112755971894456753">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ChatGPTを使わない学生を題材にした投稿が大きく拡散</div>
+    <div class="card-detail"><span class="label">発表元</span>学校課題でのChatGPT利用</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/20 ～ 2026/10/21</div>
+    <div class="card-detail"><span class="label">内容</span>学校課題で自分だけChatGPTを使っていない感覚を表した動画が、今回の収集対象で最多のいいねを獲得。情報源探しの時間短縮例もあるが、内容照合は別途必要となる。</div>
+    <div class="card-detail"><span class="label">反響</span>元投稿はいいね<span class="card-amount">26,303件</span>・表示<span class="card-amount">257,240回</span>／活用提案はいいね<span class="card-amount">1,217件</span>・表示<span class="card-amount">47,649回</span></div>
+    <div class="card-source"><a href="https://x.com/i/status/2112662541948338588">出典を確認する</a>　<a href="https://x.com/i/status/2112742976803758164">出典を確認する</a></div>
+  </div>
+
+  <h2>定点観測: AIモデル性能ランキング <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Artificial Analysis 知能ランキング（Intelligence Index）</div>
+    <div class="card-detail"><span class="label">発表元</span>Artificial Analysis</div>
+    <div class="card-detail"><span class="label">時期</span>2026/10/22確認</div>
+    <div class="card-detail"><span class="label">内容</span>Claude Opus 5.5の最大設定が58で単独首位。上位5枠のうち4枠をAnthropic系モデルが占め、Muse Wonder Fullも56で上位圏に入った。</div>
+    <div class="card-detail"><span class="label">料金</span>上位モデルのタスク当たり費用はClaude Opus 5.5最大設定<span class="card-amount">$5.98</span>、Claude Sonnet 5.5最大設定<span class="card-amount">$5.46</span>、Claude Opus 5.5 xhigh設定<span class="card-amount">$3.46</span>、Claude Opus 5.5 high設定<span class="card-amount">$1.82</span></div>
+    <div class="card-detail"><span class="label">反響</span>該当なし（ランキングページ）</div>
+    <div class="card-source"><a href="https://artificialanalysis.ai/models">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

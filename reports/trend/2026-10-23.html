@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年10月23日（金）版</p>
+  <p class="total-count">本日のトレンド: 8件</p>
+
+  <h2>新商品情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">上島珈琲店「おしるこのミルク珈琲」</div>
+    <div class="card-detail"><span class="label">特徴</span>ダブルネルドリップコーヒーに、かぼちゃペーストとこしあんを合わせ、白玉を月に見立てた期間限定商品。「日本蜜蜂のはちみつミルク珈琲」も同時発売</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月22日</div>
+    <div class="card-detail"><span class="label">価格</span>不明</div>
+    <div class="card-source"><a href="https://www.ucc.co.jp/company/news/2026/rel261021.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">情熱価格「魚『貝』系だし淡口醤油 らーめんmacro」</div>
+    <div class="card-detail"><span class="label">特徴</span>「人類みな麺類」の人気メニューを再現。ポークベースのスープにアサリなどの旨味を加えた2食入り商品で、全国7500セット限定</div>
+    <div class="card-detail"><span class="label">発売日</span>不明</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">862円</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2150246.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">メーカーズマーク「スターヒルファームウイスキー2026」</div>
+    <div class="card-detail"><span class="label">特徴</span>再生農業で栽培された3種類の小麦を使用し、樽を移動させず7～8年熟成。アルコール度数58％、700mLの数量限定品</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年12月8日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">1万円前後（税別）</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2150010.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">サンキューマート公式アプリ会員限定10％OFF</div>
+    <div class="card-detail"><span class="label">特典内容</span>公式アプリ会員が税込2000円以上購入すると10％OFF。既存会員と新規会員の双方が対象</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月22日～10月26日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">4/5</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000839.000002319.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">不二家「milkyドーナツ（プレーン）」半額キャンペーン</div>
+    <div class="card-detail"><span class="label">特典内容</span>通常209円の商品を105円で販売。1会計につき合計6個までで、数量限定</div>
+    <div class="card-detail"><span class="label">期間</span>2026年11月1日～11月3日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">5/5</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2150214.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ほっかほっか亭「食欲の秋！お客さま還元キャンペーン」</div>
+    <div class="card-detail"><span class="label">特典内容</span>のり弁当など対象商品を購入すると、価格据え置きでチキンかつ1枚を追加。店頭注文、モバイルオーダー、自社配達が対象</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月26日～10月30日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">4/5</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2150207.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（0件）</span></h2>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">オムニパーク300注・350注の一部規格</div>
+    <div class="card-detail"><span class="label">理由</span>10月22日付で「オムニパーク300注10mL・20mL・シリンジ110mL」と「オムニパーク350注20mL」が通常出荷から供給停止へ移行。詳しい理由は「その他の理由」とされ、再開見込みは未定</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">5/5</span></div>
+    <div class="card-detail"><span class="label">アクション</span>医療機関や薬局は在庫と代替造影剤を確認。患者は自己判断で治療予定を変更せず、担当医へ確認</div>
+    <div class="card-source"><a href="https://closedi.jp/medicine_supply/26058/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ファモチジン静注液10mg・20mg</div>
+    <div class="card-detail"><span class="label">理由</span>「サワイ」製品は製造トラブルにより10月21日付で限定出荷へ移行。「日医工」製品も他社品の影響による需要増で10月22日付から限定出荷となり、いずれも通常出荷再開は未定</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">4/5</span></div>
+    <div class="card-detail"><span class="label">アクション</span>医療機関は採用品の在庫と代替規格を早めに確認。患者は処方や投与方法について担当医・薬剤師へ相談</div>
+    <div class="card-source"><a href="https://closedi.jp/medicine_supply/26055/">出典を確認する</a>、<a href="https://closedi.jp/medicine_supply/26058/">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>食品・外食では数量限定商品と短期キャンペーンが集中し、値引きだけでなく無料追加による実質的な価値も目立ちます。一方、医薬品は同一成分で複数メーカーが相次いで限定出荷となる例があり、供給状況を製品単位で確認する必要があります。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

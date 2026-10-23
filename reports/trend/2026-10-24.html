@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年10月24日（土）版</p>
+  <p class="total-count">本日のトレンド: 6件</p>
+
+  <h2>新商品情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">宮崎の味 餃子チーズおにぎり</div>
+    <div class="card-detail"><span class="label">特徴</span>宮崎県産ニラを使った餃子の具材をご飯に混ぜ込み、中具にチーズを入れた九州地区向け商品</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月27日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">税込214円</span></div>
+    <div class="card-source"><a href="https://mldata.lawson.co.jp/company/news/detail/1533777_2504.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">チーズ饅頭風 チーズクリームパン（宮崎県産釜炒り茶使用）</div>
+    <div class="card-detail"><span class="label">特徴</span>宮崎県産釜炒り茶を使用し、宮崎銘菓のチーズ饅頭をイメージしたパン</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月27日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">税込167円</span></div>
+    <div class="card-source"><a href="https://mldata.lawson.co.jp/company/news/detail/1533777_2504.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ペコちゃんmilkyドーナツ「milkyドーナツ（プレーン）」半額キャンペーン</div>
+    <div class="card-detail"><span class="label">特典内容</span>通常税込209円の商品を税込105円で販売。1会計につき合計6個まで</div>
+    <div class="card-detail"><span class="label">期間</span>2026年11月1日～11月3日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000507.000097396.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">BELLEMOND 楽天お買い物マラソン50％OFFクーポン</div>
+    <div class="card-detail"><span class="label">特典内容</span>5,000円以上の購入に使える全品50％OFFクーポンを先着100枚限定で配布</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月24日20時～21時59分</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000001219.000079792.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（0件）</span></h2>
+  <p>該当なし</p>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">小矢部川サービスエリア上り・軽油</div>
+    <div class="card-detail"><span class="label">理由</span>タンクローリーの遅延で軽油の納品が遅れ、一時的に限定給油を実施。レギュラーガソリンとハイオクガソリンは通常どおり給油可能</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>軽油車は出発前に給油し、周辺の給油所も確認する</div>
+    <div class="card-source"><a href="https://sapa.c-nexco.co.jp/topics?id=5382">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">台風30号による沖縄県・鹿児島県向け配送</div>
+    <div class="card-detail"><span class="label">理由</span>台風30号の接近とフェリーなどの運航の乱れにより、宮古島市・石垣市では10月23日の集荷・配達を停止。沖縄県全域と鹿児島県の一部では配送遅延が発生</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>対象地域へのEC注文や商品発送は日数に余裕を持たせ、最新の配送状況を確認する</div>
+    <div class="card-source"><a href="https://www2.sagawa-exp.co.jp/information/detail/431/">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>本日は50％OFF施策が複数発表され、短時間・数量限定で購入を促すキャンペーンが目立ちます。一方、台風による物流停止や燃料納品の遅れも発生しているため、沖縄・鹿児島方面のEC利用では配送予定の確認が必要です。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>品薄予測レポート 2026-10-25</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>品薄予測レポート</h1>
+  <p class="report-date">2026年10月25日</p>
+  <p class="total-count">本日の品薄予測: 25件</p>
+
+  <h2>今買える×相場上昇の予兆 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">Mrs. GREEN APPLE ボンボンドロップシール（クーリア・シール／ローソン限定）</div>
+    <div class="card-detail"><span class="label">品薄度</span>発売初日から売り切れ店が続出。一部店舗には在庫が残り、店舗間の在庫差がある。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>ローソン定価は各<span class="card-amount">660円</span>。4種セットは3,180～3,999円前後で、定価2,640円比で約20～51%上乗せの出品がある。成約相場は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>近所のローソンでは買えた報告がある一方、売り切れ店舗も続出。フリマ出品が急増している。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>午前中に取扱店舗を2～3店だけ巡回し、定価在庫に限定して確保。4種セットを組み、10月中の放出を検討する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2113869656910107006">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Gillsee 偏光サングラス（Gillsee・釣り用サングラス）</div>
+    <div class="card-detail"><span class="label">品薄度</span>販売元が12回連続完売中と案内し、10月分の予約販売を開始。次回販売時期は未定。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>販売元自身の告知1件のみで、中古成約や第三者による需要報告は未確認。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>公式価格とメルカリ成約を確認し、手数料・送料控除後で20%以上残る色だけ予約。相場不明なら見送る。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2113812721657696731">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">LeafAudio Contact Microphone／Geophone（LeafAudio・録音機器）</div>
+    <div class="card-detail"><span class="label">品薄度</span>取扱店が売り切れ続出として次回入荷分の予約を開始。代替品が限られるニッチ機材。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>宮地楽器で次回入荷分の予約受付中。納期と予約上限は未公表。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>予約前に国内の売切店数、メルカリ、海外eBayの成約を確認し、明確な差額があるモデルだけ予約する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2113921291048878573">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Monster Energy Edition YZ125／YZ250F（ヤマハ・競技用オートバイ）</div>
+    <div class="card-detail"><span class="label">品薄度</span>生産終了済みで入手困難と案内され、販売店には即納可能な在庫がある。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>台数、価格、登録条件は未確認。高額かつ低回転で保管費・配送費も大きい。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>販売店へ車両価格・残数・諸費用を確認し、中古成約との差が十分ある場合のみ検討する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2113515292005675070">出典を確認する</a></div>
+  </div>
+
+  <h2>発売前×期待値高 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">POMYUU ディスプレイトートバッグ／3WAYぬいぐるみポーチ（POMYUU・推し活バッグ）</div>
+    <div class="card-detail"><span class="label">発売日</span>二次予約開始2026年10月26日21時。発送開始は2026年12月中旬予定。</div>
+    <div class="card-detail"><span class="label">品薄度</span>先行予約と通常販売がともに早期完売。二次予約も各色の上限到達時点で終了。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>公式価格は<span class="card-amount">12,980円</span>。信頼できる二次流通の成約価格は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>通常販売のごく少量販売から、期間限定の二次予約へ移行。12月または1月の通常販売予定もある。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>10月26日20時55分までにログインと決済準備を完了。人気色を少数予約し、受注終了後の相場を確認する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2113862940223029341">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">SNIDEL BEAUTY×Steiff 2026 Holiday Collection 1st（マッシュビューティーラボ・限定コスメ）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月30日。予約開始は2026年10月16日。</div>
+    <div class="card-detail"><span class="label">品薄度</span>公式オンライン予約分が完売。一部直営店でも予約受付を終了している。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>アイデザイナー6,600円、ブラッシュ3,520円、ブラシキット6,600円、キーリング6,050円。二次流通価格は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>次の明確な購入機会は10月30日の全国発売。キーリングへ人気が偏る可能性がある。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>直営店の予約状況を確認し、キーリングを優先。予約不可なら発売日の開店時に店頭分を狙う。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2113575628096291047">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">OM SYSTEM PEN（OMデジタルソリューションズ・ミラーレスカメラ）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年11月28日。予約開始日は未公表。</div>
+    <div class="card-detail"><span class="label">品薄度</span>予約が想定を大幅に上回り、供給確保のため発売延期となった可能性がある。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>価格未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>個人投稿1件のみで、発売日・延期理由はメーカー公式情報での確認が必要。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>公式発表と量販店の予約枠を確認。発売日受取が保証される定価予約だけを候補にする。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2113499452254339447">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ヴァイスシュヴァルツ BanG Dream!『夢限大みゅーたいぷ』ブースターパック（ブシロード・TCG）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年11月13日。二次予約開始は2026年10月24日。</div>
+    <div class="card-detail"><span class="label">品薄度</span>追加入荷分の二次予約を開始。数量限定で完売次第終了。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>定価4,400円に対し、予約価格は<span class="card-amount">3,900円</span>。発売前の二次流通価格は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>新規描き下ろし15点とメンバー5人の箔押しサインカードを収録。再入荷が続けばBOX価格は定価以下になり得る。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>定価以下の予約枠に限定し、発売前の予約完売状況を確認。発売後にBOX相場が定価超えの場合のみ未開封で放出する。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2113781606377029841">出典を確認する</a></div>
+  </div>
+
+  <h2>発売接近リマインド <span class="section-count">（7件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">コスメデコルテ アドベントカレンダー2026（コーセー・限定コスメセット）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月28日、あと3日。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>予約残数と発売日店頭分を確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">DAVID『Made in Gothic (2nd Press)』（Resonance・音楽CD）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月28日、あと3日。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>初回完売実績を踏まえ、特典別の残数を確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Nintendo Switch 2 ゼルダの伝説40周年アニバーサリーエディション本体／周辺機器</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月29日、あと4日。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>本体定価は<span class="card-amount">62,980円</span>。83,499円の予約出品があるが、成約価格ではない。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>本体予約復活と店頭配分を監視する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">GIANNAPLUS 12 藤本洸大・簡秀吉特集版（ナンバーセブン・俳優雑誌）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月30日、あと5日。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>店舗別特典と発売日在庫を照合する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">『劇場版 魔法少女まどか☆マギカ』スマートウォッチ／リングウォッチ（GARRACK・コラボ時計）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月30日、あと5日。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>ほむらモデルを中心に定価在庫を確認する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">SNIDEL BEAUTY×Steiff 2026 Holiday Collection 1st（マッシュビューティーラボ・限定コスメ）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月30日、あと5日。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>キーリング優先で店舗予約または発売日店頭分を確保する。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ミスタードーナツ×ポケモン コラボグッズセット（ダスキン／ポケモン・食品／限定グッズ）</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年11月4日、あと10日。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>地域別ネット予約開始日と購入上限を確認する。</div>
+  </div>
+
+  <h2>対象外（既に入手困難・参考のみ） <span class="section-count">（10件）</span></h2>
+
+  <div class="card"><div class="card-title">iPhone Duo（Apple・折りたたみスマートフォン）</div><div class="card-detail"><span class="label">品薄度</span>発売直後から世界的な品薄と高額転売化が進行。</div><div class="card-detail"><span class="label">推奨アクション</span>増産報道もあるため高値追いは禁止。</div></div>
+  <div class="card"><div class="card-title">東京ディズニーリゾート デニム風カチューシャ</div><div class="card-detail"><span class="label">品薄度</span>全店舗品切れ、再販未定。</div></div>
+  <div class="card"><div class="card-title">「ディズニー・ハロウィーン」対象グッズ</div><div class="card-detail"><span class="label">品薄度</span>全店舗品切れ、再販未定。</div></div>
+  <div class="card"><div class="card-title">GiGOコラボカフェ『QuizKnock10周年』オリジナルコースター第3弾</div><div class="card-detail"><span class="label">品薄度</span>再販分も配布終了、再入荷未定。</div></div>
+  <div class="card"><div class="card-title">ちいかわ×ANA マスコット3体セット</div><div class="card-detail"><span class="label">品薄度</span>プリオーダー開始10分で完売。</div></div>
+  <div class="card"><div class="card-title">Re:ゼロから始める異世界生活×大黒湯 特大アクリルスタンド／ラム</div><div class="card-detail"><span class="label">品薄度</span>完売、再入荷未定。</div></div>
+  <div class="card"><div class="card-title">一番くじ カグラバチ</div><div class="card-detail"><span class="label">品薄度</span>開店前から列ができ、午前中に売り切れ続出。</div></div>
+  <div class="card"><div class="card-title">一番くじ 進撃の巨人</div><div class="card-detail"><span class="label">品薄度</span>発売初日からまとめ買いにより売り切れ続出。</div></div>
+  <div class="card"><div class="card-title">手のひらPCパーツ（ターリン・カプセルトイ）</div><div class="card-detail"><span class="label">品薄度</span>各地で売り切れ続出。定価入手可能な具体的店舗なし。</div></div>
+  <div class="card"><div class="card-title">ドーマウスちゃん（個人作家・ハンドメイドドール）</div><div class="card-detail"><span class="label">品薄度</span>完売、再販未定。</div></div>
+
+  <h2>総括 <span class="section-count">（0件）</span></h2>
+  <p>最優先は、ローソン在庫が残るMrs. GREEN APPLE ボンボンドロップシールの定価確保。次点は、10月26日21時開始で過去2回早期完売したPOMYUUディスプレイトートバッグ。中期では、SNIDEL BEAUTY×Steiffの10月30日店頭分と、供給延期情報があるOM SYSTEM PENを監視する。</p>
+
+  <p class="note">※予測は収集時点の情報に基づくものです。</p>
+</body>
+</html>

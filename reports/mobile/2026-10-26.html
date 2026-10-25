@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のモバイル情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のモバイル情報</h1>
+  <p class="report-date">2026年10月26日</p>
+  <p class="total-count">本日のモバイル案件: 10件</p>
+
+  <h2>ソフトバンク <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">おうちスマホ割</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">月額2,860円割引</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ソフトバンク</div>
+    <div class="card-detail"><span class="label">条件</span>SoftBank 光・光＋・Airへ新規加入し、テイガク無制限またはペイトク2などの条件を満たすこと。テイガク無制限は各種割引適用で月額3,498円、PayPay特典充当後の実質負担額は月額3,298円。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/21 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.softbank.jp/mobile/campaigns/list/ouchi-sumaho-wari/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">SUPER ARIGATO YEAR</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">総額2億円相当のPayPayポイント</span>を抽選で344万名に進呈。1等は10万円相当。対象金曜日にはモスチキン1個の引換券を月1回配布。</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ソフトバンク</div>
+    <div class="card-detail"><span class="label">条件</span>周年お祝い SUPER抽選会は誰でも応募可能。SUPER FRIDAY 20thはソフトバンクユーザーが対象。</div>
+    <div class="card-detail"><span class="label">期間</span>抽選会 2026/10/20 ～ 2027/02/28、SUPER FRIDAY 2026/11/06 ～ 2026/11/27の対象金曜日のみ</div>
+    <div class="card-source"><a href="https://www.softbank.jp/mobile/special/super-arigato-year/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">SoftBank 光 Netflixパック SUPER ARIGATOキャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">月額890円割引</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ソフトバンク</div>
+    <div class="card-detail"><span class="label">条件</span>対象パックへ新たに加入すること。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/21 ～ 2027/03/31</div>
+    <div class="card-source"><a href="https://www.softbank.jp/internet/campaigns/list/sbhikari-netflixpack-arigato/">出典を確認する</a></div>
+  </div>
+
+  <h2>LINEMO <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">LINEMO5周年大週穫祭10月第4弾</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大20,000円相当のPayPayポイント</span>。LINEMOベストプランは最大14,000円相当。契約事務手数料3,850円も全額割引。</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>LINEMO</div>
+    <div class="card-detail"><span class="label">条件</span>LINEMOベストプランVまたはLINEMOベストプランをMNP・新規契約すること。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/24 ～ 2026/11/03</div>
+    <div class="card-source"><a href="https://www.linemo.jp/info/press/2026/26102401.html">出典を確認する</a></div>
+  </div>
+
+  <h2>IIJmio <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">スマホ大特価セール</div>
+    <div class="card-detail"><span class="label">還元</span>motorola edge 70 fusionは<span class="card-amount">69,800円</span>、Nothing Phone（4b）は<span class="card-amount">49,800円</span>で購入可能。</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>ギガプランの音声SIM・音声eSIMと同時にMNP契約すること。1契約者につき対象端末1台まで。</div>
+    <div class="card-detail"><span class="label">期間</span>motorola edge 70 fusion 2026/10/23 ～ 2026/11/04 21:59、Nothing Phone（4b）2026/10/27 10:00 ～ 2026/11/04 21:59</div>
+    <div class="card-source"><a href="https://www.iijmio.jp/info/iij/1780297417.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ハッピースマイルキャンペーン＋</div>
+    <div class="card-detail"><span class="label">還元</span>5GBプランは<span class="card-amount">月額400円割引</span>、25GBプランは<span class="card-amount">月額1,100円割引</span>。通話定額オプションも最大3カ月割引。</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>IIJmio</div>
+    <div class="card-detail"><span class="label">条件</span>新規契約・MNPなどで対象プランを契約すること。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/06/09 ～ 2026/11/04 23:59</div>
+    <div class="card-source"><a href="https://www.iijmio.jp/info/iij/1780388508.html">出典を確認する</a></div>
+  </div>
+
+  <h2>LIBMO <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">超なっとくプラン</div>
+    <div class="card-detail"><span class="label">還元</span>光・CATVセット割で<span class="card-amount">月額220～660円割引</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>LIBMO</div>
+    <div class="card-detail"><span class="label">条件</span>音声通話SIMは5GB月額990円、10GB月額1,540円、20GB月額1,980円、40GB月額2,970円、60GB月額3,960円。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/20 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.libmo.jp/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">WEB得キャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span>最大6カ月間、5GB・10GBは<span class="card-amount">月額550円</span>、20GB・40GB・60GBは<span class="card-amount">月額1,540円</span>。光セット割適用時は10GB月額220円、60GB月額880円など。</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>LIBMO Web申込</div>
+    <div class="card-detail"><span class="label">条件</span>超なっとくプランの音声通話SIMを新規契約すること。最大2.3万円相当還元キャンペーンとは併用不可。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/20 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.libmo.jp/campaign/webtoku/">出典を確認する</a></div>
+  </div>
+
+  <h2>イオンモバイル <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">みんなでシェアキャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span>契約事務手数料は1回線目<span class="card-amount">1,650円</span>、シェアプランの2回線目以降は<span class="card-amount">1円</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>イオンモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>MNPで音声プランまたはシェアプランを契約すること。</div>
+    <div class="card-detail"><span class="label">期間</span>店舗 2026/10/20 ～ 2026/10/31、Web 2026/10/20 09:00 ～ 2026/11/01 08:59</div>
+    <div class="card-source"><a href="https://campaign.aeonmobile.jp/campaign/10th_september/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">イオン株主限定キャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">1,000 WAON POINT</span>を進呈。MNPかつイオンカード払いでは通常カード1,000ポイント、ゴールドカード2,000ポイントの既存特典も対象。</div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>イオンモバイル</div>
+    <div class="card-detail"><span class="label">条件</span>期間中に音声通話SIMを新規契約し、契約情報へオーナーズカードを登録すること。</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/21 ～ 2026/11/10</div>
+    <div class="card-source"><a href="https://aeonmobile.jp/owners/">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※還元・条件は確認時点のものです。</p>
+</body>
+</html>

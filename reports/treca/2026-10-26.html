@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレカ情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレカ情報</h1>
+  <p class="report-date">2026年10月26日</p>
+  <p class="total-count">本日のトレカ情報: 28件</p>
+
+  <h2>ポケモンカードゲーム <span class="section-count">（8件）</span></h2>
+  <div class="card"><div class="card-title">[新弾] 拡張パック「ハドウシーカー」</div><div class="card-detail"><span class="label">発売日</span>2026/11/27</div><div class="card-detail"><span class="label">入手先</span>メガルカリオZexをはじめ、「Z」と名のつくメガシンカポケモン</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね6,591件</span> / 表示681,684回</div><div class="card-source"><a href="https://x.com/i/status/2113503274418557190">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[抽選] ポケモンセンターオンライン — 拡張パック「ハドウシーカー」</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/23開始</div><div class="card-detail"><span class="label">入手先</span>ポケモンセンターオンラインから応募</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね3,014件</span> / 表示504,497回</div><div class="card-source"><a href="https://x.com/i/status/2113525834677928112">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[抽選] PDG町田駅前店 — 「ホワイトフレア デラックス」未開封BOX</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/31 23:59終了</div><div class="card-detail"><span class="label">入手先</span>指定アカウントをフォローし、投稿をリポスト。当選1名、DMで連絡</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね818件</span> / 表示32,033回</div><div class="card-source"><a href="https://x.com/i/status/2113811910844186866">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[抽選] ポケタウン秋葉原 — 「30th CELEBRATION」BOX</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/25開始、2026/11/01終了</div><div class="card-detail"><span class="label">入手先</span>指定アカウントをフォローし、投稿をリポスト。リプライで当選率アップ</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね719件</span> / 表示24,580回</div><div class="card-source"><a href="https://x.com/i/status/2114295916446601311">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[抽選] トレカ城 — 「インフェルノX」</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/26 23:59終了</div><div class="card-detail"><span class="label">入手先</span>アカウントをフォローし、投稿にいいね・リポスト。当選1名</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね643件</span> / 表示11,420回</div><div class="card-source"><a href="https://x.com/i/status/2113916363425407365">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[抽選] DOPA!オリパ — 画像掲載のポケカBOX</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/27 23:59終了</div><div class="card-detail"><span class="label">入手先</span>指定アカウントをフォロー、リポストし、希望パック名をリプライ</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね617件</span> / 表示56,116回</div><div class="card-source"><a href="https://x.com/i/status/2113910869646065711">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[高騰] ポケカ未開封BOX3商品</div><div class="card-detail"><span class="label">価格・相場</span>30th CELEBRATION <span class="card-amount">25,300円から27,000円</span>、インフェルノX 18,199円から19,800円、ストームエメラルダ 9,750円から10,500円。販売手数料を考慮すると店舗買取が上回るとの試算</div><div class="card-detail"><span class="label">入手先</span>個人アカウントによる比較。送料や査定減額を含まない未確認情報</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね221件</span> / 表示116,272回</div><div class="card-source"><a href="https://x.com/i/status/2113762001977835813">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[話題] 「ポケモンカードゲーム 30th CELEBRATION EVENT」</div><div class="card-detail"><span class="label">発売日・期間</span>2026/10/25開催済み</div><div class="card-detail"><span class="label">入手先</span>幕張メッセ。公式がライブステージや配信を紹介</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね344件</span> / 表示40,456回</div><div class="card-source"><a href="https://x.com/i/status/2114262224772689962">出典を確認する</a></div></div>
+
+  <h2>ワンピースカードゲーム <span class="section-count">（10件）</span></h2>
+  <div class="card"><div class="card-title">[新弾] 「ONE PIECE Heroines Edition vol.2【EB-05】」</div><div class="card-detail"><span class="label">発売日</span>2026/10/31</div><div class="card-detail"><span class="label">入手先</span>SPカード6種を収録</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね647件、605件</span> / 表示88,950回、79,588回</div><div class="card-source"><a href="https://x.com/i/status/2113797630559920291">出典を確認する</a>　<a href="https://x.com/i/status/2114160011949854940">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[抽選] ONE PIECEカードゲーム公式 — 「ONE PIECE Heroines Edition vol.2【EB-05】」1BOX</div><div class="card-detail"><span class="label">入手先</span>公式Xをフォローし対象投稿をリポスト。国内在住で郵便物等を受け取れること。発送は11月下旬以降予定</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね7,798件</span> / 表示491,143回</div><div class="card-source"><a href="https://x.com/i/status/2113828782557868362">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[抽選] 駿河屋千葉中央店 — 「ONE PIECE Heroines Edition vol.2」</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/24開始、2026/10/28終了。当選発表は10/29</div><div class="card-detail"><span class="label">入手先</span>指定アカウントをフォローし、投稿をリポスト</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,000件</span> / 表示38,213回</div><div class="card-source"><a href="https://x.com/i/status/2113889668848910510">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[抽選] ブックオフイオン本牧店 — 「Heroines Edition Vol.2」</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/25開始、2026/10/29終了</div><div class="card-detail"><span class="label">入手先</span>詳細は投稿画像を確認。当日の一般販売なし</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね284件</span> / 表示18,620回</div><div class="card-source"><a href="https://x.com/i/status/2114273669266784378">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[抽選] 駿河屋秋葉原店 — 「ONE PIECE Heroines Edition vol.2【EB-05】」</div><div class="card-detail"><span class="label">入手先</span>指定アカウントをフォローし、投稿をリポスト。本人が店舗へ来店できること</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,859件</span> / 表示79,976回</div><div class="card-source"><a href="https://x.com/i/status/2113487186138222688">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[抽選] ブックオフLaLa店 — 「ONE PIECE Heroines Edition vol.2」</div><div class="card-detail"><span class="label">発売日</span>2026/10/31</div><div class="card-detail"><span class="label">入手先</span>店舗アカウントをフォローし、投稿をリポスト</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね1,175件</span> / 表示47,296回</div><div class="card-source"><a href="https://x.com/i/status/2113564838337409215">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[抽選] ミント名古屋店 — 「Heroines Edition vol.2」</div><div class="card-detail"><span class="label">入手先</span>投稿記載の予約抽選フォームで各質問に回答</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね293件</span> / 表示26,172回</div><div class="card-source"><a href="https://x.com/i/status/2113483508211761213">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[抽選] カードボックス日本橋店 — 「神の支配」1BOX予約権利</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/24開始、2026/11/02 23:59:59終了</div><div class="card-detail"><span class="label">入手先</span>ワンピースカードゲーム エクストラブースター「神の支配」1BOX</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね422件</span> / 表示37,171回</div><div class="card-source"><a href="https://x.com/i/status/2113909945817256441">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[新弾] ブースターパック「神の支配【OP-18】」</div><div class="card-detail"><span class="label">発売日</span>2026/11/21</div><div class="card-detail"><span class="label">入手先</span>チョッパー、Mr.4&amp;ミス・メリークリスマス、キリンガム聖などを紹介</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね482件、472件、710件</span> / 表示217,164回、228,838回、262,777回</div><div class="card-source"><a href="https://x.com/i/status/2113450334353825980">出典を確認する</a>　<a href="https://x.com/i/status/2113812721779265712">出典を確認する</a>　<a href="https://x.com/i/status/2114175111708246037">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[新弾] 「Super Premium Collection vol.1」</div><div class="card-detail"><span class="label">発売日</span>2026/11/13</div><div class="card-detail"><span class="label">入手先</span>日本を除くアジア地域向け。公式発表の裏取りがない未確認情報</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね528件</span> / 表示111,114回</div><div class="card-source"><a href="https://x.com/i/status/2113586396153917885">出典を確認する</a></div></div>
+
+  <h2>遊戯王オフィシャルカードゲーム <span class="section-count">（4件）</span></h2>
+  <div class="card"><div class="card-title">[新弾] 「IMMORTAL PHOENIX」</div><div class="card-detail"><span class="label">入手先</span>「太陽神」テーマの使い方を公式動画で紹介</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね292件</span> / 表示46,765回</div><div class="card-source"><a href="https://x.com/i/status/2114326120698982482">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[抽選] 遊戯王OCG公式 — カードプロテクター THE CHRONICLES</div><div class="card-detail"><span class="label">抽選期間</span>2026/10/27 23:59終了</div><div class="card-detail"><span class="label">入手先</span>公式をフォローし、指定ハッシュタグ付きでアニメの感想を引用投稿。当選5名</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね179件</span> / 表示112,855回</div><div class="card-source"><a href="https://x.com/i/status/2113574904863903920">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[話題] 「遊☆戯☆王 ORIGINAL ARTWORK DUEL SET」発売記念イベント</div><div class="card-detail"><span class="label">発売日・期間</span>2026/11/03</div><div class="card-detail"><span class="label">入手先</span>対象商品を使った40枚以上のメインデッキで参加。公式案内から予約</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね52件</span> / 表示42,930回</div><div class="card-source"><a href="https://x.com/i/status/2113956166929678540">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[転売] カーナベル — 遊戯王の販売・買取再開</div><div class="card-detail"><span class="label">発売日・期間</span>2026/10/25 12:00再開</div><div class="card-detail"><span class="label">入手先</span>新サイトで販売・買取を再開。一部サービスは10月末頃から順次再開予定</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね200件</span> / 表示37,482回</div><div class="card-source"><a href="https://x.com/i/status/2114200849144770913">出典を確認する</a></div></div>
+
+  <h2>ドラゴンボールスーパーカードゲーム フュージョンワールド <span class="section-count">（0件）</span></h2>
+  <p>本日該当情報なし</p>
+
+  <h2>デュエル・マスターズ <span class="section-count">（2件）</span></h2>
+  <div class="card"><div class="card-title">[抽選] 「デュエル・マスターズ」25周年ツアー in 福岡</div><div class="card-detail"><span class="label">抽選期間</span>第2次抽選は2026/10/25 23:59で受付終了</div><div class="card-detail"><span class="label">入手先</span>2026/12/06開催。特設サイトから申し込み</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね109件</span> / 表示8,587回</div><div class="card-source"><a href="https://x.com/i/status/2113827837039816837">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[転売] カーナベル — デュエル・マスターズ販売再開予告</div><div class="card-detail"><span class="label">入手先</span>2026/10/25時点では準備中。準備が整い次第、販売を再開予定</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね200件</span> / 表示37,482回</div><div class="card-source"><a href="https://x.com/i/status/2114200849144770913">出典を確認する</a></div></div>
+
+  <h2>トレカ全般 <span class="section-count">（4件）</span></h2>
+  <div class="card"><div class="card-title">[付録] 付録・プロモ付き雑誌の発売予定</div><div class="card-detail"><span class="label">発売日</span>最強ジャンプ12月号 11/04、コロコロコミック12月号・遊☆戯☆王ジャンプ 11/13、SUPER GUIDE 11/19、Vジャンプ2027年1月号 11/20</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね46件</span> / 表示30,589回</div><div class="card-source"><a href="https://x.com/i/status/2113616429094453253">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[付録] コロコロコミック11月号 — ホロビート50枚デッキ</div><div class="card-detail"><span class="label">発売日</span>2026/10/15</div><div class="card-detail"><span class="label">入手先</span>コロコロコミック11月号の付録</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね46件</span> / 表示30,589回</div><div class="card-source"><a href="https://x.com/i/status/2113616429094453253">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[話題] オンラインオリパの透明性を巡る議論</div><div class="card-detail"><span class="label">入手先</span>在庫や抽選処理の見えにくさ、射幸性、業界イメージへの懸念を扱う個人の見解。通常の仕入れ先としての利用に注意を促す内容</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね224件</span> / 表示125,496回</div><div class="card-source"><a href="https://x.com/i/status/2113549276722667823">出典を確認する</a></div></div>
+  <div class="card"><div class="card-title">[話題] CARD SHOP E-time閉店</div><div class="card-detail"><span class="label">発売日・期間</span>2026/10/25閉店</div><div class="card-detail"><span class="label">入手先</span>閉店理由は公表されていない。店舗側は弁護士と事実関係を確認中と説明</div><div class="card-detail"><span class="label">反響</span><span class="card-amount">いいね123件</span> / 表示58,540回</div><div class="card-source"><a href="https://x.com/i/status/2114155061517730294">出典を確認する</a></div></div>
+
+  <p class="note">※価格・相場は確認時点のものです。</p>
+</body>
+</html>

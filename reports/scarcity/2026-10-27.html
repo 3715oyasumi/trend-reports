@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>品薄予測レポート 2026-10-27</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>品薄予測レポート 2026-10-27</h1>
+  <p class="report-date">2026年10月27日</p>
+  <p class="total-count">本日の品薄予測: 31件</p>
+
+  <h2>今買える 相場上昇の予兆 <span class="section-count">（9件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">博ったらし（九十九島グループ・福岡土産菓子）</div>
+    <div class="card-detail"><span class="label">品薄度</span>現地ファンの行列・品薄・完売報告が拡大し、ニュース化で一般層へ波及。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>みたらし饅頭5個<span class="card-amount">1,188円</span>、大福6個<span class="card-amount">1,296円</span>。二次流通相場は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>Stray Kidsのヒョンジン購入を契機に話題化。食品のため賞味期限と持ち帰りコストに注意。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>10月27日から29日の開店直後に博多駅マイング店を確認し、日持ちする品を少量確保。</div>
+    <div class="card-source"><a href="https://www.fuku-miyage.online/hakattarashi/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ベターミーアイパレット 15 ストロベリーモチ（2aN×グッドラックトロール・コスメ）</div>
+    <div class="card-detail"><span class="label">品薄度</span>過去の日本限定版は売り切れ続出。コラボ包装で日本再登場し、現時点では定価購入窓が残る。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>旧版の新品出品は<span class="card-amount">1,888円から2,100円程度</span>。今回のコラボ版の相場は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>公式投稿は1,500いいね超。Qoo10の割引で供給が増える可能性がある。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>公式Qoo10・楽天の価格を比較し、購入は2から3個までに限定。</div>
+    <div class="card-source"><a href="https://jp.mercari.com/search?keyword=2an+%E3%83%99%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%BC%E3%82%A2%E3%82%A4%E3%83%91%E3%83%AC%E3%83%83%E3%83%88+15">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ガスト×Mrs. GREEN APPLE オリジナルグッズ第1弾</div>
+    <div class="card-detail"><span class="label">品薄度</span>開催4日目で売り切れ店舗が続出し、ファン需要による提供遅延も報告。</div>
+    <div class="card-detail"><span class="label">根拠</span>都市部・商業施設店より、郊外店に定価入手の余地が残る。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>開店直後に郊外店へ在庫確認し、人気絵柄だけを確保。再入荷告知前の放出を検討。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2114725690037895227">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">恋と深空 中国公式グッズ在庫販売（神里屋・キャラクターグッズ）</div>
+    <div class="card-detail"><span class="label">品薄度</span>過去の誕生日グッズなどを数量限定の在庫品として追加販売。再入荷は確約されていない。</div>
+    <div class="card-detail"><span class="label">根拠</span>10月26日12時から販売中で、商品別に残数差がある。予約限定特典は付属しない。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>本日中に在庫を確認し、ぬいぐるみや誕生日絵柄の主要キャラクターを優先。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2114502001921044865">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">シュッケニ（Keniamarilia・数量限定雑貨）</div>
+    <div class="card-detail"><span class="label">品薄度</span>追加生産なしの手元在庫のみを再販売。なくなり次第終了。</div>
+    <div class="card-detail"><span class="label">根拠</span>前回販売後に再販希望が多数。小規模作家商品のため人気柄の見極めが必要。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>19時55分までに販売ページと決済を準備し、過去完売に近い柄のみ確保。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2114661876969644117">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">YubiKey 5C NFC（Yubico・物理セキュリティキー）</div>
+    <div class="card-detail"><span class="label">品薄度</span>公式在庫は欠品。売り切れ報告が増加し、正規流通在庫は限られる。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>公式系定価<span class="card-amount">11,700円</span>に対し、Amazon表示は<span class="card-amount">14,067円前後</span>。</div>
+    <div class="card-detail"><span class="label">根拠</span>ビックカメラに11,150円の在庫表示が残る。旧版・非正規品は避ける。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>正規流通の定価在庫だけを確認し、1から2個に絞る。</div>
+    <div class="card-source"><a href="https://search.kakaku.com/Yubico%20YubiKey%205C%20NFC/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">名探偵プリキュア！ふわふわおでかけますこっと</div>
+    <div class="card-detail"><span class="label">品薄度</span>各所で売り切れが続く一方、入荷が遅いスーパーに在庫が残る。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>定価<span class="card-amount">539円</span>。キュアアンサー単品は<span class="card-amount">748円</span>表示で完売、成約相場は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>都市部と遅配店舗で在庫差がある。BOXは全7種がそろう保証がない。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>10月27日から28日に郊外スーパーの入荷日を確認し、主要キャラクターを単品確保。</div>
+    <div class="card-source"><a href="https://shop.toysanta.jp/?pid=194012790">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ラブライブ！スーパースター!! 5th Anniversary プレミアムドリズラージャケット</div>
+    <div class="card-detail"><span class="label">品薄度</span>10月27日から原宿ゲーマーズで販売。店頭一般分は僅少。</div>
+    <div class="card-detail"><span class="label">根拠</span>予約引取分とは別の一般販売数は不明。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>開店前に購入制限と一般在庫を確認し、店頭完売確認後の短期放出を検討。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2114662431909896662">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ドラゴンボール 超戦士シールウエハース超17弾 クライマックスアニバーサリー</div>
+    <div class="card-detail"><span class="label">品薄度</span>売り切れ続出後に専門店が再入荷を告知。再入荷直後の購入窓。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>1袋<span class="card-amount">154円</span>、20袋BOX<span class="card-amount">3,080円</span>。シール別成約相場は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>再入荷で供給が増えており、ノーマル単品は送料負けしやすい。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>高レアまたは全種セットだけを選別し、再完売後にセット販売を検討。</div>
+    <div class="card-source"><a href="https://dbfw-days.com/db17last10-seal-list/">出典を確認する</a></div>
+  </div>
+
+  <h2>発売前 期待値高 <span class="section-count">（6件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">マジック：ザ・ギャザリング「リアリティ・フラクチャー」Secret Lair 2種</div>
+    <div class="card-detail"><span class="label">発売日</span>予約開始 2026年10月27日12時30分</div>
+    <div class="card-detail"><span class="label">品薄度</span>本国では両商品とも短時間で完売。楽天ブックスの国内予約枠が開始。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>海外公式価格はNon-Foil 29.99米ドル、Foil 39.99米ドル。国内価格は未確認。</div>
+    <div class="card-detail"><span class="label">根拠</span>国内供給数と再販可能性は未確認。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>12時25分までに楽天へログインし、国内価格を確認してから予約。</div>
+    <div class="card-source"><a href="https://www.magic.wizards.com/en/news/announcements/bring-two-new-secret-lair-drops-to-your-multiverse-with-reality-fracture">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">P5X 1周年記念描き下ろし缶バッジ</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月30日</div>
+    <div class="card-detail"><span class="label">品薄度</span>公式通販分は数カ月前に完売。セガストア店頭販売が新たな定価入手窓。</div>
+    <div class="card-detail"><span class="label">根拠</span>公式通販の補充は未定。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>10月29日までに取扱店舗と購入上限を確認し、開店直後に主要キャラクターを優先。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2114557481011868157">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">fwee クッションガラスナチュラル 新色03 エアリーレモン</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年11月1日</div>
+    <div class="card-detail"><span class="label">品薄度</span>既存色が売り切れ続出したシリーズの新色。Qoo10で発売予定。</div>
+    <div class="card-detail"><span class="label">根拠</span>公式投稿の閲覧は2万件超。追加供給の可能性がある。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>開始時刻と価格を確認し、初回上限内で少量確保。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2114643198031155381">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ONE PIECE Heroines Edition vol.2／HEROINES PRECIOUS BOX</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月31日予定</div>
+    <div class="card-detail"><span class="label">品薄度</span>複数店舗で抽選販売。ふるいちは販売延期となり、店舗間の供給差が発生。</div>
+    <div class="card-detail"><span class="label">根拠</span>延期理由が増産の場合は発売後の供給増加に注意。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>当落を確認し、定価当選分のみ確保。初動価格を見て早期放出を判断。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2114534988620398825">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">きのこの山ワイヤレスイヤホンPro</div>
+    <div class="card-detail"><span class="label">発売日</span>予約開始 2026年11月1日12時</div>
+    <div class="card-detail"><span class="label">品薄度</span>前モデル3,500台が10分で完売。先着1,000台の割引枠あり。</div>
+    <div class="card-detail"><span class="label">相場・価格</span>先着1,000台<span class="card-amount">29,800円</span>。</div>
+    <div class="card-detail"><span class="label">根拠</span>クラウドファンディング型のため、納期遅延・仕様変更・資金拘束のリスクあり。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>11時55分に待機し、納期とキャンセル条件を確認できた場合のみ1台予約。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2114689344489623872">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">GOGEキャップ</div>
+    <div class="card-detail"><span class="label">品薄度</span>黒・ベージュに新色ピンクを加え、通販再販予定。</div>
+    <div class="card-detail"><span class="label">根拠</span>再販数量、過去の完売速度、二次相場はいずれも未確認。</div>
+    <div class="card-detail"><span class="label">推奨アクション</span>公式通知を有効化し、開始日時と購入上限の告知を待つ。</div>
+    <div class="card-source"><a href="https://x.com/i/status/2114347797172666638">出典を確認する</a></div>
+  </div>
+
+  <h2>発売接近リマインド <span class="section-count">（7件）</span></h2>
+
+  <div class="card"><div class="card-title">コスメデコルテ アドベントカレンダー2026</div><div class="card-detail"><span class="label">発売日</span>2026年10月28日（あと1日）</div><div class="card-detail"><span class="label">推奨アクション</span>本日中に店頭配分・予約キャンセル分を確認。</div></div>
+  <div class="card"><div class="card-title">DAVID『Made in Gothic (2nd Press)』</div><div class="card-detail"><span class="label">発売日</span>2026年10月28日（あと1日）</div><div class="card-detail"><span class="label">推奨アクション</span>店舗別特典と残数を照合。</div></div>
+  <div class="card"><div class="card-title">Nintendo Switch 2 ゼルダの伝説40周年アニバーサリーエディション関連商品</div><div class="card-detail"><span class="label">発売日</span>2026年10月29日（あと2日）</div><div class="card-detail"><span class="label">推奨アクション</span>当日販売店と購入条件を確認。</div></div>
+  <div class="card"><div class="card-title">GIANNAPLUS 12 藤本洸大・簡秀吉特集版</div><div class="card-detail"><span class="label">発売日</span>2026年10月30日（あと3日）</div><div class="card-detail"><span class="label">推奨アクション</span>店舗別ポストカードの残数を確認。</div></div>
+  <div class="card"><div class="card-title">『劇場版 魔法少女まどか☆マギカ』スマートウォッチ／リングウォッチ</div><div class="card-detail"><span class="label">発売日</span>2026年10月30日（あと3日）</div><div class="card-detail"><span class="label">推奨アクション</span>ほむらモデルの店頭一般分を確認。</div></div>
+  <div class="card"><div class="card-title">SNIDEL BEAUTY×Steiff 2026 Holiday Collection 1st</div><div class="card-detail"><span class="label">発売日</span>2026年10月30日（あと3日）</div><div class="card-detail"><span class="label">推奨アクション</span>キーリング付き店頭配分と購入上限を確認。</div></div>
+  <div class="card"><div class="card-title">ミスタードーナツ×ポケモン コラボグッズセット</div><div class="card-detail"><span class="label">発売日</span>2026年11月4日（あと8日）</div><div class="card-detail"><span class="label">推奨アクション</span>地域別予約開始日とセット内容を確認。</div></div>
+
+  <h2>対象外（既に入手困難・参考のみ） <span class="section-count">（9件）</span></h2>
+
+  <div class="card"><div class="card-title">iPhone Duo</div><div class="card-detail"><span class="label">根拠</span>初回全モデル完売。第2弾は2027年1月予定で定価入手窓が閉鎖。</div></div>
+  <div class="card"><div class="card-title">進撃の巨人 一番くじ</div><div class="card-detail"><span class="label">根拠</span>9店舗目でようやく発見との報告があり、店頭探索効率が低い。</div></div>
+  <div class="card"><div class="card-title">サンリオキャラクター大賞くじ</div><div class="card-detail"><span class="label">根拠</span>発売後すでに売り切れ続出。</div></div>
+  <div class="card"><div class="card-title">遊戯王 青眼の白龍シークレット</div><div class="card-detail"><span class="label">相場・価格</span>すでに<span class="card-amount">3万円台</span>へ上昇。</div><div class="card-detail"><span class="label">根拠</span>先回り案件ではない。</div></div>
+  <div class="card"><div class="card-title">DUNU DaVinci 初代</div><div class="card-detail"><span class="label">根拠</span>生産終了が未確認のPR投稿のみで根拠不足。</div></div>
+  <div class="card"><div class="card-title">NARUTO関連オンラインくじ</div><div class="card-detail"><span class="label">根拠</span>商品特定不能かつ売り切れ続出後。</div></div>
+  <div class="card"><div class="card-title">ホロライブ東京駅ショップ商品</div><div class="card-detail"><span class="label">根拠</span>売り切れ続出で商品別在庫が不明。</div></div>
+  <div class="card"><div class="card-title">Re:ゼロ×大黒湯 A3マットポスター／ラム</div><div class="card-detail"><span class="label">根拠</span>完売済み、再入荷未定。</div></div>
+  <div class="card"><div class="card-title">サンリオ大賞くじ</div><div class="card-detail"><span class="label">根拠</span>欲しい賞品を含め入手断念報告あり。</div></div>
+
+  <h2>総括 <span class="section-count">（0件）</span></h2>
+  <p>最優先は、本日12時30分開始で海外完売実績のある「リアリティ・フラクチャー」Secret Lair。次点は、定価在庫と約20%高い流通価格が併存するYubiKey 5C NFC。中期では、前モデルが10分完売した「きのこの山ワイヤレスイヤホンPro」を11月1日の先着価格で監視する。</p>
+
+  <p class="note">※予測は収集時点の情報に基づくものです。</p>
+</body>
+</html>

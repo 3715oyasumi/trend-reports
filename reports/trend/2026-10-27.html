@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年10月27日（火曜日）版</p>
+  <p class="total-count">本日のトレンド: 10件</p>
+
+  <h2>新商品情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ローソン「得パン」4品</div>
+    <div class="card-detail"><span class="label">特徴</span>長さ約21cmの「驚きのフレンチトースト」など、食べ応えと手頃な価格を重視したパン4品</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月27日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">119円～192円</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2151230.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">築地銀だこ「一度は食べたい!!謎肉たこ焼」</div>
+    <div class="card-detail"><span class="label">特徴</span>「カップヌードル」の謎肉とたまごを銀だこのたこ焼に載せ、てりやきソースとマヨネーズで仕上げた期間・数量限定商品</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年11月9日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">8個入り、テイクアウト842円・店内飲食858円</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2151241.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">サントリー「ゴディバ監修 チョコレートドリンク（ホット専用）」</div>
+    <div class="card-detail"><span class="label">特徴</span>ミルクチョコレートとビターチョコレートの風味でゴディバチョコレートの複雑な味わいを表現した、自動販売機限定の260gボトル缶</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月20日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">230円前後（税別）</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2150002.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">麒麟特製 ゆずジンジャーサワー</div>
+    <div class="card-detail"><span class="label">特徴</span>ゆずの香りと酸味にジンジャーの辛みと甘みを組み合わせた、アルコール分6％の期間限定サワー</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年11月24日</div>
+    <div class="card-detail"><span class="label">価格</span>不明</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2150105.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">セブン‐イレブン「中華まん全品20円引きセール」</div>
+    <div class="card-detail"><span class="label">特典内容</span>中華まん全品を通常価格から20円引き。「ほかほかごろっと肉まん」はセール価格136円（税別）</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月27日～10月31日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2151038.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブン‐イレブン「ポッキー＆プリッツの日」キャンペーン</div>
+    <div class="card-detail"><span class="label">特典内容</span>対象のポッキーまたはプリッツを一度に2個購入すると、リング付きクリアチャーム全4種から1個を進呈。各店先着16個</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月29日10時～11月11日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2151145.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">スターバックス「Merry ＆ Meet Holiday Bingo Party」</div>
+    <div class="card-detail"><span class="label">特典内容</span>初回は購入なしで参加可能。3ビンゴ・フルビンゴ達成ごとに、3,000円分のeチケットまたはベアリスタグラスが各3,000名に当たる抽選へ参加可能</div>
+    <div class="card-detail"><span class="label">期間</span>2026年11月2日～12月25日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2151193.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（0件）</span></h2>
+  <p>該当なし</p>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">コープデリ「醤油の旨み 鶏もも唐揚げ」</div>
+    <div class="card-detail"><span class="label">理由</span>アレルゲン「乳、卵」の表示欠落により、小・中・大の各商品を返金・回収</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>対象商品は食べず、購入店舗などへ返金・回収方法を確認</div>
+    <div class="card-source"><a href="https://www.recall.caa.go.jp/result/detail.php?rcl=00000036039&amp;screenkbn=03">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">旭松食品「LWもちっと食感のスープ春雨」3商品</div>
+    <div class="card-detail"><span class="label">理由</span>「かきたま」「酸辣湯」「担担味」に異物（虫）が混入しているおそれがあり、返金・回収</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>対象商品の使用を中止し、販売元または購入店舗へ返金・回収方法を確認</div>
+    <div class="card-source"><a href="https://www.recall.caa.go.jp/result/detail.php?rcl=00000036043&amp;screenkbn=03">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">味の素ヘルシーサプライ「アミノシューティカル クリームn」</div>
+    <div class="card-detail"><span class="label">理由</span>市場への出荷判定が行われていない製品、および全成分表示がない製品が確認されたため回収</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>対象製品の使用を中止し、販売元へ回収方法を確認</div>
+    <div class="card-source"><a href="https://www.recall.caa.go.jp/result/detail.php?rcl=00000036046&amp;screenkbn=03">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>食品市場では、低価格を打ち出す日常商品と、有名ブランドとの限定コラボ商品が同時に増えています。一方で、直近は食品・化粧品の回収情報が複数更新されているため、購入済み商品の名称やアレルゲン表示を確認することが重要です。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

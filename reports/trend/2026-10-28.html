@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年10月28日（水）版</p>
+  <p class="total-count">本日のトレンド: 9件</p>
+
+  <h2>新商品情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">セブンプレミアム スーパーカップ超大盛りもやしみそラーメン</div>
+    <div class="card-detail"><span class="label">特徴</span>麺重量120g。合わせみそと豚の旨味をベースに、5種類の野菜を加えたセブンプレミアム初の「スーパーカップ超大盛り」</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月27日から順次</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">278円（税別）</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2151267.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブンプレミアム 焼きいものクレープ／とろ生スイートポテト</div>
+    <div class="card-detail"><span class="label">特徴</span>らぽっぽファーム監修の秋限定冷凍スイーツ。クレープには焼きいもと紫いも、とろ生スイートポテトには国産紅はるかを使用</div>
+    <div class="card-detail"><span class="label">発売日</span>首都圏は2026年10月27日から、その他の地域は11月3日から順次</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">焼きいものクレープ298円、とろ生スイートポテト2個入398円（いずれも税別）</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2151369.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">薬膳好日 薬膳チャイ</div>
+    <div class="card-detail"><span class="label">特徴</span>五味の考え方に基づき、ミルクのコクと甘みにショウガの辛みや複数のスパイスを組み合わせた期間限定飲料</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年11月3日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">500ml、希望小売価格230円（税別）</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000864.000027480.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">無糖ストレートティー 華やぐアップルの香り</div>
+    <div class="card-detail"><span class="label">特徴</span>うるつや乳酸菌と食物繊維4.2gを配合した、無糖・カロリーゼロ・無果汁の350ml紅茶</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年11月18日</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">店頭予定価格170円（税込）、公式通販24本入り3,685円（税込）</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000529.000005126.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（3件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ピザハット「肉の日キャンペーン」</div>
+    <div class="card-detail"><span class="label">特典内容</span>対象ハーフ＆ハーフの持ち帰り価格が2,205円または2,385円から1,129円に。肉ピザ2枚セットは6,020円から2,929円となり、最大3,091円引き</div>
+    <div class="card-detail"><span class="label">期間</span>2026年10月28日～11月1日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000000387.000031164.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">マクドナルド「トクニナルド」</div>
+    <div class="card-detail"><span class="label">特典内容</span>「マックフライポテト」M・Lサイズを各250円で販売。通常価格との差は最大150円</div>
+    <div class="card-detail"><span class="label">期間</span>2026年11月2日～11月13日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2151424.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ほっともっと「ごはん大盛・中盛無料キャンペーン」</div>
+    <div class="card-detail"><span class="label">特典内容</span>ごはんの量を選べる対象弁当とごはん単品の「中盛」「大盛」を「並盛」と同価格で提供</div>
+    <div class="card-detail"><span class="label">期間</span>2026年11月1日～12月31日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000001702.000054093.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（0件）</span></h2>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">『すみっコぐらし おもいでアルバム』</div>
+    <div class="card-detail"><span class="label">理由</span>2026年10月16日の発売後、3日で1万部の重版が決定する反響となり、品薄が発生</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>重版分は11月中旬から順次出荷予定のため、高額な二次流通品を避け、書店や正規ネット書店の再入荷を待つ</div>
+    <div class="card-source"><a href="https://prtimes.jp/main/html/rd/p/000001366.000072639.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">バンダイロジパルの出荷システム</div>
+    <div class="card-detail"><span class="label">理由</span>物流システムへの不正アクセスを受け、2026年10月24日に対象システム、10月26日に出荷業務を一時停止</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★</span></div>
+    <div class="card-detail"><span class="label">アクション</span>「一番くじ ONLINE」などの配送遅延に留意し、配送情報に含まれる氏名・住所・電話番号を悪用した不審な連絡や郵送物を警戒する</div>
+    <div class="card-source"><a href="https://logishift.net/2026/10/27/post-9947/">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（0件）</span></h2>
+  <p>食品・外食では、増量や価格据え置きによって実質的なお得感を示す施策が目立ちます。一方、注目商品の品薄や物流システム停止も発生しているため、二次流通での割高購入を避け、公式の再入荷・配送情報を確認することが重要です。</p>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

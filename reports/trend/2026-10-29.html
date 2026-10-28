@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のトレンドニュースまとめ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のトレンドニュースまとめ</h1>
+  <p class="report-date">2026年10月29日（木）版</p>
+  <p class="total-count">本日のトレンド: 11件</p>
+
+  <h2>新商品情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">セブンプレミアム スーパーカップ超大盛りもやしみそラーメン</div>
+    <div class="card-detail"><span class="label">特徴</span>麺重量120g。豚の旨味、ガーリック、ジンジャーを利かせたみそスープに、もやしなど5種の野菜を使用</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年10月27日から順次</div>
+    <div class="card-detail"><span class="label">価格</span><span class="card-amount">278円（税別、店舗により異なる）</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2151267.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">旅するパイの実＜アメリカンアップルパイ＞</div>
+    <div class="card-detail"><span class="label">特徴</span>発酵バターとシナモンを練り込んだ生地に、りんごフィリングを使用。表面のパリッとした部分を通常の1.3倍、中身を1.1倍に増量</div>
+    <div class="card-detail"><span class="label">発売日</span>2026年11月3日</div>
+    <div class="card-detail"><span class="label">価格</span>不明</div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2151183.html">出典を確認する</a></div>
+  </div>
+
+  <h2>お得キャンペーン情報 <span class="section-count">（4件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">マクドナルド「トクニナルド」キャンペーン</div>
+    <div class="card-detail"><span class="label">特典内容</span>「マックフライポテト」M・Lサイズを各250円で販売し、通常価格から最大150円お得</div>
+    <div class="card-detail"><span class="label">期間</span>2026年11月2日～11月13日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2151424.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ケンタッキー「9ピースバーレル」キャンペーン</div>
+    <div class="card-detail"><span class="label">特典内容</span>オリジナルチキン9ピースを2,590円で販売。単品積上げ価格2,970円より380円お得</div>
+    <div class="card-detail"><span class="label">期間</span>ハロウィン版は2026年10月30日～10月31日、通常版は11月2日～11月10日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2151397.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">セブン‐イレブン「ドリンク1本実質無料キャンペーン」</div>
+    <div class="card-detail"><span class="label">特典内容</span>400円（税別）以下のおにぎり・寿司を2個と対象ドリンク1本を同時購入すると、ドリンク代を全額値引き</div>
+    <div class="card-detail"><span class="label">期間</span>2026年11月3日～11月7日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★★</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2151438.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ほっともっと「ごはん大盛・中盛無料キャンペーン」</div>
+    <div class="card-detail"><span class="label">特典内容</span>対象商品のごはん大盛・中盛を並盛と同じ価格で提供。ごはん単品も対象</div>
+    <div class="card-detail"><span class="label">期間</span>2026年11月1日～12月31日</div>
+    <div class="card-detail"><span class="label">お得度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-source"><a href="https://gourmet.watch.impress.co.jp/docs/news/2151533.html">出典を確認する</a></div>
+  </div>
+
+  <h2>転売・市場過熱情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">中古iPhone 16e</div>
+    <div class="card-detail"><span class="label">市場状況</span>2026年10月28日時点の128GB中古相場は<span class="card-amount">108,310円</span>。90日間で13,790円上昇し、販売中の商品は392件</div>
+    <div class="card-detail"><span class="label">注意点</span>イオシス、ゲオ、じゃんぱらの販売価格を基にした中古小売相場であり、メルカリなどの成約価格や転売利益を示すデータではない</div>
+    <div class="card-source"><a href="https://used-lab.jp/iphone/price-info/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">中古iPhone 17</div>
+    <div class="card-detail"><span class="label">市場状況</span>2026年10月28日時点の256GB中古相場は<span class="card-amount">156,490円</span>。90日間で4,690円上昇し、販売中の商品は481件</div>
+    <div class="card-detail"><span class="label">注意点</span>価格帯には幅があり、端末状態や保証条件も異なるため、相場上昇額だけで購入価値を判断しない</div>
+    <div class="card-source"><a href="https://used-lab.jp/iphone/price-info/">出典を確認する</a></div>
+  </div>
+
+  <h2>販売停止・品薄情報 <span class="section-count">（2件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">ドキサゾシン錠2mg「ニプロ」</div>
+    <div class="card-detail"><span class="label">理由</span>2026年10月28日公表分で、供給区分が限定出荷から供給停止へ変更。具体的な停止理由と解除見込みは不明</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★★☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>自己判断で代替せず、処方元の医療機関または薬局へ在庫と代替薬を確認</div>
+    <div class="card-source"><a href="https://kyokyu-navi.jp/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">モニラック・シロップ65％</div>
+    <div class="card-detail"><span class="label">理由</span>2026年10月28日公表分で限定出荷の区分変更を確認。具体的な理由と通常出荷への復帰時期は不明</div>
+    <div class="card-detail"><span class="label">影響度</span><span class="card-amount">★★★☆☆</span></div>
+    <div class="card-detail"><span class="label">アクション</span>必要量を過度に確保せず、継続使用に支障が見込まれる場合は早めに医療機関または薬局へ相談</div>
+    <div class="card-source"><a href="https://kyokyu-navi.jp/">出典を確認する</a></div>
+  </div>
+
+  <h2>本日のアナリスト・コメント <span class="section-count">（1件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">本日の分析</div>
+    <div class="card-detail"><span class="label">コメント</span>外食・コンビニでは、単純な値下げよりも「実質無料」「増量無料」「まとめ買い割引」によって客数と購入点数を同時に伸ばす施策が目立ちます。一方、中古スマートフォンの一部機種で相場上昇が続き、医薬品では供給停止への区分変更も確認されているため、価格だけでなく在庫と供給状況の確認が重要です。</div>
+  </div>
+
+  <p class="note">※掲載情報は確認時点のものです。最新情報は出典元にてご確認ください。</p>
+</body>
+</html>

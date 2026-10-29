@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本日のモバイル情報</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --canvas: #faf9f5;
+  --card: #fffdf8;
+  --surface-soft: #f5f0e8;
+  --hairline: #e6dfd8;
+  --hairline-soft: #ebe6df;
+  --primary: #cc785c;
+  --primary-active: #a9583e;
+  --ink: #141413;
+  --text: #3d3d3a;
+  --muted: #6c6a64;
+  --font-display: "Noto Serif JP", Garamond, "Times New Roman", serif;
+  --font-body: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-soft: 0 1px 3px rgba(20, 20, 19, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 40px 24px 64px;
+  max-width: 760px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.total-count {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  text-wrap: balance;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary);
+  margin: 40px 0 16px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(20, 20, 19, 0.08); }
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.card-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary-active);
+}
+
+.total-count { }
+
+.section-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 8px;
+  font-family: var(--font-body);
+}
+
+.card-source {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 600px) {
+  body { padding: 24px 16px 48px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+  .card { padding: 16px 18px; }
+  .card-detail {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .label {
+    min-width: auto;
+    text-align: left;
+  }
+  .card-amount { font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+  <h1>本日のモバイル情報</h1>
+  <p class="report-date">2026年10月30日</p>
+  <p class="total-count">本日のモバイル案件: 9件</p>
+
+  <h2>MNP・モバイル情報 <span class="section-count">（9件）</span></h2>
+
+  <div class="card">
+    <div class="card-title">NTTドコモ「5G WELCOME割」対象機種追加</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">AQUOS wish5 SH-52Fは21,989円割引、Google Pixel 11 Pro XL 256GBは11,000円割引</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>NTTドコモ</div>
+    <div class="card-detail"><span class="label">条件</span>MNPでAQUOS wish5 SH-52F、Google Pixel 11 Pro XL 256GBが対象。Google Pixel 11 Pro XL 256GBは新規契約も対象</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/23 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://onlineshop.docomo.ne.jp/special/5g-welcome-wari">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">au「秋のPontaパス祭」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大14倍（7％）のポイント還元、最大10,000Pontaポイントが当たる</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>au（KDDI）</div>
+    <div class="card-detail"><span class="label">条件</span>Pontaパス会員が170ブランド以上の対象店舗でau PAYを利用。サービス利用などの条件達成でスタンプラリーに参加可能</div>
+    <div class="card-detail"><span class="label">期間</span>2026/11/01 ～ 2026/11/30</div>
+    <div class="card-source"><a href="https://www.au.com/information/topic/pontapass/2026-002/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ソフトバンク「おうちスマホ割」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">翌月から1年間、毎月2,860円割引。2年目以降は毎月1,210円割引</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ソフトバンク</div>
+    <div class="card-detail"><span class="label">条件</span>「テイガク無制限」または「ペイトク2」利用者が、SoftBank 光・SoftBank 光＋・SoftBank Airを新規契約。2年目以降の割引はPayPayカード ゴールド払いが条件</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/21 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://www.softbank.jp/corp/news/press/sbkk/2026/20261023_01/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ソフトバンク「SUPER ARIGATO YEAR」新キャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">Netflix広告つきスタンダード相当額890円を毎月割引、PayPayポイント総額2億円相当の抽選</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ソフトバンク</div>
+    <div class="card-detail"><span class="label">条件</span>SoftBank 光 Netflixパック利用者、または対象の携帯電話契約者が対象。SUPER FRIDAY 20thではモスチキン引換券を提供</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/20 ～ 2027/03/31（キャンペーンにより異なる）</div>
+    <div class="card-source"><a href="https://www.softbank.jp/corp/news/press/sbkk/2026/20261023_01/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ソフトバンク 福岡ソフトバンクホークス日本一記念キャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">PayPayポイント30万ポイント、来店抽選で150～2,000ポイント、10,000ポイントが100名に当選</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>ソフトバンク</div>
+    <div class="card-detail"><span class="label">条件</span>Web応募、対象店舗での来店抽選、または公式LINEとMy SoftBankの連携が対象</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/28 ～ 2026/11/11（企画により終了日が異なる）</div>
+    <div class="card-source"><a href="https://www.softbank.jp/mobile/special/hawks-nipponchampions2026/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">楽天モバイル 衛星電話宛て通話料金改定</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">標準電話アプリは177円／30秒、Rakuten Link利用時も177円／30秒へ変更</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>楽天モバイル</div>
+    <div class="card-detail"><span class="label">条件</span>「Rakuten最強プラン」「Rakuten最強U-NEXT」からNTTドコモのワイドスターⅡ・Ⅲへ発信する場合。15分通話かけ放題は対象外</div>
+    <div class="card-detail"><span class="label">期間</span>2026/12/01 ～ 終了日未定</div>
+    <div class="card-source"><a href="https://network.mobile.rakuten.co.jp/information/news/service/3885/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">LINEMO「PayPay増額キャンペーン」</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">最大20,000円相当のPayPayポイント、契約事務手数料3,850円を全額割引</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>LINEMO</div>
+    <div class="card-detail"><span class="label">条件</span>対象キャンペーンの通常特典に加え、LINEMOベストプランは4,000円相当、LINEMOベストプランVは8,000円相当を追加</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/24 ～ 2026/11/03</div>
+    <div class="card-source"><a href="https://www.linemo.jp/info/press/2026/26102401.html">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">LINEMO ホークス日本一記念キャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">2,000円相当が100名、5,000円相当が20名に当選</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>LINEMO</div>
+    <div class="card-detail"><span class="label">条件</span>公式Xのフォローと対象投稿のリポスト。指定ハッシュタグなどを付けた投稿でダブルチャンスに参加可能</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/28 ～ 2026/11/03</div>
+    <div class="card-source"><a href="https://www.softbank.jp/mobile/special/hawks-nipponchampions2026/">出典を確認する</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Y!mobile ホークス日本一記念キャンペーン</div>
+    <div class="card-detail"><span class="label">還元</span><span class="card-amount">ホークスTVを6カ月無料で利用できるクーポンが20名に当選</span></div>
+    <div class="card-detail"><span class="label">キャリア・窓口</span>Y!mobile</div>
+    <div class="card-detail"><span class="label">条件</span>公式Xのフォローと対象投稿のリポスト。無料期間終了後、解約しない場合は月額990円で自動継続</div>
+    <div class="card-detail"><span class="label">期間</span>2026/10/28 ～ 2026/11/10</div>
+    <div class="card-source"><a href="https://www.softbank.jp/mobile/special/hawks-nipponchampions2026/">出典を確認する</a></div>
+  </div>
+
+  <p class="note">※還元・条件は確認時点のものです。</p>
+</body>
+</html>
